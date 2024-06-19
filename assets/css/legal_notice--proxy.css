@@ -1,0 +1,20 @@
+.header__placeholder {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    padding: 20px 16px;
+}
+
+.headline-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.back-btn {
+
+}
+
+.legal {
+    margin-block: 0;
+}
