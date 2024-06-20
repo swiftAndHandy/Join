@@ -48,13 +48,13 @@
                 <div class="under-card">
                     <form class="input-information" id="form">
                         <div class="input-style ">
-                            <input class="profile-img-input" minlength="2" maxlength="28" type="name" required placeholder="Name">
+                            <input class="profile-img-input" minlength="2" maxlength="28" type="name" placeholder="Name" pattern="^[A-Za-zÀ-ÖØ-öø-ÿ\s'\-]+$" title="Please enter a valid name" required>
                         </div>
                         <div class="input-style">
                             <input class="email-img-input" minlength="2" maxlength="28" type="email" required placeholder="Email">
                         </div>
                         <div class="input-style">
-                            <input class="phone-img-input" type="tel" required placeholder="Phone" >
+                            <input class="phone-img-input" type="tel" required placeholder="Phone" pattern="^\+?[0-9\s\-]{7,15}$" title="Please enter a valid phone number">
                         </div>
                        
                         
