@@ -1,59 +1,36 @@
 /* styling for contact list */
+body{
+    margin: 0;
+}
+
 .contactListContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
-    max-width: 456px;
-    max-height: 95svh;
-    top: 96px;
-    left: 232px;
-    cursor: pointer;
     box-shadow: 4px 0px 6px 0px #00000014;
 }
 
-.contactList::-webkit-scrollbar{
-    width: 6px;
-}
-
 .contactList::-webkit-scrollbar-thumb {
-        background: #FFFFFF; 
-        border-radius: 10px;   
+        background: #A8A8A8;
     }
 
 .contactList{
-    left: 28px;
-    padding: 0 24px 32px 24px;
+    padding: 24px;
+    margin: 0;
     overflow-y: auto;
-}
-
-.btnContainer{
-    display: flex;
-    justify-content: center;
-    width: 456px;
-    height: 132px;
-    background-color: #FFFFFF;
 }
 
 .btnAddNewContact{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 22.5px;
-    left: 52px;
-    width: 352px;
+    position: fixed;
+    bottom: 4%;
+    right: 6%;
+    width: 56px;
     height: 56px;
-    padding: 12px 0 12px 0;
-    border-radius: 10px;
-    border:#2A3647 1px;
+    padding: 12px;
+    border-radius: 46px;
+    border: #2A3647 1px;
     background-color: #2A3647;
-    color: #FFFFFF;
-    font-style: normal;
-    font-weight: 700;
-    font-family: 'Inter', sans-serif;
-    font-size: 21px;
-    gap: 16px;
 }
 
 .btnAddNewContact img{
@@ -88,6 +65,7 @@
 }
 
 .contactItem{
+    cursor: pointer;
     display: flex;
     align-items: center;
     border-radius: 10px;
@@ -95,11 +73,11 @@
     gap: 35px;
 }
 
-.contactItem:hover{
+.contactItem:active{
     background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
 }
 
-/* Class that is activated when clicking on contact. Must be added via JS.*/
+/* Class that is activated when clicking on contact for desktop layout. Must be added via JS.*/
 .contactItemSelected{
     display: flex;
     align-items: center;
@@ -117,7 +95,7 @@
     width: 42px;
     height: 42px;
     border: 2px solid #FFFFFF;
-    border-radius: 42px;
+    border-radius: 45px;
     gap:10px;
     color: #FFFFFF;
     font-family: 'Inter',sans-serif;
