@@ -6,6 +6,21 @@
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/contact_dialog_style.css">
     <link rel="stylesheet" href="./assets/css/fonts.css">
+
+    <script>
+        function editContact(event) {
+            event.preventDefault();
+            if (document.getElementById('form').checkValidity()) {
+                console.log("Edit contact");
+            } else {
+                document.getElementById('form').reportValidity();
+            }
+        }
+    
+        function deleteContact() {
+            console.log("Delete contact");
+        }
+    </script>
 </head>
 <body>
     <main> content all </main>
@@ -31,7 +46,7 @@
                   <span>AM</span>
                 </div>
                 <div class="under-card">
-                    <form class="input-information">
+                    <form class="input-information" id="form">
                         <div class="input-style ">
                             <input class="profile-img-input" minlength="2" maxlength="28" type="name" required placeholder="Name">
                         </div>
@@ -46,10 +61,10 @@
                         
                     </form>
                     <div class="button-container">
-                        <div class="contact-delete-btn" onclick="">
+                        <div class="contact-delete-btn" onclick="deleteContact()">
                             <span>Delete</span>
                         </div>
-                        <div class="contact-save-btn" onclick="">
+                        <div class="contact-save-btn" onclick="editContact(event)">
                             <span> Save</span>
                               <div>
                                   <img src="./assets/img/icons/check.svg" alt="">
