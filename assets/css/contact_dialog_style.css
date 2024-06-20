@@ -180,6 +180,29 @@ main {
   background-position: right 16px center;
 }
 
+.contact-btn {
+
+  width: 202px;
+  height: 51px;
+  border-radius: 10px;
+  background-color: #2a3647;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: space-around;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  position: absolute;
+  top: 629px;
+  padding: 0 10px;
+  font-size: 21px;
+}
+
+.contact-btn:hover {
+  background-color: #29ABE2;
+}
+
 .contact-save-btn {
   width: 99px;
   height: 51px;
