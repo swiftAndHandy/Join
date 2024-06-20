@@ -79,7 +79,7 @@ main {
 .list-number {
     font-size: 27px;
     font-weight: 700;
-
+    min-width: 32px;
 }
 
 .article {
