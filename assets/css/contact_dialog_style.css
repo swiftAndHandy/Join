@@ -102,7 +102,6 @@ main {
   height: 32px;
   top: 24px;
   left: 348px;
-  padding: 4px 0px 0px 0px;
   gap: 0px;
   border-radius: 56px 0px 0px 0px;
   position: absolute;
@@ -158,7 +157,7 @@ main {
   line-height: 24px;
 }
 
-.input-style input:hover {
+.input-style input:focus{
   outline-color: #29ABE2;
 }
 
@@ -250,3 +249,5 @@ main {
   border-color: #29ABE2;
   color: #29ABE2;
 }
+
+
