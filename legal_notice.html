@@ -8,112 +8,137 @@
     <link rel="stylesheet" href="./assets/css/fonts.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/legal_notice--proxy.css">
+
+    <script>
+        let account = true;
+        function toggleUser() {
+            account = !account;
+            if (account) {
+                document.getElementById('nav-menu-bottom').classList.remove('d-none');
+                document.getElementById('main-wrapper').classList.remove('main--no-account');
+            } else {
+                document.getElementById('nav-menu-bottom').classList.add('d-none');
+                document.getElementById('main-wrapper').classList.add('main--no-account');
+            }
+        }
+    </script>
 </head>
 
 <body>
-<section id="header" class="header__placeholder"></section>
-    <section id="imprint">
-        <div class="headline-navigation">
-            <h1>Legal Notice</h1>
-            <img src="./assets/img/icons/arrow-left-line.svg" alt="go back" id="back" class="back-btn link" onclick="window.history.back();">
-        </div>
+    <nav id="nav-menu-side" class="nav-menu--side"></nav>
+    <header class="header__placeholder">Placeholder - Navbar</header>
+    <main id="main-wrapper">
+        <section class="content">
+            <div class="headline-navigation">
+                <h1>Legal Notice</h1>
+                <button id="back" class="back-btn link" onclick="window.history.back();"></button>
+            </div>
 
-        <h2>Imprint</h2>
+            <h2>Imprint</h2>
 
-        <p>Kumarakulasingam, Sauer, Sliuta, Veltens GbR<br>
-            F&auml;rberstr. 140<br>
-            40223 D&uuml;sseldorf</p>
+            <p>Kumarakulasingam, Sauer, Sliuta, Veltens GbR<br>
+                F&auml;rberstr. 140<br>
+                40223 D&uuml;sseldorf</p>
 
-        <p><strong>Represented by:</strong><br>
-            Andre Veltens, stud. iur.<br>
-            Yevhen Sliuta<br>
-            Philipp Sauer<br>
-            Prathab Kumarakulasingam</p>
+            <p><strong>Represented by:</strong><br>
+                Andre Veltens, stud. iur.<br>
+                Yevhen Sliuta<br>
+                Philipp Sauer<br>
+                Prathab Kumarakulasingam</p>
 
-        <h2>Contact</h2>
-        <p>Phone: +4917672367281<br>
-            E-Mail: trashfilter@mailbox.org</p>
+            <h2>Contact</h2>
+            <p>Phone: +4917672367281<br>
+                E-Mail: trashfilter@mailbox.org</p>
 
-        <h2>Acceptance of terms</h2>
-        <p>By accessing and using <a href="">Join</a> (Product), you acknowledge and agree to the following terms and
-            conditions, and any
-            policies, guidelines, or amendments thereto that may be presented to you from time to time. We, the listed
-            students, may update or change the terms and conditions from time to time without notice.</p>
+            <h2>Acceptance of terms</h2>
+            <p>By accessing and using <a href="index.html">Join</a> (Product), you acknowledge and agree to the
+                following terms and
+                conditions, and any
+                policies, guidelines, or amendments thereto that may be presented to you from time to time. We, the
+                listed
+                students, may update or change the terms and conditions from time to time without notice.</p>
 
-        <h2>Scope and ownership of the product</h2>
-        <p><a href="">Join</a> has been developed as part of a student group
-            project in a web development bootcamp at the
-            <a href="https://developerakademie.com" target="_blank" rel="noopener noreferrer">Developer Akademie
-                GmbH</a>.
-            It has an educational
-            purpose and is not intended for extensive personal
-            & business usage. As such, we cannot guarantee
-            consistent availability, reliability, accuracy, or any
-            other aspect of quality regarding this Product.
+            <h2>Scope and ownership of the product</h2>
+            <p><a href="index.html">Join</a> has been developed as part of a student group
+                project in a web development bootcamp at the
+                <a href="https://developerakademie.com" target="_blank" rel="noopener noreferrer">Developer Akademie
+                    GmbH</a>.
+                It has an educational
+                purpose and is not intended for extensive personal
+                & business usage. As such, we cannot guarantee
+                consistent availability, reliability, accuracy, or any
+                other aspect of quality regarding this Product.
+                <br><br>
+                The design of <a href="index.html">Join</a> is owned by the <a href="https://developerakademie.com"
+                    target="_blank" rel="noopener noreferrer">Developer Akademie GmbH</a>.
+                Unauthorized use, reproduction, modification, distribution, or replication of the design is strictly
+                prohibited.
+            </p>
 
-            The design of <a href="">Join</a> is owned by the <a href="https://developerakademie.com" target="_blank"
-                rel="noopener noreferrer">Developer Akademie GmbH</a>.
-            Unauthorized use, reproduction, modification, distribution, or replication of the design is strictly
-            prohibited.
-        </p>
+            <h2>Proprietary rights</h2>
+            <p>Aside from the design owned by <a href="https://developerakademie.com" target="_blank"
+                    rel="noopener noreferrer">Developer Akademie GmbH,</a>
+                we, the listed students, retain all proprietary rights in <a href="index.html">Join</a>, including any
+                associated
+                copyrighted material,
+                trademarks, and other proprietary information.</p>
 
-        <h2>Proprietary rights</h2>
-        <p>Aside from the design owned by <a href="https://developerakademie.com" target="_blank"
-                rel="noopener noreferrer">Developer Akademie GmbH,</a>
-            we, the listed students, retain all proprietary rights in <a href="">Join</a>, including any associated
-            copyrighted material,
-            trademarks, and other proprietary information.</p>
+            <h2>Use of the product</h2>
+            <p><a href="index.html">Join</a> is intended to be used for lawful purposes only,
+                in accordance with all applicable laws and
+                regulations. Any use of <a href="index.html">Join</a> for illegal activities, or
+                to harass, harm, threaten, or intimidate another
+                person, is strictly prohibited. You are solely
+                responsible for your interactions with other users of
+                <a href="index.html">Join</a>.
+            </p>
 
-        <h2>Use of the product</h2>
-        <p><a href="">Join</a> is intended to be used for lawful purposes only,
-            in accordance with all applicable laws and
-            regulations. Any use of <a href="">Join</a> for illegal activities, or
-            to harass, harm, threaten, or intimidate another
-            person, is strictly prohibited. You are solely
-            responsible for your interactions with other users of
-            <a href="">Join</a>.
-        </p>
+            <h2>Disclaimer of warranties and limitation of liability</h2>
+            <p><a href="index.html">Join</a> is provided "as is" without warranty of any kind,
+                whether express or implied, including but not limited
+                to the implied warranties of merchantability, fitness
+                for a particular purpose, and non-infringement. In
+                no event will we, the listed students, or the
+                <a href="https://developerakademie.com" target="_blank" rel="noopener noreferrer">Developer Akademie
+                    GmbH,</a>
+                be liable for any direct,
+                indirect, incidental, special, consequential or
+                exemplary damages, including but not limited to,
+                damages for loss of profits, goodwill, use, data, or
+                other intangible losses, even if we have been
+                advised of the possibility of such damages, arising
+                out of or in connection with the use or performance
+                of <a href="">Join.</a>
+            </p>
 
-        <h2>Disclaimer of warranties and limitation of liability</h2>
-        <p><a href="">Join</a> is provided "as is" without warranty of any kind,
-            whether express or implied, including but not limited
-            to the implied warranties of merchantability, fitness
-            for a particular purpose, and non-infringement. In
-            no event will we, the listed students, or the
-            <a href="https://developerakademie.com" target="_blank" rel="noopener noreferrer">Developer Akademie
-                GmbH,</a>
-            be liable for any direct,
-            indirect, incidental, special, consequential or
-            exemplary damages, including but not limited to,
-            damages for loss of profits, goodwill, use, data, or
-            other intangible losses, even if we have been
-            advised of the possibility of such damages, arising
-            out of or in connection with the use or performance
-            of <a href="">Join.</a>
-        </p>
+            <h2>Indemnity</h2>
+            <p>You agree to indemnify, defend and hold harmless
+                us, the listed students, the <a href="https://developerakademie.com" target="_blank"
+                    rel="noopener noreferrer">Developer Akademie GmbH,</a>
+                and our affiliates, partners, officers, directors,
+                agents, and employees, from and against any claim,
+                demand, loss, damage, cost, or liability (including
+                reasonable legal fees) arising out of or relating to
+                your use of <a href="index.html">Join</a> and/or your breach of this Legal
+                Notice.<br><br>
+                For any questions or notices, please contact us at
+                [Contact Emaill.</p>
 
-        <h2>Indemnity</h2>
-        <p>You agree to indemnify, defend and hold harmless
-            us, the listed students, the <a href="https://developerakademie.com" target="_blank"
-                rel="noopener noreferrer">Developer Akademie GmbH,</a>
-            and our affiliates, partners, officers, directors,
-            agents, and employees, from and against any claim,
-            demand, loss, damage, cost, or liability (including
-            reasonable legal fees) arising out of or relating to
-            your use of <a href="">Join</a> and/or your breach of this Legal
-            Notice.</p>
+            <h2>EU dispute resolution</h2>
+            <p>The European Commission provides a platform for online dispute resolution (ODR): <a
+                    href="https://ec.europa.eu/consumers/odr/" target="_blank"
+                    rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br> You can find our e-mail
+                address
+                in
+                the legal notice above.</p>
 
-        <h2>EU dispute resolution</h2>
-        <p>The European Commission provides a platform for online dispute resolution (ODR): <a
-                href="https://ec.europa.eu/consumers/odr/" target="_blank"
-                rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br> You can find our e-mail address
-            in
-            the legal notice above.</p>
-
-        <h2>Consumer dispute resolution/<br>universal arbitration board</h2>
-        <p>We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration
-            board.</p>
-    </section>
+            <h2>Consumer dispute resolution/<br>universal arbitration board</h2>
+            <p>We are not willing or obliged to participate in dispute resolution proceedings before a consumer
+                arbitration
+                board.</p>
+        </section>
+    </main>
+    <section id="nav-menu-bottom" class="nav-menu--bottom"></section>
 
 </body>
 
