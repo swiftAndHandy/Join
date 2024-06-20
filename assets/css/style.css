@@ -20,6 +20,14 @@ main {
     max-width: 1920px;
 }
 
+.logo {
+    position: absolute;
+    top: 64px;
+    left: 66px;
+    height: 122px;
+    width: 100px;
+}
+
 h1 {
     font-size: 47px;
     font-weight: 700;
@@ -27,7 +35,7 @@ h1 {
 }
 
 h2 {
-    font-size: 32px;
+    font-size: 27px;
     font-weight: 700;
     margin-bottom: 0;
 }
