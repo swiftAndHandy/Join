@@ -393,7 +393,7 @@ main {
 
 }
 
-@media (max-width: 320px) {
+@media (max-width: 335px) {
   .input-style {
     width: 320px;
   }
