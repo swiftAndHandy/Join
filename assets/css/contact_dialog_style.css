@@ -158,6 +158,10 @@ main {
   line-height: 24px;
 }
 
+.input-style input:hover {
+  outline-color: #29ABE2;
+}
+
 .profile-img-input {
   background: url(../img/icons/person-gray.svg);
   background-repeat: no-repeat;
@@ -188,6 +192,11 @@ main {
   color: white;
   font-weight: 700;
   line-height: 25px;
+  cursor: pointer;
+}
+
+.contact-save-btn:hover {
+  background-color: #29ABE2;
 }
 
 .button-container {
@@ -211,4 +220,10 @@ main {
   height: 51px;
   width: 82px;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+.contact-delete-btn:hover {
+  border-color: #29ABE2;
+  color: #29ABE2;
 }
