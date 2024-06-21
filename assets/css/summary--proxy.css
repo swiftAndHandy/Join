@@ -115,9 +115,6 @@
     align-items: center;
     box-sizing: border-box;
     width: 50%;
-    /* min-width: 140px;
-    max-width: 186px;
-    height: 110px; */
 }
 
 .summary-card--large {
@@ -125,18 +122,34 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    /* min-width: 250px;
-    max-width: 396px;
-    width: 396px;
-    height: 110px; */
     width: 100%;
     background-image: url('../img/icons/urgent.svg');
     background-repeat: no-repeat;
-    background-position: left 5% center;
+    background-position: 8% center;
 }
 
 .summary-card--large:hover {
     background-image: url('../img/icons/urgent-hover.svg');
+}
+
+.summary-todo {
+    background-image: url('../img/icons/pencil-summary.svg');
+    background-repeat: no-repeat;
+    background-position: 25% center;
+}
+
+.summary-todo:hover {
+    background-image: url('../img/icons/pencil-summary-hover.svg');
+}
+
+.summary-done {
+    background-image: url('../img/icons/done-summary.svg');
+    background-repeat: no-repeat;
+    background-position: 25% center;
+}
+
+.summary-done:hover {
+    background-image: url('../img/icons/done-summary-hover.svg');
 }
 
 .summary-counter {
@@ -161,9 +174,6 @@
 }
 
 .icon-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     min-height: 40px;
     max-height: 40px;
     min-width: 40px;
@@ -204,6 +214,14 @@
 @media (max-width: 360px) {
     .vertical-line {
         margin: 0 12fpx;
+    }
+
+    .summary-card--large {
+        background-position: 8px center;
+    }
+
+    .summary-card--large:hover {
+        background-size: 40px;
     }
 }
 
