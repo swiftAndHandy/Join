@@ -75,7 +75,7 @@ input::placeholder {
     font-weight: 400;
 }
 
-textarea::placeholder {
+ textarea::placeholder {
     color: #D1D1D1;
     font-family: inter;
     font-weight: 400;
