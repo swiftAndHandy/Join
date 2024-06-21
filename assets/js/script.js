@@ -65,6 +65,9 @@ function animateGreeting(greeting) {
     greeting.classList.add('greeting-msg--mobile--fade-in');
     setTimeout(() => {
         greeting.classList.remove('greeting-msg--mobile--fade-in');
+        setTimeout(() => {
+            greeting.classList.add('d-none');
+        }, 1000);
         document.getElementById('summary').classList.add('summary-animation--fade-in');
-    }, 1000);
+    }, 2000);
 }

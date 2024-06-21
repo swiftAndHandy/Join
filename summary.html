@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join - Help</title>
+    <title>Join - Summary</title>
     <link rel="stylesheet" href="./assets/css/fonts.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/info-pages--proxy.css">
@@ -28,24 +28,71 @@
     </nav>
 
     <header class="header__placeholder">Join - Summary</header>
-    <main id="main-wrapper">
+    <main id="main-wrapper" class="main-mb">
         <section id="greeting-overlay" class="greeting-msg--mobile">
-            
+
         </section>
-        <section id="summary" class="summary-animation">
-            Non nunc rhoncus volutpat metus lectus sodales ac nam dui netus ex ipsum morbi ante tellus fames.
-            Senectus dapibus natoque tincidunt eros orci aliquet himenaeos aenean sagittis vehicula penatibus sapien 
-            laoreet scelerisque nam efficitur platea. Iaculis pulvinar praesent nulla orci dictum convallis turpis 
-            quisque netus nisi curae sagittis et sem fermentum nullam tristique parturient erat suspendisse adipiscing placerat 
-            at sodales eros porta. Eu potenti non imperdiet porta ad praesent nunc elementum odio feugiat quisque sapien tempus senectus 
-            nisi a quis. Massa odio nulla felis placerat gravida finibus cubilia efficitur curae fermentum lorem nibh amet primis in a netus
-            at maximus erat mauris elit montes id. Magnis eget primis interdum dui curae id ultricies pharetra posuere nulla ornare suscipit,
-            porta nostra eros metus volutpat feugiat lobortis quis tempus scelerisque condimentum ex netus gravida iaculis blandit sagittis 
-            faucibus lacinia aptent massa eu ut. A facilisis cras sollicitudin felis risus at elit tellus etiam amet vulputate ac est congue
-            tempus himenaeos dis ornare dapibus eget odio adipiscing. Vestibulum posuere rutrum gravida lectus diam velit tincidunt faucibus
-            malesuada, leo platea vitae consequat ut blandit maximus sapien purus nec luctus eu nostra a odio nibh hendrerit cubilia quis.
-            Est gravida class tellus orci conubia senectus facilisis aliquet posuere tristique vehicula libero semper per vitae ad praesent
-            donec quis augue nisl inceptos leo pulvinar.
+        <section id="summary" class="content summary-animation">
+            <div class="join-360">
+                <h1>Join 360</h1>
+                <span class="subtitle">Key Metrics at a Glance</span>
+            </div>
+
+            <section class="summary">
+                <div class="summary-top">
+                    <div id="tasks-to-do" class="summary-card summary-card--medium">
+                        <div class="task-counter--design">
+                            <div class="icon-wrapper"><div class="pencil-img"></div></div>
+                            <div id="todo-counter" class="task-counter">
+                                <span id="board-counter" class="summary-counter">1</span>
+                                <span class="counter-description">To-do</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tasks-done" class="summary-card summary-card--medium">
+                        <div class="task-counter--design">
+                            <div class="icon-wrapper"><div class="done-img"></div></div>
+                            <div id="done-counter" class="task-counter">
+                                <span id="board-counter" class="summary-counter">1</span>
+                                <span class="counter-description">Done</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-urgent">
+                    <div id="tasks-urgent" class="summary-card summary-card--large">
+                        <div class="task-counter--design">
+                            <div class="icon-wrapper"></div>
+                            <div id="urgent-counter" class="task-counter">
+                                <span id="board-counter" class="summary-counter">1</span>
+                                <span class="counter-description">Urgent</span>
+                            </div>
+                        </div>
+                        <img src="./assets/img/icons/vertical-line.svg" alt="" class="vertical-line">
+                        <div id="deadlines" class="deadline-box">
+                            <span id="deadline-date" class="deadline-date">Juli 19, 2024</span>
+                            <span id="deadline-description">Upcoming Deadline</span>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-bottom">
+                    <div id="tasks-in-board" class="summary-card summary-card--small">
+                        <span id="board-counter" class="summary-counter">5</span>
+                        <span class="counter-description">Tasks in<br>Board</span>
+                    </div>
+                    <div id="tasks-in-progress" class="summary-card summary-card--small">
+                        <span id="progress-counter" class="summary-counter">2</span>
+                        <span class="counter-description">Tasks in<br>Board</span>
+                    </div>
+                    <div id="tasks-awaiting-feedback" class="summary-card summary-card--small">
+                        <span id="awaiting-counter" class="summary-counter">2</span>
+                        <span class="counter-description">Awaiting<br>Feedback</span>
+                    </div>
+                </div>
+            </section>
         </section>
     </main>
     <section id="nav-menu-bottom" class="nav-menu--bottom"></section>
