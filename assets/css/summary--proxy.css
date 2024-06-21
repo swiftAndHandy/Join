@@ -1,0 +1,47 @@
+.greeting-msg--mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 80px;
+    font-weight: 400;
+    font-size: 36px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.greeting-msg--mobile--fade-in {
+    opacity: 1;
+}
+
+.greeting-msg--name {
+    font-weight: 700;
+    font-size: 47px;
+    color: #29ABE2;
+}
+
+.summary-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 2.5s ease-in-out;
+}
+
+.summary-animation--fade-in {
+    opacity: 1;
+}
+
+@media (min-width: 720px) {
+    .summary-animation {
+        opacity: 1;
+    }
+
+    .greeting-msg--mobile {
+        display: none;
+    }
+}
