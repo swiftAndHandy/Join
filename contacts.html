@@ -7,10 +7,27 @@
     <title>Contacts</title>
     <link rel="stylesheet" href="./assets/css/contacts.css">
     <link rel="stylesheet" href="./assets/css/fonts.css">
+    <link rel="icon" type="image/svg+xml" href="./assets/img/icons/favicon.svg">
+    <!-- <link rel="icon" type="image/x-icon" href="./assets/img/icons/favicon.svg"> -->
+    <link rel="icon" type="image/png" sizes="48x48" href="./assets/img/icons/favicon-48x48.png">
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/img/icons/favicon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="./assets/img/icons/favicon-167x167.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/icons/favicon-180x180.png">
+    <!-- Safari Pinned Tab -->
+    <link rel="mask-icon" href="./assets/img/icons/favicon.svg" color="#5bbad5">
 </head>
 
+<header class="header__placeholder"></header>
+
 <body>
+    <nav id="nav-menu-side" class="nav-menu--side">
+        <img src="./assets/img/icons/join_logo.svg" class="logo">
+    </nav>
     <div class="contactListContainer">
+            <div class="btnContainer">
+                <button class="btnAddNewContact">Add new contact<img src="./assets/img/icons/person_add.svg" alt=""></button>
+            </div>
         <ul class="contactList">
             <li class="letter">A</li>
             <div class="underline"></div>
@@ -102,10 +119,8 @@
                 </div>
             </li>
         </ul>
-        <div class="btnContainer">
-            <button class="btnAddNewContact"><img src="./assets/img/icons/person_add.svg" alt=""></button>
-        </div>
     </div>
+    <section id="nav-menu-bottom" class="nav-menu--bottom"></section>
 </body>
 
 </html>
