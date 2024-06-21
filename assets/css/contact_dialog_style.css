@@ -262,7 +262,9 @@ main {
   display: none;
 }
 
-@media (min-width: 1170px) {
+
+
+@media (min-width: 951px) {
   .dialog-container {
     width: 1212px;
     height: 592px;
@@ -364,6 +366,56 @@ main {
   .upper-card-content {
     padding: 66px 48px;
   }
+
+  @media (max-width: 1160px) {
+
+    .close {
+      left: 1120px;
+    }
+
+    .upper-card {
+      width: 360px;
+    }
+
+    .profil-img {
+      left: 400px;
+    }
+  }
+
+  @media (max-width: 1142px) {
+    .close {
+      left:1100px ;
+    }
+  }
+
+  @media(max-width: 1123px) {
+.close {
+  left: 1080px;
+}
+  }
+
+  @media(max-width: 1101px) {
+    .close {
+      left: 1050px;
+    }
+      }
+    @media(max-width: 1072px) {
+      .close {
+        left: 1010px;
+      }
+    }
+
+    @media (max-width: 1031px) {
+      .close {
+        left: 960px;
+      }
+    }
+
+    @media(max-width: 990px) {
+      .close {
+        left: 920px;
+      }
+    }
 }
 
 @media (max-width: 370px) {
@@ -387,10 +439,16 @@ main {
   }
 
   .close {
-    left: 5px;
+    left: 320px;
     
   }
 
+}
+
+@media (max-width: 350px) {
+  .close {
+    left: 300px;
+  }
 }
 
 @media (max-width: 335px) {
@@ -411,5 +469,8 @@ main {
 
   .profil-img {
     left: 104px;
+  }
+  .close {
+    left: 285px;
   }
 }
