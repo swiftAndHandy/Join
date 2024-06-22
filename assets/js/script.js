@@ -16,6 +16,7 @@ function greetAtLogin() {
     const greetingEmbedded = document.getElementById('greeting-embedded');
     const greetingMsg = generateGreetingHtml(daytime);
     greetingOverlay.innerHTML = greetingMsg;
+    greetingEmbedded.innerHTML = greetingMsg;
     animateGreeting(greetingOverlay);
 }
 

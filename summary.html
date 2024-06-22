@@ -35,66 +35,73 @@
         <section id="summary" class="content summary-content">
             <div class="join-360">
                 <h1>Join 360</h1>
+                <div class="join-360 vertical-line"></div>
                 <span class="subtitle">Key Metrics at a Glance</span>
             </div>
 
-            <section class="summary">
-                <div class="summary-top">
-                    <div id="tasks-to-do" class="summary-card summary-todo summary-card--medium">
-                        <div class="task-counter--design">
-                            <div class="icon-wrapper"></div>
-                            <div id="todo-counter" class="task-counter">
-                                <span id="board-counter" class="summary-counter">1</span>
-                                <span class="counter-description">To-do</span>
+            <div class="summary-wrapper">
+                <section class="summary">
+                    <div class="summary-top">
+                        <div id="tasks-to-do" class="summary-card summary-todo summary-card--medium">
+                            <div class="task-counter--design">
+                                <div class="icon-wrapper"></div>
+                                <div id="todo-counter" class="task-counter">
+                                    <span id="board-counter" class="summary-counter">1</span>
+                                    <span class="counter-description">To-do</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tasks-done" class="summary-card summary-done summary-card--medium">
+                            <div class="task-counter--design">
+                                <div class="icon-wrapper"></div>
+                                <div id="done-counter" class="task-counter">
+                                    <span id="board-counter" class="summary-counter">1</span>
+                                    <span class="counter-description">Done</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div id="tasks-done" class="summary-card summary-done summary-card--medium">
-                        <div class="task-counter--design">
-                            <div class="icon-wrapper"></div>
-                            <div id="done-counter" class="task-counter">
-                                <span id="board-counter" class="summary-counter">1</span>
-                                <span class="counter-description">Done</span>
+                    <div class="summary-urgent">
+                        <div id="tasks-urgent" class="summary-card summary-card--large">
+                            <div class="task-counter--design">
+                                <div class="icon-wrapper"></div>
+                                <div id="urgent-counter" class="task-counter">
+                                    <span id="board-counter" class="summary-counter">1</span>
+                                    <span class="counter-description">Urgent</span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="summary-urgent">
-                    <div id="tasks-urgent" class="summary-card summary-card--large">
-                        <div class="task-counter--design">
-                            <div class="icon-wrapper"></div>
-                            <div id="urgent-counter" class="task-counter">
-                                <span id="board-counter" class="summary-counter">1</span>
-                                <span class="counter-description">Urgent</span>
+                            <img src="./assets/img/icons/vertical-line.svg" alt="" class="vertical-line">
+                            <div id="deadlines" class="deadline-box">
+                                <span id="deadline-date" class="deadline-date">Juli 19, 2024</span>
+                                <span id="deadline-description">Upcoming Deadline</span>
                             </div>
-                        </div>
-                        <img src="./assets/img/icons/vertical-line.svg" alt="" class="vertical-line">
-                        <div id="deadlines" class="deadline-box">
-                            <span id="deadline-date" class="deadline-date">Juli 19, 2024</span>
-                            <span id="deadline-description">Upcoming Deadline</span>
-                        </div>
-                        <div>
+                            <div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="summary-bottom">
-                    <div id="tasks-in-board" class="summary-card summary-card--small">
-                        <span id="board-counter" class="summary-counter">5</span>
-                        <span class="counter-description">Tasks in<br>Board</span>
+                    <div class="summary-bottom">
+                        <div id="tasks-in-board" class="summary-card summary-card--small">
+                            <span id="board-counter" class="summary-counter">5</span>
+                            <span class="counter-description">Tasks in<br>Board</span>
+                        </div>
+                        <div id="tasks-in-progress" class="summary-card summary-card--small">
+                            <span id="progress-counter" class="summary-counter">2</span>
+                            <span class="counter-description">Tasks in<br>Board</span>
+                        </div>
+                        <div id="tasks-awaiting-feedback" class="summary-card summary-card--small">
+                            <span id="awaiting-counter" class="summary-counter">2</span>
+                            <span class="counter-description">Awaiting<br>Feedback</span>
+                        </div>
                     </div>
-                    <div id="tasks-in-progress" class="summary-card summary-card--small">
-                        <span id="progress-counter" class="summary-counter">2</span>
-                        <span class="counter-description">Tasks in<br>Board</span>
-                    </div>
-                    <div id="tasks-awaiting-feedback" class="summary-card summary-card--small">
-                        <span id="awaiting-counter" class="summary-counter">2</span>
-                        <span class="counter-description">Awaiting<br>Feedback</span>
-                    </div>
-                </div>
-            </section>
+                </section>
+                <section id="greeting-embedded" class="greeting-msg--desktop">
+
+                </section>
+            </div>
         </section>
     </main>
+
     <section id="nav-menu-bottom" class="nav-menu--bottom"></section>
 
 </body>
