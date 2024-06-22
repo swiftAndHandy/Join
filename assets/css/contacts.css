@@ -1,6 +1,7 @@
 /* styling for contact list */
 body {
     margin: 0;
+    height: 100%;
 }
 
 .contactListContainer {
@@ -9,6 +10,8 @@ body {
     align-items: center;
     box-shadow: 4px 0px 6px 0px #00000014;
     margin: 80px 0 80px 0;
+    overflow: scroll;
+    height: calc(100vh - 96px);
 }
 
 .contactList::-webkit-scrollbar-thumb {
@@ -18,7 +21,6 @@ body {
 .contactList {
     padding: 24px;
     margin: 0;
-    overflow-y: auto;
 }
 
 .btnContainer{
@@ -126,6 +128,47 @@ body {
     margin: 4px 0 0 0;
 }
 
+/* style for contact window */
+
+.contactListAndContactWindowContainer{
+    display: flex;
+}
+
+.contactWindow{
+    display: flex;
+    top: 96px;
+    position: relative;
+    justify-content: space-between;
+    height: calc(100svh - 96px);
+}
+
+.separator{
+    height: 56px;
+    border: 1.5px solid #29ABE2;
+    border-radius: 4px;
+}
+
+.h1AndMottoContainer{
+    display: flex;
+    justify-content: center;
+    margin: 40px 0 0 32px;
+    height: 100px;
+    gap: 30px;
+}
+
+.h1AndMottoContainer h1{
+    font-size: 61px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.spanMotto{
+    font-size: 27px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: #2A3647;
+}
+
 /* Placeholder elements will be replaced with templates later. */
 .header__placeholder {
     position: fixed;
@@ -177,7 +220,7 @@ body {
 
     .btnContainer {
         position: sticky;
-        top: 96px;
+        top: 0;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -194,6 +237,7 @@ body {
         width: 352px;
         height: 56px;
         padding: 12px 0 12px 0;
+        margin: 20px;
         border-radius: 10px;
         border: #2A3647 1px;
         background-color: #2A3647;
