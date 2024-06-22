@@ -70,3 +70,15 @@
     font-weight: 900;
     src: url('../fonts/inter-v13-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
+
+  /* openSans - variable */
+  @font-face {
+    font-family: 'open-sans';
+    src: url('../fonts/OpenSans-VariableFont_wdth\,wght.ttf');
+  }
+
+   /* openSans - light */
+   @font-face {
+    font-family: 'open-sans-light';
+    src: url('../fonts/OpenSans-Light.ttf');
+  }
