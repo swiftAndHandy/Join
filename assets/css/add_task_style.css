@@ -1,8 +1,8 @@
 body {
   margin: 0;
   font-family: inter;
+  background-color: #F6F7F8;
 }
-
 
 
 .mobile-body {
@@ -123,7 +123,7 @@ select:focus {
 }
 
 .prios {
-  width: 122px;
+  width: 100px;
   padding: 18px 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 4px 0px #00000031;
@@ -131,6 +131,11 @@ select:focus {
   display: flex;
   justify-content: center;
   gap: 8px;
+  background-color: white;
+}
+
+.prios:hover {
+  box-shadow: 0px 4px 4px 0px #00000025;
 }
 
 .prio-medium {
