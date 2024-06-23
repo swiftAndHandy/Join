@@ -1,3 +1,5 @@
+
+
 /**
  * This function is used @summary.html to initalize everything.
  * Todo: Get Username and start greeting, when it's saved
@@ -62,6 +64,10 @@ function isEvening(hours) {
     return hours >= 18 && hours < 24;
 }
 
+/**
+ * This function controlls css classes, that are required for the login animation.
+ * @param {Element} greeting - target HTML-Element.
+ */
 function animateGreeting(greeting) {
     greeting.classList.add('greeting-msg--mobile--fade-in');
     setTimeout(() => {
