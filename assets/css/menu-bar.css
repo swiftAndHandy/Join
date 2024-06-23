@@ -7,42 +7,41 @@
     top: 0;
     left: 0;
     width: 232px;
-    height: 1024px;
+    height: 100vh;
     background-color: #2A3647;
-    padding-top: 64px;
-    padding-bottom: 64px;
-    padding-left: 65.98px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
 .icon-join {
+    padding-top: 64px;
+    padding-bottom: 64px;
     width: 100.03px;
     height: 121.97px;
 }
 
 .menu-bar-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 46px;
+    gap: 8px;
+}
+
+.menu-bar-text {
+    width: 72px;
     font-family: Inter;
     font-weight: 400;
     line-height: 19.2px;
     font-size: 16px;
     color: rgba(205, 205, 205, 1);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 232px;
-    height: 46px;
-    gap: 8px;
-}
-
-.menu-bar-one {
-    margin-top: 64px;
-    display: flex;
 }
 
 .menu-bar-two {
-    width: 232px;
+    width: 100%;
     height: 229px;
     display: flex;
     flex-direction: column;
@@ -50,16 +49,26 @@
 }
 
 .menu-bar-three {
-    width: 232px;
     height: 317px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 8px;
     padding-top: 243px;
-    margin-bottom: 0px;
 }
 
-a {
+.menu-bar-icons:hover {
+    cursor: pointer;
+    background-color: #091931;
+    border-radius: 8px;
+}
+
+.menu-bar-privacy-policy {
+    display: flex;
+    align-items: center;
+    width: 110px;
+    height: 35px;
     font-family: Inter;
     font-weight: 400;
     font-size: 16px;
@@ -67,18 +76,30 @@ a {
     text-decoration: none;
     color: rgba(168, 168, 168, 1);
 }
-a:hover {
+
+.menu-bar-legal-notice {
+    display: flex;
+    align-items: center;
+    width: 110px;
+    height: 35px;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.2px;
+    text-decoration: none;
     color: rgba(168, 168, 168, 1);
 }
 
-.menu-bar-privacy-policy {
-    width: 121px;
-    height: 35px;
+.menu-bar-privacy-policy:hover {
+    cursor: pointer;
+    background-color: #091931;
+    border-radius: 8px;
 }
 
-.menu-bar-legal-notice {
-    width: 109px;
-    height: 35px;
+.menu-bar-legal-notice:hover {
+    cursor: pointer;
+    background-color: #091931;
+    border-radius: 8px;
 }
 
 .menu-summary_img {
@@ -99,26 +120,6 @@ a:hover {
 .menu-contact_img {
     width: 30px;
     height: 30px;
-}
-
-.menu-text-summary {
-    width: 72px;
-    height: 19px;
-}
-
-.menu-text-board {
-    width: 45px;
-    height: 19px;
-}
-
-.menu-text-add-tasks {
-    width: 71px;
-    height: 19px;
-}
-
-.menu-text-contacts {
-    width: 69px;
-    height: 19px;
 }
 
 @media (max-width: 430px) {
@@ -180,25 +181,5 @@ a:hover {
     .menu-contact_img {
         width: 24px;
         height: 24px;
-    }
-
-    .menu-text-summary {
-        width: 63px;
-        height: 17px;
-    }
-
-    .menu-text-board {
-        width: 40px;
-        height: 17px;
-    }
-
-    .menu-text-add-tasks {
-        width: 66px;
-        height: 17px;
-    }
-
-    .menu-text-contacts {
-        width: 57px;
-        height: 17px;
     }
 }
