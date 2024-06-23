@@ -190,8 +190,6 @@ body {
     color: white;
     font-weight: 700;
     cursor: pointer;
-    position: absolute;
-    top: 629px;
     padding: 0 10px;
     font-size: 21px;
   }
@@ -241,11 +239,6 @@ body {
     width: 82px;
     border-radius: 10px;
     cursor: pointer;
-  }
-  
-  .btn-container {
-    display: flex;
-    justify-content: center;
   }
   
   .contact-delete-btn:hover {
@@ -315,9 +308,7 @@ body {
       transform: none;
     }
   
-    .contact-btn {
-      position: unset;
-    }
+   
   
     .btn-container {
       width: 364px;
@@ -460,52 +451,44 @@ body {
     }
   }
   
-  @media(max-width: 952px) {
+
   
-    @media (max-height: 700px) {
-      .dialog-container {
-        height: 722px;
-  
-      }
-  
-      .upper-card {
-        height: 300px;
-      }
-  
-      .close {
-        top: 28px;
-      }
-  
-      .input-information {
-        left: 4px;
-      }
-  
-      .dialog-container {
-        border-radius: 0;
-      }
-  
+  @media (max-width: 952px) and (max-height: 700px) {
+    .dialog-container {
+      height: 705px;
+      border-radius: 0;
     }
   
-    @media(max-height: 670px) {
-      .upper-card-headline {
-        padding: 56px 24px;
-      }
-  
-      .input-information {
-        top: 425px;
-      }
-  
-      .dialog-container {
-        height: 676px;
-      }
-  
-      .contact-btn {
-        top: 610px;
-      }
-  
-      .button-container {
-        top: 603px;
-      }
+    .upper-card {
+      height: 300px;
     }
   
+    .close {
+      top: 28px;
+    }
+  
+    .input-information {
+      left: 4px;
+    }
+    .button-container {
+      top: 600px;
+    }
+  }
+  
+  @media (max-width: 952px) and (max-height: 677px) {
+    .upper-card-headline {
+      padding: 56px 24px;
+    }
+  
+    .input-information {
+      top: 425px;
+    }
+  
+    .dialog-container {
+      height: 676px;
+    }
+  
+    .button-container {
+      top: 603px;
+    }
   }
