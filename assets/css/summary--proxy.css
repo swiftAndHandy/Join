@@ -98,6 +98,12 @@
     height: 384px;
 }
 
+@media (max-height: 730px) {
+    .summary {
+        height: 100%;
+    }
+}
+
 .summary-card {
     border-radius: 20px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
@@ -135,7 +141,7 @@
     width: 100%;
     background-image: url('../img/icons/urgent.svg');
     background-repeat: no-repeat;
-    background-position: 8% center;
+    background-position: 12% center;
 }
 
 .summary-card--large:hover {
@@ -205,7 +211,7 @@
 
 .vertical-line {
     height: 68px;
-    margin: 0 24px;
+    margin: 0 10%;
 }
 
 .deadline-box {
@@ -322,5 +328,31 @@
     .greeting-msg--desktop span {
         font-size: clamp(47px, 4vw, 64px);
         color: #29ABE2;
+    }
+}
+
+@media (min-width: 1500px) and (min-height: 1000px) {
+    .summary {
+        height: 50vh;
+        width: 100%;
+        max-width: 1000px;
+        max-height: 700px;
+    }
+
+    .deadline-date {
+        font-size: clamp(16px, 2vw, 50px);
+    }
+
+    .deadline-description {
+        font-size: clamp(16px, 2vw, 42px);
+    }
+
+    .summary-counter {
+        font-size: clamp(56px, 10vw, 72px);
+    }
+
+    .counter-description {
+        font-size: clamp(14px, 2vw, 32px);
+        white-space: nowrap;
     }
 }

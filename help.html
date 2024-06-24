@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./assets/css/fonts.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/info-pages--proxy.css">
+    <link rel="stylesheet" href="./assets/css/menu-bar.css">
     <link rel="icon" type="image/svg+xml" href="./assets/img/icons/favicon.svg">
     <!-- <link rel="icon" type="image/x-icon" href="./assets/img/icons/favicon.svg"> -->
     <link rel="icon" type="image/png" sizes="48x48" href="./assets/img/icons/favicon-48x48.png">
@@ -17,12 +18,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/icons/favicon-180x180.png">
     <!-- Safari Pinned Tab -->
     <link rel="mask-icon" href="./assets/img/icons/favicon.svg" color="#5bbad5">
+    <script src="./assets/js/menu-bar-script.js"></script>
 </head>
 
-<body>
-    <nav id="nav-menu-side" class="nav-menu--side">
-        <img src="./assets/img/icons/join_logo.svg" class="logo">
-    </nav>
+<body onload="includeHTML()">
+    <nav w3-include-html="./assets/templates/menu-bar.html" id="nav-menu-sid" class="nav-menu--side"></nav>
     <header class="header__placeholder">Placeholder - Header</header>
     <main id="main-wrapper">
         <section class="content">
