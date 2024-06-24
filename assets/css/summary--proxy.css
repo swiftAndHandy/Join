@@ -287,7 +287,8 @@
     }
 
     .summary {
-        height: 562px;
+        /* height: 562px; */
+        height: 50vh;
         min-width: 396px;
         max-width: 560px;
         width: unset;
@@ -336,7 +337,7 @@
         height: 50vh;
         width: 100%;
         max-width: 1000px;
-        max-height: 700px;
+        max-height: 1000px;
     }
 
     .deadline-date {
@@ -352,7 +353,7 @@
     }
 
     .counter-description {
-        font-size: clamp(14px, 2vw, 32px);
+        font-size: clamp(14px, 1.2vw, 32px);
         white-space: nowrap;
     }
 }
