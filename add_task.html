@@ -5,17 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/css/add_task_style.css" />
     <link rel="stylesheet" href="./assets/css/fonts.css" />
+    <link rel="stylesheet" href="/assets/css/menu-bar.css">
     <script src="./assets/js/add_task.js"></script>
+    <script src="./assets/js/menu-bar-script.js"></script>
     <title>Join- Add task</title>
   </head>
-  <body>
+  <body onload="includeHTML()">
     <div class="mobile-body">
       <header>placeholder</header>
+      <div class="content-wrapper" >
       <div class="headline">
         <h1>Add Task</h1>
       </div>
       <main class="add-task-container">
         <form class="form-add-task">
+          <div class="desktop-split">
           <div class="flex-column-inputs mb-32">
             <span>Title<span class="red">*</span></span>
             <input
@@ -43,6 +47,9 @@
               </option>
             </select>
           </div>
+        </div>
+        <div class="desktop-seperator-add-contact"></div>
+        <div class="second-desktop-split">
           <div class="flex-column-inputs mb-32">
             <span>Due date<span class="red">*</span></span>
             <input
@@ -91,16 +98,32 @@
               id=""
             />
           </div>
+          <div class="desktop-buttons">
+            <button class="clear-btn"> Clear
+              <img src="./assets/img/icons/close.svg" alt="">
+            </button>
+            
+            <button class="create-task-btn">Create Task
+              <img src="./assets/img/icons/check.svg" alt="">
+            </button>
+            
+          </div>
+        </div>
         </form>
       </main>
+      <span class="required-text"></span>
       <div class="create-task-panel">
         <span><span class="red">*</span>This field is required</span>
-        <div class="create-task-btn">
+        <button class="create-task-btn">
           Create task
           <img src="./assets/img/icons/check.svg" alt="check" />
-        </div>
+        </button>
       </div>
-      <footer>placeholder</footer>
+    </div>
+      
+    <div w3-include-html="./assets/templates/menu-bar.html">
+    
+    </div>
     </div>
   </body>
 </html>

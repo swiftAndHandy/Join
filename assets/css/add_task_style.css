@@ -1,17 +1,21 @@
 body {
   margin: 0;
   font-family: inter;
-  background-color: #F6F7F8;
+  background-color: #f6f7f8;
 }
 
+input,
+textarea,
+select {
+  font-size: clamp(16px, 2vw, 20px);
+}
 
 .mobile-body {
   overflow-x: hidden;
-  
 }
 
-  span {
-  font-size: 16px;
+span {
+  font-size: clamp(16px, 2vw, 20px);
   font-weight: 400;
   color: black;
 }
@@ -36,11 +40,10 @@ header {
   padding: 20px 16px 8px;
   line-height: 56.4px;
   text-align: left;
-
 }
 
 .headline h1 {
-  font-size: 47px;
+  font-size: clamp(47px, 2vw, 61px);
   font-weight: 700;
 }
 
@@ -70,13 +73,12 @@ header {
   border-radius: 10px;
   border: 1px solid #d1d1d1;
   padding: 10px 21px;
-  font-size: 16px;
-  
 }
 
 .date-standard {
   padding: 8px 21px;
-  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
 }
 
 input:focus {
@@ -84,15 +86,15 @@ input:focus {
 }
 
 input::placeholder {
-    color: #D1D1D1;
-    font-family: inter;
-    font-weight: 400;
+  color: #d1d1d1;
+  font-family: inter;
+  font-weight: 400;
 }
 
- textarea::placeholder {
-    color: #D1D1D1;
-    font-family: inter;
-    font-weight: 400;
+textarea::placeholder {
+  color: #d1d1d1;
+  font-family: inter;
+  font-weight: 400;
 }
 
 textarea:focus {
@@ -100,10 +102,9 @@ textarea:focus {
 }
 
 .description-textarea {
-    padding: 18px 21px;
-    border: 1px solid #D1D1D1;
-    border-radius: 10px;
-    font-size: 16px;
+  padding: 18px 21px;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
 }
 
 select:focus {
@@ -112,14 +113,14 @@ select:focus {
 
 .prio-container {
   display: flex;
-    flex-direction: column;
-    gap: 18px;
-
+  flex-direction: column;
+  gap: 18px;
 }
 
 .prio-content {
   display: flex;
-    gap: 16px;
+  gap: 16px;
+  font-size: clamp(16px, 2vw, 20px);
 }
 
 .prios {
@@ -139,9 +140,9 @@ select:focus {
 }
 
 .prio-medium {
-  filter: brightness(0) saturate(100%) invert(58%) sepia(97%) saturate(902%) hue-rotate(360deg) brightness(103%) contrast(101%);
+  filter: brightness(0) saturate(100%) invert(58%) sepia(97%) saturate(902%)
+    hue-rotate(360deg) brightness(103%) contrast(101%);
 }
-
 
 .create-task-panel {
   height: 88px;
@@ -152,7 +153,6 @@ select:focus {
   justify-content: space-evenly;
   position: fixed;
   top: 725px;
-
 }
 
 .create-task-panel span {
@@ -162,13 +162,13 @@ select:focus {
 footer {
   width: 428px;
   height: 80px;
-  background-color: #2A3647;
+  background-color: #2a3647;
   position: fixed;
-    top: 846px;
+  top: 846px;
 }
 
 .create-task-btn {
-  background-color: #2A3647;
+  background-color: #2a3647;
   padding: 16px;
   border-radius: 10px;
   color: white;
@@ -178,8 +178,110 @@ footer {
   display: flex;
   justify-content: center;
   gap: 8px;
+  border: none;
+  align-items: center;
 }
 .create-task-btn:hover {
   background-color: #29abe2;
 }
 
+.desktop-seperator-add-contact {
+  height: 424px;
+  border: 1px solid #d1d1d1;
+  display: none;
+}
+
+.desktop-buttons {
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  padding-right: 16px;
+  display: none;
+}
+
+.content-wrapper {
+  margin-left: 0;
+}
+
+.clear-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  border: 1px solid #2a3647;
+  height: 56px;
+  width: 110px;
+  border-radius: 10px;
+  cursor: pointer;
+  gap: 6px;
+}
+
+.clear-btn:hover {
+  color: #29abe2;
+  border: 1px solid #29abe2;
+}
+
+.clear-btn:hover img {
+  filter: brightness(0) saturate(100%) invert(64%) sepia(56%) saturate(2707%)
+    hue-rotate(165deg) brightness(94%) contrast(88%);
+}
+
+.clear-btn img {
+  filter: brightness(0) saturate(100%) invert(16%) sepia(48%) saturate(414%)
+    hue-rotate(176deg) brightness(93%) contrast(89%);
+}
+
+@media (min-width: 1000px) and (max-width: 1920px) {
+  .desktop-buttons {
+    display: flex;
+  }
+
+  .content-wrapper {
+    margin-left: 320px;
+  }
+
+  .add-task-container {
+    padding: 0;
+  }
+
+  .headline {
+    padding: 20px 0px 8px;
+  }
+
+  .form-add-task {
+    overflow-x: unset;
+    height: 100%;
+    display: flex;
+    gap: 59px;
+  }
+
+  .add-task-container {
+    height: 100%;
+    width: 100%;
+    margin-top: 38px;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 440px;
+  }
+
+  header {
+    width: 1440px;
+    height: 90px;
+  }
+
+  .create-task-panel {
+    display: none;
+  }
+  .desktop-seperator-add-contact {
+    display: block;
+  }
+
+  .prios {
+    width: 136px;
+  }
+}
