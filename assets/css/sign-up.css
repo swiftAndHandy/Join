@@ -1,0 +1,45 @@
+.sign-up-wrapper {
+    position: relative;
+    background-color: #fff;
+    border-radius: 30px;
+}
+
+.input-item {
+    position: relative;
+}
+
+.input-item input {
+    padding-right: 30px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #D1D1D1;
+}
+
+.input-item input:active {
+    border: 1px solid #29ABE2;
+}
+
+.registration-data {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-icons {
+    position: absolute;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+}
+
+.form-btn {
+    border: 1px solid #2A3647;
+    background-color: #2A3647;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.form-btn:hover {
+    background-color: #29ABE2;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}

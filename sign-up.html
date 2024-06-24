@@ -1,1 +1,46 @@
-sign-up.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join - Sign up</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/sign-up.css">
+    <script src="./assets/js/sign-up.js"></script>
+</head>
+
+<body>
+    <section class="sign-up-wrapper">
+        <div class="dialog-headline"></div>
+        <div class="horizontal-line"></div>
+        <form class="registration-form" onsubmit="return false">
+            <div class="registration-data">
+                <div class="input-item">
+                    <img src="./assets/img/icons/person-gray.svg" alt="" class="input-icons">
+                    <input type="text" id="name" name="name" placeholder="Name" required>
+                </div>
+                <div class="input-item">
+                    <img src="./assets/img/icons/mail.svg" alt="" class="input-icons">
+                    <input type="email" id="email" name="email" placeholder="Email" autocomplete="username" required>
+                </div>
+                <div class="input-item">
+                    <img src="./assets/img/icons/lock.svg" alt="" class="input-icons">
+                    <input type="password" id="password-create" name="password" placeholder="Password" autocomplete="new-password" required>
+                </div>
+                <div class="input-item">
+                    <img src="./assets/img/icons/lock.svg" alt="" class="input-icons">
+                    <input type="password" id="password-validation" name="password-validation"
+                        placeholder="Confirm Password" autocomplete="new-password" required>
+                </div>
+            </div>
+            <div class="privacy-checkbox">
+                <input type="checkbox" id="privacy" name="privacy-checkbox" onclick="togglePrivacy()">
+                <label for="privacy">I accept the <a href="./privacy.html">Privacy policy</a></label>
+            </div>
+            <button id="submit-btn" class="form-btn" disabled>Sign Up</button>
+        </form>
+    </section>
+</body>
+
+</html>
