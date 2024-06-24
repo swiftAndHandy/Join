@@ -21,6 +21,10 @@ main {
     max-width: 1920px;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 .logo {
     position: absolute;
     top: 64px;

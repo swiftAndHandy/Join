@@ -1,5 +1,8 @@
 .sign-up-wrapper {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #fff;
     border-radius: 30px;
     padding: 32px 16px;
@@ -8,6 +11,11 @@
 
 .input-item {
     position: relative;
+    margin-bottom: 24px;
+}
+
+.input-item.password-check {
+    margin-bottom: 8px;
 }
 
 .input-item input {
@@ -15,24 +23,27 @@
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #D1D1D1;
-    color: #d1d1d1;
     height: 50px;
     border-radius: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    padding-left: 16px;
+    outline: none;
 }
 
 .input-item input::placeholder {
     color: #d1d1d1;
 }
 
-.input-item input:active {
+.input-item input:focus {
     border: 1px solid #29ABE2;
 }
 
 .registration-data {
     display: flex;
     flex-direction: column;
-    gap: 24px;
     margin-top: 24px;
+    align-items: center;
 }
 
 .input-icons {
@@ -84,4 +95,12 @@
     display: flex;
     justify-content: center;
     margin-bottom: 32px;
+}
+
+.error-msg {
+    color: #FF8190;
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-weight: 400;
+    width: 100%;
 }

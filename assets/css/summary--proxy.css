@@ -106,7 +106,7 @@
 
 .summary-card {
     border-radius: 20px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
 }
 
@@ -114,6 +114,12 @@
     cursor: pointer;
     background-color: #2A3647;
     color: #FFF;
+}
+
+.summary-card:active {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background-color: #FFF;
+    color: #000;
 }
 
 .summary-card--small {
@@ -139,9 +145,9 @@
     justify-content: center;
     box-sizing: border-box;
     width: 100%;
-    background-image: url('../img/icons/urgent.svg');
+    background-image: url('../img/icons/urgent-hover.svg');
     background-repeat: no-repeat;
-    background-position: 12% center;
+    background-position: 8% center;
 }
 
 .summary-card--large:hover {
@@ -158,6 +164,10 @@
     background-image: url('../img/icons/pencil-summary-hover.svg');
 }
 
+.summary-todo:active {
+    background-image: url('../img/icons/pencil-summary.svg');
+}
+
 .summary-done {
     background-image: url('../img/icons/done-summary.svg');
     background-repeat: no-repeat;
@@ -166,6 +176,10 @@
 
 .summary-done:hover {
     background-image: url('../img/icons/done-summary-hover.svg');
+}
+
+.summary-done:active {
+    background-image: url('../img/icons/done-summary.svg');
 }
 
 .summary-counter {
@@ -234,7 +248,7 @@
     }
 
     .summary-card--large {
-        background-position: 8px center;
+        background-position: 2px center;
     }
 
     .summary-card--large:hover {
