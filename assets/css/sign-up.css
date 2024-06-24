@@ -87,8 +87,18 @@
 }
 
 .privacy-checkbox {
-    margin: 32px 0;
-    text-align: center;
+    margin: 0 0 32px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.privacy-checkbox input {
+    height: 16px;
+    width: 16px;
+    border-radius: 3px;
+    border: 2px solid #2A3647
 }
 
 .button-wrapper {
@@ -103,4 +113,5 @@
     font-size: 12px;
     font-weight: 400;
     width: 100%;
+    margin-bottom: 32px;
 }

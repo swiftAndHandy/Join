@@ -88,12 +88,11 @@ function comparePasswords() {
     let create = document.getElementById('password-create');
     let validation = document.getElementById('password-validation');
     let showError = document.getElementById('error-msg');
-    if (validation.value) {
-        if (create.value != validation.value) {
+        if (validation.value && create.value != validation.value) {
             showError.classList.remove('d-none');
             document.getElementById('password-check').classList.add('password-check');
         } else {
             showError.classList.add('d-none');
+            document.getElementById('password-check').classList.remove('password-check');
         }
-    }
 }
