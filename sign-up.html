@@ -12,8 +12,10 @@
 
 <body>
     <section class="sign-up-wrapper">
-        <div class="dialog-headline"></div>
-        <div class="horizontal-line"></div>
+        <div class="dialog-headline">
+            <h1>Sign up</h1>
+            <div class="horizontal-line"></div>
+        </div>
         <form class="registration-form" onsubmit="return false">
             <div class="registration-data">
                 <div class="input-item">
@@ -38,7 +40,9 @@
                 <input type="checkbox" id="privacy" name="privacy-checkbox" onclick="togglePrivacy()">
                 <label for="privacy">I accept the <a href="./privacy.html">Privacy policy</a></label>
             </div>
-            <button id="submit-btn" class="form-btn" disabled>Sign Up</button>
+            <div class="button-wrapper">
+                <button id="submit-btn" class="form-btn" disabled>Sign Up</button>
+            </div>
         </form>
     </section>
 </body>

@@ -2,6 +2,8 @@
     position: relative;
     background-color: #fff;
     border-radius: 30px;
+    padding: 32px 16px;
+    box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
 }
 
 .input-item {
@@ -13,6 +15,13 @@
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #D1D1D1;
+    color: #d1d1d1;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.input-item input::placeholder {
+    color: #d1d1d1;
 }
 
 .input-item input:active {
@@ -22,13 +31,17 @@
 .registration-data {
     display: flex;
     flex-direction: column;
+    gap: 24px;
+    margin-top: 24px;
 }
 
 .input-icons {
     position: absolute;
-    right: 10px;
+    right: 16px;
     width: 24px;
     height: 24px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .form-btn {
@@ -37,9 +50,38 @@
     color: white;
     font-weight: 700;
     font-size: 16px;
+    padding: 4px 0;
+    border-radius: 8px;
+    width: 45%;
+    height: 51px;
 }
 
 .form-btn:hover {
     background-color: #29ABE2;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.horizontal-line {
+    height: 3px;
+    width: 118px;
+    background-color: #29ABE2;
+    border-radius: 10px;
+}
+
+.dialog-headline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.privacy-checkbox {
+    margin: 32px 0;
+    text-align: center;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
 }
