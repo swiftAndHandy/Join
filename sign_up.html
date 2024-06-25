@@ -12,12 +12,13 @@
 </head>
 
 <body>
-    <section class="sign-up-wrapper">
+    <section id="sign-up-dialog" class="sign-up-dialog">
         <div class="dialog-headline">
+            <button class="close-btn" onclick="closeSignUp()"></button>
             <h1>Sign up</h1>
             <div class="horizontal-line"></div>
         </div>
-        <form class="registration-form" onsubmit="return false">
+        <form id="sign-up-form" class="registration-form" onsubmit="return submitSignUp(event);">
             <div class="registration-data">
                 <div class="input-item">
                     <img src="./assets/img/icons/person-gray.svg" alt="" class="input-icons">
@@ -37,7 +38,8 @@
                     <img src="./assets/img/icons/lock.svg" alt="" id="password-validation-img" class="input-icons">
                     <input type="password" id="password-validation" name="password-validation"
                         placeholder="Confirm Password" autocomplete="new-password"
-                        onkeydown="passwordInputIcon('validation')" onkeyup="passwordInputIcon('validation');comparePasswords();" required>
+                        onkeydown="passwordInputIcon('validation')"
+                        onkeyup="passwordInputIcon('validation');comparePasswords();" required>
 
                 </div>
                 <span class="error-msg d-none" id="error-msg">Ups! your password don’t match</span>
@@ -47,10 +49,16 @@
                 <label for="privacy">I accept the <a href="./privacy.html">Privacy policy</a></label>
             </div>
             <div class="button-wrapper">
-                <button id="submit-btn" class="form-btn" disabled>Sign Up</button>
+                <button id="submit-btn" class="form-btn disabled" disabled>Sign Up</button>
             </div>
         </form>
     </section>
+    <section id="msg-wrapper" class="msg-wrapper d-none">
+
+    </section>
+    <div id="sign-up-confirm" class="popup-msg">
+        <span>You Signed Up successfully</span>
+    </div>
 </body>
 
 </html>

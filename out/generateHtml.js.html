@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: generateHtml.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,30 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: generateHtml.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Generates the HTML-Code for Greeting a User or A Guest
+ * @param {number} daytime 
+ * @param {string} user 
+ */
+function generateGreetingHtml(daytime, user = 'Sofia Müller') {
+    if (user) {
+        return `&lt;p>Good ${daytime},&lt;br>
+        &lt;span class="greeting-msg--name">${user}&lt;/span>&lt;/p>`;
+    } else {
+        return `&lt;p>Good ${daytime}!&lt;/p>`;
+    }
+}</code></pre>
+        </article>
+    </section>
 
 
 

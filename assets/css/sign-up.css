@@ -1,5 +1,8 @@
-.sign-up-wrapper {
-    position: relative;
+.sign-up-dialog {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);;
+    left: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,11 +10,13 @@
     border-radius: 30px;
     padding: 32px 16px;
     box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
+    width: min(80%, 598px)
 }
 
 .input-item {
     position: relative;
     margin-bottom: 24px;
+    width: min(90%, 422px);
 }
 
 .input-item.password-check {
@@ -19,7 +24,7 @@
 }
 
 .input-item input {
-    padding-right: 30px;
+    padding-right: 50px;
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #D1D1D1;
@@ -39,11 +44,16 @@
     border: 1px solid #29ABE2;
 }
 
+.registration-form {
+    width: 100%;
+}
+
 .registration-data {
     display: flex;
     flex-direction: column;
     margin-top: 24px;
     align-items: center;
+    width: 100%;
 }
 
 .input-icons {
@@ -80,10 +90,12 @@
 }
 
 .dialog-headline {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    width: 100%
 }
 
 .privacy-checkbox {
@@ -101,6 +113,14 @@
     border: 2px solid #2A3647
 }
 
+.disabled {
+    cursor: not-allowed;
+}
+
+.disabled:hover {
+    background-color: #2A3647;
+}
+
 .button-wrapper {
     display: flex;
     justify-content: center;
@@ -109,9 +129,64 @@
 
 .error-msg {
     color: #FF8190;
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     font-size: 12px;
     font-weight: 400;
     width: 100%;
     margin-bottom: 32px;
+}
+
+.msg-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #2A364710;
+}
+
+.popup-msg {
+    position: absolute;
+    cursor: default;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    bottom: 0;
+    background-color: #2A3647;
+    color: #fff;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 25px;
+    opacity: 0;
+    text-align: center;
+    transition: all 0.8s ease-in-out;
+    width: min(max(70%, 100px), 500px);
+    overflow: hidden;
+}
+
+.popup-msg--fade-in {
+    opacity: 1;
+    bottom: 32%;
+}
+
+.popup-msg span {
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-100%);
+    left: clamp(8px, 2vw + 0.25em, 48px);
+    background-color: transparent;
+    background-image: url(../img/icons/arrow-left-line.svg);
+    background-position: center;
+    height: 32px;
+    width: 32px;
+    border: none;
+}
+
+.close-btn:hover {
+    background-image: url(../img/icons/arrow-left-line-hovered.svg);
 }
