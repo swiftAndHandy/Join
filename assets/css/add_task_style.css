@@ -152,7 +152,7 @@ select:focus {
   gap: 20px;
   justify-content: space-evenly;
   position: fixed;
-  top: 725px;
+  top: 740px;
 }
 
 .create-task-panel span {
@@ -233,7 +233,8 @@ footer {
     hue-rotate(176deg) brightness(93%) contrast(89%);
 }
 
-@media (min-width: 1000px) and (max-width: 1920px) {
+
+@media (min-width: 1120px) and (max-width: 1920px) {
   .desktop-buttons {
     display: flex;
   }
@@ -264,14 +265,17 @@ footer {
   }
 
   input,
-  select,
   textarea {
-    width: 440px;
+    width: 436px;
   }
 
   header {
     width: 1440px;
     height: 90px;
+  }
+
+  select {
+    width: 480px;
   }
 
   .create-task-panel {
@@ -283,5 +287,140 @@ footer {
 
   .prios {
     width: 136px;
+  }
+}
+
+
+@media(max-width: 1415px ) and (min-width: 716px) {
+  .content-wrapper {
+    margin-left: 280px;
+  }
+
+  input, textarea {
+    width: 320px;
+  }
+  select {
+    width: 364px;
+  }
+
+  .prios {
+    width: 90px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .form-add-task {
+    gap: 50px;
+  }
+}
+
+@media(max-width: 1120px)  and (min-width: 430px){
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .headline {
+    margin-left: 42px;
+  }
+
+  .form-add-task {
+    height: 88%;
+  }
+
+ 
+}
+
+@media(max-width: 1120px)  and (min-width: 916px) {
+  .form-add-task {
+    height: 92%;
+  }
+}
+
+@media(max-width: 1120px)  and (min-width: 701px) {
+  .create-task-panel {
+    top: 765px;
+  }
+}
+
+@media (max-width: 800px ) and (min-width: 700px) {
+  .content-wrapper {
+    margin-left: 240px;
+  }
+}
+
+@media (max-width: 422px ) {
+  .create-task-btn {
+    font-size: clamp(12px, 2vw, 20px);
+  }
+ 
+  .prio-content {
+    flex-direction: column;
+    
+  }
+
+  .prios {
+    width: 93%;
+  }
+
+  .add-task-container {
+    width: 320px;
+    
+  }
+  .content-wrapper {
+    margin-left: 24px;
+}
+.create-task-panel span {
+  font-size: 18px;
+}
+.create-task-btn {
+  padding: 9px;
+}
+}
+
+@media (max-width: 377px ) {
+  .content-wrapper {
+    margin-left: 10px
+  }
+}
+
+@media (max-width: 356px ) {
+  .content-wrapper {
+    margin-left: 0;
+  }
+
+  .create-task-panel span {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 340px ) {
+  .add-task-container {
+    width: 300px;
+  }
+}
+
+@media(max-height: 905px) {
+  .create-task-panel {
+    top: 680px
+  }
+}
+
+@media(max-height: 875px) {
+  .add-task-container {
+    height: 500px;
+  }
+  .create-task-panel {
+    top: 600px;
+  }
+}
+
+@media(max-height: 765px) {
+  .add-task-container {
+    height: 400px;
+  }
+  .create-task-panel {
+    top: 500px;
   }
 }
