@@ -23,6 +23,7 @@
           <div class="flex-column-inputs mb-32">
             <span>Title<span class="red">*</span></span>
             <input
+              required
               class="input-standard"
               type="text"
               placeholder="Enter a title"
@@ -53,6 +54,7 @@
           <div class="flex-column-inputs mb-32">
             <span>Due date<span class="red">*</span></span>
             <input
+              required
               class="date-standard"
               type="date"
               id=""
@@ -82,9 +84,9 @@
           <div>
             <div class="flex-column-inputs mb-32">
               <span>Category<span class="red">*</span></span>
-              <select class="input-standard" id="">
+              <select required class="input-standard" id="">
                 <option value="" disabled selected>
-                  Select contacts to assign
+                  Select task category
                 </option>
               </select>
             </div>

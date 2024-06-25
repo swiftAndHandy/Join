@@ -129,7 +129,7 @@
     height: 30px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) { /* 600px before*/
     .header-mobile {
         height: 80px;
         width: 100%;
