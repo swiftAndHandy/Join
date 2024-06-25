@@ -11,6 +11,24 @@ body {
     font-size: 16px;
     font-weight: 400;
     background-color: #F6F7F8;
+    --sb-track-color: #29ABE2;
+    --sb-thumb-color: #2A3647;
+    --sb-size: 6px;
+}
+
+body::-webkit-scrollbar {
+    width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 3px;
+
 }
 
 .scrolling--blocked {
@@ -74,9 +92,12 @@ body {
 main {
     display: flex;
     flex-direction: column;
-    width: 100%;
     max-width: 1920px;
     flex: 1;
+}
+
+.w-100 {
+    width: 100%;
 }
 
 .pointer {
