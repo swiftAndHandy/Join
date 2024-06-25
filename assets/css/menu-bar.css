@@ -9,6 +9,31 @@
     width: 100%;
     height: 100%;
     justify-content: space-between;
+    overflow-y: auto;
+    --sb-track-color: #2A3647;
+    --sb-thumb-color: #29ABE2;
+    --sb-size: 6px;
+}
+
+.main-menu::-webkit-scrollbar {
+    width: var(--sb-size)
+}
+
+.main-menu::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 3px;
+}
+
+.main-menu::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 3px;
+
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    .main-menu {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
 }
 
 .menu-bar-desktop {
