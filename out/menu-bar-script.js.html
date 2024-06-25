@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: generateHtml.js</title>
+    <title>JSDoc: Source: menu-bar-script.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: generateHtml.js</h1>
+    <h1 class="page-title">Source: menu-bar-script.js</h1>
 
     
 
@@ -26,18 +26,58 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Generates the HTML-Code for Greeting a User or A Guest
- * @param {number} daytime 
- * @param {string} user 
- */
-function generateGreetingHtml(daytime, user = 'Sofia Müller') {
-    if (user) {
-        return `&lt;p>Good ${daytime},&lt;br>
-        &lt;span class="greeting-msg--name">${user}&lt;/span>&lt;/p>`;
-    } else {
-        return `&lt;p>Good ${daytime}!&lt;/p>`;
+            <pre class="prettyprint source linenums"><code>async function includeHTML() {
+    let includeElements = document.querySelectorAll('[w3-include-html]');
+    for (let i = 0; i &lt; includeElements.length; i++) {
+        const element = includeElements[i];
+        const file = element.getAttribute("w3-include-html");
+        let resp = await fetch(file);
+        if (resp.ok) {
+            element.innerHTML = await resp.text();
+        } else {
+            element.innerHTML = 'Page not found';
+        }
     }
+    updateMenu();
+}
+
+/**
+ * fetchs the currently open html-file-name and removes .html.
+ * This function is used to handle the navigation-design.
+ * @returns string with current file.html
+ */
+function getCurrentFileName() {
+    const path = window.location.pathname;
+    let fileName = path.substring(path.lastIndexOf('/') + 1);
+    return fileName.replace('.html', '');
+}
+
+/**
+ * Updates Design for the side- and bottom-navigation when entering a new page.
+ */
+function updateMenu() {
+    const currentlyOpen = getCurrentFileName();
+    if (regularMenuPoint(currentlyOpen)) {
+        const menuitemDesk = document.getElementById(`${currentlyOpen}-desk-link`);
+        const menuitemMobile = document.getElementById(`${currentlyOpen}-mobile-link`);
+        menuitemDesk.href = '#'; menuitemMobile.href = '#';
+        menuitemDesk.classList.add('active');
+        menuitemMobile.classList.add('active');
+    } else {
+        const menuitem = document.getElementById(`${currentlyOpen}-link`);
+        menuitem.href = '#';
+        menuitem.classList.add('active');
+    }
+}
+
+/**
+ * Used for if-statement readability
+ * @param {string} currentPoint 
+ * @returns true, when it's not a special-page, or false when it is&lt;br>&lt;br>
+ */
+function regularMenuPoint(currentPoint) {
+    const specialPages = ["privacy", "legal_notice", "help"];
+    return !specialPages.includes(currentPoint);
 }</code></pre>
         </article>
     </section>

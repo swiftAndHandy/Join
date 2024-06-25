@@ -25,7 +25,7 @@ function getCurrentFileName() {
 }
 
 /**
- * 
+ * Updates Design for the side- and bottom-navigation when entering a new page.
  */
 function updateMenu() {
     const currentlyOpen = getCurrentFileName();
@@ -42,6 +42,11 @@ function updateMenu() {
     }
 }
 
+/**
+ * Used for if-statement readability
+ * @param {string} currentPoint 
+ * @returns true, when it's not a special-page, or false when it is<br><br>
+ */
 function regularMenuPoint(currentPoint) {
     const specialPages = ["privacy", "legal_notice", "help"];
     return !specialPages.includes(currentPoint);
