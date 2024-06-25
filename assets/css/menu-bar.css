@@ -1,7 +1,14 @@
-
-
 .menu-bar-mobile {
     display: none;
+}
+
+.main-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
 }
 
 .menu-bar-desktop {
@@ -15,6 +22,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    z-index: 2;
 }
 
 .icon-join {
@@ -58,19 +66,46 @@
 
 .menu-bar-three {
     width: 100%;
-    height: 317px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding-top: 243px;
+    margin: 64px 0;
 }
 
 .menu-bar-icons:hover {
     cursor: pointer;
+    background-color: #2A3D59;
+}
+
+.menu-bar-icons.active {
     background-color: #091931;
-    border-radius: 8px;
+    cursor: default;
+}
+
+.document-wrapper {
+    width: 100%;
+    padding: 8px 0;
+}
+
+.document-wrapper.active {
+    width: 100%;
+    background-color: #091931;
+}
+
+.document-link {
+    padding-left: 60px;
+    color: #A8A8A8;
+}
+
+.document-link:hover {
+    color: #29ABE2;
+}
+
+.document-wrapper.active .document-link:hover {
+    cursor: default;
+    color: #A8A8A8;
 }
 
 .menu-bar-privacy-policy {
@@ -104,7 +139,7 @@
     border-radius: 8px;
     padding-left: 60px;
     padding-right: 60px;
-    background-color: #091931;
+    background-color: #2A3D59;
 }
 
 .menu-bar-legal-notice:hover {
@@ -112,7 +147,16 @@
     border-radius: 8px;
     padding-left: 60px;
     padding-right: 60px;
-    background-color: #091931;
+    background-color: #2A3D59;
+}
+
+.document-link.active {
+    cursor: default;
+}
+
+.document-link.active:hover {
+    color: #A8A8A8;
+    cursor: default;
 }
 
 .menu-summary_img {
@@ -135,7 +179,9 @@
     height: 30px;
 }
 
-@media (max-width: 700px) { /* 600px before*/
+@media (max-width: 700px) {
+
+    /* 600px before*/
     .header-mobile {
         height: 80px;
         width: 100%;
@@ -149,8 +195,8 @@
         top: 0;
         right: 0;
         left: 0;
-    } 
-    
+    }
+
     .left-content {
         height: 39.02px;
         width: 32px;
@@ -174,16 +220,21 @@
         border-radius: 50%;
         background-color: #103e83;
     }
-    
+
     .menu-bar-desktop {
         display: none;
     }
 
     .menu-bar-icons-mobile:hover {
         cursor: pointer;
+        background-color: #2A3D59;
+        border-radius: 16px;
+
+    }
+
+    .menu-bar-icons-mobile.active {
         background-color: #091931;
         border-radius: 16px;
-        
     }
 
     .menu-bar-mobile {
@@ -219,17 +270,17 @@
         height: 22px;
         width: 22px;
     }
-    
+
     .menu-board_img {
         width: 24px;
         height: 24px;
     }
-    
+
     .menu-add-task_img {
         width: 24px;
         height: 24px;
     }
-    
+
     .menu-contact_img {
         width: 24px;
         height: 24px;
