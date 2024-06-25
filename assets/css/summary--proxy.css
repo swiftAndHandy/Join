@@ -55,11 +55,6 @@ main {
     display: none;
 }
 
-.subtitle {
-    font-weight: 400;
-    font-size: 20px;
-}
-
 .counter-description {
     font-weight: 400;
     font-size: 14px;
@@ -117,6 +112,7 @@ main {
     border-radius: 20px;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
+    transition: all 0.08s ease-in-out;
 }
 
 .summary-card:hover {
@@ -327,6 +323,7 @@ main {
         display: flex;
         align-items: center;
         gap: 80px;
+        transform: translateX(-50%);
     }
 }
 
@@ -358,6 +355,10 @@ main {
     .greeting-msg--desktop span {
         font-size: clamp(47px, 4vw, 64px);
         color: #29ABE2;
+    }
+
+    .summary-wrapper {
+        transform: translateX(0);
     }
 }
 

@@ -126,6 +126,7 @@
 
 .document-link:hover {
     color: #29ABE2;
+    font-weight: 700;
 }
 
 .document-wrapper.active .document-link:hover {
