@@ -35,7 +35,7 @@ function updateMenu() {
         menuitemDesk.href = '#'; menuitemMobile.href = '#';
         menuitemDesk.classList.add('active');
         menuitemMobile.classList.add('active');
-    } else {
+    } else if (currentlyOpen != 'index') {
         const menuitem = document.getElementById(`${currentlyOpen}-link`);
         menuitem.href = '#';
         menuitem.classList.add('active');
@@ -48,6 +48,6 @@ function updateMenu() {
  * @returns true, when it's not a special-page, or false when it is<br><br>
  */
 function regularMenuPoint(currentPoint) {
-    const specialPages = ["privacy", "legal_notice", "help"];
+    const specialPages = ["privacy", "legal_notice", "help", "index"];
     return !specialPages.includes(currentPoint);
 }

@@ -1,0 +1,113 @@
+.startscreen {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #2A3647;
+    transition: all 0.8s ease-in-out 0.2s;
+}
+
+.startscreen img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 121.97px;
+    width: 100.03px;
+    transition: all 0.8s ease-in-out 0.2s;
+}
+
+.startscreen--animate {
+    background-color: transparent;
+}
+
+.startscreen--animate img {
+    top: 37px;
+    left: 38px;
+    height: 78.03px;
+    width: 64px;
+    transform: unset;
+}
+
+.startscreen--animate .logo--fade {
+    opacity: 0;
+}
+
+.startscreen--animate.over {
+    bottom: unset;
+    right: unset;
+}
+
+.content__head {
+    display: none;
+}
+
+.register-wrapper__hero {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+    margin-right: 122px;
+}
+
+.content__bottom {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 42px;
+}
+
+.register-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.document-links {
+    display: flex;
+    padding: 8px;
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.document-links a {
+    color: #A8A8A8;
+    line-height: 19.2px;
+}
+
+.document-links a:hover {
+    color: #29ABE2;
+    font-weight: 700;
+}
+
+.logo-desktop {
+    display: none;
+}
+
+
+/*Set to desktop-Resolution*/
+@media (min-width: 820px) {
+    .startscreen {
+        display: none;
+    }
+
+    .logo-desktop {
+        display: block;
+        width: 100.03px;
+        height: 121.97px;
+        margin-top: 80px;
+        margin-left: 77px;
+    }
+
+    .content__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .register-wrapper {
+        display: none;
+    }
+}

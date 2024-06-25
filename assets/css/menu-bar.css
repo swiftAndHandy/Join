@@ -186,11 +186,13 @@ header {
 
 .document-link:hover {
     color: #29ABE2;
+    font-weight: 700;
 }
 
 .document-wrapper.active .document-link:hover {
     cursor: default;
     color: #A8A8A8;
+    font-weight: 400;
 }
 
 .menu-bar-privacy-policy {

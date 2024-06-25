@@ -128,7 +128,7 @@ function submitSignUp(event) {
  * does another password compare, to reset missmatch-msg.
  */
 function closeSignUp() {
-    document.getElementById('sign-up-dialog').classList.add('d-none');
+    document.getElementById('sign-up-overlay').classList.add('d-none');
     privacyCheckboxActive = false;
     passwordCreateInputHidden = true;
     passwordValidationInputHidden = true;
@@ -145,5 +145,13 @@ function closeSignUp() {
  * Removes display: none from sign-up-dialog to give access to the sign-up-form
  */
 function openSignUp() {
-    document.getElementById('sign-up-dialog').classList.remove('d-none');
+    document.getElementById('sign-up-overlay').classList.remove('d-none');
+}
+
+/**
+ * Prevent event-bubbeling
+ * @param {*} event 
+ */
+function stopPropagation(event) {
+    event.stopPropagation();
 }

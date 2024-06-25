@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <link rel="stylesheet" href="./assets/css/menu-bar.css">
     <link rel="stylesheet" href="./assets/css/fonts.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <link rel="stylesheet" href="./assets/css/sign-up.css">
     <script src="./assets/js/menu-bar-script.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/sign-up.js"></script>
 </head>
-<body onload="includeHTML()">
-    <div w3-include-html="./assets/templates/menu-bar.html"></div>
+
+<body onload="init();" class="scrolling--blocked">
+    <section id="startscreen" class="startscreen">
+        <img id="logo-animated-final" src="./assets/img/icons/join_logo_header.svg" alt="Join-Logo">
+        <img id="logo-animated-fade" class="logo--fade" src="./assets/img/icons/join_logo.svg" alt="Join-Logo">
+    </section>
+
+    <div class="main-wrapper bottom-up">
+        <main>
+            <section class="content__head">
+                <img id="logo-desktop" class="logo-desktop" src="./assets/img/icons/join_logo_header.svg"
+                    alt="Join-Logo">
+                <div class="register-wrapper__hero">
+                    <span class="subtitle">Not a Join user?</span>
+                    <button class="simple-btn" onclick="openSignUp()">Sign up</button>
+                </div>
+            </section>
+            <section class="content__bottom">
+                <div class="register-wrapper">
+                    <span class="subtitle">Not a Join user?</span>
+                    <button class="simple-btn" onclick="openSignUp()">Sign up</button>
+                </div>
+                <div class="document-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="legal_notice.html">Legal Notice</a>
+                </div>
+            </section>
+            <nav w3-include-html="./assets/templates/sign_up.html" class="sign-up-overlay d-none" id="sign-up-overlay" onclick="closeSignUp()"></nav>
+        </main>
+    </div>
 </body>
+
 </html>
