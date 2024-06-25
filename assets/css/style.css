@@ -11,8 +11,8 @@ body {
     font-size: 16px;
     font-weight: 400;
     background-color: #F6F7F8;
-    --sb-track-color: #29ABE2;
-    --sb-thumb-color: #2A3647;
+    --sb-track-color: #293647AA;
+    --sb-thumb-color: #0A1931;
     --sb-size: 6px;
 }
 
@@ -52,6 +52,8 @@ body::-webkit-scrollbar-thumb {
     border: 0;
     border-radius: 8px;
     background-color: #2A3647;
+    font-size: 16px;
+    font-weight: 400;
     padding: 15px 24px;
     color: #FFFFFF;
     transition: all 0.1s ease-in-out;
@@ -70,8 +72,10 @@ body::-webkit-scrollbar-thumb {
 
 .bordered-btn {
     border: 1px solid #2A3647;
-    color: #2A3647;
     border-radius: 8px;
+    color: #2A3647;
+    font-size: 16px;
+    font-weight: 400;
     background-color: unset;
     padding: 15px 24px;
     transition: all 0.1s ease-in-out;
@@ -98,6 +102,19 @@ main {
 
 .w-100 {
     width: 100%;
+}
+
+.mt-32 {
+    margin-top: 32px;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
 }
 
 .pointer {

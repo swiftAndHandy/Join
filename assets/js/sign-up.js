@@ -2,7 +2,6 @@ let privacyCheckboxActive = false;
 let passwordCreateInputHidden = true;
 let passwordValidationInputHidden = true;
 
-
 /**
  * sets the value of privacyCheckboxActive to the opposite and 
  * disables or enables the submit-button based on the new value
@@ -27,9 +26,12 @@ function togglePasswordDesign(id) {
     if (id == 'create') {
         passwordCreateInputHidden = !passwordCreateInputHidden;
         setPasswordCreateDesign();
-    } else {
+    } if (id == 'validation') {
         passwordValidationInputHidden = !passwordValidationInputHidden;
         setPasswordValidationDesign();
+    } else {
+        passwordInputHidden = !passwordInputHidden;
+        setPasswordDesign();
     }
 }
 
@@ -68,6 +70,23 @@ function setPasswordValidationDesign() {
 }
 
 /**
+ * on password-validation field:
+ * swaps out the lock-image for the eye-image or vice vera.
+ * swaps out the password-type for a text-type or vice versa.
+ */
+function setPasswordDesign() {
+    let targetInput = document.getElementById(`password-login`);
+    let targetImage = document.getElementById(`password-login-img`);
+    if (passwordInputHidden) {
+        targetImage.src = './assets/img/icons/visibility_off.svg';
+        targetInput.type = 'password';
+    } else {
+        targetImage.src = './assets/img/icons/visibility.svg';
+        targetInput.type = 'text';
+    }
+}
+
+/**
  * evaluates value of both password-inputs. if a value is set, it will call the setPasswordInputDesign-Function
  * and also add a pointer class + set an onclick attribute to toggle hide/show-password-variables.
  * otherwise it will reset those changes.
@@ -78,7 +97,7 @@ function passwordInputIcon(id) {
     let targetImage = document.getElementById(`password-${id}-img`);
     if (targetInput.value) {
         targetImage.classList.add('pointer');
-        id == 'create' ? setPasswordCreateDesign() : setPasswordValidationDesign();
+        id == 'create' ? setPasswordCreateDesign() : id == 'validate' ?  setPasswordValidationDesign() : setPasswordDesign();
         targetImage.setAttribute('onclick', `togglePasswordDesign('${id}')`);
     } else {
         targetImage.classList.remove('pointer');

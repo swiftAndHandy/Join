@@ -6,6 +6,9 @@ const colors = [
     '#FFE62B', '#FF4646', '#FFBB2B'
 ];
 
+let passwordInputHidden = true;
+let rememberMe = false;
+
 function init() {
     const startscreen = document.getElementById('startscreen');
     startscreen.classList.add('startscreen--animate');
@@ -13,4 +16,8 @@ function init() {
         startscreen.classList.add('over');
     }, 1000);
     includeHTML();
+}
+
+function toggleRemember() {
+    rememberMe = !rememberMe;
 }
