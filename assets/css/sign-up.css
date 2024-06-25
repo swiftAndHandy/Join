@@ -1,7 +1,8 @@
 .sign-up-dialog {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%) translateX(-50%);;
+    transform: translateY(-50%) translateX(-50%);
+    ;
     left: 50%;
     display: flex;
     flex-direction: column;
@@ -11,6 +12,10 @@
     padding: 32px 16px;
     box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
     width: min(80%, 598px)
+}
+
+.overflow-hidden {
+    overflow-y: hidden;
 }
 
 .input-item {
@@ -142,7 +147,13 @@
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: -1;
     background-color: #2A364710;
+    transition: all 0.8s ease-in-out;
+}
+
+.msg-wrapper--z-push {
+    z-index: unset;
 }
 
 .popup-msg {
@@ -161,12 +172,11 @@
     text-align: center;
     transition: all 0.8s ease-in-out;
     width: min(max(70%, 100px), 500px);
-    overflow: hidden;
 }
 
 .popup-msg--fade-in {
     opacity: 1;
-    bottom: 32%;
+    transform: translateX(-50%) translateY(-120%);
 }
 
 .popup-msg span {

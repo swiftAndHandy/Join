@@ -114,8 +114,8 @@ function comparePasswords() {
 function submitSignUp(event) {
     event.preventDefault();
     if (document.getElementById('sign-up-form').checkValidity()) {
-        document.getElementById('msg-wrapper').classList.remove('d-none');
         document.getElementById('sign-up-confirm').classList.add('popup-msg--fade-in');
+        document.getElementById('msg-wrapper').classList.add('msg-wrapper--z-push');
     } else {
         document.getElementById('sign-up-form').reportValidity();
     }

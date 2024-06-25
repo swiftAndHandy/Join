@@ -11,7 +11,7 @@
     <script src="./assets/js/sign-up.js"></script>
 </head>
 
-<body>
+<body class="overflow-hidden">
     <section id="sign-up-dialog" class="sign-up-dialog">
         <div class="dialog-headline">
             <button class="close-btn" onclick="closeSignUp()"></button>
@@ -53,12 +53,12 @@
             </div>
         </form>
     </section>
-    <section id="msg-wrapper" class="msg-wrapper d-none">
-
+    <section id="msg-wrapper" class="msg-wrapper">
+        <div id="sign-up-confirm" class="popup-msg">
+            <span>You Signed Up successfully</span>
+        </div>
     </section>
-    <div id="sign-up-confirm" class="popup-msg">
-        <span>You Signed Up successfully</span>
-    </div>
+
 </body>
 
 </html>
