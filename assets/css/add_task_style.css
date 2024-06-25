@@ -344,7 +344,8 @@ footer {
   }
 }
 
-@media (max-width: 800px ) and (min-width: 700px) {
+
+@media (max-width: 800px ) and (min-width: 701px) {
   .content-wrapper {
     margin-left: 240px;
   }
@@ -412,15 +413,22 @@ footer {
     height: 500px;
   }
   .create-task-panel {
-    top: 600px;
+    top: 625px;
   }
 }
 
 @media(max-height: 765px) {
   .add-task-container {
-    height: 400px;
+    height: 385px;
   }
   .create-task-panel {
     top: 500px;
+  }
+}
+
+@media(max-height: 765px) and (max-width: 1119px) and (min-width:905px) {
+  .create-task-panel {
+    top: 510px;
+    gap: 24px;
   }
 }
