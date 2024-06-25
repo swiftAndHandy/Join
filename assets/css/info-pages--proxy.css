@@ -99,14 +99,16 @@ main {
     font-size: 20px;
 }
 
-@media (min-width: 820px) {
-    .header__placeholder {
+
+/* Change to Desktop-Resulution*/
+@media (min-width: 701px) {
+    /* .header__placeholder {
         left: 232px;
         height: 96px;
-    }
+    } */
 
     main {
-        margin-top: 206px;
+        /* margin-top: 206px; */
         margin-left: 232px;
         margin-bottom: 80px;
     }
@@ -118,7 +120,7 @@ main {
     .back-btn {
         margin-right: 32px;
     }
-
+/* 
     .nav-menu--side {
         position: fixed;
         display: flex;
@@ -129,9 +131,9 @@ main {
         width: 232px;
         height: 100%;
         background-color: #2A3647;
-    }
+    } */
 
-    .nav-menu--bottom {
+    /* .nav-menu--bottom {
         display: none;
-    }
+    } */
 }

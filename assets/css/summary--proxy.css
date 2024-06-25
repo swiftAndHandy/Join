@@ -22,6 +22,15 @@
     margin-bottom: 0;
 }
 
+main {
+    margin-top: 128px;
+    margin-bottom: 128px;
+}
+
+.main--no-account {
+    margin-bottom: 24px !important;
+}
+
 .join-360 {
     display: flex;
     flex-direction: column;
@@ -100,7 +109,7 @@
 
 @media (max-height: 730px) {
     .summary {
-        height: 100%;
+        height: clamp(200px, 40vh ,300px);
     }
 }
 
@@ -270,9 +279,15 @@
 
 
 /*Desktop Layout starts*/
-@media (min-width: 820px) {
+@media (min-width: 701px) {
     .greeting-msg--mobile p {
         transform: translateX(116px);
+    }
+
+    main {
+        /* margin-top: 206px; */
+        margin-left: 232px;
+        margin-bottom: 80px;
     }
 
     .join-360 {

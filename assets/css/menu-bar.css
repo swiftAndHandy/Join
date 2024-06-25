@@ -24,6 +24,12 @@
     height: 121.97px;
 }
 
+.menu-bar-images {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .menu-bar-icons {
     display: flex;
     flex-direction: row;

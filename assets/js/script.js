@@ -5,6 +5,7 @@
  * Todo: Get Username and start greeting, when it's saved
  */
 function initSummary() {
+    includeHTML();
     greetAtLogin();
 }
 
