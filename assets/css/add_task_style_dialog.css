@@ -25,6 +25,29 @@ span {
   font-weight: 400;
 }
 
+.dialog-bg {
+  height: 100vh;
+  background-color: aqua;
+}
+
+.dialog-main-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+}
+
+.dialog-container {
+  width: 1116px;
+  height: 820px;
+  background-color: white;
+  border-radius: 30px;
+}
+
 .headline-add-task {
   width: 428px;
   height: 112px;
@@ -33,6 +56,7 @@ span {
   padding: 20px 16px 8px;
   line-height: 56.4px;
   text-align: left;
+  padding-left: 76px;
 }
 
 .headline-add-task h1 {
@@ -44,13 +68,10 @@ span {
   width: 396px;
   height: 633px;
   padding: 0 16px;
-}
-
-.form-add-task {
+  height: 100%;
   width: 100%;
-  height: 85%;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  margin-top: 38px;
+  padding-left: 76px;
 }
 
 .flex-column-inputs {
@@ -185,10 +206,6 @@ select:focus {
   display: none;
 }
 
-.content-wrapper {
-  margin-left: 0;
-}
-
 .clear-btn {
   display: flex;
   justify-content: center;
@@ -219,201 +236,44 @@ select:focus {
     hue-rotate(176deg) brightness(93%) contrast(89%);
 }
 
-.content-wrapper {
-  margin-top: 110px;
+.desktop-buttons {
+  display: flex;
 }
 
-@media (min-width: 1120px) and (max-width: 1920px) {
-  .desktop-buttons {
-    display: flex;
-  }
-
-  .content-wrapper {
-    margin-left: 320px;
-  }
-
-  .add-task-container {
-    padding: 0;
-  }
-
-  .headline-add-task {
-    padding: 20px 0px 8px;
-  }
-
-  .form-add-task {
-    overflow-x: unset;
-    overflow-y: unset;
-    height: 100%;
-    display: flex;
-    gap: 59px;
-  }
-
-  .add-task-container {
-    height: 100%;
-    width: 100%;
-    margin-top: 38px;
-  }
-
-  input,
-  textarea {
-    width: 436px;
-  }
-
-  select {
-    width: 480px;
-  }
-
-  .create-task-panel {
-    display: none;
-  }
-  .desktop-seperator-add-contact {
-    display: block;
-  }
-
-  .prios {
-    width: 136px;
-  }
+.form-add-task {
+  overflow-x: unset;
+  overflow-y: unset;
+  height: 100%;
+  display: flex;
+  gap: 48px;
+  width: 100%;
+  height: 85%;
 }
 
-@media (max-width: 1415px) and (min-width: 801px) {
-  .content-wrapper {
-    margin-left: 280px;
-  }
-
-  input,
-  textarea {
-    width: 320px;
-  }
-  select {
-    width: 364px;
-  }
-
-  .prios {
-    width: 90px;
-  }
+input,
+textarea {
+  width: 356px;
 }
 
-@media (max-width: 1127px) and (min-width: 430px) {
-  .content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .headline-add-task {
-    margin-left: 42px;
-  }
-
-  .form-add-task {
-    height: 88%;
-    overflow-x: hidden;
-  }
-
-  .required-text {
-    display: none;
-  }
+select {
+  width: 400px;
 }
 
-@media (max-width: 1120px) and (min-width: 916px) {
-  .form-add-task {
-    height: 92%;
-  }
+.create-task-panel {
+  display: none;
+}
+.desktop-seperator-add-contact {
+  display: block;
 }
 
-@media (max-width: 1120px) and (min-width: 801px) {
-  .create-task-panel {
-    top: 825px;
-  }
+.prios {
+  width: 136px;
 }
 
-@media (max-width: 800px) and (min-width: 321px) {
-  .content-wrapper {
-    margin-top: 65px;
-  }
-}
-
-@media (max-width: 422px) {
-  .create-task-btn {
-    font-size: clamp(12px, 2vw, 20px);
-  }
-
-  .prio-content {
-    flex-direction: column;
-  }
-
-  .prios {
-    width: 93%;
-  }
-
-  .add-task-container {
-    width: 320px;
-  }
-  .content-wrapper {
-    margin-left: 24px;
-  }
-  .create-task-panel span {
-    font-size: 18px;
-  }
-  .create-task-btn {
-    padding: 9px;
-  }
-}
-
-@media (max-width: 377px) {
-  .content-wrapper {
-    margin-left: 10px;
-  }
-}
-
-@media (max-width: 356px) {
-  .content-wrapper {
-    margin-left: 0;
-  }
-
-  .create-task-panel span {
+.required-text {
+    top: 779px;
+    left: 74px;
+    position: absolute;
     font-size: 16px;
-  }
-}
-
-@media (max-width: 340px) {
-  .add-task-container {
-    width: 300px;
-  }
-}
-
-@media (max-width: 321px) {
-  .create-task-panel {
-    top: 770px;
-  }
-}
-
-@media (max-height: 905px) {
-  .create-task-panel {
-    top: 680px;
-  }
-}
-
-@media (max-height: 875px) {
-  .add-task-container {
-    height: 500px;
-  }
-  .create-task-panel {
-    top: 625px;
-  }
-}
-
-@media (max-height: 765px) {
-  .add-task-container {
-    height: 385px;
-  }
-  .create-task-panel {
-    top: 500px;
-  }
-}
-
-@media (max-height: 765px) and (max-width: 1119px) and (min-width: 905px) {
-  .create-task-panel {
-    top: 510px;
-    gap: 24px;
-  }
+    font-weight: 400;
 }
