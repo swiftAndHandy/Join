@@ -148,6 +148,7 @@ function submitSignUp(event) {
  */
 function closeSignUp() {
     document.getElementById('sign-up-overlay').classList.add('d-none');
+    document.getElementById('login-wrapper').classList.remove('d-none');
     privacyCheckboxActive = false;
     passwordCreateInputHidden = true;
     passwordValidationInputHidden = true;
@@ -165,6 +166,7 @@ function closeSignUp() {
  */
 function openSignUp() {
     document.getElementById('sign-up-overlay').classList.remove('d-none');
+    document.getElementById('login-wrapper').classList.add('d-none');
 }
 
 /**

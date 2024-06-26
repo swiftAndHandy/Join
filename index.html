@@ -37,22 +37,23 @@
                     <button class="simple-btn" onclick="openSignUp()">Sign up</button>
                 </div>
                 <div class="document-links">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="legal_notice.html">Legal Notice</a>
+                    <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                    <a href="./legal_notice.html" target="_blank" rel="noopener noreferrer">Legal Notice</a>
                 </div>
             </section>
-            <section class="login-wrapper">
+            <section id="login-wrapper" class="login-wrapper">
                 <div class="dialog-headline">
                     <h1>Log in</h1>
                     <div class="horizontal-line"></div>
                 </div>
                 <form id="login-form" class="login-form" onsubmit="return submitSignUp(event);">
-                        <div class="input-item">
+                    <div class="input-wrapper">
+                        <div class="input-item ignore-width">
                             <img src="./assets/img/icons/mail.svg" alt="" class="input-icons">
                             <input type="email" id="email-login" name="email" placeholder="Email"
                                 autocomplete="username" required>
                         </div>
-                        <div class="input-item">
+                        <div class="input-item ignore-width">
                             <img src="./assets/img/icons/lock.svg" alt="" id="password-login-img" class="input-icons">
                             <input type="password" id="password-login" name="password" placeholder="Password"
                                 autocomplete="current-password" onkeydown="passwordInputIcon('login')"
@@ -62,10 +63,11 @@
                             <input type="checkbox" id="remember" name="remember-checkbox" onclick="toggleRemember()">
                             <label for="remember">Remember me</label>
                         </div>
-                        <div class="login-buttons">
-                            <button class="simple-btn fw-700">Log in</button>
-                            <button class="bordered-btn fw-700">Guest Log in</button>
-                        </div>
+                    </div>
+                    <div class="login-buttons">
+                        <button class="simple-btn fw-700">Log in</button>
+                        <button class="bordered-btn fw-700">Guest Log in</button>
+                    </div>
                 </form>
             </section>
             <section w3-include-html="./assets/templates/sign_up.html" class="sign-up-overlay d-none"

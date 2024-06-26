@@ -93,7 +93,7 @@ body::-webkit-scrollbar-thumb {
     border: 1px solid #091931;
 }
 
-main {
+.main-box {
     display: flex;
     flex-direction: column;
     max-width: 1920px;

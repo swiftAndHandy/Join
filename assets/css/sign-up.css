@@ -209,22 +209,8 @@
     height: 100%;
 }
 
-.login-wrapper {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 30px;
-    padding: 32px 16px;
-    box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
-    width: min(80%, 598px)
-}
-
-.login-buttons {
-    display: flex;
-    gap: 35px;
+@media (max-height: 840px) and (max-width: 928px) {
+    .close-btn {
+        top: 70%;
+    }
 }
