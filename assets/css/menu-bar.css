@@ -268,9 +268,7 @@ header {
     height: 30px;
 }
 
-.header-mobile {
-    display: none;
-}
+
 
 @media (max-width: 900px) {
     .headline {
