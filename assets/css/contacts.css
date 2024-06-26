@@ -12,7 +12,9 @@ body {
     margin: 80px 0 80px 0;
     overflow: scroll;
     height: calc(100vh - 96px);
+    background-color: #fff;
 }
+
 
 .contact-list::-webkit-scrollbar-thumb {
     background: #A8A8A8;
@@ -300,8 +302,10 @@ body {
         flex-direction: column;
         align-items: center;
         box-shadow: 4px 0px 6px 0px #00000014;
-        margin: 96px 0 0 232px;
-        width: 456px;
+        margin: 33px 0 0 233px;
+        /* width: 456px; */
+        width: clamp(400px, 50vw - 232px, 456px);
+        height: 100%;
     }
 
     .btn-container {

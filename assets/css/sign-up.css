@@ -123,6 +123,7 @@
 
 .disabled:hover {
     background-color: #2A3647;
+    box-shadow: unset;
 }
 
 .button-wrapper {
@@ -207,10 +208,17 @@
     bottom: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
 }
 
 @media (max-height: 840px) and (max-width: 928px) {
     .close-btn {
         top: 70%;
+    }
+}
+
+@media (min-width: 928px) {
+    .form-btn {
+        font-size: 21px;
     }
 }

@@ -23,7 +23,7 @@
 }
 
 .startscreen--animate img {
-    top: clamp(4px, 2vh , 37px);
+    top: clamp(4px, 2vh, 37px);
     left: clamp(4px, 5vw, 38px);
     height: clamp(39px, 10vh, 78px);
     /* width: clamp(80px, 10vw, 100px); */
@@ -37,6 +37,10 @@
 .startscreen--animate.over {
     bottom: unset;
     right: unset;
+}
+
+.title {
+    font-size: clamp(47px, 6vw, 61px);
 }
 
 .content__head {
@@ -171,5 +175,13 @@
     .login-buttons {
         flex-direction: unset;
         width: unset;
+    }
+
+    .simple-btn {
+        font-size: 21px;
+    }
+
+    .bordered-btn {
+        font-size: 21px;
     }
 }
