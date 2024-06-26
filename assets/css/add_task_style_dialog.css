@@ -43,9 +43,10 @@ span {
 
 .dialog-container {
   width: 1116px;
-  height: 820px;
+  height: 870px;
   background-color: white;
   border-radius: 30px;
+  position: relative;
 }
 
 .headline-add-task {
@@ -130,6 +131,7 @@ select:focus {
   display: flex;
   flex-direction: column;
   gap: 18px;
+width: 440px;
 }
 
 .prio-content {
@@ -202,8 +204,10 @@ select:focus {
   justify-content: flex-end;
   align-items: center;
   gap: 16px;
-  padding-right: 16px;
+  padding-left: 58px;
   display: none;
+  width: 334px;
+  margin-top: 142px;
 }
 
 .clear-btn {

@@ -293,7 +293,7 @@ select:focus {
   }
 }
 
-@media (max-width: 1127px) and (min-width: 430px) {
+@media (max-width: 1119px) and (min-width: 430px) {
   .content-wrapper {
     display: flex;
     flex-direction: column;
