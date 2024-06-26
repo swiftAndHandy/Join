@@ -49,6 +49,7 @@ body {
   .upper-card {
     height: 352px;
     background-color: #2a3647;
+    position: relative;
   }
   
   .upper-card h1 {
@@ -101,7 +102,7 @@ body {
     width: 32px;
     height: 32px;
     top: 24px;
-    left: 348px;
+    right: 24px;
     gap: 0px;
     border-radius: 56px 0px 0px 0px;
     position: absolute;
@@ -421,18 +422,10 @@ body {
       padding-left: 16px;
     }
   
-    .close {
-      left: 320px;
   
-    }
   
   }
-  
-  @media (max-width: 350px) {
-    .close {
-      left: 300px;
-    }
-  }
+
   
   @media (max-width: 335px) {
     .input-style {
@@ -446,9 +439,7 @@ body {
       padding-left: 16px;
     }
   
-    .close {
-      left: 285px;
-    }
+  
   }
   
 
@@ -463,9 +454,7 @@ body {
       height: 300px;
     }
   
-    .close {
-      top: 28px;
-    }
+    
   
     .input-information {
       left: 4px;
