@@ -48,6 +48,10 @@
     border: 1px solid #29ABE2;
 }
 
+.input-item input.error {
+    border: 1px solid #FF001F;
+}
+
 .registration-form {
     width: 100%;
 }

@@ -10,8 +10,8 @@
     bottom: 80px;
     font-weight: 400;
     font-size: 36px;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
+    opacity: 1;
+    transition: opacity 0.4s ease-in 1200ms;
 }
 
 .greeting-msg--desktop {
@@ -57,8 +57,8 @@ main {
     text-align: center;
 }
 
-.greeting-msg--mobile--fade-in {
-    opacity: 1;
+.greeting-msg--mobile--fade-out {
+    opacity: 0;
     z-index: 1;
 }
 
@@ -70,7 +70,7 @@ main {
 
 .summary-content {
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 400ms ease-in-out 1200ms;
 }
 
 .summary-animation--fade-in {

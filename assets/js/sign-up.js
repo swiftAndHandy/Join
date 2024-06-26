@@ -115,13 +115,26 @@ function comparePasswords() {
     let create = document.getElementById('password-create');
     let validation = document.getElementById('password-validation');
     let showError = document.getElementById('error-msg');
-    if (validation.value && create.value != validation.value) {
-        showError.classList.remove('d-none');
+    if (passwordMissmatch(create, validation)) {
+        showError.classList.remove('d-none'); 
+        create.classList.add('error'); validation.classList.add('error');
         document.getElementById('password-check').classList.add('password-check');
     } else {
-        showError.classList.add('d-none');
+        showError.classList.add('d-none'); 
+        create.classList.remove('error'); validation.classList.remove('error');
         document.getElementById('password-check').classList.remove('password-check');
     }
+}
+
+/**
+ * Statement, checking validationPassword for a existing value.
+ * if a value is given, and it's the same than the regular-password, return true.
+ * @param {Element} password 
+ * @param {Element} validationPassword 
+ * @returns true or false<br><br>
+ */
+function passwordMissmatch(password, validationPassword) {
+    return validationPassword.value && password.value != validationPassword.value;
 }
 
 
@@ -130,11 +143,12 @@ function comparePasswords() {
  * if everything is valid, animate the success-overlay
  * @param {event} event 
  */
-function submitSignUp(event) {
+async function submitSignUp(event) {
     event.preventDefault();
     if (document.getElementById('sign-up-form').checkValidity()) {
         document.getElementById('sign-up-confirm').classList.add('popup-msg--fade-in');
         document.getElementById('msg-wrapper').classList.add('msg-wrapper--z-push');
+        closeSignUp();
     } else {
         document.getElementById('sign-up-form').reportValidity();
     }

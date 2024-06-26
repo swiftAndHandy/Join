@@ -30,7 +30,6 @@
 let passwordCreateInputHidden = true;
 let passwordValidationInputHidden = true;
 
-
 /**
  * sets the value of privacyCheckboxActive to the opposite and 
  * disables or enables the submit-button based on the new value
@@ -55,9 +54,12 @@ function togglePasswordDesign(id) {
     if (id == 'create') {
         passwordCreateInputHidden = !passwordCreateInputHidden;
         setPasswordCreateDesign();
-    } else {
+    } if (id == 'validation') {
         passwordValidationInputHidden = !passwordValidationInputHidden;
         setPasswordValidationDesign();
+    } else {
+        passwordInputHidden = !passwordInputHidden;
+        setPasswordDesign();
     }
 }
 
@@ -96,6 +98,23 @@ function setPasswordValidationDesign() {
 }
 
 /**
+ * on password-validation field:
+ * swaps out the lock-image for the eye-image or vice vera.
+ * swaps out the password-type for a text-type or vice versa.
+ */
+function setPasswordDesign() {
+    let targetInput = document.getElementById(`password-login`);
+    let targetImage = document.getElementById(`password-login-img`);
+    if (passwordInputHidden) {
+        targetImage.src = './assets/img/icons/visibility_off.svg';
+        targetInput.type = 'password';
+    } else {
+        targetImage.src = './assets/img/icons/visibility.svg';
+        targetInput.type = 'text';
+    }
+}
+
+/**
  * evaluates value of both password-inputs. if a value is set, it will call the setPasswordInputDesign-Function
  * and also add a pointer class + set an onclick attribute to toggle hide/show-password-variables.
  * otherwise it will reset those changes.
@@ -106,7 +125,7 @@ function passwordInputIcon(id) {
     let targetImage = document.getElementById(`password-${id}-img`);
     if (targetInput.value) {
         targetImage.classList.add('pointer');
-        id == 'create' ? setPasswordCreateDesign() : setPasswordValidationDesign();
+        id == 'create' ? setPasswordCreateDesign() : id == 'validate' ?  setPasswordValidationDesign() : setPasswordDesign();
         targetImage.setAttribute('onclick', `togglePasswordDesign('${id}')`);
     } else {
         targetImage.classList.remove('pointer');
@@ -124,13 +143,26 @@ function comparePasswords() {
     let create = document.getElementById('password-create');
     let validation = document.getElementById('password-validation');
     let showError = document.getElementById('error-msg');
-    if (validation.value &amp;&amp; create.value != validation.value) {
-        showError.classList.remove('d-none');
+    if (passwordMissmatch(create, validation)) {
+        showError.classList.remove('d-none'); 
+        create.classList.add('error'); validation.classList.add('error');
         document.getElementById('password-check').classList.add('password-check');
     } else {
-        showError.classList.add('d-none');
+        showError.classList.add('d-none'); 
+        create.classList.remove('error'); validation.classList.remove('error');
         document.getElementById('password-check').classList.remove('password-check');
     }
+}
+
+/**
+ * Statement, checking validationPassword for a existing value.
+ * if a value is given, and it's the same than the regular-password, return true.
+ * @param {Element} password 
+ * @param {Element} validationPassword 
+ * @returns true or false&lt;br>&lt;br>
+ */
+function passwordMissmatch(password, validationPassword) {
+    return validationPassword.value &amp;&amp; password.value != validationPassword.value;
 }
 
 
@@ -139,11 +171,12 @@ function comparePasswords() {
  * if everything is valid, animate the success-overlay
  * @param {event} event 
  */
-function submitSignUp(event) {
+async function submitSignUp(event) {
     event.preventDefault();
     if (document.getElementById('sign-up-form').checkValidity()) {
         document.getElementById('sign-up-confirm').classList.add('popup-msg--fade-in');
         document.getElementById('msg-wrapper').classList.add('msg-wrapper--z-push');
+        closeSignUp();
     } else {
         document.getElementById('sign-up-form').reportValidity();
     }
@@ -156,7 +189,8 @@ function submitSignUp(event) {
  * does another password compare, to reset missmatch-msg.
  */
 function closeSignUp() {
-    document.getElementById('sign-up-dialog').classList.add('d-none');
+    document.getElementById('sign-up-overlay').classList.add('d-none');
+    document.getElementById('login-wrapper').classList.remove('d-none');
     privacyCheckboxActive = false;
     passwordCreateInputHidden = true;
     passwordValidationInputHidden = true;
@@ -173,7 +207,16 @@ function closeSignUp() {
  * Removes display: none from sign-up-dialog to give access to the sign-up-form
  */
 function openSignUp() {
-    document.getElementById('sign-up-dialog').classList.remove('d-none');
+    document.getElementById('sign-up-overlay').classList.remove('d-none');
+    document.getElementById('login-wrapper').classList.add('d-none');
+}
+
+/**
+ * Prevent event-bubbeling
+ * @param {*} event 
+ */
+function stopPropagation(event) {
+    event.stopPropagation();
 }</code></pre>
         </article>
     </section>
@@ -184,13 +227,13 @@ function openSignUp() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#comparePasswords">comparePasswords</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#updateMenu">updateMenu</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#comparePasswords">comparePasswords</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordMissmatch">passwordMissmatch</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#updateMenu">updateMenu</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Tue Jun 25 2024 15:05:01 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu Jun 27 2024 01:08:56 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -13,6 +13,26 @@ body {
     overflow: scroll;
     height: calc(100vh - 96px);
     background-color: #fff;
+    overflow-x: hidden;
+    --sb-track-color: transparent;
+    --sb-thumb-color: #0A1931;
+    --sb-size: 6px;
+    --sb-border-radius: 3px;
+}
+
+.contact-list-container::-webkit-scrollbar {
+    width: var(--sb-size)
+}
+
+.contact-list-container::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: var(--sb-border-radius);
+}
+
+.contact-list-container::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: var(--sb-border-radius);
+
 }
 
 

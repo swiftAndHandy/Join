@@ -68,12 +68,9 @@ function isEvening(hours) {
  * @param {Element} greeting - target HTML-Element.
  */
 function animateGreeting(greeting) {
-    greeting.classList.add('greeting-msg--mobile--fade-in');
+    greeting.classList.add('greeting-msg--mobile--fade-out');
+    document.getElementById('summary').classList.add('summary-animation--fade-in');
     setTimeout(() => {
-        greeting.classList.remove('greeting-msg--mobile--fade-in');
-        setTimeout(() => {
-            greeting.classList.add('d-none');
-        }, 1000);
-        document.getElementById('summary').classList.add('summary-animation--fade-in');
-    }, 2000);
+        greeting.classList.add('d-none');
+    }, 1600);
 }

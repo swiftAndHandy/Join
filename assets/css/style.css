@@ -11,7 +11,7 @@ body {
     font-size: 16px;
     font-weight: 400;
     background-color: #F6F7F8;
-    --sb-track-color: #293647AA;
+    --sb-track-color: transparent;
     --sb-thumb-color: #0A1931;
     --sb-size: 6px;
 }
@@ -33,6 +33,40 @@ body::-webkit-scrollbar-thumb {
 
 .scrolling--blocked {
     overflow: hidden;
+}
+
+.checkbox {
+    display: none;
+}
+
+.checkbox + label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox + label::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-image: url('../img/icons/checkbox_disabled.svg');
+    background-position: center;
+}
+
+.checkbox + label:hover::before {
+    background-image: url('../img/icons/checkbox_disabled_hovered.svg');
+}
+
+.checkbox:checked + label::before {
+    background-image: url('../img/icons/checkbox_checked.svg');
+    background-size: center;
+}
+
+.checkbox:checked + label:hover::before {
+    background-image: url('../img/icons/checkbox_checked_hovered.svg');
+    background-size: center;
 }
 
 .subtitle {
@@ -64,6 +98,7 @@ body::-webkit-scrollbar-thumb {
     padding: 15px 24px;
     color: #FFFFFF;
     transition: all 0.1s ease-in-out;
+    cursor: pointer;
 }
 
 
@@ -86,6 +121,7 @@ body::-webkit-scrollbar-thumb {
     background-color: unset;
     padding: 15px 24px;
     transition: all 0.1s ease-in-out;
+    cursor: pointer;
 }
 
 

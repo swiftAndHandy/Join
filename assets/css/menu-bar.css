@@ -42,22 +42,31 @@ header {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    background-image: url('../img/icons/help.svg');
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.help-logo-img {
-    width: 20px;
-    height: 20px;
+.help-logo:hover {
+    background-image: url('../img/icons/help_hovered.svg');
 }
 
 .headline-profil-name {
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid;
-    border-width: 2px;
+    border: 3px solid #2A3647;
     border-radius: 50%;
+    background-color: #fff;
+    color: #29ABE2;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.headline-profil-name:hover {
+    background-color: #0C2E621F;
 }
 
 .menu-bar-mobile {
@@ -324,8 +333,8 @@ header {
         justify-content: center;
         align-items: center;
         font-size: 18px;
-        border: solid;
-        border-width: 2px;
+        border: 2px solid #2A3647;
+        color:#29ABE2;
         border-radius: 50%;
     }
 
