@@ -47,6 +47,13 @@ body::-webkit-scrollbar-thumb {
     flex: 1;
 }
 
+.main-mb {
+    margin-bottom: 0;
+}
+
+.main-pl {
+    padding-left: 96px;
+}
 
 .simple-btn {
     border: 0;
