@@ -1,0 +1,178 @@
+/* 
+Regular Board-Klasses
+*/
+
+.tag__user-story {
+    background-color: #0038FF;
+    color: #FFF;
+    font-weight: 400;
+    font-size: 16px;
+    border-radius: 8px;
+    padding: 4px 16px;
+}
+
+.tag__technical-task {
+    background-color: #1FD7C1;
+    color: #FFF;
+    font-weight: 400;
+    font-size: 16px;
+    border-radius: 8px;
+    padding: 4px 16px;
+}
+
+
+
+/*
+Detail-View related Classes
+*/
+.outer-wrapper {
+    position: relative;
+}
+
+.task-details-view {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-height: 640px;
+    background-color: #FFF;
+    box-shadow: 0 0 4px 0 #00000029;
+    border-radius: 30px;
+    padding: 32px 24px;
+    width: calc(80vw + 0.5em);
+    max-width: 396px;
+    gap: 16px;
+}
+
+.details__title {
+    font-weight: 700;
+    font-size: 36px;
+    outline: 1px solid red;
+}
+
+.details__caption {
+    font-weight: 700;
+    font-size: 16px;
+    color: #42526E;
+    outline: 1px solid slateblue;
+}
+
+.details__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: 1px solid blue;
+    width: 100%;
+}
+
+.close-btn {
+    width: 32px;
+    height: 32px;
+    background-image: url('../img/icons/close_black.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.close-btn:hover {
+    width: 32px;
+    height: 32px;
+    background-image: url('../img/icons/close_hovered.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.details__info-box {
+    display: flex;
+    gap: 25px;
+    outline: 1px solid salmon;
+    align-items: center;
+}
+
+.details__info-box.vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    outline: 1px solid blue;
+}
+
+.details__priority-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.priority-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.details__vertical-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-left: 16px;
+    outline: 1px solid lightseagreen;
+}
+
+.details__vertical-inner {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.details__description {
+    font-weight: 400;
+    font-size: 16px;
+    margin-block: 0;
+    outline: 1px solid orange;
+}
+
+.details__information {
+    font-weight: 400;
+    font-size: 16px;
+    color: #000;
+    outline: 1px solid goldenrod;
+}
+
+.details__bottom {
+    align-self: flex-end;
+    display: flex;
+    gap: 8px;
+}
+
+.details__bottom .icon-box {
+    display: flex;
+    align-items: center;
+}
+
+.details__bottom .line {
+    height: 24px;
+    width: 1px;
+    background-image: url('../img/icons/vertical_line.svg');
+}
+
+.delete-icon {
+    height: 24px;
+    width: 24px;
+    background-image: url('../img/icons/delete.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.delete-icon:hover {
+    background-image: url('../img/icons/delete_hovered.svg');
+}
+
+.edit-icon {
+    height: 24px;
+    width: 24px;
+    background-image: url('../img/icons/edit.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.edit-icon:hover {
+    background-image: url('../img/icons/edit_hovered.svg');
+}
+
+/*
+Edit-View related Classes
+*/

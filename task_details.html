@@ -1,0 +1,97 @@
+<!-- Only for Testing. Planed to merge this into board.html, so it's necessary to remove basic-stuff before merge -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/board.css">
+</head>
+
+<body class="flex-center">
+
+    <!-- Needs position relative -->
+
+    <section class="outer-wrapper">
+        <!-- Start Merge here -->
+
+        <section class="task-details-view">
+            <div class="details__header">
+                <span class="tag__user-story">User Story</span>
+                <div class="close-btn"></div>
+            </div>
+            <h1 class="details__title">Kochwelt Page & Recipe Recommender</h1>
+            <p class="details__description">Build start page with recipe recommendation.</p>
+            <div class="details__info-box">
+                <strong class="details__caption">Due date:</strong>
+                <span class="details__information">02/09/2023</span>
+            </div>
+            <div class="details__info-box">
+                <strong class="details__caption">Priority:</strong>
+                <div class="details__priority-wrapper">
+                    <span id="details-priority-text" class="details__information">Medium</span>
+                    <img class="priority-icon" src="./assets/img/icons/priority_medium.svg" alt="">
+                </div>
+            </div>
+            <div class="details__info-box vertical">
+                <strong class="details__caption">Assigned To:</strong>
+                <div id="details-assigned-list" class="details__vertical-wrapper">
+                    <!--START: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
+                    <div class="details__vertical-inner">
+                        <img id="assigned-person-image-index" src="./assets/img/icons/user-proxy.svg" alt="Avatar">
+                        <span id="assigned-person-index" class="details__information">Emmanuel Mauer</span>
+                    </div>
+                    <!--END: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
+                    <!-- START: Additional ppl, for better visualisation of the final result -->
+                    <div class="details__vertical-inner">
+                        <img id="assigned-person-image-1" src="./assets/img/icons/user-proxy.svg" alt="Avatar">
+                        <span id="assigned-person-1" class="details__information">Emmanuel Mauer</span>
+                    </div>
+                    <div class="details__vertical-inner">
+                        <img id="assigned-person-image-2" src="./assets/img/icons/user-proxy.svg" alt="Avatar">
+                        <span id="assigned-person-2" class="details__information">Emmanuel Mauer</span>
+                    </div>
+                    <!-- END: Additional ppl -->
+                </div>
+            </div>
+            <div class="details__info-box vertical">
+                <strong class="details__caption">Subtasks:</strong>
+                <div id="details-subtasks-list" class="details__vertical-wrapper">
+                    <!--START: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
+                    <div class="details__subtask">
+                        <input type="checkbox" class="checkbox" id="details-subtask-index" name="details-subtask-index"
+                            onclick="toggleThis(id)">
+                        <label for="details-subtask-index">Implement Recipe Recommendation</label>
+                    </div>
+                    <!--END: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
+                    <!--START: More List-Items for better visualisation of the final design -->
+                    <div class="details__subtask">
+                        <input type="checkbox" class="checkbox" id="details-subtask-1" name="details-subtask-index"
+                            onclick="toggleThis(id)">
+                        <label for="details-subtask-1">Start Page Layout</label>
+                    </div>
+                    <!--END of additinal List-Items for better visualisation of the final design -->
+                </div>
+            </div>
+            <div class="details__bottom">
+                <div class="icon-box" id="delete">
+                    <div class="delete-icon"></div>
+                    <span class="details__information">Delete</span>
+                </div>
+                <div class="line"></div>
+                <div class="icon-box" id="edit">
+                    <div class="edit-icon"></div>
+                    <span class="details__information">Edit</span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- End of Merge -->
+    </section>
+</body>
+
+</html>

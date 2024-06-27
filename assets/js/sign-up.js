@@ -182,11 +182,3 @@ function openSignUp() {
     document.getElementById('sign-up-overlay').classList.remove('d-none');
     document.getElementById('login-wrapper').classList.add('d-none');
 }
-
-/**
- * Prevent event-bubbeling
- * @param {*} event 
- */
-function stopPropagation(event) {
-    event.stopPropagation();
-}

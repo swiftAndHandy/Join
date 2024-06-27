@@ -9,6 +9,9 @@ const colors = [
 let passwordInputHidden = true;
 let rememberMe = false;
 
+/**
+ * Initialising of index.html by starting animation on mobile-devices.
+ */
 function init() {
     const startscreen = document.getElementById('startscreen');
     startscreen.classList.add('startscreen--animate');
@@ -16,6 +19,14 @@ function init() {
         startscreen.classList.add('over');
     }, 1000);
     includeHTML();
+}
+
+/**
+ * Prevent event-bubbeling
+ * @param {*} event 
+ */
+function stopPropagation(event) {
+    event.stopPropagation();
 }
 
 function toggleRemember() {
