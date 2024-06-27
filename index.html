@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./assets/css/sign-up.css">
     <script src="./assets/js/menu-bar-script.js"></script>
     <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/sign-up.js"></script>
+    <script src="./assets/js/account.js"></script>
 </head>
 
 <body onload="init();">
@@ -55,8 +55,8 @@
                         </div>
                     </div>
                     <div class="login-buttons">
-                        <button class="simple-btn fw-700">Log in</button>
-                        <button class="bordered-btn fw-700">Guest Log in</button>
+                        <button class="simple-btn fw-700" onclick="login()">Log in</button>
+                        <a href="summary.html?login" class="bordered-btn fw-700">Guest Log in</a>
                     </div>
                 </form>
             </section>

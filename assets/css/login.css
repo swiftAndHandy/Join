@@ -132,6 +132,10 @@
     gap: 35px;
 }
 
+.bordered-btn {
+    text-align: center;
+}
+
 @media (max-height: 800px){
     .content__bottom {
         margin-top: 16px;

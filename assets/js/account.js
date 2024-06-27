@@ -1,6 +1,47 @@
 let privacyCheckboxActive = false;
 let passwordCreateInputHidden = true;
 let passwordValidationInputHidden = true;
+const BASE_URL = 'https://remotestorage-3b1e6-default-rtdb.europe-west1.firebasedatabase.app/';
+
+async function postData(path = "", data = {}) {
+    let response = await fetch(BASE_URL + path + '.json', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+    });
+    return responseToJason = await response.json();
+}
+
+/**
+ * Connects to fire-base to create a new user-accounts
+ */
+async function createUser() {
+    const user = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password-create').value;
+    await postData('accounts', { 'name': user, 'email': email, 'password': password });
+}
+
+async function login(path = 'accounts') {
+    const account = document.getElementById('email-login').value.toLowerCase();
+    const password = document.getElementById('password-login').value;
+    const response = await fetch(BASE_URL + path + '.json');
+    let responseToJason = await response.json();
+    let userKeysArray = Object.keys(responseToJason);
+    for (let i = 0; i < userKeysArray.length; i++) {
+        if (compareLoginInformation(account, password, responseToJason, userKeysArray[i])) {
+            window.location.replace("./summary.html");
+            break;
+        }
+    }
+}
+
+function compareLoginInformation(account, password, json, key) {
+    return account === json[key]['email'] && password === json[key]['password'];
+}
+
 
 /**
  * sets the value of privacyCheckboxActive to the opposite and 
@@ -97,7 +138,7 @@ function passwordInputIcon(id) {
     let targetImage = document.getElementById(`password-${id}-img`);
     if (targetInput.value) {
         targetImage.classList.add('pointer');
-        id == 'create' ? setPasswordCreateDesign() : id == 'validate' ?  setPasswordValidationDesign() : setPasswordDesign();
+        id == 'create' ? setPasswordCreateDesign() : id == 'validate' ? setPasswordValidationDesign() : setPasswordDesign();
         targetImage.setAttribute('onclick', `togglePasswordDesign('${id}')`);
     } else {
         targetImage.classList.remove('pointer');
@@ -116,11 +157,11 @@ function comparePasswords() {
     let validation = document.getElementById('password-validation');
     let showError = document.getElementById('error-msg');
     if (passwordMissmatch(create, validation)) {
-        showError.classList.remove('d-none'); 
+        showError.classList.remove('d-none');
         create.classList.add('error'); validation.classList.add('error');
         document.getElementById('password-check').classList.add('password-check');
     } else {
-        showError.classList.add('d-none'); 
+        showError.classList.add('d-none');
         create.classList.remove('error'); validation.classList.remove('error');
         document.getElementById('password-check').classList.remove('password-check');
     }
@@ -140,15 +181,20 @@ function passwordMissmatch(password, validationPassword) {
 
 /**
  * try to submit sign-up-form/use html form-validation.
- * if everything is valid, animate the success-overlay
+ * if everything is valid, animate the success-overlay and close popup after the animation is done
  * @param {event} event 
  */
 async function submitSignUp(event) {
     event.preventDefault();
     if (document.getElementById('sign-up-form').checkValidity()) {
-        document.getElementById('sign-up-confirm').classList.add('popup-msg--fade-in');
-        document.getElementById('msg-wrapper').classList.add('msg-wrapper--z-push');
-        closeSignUp();
+        try {
+            await createUser();
+            document.getElementById('sign-up-confirm').classList.add('popup-msg--fade-in');
+            document.getElementById('msg-wrapper').classList.add('msg-wrapper--z-push');
+            setTimeout(() => { closeSignUp(); }, 1000);
+        } catch (error) {
+            console.error(error);
+        }
     } else {
         document.getElementById('sign-up-form').reportValidity();
     }
