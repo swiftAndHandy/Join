@@ -255,6 +255,23 @@ body {
     display: none;
   }
   
+  .contact-successfully-popup {
+    width: 326px;
+    height: 74px;
+    background-color: #2A3647;
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    transform: translateY(770px);
+    top: 700px;
+    /* 'left: clamp(15%,2vh, 25%);' */
+    justify-content: center;
+    border-radius: 10px;
+    transition: all 225ms ease-in-out;
+    display: none;
+  }
   
   
   @media (min-width: 951px) {
