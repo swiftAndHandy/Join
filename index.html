@@ -15,7 +15,7 @@
     <script src="./assets/js/sign-up.js"></script>
 </head>
 
-<body onload="init();" class="scrolling--blocked">
+<body onload="init();">
     <section id="startscreen" class="startscreen">
         <img id="logo-animated-final" src="./assets/img/icons/join_logo_header.svg" alt="Join-Logo">
         <img id="logo-animated-fade" class="logo--fade" src="./assets/img/icons/join_logo.svg" alt="Join-Logo">
@@ -31,17 +31,7 @@
                     <button class="simple-btn" onclick="openSignUp()">Sign up</button>
                 </div>
             </section>
-            <section class="content__bottom">
-                <div class="register-wrapper">
-                    <span class="subtitle">Not a Join user?</span>
-                    <button class="simple-btn" onclick="openSignUp()">Sign up</button>
-                </div>
-                <div class="document-links">
-                    <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-                    <a href="./legal_notice.html" target="_blank" rel="noopener noreferrer">Legal Notice</a>
-                </div>
-            </section>
-            <section id="login-wrapper" class="login-wrapper">
+            <section id="login-wrapper" class="content__body login-wrapper">
                 <div class="dialog-headline">
                     <h1 class="title">Log in</h1>
                     <div class="horizontal-line"></div>
@@ -69,6 +59,16 @@
                         <button class="bordered-btn fw-700">Guest Log in</button>
                     </div>
                 </form>
+            </section>
+            <section class="content__bottom">
+                <div class="register-wrapper">
+                    <span class="subtitle">Not a Join user?</span>
+                    <button class="simple-btn" onclick="openSignUp()">Sign up</button>
+                </div>
+                <div class="document-links">
+                    <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                    <a href="./legal_notice.html" target="_blank" rel="noopener noreferrer">Legal Notice</a>
+                </div>
             </section>
             <section w3-include-html="./assets/templates/sign_up.html" class="sign-up-overlay d-none"
                 id="sign-up-overlay" onclick="closeSignUp()"></section>
