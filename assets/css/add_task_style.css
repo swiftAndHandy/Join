@@ -1,3 +1,32 @@
+
+:root {
+  --sb-size: 2px;
+  --sb-track-color: #f1f1f1;
+  --sb-thumb-color: #888;
+  --sb-border-radius: 10px;
+}
+
+/* Scrollbar für das body-Element */
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: var(--sb-border-radius);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: var(--sb-border-radius);
+}
+
+/* Optional: Scrollbar-Farbe für Firefox */
+body {
+  scrollbar-width: var(--sb-size);
+  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+
 body {
   margin: 0;
   font-family: inter;
@@ -330,6 +359,9 @@ select:focus {
   .content-wrapper {
     margin-top: 65px;
   }
+  .required-text {
+    display: none;
+  }
 }
 
 @media (max-width: 422px) {
@@ -381,15 +413,19 @@ select:focus {
   }
 }
 
-@media (max-width: 321px) {
+
+@media (max-height: 900px) {
   .create-task-panel {
-    top: 770px;
+    top: 720px;
   }
+  .form-add-task {
+    height: 79%;
+}
 }
 
-@media (max-height: 905px) {
+@media(max-height:875px) and (min-height: 800px) {
   .create-task-panel {
-    top: 680px;
+    top: 780px;
   }
 }
 
@@ -415,5 +451,15 @@ select:focus {
   .create-task-panel {
     top: 510px;
     gap: 24px;
+  }
+}
+
+
+@media (max-width:1161px) and (min-width: 802px)  {
+  .menu-bar-mobile {
+    display: none !important;
+  }
+  .menu-bar-desktop {
+    display: flex !important;
   }
 }
