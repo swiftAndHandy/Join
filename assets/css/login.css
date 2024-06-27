@@ -132,7 +132,7 @@
     gap: 35px;
 }
 
-@media (max-height: 800px) {
+@media (max-height: 800px){
     .content__bottom {
         margin-top: 16px;
         gap: 16px;
@@ -140,7 +140,7 @@
 
     .login-wrapper {
         transform: unset;
-        margin-top: 24px;
+        margin-top: 10vh;
     }
 
     .document-links {
