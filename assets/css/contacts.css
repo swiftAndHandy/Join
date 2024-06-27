@@ -13,26 +13,6 @@ body {
     overflow: scroll;
     height: calc(100vh - 96px);
     background-color: #fff;
-    overflow-x: hidden;
-    --sb-track-color: transparent;
-    --sb-thumb-color: #0A1931;
-    --sb-size: 6px;
-    --sb-border-radius: 3px;
-}
-
-.contact-list-container::-webkit-scrollbar {
-    width: var(--sb-size)
-}
-
-.contact-list-container::-webkit-scrollbar-track {
-    background: var(--sb-track-color);
-    border-radius: var(--sb-border-radius);
-}
-
-.contact-list-container::-webkit-scrollbar-thumb {
-    background: var(--sb-thumb-color);
-    border-radius: var(--sb-border-radius);
-
 }
 
 
@@ -69,7 +49,8 @@ body {
     height: 32px;
 }
 
-.btn-add-new-contact:hover {
+.btn-add-new-contact:hover,
+.more-vert-button:hover {
     background-color: #29ABE2;
     box-shadow: 0px 4px 4px 0px #00000040;
 }
@@ -155,7 +136,7 @@ body {
 }
 
 .contact-window {
-    display: flex;
+    display: none;
     flex-direction: column;
     top: 96px;
     position: relative;
@@ -295,7 +276,6 @@ body {
     font-size: 16px;
     font-weight: 400;
     text-align: left;
-    color: #000;
 
 }
 
@@ -482,5 +462,56 @@ body {
         position: fixed;
         right: 20px;
         bottom: 102px;
+    }
+
+    .more-vert-button {
+        display: flex;
+        position: fixed;
+        width: 32px;
+        height: 32px;
+        padding: 12px;
+        border-radius: 46px;
+        border: #2A3647 1px;
+        background-color: #2A3647;
+        right: 20px;
+        bottom: 160px;
+    }
+
+    .more-vert-button img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .contact-options {
+        animation-name: contact-options-animation;
+        animation-timing-function: ease-out;
+        animation-duration: 300ms;
+        width: 116px;
+        height: 100px;
+        padding: 10px 0px 0px 0px;
+        gap: 0px;
+        border-radius: 20px 20px 0px 20px;
+        box-shadow: 0px 4px 4px 0px #00000040;
+        position: fixed;
+        right: 20px;
+        bottom: 230px;
+        background-color: #ffffff;
+    }
+
+    .edit-button,
+    .delete-button {
+        padding: 8px 16px 8px 16px;
+    }
+}
+
+@keyframes contact-options-animation {
+    from {
+        opacity: 0;
+        right: -150px;
+    }
+
+    to {
+        opacity: 1;
+        right: 20px;
     }
 }
