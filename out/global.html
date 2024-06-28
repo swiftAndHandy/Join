@@ -104,6 +104,168 @@
     
 
     
+    <h4 class="name" id="accountExists"><span class="type-signature">(async) </span>accountExists<span class="signature">(email)</span><span class="type-signature"> &rarr; {Object|boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    check email for existance of an account. Try is used to prevent a crash on empty-databases.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>email</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The email address to check for an existing account.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="script.js.html">script.js</a>, <a href="script.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Returns the user entry object if the email exists, or false if the email does not exist or an error occurs.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="animateGreeting"><span class="type-signature"></span>animateGreeting<span class="signature">(greeting)</span><span class="type-signature"></span></h4>
     
 
@@ -295,7 +457,7 @@ does another password compare, to reset missmatch-msg.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line230">line 230</a>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line253">line 253</a>
     </li></ul></dd>
     
 
@@ -497,7 +659,7 @@ does another password compare, to reset missmatch-msg.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line62">line 62</a>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line70">line 70</a>
     </li></ul></dd>
     
 
@@ -608,7 +770,7 @@ comparsion starts, when the validation field gets a value
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line176">line 176</a>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line184">line 184</a>
     </li></ul></dd>
     
 
@@ -696,7 +858,7 @@ comparsion starts, when the validation field gets a value
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line27">line 27</a>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -1186,7 +1348,7 @@ To do: Check for Login/Username...
     
 
     
-    <h4 class="name" id="init"><span class="type-signature"></span>init<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="initIndex"><span class="type-signature"></span>initIndex<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -1238,7 +1400,7 @@ To do: Check for Login/Username...
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="script.js.html">script.js</a>, <a href="script.js.html#line15">line 15</a>
+        <a href="script.js.html">script.js</a>, <a href="script.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -1792,153 +1954,6 @@ Todo: Get Username and start greeting, when it's saved
     
 
     
-    <h4 class="name" id="login"><span class="type-signature">(async) </span>login<span class="signature">(path)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    responseToJason is containing every user. It's iterated by every userKeyArray-Index to  
-compare Login-Form-Information with provided server-information.
-If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>path</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    accounts
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line40">line 40</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
     <h4 class="name" id="openSignUp"><span class="type-signature"></span>openSignUp<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
@@ -1991,7 +2006,7 @@ If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognit
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line248">line 248</a>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line271">line 271</a>
     </li></ul></dd>
     
 
@@ -2130,7 +2145,7 @@ otherwise it will reset those changes.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line157">line 157</a>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line165">line 165</a>
     </li></ul></dd>
     
 
@@ -2291,7 +2306,7 @@ if a value is given, and it's the same than the regular-password, return true.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line198">line 198</a>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line206">line 206</a>
     </li></ul></dd>
     
 
@@ -2461,7 +2476,7 @@ if a value is given, and it's the same than the regular-password, return true.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line13">line 13</a>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -2504,6 +2519,145 @@ if a value is given, and it's the same than the regular-password, return true.
 </dl>
 
     
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="readUserdata"><span class="type-signature">(async) </span>readUserdata<span class="signature">(path)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    responseToJason is containing every user. It's iterated by every userKeyArray-Index to  
+compare Login-Form-Information with provided server-information.
+If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="script.js.html">script.js</a>, <a href="script.js.html#line51">line 51</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2716,7 +2870,7 @@ swaps out the password-type for a text-type or vice versa.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line105">line 105</a>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line113">line 113</a>
     </li></ul></dd>
     
 
@@ -2806,7 +2960,7 @@ swaps out the password-type for a text-type or vice versa.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line139">line 139</a>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line147">line 147</a>
     </li></ul></dd>
     
 
@@ -2896,7 +3050,167 @@ swaps out the password-type for a text-type or vice versa.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line122">line 122</a>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line130">line 130</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="signUpAnimation"><span class="type-signature"></span>signUpAnimation<span class="signature">(success, msg)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Fade-In of popup-msg
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>success</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">true, if a new account could be created</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>msg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Content of popup</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line234">line 234</a>
     </li></ul></dd>
     
 
@@ -3033,7 +3347,7 @@ swaps out the password-type for a text-type or vice versa.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="script.js.html">script.js</a>, <a href="script.js.html#line28">line 28</a>
+        <a href="script.js.html">script.js</a>, <a href="script.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -3069,7 +3383,7 @@ swaps out the password-type for a text-type or vice versa.
     
 
     
-    <h4 class="name" id="submitSignUp"><span class="type-signature">(async) </span>submitSignUp<span class="signature">(event)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="submitSignUp"><span class="type-signature">(async) </span>submitSignUp<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -3078,7 +3392,9 @@ swaps out the password-type for a text-type or vice versa.
 
 <div class="description">
     try to submit sign-up-form/use html form-validation.
-if everything is valid, animate the success-overlay and close popup after the animation is done
+if everything is valid, try to createUser().
+If createUser() is possible, animate the success-overlay and close popup after the animation is done.
+Otherwise warn, that user-account is allready existing.
 </div>
 
 
@@ -3087,55 +3403,6 @@ if everything is valid, animate the success-overlay and close popup after the an
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>event</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">event</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -3171,7 +3438,7 @@ if everything is valid, animate the success-overlay and close popup after the an
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line208">line 208</a>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line217">line 217</a>
     </li></ul></dd>
     
 
@@ -3309,7 +3576,7 @@ calls the required function to set the correct eye-icon on input-field.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line87">line 87</a>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line95">line 95</a>
     </li></ul></dd>
     
 
@@ -3398,7 +3665,91 @@ disables or enables the submit-button based on the new value
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="account.js.html">account.js</a>, <a href="account.js.html#line71">line 71</a>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line79">line 79</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toggleRemember"><span class="type-signature"></span>toggleRemember<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="account.js.html">account.js</a>, <a href="account.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -3532,13 +3883,13 @@ disables or enables the submit-button based on the new value
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareLoginInformation">compareLoginInformation</a></li><li><a href="global.html#comparePasswords">comparePasswords</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordMissmatch">passwordMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#updateMenu">updateMenu</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareLoginInformation">compareLoginInformation</a></li><li><a href="global.html#comparePasswords">comparePasswords</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordMissmatch">passwordMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#readUserdata">readUserdata</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#updateMenu">updateMenu</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu Jun 27 2024 23:21:11 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Fri Jun 28 2024 15:35:51 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

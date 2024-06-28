@@ -29,8 +29,17 @@
             <pre class="prettyprint source linenums"><code>let privacyCheckboxActive = false;
 let passwordCreateInputHidden = true;
 let passwordValidationInputHidden = true;
+let passwordInputHidden = true;
+let rememberMe = false;
+
 const BASE_URL = 'https://remotestorage-3b1e6-default-rtdb.europe-west1.firebasedatabase.app/';
 
+/**
+ * 
+ */
+function toggleRemember() {
+    rememberMe = !rememberMe;
+}
 
 /**
  * Submits a POST-Query to Firebase
@@ -46,33 +55,32 @@ async function postData(path = "", data = {}) {
         },
         body: JSON.stringify(data)
     });
-    return responseToJason = await response.json();
+    return await response.json();
 }
 
 /**
  * Connects to fire-base to create a new user-accounts
  */
 async function createUser() {
-    const user = document.getElementById('name').value;
     const email = document.getElementById('email').value;
-    const password = document.getElementById('password-create').value;
-    await postData('accounts', { 'name': user, 'email': email, 'password': password });
+    if (!await accountExists(email)) {
+        const user = document.getElementById('name').value;
+        const password = document.getElementById('password-create').value;
+        await postData('accounts', { 'name': user, 'email': email, 'password': password });
+        return true;
+    } else {
+        return false;
+    }
 }
 
-/**
- * responseToJason is containing every user. It's iterated by every userKeyArray-Index to  
- * compare Login-Form-Information with provided server-information.
- * If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
- * @param {string} path 
- */
-async function login(path = 'accounts') {
+
+async function login() {
     const account = document.getElementById('email-login').value.toLowerCase();
     const password = document.getElementById('password-login').value;
-    const response = await fetch(BASE_URL + path + '.json');
-    let responseToJason = await response.json();
-    let userKeysArray = Object.keys(responseToJason);
+    const userData = await readUserdata('accounts');
+    let userKeysArray = Object.keys(userData);
     for (let i = 0; i &lt; userKeysArray.length; i++) {
-        if (compareLoginInformation(account, password, responseToJason, userKeysArray[i])) {
+        if (compareLoginInformation(account, password, userData, userKeysArray[i])) {
             window.location.replace("./summary.html");
             break;
         }
@@ -230,25 +238,40 @@ function passwordMissmatch(password, validationPassword) {
 
 /**
  * try to submit sign-up-form/use html form-validation.
- * if everything is valid, animate the success-overlay and close popup after the animation is done
- * @param {event} event 
+ * if everything is valid, try to createUser().
+ * If createUser() is possible, animate the success-overlay and close popup after the animation is done.
+ * Otherwise warn, that user-account is allready existing.
  */
-async function submitSignUp(event) {
-    event.preventDefault();
+async function submitSignUp() {
     if (document.getElementById('sign-up-form').checkValidity()) {
-        try {
-            await createUser();
-            document.getElementById('sign-up-confirm').classList.add('popup-msg--fade-in');
-            document.getElementById('msg-wrapper').classList.add('msg-wrapper--z-push');
-            setTimeout(() => { closeSignUp(); }, 1000);
-        } catch (error) {
-            console.error(error);
-        }
+        if (await createUser()) {
+            signUpAnimation(true, 'You Signed Up successfully');
+        } else {
+            signUpAnimation(false, 'This Account allready exists');
+        };
     } else {
         document.getElementById('sign-up-form').reportValidity();
     }
 }
 
+/**
+ * Fade-In of popup-msg
+ * @param {boolean} success - true, if a new account could be created
+ * @param {string} msg - Content of popup
+ */
+function signUpAnimation(success, msg) {
+    const signUp = document.getElementById('sign-up-confirm').classList;
+    const msgWrapper = document.getElementById('msg-wrapper').classList;
+    document.getElementById('popup-msg-text').innerHTML = msg;
+    signUp.add('popup-msg--fade-in');
+    msgWrapper.add('msg-wrapper--z-push');
+
+    setTimeout(() => {
+        success &amp;&amp; closeSignUp();
+        signUp.remove('popup-msg--fade-in');
+        msgWrapper.remove('msg-wrapper--z-push');
+    }, success ? 1000 : 2000);
+}
 
 /**
  * Resets every input.value of sign-up-dialog. 
@@ -286,13 +309,13 @@ function openSignUp() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareLoginInformation">compareLoginInformation</a></li><li><a href="global.html#comparePasswords">comparePasswords</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordMissmatch">passwordMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#updateMenu">updateMenu</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareLoginInformation">compareLoginInformation</a></li><li><a href="global.html#comparePasswords">comparePasswords</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordMissmatch">passwordMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#readUserdata">readUserdata</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#updateMenu">updateMenu</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu Jun 27 2024 23:21:11 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Fri Jun 28 2024 15:35:51 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>
