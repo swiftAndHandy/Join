@@ -12,11 +12,11 @@
   </head>
   <body onload="includeHTML()">
     <div w3-include-html="./assets/templates/menu-bar.html"></div>
+    <div class="max-width">
     <div class="board">
       <div class="board-headline">
         <div class="board-headline-container">
           <h1>Board</h1>
-          
           <div class="add-cross-btn" onclick="">
             <img src="./assets/img/icons/add_cross.svg" alt="" />
           </div>
@@ -156,7 +156,7 @@
             </article>
         </div>
           </section>
-          <section class="section-container pb-100">
+          <section class="section-container">
             <div class="section-headline ">
               <h2>Done</h2>
             </div>
@@ -193,7 +193,9 @@
         </div>
           </section>
       </main>
+    </div>
       <div class="placeholder-footer"></div> <!-- placeholder for footer because to set the right height so the content cant flow under-->
     </div>
+
   </body>
 </html>
