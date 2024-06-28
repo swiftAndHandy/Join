@@ -7,11 +7,13 @@ let rememberMe = false;
 const BASE_URL = 'https://remotestorage-3b1e6-default-rtdb.europe-west1.firebasedatabase.app/';
 
 /**
- * 
+ * Toggles the remember me state.
+ * This function inverses the value of the global variable `rememberMe`.
  */
 function toggleRemember() {
     rememberMe = !rememberMe;
 }
+
 
 /**
  * Submits a POST-Query to Firebase
@@ -30,11 +32,17 @@ async function postData(path = "", data = {}) {
     return await response.json();
 }
 
+
 /**
- * Connects to fire-base to create a new user-accounts
+ * Attempts to create a new user account with the provided email, name, and password.
+ * If the email does not already exist, a new user is created and the data is posted.
+ * If the email already exists, the function returns false.
+ *
+ * @returns {Promise<boolean>} - A promise that resolves to true if the user was created successfully,
+ *                               or false if the email already exists.
  */
 async function createUser() {
-    const email = document.getElementById('email').value;
+    const email = document.getElementById('email').value.toLowerCase();
     if (!await accountExists(email)) {
         const user = document.getElementById('name').value;
         const password = document.getElementById('password-create').value;
@@ -46,29 +54,22 @@ async function createUser() {
 }
 
 
+/**
+ * Attempts to log in a user with the provided email and password.
+ * If the login is successful, the user is redirected to the summary page.
+ * If the login fails, a warning is logged to the console.
+ *
+ * @returns {Promise<void>} - A promise that resolves when the login attempt is complete.
+ */
 async function login() {
     const account = document.getElementById('email-login').value.toLowerCase();
     const password = document.getElementById('password-login').value;
-    const userData = await readUserdata('accounts');
-    let userKeysArray = Object.keys(userData);
-    for (let i = 0; i < userKeysArray.length; i++) {
-        if (compareLoginInformation(account, password, userData, userKeysArray[i])) {
-            window.location.replace("./summary.html");
-            break;
-        }
+    const myAccount = await accountExists(account, password);
+    if (myAccount) {
+        window.location.replace("./summary.html");
+    } else {
+        console.warn('No match!');
     }
-}
-
-
-/**
- * @param {string} account - documentId.value
- * @param {string} password - documentId.value
- * @param {json} json 
- * @param {*} key 
- * @returns {boolean} - returns true or false as condition for an if-statement
- */
-function compareLoginInformation(account, password, json, key) {
-    return account === json[key]['email'] && password === json[key]['password'];
 }
 
 

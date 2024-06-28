@@ -27,16 +27,21 @@ function stopPropagation(event) {
 };
 
 /**
- * check email for existance of an account. Try is used to prevent a crash on empty-databases.
- * @param {string} - The email address to check for an existing account.    
-  * @returns {(Object|boolean)} - Returns the user entry object if the email exists, or false if the email does not exist or an error occurs.
+ * Checks if a user account with the given email address and optional password exists.
+ * @param {string} email - The email address to check for an existing account.
+ * @param {string} [password=false] - The password to check for. If no password is provided, only the email is checked.
+ * @returns {(Object|boolean)} - Returns the user object if an account with the given email (and optional password) exists,
+ *                               or false if no account is found or an error occurs.
  */
-async function accountExists(email) {
+async function accountExists(email, password = false) {
     try {
         const output = await readUserdata('accounts');
         const outputArray = Object.entries(output);
-        const userEntry = outputArray.find(entry => entry[1]['email'] === email);
-        return userEntry;
+        if (!password) {
+            return outputArray.find(entry => entry[1]['email'] === email.toLowerCase());
+        } else {
+            return outputArray.find(entry => entry[1]['email'] === email.toLowerCase() && entry[1]['password'] === password);
+        }
     } catch (error) {
         return false;
     }
