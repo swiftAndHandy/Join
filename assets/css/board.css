@@ -49,7 +49,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .board-headline-container h1 {
-  font-size: clamp(47px, 2vh, 61px);
+  font-size: clamp(47px, 7vh, 61px);
 }
 
 .search-row {
@@ -345,6 +345,11 @@ h2 {
     }
 }
 
+@media(max-height: 1020px) {
+    .board {
+        margin-top: 128px;
+    }
+}
 /* 
 Regular Board-Klasses 
 */
