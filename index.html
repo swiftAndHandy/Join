@@ -15,7 +15,7 @@
     <script src="./assets/js/account.js"></script>
 </head>
 
-<body onload="init();">
+<body onload="initIndex();">
     <section id="startscreen" class="startscreen">
         <img id="logo-animated-final" src="./assets/img/icons/join_logo_header.svg" alt="Join-Logo">
         <img id="logo-animated-fade" class="logo--fade" src="./assets/img/icons/join_logo.svg" alt="Join-Logo">
@@ -36,7 +36,7 @@
                     <h1 class="title">Log in</h1>
                     <div class="horizontal-line"></div>
                 </div>
-                <form id="login-form" class="login-form" onsubmit="return submitSignUp(event);">
+                <form id="login-form" class="login-form" onsubmit="return false;">
                     <div class="input-wrapper">
                         <div class="input-item ignore-width">
                             <img src="./assets/img/icons/mail.svg" alt="" class="input-icons">

@@ -155,6 +155,7 @@
     z-index: -1;
     background-color: #2A364710;
     transition: all 0.8s ease-in-out;
+    overflow: hidden;
 }
 
 .msg-wrapper--z-push {

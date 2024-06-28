@@ -12,7 +12,7 @@ let rememberMe = false;
 /**
  * Initialising of index.html by starting animation on mobile-devices.
  */
-function init() {
+function initIndex() {
     const startscreen = document.getElementById('startscreen');
     startscreen.classList.add('startscreen--animate');
     setTimeout(() => {

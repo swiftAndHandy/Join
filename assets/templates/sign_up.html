@@ -4,7 +4,7 @@
         <h1 class="title">Sign up</h1>
         <div class="horizontal-line"></div>
     </div>
-    <form id="sign-up-form" class="registration-form" onsubmit="return submitSignUp(event);">
+    <form id="sign-up-form" class="registration-form" onsubmit="return false;"">
         <div class="registration-data">
             <div class="input-item">
                 <img src="./assets/img/icons/person-gray.svg" alt="" class="input-icons">
@@ -35,7 +35,7 @@
             <label for="privacy">I accept the <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Privacy policy</a></label>
         </div>
         <div class="button-wrapper">
-            <button id="submit-btn" class="form-btn disabled" disabled>Sign Up</button>
+            <button id="submit-btn" class="form-btn disabled" disabled onclick="submitSignUp()">Sign Up</button>
         </div>
     </form>
 </div>
