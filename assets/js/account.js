@@ -1,8 +1,17 @@
 let privacyCheckboxActive = false;
 let passwordCreateInputHidden = true;
 let passwordValidationInputHidden = true;
+let passwordInputHidden = true;
+let rememberMe = false;
+
 const BASE_URL = 'https://remotestorage-3b1e6-default-rtdb.europe-west1.firebasedatabase.app/';
 
+/**
+ * 
+ */
+function toggleRemember() {
+    rememberMe = !rememberMe;
+}
 
 /**
  * Submits a POST-Query to Firebase
@@ -36,35 +45,11 @@ async function createUser() {
     }
 }
 
-async function accountExists(email) {
-    try {
-        const output = await readUserdata();
-        const outputArray = Object.entries(output);
-        const userEntry = outputArray.find(entry => entry[1]['email'] === email);
-        return userEntry;
-    } catch (error) {
-        return false;
-    }
-}
-
-/**
- * responseToJason is containing every user. It's iterated by every userKeyArray-Index to  
- * compare Login-Form-Information with provided server-information.
- * If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
- * @param {string} path 
- */
-async function readUserdata(path = 'accounts') {
-    const response = await fetch(BASE_URL + path + '.json');
-    const responseToJason = await response.json();
-    return responseToJason;
-
-}
-
 
 async function login() {
     const account = document.getElementById('email-login').value.toLowerCase();
     const password = document.getElementById('password-login').value;
-    const userData = readUserdata()
+    const userData = await readUserdata('accounts');
     let userKeysArray = Object.keys(userData);
     for (let i = 0; i < userKeysArray.length; i++) {
         if (compareLoginInformation(account, password, userData, userKeysArray[i])) {
@@ -225,33 +210,40 @@ function passwordMissmatch(password, validationPassword) {
 
 /**
  * try to submit sign-up-form/use html form-validation.
- * if everything is valid, animate the success-overlay and close popup after the animation is done
- * @param {event} event 
+ * if everything is valid, try to createUser().
+ * If createUser() is possible, animate the success-overlay and close popup after the animation is done.
+ * Otherwise warn, that user-account is allready existing.
  */
 async function submitSignUp() {
     if (document.getElementById('sign-up-form').checkValidity()) {
         if (await createUser()) {
-            signUpAnimation();
+            signUpAnimation(true, 'You Signed Up successfully');
         } else {
-            console.warn('Dieser Account existiert bereits!');
+            signUpAnimation(false, 'This Account allready exists');
         };
     } else {
         document.getElementById('sign-up-form').reportValidity();
     }
 }
 
-function signUpAnimation() {
+/**
+ * Fade-In of popup-msg
+ * @param {boolean} success - true, if a new account could be created
+ * @param {string} msg - Content of popup
+ */
+function signUpAnimation(success, msg) {
     const signUp = document.getElementById('sign-up-confirm').classList;
-    signUp.add('popup-msg--fade-in');
     const msgWrapper = document.getElementById('msg-wrapper').classList;
+    document.getElementById('popup-msg-text').innerHTML = msg;
+    signUp.add('popup-msg--fade-in');
     msgWrapper.add('msg-wrapper--z-push');
+
     setTimeout(() => {
-        closeSignUp();
+        success && closeSignUp();
         signUp.remove('popup-msg--fade-in');
         msgWrapper.remove('msg-wrapper--z-push');
-    }, 1000);
+    }, success ? 1000 : 2000);
 }
-
 
 /**
  * Resets every input.value of sign-up-dialog. 
