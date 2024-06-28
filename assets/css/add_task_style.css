@@ -304,7 +304,7 @@ select:focus {
   }
 }
 
-@media (max-width: 1415px) and (min-width: 801px) {
+@media (max-width: 1415px) and (min-width: 802px) {
   .content-wrapper {
     margin-left: 280px;
   }
@@ -349,7 +349,7 @@ select:focus {
   }
 }
 
-@media (max-width: 1120px) and (min-width: 801px) {
+@media (max-width: 1120px) and (min-width: 802px) {
   .create-task-panel {
     top: 825px;
   }
