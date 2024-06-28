@@ -3,6 +3,35 @@
 /* 
 Regular Board-Klasses
 */
+
+:root {
+  --sb-size: 2px;
+  --sb-track-color: #f1f1f1;
+  --sb-thumb-color: #888;
+  --sb-border-radius: 10px;
+}
+
+/* Scrollbar für das body-Element */
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: var(--sb-border-radius);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: var(--sb-border-radius);
+}
+
+/* Optional: Scrollbar-Farbe für Firefox */
+body {
+  scrollbar-width: var(--sb-size);
+  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+
 input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
     appearance: none;
@@ -146,7 +175,8 @@ h2 {
     width: 396px;
     height: 292px;
     display: flex;
-    overflow-y: scroll;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 .sub-task-container {
