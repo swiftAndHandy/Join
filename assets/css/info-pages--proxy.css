@@ -101,16 +101,13 @@ main {
 
 
 /* Change to Desktop-Resulution*/
-@media (min-width: 701px) {
-    /* .header__placeholder {
-        left: 232px;
-        height: 96px;
-    } */
+@media (min-width: 1160px) {
 
     main {
         /* margin-top: 206px; */
         margin-left: 232px;
         margin-bottom: 80px;
+        max-width: calc(1920px - 232px);
     }
 
     .content {

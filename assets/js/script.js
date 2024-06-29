@@ -55,7 +55,5 @@ async function accountExists(email, password = false) {
  */
 async function readUserdata(path) {
     const response = await fetch(BASE_URL + path + '.json');
-    const responseToJason = await response.json();
-    return responseToJason;
-
+    return await response.json();
 }

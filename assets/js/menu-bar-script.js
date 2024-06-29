@@ -1,3 +1,9 @@
+/**
+ * let for testreasons. Could become a const later on - related on the method we will use to prove a user is logged in
+ * required to turn off side-menu-links 
+ */
+let loggedIn = true;
+
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
@@ -39,7 +45,19 @@ function updateMenu() {
         const menuitem = document.getElementById(`${currentlyOpen}-link`);
         menuitem.href = '#';
         menuitem.classList.add('active');
+        !loggedIn && hideMenu();
     }
+}
+
+
+/**
+ * Hides the menu bars by adding the 'd-none' class to the menu elements.
+ * This function targets the elements with the IDs 'menu-bar-two' and 'menu-bar-mobile',
+ * and adds the 'd-none' class to both, making them hidden.
+ */
+function hideMenu() {
+    document.getElementById('menu-bar-two').classList.add('d-none');
+    document.getElementById('menu-bar-mobile').classList.add('d-none');
 }
 
 /**
