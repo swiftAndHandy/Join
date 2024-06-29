@@ -38,16 +38,20 @@ async function postData(path = "", data = {}) {
  * If the email does not already exist, a new user is created and the data is posted.
  * If the email already exists, the function returns false.
  *
- * @returns {Promise<boolean>} - A promise that resolves to true if the user was created successfully,
+ * @returns {Promise<boolean>|string} - A promise that resolves to true if the user was created successfully,
  *                               or false if the email already exists.
  */
 async function createUser() {
     const email = document.getElementById('email').value.toLowerCase();
+    const password = document.getElementById('password-create');
+    const passwordValidation = document.getElementById('password-validation');
+    const user = document.getElementById('name').value;
+    
     if (!await accountExists(email)) {
-        const user = document.getElementById('name').value;
-        const password = document.getElementById('password-create').value;
-        await postData('accounts', { 'name': user, 'email': email, 'password': password });
-        return true;
+        if (!passwordInputMissmatch(password, passwordValidation)) {
+            await postData('accounts', { 'name': user, 'email': email, 'password': password.value });
+            return true;
+        } else { return 'missmatch'; }
     } else {
         return false;
     }
@@ -67,7 +71,7 @@ async function login() {
     const myAccount = await accountExists(account, password);
     if (myAccount) {
         window.location.replace("./summary.html");
-    } else if (!await accountExists(account)){
+    } else if (!await accountExists(account)) {
         document.getElementById('missmatch-mail').classList.remove('d-none');
         document.getElementById('missmatch-pw').classList.add('d-none');
     } else {
@@ -172,7 +176,7 @@ function passwordInputIcon(id) {
     let targetImage = document.getElementById(`password-${id}-img`);
     if (targetInput.value) {
         targetImage.classList.add('pointer');
-        id == 'create' ? setPasswordCreateDesign() : id == 'validate' ? setPasswordValidationDesign() : setPasswordDesign();
+        id == 'create' ? setPasswordCreateDesign() : id == 'validation' ? setPasswordValidationDesign() : setPasswordDesign();
         targetImage.setAttribute('onclick', `togglePasswordDesign('${id}')`);
     } else {
         targetImage.classList.remove('pointer');
@@ -221,7 +225,10 @@ function passwordInputMissmatch(password, validationPassword) {
  */
 async function submitSignUp() {
     if (document.getElementById('sign-up-form').checkValidity()) {
-        if (await createUser()) {
+        const status = await createUser();
+        if (status == 'missmatch') {
+            signUpAnimation(false, `Passwords don't match!`);
+        } else if (status) {
             signUpAnimation(true, 'You Signed Up successfully');
         } else {
             signUpAnimation(false, 'This Account allready exists');
@@ -242,12 +249,34 @@ function signUpAnimation(success, msg) {
     document.getElementById('popup-msg-text').innerHTML = msg;
     signUp.add('popup-msg--fade-in');
     msgWrapper.add('msg-wrapper--z-push');
+    success ? successAnimation(signUp, msgWrapper) : failureAnimation(signUp, msgWrapper);
+}
 
+/**
+ * Triggers a success animation by removing specified classes from the target elements after a delay.
+ * @param {DOMTokenList} target - The target element's class list from which the 'popup-msg--fade-in' class will be removed.
+ * @param {DOMTokenList} wrapper - The wrapper element's class list from which the 'msg-wrapper--z-push' class will be removed.
+ */
+function successAnimation(target, wrapper) {
     setTimeout(() => {
-        success && closeSignUp();
-        signUp.remove('popup-msg--fade-in');
-        msgWrapper.remove('msg-wrapper--z-push');
-    }, success ? 1000 : 2000);
+        closeSignUp();
+        target.remove('popup-msg--fade-in');
+        wrapper.remove('msg-wrapper--z-push');
+    }, 1000);
+}
+
+/**
+ * Triggers a failure animation by removing specified classes from the target elements after a delay.
+ * @param {DOMTokenList} target - The target element's class list from which the 'popup-msg--fade-in' class will be removed.
+ * @param {DOMTokenList} wrapper - The wrapper element's class list from which the 'msg-wrapper--z-push' class will be removed.
+ */
+function failureAnimation(target, wrapper) {
+    setTimeout(() => {
+        target.remove('popup-msg--fade-in');
+        setTimeout(() => {
+            wrapper.remove('msg-wrapper--z-push');
+        }, 300);
+    }, 2000);
 }
 
 /**
@@ -261,12 +290,12 @@ function closeSignUp() {
     privacyCheckboxActive = false;
     passwordCreateInputHidden = true;
     passwordValidationInputHidden = true;
-    document.getElementById('name').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('password-create').value = '';
-    document.getElementById('password-validation').value = '';
+    ['name', 'email', 'password-create', 'password-validation'].forEach(id => document.getElementById(id).value = '');
     passwordInputIcon('create');
     passwordInputIcon('validation');
+    privacyCheckboxActive = true;
+    togglePrivacy();
+    document.getElementById('privacy').checked = false;
     compareRegistrationPasswords();
 }
 

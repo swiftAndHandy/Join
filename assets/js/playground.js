@@ -19,7 +19,8 @@ async function deleteData(path = "") {
 }
 
 async function putData(path = "", data = {}) {
-    let response = await fetch(BASE_URL + path + '.json', {
+    const encodedPath = encodeURIComponent(path);
+    let response = await fetch(BASE_URL + encodedPath + '.json', {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",

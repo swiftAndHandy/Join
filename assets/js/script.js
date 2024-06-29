@@ -26,6 +26,19 @@ function stopPropagation(event) {
     event.stopPropagation();
 };
 
+
+
+async function putData(path = "", data = {}) {
+    let response = await fetch(BASE_URL + path + '.json', {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+    });
+    return await response.json();
+}
+
 /**
  * Checks if a user account with the given email address and optional password exists.
  * @param {string} email - The email address to check for an existing account.
