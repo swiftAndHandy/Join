@@ -37,7 +37,7 @@ async function accountExists(email, password = false) {
     try {
         const output = await readUserdata('accounts');
         const outputArray = Object.entries(output);
-        if (!password) {
+        if (!password && password !== "") {
             return outputArray.find(entry => entry[1]['email'] === email.toLowerCase());
         } else {
             return outputArray.find(entry => entry[1]['email'] === email.toLowerCase() && entry[1]['password'] === password);

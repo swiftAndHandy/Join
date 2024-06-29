@@ -43,12 +43,14 @@
                             <input type="email" id="email-login" name="email" placeholder="Email"
                                 autocomplete="username" required>
                         </div>
+                        <span class="error-msg d-none" id="missmatch-mail">Ups! your email is wrong!</span>
                         <div class="input-item ignore-width">
                             <img src="./assets/img/icons/lock.svg" alt="" id="password-login-img" class="input-icons">
                             <input type="password" id="password-login" name="password" placeholder="Password"
                                 autocomplete="current-password" onkeydown="passwordInputIcon('login')"
                                 onkeyup="passwordInputIcon('login');" required>
                         </div>
+                        <span class="error-msg d-none" id="missmatch-pw">Ups! your password is wrong!</span>
                         <div class="remember-checkbox">
                             <input type="checkbox" class="checkbox" id="remember" name="remember-checkbox" onchange="toggleRemember()">
                             <label for="remember">Remember me</label>

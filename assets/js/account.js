@@ -67,8 +67,12 @@ async function login() {
     const myAccount = await accountExists(account, password);
     if (myAccount) {
         window.location.replace("./summary.html");
+    } else if (!await accountExists(account)){
+        document.getElementById('missmatch-mail').classList.remove('d-none');
+        document.getElementById('missmatch-pw').classList.add('d-none');
     } else {
-        console.warn('No match!');
+        document.getElementById('missmatch-mail').classList.add('d-none');
+        document.getElementById('missmatch-pw').classList.remove('d-none');
     }
 }
 
@@ -182,11 +186,11 @@ function passwordInputIcon(id) {
  * compares both password fields during sign-up. 
  * comparsion starts, when the validation field gets a value
  */
-function comparePasswords() {
+function compareRegistrationPasswords() {
     let create = document.getElementById('password-create');
     let validation = document.getElementById('password-validation');
     let showError = document.getElementById('error-msg');
-    if (passwordMissmatch(create, validation)) {
+    if (passwordInputMissmatch(create, validation)) {
         showError.classList.remove('d-none');
         create.classList.add('error'); validation.classList.add('error');
         document.getElementById('password-check').classList.add('password-check');
@@ -204,7 +208,7 @@ function comparePasswords() {
  * @param {Element} validationPassword 
  * @returns true or false<br><br>
  */
-function passwordMissmatch(password, validationPassword) {
+function passwordInputMissmatch(password, validationPassword) {
     return validationPassword.value && password.value != validationPassword.value;
 }
 
@@ -263,7 +267,7 @@ function closeSignUp() {
     document.getElementById('password-validation').value = '';
     passwordInputIcon('create');
     passwordInputIcon('validation');
-    comparePasswords();
+    compareRegistrationPasswords();
 }
 
 /**
