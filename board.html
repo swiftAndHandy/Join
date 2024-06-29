@@ -5,210 +5,366 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/assets/js/menu-bar-script.js"></script>
     <script src="./assets/js/board.js"></script>
+    <link rel="stylesheet" href="./assets/css/add_task_style_dialog.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/menu-bar.css" />
     <link rel="stylesheet" href="./assets/css/fonts.css" />
     <link rel="stylesheet" href="./assets/css/board.css" />
-    <link rel="icon" type="image/svg+xml" href="./assets/img/icons/favicon.svg">
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="./assets/img/icons/favicon.svg"
+    />
     <!-- <link rel="icon" type="image/x-icon" href="./assets/img/icons/favicon.svg"> -->
-    <link rel="icon" type="image/png" sizes="48x48" href="./assets/img/icons/favicon-48x48.png">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="./assets/img/icons/favicon-48x48.png"
+    />
     <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" sizes="152x152" href="./assets/img/icons/favicon-152x152.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="./assets/img/icons/favicon-167x167.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/icons/favicon-180x180.png">
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="./assets/img/icons/favicon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="167x167"
+      href="./assets/img/icons/favicon-167x167.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/img/icons/favicon-180x180.png"
+    />
     <!-- Safari Pinned Tab -->
-    <link rel="mask-icon" href="./assets/img/icons/favicon.svg" color="#5bbad5">
+    <link
+      rel="mask-icon"
+      href="./assets/img/icons/favicon.svg"
+      color="#5bbad5"
+    />
     <title>Board</title>
   </head>
   <body onload="includeHTML()">
-    <div w3-include-html="./assets/templates/menu-bar.html"></div>
-    <div class="max-width">
-    <div class="board">
-      <div class="board-headline">
-        <div class="board-headline-container">
-          <h1>Board</h1>
-          <div class="add-cross-btn" onclick="">
-            <img src="./assets/img/icons/add_cross.svg" alt="" />
-          </div>
-        </div>
-        <div class="search-row">
-          <input
-            class="input-img"
-            type="search"
-            placeholder="Find Task "
-            required
-            oninput=""
-          />
-          <button class="add-task-btn">
-            <span>Add task</span>
-            <img src="./assets/img/icons/add_cross.svg" alt="add-cross">
-          </button>
-        </div>
-        
-      </div>
-      <main class="board-content">
-        <section class="section-container">
-          <div class="section-headline">
-            <h2>To do</h2>
-            <button class="add-cross-btn-small">
-              <img src="./assets/img/icons/add_cross_blue.svg" alt="cross" />
-            </button>
-          </div>
-          <div class="task-fields">
-            <span>No tasks To do</span>
-          </div>
-          <div class="tasks-container">
-            
+    <div class="body-mobile">
+      
+      <div w3-include-html="./assets/templates/menu-bar.html"></div>
+      
+        <div class="board">
+          <div class="board-headline">
+            <div class="board-headline-container">
+              <h1>Board</h1>
+              <div class="add-cross-btn" onclick="">
+                <img src="./assets/img/icons/add_cross.svg" alt="" />
+              </div>
             </div>
-        </section>
-        <section class="section-container">
-          <div class="section-headline">
-            <h2>In progress</h2>
-            <button class="add-cross-btn-small">
-              <img src="./assets/img/icons/add_cross_blue.svg" alt="cross" />
-            </button>
-          </div>
-          <div class="tasks-container">
-            <article class="task-card-container">
-                <div class="task-card-content">
-                  <div class="task-group-bubble">
-                    <span>User Story</span>
-                  </div>
-                  <div class="task-card-header mt-24">
-                    <h2>Kochwelt Page & Recipe Recommander</h2>
-                    <span class="task-sub-headline"
-                      >Build start page with recipe recommendation...</span
-                    >
-                  </div>
-                  <div class="sub-task-container mt-24">
-                    <div class="sub-task-progress-bar">
-                      <div id="progress-length"></div>
-                    </div>
-                    <span>1/2 Subtasks</span>
-                  </div>
-                  <div class="assigned-user mt-24">
-                    <div class="profile-pictures">
-                        <div class="profile-cricle">AB</div>
-                        <div class="profile-cricle">AC</div>
-                        <div class="profile-cricle">AD</div>
-                    </div>
-                    <div>
-                      <img src="./assets/img/icons/priority_medium.svg" alt="" />
-                    </div>
-                  </div>
-                </div>
-              </article>
-            <article class="task-card-container">
-                <div class="task-card-content">
-                  <div class="task-group-bubble">
-                    <span>User Story</span>
-                  </div>
-                  <div class="task-card-header mt-24">
-                    <h2>Kochwelt Page & Recipe Recommander</h2>
-                    <span class="task-sub-headline"
-                      >Build start page with recipe recommendation...</span
-                    >
-                  </div>
-                  <div class="sub-task-container mt-24">
-                    <div class="sub-task-progress-bar">
-                      <div id="progress-length"></div>
-                    </div>
-                    <span>1/2 Subtasks</span>
-                  </div>
-                  <div class="assigned-user mt-24">
-                    <div class="profile-pictures">
-                        <div class="profile-cricle">AB</div>
-                        <div class="profile-cricle">AC</div>
-                        <div class="profile-cricle">AD</div>
-                    </div>
-                    <div>
-                      <img src="./assets/img/icons/priority_medium.svg" alt="" />
-                    </div>
-                  </div>
-                </div>
-              </article>
-          
-        </div>
-        </section>
-        <section class="section-container">
-            <div class="section-headline">
-              <h2>Await feedback</h2>
-              <button class="add-cross-btn-small">
-                <img src="./assets/img/icons/add_cross_blue.svg" alt="cross" />
+            <div class="search-row">
+              <input
+                class="input-img"
+                type="search"
+                placeholder="Find Task "
+                required
+                oninput=""
+              />
+              <button class="add-task-btn">
+                <span>Add task</span>
+                <img src="./assets/img/icons/add_cross.svg" alt="add-cross" />
               </button>
             </div>
-            <div class="tasks-container">
-            <article class="task-card-container">
-              <div class="task-card-content">
-                <div class="task-group-bubble">
-                  <span>User Story</span>
-                </div>
-                <div class="task-card-header mt-24">
-                  <h2>Kochwelt Page & Recipe Recommander</h2>
-                  <span class="task-sub-headline"
-                    >Build start page with recipe recommendation...</span
-                  >
-                </div>
-                <div class="sub-task-container mt-24">
-                  <div class="sub-task-progress-bar">
-                    <div id="progress-length"></div>
-                  </div>
-                  <span>1/2 Subtasks</span>
-                </div>
-                <div class="assigned-user mt-24">
-                  <div class="profile-pictures">
-                      <div class="profile-cricle">AB</div>
-                      <div class="profile-cricle">AC</div>
-                      <div class="profile-cricle">AD</div>
-                  </div>
-                  <div>
-                    <img src="./assets/img/icons/priority_medium.svg" alt="" />
-                  </div>
-                </div>
+          </div>
+          <main class="board-content">
+            <section class="section-container">
+              <div class="section-headline">
+                <h2>To do</h2>
+                <button class="add-cross-btn-small">
+                  <img
+                    src="./assets/img/icons/add_cross_blue.svg"
+                    alt="cross"
+                  />
+                </button>
               </div>
-            </article>
-        </div>
-          </section>
-          <section class="section-container">
-            <div class="section-headline ">
-              <h2>Done</h2>
-            </div>
-            <div class="tasks-container">
-            <article class="task-card-container">
-              <div class="task-card-content">
-                <div class="task-group-bubble">
-                  <span>User Story</span>
-                </div>
-                <div class="task-card-header mt-24">
-                  <h2>Kochwelt Page & Recipe Recommander</h2>
-                  <span class="task-sub-headline"
-                    >Build start page with recipe recommendation...</span
-                  >
-                </div>
-                <div class="sub-task-container mt-24">
-                  <div class="sub-task-progress-bar">
-                    <div id="progress-length"></div>
-                  </div>
-                  <span>1/2 Subtasks</span>
-                </div>
-                <div class="assigned-user mt-24">
-                  <div class="profile-pictures">
-                      <div class="profile-cricle">AB</div>
-                      <div class="profile-cricle">AC</div>
-                      <div class="profile-cricle">AD</div>
-                  </div>
-                  <div>
-                    <img src="./assets/img/icons/priority_medium.svg" alt="" />
-                  </div>
-                </div>
+              <div class="task-fields">
+                <span>No tasks To do</span>
               </div>
-            </article>
+              <div class="tasks-container"></div>
+            </section>
+            <section class="section-container">
+              <div class="section-headline">
+                <h2>In progress</h2>
+                <button class="add-cross-btn-small">
+                  <img
+                    src="./assets/img/icons/add_cross_blue.svg"
+                    alt="cross"
+                  />
+                </button>
+              </div>
+              <div class="tasks-container">
+                <article class="task-card-container">
+                  <div class="task-card-content">
+                    <div class="task-group-bubble">
+                      <span>User Story</span>
+                    </div>
+                    <div class="task-card-header mt-24">
+                      <h2>Kochwelt Page & Recipe Recommander</h2>
+                      <span class="task-sub-headline"
+                        >Build start page with recipe recommendation...</span
+                      >
+                    </div>
+                    <div class="sub-task-container mt-24">
+                      <div class="sub-task-progress-bar">
+                        <div id="progress-length"></div>
+                      </div>
+                      <span>1/2 Subtasks</span>
+                    </div>
+                    <div class="assigned-user mt-24">
+                      <div class="profile-pictures">
+                        <div class="profile-cricle">AB</div>
+                        <div class="profile-cricle">AC</div>
+                        <div class="profile-cricle">AD</div>
+                      </div>
+                      <div>
+                        <img
+                          src="./assets/img/icons/priority_medium.svg"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </article>
+                <article class="task-card-container">
+                  <div class="task-card-content">
+                    <div class="task-group-bubble">
+                      <span>User Story</span>
+                    </div>
+                    <div class="task-card-header mt-24">
+                      <h2>Kochwelt Page & Recipe Recommander</h2>
+                      <span class="task-sub-headline"
+                        >Build start page with recipe recommendation...</span
+                      >
+                    </div>
+                    <div class="sub-task-container mt-24">
+                      <div class="sub-task-progress-bar">
+                        <div id="progress-length"></div>
+                      </div>
+                      <span>1/2 Subtasks</span>
+                    </div>
+                    <div class="assigned-user mt-24">
+                      <div class="profile-pictures">
+                        <div class="profile-cricle">AB</div>
+                        <div class="profile-cricle">AC</div>
+                        <div class="profile-cricle">AD</div>
+                      </div>
+                      <div>
+                        <img
+                          src="./assets/img/icons/priority_medium.svg"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
+            <section class="section-container">
+              <div class="section-headline">
+                <h2>Await feedback</h2>
+                <button class="add-cross-btn-small">
+                  <img
+                    src="./assets/img/icons/add_cross_blue.svg"
+                    alt="cross"
+                  />
+                </button>
+              </div>
+              <div class="tasks-container">
+                <article class="task-card-container">
+                  <div class="task-card-content">
+                    <div class="task-group-bubble">
+                      <span>User Story</span>
+                    </div>
+                    <div class="task-card-header mt-24">
+                      <h2>Kochwelt Page & Recipe Recommander</h2>
+                      <span class="task-sub-headline"
+                        >Build start page with recipe recommendation...</span
+                      >
+                    </div>
+                    <div class="sub-task-container mt-24">
+                      <div class="sub-task-progress-bar">
+                        <div id="progress-length"></div>
+                      </div>
+                      <span>1/2 Subtasks</span>
+                    </div>
+                    <div class="assigned-user mt-24">
+                      <div class="profile-pictures">
+                        <div class="profile-cricle">AB</div>
+                        <div class="profile-cricle">AC</div>
+                        <div class="profile-cricle">AD</div>
+                      </div>
+                      <div>
+                        <img
+                          src="./assets/img/icons/priority_medium.svg"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
+            <section class="section-container">
+              <div class="section-headline">
+                <h2>Done</h2>
+              </div>
+              <div class="tasks-container">
+                <article class="task-card-container">
+                  <div class="task-card-content">
+                    <div class="task-group-bubble">
+                      <span>User Story</span>
+                    </div>
+                    <div class="task-card-header mt-24">
+                      <h2>Kochwelt Page & Recipe Recommander</h2>
+                      <span class="task-sub-headline"
+                        >Build start page with recipe recommendation...</span
+                      >
+                    </div>
+                    <div class="sub-task-container mt-24">
+                      <div class="sub-task-progress-bar">
+                        <div id="progress-length"></div>
+                      </div>
+                      <span>1/2 Subtasks</span>
+                    </div>
+                    <div class="assigned-user mt-24">
+                      <div class="profile-pictures">
+                        <div class="profile-cricle">AB</div>
+                        <div class="profile-cricle">AC</div>
+                        <div class="profile-cricle">AD</div>
+                      </div>
+                      <div>
+                        <img
+                          src="./assets/img/icons/priority_medium.svg"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
+          </main>
         </div>
-          </section>
-      </main>
-    </div>
-      <div class="placeholder-footer"></div> <!-- placeholder for footer because to set the right height so the content cant flow under-->
-    </div>
+        <div class="placeholder-footer"></div>
+        <!-- placeholder for footer because to set the right height so the content cant flow under-->
 
+        <div id="add-task-transition" class="dialog-main-container">
+          <div class="dialog-container">
+            <button id="close-btn" onclick="closeAddTaskPopUp()">
+              <img
+                src="./assets/img/icons/close_black.svg"
+                alt="close-button"
+              />
+            </button>
+            <div class="headline-add-task">
+              <h1>Add Task</h1>
+            </div>
+
+            <main class="add-task-container">
+              <form class="form-add-task">
+                <div class="desktop-split">
+                  <div class="flex-column-inputs mb-32">
+                    <span>Title<span class="red">*</span></span>
+                    <input
+                      required
+                      class="input-standard"
+                      type="text"
+                      placeholder="Enter a title"
+                      name=""
+                      id=""
+                    />
+                  </div>
+                  <div class="flex-column-inputs mb-32">
+                    <span>Description</span>
+                    <textarea
+                      class="description-textarea"
+                      name=""
+                      id=""
+                      placeholder="Enter a Description"
+                    ></textarea>
+                  </div>
+                  <div class="flex-column-inputs mb-32">
+                    <span>Assigned to</span>
+                    <select class="input-standard" id="">
+                      <option value="" disabled selected>
+                        Select contacts to assign
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="desktop-seperator-add-contact"></div>
+                <div class="second-desktop-split">
+                  <div class="flex-column-inputs mb-32">
+                    <span>Due date<span class="red">*</span></span>
+                    <input required class="date-standard" type="date" id="" />
+                  </div>
+                  <div class="prio-container mb-32">
+                    <span>Prio</span>
+                    <div class="prio-content">
+                      <div class="prios">
+                        Urgent
+                        <img src="./assets/img/icons/urgent.svg" alt="Urgent" />
+                      </div>
+                      <div class="prios">
+                        Medium
+                        <img
+                          class="prio-medium"
+                          src="./assets/img/icons/medium.svg"
+                          alt="Urgent"
+                        />
+                      </div>
+                      <div class="prios">
+                        Low
+                        <img src="./assets/img/icons/low.svg" alt="Urgent" />
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex-column-inputs mb-32">
+                      <span>Category<span class="red">*</span></span>
+                      <select required class="input-standard" id="">
+                        <option value="" disabled selected>
+                          Select task category
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="flex-column-inputs mb-32">
+                    <span>Subtasks<span class="red">*</span></span>
+                    <input
+                      class="input-standard"
+                      type="text"
+                      placeholder="Add new subtask"
+                      id=""
+                    />
+                  </div>
+                  <span class="required-text"
+                    ><span class="red">*</span>This field is required</span
+                  >
+                  <div class="desktop-buttons">
+                    <button class="clear-btn">
+                      Clear
+                      <img src="./assets/img/icons/close.svg" alt="" />
+                    </button>
+
+                    <button class="create-task-btn">
+                      Create Task
+                      <img src="./assets/img/icons/check.svg" alt="" />
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </main>
+          </div>
+        </div>
+      </div>
+    
   </body>
 </html>

@@ -31,6 +31,15 @@ body {
   scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
 }
 
+.body-mobile {
+  position: relative;
+  overflow: hidden;
+}
+
+.overflow-all-hidden {
+  overflow: hidden;
+}
+
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   appearance: none;
@@ -125,6 +134,10 @@ h2 {
   align-items: center;
   justify-content: center;
   cursor: default;
+}
+
+.task-fields span {
+  color: #a8a8a8;
 }
 
 .section-container {
@@ -243,8 +256,8 @@ h2 {
 }
 
 .add-task-btn {
-  background-color: #2A3647;
-  border: 1px solid #2A3647;
+  background-color: #2a3647;
+  border: 1px solid #2a3647;
   border-radius: 10px;
   width: 160px;
   height: 48px;
@@ -256,8 +269,6 @@ h2 {
   display: none;
   cursor: pointer;
 }
-
-
 
 @media (min-width: 1380px) and (max-width: 3200px) {
   .board-content {
@@ -343,10 +354,9 @@ h2 {
     gap: 32px;
     margin: 0;
   }
-
 }
 
-@media(min-width: 1159px) and (max-width: 1379px) {
+@media (min-width: 1159px) and (max-width: 1379px) {
   .board {
     margin-left: 232px;
     padding: 0 64px;
@@ -361,15 +371,14 @@ h2 {
     height: 342px;
   }
 }
-@media(min-width: 1379px) and (max-width: 1394px)  {
+@media (min-width: 1379px) and (max-width: 1394px) {
   .board {
     padding: 0 50px;
   }
 }
 
-@media(min-width: 470px) and (max-width: 1158px) {
+@media (min-width: 470px) and (max-width: 1158px) {
   .board {
-   
     padding: 0 32px;
   }
 
@@ -384,9 +393,13 @@ h2 {
 }
 
 @media (min-width: 1919px) {
-  .max-width {
+  .body-mobile {
     max-width: 1920px;
     margin: auto;
+  }
+
+  .dialog-container {
+    left: auto;
   }
 
   .board {
@@ -394,19 +407,25 @@ h2 {
   }
 }
 
-@media(max-height: 1020px) {
+@media (max-height: 1020px) {
   .board {
     margin-top: 128px;
   }
 }
 
-@media(max-width: 322px) {
+@media(max-height: 970px) {
+  .dialog-container {
+    top: 70px;
+  }
+}
+
+@media (max-width: 322px) {
   .search-row input {
     width: 380px;
   }
 }
 
-@media (max-height: 750px) and (max-width:420px) {
+@media (max-height: 750px) and (max-width: 420px) {
   .task-fields {
     width: 380px;
   }
@@ -446,7 +465,7 @@ Detail-View related Classes
   flex-direction: column;
   position: relative;
   max-height: 640px;
-  background-color: #FFF;
+  background-color: #fff;
   box-shadow: 0 0 4px 0 #00000029;
   border-radius: 30px;
   padding: 32px 24px;
@@ -571,7 +590,7 @@ Detail-View related Classes
 }
 
 .delete-link::before {
-  content: '';
+  content: "";
   display: block;
   width: 24px;
   height: 24px;
@@ -593,7 +612,7 @@ Detail-View related Classes
 }
 
 .edit-link::before {
-  content: '';
+  content: "";
   display: block;
   width: 24px;
   height: 24px;

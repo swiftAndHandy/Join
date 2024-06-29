@@ -14,7 +14,7 @@ select {
   overflow-x: hidden;
 }
 
-span {
+.dialog-main-container span {
   font-size: clamp(16px, 2vw, 20px);
   font-weight: 400;
   color: black;
@@ -32,13 +32,23 @@ span {
 
 .dialog-main-container {
   position: absolute;
-  top: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-y: hidden;
+  z-index: 100;
+  transition: all 225ms ease-in-out;
+  transform: translateX(100%);
+  top: 0;
+}
+
+.transition-right {
+  transform: translateX(0);
+}
+
+#close-btn {
+  position: absolute;
+  top: 64px;
+  left: 1044px;
+  border: none;
 }
 
 .dialog-container {
@@ -47,6 +57,8 @@ span {
   background-color: white;
   border-radius: 30px;
   position: relative;
+  left: 160px;
+  top: 92px;
 }
 
 .headline-add-task {
@@ -131,7 +143,7 @@ select:focus {
   display: flex;
   flex-direction: column;
   gap: 18px;
-width: 440px;
+  width: 440px;
 }
 
 .prio-content {
@@ -275,9 +287,9 @@ select {
 }
 
 .required-text {
-    top: 779px;
-    left: 74px;
-    position: absolute;
-    font-size: 16px;
-    font-weight: 400;
+  top: 779px;
+  left: 74px;
+  position: absolute;
+  font-size: 16px;
+  font-weight: 400;
 }
