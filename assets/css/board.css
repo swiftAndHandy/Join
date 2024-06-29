@@ -259,7 +259,7 @@ h2 {
 
 
 
-@media (min-width: 1360px) and (max-width: 3200px) {
+@media (min-width: 1380px) and (max-width: 3200px) {
   .board-content {
     display: flex;
     gap: 24px;
@@ -346,6 +346,43 @@ h2 {
 
 }
 
+@media(min-width: 1159px) and (max-width: 1379px) {
+  .board {
+    margin-left: 232px;
+    padding: 0 64px;
+  }
+
+  .task-fields {
+    width: 100%;
+  }
+
+  .tasks-container {
+    width: 100%;
+    height: 342px;
+  }
+}
+@media(min-width: 1379px) and (max-width: 1394px)  {
+  .board {
+    padding: 0 50px;
+  }
+}
+
+@media(min-width: 470px) and (max-width: 1158px) {
+  .board {
+   
+    padding: 0 32px;
+  }
+
+  .task-fields {
+    width: 100%;
+  }
+
+  .tasks-container {
+    width: 100%;
+    height: 342px;
+  }
+}
+
 @media (min-width: 1919px) {
   .max-width {
     max-width: 1920px;
@@ -365,6 +402,12 @@ h2 {
 
 @media(max-width: 322px) {
   .search-row input {
+    width: 380px;
+  }
+}
+
+@media (max-height: 750px) and (max-width:420px) {
+  .task-fields {
     width: 380px;
   }
 }
