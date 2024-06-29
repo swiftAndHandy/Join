@@ -248,7 +248,6 @@ h2 {
   color: white;
   font-size: 21px;
   font-weight: 700;
-
   justify-content: space-evenly;
   align-items: center;
   display: none;
@@ -256,7 +255,7 @@ h2 {
 
 
 
-@media (min-width: 1355px) and (max-width: 3200px) {
+@media (min-width: 1360px) and (max-width: 3200px) {
   .board-content {
     display: flex;
     gap: 24px;
