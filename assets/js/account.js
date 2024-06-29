@@ -4,8 +4,6 @@ let passwordValidationInputHidden = true;
 let passwordInputHidden = true;
 let rememberMe = false;
 
-const BASE_URL = 'https://remotestorage-3b1e6-default-rtdb.europe-west1.firebasedatabase.app/';
-
 /**
  * Toggles the remember me state.
  * This function inverses the value of the global variable `rememberMe`.
@@ -14,22 +12,16 @@ function toggleRemember() {
     rememberMe = !rememberMe;
 }
 
-
 /**
- * Submits a POST-Query to Firebase
- * @param {string} path - Subpath at Firebase-Server
- * @param {Object} data - Data-Object transmitted 
- * @returns {Promise<Object>}
+ * Initialising of index.html by starting animation on mobile-devices.
  */
-async function postData(path = "", data = {}) {
-    let response = await fetch(BASE_URL + path + '.json', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
-    });
-    return await response.json();
+function initIndex() {
+    const startscreen = document.getElementById('startscreen');
+    startscreen.classList.add('startscreen--animate');
+    setTimeout(() => {
+        startscreen.classList.add('over');
+    }, 1000);
+    includeHTML();
 }
 
 
@@ -45,7 +37,7 @@ async function createUser() {
     const email = document.getElementById('email').value.toLowerCase();
     const password = document.getElementById('password-create');
     const passwordValidation = document.getElementById('password-validation');
-    const user = document.getElementById('name').value;
+    const user = capitaliseFirstLetter(document.getElementById('name').value);
 
     if (!await accountExists(email)) {
         if (!passwordInputMissmatch(password, passwordValidation)) {
@@ -70,6 +62,8 @@ async function login() {
     const password = document.getElementById('password-login').value;
     const myAccount = await accountExists(account, password);
     if (myAccount) {
+        localStorage.setItem('id', myAccount[0]);
+        localStorage.setItem('login', rememberMe);
         window.location.replace("./summary.html");
     } else if (!await accountExists(account)) {
         document.getElementById('missmatch-mail').classList.remove('d-none');

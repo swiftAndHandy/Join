@@ -6,27 +6,17 @@ const colors = [
     '#FFE62B', '#FF4646', '#FFBB2B'
 ];
 
-/**
- * Stores a key-value pair in the local storage.
- * The value is converted to a JSON string before storing.
- *
- * @param {string} key - The key under which the value will be stored.
- * @param {*} value - The value to be stored. It will be serialized to a JSON string.
- */
-function setStorage(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
-}
+const BASE_URL = 'https://remotestorage-3b1e6-default-rtdb.europe-west1.firebasedatabase.app/';
+const userId = localStorage.getItem('id');
 
 /**
- * Initialising of index.html by starting animation on mobile-devices.
+ * Capitalizes the first letter of the input string and converts the rest to lowercase.
+ *
+ * @param {string} input - The string to be formatted.
+ * @returns {string} - The formatted string with the first letter capitalized and the rest in lowercase.
  */
-function initIndex() {
-    const startscreen = document.getElementById('startscreen');
-    startscreen.classList.add('startscreen--animate');
-    setTimeout(() => {
-        startscreen.classList.add('over');
-    }, 1000);
-    includeHTML();
+function capitaliseFirstLetter(input) {
+    return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
 }
 
 /**
@@ -38,7 +28,13 @@ function stopPropagation(event) {
 };
 
 
-
+/**
+ * Sends a PUT request to the specified path with the provided data.
+ *
+ * @param {string} path - The path to which the data should be sent. Defaults to an empty string.
+ * @param {Object} data - The data to be sent in the body of the PUT request. Defaults to an empty object.
+ * @returns {Promise<Object>} - A promise that resolves to the JSON response from the server.
+ */
 async function putData(path = "", data = {}) {
     let response = await fetch(BASE_URL + path + '.json', {
         method: "PUT",
@@ -47,6 +43,35 @@ async function putData(path = "", data = {}) {
         },
         body: JSON.stringify(data)
     });
+    return await response.json();
+}
+
+
+/**
+ * Submits a POST-Query to Firebase
+ * @param {string} path - Subpath at Firebase-Server
+ * @param {Object} data - Data-Object transmitted 
+ * @returns {Promise<Object>}
+ */
+async function postData(path = "", data = {}) {
+    let response = await fetch(BASE_URL + path + '.json', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+    });
+    return await response.json();
+}
+
+/**
+ * responseToJason is containing every user. It's iterated by every userKeyArray-Index to  
+ * compare Login-Form-Information with provided server-information.
+ * If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
+ * @param {string} path 
+ */
+async function readData(path) {
+    const response = await fetch(BASE_URL + path + '.json');
     return await response.json();
 }
 
@@ -59,7 +84,7 @@ async function putData(path = "", data = {}) {
  */
 async function accountExists(email, password = false) {
     try {
-        const output = await readUserdata('accounts');
+        const output = await readData('accounts');
         const outputArray = Object.entries(output);
         if (!password && password !== "") {
             return outputArray.find(entry => entry[1]['email'] === email.toLowerCase());
@@ -69,15 +94,4 @@ async function accountExists(email, password = false) {
     } catch (error) {
         return false;
     }
-}
-
-/**
- * responseToJason is containing every user. It's iterated by every userKeyArray-Index to  
- * compare Login-Form-Information with provided server-information.
- * If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
- * @param {string} path 
- */
-async function readUserdata(path) {
-    const response = await fetch(BASE_URL + path + '.json');
-    return await response.json();
 }

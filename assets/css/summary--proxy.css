@@ -310,9 +310,8 @@ main {
 
     .summary {
         height: clamp(300px, 60vh, 562px);
-        min-width: 396px;
-        max-width: 560px;
-        width: unset;
+        max-width: unset;
+        width: clamp(396px, 60vw, 800px);
     }
 
     .summary-wrapper {

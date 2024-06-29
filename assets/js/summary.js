@@ -11,11 +11,11 @@ function initSummary() {
  * Runs various functions, to use the correct greeting for users/guests.
  * To do: Check for Login/Username...
  */
-function greetAtLogin() {
+async function greetAtLogin() {
     const daytime = getDaytime();
     const greetingOverlay = document.getElementById('greeting-overlay');
     const greetingEmbedded = document.getElementById('greeting-embedded');
-    const greetingMsg = generateGreetingHtml(daytime);
+    const greetingMsg = await generateGreetingHtml(daytime);
     greetingOverlay.innerHTML = greetingMsg;
     greetingEmbedded.innerHTML = greetingMsg;
     animateGreeting(greetingOverlay);
