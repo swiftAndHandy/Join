@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/assets/js/menu-bar-script.js"></script>
+    <script src="./assets/js/board.js"></script>
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/menu-bar.css" />
     <link rel="stylesheet" href="./assets/css/fonts.css" />
@@ -38,10 +39,10 @@
             required
             oninput=""
           />
-          <div class="add-task-btn">
+          <button class="add-task-btn">
             <span>Add task</span>
             <img src="./assets/img/icons/add_cross.svg" alt="add-cross">
-          </div>
+          </button>
         </div>
         
       </div>
@@ -49,20 +50,23 @@
         <section class="section-container">
           <div class="section-headline">
             <h2>To do</h2>
-            <div class="add-cross-btn-small">
+            <button class="add-cross-btn-small">
               <img src="./assets/img/icons/add_cross_blue.svg" alt="cross" />
-            </div>
+            </button>
           </div>
           <div class="task-fields">
             <span>No tasks To do</span>
           </div>
+          <div class="tasks-container">
+            
+            </div>
         </section>
         <section class="section-container">
           <div class="section-headline">
             <h2>In progress</h2>
-            <div class="add-cross-btn-small">
+            <button class="add-cross-btn-small">
               <img src="./assets/img/icons/add_cross_blue.svg" alt="cross" />
-            </div>
+            </button>
           </div>
           <div class="tasks-container">
             <article class="task-card-container">
@@ -129,9 +133,9 @@
         <section class="section-container">
             <div class="section-headline">
               <h2>Await feedback</h2>
-              <div class="add-cross-btn-small">
+              <button class="add-cross-btn-small">
                 <img src="./assets/img/icons/add_cross_blue.svg" alt="cross" />
-              </div>
+              </button>
             </div>
             <div class="tasks-container">
             <article class="task-card-container">

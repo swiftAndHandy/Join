@@ -103,6 +103,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .section-headline {
@@ -123,6 +124,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: default;
 }
 
 .section-container {
@@ -137,6 +139,7 @@ h2 {
   margin-top: 16px;
   box-shadow: 0px 0px 10px 3px #00000014;
   border-radius: 24px;
+  cursor: pointer;
 }
 
 .task-group-bubble {
@@ -251,6 +254,7 @@ h2 {
   justify-content: space-evenly;
   align-items: center;
   display: none;
+  cursor: pointer;
 }
 
 
@@ -356,6 +360,12 @@ h2 {
 @media(max-height: 1020px) {
   .board {
     margin-top: 128px;
+  }
+}
+
+@media(max-width: 322px) {
+  .search-row input {
+    width: 380px;
   }
 }
 
