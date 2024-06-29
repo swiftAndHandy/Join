@@ -7,6 +7,17 @@ const colors = [
 ];
 
 /**
+ * Stores a key-value pair in the local storage.
+ * The value is converted to a JSON string before storing.
+ *
+ * @param {string} key - The key under which the value will be stored.
+ * @param {*} value - The value to be stored. It will be serialized to a JSON string.
+ */
+function setStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+/**
  * Initialising of index.html by starting animation on mobile-devices.
  */
 function initIndex() {

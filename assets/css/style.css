@@ -87,10 +87,6 @@ body::-webkit-scrollbar-thumb {
     margin-bottom: 0;
 }
 
-.main-pl {
-    padding-left: 96px;
-}
-
 .simple-btn {
     border: 0;
     border-radius: 8px;
@@ -203,4 +199,14 @@ a {
 
 .d-none {
     display: none !important;
+}
+
+/* .main-pl {
+    padding-left: 96px;
+} */
+
+@media (min-width: 1160px) {
+    .main-pl {
+        padding-left: 96px;
+    }
 }

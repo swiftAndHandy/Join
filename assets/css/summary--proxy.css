@@ -70,6 +70,7 @@ main {
 
 .summary-content {
     opacity: 0;
+    margin: 0 16px;
     transition: opacity 400ms ease-in-out 1200ms;
 }
 
@@ -95,12 +96,12 @@ main {
     margin-top: 16px;
     gap: 24px;
     max-width: 396px;
-    height: 384px;
+    height: clamp(200px, 45vh, 400px);
 }
 
 @media (max-height: 730px) {
     .summary {
-        height: clamp(200px, 40vh ,300px);
+        height: clamp(200px, 50vh, 300px);
     }
 }
 
@@ -257,7 +258,7 @@ main {
     }
 }
 
-@media (min-width: 430px) and (max-width: 1100px) {
+@media (min-width: 430px) and (max-width: 1160px) {
     .summary {
         width: 396px;
     }
@@ -271,7 +272,7 @@ main {
 
 
 /*Desktop Layout starts*/
-@media (min-width: 701px) {
+@media (min-width: 1160px) {
     .greeting-msg--mobile p {
         transform: translateX(116px);
     }
@@ -308,8 +309,7 @@ main {
     }
 
     .summary {
-        /* height: 562px; */
-        height: 50vh;
+        height: clamp(300px, 60vh, 562px);
         min-width: 396px;
         max-width: 560px;
         width: unset;
@@ -319,12 +319,13 @@ main {
         display: flex;
         align-items: center;
         gap: 80px;
-        transform: translateX(-50%);
+        /* transform: translateX(-50%); */
+        width: 100%;
     }
 }
 
 /*Fade-In end-point*/
-@media (min-width: 1100px) {
+@media (min-width: 1300px) {
     .summary-content {
         opacity: 1;
     }
@@ -340,6 +341,7 @@ main {
 
     .greeting-msg--desktop {
         display: unset;
+        margin-right: clamp(8px, 1%, 87px);
     }
 
     .greeting-msg--desktop p {
@@ -358,12 +360,11 @@ main {
     }
 }
 
-@media (min-width: 1500px) and (min-height: 1000px) {
+@media (min-width: 1160px) and (min-height: 1000px) {
     .summary {
-        height: 50vh;
-        width: 100%;
+        height: clamp(400px, 60vh, 750px);
+        width: 90%;
         max-width: 1000px;
-        max-height: 1000px;
     }
 
     .deadline-date {

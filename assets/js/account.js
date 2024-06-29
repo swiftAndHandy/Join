@@ -46,7 +46,7 @@ async function createUser() {
     const password = document.getElementById('password-create');
     const passwordValidation = document.getElementById('password-validation');
     const user = document.getElementById('name').value;
-    
+
     if (!await accountExists(email)) {
         if (!passwordInputMissmatch(password, passwordValidation)) {
             await postData('accounts', { 'name': user, 'email': email, 'password': password.value });

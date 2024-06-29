@@ -378,6 +378,13 @@ header {
         background-color: #2A3647;
     }
 
+    .menu-bar-mobile-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 600px;
+    }
+
     .menu-bar-icons-mobile {
         width: 76px;
         height: 80px;
