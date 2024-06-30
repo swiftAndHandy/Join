@@ -2,6 +2,10 @@ html {
     scroll-behavior: smooth;
 }
 
+img {
+    -webkit-user-drag: none;
+}
+
 body {
     display: flex;
     flex-direction: column;
