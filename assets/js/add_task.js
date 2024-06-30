@@ -1,10 +1,13 @@
-let addTaskTitle = [];
-let addTaskDescription = [];
-let addTaskAssignedContacts = [];
-let addTaskDueDate = [];
-let addTaskPrio = [];
-let addTaskCategory = [];
-let addTaskSubtask = [];
+let newTasks = [
+    {   'addTaskTitle': [],
+        'addTaskDescription' : [],
+        'addTaskAssignedContacts' : [],
+        'addTaskDueDate' : [],
+        'addTaskPrio' : [],
+        'addTaskCategory' : [],
+        'addTaskSubtask' : []
+    }
+];
 
 const base_URL = 'https://join-c0587-default-rtdb.europe-west1.firebasedatabase.app/';
 
@@ -25,19 +28,19 @@ async function postData(path='tasks', data={}) {
 
 function addTitle() {
     let title = document.getElementById('task-title');
-    addTaskTitle.push(title.value);
+    newTasks[0]['addTaskTitle'].push(title.value);
     title.value = '';
 }
 
 function addDescription() {
     let taskDescription = document.getElementById('task-description');
-    addTaskDescription.push(taskDescription.value);
+    newTasks[0]['addTaskDescription'].push(taskDescription.value);
     taskDescription.value = '';
 }
 
 function assignedContact() {
     let assignedToContact = document.getElementById('assigned-to-contact'); 
-    addTaskAssignedContacts.push(assignedToContact.value);
+    newTasks[0]['addTaskAssignedContacts'].push(assignedToContact.value);
     assignedToContact.value = '';
 }
 
@@ -46,19 +49,19 @@ function taskDueDate() {
     let date = new Date(dueDate.value);
     let dateOption = {month: 'long' , day: 'numeric' , year: 'numeric'};
     let formattedDate = date.toLocaleDateString('en-US', dateOption);
-    addTaskDueDate.push(formattedDate);
+    newTasks[0]['addTaskDueDate'].push(formattedDate);
     dueDate.value = '';
 }
 
 function taskCategory() {
     let category = document.getElementById('select-task-category');
-    addTaskCategory.push(category.value);
+    newTasks[0]['addTaskCategory'].push(category.value);
     category.value = '';
 }
 
 function taskSubtask() {
     let subtask = document.getElementById('task-subtask');
-    addTaskSubtask.push(subtask.value);
+    newTasks[0]['addTaskSubtask'].push(subtask.value);
     subtask.value = '';
 }
 
