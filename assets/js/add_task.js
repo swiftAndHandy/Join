@@ -1,17 +1,14 @@
-let newTasks = [
-    {   'addTaskTitle': [],
-        'addTaskDescription' : [],
-        'addTaskAssignedContacts' : [],
-        'addTaskDueDate' : [],
-        'addTaskPrio' : [],
-        'addTaskCategory' : [],
-        'addTaskSubtask' : []
-    }
-];
-
+let addTaskTitle = [];
+let addTaskDescription = [];
+let addTaskAssignedContacts = [];
+let addTaskDueDate = [];
+let addTaskPrio = [];
+let addTaskCategory = [];
+let addTaskSubtask = [];
+    
 const base_URL = 'https://join-c0587-default-rtdb.europe-west1.firebasedatabase.app/';
 
-async function postData(data={newTasks}) {
+async function postData(data={addTaskTitle, addTaskDescription, addTaskAssignedContacts, addTaskDueDate, addTaskPrio, addTaskCategory, addTaskSubtask}) {
     try {
     let response = await fetch(base_URL + '.json',{
         method: 'POST',
@@ -28,19 +25,19 @@ async function postData(data={newTasks}) {
 
 function addTitle() {
     let title = document.getElementById('task-title');
-    newTasks[0]['addTaskTitle'].push(title.value);
+    addTaskTitle.push(title.value);
     title.value = '';
 }
 
 function addDescription() {
     let taskDescription = document.getElementById('task-description');
-    newTasks[0]['addTaskDescription'].push(taskDescription.value);
+    addTaskDescription.push(taskDescription.value);
     taskDescription.value = '';
 }
 
 function assignedContact() {
     let assignedToContact = document.getElementById('assigned-to-contact'); 
-    newTasks[0]['addTaskAssignedContacts'].push(assignedToContact.value);
+    addTaskAssignedContacts.push(assignedToContact.value);
     assignedToContact.value = '';
 }
 
@@ -49,19 +46,19 @@ function taskDueDate() {
     let date = new Date(dueDate.value);
     let dateOption = {month: 'long' , day: 'numeric' , year: 'numeric'};
     let formattedDate = date.toLocaleDateString('en-US', dateOption);
-    newTasks[0]['addTaskDueDate'].push(formattedDate);
+    addTaskDueDate.push(formattedDate);
     dueDate.value = '';
 }
 
 function taskCategory() {
     let category = document.getElementById('select-task-category');
-    newTasks[0]['addTaskCategory'].push(category.value);
+    addTaskCategory.push(category.value);
     category.value = '';
 }
 
 function taskSubtask() {
     let subtask = document.getElementById('task-subtask');
-    newTasks[0]['addTaskSubtask'].push(subtask.value);
+    addTaskSubtask.push(subtask.value);
     subtask.value = '';
 }
 
@@ -72,6 +69,6 @@ function addnewTask() {
     taskDueDate();
     taskCategory();
     taskSubtask();
-    postData(data={newTasks});
+    postData(data={addTaskTitle, addTaskDescription, addTaskAssignedContacts, addTaskDueDate, addTaskPrio, addTaskCategory, addTaskSubtask});
     //window.location.href = 'board.html';
 }
