@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 function addOpenAddTaskToButtons() {
   const buttons = document.querySelectorAll(
     "button.add-cross-btn-small, button.add-task-btn"
@@ -39,8 +38,3 @@ document.addEventListener("DOMContentLoaded", function () {
   // Deine Funktion, die beim Laden der Seite aufgerufen wird
   addOpenAddTaskToButtons(); // Füge onclick zu den Buttons hinzu
 });
-=======
-function addTask() {
-    
-}
->>>>>>> Stashed changes

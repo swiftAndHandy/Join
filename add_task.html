@@ -41,7 +41,7 @@
           </div>
           <div class="flex-column-inputs mb-32">
             <span>Assigned to</span>
-            <select class="input-standard" id="">
+            <select class="input-standard" id="assigned-to-contact">
               <option value="" disabled selected>
                 Select contacts to assign
               </option>
@@ -56,7 +56,7 @@
               required
               class="date-standard"
               type="date"
-              id=""
+              id="task-due-date"
             />
           </div>
           <div class="prio-container mb-32">
@@ -83,12 +83,12 @@
           <div>
             <div class="flex-column-inputs mb-32">
               <span>Category<span class="red">*</span></span>
-              <select required class="input-standard" id="">
+              <select required class="input-standard" id="select-task-category">
                 <option value="" disabled selected>
                   Select task category
                 </option>
-                <option value="">Technical Task</option>
-                <option value="">User Story</option>
+                <option value="Technical Task">Technical Task</option>
+                <option value="User Story">User Story</option>
               </select>
             </div>
           </div>
@@ -98,7 +98,7 @@
               class="input-standard"
               type="text"
               placeholder="Add new subtask"
-              id=""
+              id="task-subtask"
             />
           </div>
           <div class="desktop-buttons">
