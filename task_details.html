@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/board.css">
     <script src="./assets/js/task_details.js"></script>
+    <script src=""></script>
 </head>
 
 <body class="flex-center">
@@ -22,7 +23,7 @@
             <section id="task-details-view" class="task-card-view">
                 <div class="details__header">
                     <span class="tag__user-story">User Story</span>
-                    <div class="close-btn"></div>
+                    <div class="close-btn" onclick="hideWindow('task-details-view')"></div>
                 </div>
                 <div class="details__title-wrapper">
                     <h1 class="details__title">Kochwelt Page & Recipe Recommender</h1>
@@ -86,13 +87,13 @@
                     <div class="line"></div>
                     <div class="icon-box" id="edit">
                         <div class="edit-icon"></div>
-                        <button class="edit-link details__information">Edit</button>
+                        <button class="edit-link details__information" onclick="hideWindow('task-edit-view', false)">Edit</button>
                     </div>
                 </div>
             </section>
             <section id="task-edit-view" class="task-card-view edit">
                 <div class="details__header titleless">
-                    <div class="close-btn"></div>
+                    <div class="close-btn" onclick="hideWindow('task-edit-view')"></div>
                 </div>
                 <div class="details__title-wrapper edit">
                     <strong class="details__caption">Title:</strong>
@@ -113,15 +114,15 @@
                 <div class="details__info-box edit">
                     <strong class="details__caption">Priority:</strong>
                     <div class="details__priority-wrapper edit">
-                        <div class="simple-btn task-priority urgent">
+                        <div id="edit-priority-btn-urgent" class="simple-btn task-priority urgent" onclick="setPriorityTo(2)">
                             <span>Urgent</span>
                             <div class="urgent-img"></div>
                         </div>
-                        <div class="simple-btn task-priority medium">
+                        <div id="edit-priority-btn-medium" class="simple-btn task-priority medium" onclick="setPriorityTo(1)">
                             <span>Medium</span>
                             <div class="medium-img"></div>
                         </div>
-                        <div class="simple-btn task-priority low">
+                        <div id="edit-priority-btn-low" class="simple-btn task-priority low" onclick="setPriorityTo(0)">
                             <span>Low</span>
                             <div class="low-img"></div>
                         </div>
@@ -155,14 +156,14 @@
                         <div class="details__subtask">
                             <input type="checkbox" class="checkbox" id="details-edit-subtask-index"
                                 name="details-subtask-index" onclick="toggleThis(id)">
-                            <label for="details-subtask-index">Implement Recipe Recommendation</label>
+                            <label for="details-edit-subtask-index">Implement Recipe Recommendation</label>
                         </div>
                         <!--END: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
                         <!--START: More List-Items for better visualisation of the final design -->
                         <div class="details__subtask">
                             <input type="checkbox" class="checkbox" id="details-edit-subtask-1"
                                 name="details-subtask-index" onclick="toggleThis(id)">
-                            <label for="details-subtask-1">Start Page Layout</label>
+                            <label for="details-edit-subtask-1">Start Page Layout</label>
                         </div>
                         <!--END of additinal List-Items for better visualisation of the final design -->
                     </div>

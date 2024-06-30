@@ -24,8 +24,8 @@ function openAddTask() {
 }
 
 function switchToAddTask() {
-    let addTaskUrl = "../add_task.html";
-    window.location.href = addTaskUrl;
+  let addTaskUrl = "../add_task.html";
+  window.location.href = addTaskUrl;
 }
 
 function closeAddTaskPopUp() {

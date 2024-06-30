@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: summary.js</title>
+    <title>JSDoc: Source: task_details.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: summary.js</h1>
+    <h1 class="page-title">Source: task_details.js</h1>
 
     
 
@@ -26,84 +26,36 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * This function is used @summary.html to initalize everything.
- * Todo: Get Username and start greeting, when it's saved
- */
-function initSummary() {
-    includeHTML();
-    greetAtLogin();
+            <pre class="prettyprint source linenums"><code>let editPriority;
+
+function toggleThis(id) {
+
 }
 
 /**
- * Runs various functions, to use the correct greeting for users/guests.
- * To do: Check for Login/Username...
+ * Sets the priority level by updating the `editPriority` variable and toggling the 'active' class on priority buttons.
+ *
+ * @param {number} level - The priority level to set. Expected values are 0 for 'low', 1 for 'medium', and 2 for 'urgent'.
  */
-async function greetAtLogin() {
-    const daytime = getDaytime();
-    const greetingOverlay = document.getElementById('greeting-overlay');
-    const greetingEmbedded = document.getElementById('greeting-embedded');
-    const userInformation =  await readData(`accounts/${userId}`)
-    const greetingMsg = await generateGreetingHtml(daytime, userInformation);
-    greetingOverlay.innerHTML = greetingMsg;
-    greetingEmbedded.innerHTML = greetingMsg;
-    animateGreeting(greetingOverlay);
-}
-
-/**
- * @returns a string with the current daytime &lt;br>&lt;br>
- */
-function getDaytime() {
-    const currentDate = new Date();
-    const hours = currentDate.getHours();
-
-    if (isMorning(hours)) {
-        return 'morning';
-    } else if (isAfternoon(hours)) {
-        return hours === 12 ? 'noon' : 'afternoon';
-    } else if (isEvening(hours)) {
-        return 'evening';
-    } else {
-        return 'night';
+function setPriorityTo(level) {
+    editPriority = level;
+    const btns = ['low', 'medium', 'urgent']
+    for (let i = 0; i &lt; btns.length; i++) {
+        const currentButton = document.getElementById(`edit-priority-btn-${btns[i]}`);
+        if (currentButton) {
+            i == editPriority ? currentButton.classList.add('active') : currentButton.classList.remove('active');
+        }
     }
 }
 
 /**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 6 or up to 11) or false&lt;br>&lt;br>
+ * @param {string} id - id of the html element that should become toggle of display: none 
+ * @param {boolean} [method = true] - If true, adds the 'd-none' class to hide the element. If false, removes the 'd-none' class to show the element.
  */
-function isMorning(hours) {
-    return hours >= 6 &amp;&amp; hours &lt; 12;
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 12 and up to 17) or false&lt;br>&lt;br>
- */
-function isAfternoon(hours) {
-    return hours >= 12 &amp;&amp; hours &lt; 18;
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 18 and up to 23) or false&lt;br>&lt;br>
- */
-function isEvening(hours) {
-    return hours >= 18 &amp;&amp; hours &lt; 24;
-}
-
-/**
- * This function controlls css classes, that are required for the login animation.
- * @param {Element} greeting - target HTML-Element.
- */
-function animateGreeting(greeting) {
-    greeting.classList.add('greeting-msg--mobile--fade-out');
-    document.getElementById('summary').classList.add('summary-animation--fade-in');
-    setTimeout(() => {
-        greeting.classList.add('d-none');
-    }, 1600);
-}
-</code></pre>
+function hideWindow(id, method = true) {
+    target = document.getElementById(id);
+    method ? target.classList.add('d-none') : target.classList.remove('d-none');
+}</code></pre>
         </article>
     </section>
 

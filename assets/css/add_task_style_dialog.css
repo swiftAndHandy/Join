@@ -49,6 +49,7 @@ select {
   top: 64px;
   left: 1044px;
   border: none;
+  background: none;
 }
 
 .dialog-container {
