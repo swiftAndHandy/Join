@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./assets/css/fonts.css" />
     <link rel="stylesheet" href="./assets/css/menu-bar.css">
     <script src="./assets/js/add_task.js"></script>
+    <script src="assets/js/board.js"></script>
     <script src="./assets/js/menu-bar-script.js"></script>
     <title>Join- Add task</title>
   </head>
@@ -18,7 +19,7 @@
         <h1>Add Task</h1>
       </div>
       <main class="add-task-container">
-        <form class="form-add-task">
+        <form class="form-add-task" return false;>
           <div class="desktop-split">
           <div class="flex-column-inputs mb-32">
             <span>Title<span class="red">*</span></span>
@@ -27,22 +28,20 @@
               class="input-standard"
               type="text"
               placeholder="Enter a title"
-              name=""
-              id=""
+              id="task-title"
             />
           </div>
           <div class="flex-column-inputs mb-32">
             <span>Description</span>
             <textarea
               class="description-textarea"
-              name=""
-              id=""
+              id="task-description"
               placeholder="Enter a Description"
             ></textarea>
           </div>
           <div class="flex-column-inputs mb-32">
             <span>Assigned to</span>
-            <select class="input-standard" id="">
+            <select class="input-standard" id="assigned-to-contact">
               <option value="" disabled selected>
                 Select contacts to assign
               </option>
@@ -57,7 +56,7 @@
               required
               class="date-standard"
               type="date"
-              id=""
+              id="task-due-date"
             />
           </div>
           <div class="prio-container mb-32">
@@ -84,10 +83,12 @@
           <div>
             <div class="flex-column-inputs mb-32">
               <span>Category<span class="red">*</span></span>
-              <select required class="input-standard" id="">
+              <select required class="input-standard" id="select-task-category">
                 <option value="" disabled selected>
                   Select task category
                 </option>
+                <option value="Technical Task">Technical Task</option>
+                <option value="User Story">User Story</option>
               </select>
             </div>
           </div>
@@ -97,7 +98,7 @@
               class="input-standard"
               type="text"
               placeholder="Add new subtask"
-              id=""
+              id="task-subtask"
             />
           </div>
           <div class="desktop-buttons">
@@ -105,7 +106,7 @@
               <img src="./assets/img/icons/close.svg" alt="">
             </button>
             
-            <button class="create-task-btn">Create Task
+            <button class="create-task-btn" onclick="addnewTask()">Create Task
               <img src="./assets/img/icons/check.svg" alt="">
             </button>
             

@@ -264,6 +264,7 @@ h2 {
   color: white;
   font-size: 21px;
   font-weight: 700;
+  cursor: pointer;
   justify-content: space-evenly;
   align-items: center;
   display: none;
