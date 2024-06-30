@@ -371,6 +371,7 @@ h2 {
     height: 342px;
   }
 }
+
 @media (min-width: 1379px) and (max-width: 1394px) {
   .board {
     padding: 0 50px;
@@ -474,10 +475,20 @@ Detail-View related Classes
   gap: 16px;
 }
 
+.task-card-view.edit {
+  gap: 8px;
+}
+
 .details__title {
   font-weight: 700;
   font-size: 36px;
   outline: 1px solid red;
+}
+
+.edit.this-entry {
+  border: 1px solid #D1D1D1;
+  border-radius: 10px;
+  margin-bottom: 16px;
 }
 
 .details__caption {
@@ -493,6 +504,10 @@ Detail-View related Classes
   align-items: center;
   outline: 1px solid blue;
   width: 100%;
+}
+
+.details__header.titleless {
+  justify-content: flex-end;
 }
 
 .close-btn {
@@ -526,6 +541,17 @@ Detail-View related Classes
   outline: 1px solid blue;
 }
 
+.details__title-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  outline: 1px solid brown;
+}
+
+.details__title-wrapper.edit {
+  gap: 8px;
+}
+
 .details__priority-wrapper {
   display: flex;
   align-items: center;
@@ -556,6 +582,8 @@ Detail-View related Classes
   margin-block: 0;
   outline: 1px solid orange;
 }
+
+.details__description.edit {}
 
 .details__information {
   font-weight: 400;

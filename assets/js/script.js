@@ -22,6 +22,11 @@ function capitaliseFirstLetters(input) {
 }
 
 
+/**
+ * 
+ * @param {*} input 
+ * @returns 
+ */
 function returnInitials(input) {
     return input.split(' ').map(word => word.charAt(0)).join('');
 }

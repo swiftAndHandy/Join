@@ -339,8 +339,10 @@ main {
     }
 
     .greeting-msg--desktop {
-        display: unset;
+        display: flex;
+        flex-direction: column;
         margin-right: clamp(8px, 1%, 87px);
+        width: clamp(200px, 25vw, 600px);
     }
 
     .greeting-msg--desktop p {
