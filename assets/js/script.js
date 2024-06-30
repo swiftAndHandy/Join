@@ -15,8 +15,15 @@ const userId = localStorage.getItem('id');
  * @param {string} input - The string to be formatted.
  * @returns {string} - The formatted string with the first letter capitalized and the rest in lowercase.
  */
-function capitaliseFirstLetter(input) {
-    return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+function capitaliseFirstLetters(input) {
+    return input.split(' ').map(word =>
+        word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+    ).join(' ');
+}
+
+
+function returnInitials(input) {
+    return input.split(' ').map(word => word.charAt(0)).join('');
 }
 
 /**

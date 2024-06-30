@@ -3,9 +3,7 @@
  * @param {number} daytime 
  * @param {string} user 
  */
-async function generateGreetingHtml(daytime) {
-    const userInformation =  await readData(`accounts/${userId}`)
-    
+async function generateGreetingHtml(daytime, userInformation) {
     if (userId) {
         return `<p>Good ${daytime},<br>
         <span class="greeting-msg--name">${userInformation.name}</span></p>`;

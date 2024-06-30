@@ -15,7 +15,8 @@ async function greetAtLogin() {
     const daytime = getDaytime();
     const greetingOverlay = document.getElementById('greeting-overlay');
     const greetingEmbedded = document.getElementById('greeting-embedded');
-    const greetingMsg = await generateGreetingHtml(daytime);
+    const userInformation =  await readData(`accounts/${userId}`)
+    const greetingMsg = await generateGreetingHtml(daytime, userInformation);
     greetingOverlay.innerHTML = greetingMsg;
     greetingEmbedded.innerHTML = greetingMsg;
     animateGreeting(greetingOverlay);

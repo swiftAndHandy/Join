@@ -37,7 +37,7 @@ async function createUser() {
     const email = document.getElementById('email').value.toLowerCase();
     const password = document.getElementById('password-create');
     const passwordValidation = document.getElementById('password-validation');
-    const user = capitaliseFirstLetter(document.getElementById('name').value);
+    const user = capitaliseFirstLetters(document.getElementById('name').value);
 
     if (!await accountExists(email)) {
         if (!passwordInputMissmatch(password, passwordValidation)) {
