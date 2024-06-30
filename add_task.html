@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./assets/css/fonts.css" />
     <link rel="stylesheet" href="./assets/css/menu-bar.css">
     <script src="./assets/js/add_task.js"></script>
+    <script src="assets/js/board.js"></script>
     <script src="./assets/js/menu-bar-script.js"></script>
     <title>Join- Add task</title>
   </head>
@@ -18,7 +19,7 @@
         <h1>Add Task</h1>
       </div>
       <main class="add-task-container">
-        <form class="form-add-task">
+        <form class="form-add-task" return false;>
           <div class="desktop-split">
           <div class="flex-column-inputs mb-32">
             <span>Title<span class="red">*</span></span>
@@ -27,16 +28,14 @@
               class="input-standard"
               type="text"
               placeholder="Enter a title"
-              name=""
-              id=""
+              id="task-title"
             />
           </div>
           <div class="flex-column-inputs mb-32">
             <span>Description</span>
             <textarea
               class="description-textarea"
-              name=""
-              id=""
+              id="task-description"
               placeholder="Enter a Description"
             ></textarea>
           </div>
@@ -88,6 +87,8 @@
                 <option value="" disabled selected>
                   Select task category
                 </option>
+                <option value="">Technical Task</option>
+                <option value="">User Story</option>
               </select>
             </div>
           </div>
@@ -105,7 +106,7 @@
               <img src="./assets/img/icons/close.svg" alt="">
             </button>
             
-            <button class="create-task-btn">Create Task
+            <button class="create-task-btn" onclick="addnewTask()">Create Task
               <img src="./assets/img/icons/check.svg" alt="">
             </button>
             

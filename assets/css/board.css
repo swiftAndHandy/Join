@@ -264,6 +264,10 @@ h2 {
   color: white;
   font-size: 21px;
   font-weight: 700;
+<<<<<<< Updated upstream
+=======
+  cursor: pointer;
+>>>>>>> Stashed changes
   justify-content: space-evenly;
   align-items: center;
   display: none;
