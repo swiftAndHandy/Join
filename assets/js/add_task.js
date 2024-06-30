@@ -11,9 +11,9 @@ let newTasks = [
 
 const base_URL = 'https://join-c0587-default-rtdb.europe-west1.firebasedatabase.app/';
 
-async function postData(path='tasks', data={}) {
+async function postData(data={newTasks}) {
     try {
-    let response = await fetch(base_URL + path + '.json',{
+    let response = await fetch(base_URL + '.json',{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -72,6 +72,6 @@ function addnewTask() {
     taskDueDate();
     taskCategory();
     taskSubtask();
-    postData(path='tasks', data={});
+    postData(data={newTasks});
     //window.location.href = 'board.html';
 }
