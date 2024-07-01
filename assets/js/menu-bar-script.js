@@ -82,12 +82,23 @@ async function setMyAvatar(currentFile) {
     const myData = await readData(`accounts/${userId}`);
     try {
         const myInitials = myData ? initials(myData.name) : null;
-        if (currentFile && currentFile != 'index') {
-                avatarHtml(myInitials);
+        if (!myInitials) {
+            forceLogout(currentFile);
+        } else if (currentFile && currentFile != 'index') {
+            avatarHtml(myInitials);
         }
     } catch (error) {
-        if (currentFile && currentFile !== 'index' && currentFile !== 'legal_notice' && currentFile !== 'privacy') {
-            window.location.replace('../index.html');
-        }
+        forceLogout(currentFile);
+    }
+}
+
+/**
+ * Force autoLogout, when currentFile is not part of the allowedFiles-array
+ * @param {string} currentFile - currently visited .html-file
+ */
+function forceLogout(currentFile) {
+    const allowedFiles = ['index', 'legal_notice', 'privacy'];
+    if (currentFile && !allowedFiles.includes(currentFile)) {
+        window.location.replace('../index.html');
     }
 }
