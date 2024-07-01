@@ -6,7 +6,7 @@ let addTaskPrio = '';
 let addTaskCategory = '';
 let addTaskSubtask = '';
 let pressedButton = 0;
-const base_URL = 'https://join-256-default-rtdb.europe-west1.firebasedatabase.app//';
+const base_URL = 'https://testing-ce5ae-default-rtdb.europe-west1.firebasedatabase.app/';
 
 async function postData(path='tasks' ,data = {'title': addTaskTitle, 'description': addTaskDescription, 'contact': addTaskAssignedContacts, 'date': addTaskDueDate, 'prio': addTaskPrio, 'category': addTaskCategory, 'subtask': addTaskSubtask}) {
     try {
@@ -78,16 +78,17 @@ function checkIfFormFilled() {
     const requiredFields = form.querySelectorAll('[required]');
     let allFilled = true;
     requiredFields.forEach(field => {
-      if (!field.value.trim()) {
-        allFilled = false;
-      }
+        if (!field.value.trim()) {
+            allFilled = false;
+        }
     });
     if (allFilled) {
-      addnewTask(); 
+        addnewTask(); 
     } else {
-      console.log('Please fill all required fields before submitting.');
+        console.log('Bitte füllen Sie alle erforderlichen Felder aus, bevor Sie absenden.');
     }
-  }
+
+}
   
 function setPrio(prio, number) {
     const priorities = ['urgent', 'medium', 'low'];
@@ -116,3 +117,5 @@ function setPrio(prio, number) {
         document.getElementById(`${currentPriority}-prio-img`).classList.add('pressed-prio-img');
     }
 }
+
+

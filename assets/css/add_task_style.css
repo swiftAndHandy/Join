@@ -171,7 +171,6 @@ select:focus {
 
 .create-task-panel {
   height: 88px;
-  padding: 16px 16px;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -285,6 +284,11 @@ select:focus {
   color: white;
 }
 
+.required-text {
+  position: absolute;
+  top: 779px;
+}
+
 
 @media (min-width: 1120px) and (max-width: 3200px) {
   .desktop-buttons {
@@ -304,11 +308,18 @@ select:focus {
   }
 
   .form-add-task {
-    overflow-x: unset;
-    overflow-y: unset;
     height: 100%;
     display: flex;
     gap: 59px;
+    overflow-x: unset;
+        overflow-y: unset;
+  }
+
+  .form-desktop-view {
+      
+        height: 100%;
+        display: flex;
+        gap: 59px;
   }
 
   .add-task-container {
@@ -395,6 +406,13 @@ select:focus {
   }
   .required-text {
     display: none;
+  }
+}
+
+@media(max-width: 441px) {
+  .create-task-panel {
+   margin-top: 40px;
+
   }
 }
 

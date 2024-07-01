@@ -20,7 +20,7 @@ function handleButtonClickOnWidth() {
 function openAddTask() {
   let popUpTranstion = document.getElementById("add-task-transition");
   popUpTranstion.classList.add("transition-right");
-  document.body.classList.add('overflow-all-hidden');
+  document.getElementById('add-task-transition').classList.add('grey-out-bg');
 }
 
 function switchToAddTask() {
@@ -31,7 +31,7 @@ function switchToAddTask() {
 function closeAddTaskPopUp() {
   let popUpTranstion = document.getElementById("add-task-transition");
   popUpTranstion.classList.remove("transition-right");
-  document.body.classList.remove('overflow-all-hidden');
+  document.getElementById('add-task-transition').classList.remove('grey-out-bg');
 }
 
 document.addEventListener("DOMContentLoaded", function () {
