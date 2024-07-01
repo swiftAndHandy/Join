@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/generateHtml.js"></script>
     <script src="/assets/js/menu-bar-script.js"></script>
     <script src="./assets/js/board.js"></script>
     <script src="./assets/js/add_task.js"></script>
@@ -257,8 +258,8 @@
         <div class="placeholder-footer"></div>
         <!-- placeholder for footer because to set the right height so the content cant flow under-->
 
-        <div id="add-task-transition" class="dialog-main-container">
-          <div class="dialog-container">
+        <div id="add-task-transition" class="dialog-main-container" onclick="closeAddTaskPopUp()">
+          <div class="dialog-container" onclick="stopPropagation(event)">
             <button id="close-btn" onclick="closeAddTaskPopUp()">
               <img
                 src="./assets/img/icons/close_black.svg"
