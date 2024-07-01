@@ -1,6 +1,6 @@
 function addOpenAddTaskToButtons() {
   const buttons = document.querySelectorAll(
-    "button.add-cross-btn-small, button.add-task-btn"
+    "button.add-cross-btn-small, button.add-task-btn, button.add-cross-btn"
   );
   buttons.forEach((button) => {
     button.setAttribute("onclick", "handleButtonClickOnWidth()");

@@ -95,6 +95,7 @@ input[type="search"]::-webkit-search-cancel-button {
   height: 40px;
   width: 40px;
   border-radius: 10px;
+  border: none;
 }
 
 h2 {
