@@ -362,6 +362,19 @@ h2 {
   }
 }
 
+@media (max-width: 1438px) {
+  .dialog-main-container {
+    justify-content: unset;
+    right: 60px;
+  }
+}
+
+@media (max-width: 1284px) {
+  .dialog-container {
+    left: 120px;
+  }
+}
+
 @media (min-width: 1159px) and (max-width: 1379px) {
   .board {
     margin-left: 232px;

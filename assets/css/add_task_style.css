@@ -418,7 +418,8 @@ select:focus {
 
 @media (max-width: 422px) {
   .create-task-btn {
-    font-size: clamp(12px, 2vw, 20px);
+    font-size: clamp(15px, 2vw, 20px);
+    padding: 9px;
   }
 
   .prio-content {
@@ -438,9 +439,7 @@ select:focus {
   .create-task-panel span {
     font-size: 18px;
   }
-  .create-task-btn {
-    padding: 9px;
-  }
+ 
 }
 
 @media (max-width: 377px) {

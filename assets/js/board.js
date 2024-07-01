@@ -21,6 +21,7 @@ function openAddTask() {
   let popUpTranstion = document.getElementById("add-task-transition");
   popUpTranstion.classList.add("transition-right");
   document.getElementById('add-task-transition').classList.add('grey-out-bg');
+  document.body.classList.add('overflow-all-hidden');
 }
 
 function switchToAddTask() {
@@ -32,6 +33,7 @@ function closeAddTaskPopUp() {
   let popUpTranstion = document.getElementById("add-task-transition");
   popUpTranstion.classList.remove("transition-right");
   document.getElementById('add-task-transition').classList.remove('grey-out-bg');
+  document.body.classList.remove('overflow-all-hidden');
 }
 
 document.addEventListener("DOMContentLoaded", function () {
