@@ -16,6 +16,10 @@ function toggleRemember() {
  * Initialising of index.html by starting animation on mobile-devices.
  */
 function initIndex() {
+    if (userId === 'guest') {
+        localStorage.removeItem('id');
+        localStorage.removeItem('login');
+    }
     const startscreen = document.getElementById('startscreen');
     startscreen.classList.add('startscreen--animate');
     setTimeout(() => {
@@ -66,7 +70,7 @@ async function login() {
     if (myAccount) {
         localStorage.setItem('id', myAccount[0]);
         localStorage.setItem('login', rememberMe);
-        window.location.replace("./summary.html");
+        window.location.replace("../summary.html");
     } else if (!await accountExists(account)) {
         document.getElementById('missmatch-mail').classList.remove('d-none');
         document.getElementById('missmatch-pw').classList.add('d-none');
@@ -316,5 +320,5 @@ async function autofillLogin() {
     const data = await readData(`accounts/${userId}`);
     document.getElementById('email-login').value = data.email;
     document.getElementById('password-login').value = data.password;
-    // document.getElementById('login-btn').click();
+    document.getElementById('login-btn').click();
 }

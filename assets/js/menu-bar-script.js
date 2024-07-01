@@ -80,12 +80,14 @@ function regularMenuPoint(currentPoint) {
  */
 async function setMyAvatar(currentFile) {
     const myData = await readData(`accounts/${userId}`);
-    const myInitials = myData ? initials(myData.name) : null;
-    if (currentFile && currentFile != 'index') {
-        if (myInitials) {
-            avatarHtml(myInitials);
-        } else {
-            avatarHtml('G');
+    try {
+        const myInitials = myData ? initials(myData.name) : null;
+        if (currentFile && currentFile != 'index') {
+                avatarHtml(myInitials);
+        }
+    } catch (error) {
+        if (currentFile && currentFile !== 'index' && currentFile !== 'legal_notice' && currentFile !== 'privacy') {
+            window.location.replace('../index.html');
         }
     }
 }
