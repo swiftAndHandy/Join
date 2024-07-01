@@ -172,6 +172,7 @@ h2 {
   align-items: center;
   justify-content: center;
   border-radius: 8px;
+  user-select: none;
 }
 
 .task-card-header {
@@ -458,7 +459,11 @@ h2 {
 Regular Board-Classes 
 */
 
-.tag__user-story {
+.tag {
+  user-select: none;
+}
+
+.tag.user-story {
   background-color: #0038ff;
   color: #fff;
   font-weight: 400;
@@ -467,7 +472,7 @@ Regular Board-Classes
   padding: 4px 16px;
 }
 
-.tag__technical-task {
+.tag.technical-task {
   background-color: #1fd7c1;
   color: #fff;
   font-weight: 400;

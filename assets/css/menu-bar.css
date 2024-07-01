@@ -385,6 +385,8 @@ header {
         justify-content: space-between;
         width: 100%;
         max-width: 600px;
+        padding: 0 16px;
+        box-sizing: border-box;
     }
 
     .menu-bar-icons-mobile {
