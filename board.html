@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./assets/js/script.js"></script>
     <script src="/assets/js/menu-bar-script.js"></script>
     <script src="./assets/js/board.js"></script>
+    <script src="./assets/js/add_task.js"></script>
     <link rel="stylesheet" href="./assets/css/add_task_style_dialog.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/menu-bar.css" />
@@ -268,100 +270,111 @@
             </div>
 
             <main class="add-task-container">
-              <form class="form-add-task">
+              <form id="add-task-form" class="form-add-task" return false;>
                 <div class="desktop-split">
-                  <div class="flex-column-inputs mb-32">
-                    <span>Title<span class="red">*</span></span>
-                    <input
-                      required
-                      class="input-standard"
-                      type="text"
-                      placeholder="Enter a title"
-                      name=""
-                      id=""
-                    />
+                <div class="flex-column-inputs mb-32">
+                  <span>Title<span class="red">*</span></span>
+                  <input
+                    required
+                    class="input-standard"
+                    type="text"
+                    placeholder="Enter a title"
+                    id="task-title"
+                  />
+                </div>
+                <div class="flex-column-inputs mb-32">
+                  <span>Description</span>
+                  <textarea
+                    class="description-textarea"
+                    id="task-description"
+                    placeholder="Enter a Description"
+                  ></textarea>
+                </div>
+                <div class="flex-column-inputs mb-32">
+                  <span>Assigned to</span>
+                  <select class="input-standard" id="assigned-to-contact">
+                    <option value="" disabled selected>
+                      Select contacts to assign
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="desktop-seperator-add-contact"></div>
+              <div class="second-desktop-split">
+                <div class="flex-column-inputs mb-32">
+                  <span>Due date<span class="red">*</span></span>
+                  <input
+                    required
+                    class="date-standard"
+                    type="date"
+                    id="task-due-date"
+                  />
+                </div>
+                <div class="prio-container mb-32">
+                  <span>Prio</span>
+                  <div class="prio-content">
+                    <div id="urgent-prio" class="prios" onclick="setPrio('Urgent', 1)">
+                      Urgent
+                      <img id="urgent-prio-img" src="./assets/img/icons/urgent.svg" alt="Urgent" />
+                    </div>
+                    <div id="medium-prio" class="prios" onclick="setPrio('Medium', 2)">
+                      Medium
+                      <img
+                        id="medium-prio-img"
+                        class="prio-medium"
+                        src="./assets/img/icons/medium.svg"
+                        alt="Urgent"
+                      />
+                    </div>
+                    <div id="low-prio" class="prios" onclick="setPrio('Low', 3)">
+                      Low
+                      <img id="low-prio-img" src="./assets/img/icons/low.svg" alt="Urgent" />
+                    </div>
                   </div>
+                </div>
+                <div>
                   <div class="flex-column-inputs mb-32">
-                    <span>Description</span>
-                    <textarea
-                      class="description-textarea"
-                      name=""
-                      id=""
-                      placeholder="Enter a Description"
-                    ></textarea>
-                  </div>
-                  <div class="flex-column-inputs mb-32">
-                    <span>Assigned to</span>
-                    <select class="input-standard" id="">
+                    <span>Category<span class="red">*</span></span>
+                    <select required class="input-standard" id="select-task-category">
                       <option value="" disabled selected>
-                        Select contacts to assign
+                        Select task category
                       </option>
+                      <option value="Technical Task">Technical Task</option>
+                      <option value="User Story">User Story</option>
                     </select>
                   </div>
                 </div>
-                <div class="desktop-seperator-add-contact"></div>
-                <div class="second-desktop-split">
-                  <div class="flex-column-inputs mb-32">
-                    <span>Due date<span class="red">*</span></span>
-                    <input required class="date-standard" type="date" id="" />
-                  </div>
-                  <div class="prio-container mb-32">
-                    <span>Prio</span>
-                    <div class="prio-content">
-                      <div class="prios">
-                        Urgent
-                        <img src="./assets/img/icons/urgent.svg" alt="Urgent" />
-                      </div>
-                      <div class="prios">
-                        Medium
-                        <img
-                          class="prio-medium"
-                          src="./assets/img/icons/medium.svg"
-                          alt="Urgent"
-                        />
-                      </div>
-                      <div class="prios">
-                        Low
-                        <img src="./assets/img/icons/low.svg" alt="Urgent" />
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="flex-column-inputs mb-32">
-                      <span>Category<span class="red">*</span></span>
-                      <select required class="input-standard" id="">
-                        <option value="" disabled selected>
-                          Select task category
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="flex-column-inputs mb-32">
-                    <span>Subtasks<span class="red">*</span></span>
-                    <input
-                      class="input-standard"
-                      type="text"
-                      placeholder="Add new subtask"
-                      id=""
-                    />
-                  </div>
-                  <span class="required-text"
-                    ><span class="red">*</span>This field is required</span
-                  >
-                  <div class="desktop-buttons">
-                    <button class="clear-btn">
-                      Clear
-                      <img src="./assets/img/icons/close.svg" alt="" />
-                    </button>
-
-                    <button class="create-task-btn">
-                      Create Task
-                      <img src="./assets/img/icons/check.svg" alt="" />
-                    </button>
-                  </div>
+                <div class="flex-column-inputs mb-32">
+                  <span>Subtasks<span class="red">*</span></span>
+                  <input
+                    class="input-standard"
+                    type="text"
+                    placeholder="Add new subtask"
+                    id="task-subtask"
+                  />
                 </div>
+                <div class="desktop-buttons">
+                  <button class="clear-btn"> Clear
+                    <img src="./assets/img/icons/close.svg" alt="">
+                  </button>
+                  
+                  <button class="create-task-btn" onclick="checkIfFormFilled()">Create Task
+                    <img src="./assets/img/icons/check.svg" alt="">
+                  </button>
+                  
+                </div>
+              </div>
               </form>
             </main>
+            <span class="required-text"><span class="red">*</span>This field is required</span>
+            <div class="create-task-panel">
+              <span><span class="red">*</span>This field is required</span>
+              <button class="create-task-btn">
+                Create task
+                <img src="./assets/img/icons/check.svg" alt="check" />
+              </button>
+            </div>
+          </div>
           </div>
         </div>
       </div>

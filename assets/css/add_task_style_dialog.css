@@ -21,7 +21,7 @@ select {
 }
 
 .red {
-  color: #ff8190;
+  color: #ff8190 !important;
   font-weight: 400;
 }
 
@@ -293,4 +293,27 @@ select {
   position: absolute;
   font-size: 16px;
   font-weight: 400;
+}
+
+.pressed-color-orange {
+  background-color: #FF3D00;
+  font-weight: 700;
+  color: white;
+
+}
+
+.pressed-prio-img {
+  filter: brightness(0) saturate(100%) invert(99%) sepia(0%) saturate(7497%) hue-rotate(222deg) brightness(101%) contrast(101%)
+}
+
+.pressed-color-yellow {
+  background-color: #FFA800;
+  font-weight: 700;
+  color: white;
+}
+
+.pressed-color-green {
+  background-color: #7AE229;
+  font-weight: 700;
+  color: white;
 }

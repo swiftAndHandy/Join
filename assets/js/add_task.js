@@ -6,7 +6,7 @@ let addTaskPrio = [];
 let addTaskCategory = [];
 let addTaskSubtask = [];
 let pressedButton = 0;
-const base_URL = 'https://join-256-default-rtdb.europe-west1.firebasedatabase.app/';
+const base_URL = 'https://testing-ce5ae-default-rtdb.europe-west1.firebasedatabase.app/';
 
 async function postData(data={addTaskTitle, addTaskDescription, addTaskAssignedContacts, addTaskDueDate, addTaskPrio, addTaskCategory, addTaskSubtask}) {
     try {
@@ -75,10 +75,28 @@ function addnewTask() {
 }
 
 
-
+function checkIfFormFilled() {
+    const form = document.getElementById('add-task-form');
+    const requiredFields = form.querySelectorAll('[required]');
+    let allFilled = true;
+  
+    requiredFields.forEach(field => {
+      if (!field.value.trim()) {
+        allFilled = false;
+      
+      }
+    });
+  
+    if (allFilled) {
+      addnewTask(); 
+    } else {
+      console.log('Please fill all required fields before submitting.');
+    }
+  }
+  
 function setPrio(prio, number) {
     const priorities = ['urgent', 'medium', 'low'];
-    const colors = ['orange', 'yellow', 'green'];  // Dies sollte wahrscheinlich definiert sein, oder an eine andere Stelle im Code
+    const colors = ['orange', 'yellow', 'green'];  
     let pressedButton;
 
     // Setze die aktuelle Priorität und die Nummer des gedrückten Buttons
@@ -94,7 +112,7 @@ function setPrio(prio, number) {
         prioImgElement.classList.remove('pressed-prio-img');
     });
 
-    // Füge die Klassen zum aktuell gedrückten Button hinzu
+  
     if (pressedButton > 0 && pressedButton <= priorities.length) {
         const currentPriority = priorities[pressedButton - 1];
         const currentColor = colors[pressedButton - 1];

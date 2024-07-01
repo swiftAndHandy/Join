@@ -19,7 +19,7 @@
         <h1>Add Task</h1>
       </div>
       <main class="add-task-container">
-        <form class="form-add-task" return false;>
+        <form id="add-task-form" class="form-add-task" return false;>
           <div class="desktop-split">
           <div class="flex-column-inputs mb-32">
             <span>Title<span class="red">*</span></span>
@@ -107,7 +107,7 @@
               <img src="./assets/img/icons/close.svg" alt="">
             </button>
             
-            <button class="create-task-btn" onclick="addnewTask()">Create Task
+            <button class="create-task-btn" onclick="checkIfFormFilled()">Create Task
               <img src="./assets/img/icons/check.svg" alt="">
             </button>
             
