@@ -62,21 +62,22 @@
           <div class="prio-container mb-32">
             <span>Prio</span>
             <div class="prio-content">
-              <div class="prios">
+              <div id="urgent-prio" class="prios" onclick="setPrio('Urgent', 1)">
                 Urgent
-                <img src="./assets/img/icons/urgent.svg" alt="Urgent" />
+                <img id="urgent-prio-img" src="./assets/img/icons/urgent.svg" alt="Urgent" />
               </div>
-              <div class="prios">
+              <div id="medium-prio" class="prios" onclick="setPrio('Medium', 2)">
                 Medium
                 <img
+                  id="medium-prio-img"
                   class="prio-medium"
                   src="./assets/img/icons/medium.svg"
                   alt="Urgent"
                 />
               </div>
-              <div class="prios">
+              <div id="low-prio" class="prios" onclick="setPrio('Low', 3)">
                 Low
-                <img src="./assets/img/icons/low.svg" alt="Urgent" />
+                <img id="low-prio-img" src="./assets/img/icons/low.svg" alt="Urgent" />
               </div>
             </div>
           </div>

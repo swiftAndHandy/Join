@@ -157,6 +157,7 @@ select:focus {
   gap: 8px;
   background-color: white;
   cursor: pointer;
+  border: none;
 }
 
 .prios:hover {
@@ -260,6 +261,30 @@ select:focus {
 .content-wrapper {
   margin-top: 110px;
 }
+
+.pressed-color-orange {
+  background-color: #FF3D00;
+  font-weight: 700;
+  color: white;
+
+}
+
+.pressed-prio-img {
+  filter: brightness(0) saturate(100%) invert(99%) sepia(0%) saturate(7497%) hue-rotate(222deg) brightness(101%) contrast(101%)
+}
+
+.pressed-color-yellow {
+  background-color: #FFA800;
+  font-weight: 700;
+  color: white;
+}
+
+.pressed-color-green {
+  background-color: #7AE229;
+  font-weight: 700;
+  color: white;
+}
+
 
 @media (min-width: 1120px) and (max-width: 3200px) {
   .desktop-buttons {

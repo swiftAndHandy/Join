@@ -5,8 +5,8 @@ let addTaskDueDate = [];
 let addTaskPrio = [];
 let addTaskCategory = [];
 let addTaskSubtask = [];
-    
-const base_URL = 'https://join-c0587-default-rtdb.europe-west1.firebasedatabase.app/';
+let pressedButton = 0;
+const base_URL = 'https://join-256-default-rtdb.europe-west1.firebasedatabase.app/';
 
 async function postData(data={addTaskTitle, addTaskDescription, addTaskAssignedContacts, addTaskDueDate, addTaskPrio, addTaskCategory, addTaskSubtask}) {
     try {
@@ -70,5 +70,41 @@ function addnewTask() {
     taskCategory();
     taskSubtask();
     postData(data={addTaskTitle, addTaskDescription, addTaskAssignedContacts, addTaskDueDate, addTaskPrio, addTaskCategory, addTaskSubtask});
+    clearPrio();
     //window.location.href = 'board.html';
+}
+
+
+
+function setPrio(prio, number) {
+    const priorities = ['urgent', 'medium', 'low'];
+    const colors = ['orange', 'yellow', 'green'];  // Dies sollte wahrscheinlich definiert sein, oder an eine andere Stelle im Code
+    let pressedButton;
+
+    // Setze die aktuelle Priorität und die Nummer des gedrückten Buttons
+    addTaskPrio[0] = prio;
+    pressedButton = number;
+
+    // Entferne die Klassen von allen Prio-Buttons
+    priorities.forEach((priority, index) => {
+        const prioElement = document.getElementById(`${priority}-prio`);
+        const prioImgElement = document.getElementById(`${priority}-prio-img`);
+
+        prioElement.classList.remove(`pressed-color-${colors[index]}`);
+        prioImgElement.classList.remove('pressed-prio-img');
+    });
+
+    // Füge die Klassen zum aktuell gedrückten Button hinzu
+    if (pressedButton > 0 && pressedButton <= priorities.length) {
+        const currentPriority = priorities[pressedButton - 1];
+        const currentColor = colors[pressedButton - 1];
+        
+        document.getElementById(`${currentPriority}-prio`).classList.add(`pressed-color-${currentColor}`);
+        document.getElementById(`${currentPriority}-prio-img`).classList.add('pressed-prio-img');
+    }
+}
+
+
+function clearPrio () {
+    addTaskPrio = []
 }
