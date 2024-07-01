@@ -70,7 +70,7 @@ function addnewTask() {
     taskCategory();
     taskSubtask();
     postData(data={addTaskTitle, addTaskDescription, addTaskAssignedContacts, addTaskDueDate, addTaskPrio, addTaskCategory, addTaskSubtask});
-    clearPrio();
+    clearArrays();
     //window.location.href = 'board.html';
 }
 
@@ -123,6 +123,12 @@ function setPrio(prio, number) {
 }
 
 
-function clearPrio () {
-    addTaskPrio = []
+function clearArrays () {
+ addTaskTitle = [];
+ addTaskDescription = [];
+ addTaskAssignedContacts = [];
+ addTaskDueDate = [];
+ addTaskPrio = [];
+ addTaskCategory = [];
+ addTaskSubtask = [];
 }
