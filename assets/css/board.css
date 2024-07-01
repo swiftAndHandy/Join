@@ -705,8 +705,6 @@ Detail-View related Classes
   outline: 1px solid orange;
 }
 
-.details__description.edit {}
-
 .details__information {
   font-weight: 400;
   font-size: 16px;

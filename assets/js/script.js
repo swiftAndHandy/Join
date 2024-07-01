@@ -11,16 +11,28 @@ const userId = localStorage.getItem('id');
 
 /**
  * Capitalizes the first letter of the input string and converts the rest to lowercase.
+ * Capitalizes the first letter after a '-' to avoid double-names-issues.
  *
  * @param {string} input - The string to be formatted.
  * @returns {string} - The formatted string with the first letter capitalized and the rest in lowercase.
  */
 function capitaliseFirstLetters(input) {
-    return input.split(' ').map(word =>
-        word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-    ).join(' ');
+    input = input.split(' ').map(word =>
+        word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+    return input.split('-').map(word =>
+        word.charAt(0).toUpperCase() + word.slice(1)).join('-');
 }
 
+
+/**
+ * Applys d-none or removes d-none from 
+ * @param {Element} id - the document.elementId that is planed to change
+ * @param {boolean} method - hideWindow is true -> hideWindow. hideWindow is false? Show it.
+ */
+function hideWindow(id, method = true) {
+    target = document.getElementById(id);
+    method ? target.classList.add('d-none') : target.classList.remove('d-none');
+}
 
 /**
  * 
