@@ -19,12 +19,3 @@ function setPriorityTo(level) {
         }
     }
 }
-
-/**
- * @param {string} id - id of the html element that should become toggle of display: none 
- * @param {boolean} [method = true] - If true, adds the 'd-none' class to hide the element. If false, removes the 'd-none' class to show the element.
- */
-function hideWindow(id, method = true) {
-    target = document.getElementById(id);
-    method ? target.classList.add('d-none') : target.classList.remove('d-none');
-}

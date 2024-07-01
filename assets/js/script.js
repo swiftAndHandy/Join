@@ -6,7 +6,7 @@ const colors = [
     '#FFE62B', '#FF4646', '#FFBB2B'
 ];
 
-const BASE_URL = 'https://remotestorage-3b1e6-default-rtdb.europe-west1.firebasedatabase.app/';
+const BASE_URL = 'https://join-256-default-rtdb.europe-west1.firebasedatabase.app/';
 const userId = localStorage.getItem('id');
 
 /**
@@ -47,7 +47,7 @@ function stopPropagation(event) {
  * @param {Object} data - The data to be sent in the body of the PUT request. Defaults to an empty object.
  * @returns {Promise<Object>} - A promise that resolves to the JSON response from the server.
  */
-async function putData(path = "", data = {}) {
+async function putData(data = {}, path = "") {
     let response = await fetch(BASE_URL + path + '.json', {
         method: "PUT",
         headers: {
@@ -65,7 +65,7 @@ async function putData(path = "", data = {}) {
  * @param {Object} data - Data-Object transmitted 
  * @returns {Promise<Object>}
  */
-async function postData(path = "", data = {}) {
+async function postData(data = {}, path = "") {
     let response = await fetch(BASE_URL + path + '.json', {
         method: "POST",
         headers: {

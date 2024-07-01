@@ -41,7 +41,7 @@ async function createUser() {
 
     if (!await accountExists(email)) {
         if (!passwordInputMissmatch(password, passwordValidation)) {
-            await postData('accounts', { 'name': user, 'email': email, 'password': password.value });
+            await postData({ 'name': user, 'email': email, 'password': password.value }, 'accounts');
             return true;
         } else { return 'missmatch'; }
     } else {
