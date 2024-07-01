@@ -2,7 +2,7 @@ let privacyCheckboxActive = false;
 let passwordCreateInputHidden = true;
 let passwordValidationInputHidden = true;
 let passwordInputHidden = true;
-let rememberMe = false;
+let rememberMe = localStorage.getItem('login') === 'true';
 
 /**
  * Toggles the remember me state.
@@ -22,6 +22,8 @@ function initIndex() {
         startscreen.classList.add('over');
     }, 1000);
     includeHTML();
+    document.getElementById('remember').checked = rememberMe;
+    rememberMe && autofillLogin();
 }
 
 
@@ -41,7 +43,7 @@ async function createUser() {
 
     if (!await accountExists(email)) {
         if (!passwordInputMissmatch(password, passwordValidation)) {
-            await postData({ 'name': user, 'email': email, 'password': password.value, 'color': applyRandomColor()}, 'accounts');
+            await postData({ 'name': user, 'email': email, 'password': password.value, 'color': applyRandomColor() }, 'accounts');
             return true;
         } else { return 'missmatch'; }
     } else {
@@ -72,6 +74,12 @@ async function login() {
         document.getElementById('missmatch-mail').classList.add('d-none');
         document.getElementById('missmatch-pw').classList.remove('d-none');
     }
+}
+
+function guestLogin() {
+    localStorage.setItem('id', 'guest');
+    localStorage.setItem('login', false);
+    window.location.href = "./summary.html";
 }
 
 
@@ -299,4 +307,14 @@ function closeSignUp() {
 function openSignUp() {
     document.getElementById('sign-up-overlay').classList.remove('d-none');
     document.getElementById('login-wrapper').classList.add('d-none');
+}
+
+/**
+ * 
+ */
+async function autofillLogin() {
+    const data = await readData(`accounts/${userId}`);
+    document.getElementById('email-login').value = data.email;
+    document.getElementById('password-login').value = data.password;
+    // document.getElementById('login-btn').click();
 }

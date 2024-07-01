@@ -4,7 +4,7 @@
  * @param {string} user 
  */
 async function generateGreetingHtml(daytime, userInformation) {
-    if (userId) {
+    if (userId != 'guest') {
         return `<p>Good ${daytime},<br>
         <span class="greeting-msg--name">${userInformation.name}</span></p>`;
     } else {

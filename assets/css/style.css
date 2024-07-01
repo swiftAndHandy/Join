@@ -51,7 +51,6 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    user-select: none;
 }
 
 .checkbox+label::before {
@@ -101,6 +100,7 @@ body::-webkit-scrollbar-thumb {
     color: #FFFFFF;
     transition: all 0.1s ease-in-out;
     cursor: pointer;
+    user-select: none;
 }
 
 
@@ -124,6 +124,7 @@ body::-webkit-scrollbar-thumb {
     padding: 15px 24px;
     transition: all 0.1s ease-in-out;
     cursor: pointer;
+    user-select: none;
 }
 
 

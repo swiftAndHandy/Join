@@ -252,6 +252,7 @@ h2 {
   border: 1px solid #ffffff;
   color: white;
   margin-left: -8px;
+  user-select: none;
 }
 
 .profile-cricle:first-child {
@@ -754,6 +755,8 @@ Detail-View related Classes
   background-color: unset;
   align-items: center;
   cursor: pointer;
+  gap: 8px;
+  user-select: none;
 }
 
 .delete-link::before {
@@ -776,6 +779,8 @@ Detail-View related Classes
   background-color: unset;
   align-items: center;
   cursor: pointer;
+  gap: 8px;
+  user-select: none;
 }
 
 .edit-link::before {

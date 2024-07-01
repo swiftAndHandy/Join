@@ -146,6 +146,7 @@ header {
     justify-content: center;
     height: 46px;
     gap: 8px;
+    user-select: none;
 }
 
 .menu-bar-text {
@@ -399,6 +400,7 @@ header {
         justify-content: center;
         align-items: center;
         gap: 4px;
+        user-select: none;
     }
 
     .menu-summary_img {
