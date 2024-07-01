@@ -11,3 +11,12 @@ async function generateGreetingHtml(daytime, userInformation) {
         return `<p>Good ${daytime}!</p>`;
     }
 }
+
+/**
+ * Updates Content of Menu-Bar-Avatar
+ * @param {string} content - Initials of logged in Account or - if not logged in 'G'.
+ */
+function avatarHtml(content) {
+    document.getElementById('my-avatar-desktop').innerHTML = content;
+    document.getElementById('my-avatar-mobile').innerHTML = content;
+}

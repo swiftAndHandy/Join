@@ -2,7 +2,6 @@
  * let for testreasons. Could become a const later on - related on the method we will use to prove a user is logged in
  * required to turn off side-menu-links 
  */
-let loggedIn = true;
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -41,12 +40,13 @@ function updateMenu() {
         menuitemDesk.href = '#'; menuitemMobile.href = '#';
         menuitemDesk.classList.add('active');
         menuitemMobile.classList.add('active');
-    } else if (currentlyOpen && currentlyOpen != 'index') {
+    } else if (currentlyOpen && currentlyOpen != 'index' && currentlyOpen != 'help') {
         const menuitem = document.getElementById(`${currentlyOpen}-link`);
         menuitem.href = '#';
         menuitem.classList.add('active');
-        !loggedIn && hideMenu();
+        !userId && hideMenu();
     }
+    setMyAvatar();
 }
 
 
@@ -56,8 +56,11 @@ function updateMenu() {
  * and adds the 'd-none' class to both, making them hidden.
  */
 function hideMenu() {
-    document.getElementById('menu-bar-two').classList.add('d-none');
-    document.getElementById('menu-bar-mobile').classList.add('d-none');
+    hideWindow('menu-bar-two');
+    hideWindow('menu-bar-mobile');
+    hideWindow('header-mobile__right-content');
+    hideWindow('header-desktop__right-content');
+    document.getElementById('main-wrapper').setAttribute('style', 'margin-bottom: 0');
 }
 
 /**
@@ -68,4 +71,19 @@ function hideMenu() {
 function regularMenuPoint(currentPoint) {
     const specialPages = ["privacy", "legal_notice", "help", "index", ""];
     return !specialPages.includes(currentPoint);
+}
+
+
+/**
+ * Get the Initials for the Avatar-Divs and call avatarHtml to write the innerHtml.
+ * If no Initials there, use the string 'G' for "Guest".
+ */
+async function setMyAvatar() {
+    const myData = await readData(`accounts/${userId}`);
+    const myInitials = myData ? initials(myData.name) : null;
+    if (myInitials) {
+        avatarHtml(myInitials);
+    } else {
+        avatarHtml('G');
+    }
 }

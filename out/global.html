@@ -94,73 +94,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="loggedIn"><span class="type-signature"></span>loggedIn<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    let for testreasons. Could become a const later on - related on the method we will use to prove a user is logged in
-required to turn off side-menu-links
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="menu-bar-script.js.html">menu-bar-script.js</a>, <a href="menu-bar-script.js.html#line5">line 5</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -327,7 +260,7 @@ required to turn off side-menu-links
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="script.js.html">script.js</a>, <a href="script.js.html#line97">line 97</a>
+        <a href="script.js.html">script.js</a>, <a href="script.js.html#line118">line 118</a>
     </li></ul></dd>
     
 
@@ -526,6 +459,238 @@ required to turn off side-menu-links
     
 
     
+    <h4 class="name" id="applyRandomColor"><span class="type-signature"></span>applyRandomColor<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="script.js.html">script.js</a>, <a href="script.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    colors - a random element of global const colors. 
+e. g.: use this when you add a new contact, that hasn't a own user-account
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="avatarHtml"><span class="type-signature"></span>avatarHtml<span class="signature">(content)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Updates Content of Menu-Bar-Avatar
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>content</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Initials of logged in Account or - if not logged in 'G'.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="generateHtml.js.html">generateHtml.js</a>, <a href="generateHtml.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="capitaliseFirstLetters"><span class="type-signature"></span>capitaliseFirstLetters<span class="signature">(input)</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
@@ -535,6 +700,7 @@ required to turn off side-menu-links
 
 <div class="description">
     Capitalizes the first letter of the input string and converts the rest to lowercase.
+Capitalizes the first letter after a '-' to avoid double-names-issues.
 </div>
 
 
@@ -627,7 +793,7 @@ required to turn off side-menu-links
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="script.js.html">script.js</a>, <a href="script.js.html#line18">line 18</a>
+        <a href="script.js.html">script.js</a>, <a href="script.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -1353,7 +1519,7 @@ This function is used to handle the navigation-design.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="menu-bar-script.js.html">menu-bar-script.js</a>, <a href="menu-bar-script.js.html#line27">line 27</a>
+        <a href="menu-bar-script.js.html">menu-bar-script.js</a>, <a href="menu-bar-script.js.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -1672,12 +1838,16 @@ and adds the 'd-none' class to both, making them hidden.
     
 
     
-    <h4 class="name" id="hideWindow"><span class="type-signature"></span>hideWindow<span class="signature">(id, method<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="hideWindow"><span class="type-signature"></span>hideWindow<span class="signature">(id, method)</span><span class="type-signature"></span></h4>
     
 
     
 
 
+
+<div class="description">
+    Applys d-none or removes d-none from
+</div>
 
 
 
@@ -1700,8 +1870,6 @@ and adds the 'd-none' class to both, making them hidden.
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
         <th>Default</th>
@@ -1722,20 +1890,12 @@ and adds the 'd-none' class to both, making them hidden.
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">Element</span>
 
 
             
             </td>
 
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
             
 
             
@@ -1744,7 +1904,7 @@ and adds the 'd-none' class to both, making them hidden.
                 </td>
             
 
-            <td class="description last">id of the html element that should become toggle of display: none</td>
+            <td class="description last">the document.elementId that is planed to change</td>
         </tr>
 
     
@@ -1764,16 +1924,6 @@ and adds the 'd-none' class to both, making them hidden.
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
                 <td class="default">
@@ -1783,7 +1933,7 @@ and adds the 'd-none' class to both, making them hidden.
                 </td>
             
 
-            <td class="description last">If true, adds the 'd-none' class to hide the element. If false, removes the 'd-none' class to show the element.</td>
+            <td class="description last">hideWindow is true -> hideWindow. hideWindow is false? Show it.</td>
         </tr>
 
     
@@ -1824,7 +1974,96 @@ and adds the 'd-none' class to both, making them hidden.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="task_details.js.html">task_details.js</a>, <a href="task_details.js.html#line27">line 27</a>
+        <a href="script.js.html">script.js</a>, <a href="script.js.html#line41">line 41</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="includeHTML"><span class="type-signature">(async) </span>includeHTML<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    let for testreasons. Could become a const later on - related on the method we will use to prove a user is logged in
+required to turn off side-menu-links
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="menu-bar-script.js.html">menu-bar-script.js</a>, <a href="menu-bar-script.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -2026,6 +2265,149 @@ Todo: Get Username and start greeting, when it's saved
 
 
 
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="initials"><span class="type-signature"></span>initials<span class="signature">(input)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>input</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="script.js.html">script.js</a>, <a href="script.js.html#line51">line 51</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - every first character of every word in input
+</div>
+
+
+
+    
 
 
 
@@ -3100,7 +3482,7 @@ if a value is given, and it's the same than the regular-password, return true.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="script.js.html">script.js</a>, <a href="script.js.html#line68">line 68</a>
+        <a href="script.js.html">script.js</a>, <a href="script.js.html#line89">line 89</a>
     </li></ul></dd>
     
 
@@ -3278,7 +3660,7 @@ if a value is given, and it's the same than the regular-password, return true.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="script.js.html">script.js</a>, <a href="script.js.html#line50">line 50</a>
+        <a href="script.js.html">script.js</a>, <a href="script.js.html#line71">line 71</a>
     </li></ul></dd>
     
 
@@ -3439,7 +3821,7 @@ If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognit
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="script.js.html">script.js</a>, <a href="script.js.html#line85">line 85</a>
+        <a href="script.js.html">script.js</a>, <a href="script.js.html#line106">line 106</a>
     </li></ul></dd>
     
 
@@ -3576,7 +3958,7 @@ If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognit
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="menu-bar-script.js.html">menu-bar-script.js</a>, <a href="menu-bar-script.js.html#line68">line 68</a>
+        <a href="menu-bar-script.js.html">menu-bar-script.js</a>, <a href="menu-bar-script.js.html#line71">line 71</a>
     </li></ul></dd>
     
 
@@ -3622,13 +4004,17 @@ If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognit
     
 
     
-    <h4 class="name" id="returnInitials"><span class="type-signature"></span>returnInitials<span class="signature">(input)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setMyAvatar"><span class="type-signature">(async) </span>setMyAvatar<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
 
 
 
+<div class="description">
+    Get the Initials for the Avatar-Divs and call avatarHtml to write the innerHtml.
+If no Initials there, use the string 'G' for "Guest".
+</div>
 
 
 
@@ -3636,54 +4022,6 @@ If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognit
 
 
 
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>input</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -3719,7 +4057,7 @@ If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognit
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="script.js.html">script.js</a>, <a href="script.js.html#line30">line 30</a>
+        <a href="menu-bar-script.js.html">menu-bar-script.js</a>, <a href="menu-bar-script.js.html#line81">line 81</a>
     </li></ul></dd>
     
 
@@ -3744,16 +4082,6 @@ If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognit
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    - every first character of every word in input
-</div>
-
-
-
-    
 
 
 
@@ -4433,7 +4761,7 @@ swaps out the password-type for a text-type or vice versa.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="script.js.html">script.js</a>, <a href="script.js.html#line38">line 38</a>
+        <a href="script.js.html">script.js</a>, <a href="script.js.html#line59">line 59</a>
     </li></ul></dd>
     
 
@@ -5088,7 +5416,7 @@ This function inverses the value of the global variable `rememberMe`.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="menu-bar-script.js.html">menu-bar-script.js</a>, <a href="menu-bar-script.js.html#line36">line 36</a>
+        <a href="menu-bar-script.js.html">menu-bar-script.js</a>, <a href="menu-bar-script.js.html#line35">line 35</a>
     </li></ul></dd>
     
 
@@ -5134,13 +5462,13 @@ This function inverses the value of the global variable `rememberMe`.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#loggedIn">loggedIn</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#returnInitials">returnInitials</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#updateMenu">updateMenu</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#applyRandomColor">applyRandomColor</a></li><li><a href="global.html#avatarHtml">avatarHtml</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#setMyAvatar">setMyAvatar</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#updateMenu">updateMenu</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Mon Jul 01 2024 01:32:00 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Mon Jul 01 2024 13:15:01 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

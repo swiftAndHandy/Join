@@ -75,3 +75,10 @@ function animateGreeting(greeting) {
         greeting.classList.add('d-none');
     }, 1600);
 }
+
+
+async function updateBoardCounters() {
+    
+}
+
+// <span id="board-counter" class="summary-counter">1</span>

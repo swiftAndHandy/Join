@@ -10,6 +10,15 @@ const BASE_URL = 'https://join-256-default-rtdb.europe-west1.firebasedatabase.ap
 const userId = localStorage.getItem('id');
 
 /**
+ * @returns colors - a random element of global const colors. 
+ * e. g.: use this when you add a new contact, that hasn't a own user-account
+ */
+function applyRandomColor() {
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+}
+
+/**
  * Capitalizes the first letter of the input string and converts the rest to lowercase.
  * Capitalizes the first letter after a '-' to avoid double-names-issues.
  *
@@ -39,7 +48,7 @@ function hideWindow(id, method = true) {
  * @param {*} input 
  * @returns - every first character of every word in input
  */
-function returnInitials(input) {
+function initials(input) {
     return input.split(' ').map(word => word.charAt(0)).join('');
 }
 
