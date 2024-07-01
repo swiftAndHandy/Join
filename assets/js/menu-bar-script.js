@@ -46,7 +46,7 @@ function updateMenu() {
         menuitem.classList.add('active');
         !userId && hideMenu();
     }
-    setMyAvatar();
+    setMyAvatar(currentlyOpen);
 }
 
 
@@ -78,12 +78,14 @@ function regularMenuPoint(currentPoint) {
  * Get the Initials for the Avatar-Divs and call avatarHtml to write the innerHtml.
  * If no Initials there, use the string 'G' for "Guest".
  */
-async function setMyAvatar() {
+async function setMyAvatar(currentFile) {
     const myData = await readData(`accounts/${userId}`);
     const myInitials = myData ? initials(myData.name) : null;
-    if (myInitials) {
-        avatarHtml(myInitials);
-    } else {
-        avatarHtml('G');
+    if (currentFile && currentFile != 'index') {
+        if (myInitials) {
+            avatarHtml(myInitials);
+        } else {
+            avatarHtml('G');
+        }
     }
 }

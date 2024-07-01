@@ -42,6 +42,7 @@ body {
     background-color: #2A3647;
     text-indent: -9999px;
     /* hide button text */
+    user-select: none;
 }
 
 .btn-add-new-contact img {
@@ -476,6 +477,7 @@ body {
         background-color: #2A3647;
         right: 20px;
         bottom: 160px;
+        user-select: none;
     }
 
     .more-vert-button img {

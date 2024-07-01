@@ -166,6 +166,7 @@ select:focus {
   justify-content: center;
   gap: 8px;
   background-color: white;
+  user-select: none;
 }
 
 .prios:hover {
@@ -205,7 +206,9 @@ select:focus {
   gap: 8px;
   border: none;
   align-items: center;
+  user-select: none;
 }
+
 .create-task-btn:hover {
   background-color: #29abe2;
 }
