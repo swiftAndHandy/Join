@@ -1,16 +1,16 @@
-let addTaskTitle = [];
-let addTaskDescription = [];
-let addTaskAssignedContacts = [];
-let addTaskDueDate = [];
-let addTaskPrio = [];
-let addTaskCategory = [];
-let addTaskSubtask = [];
+let addTaskTitle = '';
+let addTaskDescription = '';
+let addTaskAssignedContacts = '';
+let addTaskDueDate = '';
+let addTaskPrio = '';
+let addTaskCategory = '';
+let addTaskSubtask = '';
 let pressedButton = 0;
-const base_URL = 'https://testing-ce5ae-default-rtdb.europe-west1.firebasedatabase.app/';
+const base_URL = 'https://join-256-default-rtdb.europe-west1.firebasedatabase.app//';
 
-async function postData(data={addTaskTitle, addTaskDescription, addTaskAssignedContacts, addTaskDueDate, addTaskPrio, addTaskCategory, addTaskSubtask}) {
+async function postData(path='tasks' ,data = {'title': addTaskTitle, 'description': addTaskDescription, 'contact': addTaskAssignedContacts, 'date': addTaskDueDate, 'prio': addTaskPrio, 'category': addTaskCategory, 'subtask': addTaskSubtask}) {
     try {
-    let response = await fetch(base_URL + '.json',{
+    let response = await fetch(base_URL + path + '.json',{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -25,19 +25,19 @@ async function postData(data={addTaskTitle, addTaskDescription, addTaskAssignedC
 
 function addTitle() {
     let title = document.getElementById('task-title');
-    addTaskTitle.push(title.value);
+    addTaskTitle = title.value;
     title.value = '';
 }
 
 function addDescription() {
     let taskDescription = document.getElementById('task-description');
-    addTaskDescription.push(taskDescription.value);
+    addTaskDescription = taskDescription.value;
     taskDescription.value = '';
 }
 
 function assignedContact() {
     let assignedToContact = document.getElementById('assigned-to-contact'); 
-    addTaskAssignedContacts.push(assignedToContact.value);
+    addTaskAssignedContacts = assignedToContact.value;
     assignedToContact.value = '';
 }
 
@@ -46,19 +46,19 @@ function taskDueDate() {
     let date = new Date(dueDate.value);
     let dateOption = {month: 'long' , day: 'numeric' , year: 'numeric'};
     let formattedDate = date.toLocaleDateString('en-US', dateOption);
-    addTaskDueDate.push(formattedDate);
+    addTaskDueDate = formattedDate;
     dueDate.value = '';
 }
 
 function taskCategory() {
     let category = document.getElementById('select-task-category');
-    addTaskCategory.push(category.value);
+    addTaskCategory = category.value;
     category.value = '';
 }
 
 function taskSubtask() {
     let subtask = document.getElementById('task-subtask');
-    addTaskSubtask.push(subtask.value);
+    addTaskSubtask = subtask.value;
     subtask.value = '';
 }
 
@@ -69,24 +69,19 @@ function addnewTask() {
     taskDueDate();
     taskCategory();
     taskSubtask();
-    postData(data={addTaskTitle, addTaskDescription, addTaskAssignedContacts, addTaskDueDate, addTaskPrio, addTaskCategory, addTaskSubtask});
-    clearArrays();
+    postData(path='tasks' ,data = {'title': addTaskTitle, 'description': addTaskDescription, 'contact': addTaskAssignedContacts, 'date': addTaskDueDate, 'prio': addTaskPrio, 'category': addTaskCategory, 'subtask': addTaskSubtask});
     //window.location.href = 'board.html';
 }
-
 
 function checkIfFormFilled() {
     const form = document.getElementById('add-task-form');
     const requiredFields = form.querySelectorAll('[required]');
     let allFilled = true;
-  
     requiredFields.forEach(field => {
       if (!field.value.trim()) {
         allFilled = false;
-      
       }
     });
-  
     if (allFilled) {
       addnewTask(); 
     } else {
@@ -100,7 +95,7 @@ function setPrio(prio, number) {
     let pressedButton;
 
     // Setze die aktuelle Priorität und die Nummer des gedrückten Buttons
-    addTaskPrio[0] = prio;
+    addTaskPrio = prio;
     pressedButton = number;
 
     // Entferne die Klassen von allen Prio-Buttons
@@ -120,15 +115,4 @@ function setPrio(prio, number) {
         document.getElementById(`${currentPriority}-prio`).classList.add(`pressed-color-${currentColor}`);
         document.getElementById(`${currentPriority}-prio-img`).classList.add('pressed-prio-img');
     }
-}
-
-
-function clearArrays () {
- addTaskTitle = [];
- addTaskDescription = [];
- addTaskAssignedContacts = [];
- addTaskDueDate = [];
- addTaskPrio = [];
- addTaskCategory = [];
- addTaskSubtask = [];
 }
