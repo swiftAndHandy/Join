@@ -47,42 +47,19 @@
           <div class="flex-column-inputs mb-32 position-relative">
             <span>Assigned to</span>
             <div id="contact-input-wrapper" onclick="toggleContactDropBox()">
-            <div class="input-standard" id="assigned-to-contact">
-              <span>Select task category</span>
-              <img id="rotation" src="./assets/img/icons/arrow_drop_down_select_field.svg" alt="">
-              </option>
+            <div class="input-standard cursor-default" id="assigned-to-contact">
+              <span>Select contact to assign</span>
+              <img class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" alt="">
             </div>
+            
+          </div>
+          <div id="contacts-show-input" class="input-standard d-none" onclick="toggleContactDropBox()" >
+            <input onclick="stopPropagation(event)" type="text">
+            <img class="rotation cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" alt="">
           </div>
             <div id="contacts-drop-menu" class="drop-menu d-none">
                 <div id="contacts-drop-menu-content" class="drop-menu-contacts">
-                  <div class="ul-content-wrapper">
-                    <span class="profile-initials-circle">AB</span>
-                  <ul class="ul-row-styling">Alfred boo
-                  </ul>
-                  <input class="checkbox" id="contact-check" type="checkbox" value="Alfred boo" onchange="handleCheckBox(this)">
-                  <label for="contact-check" form="form-desktop"></label>
-                </div>
-                <div class="ul-content-wrapper">
-                  <span class="profile-initials-circle">AB</span>
-                <ul class="ul-row-styling">Alfred boo
-                </ul>
-                <input class="checkbox" id="contact-check" type="checkbox" value="Alfred boo" onchange="handleCheckBox(this)">
-                <label for="contact-check" form="form-desktop"></label>
-              </div>
-              <div class="ul-content-wrapper">
-                <span class="profile-initials-circle">AB</span>
-              <ul class="ul-row-styling">Alfred boo
-              </ul>
-              <input class="checkbox" id="contact-check" type="checkbox" value="Alfred boo" onchange="handleCheckBox(this)">
-              <label for="contact-check" form="form-desktop"></label>
-            </div>
-            <div class="ul-content-wrapper">
-              <span class="profile-initials-circle">AB</span>
-            <ul class="ul-row-styling">Alfred boo
-            </ul>
-            <input class="checkbox" id="contact-check" type="checkbox" value="Alfred boo" onchange="handleCheckBox(this)">
-            <label for="contact-check" form="form-desktop"></label>
-          </div>
+
                 
                 </div>
             </div>
@@ -134,7 +111,7 @@
             </div>
           </div>
           <div class="flex-column-inputs mb-32">
-            <span>Subtasks<span class="red">*</span></span>
+            <span>Subtasks</span>
             <input
               class="input-standard"
               type="text"

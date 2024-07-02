@@ -289,8 +289,7 @@
 
         
 <div class="param-desc">
-    - Returns the user object if an account with the given email (and optional password) exists,
-                              or false if no account is found or an error occurs.
+    - Returns the user object if an account with the given email (and optional password) exists,                              or false if no account is found or an error occurs.
 </div>
 
 
@@ -536,8 +535,7 @@
 
         
 <div class="param-desc">
-    colors - a random element of global const colors. 
-e. g.: use this when you add a new contact, that hasn't a own user-account
+    colors - a random element of global const colors. e. g.: use this when you add a new contact, that hasn't a own user-account
 </div>
 
 
@@ -783,8 +781,7 @@ e. g.: use this when you add a new contact, that hasn't a own user-account
 
 
 <div class="description">
-    Capitalizes the first letter of the input string and converts the rest to lowercase.
-Capitalizes the first letter after a '-' to avoid double-names-issues.
+    Capitalizes the first letter of the input string and converts the rest to lowercase.Capitalizes the first letter after a '-' to avoid double-names-issues.
 </div>
 
 
@@ -1031,9 +1028,7 @@ Capitalizes the first letter after a '-' to avoid double-names-issues.
 
 
 <div class="description">
-    Resets every input.value of sign-up-dialog. 
-Also resets images by passwordInputIcon()
-does another password compare, to reset missmatch-msg.
+    Resets every input.value of sign-up-dialog. Also resets images by passwordInputIcon()does another password compare, to reset missmatch-msg.
 </div>
 
 
@@ -1121,8 +1116,7 @@ does another password compare, to reset missmatch-msg.
 
 
 <div class="description">
-    compares both password fields during sign-up. 
-comparsion starts, when the validation field gets a value
+    compares both password fields during sign-up. comparsion starts, when the validation field gets a value
 </div>
 
 
@@ -1210,9 +1204,7 @@ comparsion starts, when the validation field gets a value
 
 
 <div class="description">
-    Attempts to create a new user account with the provided email, name, and password.
-If the email does not already exist, a new user is created and the data is posted.
-If the email already exists, the function returns false.
+    Attempts to create a new user account with the provided email, name, and password.If the email does not already exist, a new user is created and the data is posted.If the email already exists, the function returns false.
 </div>
 
 
@@ -1285,8 +1277,7 @@ If the email already exists, the function returns false.
 
         
 <div class="param-desc">
-    - A promise that resolves to true if the user was created successfully,
-                              or false if the email already exists.
+    - A promise that resolves to true if the user was created successfully,                              or false if the email already exists.
 </div>
 
 
@@ -1783,8 +1774,7 @@ If the email already exists, the function returns false.
 
 
 <div class="description">
-    fetchs the currently open html-file-name and removes .html.
-This function is used to handle the navigation-design.
+    fetchs the currently open html-file-name and removes .html.This function is used to handle the navigation-design.
 </div>
 
 
@@ -1976,8 +1966,7 @@ This function is used to handle the navigation-design.
 
 
 <div class="description">
-    Runs various functions, to use the correct greeting for users/guests.
-To do: Check for Login/Username...
+    Runs various functions, to use the correct greeting for users/guests.To do: Check for Login/Username...
 </div>
 
 
@@ -2239,9 +2228,7 @@ To do: Check for Login/Username...
 
 
 <div class="description">
-    Hides the menu bars by adding the 'd-none' class to the menu elements.
-This function targets the elements with the IDs 'menu-bar-two' and 'menu-bar-mobile',
-and adds the 'd-none' class to both, making them hidden.
+    Hides the menu bars by adding the 'd-none' class to the menu elements.This function targets the elements with the IDs 'menu-bar-two' and 'menu-bar-mobile',and adds the 'd-none' class to both, making them hidden.
 </div>
 
 
@@ -2501,8 +2488,7 @@ and adds the 'd-none' class to both, making them hidden.
 
 
 <div class="description">
-    let for testreasons. Could become a const later on - related on the method we will use to prove a user is logged in
-required to turn off side-menu-links
+    let for testreasons. Could become a const later on - related on the method we will use to prove a user is logged inrequired to turn off side-menu-links
 </div>
 
 
@@ -2678,8 +2664,7 @@ required to turn off side-menu-links
 
 
 <div class="description">
-    This function is used @summary.html to initalize everything.
-Todo: Get Username and start greeting, when it's saved
+    This function is used @summary.html to initalize everything.Todo: Get Username and start greeting, when it's saved
 </div>
 
 
@@ -3339,9 +3324,7 @@ Todo: Get Username and start greeting, when it's saved
 
 
 <div class="description">
-    Attempts to log in a user with the provided email and password.
-If the login is successful, the user is redirected to the summary page.
-If the login fails, a warning is logged to the console.
+    Attempts to log in a user with the provided email and password.If the login is successful, the user is redirected to the summary page.If the login fails, a warning is logged to the console.
 </div>
 
 
@@ -3539,9 +3522,7 @@ If the login fails, a warning is logged to the console.
 
 
 <div class="description">
-    evaluates value of both password-inputs. if a value is set, it will call the setPasswordInputDesign-Function
-and also add a pointer class + set an onclick attribute to toggle hide/show-password-variables.
-otherwise it will reset those changes.
+    evaluates value of both password-inputs. if a value is set, it will call the setPasswordInputDesign-Functionand also add a pointer class + set an onclick attribute to toggle hide/show-password-variables.otherwise it will reset those changes.
 </div>
 
 
@@ -3678,8 +3659,7 @@ otherwise it will reset those changes.
 
 
 <div class="description">
-    Statement, checking validationPassword for a existing value.
-if a value is given, and it's the same than the regular-password, return true.
+    Statement, checking validationPassword for a existing value.if a value is given, and it's the same than the regular-password, return true.
 </div>
 
 
@@ -4209,9 +4189,7 @@ if a value is given, and it's the same than the regular-password, return true.
 
 
 <div class="description">
-    responseToJason is containing every user. It's iterated by every userKeyArray-Index to  
-compare Login-Form-Information with provided server-information.
-If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
+    responseToJason is containing every user. It's iterated by every userKeyArray-Index to  compare Login-Form-Information with provided server-information.If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
 </div>
 
 
@@ -4495,8 +4473,7 @@ If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognit
 
 
 <div class="description">
-    Get the Initials for the Avatar-Divs and call avatarHtml to write the innerHtml.
-If no Initials there, use the string 'G' for "Guest".
+    Get the Initials for the Avatar-Divs and call avatarHtml to write the innerHtml.If no Initials there, use the string 'G' for "Guest".
 </div>
 
 
@@ -4584,9 +4561,7 @@ If no Initials there, use the string 'G' for "Guest".
 
 
 <div class="description">
-    on password-create field:
-swaps out the lock-image for the eye-image or vice vera.
-swaps out the password-type for a text-type or vice versa.
+    on password-create field:swaps out the lock-image for the eye-image or vice vera.swaps out the password-type for a text-type or vice versa.
 </div>
 
 
@@ -4674,9 +4649,7 @@ swaps out the password-type for a text-type or vice versa.
 
 
 <div class="description">
-    on password-validation field:
-swaps out the lock-image for the eye-image or vice vera.
-swaps out the password-type for a text-type or vice versa.
+    on password-validation field:swaps out the lock-image for the eye-image or vice vera.swaps out the password-type for a text-type or vice versa.
 </div>
 
 
@@ -4764,9 +4737,7 @@ swaps out the password-type for a text-type or vice versa.
 
 
 <div class="description">
-    on password-validation field:
-swaps out the lock-image for the eye-image or vice vera.
-swaps out the password-type for a text-type or vice versa.
+    on password-validation field:swaps out the lock-image for the eye-image or vice vera.swaps out the password-type for a text-type or vice versa.
 </div>
 
 
@@ -5288,10 +5259,7 @@ swaps out the password-type for a text-type or vice versa.
 
 
 <div class="description">
-    try to submit sign-up-form/use html form-validation.
-if everything is valid, try to createUser().
-If createUser() is possible, animate the success-overlay and close popup after the animation is done.
-Otherwise warn, that user-account is allready existing.
+    try to submit sign-up-form/use html form-validation.if everything is valid, try to createUser().If createUser() is possible, animate the success-overlay and close popup after the animation is done.Otherwise warn, that user-account is allready existing.
 </div>
 
 
@@ -5539,8 +5507,7 @@ Otherwise warn, that user-account is allready existing.
 
 
 <div class="description">
-    toggles the currrent show/hide-password variable. 
-calls the required function to set the correct eye-icon on input-field.
+    toggles the currrent show/hide-password variable. calls the required function to set the correct eye-icon on input-field.
 </div>
 
 
@@ -5677,8 +5644,7 @@ calls the required function to set the correct eye-icon on input-field.
 
 
 <div class="description">
-    sets the value of privacyCheckboxActive to the opposite and 
-disables or enables the submit-button based on the new value
+    sets the value of privacyCheckboxActive to the opposite and disables or enables the submit-button based on the new value
 </div>
 
 
@@ -5766,8 +5732,7 @@ disables or enables the submit-button based on the new value
 
 
 <div class="description">
-    Toggles the remember me state.
-This function inverses the value of the global variable `rememberMe`.
+    Toggles the remember me state.This function inverses the value of the global variable `rememberMe`.
 </div>
 
 
@@ -6113,7 +6078,7 @@ This function inverses the value of the global variable `rememberMe`.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Tue Jul 02 2024 20:19:01 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Tue Jul 02 2024 20:40:47 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

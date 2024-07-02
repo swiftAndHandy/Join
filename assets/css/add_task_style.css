@@ -109,15 +109,13 @@ span {
     justify-content: space-between;
 }
 
-#rotation {
+.rotation {
   transition: transform 0.4s ease-in-out; 
   transform-origin: center; 
-}
-
-.rotation-animation {
- 
   transform: rotate(180deg);
 }
+
+
 
 .date-standard {
   padding: 8px 21px;
@@ -344,9 +342,26 @@ select:focus {
     
 }
 
+#contacts-show-input input{
+  border: none;
+  width: 224px;
+}
+
+#contacts-show-input input:focus {
+  outline: none;
+}
+
 .ul-content-wrapper input {
   width: 20px;
   padding-left: 200px;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .profile-initials-circle {

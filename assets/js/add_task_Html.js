@@ -5,8 +5,8 @@ function generateDropBoxContent() {
    
       boxContent.innerHTML += `<div id="background-drop-menu-background${i}" class="ul-content-wrapper">
                     <div class="group-pb-cricle-with-name">
-                    <span class="profile-initials-circle">AB</span>
-                  <ul class="ul-row-styling">${selectedContacts[i]}
+                    <span class="profile-initials-circle cursor-default">AB</span>
+                  <ul class="ul-row-styling cursor-default">${selectedContacts[i]}
                   </ul>
                   </div>
                   <input class="checkbox" id="contact-check${i}" type="checkbox" value="${selectedContacts[i]}" onchange="handleCheckBox(this,${i})">

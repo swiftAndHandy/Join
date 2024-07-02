@@ -57,11 +57,11 @@ function addDescription() {
   taskDescription.value = "";
 }
 
-function assignedContact() {
-  let assignedToContact = document.getElementById("assigned-to-contact");
-  addTaskAssignedContacts = assignedToContact.value;
-  assignedToContact.value = "";
-}
+// function assignedContact() {
+//   let assignedToContact = document.getElementById("assigned-to-contact");
+//   addTaskAssignedContacts = addTaskAssignedContacts
+//   assignedToContact.value = "";
+// } maybe no use for it anymore
 /**
  * 
  * @returns {void}
@@ -105,12 +105,17 @@ function toggleContactDropBox() {
    if(!alreadyOpen) {
     document.getElementById('contacts-drop-menu').classList.remove('d-none');
     document.getElementById('required-text-span').classList.add('d-none');
-    document.getElementById('rotation').classList.add('rotation-animation');
+    
+    document.getElementById('contact-input-wrapper').classList.add('d-none');
+    document.getElementById('contacts-show-input').classList.remove('d-none');
     alreadyOpen = true
    }else {
     document.getElementById('contacts-drop-menu').classList.add('d-none');
     document.getElementById('required-text-span').classList.remove('d-none');
-    document.getElementById('rotation').classList.remove('rotation-animation');
+    document.getElementById('contact-input-wrapper').classList.remove('d-none');
+    document.getElementById('contacts-show-input').classList.add('d-none');
+   
+    
     alreadyOpen= false 
    }
 }
@@ -139,7 +144,7 @@ function taskSubtask() {
 function addnewTask() {
   addTitle();
   addDescription();
-  assignedContact();
+//   assignedContact(); maybe not needed anymore
   taskDueDate();
   taskCategory();
   taskSubtask();
