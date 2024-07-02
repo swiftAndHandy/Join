@@ -55,12 +55,13 @@ span {
 }
 
 .pressed-drop-box-bg-color {
-  background-color: #091931;
+  background-color:#2A3647 ;
   color: white;
 }
 
 .pressed-drop-box-bg-color:hover {
-  background-color:#2A3647 ;
+ 
+  background-color: #091931;
 }
 
 .headline-add-task {
@@ -339,7 +340,17 @@ select:focus {
     padding: 0 16px;
     margin-top: 9px;
     justify-content: space-between;
+    border-radius: 10px;
     
+}
+
+.ul-content-wrapper-no-click:hover {
+  background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+
+}
+
+.filter-to-white {
+  filter: invert(100%) sepia(1%) saturate(308%) hue-rotate(210deg) brightness(116%) contrast(100%);
 }
 
 #contacts-show-input input{
