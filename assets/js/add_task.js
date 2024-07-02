@@ -64,8 +64,6 @@ function handleCheckBox(checkbox,idNumber) {
   }
 }
 
-
-
 function toggleContactDropBox() {
    
    if(!alreadyOpen) {
