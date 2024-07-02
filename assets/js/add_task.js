@@ -7,14 +7,15 @@ let addTaskCategory = "";
 let addTaskSubtask = "";
 let pressedButton = 0;
 let alreadyOpen = false
-const base_URL =
-  "https://testing-ce5ae-default-rtdb.europe-west1.firebasedatabase.app/";//#endregion
+const base_URL = "https://join-256-default-rtdb.europe-west1.firebasedatabase.app/";
+
 
 
   function init() {
     includeHTML();
     generateDropBoxContent();
   }
+
 
 async function postData(
   path = "tasks",
@@ -71,8 +72,6 @@ function handleCheckBox(checkbox,idNumber) {
     document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('pressed-drop-box-bg-color')
   }
 }
-
-
 
 function toggleContactDropBox() {
    
