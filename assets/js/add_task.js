@@ -1,25 +1,21 @@
 let addTaskTitle = "";
 let addTaskDescription = "";
 let addTaskAssignedContacts = [];
-let selectedContacts = [
-  "Hans bauer",
-  "Fred schauer",
-  "baumgarten Wow",
-  "Marcel Auer",
-];
+let selectedContacts = ['Hans bauer', 'Fred schauer', 'baumgarten Wow', 'Marcel Auer'];
 let addTaskDueDate = "";
 let addTaskPrio = "";
 let addTaskCategory = "";
 let addTaskSubtask = "";
 let pressedButton = 0;
-let alreadyOpen = false;
+let alreadyOpen = false
 const base_URL =
   "https://join-256-default-rtdb.europe-west1.firebasedatabase.app/";//#endregion
 
-function init() {
-  includeHTML();
-  generateDropBoxContent();
-}
+
+  function init() {
+    includeHTML();
+    generateDropBoxContent();
+  }
 
 async function postData(
   path = "tasks",
@@ -66,52 +62,56 @@ function assignedContact() {
   assignedToContact.value = "";
 }
 /**
- *
+ * 
  * @returns {void}
  * @param {HTMLInputElement} checkbox Contains the value of the checked element from the form tag with the id="form-desktop"
  * @param {number} idNumber Uses a number from a for-loop to assign individual IDs.
  */
 function handleCheckBox(checkbox, idNumber) {
-  // Überprüft, ob die Checkbox angeklickt ist
-  if (checkbox.checked) {
-    // Wenn die Checkbox angeklickt ist und der Wert noch nicht im Array ist
-    if (!addTaskAssignedContacts.includes(checkbox.value)) {
-      addTaskAssignedContacts.push(checkbox.value);
+    // Überprüft, ob die Checkbox angeklickt ist
+    if (checkbox.checked) {
+        // Wenn die Checkbox angeklickt ist und der Wert noch nicht im Array ist
+        if (!addTaskAssignedContacts.includes(checkbox.value)) {
+            addTaskAssignedContacts.push(checkbox.value);
+        }
+
+        
+        console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
+        
+   
+        document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('pressed-drop-box-bg-color');
+    } else {
+    
+        const valueIndex = addTaskAssignedContacts.indexOf(checkbox.value);
+        if (valueIndex > -1) {
+            addTaskAssignedContacts.splice(valueIndex, 1);
+        }
+
+      
+        console.log("Checkbox mit Wert " + checkbox.value + " ist deaktiviert.");
+
+        document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('pressed-drop-box-bg-color');
     }
 
-    console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
-
-    document
-      .getElementById(`background-drop-menu-background${idNumber}`)
-      .classList.add("pressed-drop-box-bg-color");
-  } else {
-    const valueIndex = addTaskAssignedContacts.indexOf(checkbox.value);
-    if (valueIndex > -1) {
-      addTaskAssignedContacts.splice(valueIndex, 1);
-    }
-
-    console.log("Checkbox mit Wert " + checkbox.value + " ist deaktiviert.");
-
-    document
-      .getElementById(`background-drop-menu-background${idNumber}`)
-      .classList.remove("pressed-drop-box-bg-color");
-  }
-
-  console.log("Aktuelle ausgewählte Kontakte: ", addTaskAssignedContacts);
+    console.log('Aktuelle ausgewählte Kontakte: ', addTaskAssignedContacts);
 }
 
+
+
+
 function toggleContactDropBox() {
-  if (!alreadyOpen) {
-    document.getElementById("contacts-drop-menu").classList.remove("d-none");
-    document.getElementById("required-text-span").classList.add("d-none");
-    document.getElementById("rotation").classList.add("rotation-animation");
-    alreadyOpen = true;
-  } else {
-    document.getElementById("contacts-drop-menu").classList.add("d-none");
-    document.getElementById("required-text-span").classList.remove("d-none");
-    document.getElementById("rotation").classList.remove("rotation-animation");
-    alreadyOpen = false;
-  }
+   
+   if(!alreadyOpen) {
+    document.getElementById('contacts-drop-menu').classList.remove('d-none');
+    document.getElementById('required-text-span').classList.add('d-none');
+    document.getElementById('rotation').classList.add('rotation-animation');
+    alreadyOpen = true
+   }else {
+    document.getElementById('contacts-drop-menu').classList.add('d-none');
+    document.getElementById('required-text-span').classList.remove('d-none');
+    document.getElementById('rotation').classList.remove('rotation-animation');
+    alreadyOpen= false 
+   }
 }
 
 function taskDueDate() {
