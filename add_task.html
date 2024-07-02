@@ -22,7 +22,7 @@
       </div>
       <main class="add-task-container">
         <div id="add-task-form" class="form-add-task" >
-          <form class="form-desktop-view" >
+          <form id="form-desktop" class="form-desktop-view" >
           <div class="desktop-split">
           <div class="flex-column-inputs mb-32">
             <span>Title<span class="red">*</span></span>
@@ -42,13 +42,48 @@
               placeholder="Enter a Description"
             ></textarea>
           </div>
-          <div class="flex-column-inputs mb-32">
+          <div class="flex-column-inputs mb-32 position-relative">
             <span>Assigned to</span>
-            <select class="input-standard" id="assigned-to-contact">
-              <option value="" disabled selected>
+            <div id="contact-input-wrapper" onclick="toggleContactDropBox()">
+            <div class="input-standard" id="assigned-to-contact">
+             
                 Select contacts to assign
               </option>
-            </select>
+            </div>
+          </div>
+            <div id="contacts-drop-menu" class="drop-menu d-none">
+                <div class="drop-menu-contacts">
+                  <div class="ul-content-wrapper">
+                    <span class="profile-initials-circle">AB</span>
+                  <ul class="ul-row-styling">Alfred boo
+                  </ul>
+                  <input class="checkbox" id="contact-check" type="checkbox" value="Alfred boo" onchange="handleCheckBox(this)">
+                  <label for="contact-check" form="form-desktop"></label>
+                </div>
+                <div class="ul-content-wrapper">
+                  <span class="profile-initials-circle">AB</span>
+                <ul class="ul-row-styling">Alfred boo
+                </ul>
+                <input class="checkbox" id="contact-check" type="checkbox" value="Alfred boo" onchange="handleCheckBox(this)">
+                <label for="contact-check" form="form-desktop"></label>
+              </div>
+              <div class="ul-content-wrapper">
+                <span class="profile-initials-circle">AB</span>
+              <ul class="ul-row-styling">Alfred boo
+              </ul>
+              <input class="checkbox" id="contact-check" type="checkbox" value="Alfred boo" onchange="handleCheckBox(this)">
+              <label for="contact-check" form="form-desktop"></label>
+            </div>
+            <div class="ul-content-wrapper">
+              <span class="profile-initials-circle">AB</span>
+            <ul class="ul-row-styling">Alfred boo
+            </ul>
+            <input class="checkbox" id="contact-check" type="checkbox" value="Alfred boo" onchange="handleCheckBox(this)">
+            <label for="contact-check" form="form-desktop"></label>
+          </div>
+                
+                </div>
+            </div>
           </div>
         </div>
         <div class="desktop-seperator-add-contact"></div>

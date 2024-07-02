@@ -1,121 +1,168 @@
-let addTaskTitle = '';
-let addTaskDescription = '';
-let addTaskAssignedContacts = '';
-let addTaskDueDate = '';
-let addTaskPrio = '';
-let addTaskCategory = '';
-let addTaskSubtask = '';
+let addTaskTitle = "";
+let addTaskDescription = "";
+let addTaskAssignedContacts = "";
+let addTaskDueDate = "";
+let addTaskPrio = "";
+let addTaskCategory = "";
+let addTaskSubtask = "";
 let pressedButton = 0;
-const base_URL = 'https://join-256-default-rtdb.europe-west1.firebasedatabase.app/';
+const base_URL =
+  "https://join-256-default-rtdb.europe-west1.firebasedatabase.app/";
 
-async function postData(path='tasks' ,data = {'title': addTaskTitle, 'description': addTaskDescription, 'contact': addTaskAssignedContacts, 'date': addTaskDueDate, 'prio': addTaskPrio, 'category': addTaskCategory, 'subtask': addTaskSubtask}) {
-    try {
-    let response = await fetch(base_URL + path + '.json',{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
+async function postData(
+  path = "tasks",
+  data = {
+    title: addTaskTitle,
+    description: addTaskDescription,
+    contact: addTaskAssignedContacts,
+    date: addTaskDueDate,
+    prio: addTaskPrio,
+    category: addTaskCategory,
+    subtask: addTaskSubtask,
+  }
+) {
+  try {
+    let response = await fetch(base_URL + path + ".json", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     });
-    return responseToJson = await response.json();
-    } catch (error) { console.error('Error posting data:', error);
+    return (responseToJson = await response.json());
+  } catch (error) {
+    console.error("Error posting data:", error);
     return null;
-    }
+  }
 }
 
 function addTitle() {
-    let title = document.getElementById('task-title');
-    addTaskTitle = title.value;
-    title.value = '';
+  let title = document.getElementById("task-title");
+  addTaskTitle = title.value;
+  title.value = "";
 }
 
 function addDescription() {
-    let taskDescription = document.getElementById('task-description');
-    addTaskDescription = taskDescription.value;
-    taskDescription.value = '';
+  let taskDescription = document.getElementById("task-description");
+  addTaskDescription = taskDescription.value;
+  taskDescription.value = "";
 }
 
 function assignedContact() {
-    let assignedToContact = document.getElementById('assigned-to-contact'); 
-    addTaskAssignedContacts = assignedToContact.value;
-    assignedToContact.value = '';
+  let assignedToContact = document.getElementById("assigned-to-contact");
+  addTaskAssignedContacts = assignedToContact.value;
+  assignedToContact.value = "";
+}
+
+function handleCheckBox(checkbox) {
+  if (checkbox.checked) {
+    console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
+  } else {
+    console.log("Checkbox mit Wert " + checkbox.value + " ist deaktiviert.");
+  }
+}
+
+let alreadyOpen = false
+
+function toggleContactDropBox() {
+   
+   if(!alreadyOpen) {
+    document.getElementById('contacts-drop-menu').classList.remove('d-none');
+    alreadyOpen = true
+   }else {
+    document.getElementById('contacts-drop-menu').classList.add('d-none');
+    alreadyOpen= false 
+   }
 }
 
 function taskDueDate() {
-    let dueDate = document.getElementById('task-due-date');
-    let date = new Date(dueDate.value);
-    let dateOption = {month: 'long' , day: 'numeric' , year: 'numeric'};
-    let formattedDate = date.toLocaleDateString('en-US', dateOption);
-    addTaskDueDate = formattedDate;
-    dueDate.value = '';
+  let dueDate = document.getElementById("task-due-date");
+  let date = new Date(dueDate.value);
+  let dateOption = { month: "long", day: "numeric", year: "numeric" };
+  let formattedDate = date.toLocaleDateString("en-US", dateOption);
+  addTaskDueDate = formattedDate;
+  dueDate.value = "";
 }
 
 function taskCategory() {
-    let category = document.getElementById('select-task-category');
-    addTaskCategory = category.value;
-    category.value = '';
+  let category = document.getElementById("select-task-category");
+  addTaskCategory = category.value;
+  category.value = "";
 }
 
 function taskSubtask() {
-    let subtask = document.getElementById('task-subtask');
-    addTaskSubtask = subtask.value;
-    subtask.value = '';
+  let subtask = document.getElementById("task-subtask");
+  addTaskSubtask = subtask.value;
+  subtask.value = "";
 }
 
 function addnewTask() {
-    addTitle();
-    addDescription();
-    assignedContact();
-    taskDueDate();
-    taskCategory();
-    taskSubtask();
-    postData(path='tasks' ,data = {'title': addTaskTitle, 'description': addTaskDescription, 'contact': addTaskAssignedContacts, 'date': addTaskDueDate, 'prio': addTaskPrio, 'category': addTaskCategory, 'subtask': addTaskSubtask});
-    //window.location.href = 'board.html';
+  addTitle();
+  addDescription();
+  assignedContact();
+  taskDueDate();
+  taskCategory();
+  taskSubtask();
+  postData(
+    (path = "tasks"),
+    (data = {
+      title: addTaskTitle,
+      description: addTaskDescription,
+      contact: addTaskAssignedContacts,
+      date: addTaskDueDate,
+      prio: addTaskPrio,
+      category: addTaskCategory,
+      subtask: addTaskSubtask,
+    })
+  );
+  //window.location.href = 'board.html';
 }
 
 function checkIfFormFilled() {
-    const form = document.getElementById('add-task-form');
-    const requiredFields = form.querySelectorAll('[required]');
-    let allFilled = true;
-    requiredFields.forEach(field => {
-        if (!field.value.trim()) {
-            allFilled = false;
-        }
-    });
-    if (allFilled) {
-        addnewTask(); 
-    } else {
-        console.log('Bitte füllen Sie alle erforderlichen Felder aus, bevor Sie absenden.');
+  const form = document.getElementById("add-task-form");
+  const requiredFields = form.querySelectorAll("[required]");
+  let allFilled = true;
+  requiredFields.forEach((field) => {
+    if (!field.value.trim()) {
+      allFilled = false;
     }
-
+  });
+  if (allFilled) {
+    addnewTask();
+  } else {
+    console.log(
+      "Bitte füllen Sie alle erforderlichen Felder aus, bevor Sie absenden."
+    );
+  }
 }
-  
+
 function setPrio(prio, number) {
-    const priorities = ['urgent', 'medium', 'low'];
-    const colors = ['orange', 'yellow', 'green'];  
-    let pressedButton;
+  const priorities = ["urgent", "medium", "low"];
+  const colors = ["orange", "yellow", "green"];
+  let pressedButton;
 
-    // Setze die aktuelle Priorität und die Nummer des gedrückten Buttons
-    addTaskPrio = prio;
-    pressedButton = number;
+  // Setze die aktuelle Priorität und die Nummer des gedrückten Buttons
+  addTaskPrio = prio;
+  pressedButton = number;
 
-    // Entferne die Klassen von allen Prio-Buttons
-    priorities.forEach((priority, index) => {
-        const prioElement = document.getElementById(`${priority}-prio`);
-        const prioImgElement = document.getElementById(`${priority}-prio-img`);
+  // Entferne die Klassen von allen Prio-Buttons
+  priorities.forEach((priority, index) => {
+    const prioElement = document.getElementById(`${priority}-prio`);
+    const prioImgElement = document.getElementById(`${priority}-prio-img`);
 
-        prioElement.classList.remove(`pressed-color-${colors[index]}`);
-        prioImgElement.classList.remove('pressed-prio-img');
-    });
+    prioElement.classList.remove(`pressed-color-${colors[index]}`);
+    prioImgElement.classList.remove("pressed-prio-img");
+  });
 
-  
-    if (pressedButton > 0 && pressedButton <= priorities.length) {
-        const currentPriority = priorities[pressedButton - 1];
-        const currentColor = colors[pressedButton - 1];
-        
-        document.getElementById(`${currentPriority}-prio`).classList.add(`pressed-color-${currentColor}`);
-        document.getElementById(`${currentPriority}-prio-img`).classList.add('pressed-prio-img');
-    }
+  if (pressedButton > 0 && pressedButton <= priorities.length) {
+    const currentPriority = priorities[pressedButton - 1];
+    const currentColor = colors[pressedButton - 1];
+
+    document
+      .getElementById(`${currentPriority}-prio`)
+      .classList.add(`pressed-color-${currentColor}`);
+    document
+      .getElementById(`${currentPriority}-prio-img`)
+      .classList.add("pressed-prio-img");
+  }
 }
-
-
