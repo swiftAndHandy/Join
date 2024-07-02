@@ -6,7 +6,7 @@ let addTaskPrio = '';
 let addTaskCategory = '';
 let addTaskSubtask = '';
 let pressedButton = 0;
-const base_URL = 'https://testing-ce5ae-default-rtdb.europe-west1.firebasedatabase.app/';
+const base_URL = 'https://join-256-default-rtdb.europe-west1.firebasedatabase.app/';
 
 async function postData(path='tasks' ,data = {'title': addTaskTitle, 'description': addTaskDescription, 'contact': addTaskAssignedContacts, 'date': addTaskDueDate, 'prio': addTaskPrio, 'category': addTaskCategory, 'subtask': addTaskSubtask}) {
     try {
