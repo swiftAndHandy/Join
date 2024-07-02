@@ -1,6 +1,6 @@
 let addTaskTitle = "";
 let addTaskDescription = "";
-let addTaskAssignedContacts = "";
+let addTaskAssignedContacts = ['Hans bauer', 'Fred schauer', 'baumgarten Wow', 'Marcel Auer'];
 let addTaskDueDate = "";
 let addTaskPrio = "";
 let addTaskCategory = "";
@@ -8,7 +8,7 @@ let addTaskSubtask = "";
 let pressedButton = 0;
 let alreadyOpen = false
 const base_URL =
-  "https://join-256-default-rtdb.europe-west1.firebasedatabase.app/";//#endregion
+  "https://testing-ce5ae-default-rtdb.europe-west1.firebasedatabase.app/";//#endregion
 
 
   function init() {
@@ -65,6 +65,7 @@ function handleCheckBox(checkbox,idNumber) {
   if (checkbox.checked) {
     console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
     document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('pressed-drop-box-bg-color')
+    addTaskAssignedContacts.push(checkbox.value)
   } else {
     console.log("Checkbox mit Wert " + checkbox.value + " ist deaktiviert.");
     document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('pressed-drop-box-bg-color')
