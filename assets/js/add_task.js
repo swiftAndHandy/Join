@@ -6,6 +6,7 @@ let addTaskPrio = "";
 let addTaskCategory = "";
 let addTaskSubtask = "";
 let pressedButton = 0;
+let alreadyOpen = false
 const base_URL = "https://join-256-default-rtdb.europe-west1.firebasedatabase.app/";
 
 async function postData(
@@ -53,23 +54,29 @@ function assignedContact() {
   assignedToContact.value = "";
 }
 
-function handleCheckBox(checkbox) {
+function handleCheckBox(checkbox,idNumber) {
   if (checkbox.checked) {
     console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
+    document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('pressed-drop-box-bg-color')
   } else {
     console.log("Checkbox mit Wert " + checkbox.value + " ist deaktiviert.");
+    document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('pressed-drop-box-bg-color')
   }
 }
 
-let alreadyOpen = false
+
 
 function toggleContactDropBox() {
    
    if(!alreadyOpen) {
     document.getElementById('contacts-drop-menu').classList.remove('d-none');
+    document.getElementById('required-text-span').classList.add('d-none');
+    document.getElementById('rotation').classList.add('rotation-animation');
     alreadyOpen = true
    }else {
     document.getElementById('contacts-drop-menu').classList.add('d-none');
+    document.getElementById('required-text-span').classList.remove('d-none');
+    document.getElementById('rotation').classList.remove('rotation-animation');
     alreadyOpen= false 
    }
 }

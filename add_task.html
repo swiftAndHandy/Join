@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="./assets/css/menu-bar.css">
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/generateHtml.js"></script>
+    <script src="./assets/js/add_task_Html.js"></script>
     <script src="./assets/js/add_task.js"></script>
     <script src="assets/js/board.js"></script>
     <script src="./assets/js/menu-bar-script.js"></script>
+    
     <title>Join- Add task</title>
   </head>
-  <body onload="includeHTML()">
+  <body onload="init()">
     <div class="mobile-body">
       <div class="content-wrapper" >
       <div class="headline-add-task">
@@ -46,13 +48,13 @@
             <span>Assigned to</span>
             <div id="contact-input-wrapper" onclick="toggleContactDropBox()">
             <div class="input-standard" id="assigned-to-contact">
-             
-                Select contacts to assign
+              <span>Select task category</span>
+              <img id="rotation" src="./assets/img/icons/arrow_drop_down_select_field.svg" alt="">
               </option>
             </div>
           </div>
             <div id="contacts-drop-menu" class="drop-menu d-none">
-                <div class="drop-menu-contacts">
+                <div id="contacts-drop-menu-content" class="drop-menu-contacts">
                   <div class="ul-content-wrapper">
                     <span class="profile-initials-circle">AB</span>
                   <ul class="ul-row-styling">Alfred boo
@@ -151,7 +153,7 @@
             
           </div>
         </div>
-        <span class="required-text"><span class="red">*</span>This field is required</span>
+        <span id="required-text-span" class="required-text"><span class="red">*</span>This field is required</span>
         <div class="create-task-panel">
           <span><span class="red">*</span>This field is required</span>
           <button class="create-task-btn" onclick="checkIfFormFilled()">
