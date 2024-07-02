@@ -13,6 +13,7 @@ let addTaskCategory = "";
 let addTaskSubtask = "";
 let pressedButton = 0;
 let alreadyOpen = false;
+
 const base_URL =
   "https://join-256-default-rtdb.europe-west1.firebasedatabase.app/";//#endregion
 
@@ -41,7 +42,7 @@ async function postData(
       },
       body: JSON.stringify(data),
     });
-    return (responseToJson = await response.json());
+    return (responseToJson = await response.json());//
   } catch (error) {
     console.error("Error posting data:", error);
     return null;
@@ -154,7 +155,7 @@ function addnewTask() {
       subtask: addTaskSubtask,
     })
   );
-  //window.location.href = 'board.html';
+  window.location.href = 'board.html';
 }
 
 function checkIfFormFilled() {

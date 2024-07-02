@@ -49,7 +49,7 @@
     />
     <title>Board</title>
   </head>
-  <body onload="includeHTML()">
+  <body onload="includeHTML(); initTasks();">
     <div class="body-mobile">
       
       <div w3-include-html="./assets/templates/menu-bar.html"></div>
@@ -90,7 +90,7 @@
               <div class="task-fields">
                 <span>No tasks To do</span>
               </div>
-              <div class="tasks-container"></div>
+              <div class="tasks-container" id="added-tasks"></div>
             </section>
             <section class="section-container">
               <div class="section-headline">
