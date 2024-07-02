@@ -17,8 +17,7 @@ function toggleRemember() {
  */
 function initIndex() {
     if (userId === 'guest') {
-        localStorage.removeItem('id');
-        localStorage.removeItem('login');
+        clearLocalstorage();
     }
     const startscreen = document.getElementById('startscreen');
     startscreen.classList.add('startscreen--animate');

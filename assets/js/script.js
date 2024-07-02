@@ -44,6 +44,14 @@ function hideWindow(id, method = true) {
 }
 
 /**
+ * delete localStorage()
+ */
+function clearLocalstorage() {
+    localStorage.removeItem('id');
+    localStorage.removeItem('login');
+}
+
+/**
  * 
  * @param {*} input 
  * @returns - every first character of every word in input
