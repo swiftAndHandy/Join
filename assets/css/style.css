@@ -74,37 +74,6 @@ body::-webkit-scrollbar-thumb {
     background-image: url('../img/icons/checkbox_checked_hovered.svg');
 }
 
-.contact-checkbox {
-    position: absolute;
-    width: 0px;
-    height: 0px;
-    opacity: 0;
-}
-
-.contact-checkbox+label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-}
-
-.contact-checkbox+label::before {
-    content: '';
-    width: 24px;
-    height: 24px;
-    background-image: url('../img/icons/checkbox_disabled.svg');
-    background-position: center;
-}
-
-.contact-checkbox+label:hover::before {
-    background-image: url('../img/icons/checkbox_disabled_hovered.svg');
-}
-
-.contact-checkbox:checked+label::before {
-    background-image: url('../img/icons/contacts_checkbox-active.svg');
-    background-position: center;
-}
-
 .subtitle {
     font-weight: 400;
     font-size: 20px;

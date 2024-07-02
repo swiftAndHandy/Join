@@ -154,14 +154,14 @@
                             <section id="edit-task-contacts-list" class="edit-task-contact-list d-none"
                                 onclick="stopPropagation(event)">
                                 <!--START: Contact-List to Render -->
-                                <div class="single-contact">
+                                <div id="assign-contact-userId" class="single-contact" onclick="toggleThis('userId')">
                                     <div class="user-box">
                                         <div id="edit-task-avatar-userId" class="avatar">AS</div>
                                         <span id="edit-task-username-userId">Anja Schulz</span>
                                     </div>
-                                    <input type="checkbox" class="contact-checkbox" id="checkbox-userId" name="example-checkbox"
-                                        onclick="toggleThis('userId')">
-                                    <label for="checkbox-userId"></label>
+                                    <div id="assign-contact-pseudo-checkbox-userId" class="pseudo-checkbox"></div>
+                                    <input type="checkbox" class="contact-checkbox" id="assign-contact-checkbox-userId" name="example-checkbox">
+                                    <label for="assign-contact-checkbox-userId"></label>
                                 </div>
                                 <!--END: Contact-List to Render -->
                             </section>

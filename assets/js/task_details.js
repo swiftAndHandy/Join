@@ -1,7 +1,12 @@
 let editPriority;
 
 function toggleThis(id) {
-
+    const contactId = document.getElementById(`assign-contact-${id}`);
+    const checkboxId = document.getElementById(`assign-contact-checkbox-${id}`);
+    const pseudoCheckboxId = document.getElementById(`assign-contact-pseudo-checkbox-${id}`);
+    contactId.classList.toggle('list-selected');
+    pseudoCheckboxId.classList.toggle('list-selected');
+    checkboxId.checked = !checkboxId.checked;
 }
 
 /**
