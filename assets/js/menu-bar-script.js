@@ -80,16 +80,12 @@ function regularMenuPoint(currentPoint) {
  */
 async function setMyAvatar(currentFile) {
     const myData = await readData(`accounts/${userId}`);
-    try {
         const myInitials = myData ? initials(myData.name) : null;
         if (!myInitials) {
             forceLogout(currentFile);
         } else if (currentFile && currentFile != 'index') {
             avatarHtml(myInitials);
         }
-    } catch (error) {
-        forceLogout(currentFile);
-    }
 }
 
 /**

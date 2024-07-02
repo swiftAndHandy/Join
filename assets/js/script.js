@@ -41,6 +41,7 @@ function capitaliseFirstLetters(input) {
 function hideWindow(id, method = true) {
     target = document.getElementById(id);
     method ? target.classList.add('d-none') : target.classList.remove('d-none');
+    return target;
 }
 
 /**
