@@ -12,7 +12,7 @@ function toggleThis(id) {
 /**
  * Applys d-none to a specific DOM-Object
  * @param {*} id - the DOM-Object on which the d-none-toggle is applied to.
- * @returns 
+* @returns {HTMLElement|null} The DOM element with the specified ID, or null if no element with that ID exists.
  */
 function toggleVisibility(id) {
     document.getElementById(id).classList.toggle('d-none');
@@ -44,9 +44,16 @@ function openListSearch(id) {
     inputField.focus();
 }
 
+function setFocus(id) {
+    const inputField = document.getElementById(`${id}-task-list-input-field`);
+    const inputBox = inputField.parentElement.classList.add('focus');
+    inputField.focus();
+}
+
 function resetInputFields() {
     id = 'edit';
     hideWindow(`${id}-task-list-btn`, false);
     hideWindow(`${id}-task-list-input`);
     hideWindow(`${id}-task-contacts-list`);
 }
+

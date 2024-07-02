@@ -66,14 +66,14 @@
                     <div id="details-subtasks-list" class="details__vertical-wrapper">
                         <!--START: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
                         <div class="details__subtask">
-                            <input type="checkbox" class="checkbox" id="details-subtask-index"
+                            <input type="checkbox" class="edit checkbox" id="details-subtask-index"
                                 name="details-subtask-index" onclick="toggleThis(id)">
                             <label for="details-subtask-index">Implement Recipe Recommendation</label>
                         </div>
                         <!--END: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
                         <!--START: More List-Items for better visualisation of the final design -->
                         <div class="details__subtask">
-                            <input type="checkbox" class="checkbox" id="details-subtask-1" name="details-subtask-index"
+                            <input type="checkbox" class="edit checkbox" id="details-subtask-1" name="details-subtask-index"
                                 onclick="toggleThis(id)">
                             <label for="details-subtask-1">Start Page Layout</label>
                         </div>
@@ -94,11 +94,11 @@
             </section>
             <section id="task-edit-view" class="task-card-view d-none"
                 onclick="resetInputFields();stopPropagation(event);">
+                <div class="details__header titleless">
+                    <div class="close-btn"
+                        onclick="toggleVisibility('task-edit-view');toggleVisibility('task-details-view');"></div>
+                </div>
                 <div class="scroll-bar-wrapper edit">
-                    <div class="details__header titleless">
-                        <div class="close-btn"
-                            onclick="toggleVisibility('task-edit-view');toggleVisibility('task-details-view');"></div>
-                    </div>
                     <div class="details__title-wrapper edit">
                         <strong class="details__caption">Title:</strong>
                         <input id="update-title" type="text" class="details__title edit this-entry"
@@ -146,7 +146,7 @@
                                 </div>
                             </div>
                             <div id="edit-task-list-input" class="list-btn focus d-none"
-                                onclick="stopPropagation(event)">
+                                onclick="stopPropagation(event);setFocus('edit-task-list-input-field');">
                                 <input id="edit-task-list-input-field" class="list-btn__input-field" type="text">
                                 <div class="list-icon collapse"><img src="./assets/img/icons/collapse_false.svg" alt=""
                                         onclick="resetInputFields()"></div>
@@ -160,7 +160,8 @@
                                         <span id="edit-task-username-userId">Anja Schulz</span>
                                     </div>
                                     <div id="assign-contact-pseudo-checkbox-userId" class="pseudo-checkbox"></div>
-                                    <input type="checkbox" class="contact-checkbox" id="assign-contact-checkbox-userId" name="example-checkbox">
+                                    <input type="checkbox" class="contact-checkbox" id="assign-contact-checkbox-userId"
+                                        name="example-checkbox">
                                     <label for="assign-contact-checkbox-userId"></label>
                                 </div>
                                 <!--END: Contact-List to Render -->
@@ -196,16 +197,16 @@
                             <!--END of additinal List-Items for better visualisation of the final design -->
                         </div>
                     </div>
-                    <div class="details__bottom">
-                        <div class="icon-box" id="delete">
-                            <div class="delete-icon"></div>
-                            <span class="details__information">Delete</span>
-                        </div>
-                        <div class="line"></div>
-                        <div class="icon-box" id="edit">
-                            <div class="edit-icon"></div>
-                            <span class="details__information">Edit</span>
-                        </div>
+                </div>
+                <div class="details__bottom">
+                    <div class="icon-box" id="delete">
+                        <div class="delete-icon"></div>
+                        <span class="details__information">Delete</span>
+                    </div>
+                    <div class="line"></div>
+                    <div class="icon-box" id="edit">
+                        <div class="edit-icon"></div>
+                        <span class="details__information">Edit</span>
                     </div>
                 </div>
             </section>

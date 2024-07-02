@@ -806,6 +806,11 @@ Detail-View related Classes
   background-image: url("../img/icons/edit_hovered.svg");
 }
 
+.checkbox.details+label:hover {
+  background-color: rgba(117, 117, 117, 0.1);
+  border-radius: 10px;
+}
+
 /*
 Edit-View related Classes
 */
@@ -861,10 +866,11 @@ Edit-View related Classes
 .edit-task-contact-list {
   display: flex;
   flex-direction: column;
-  max-height: 336px;
   width: 100%;
   padding-right: 16px;
   box-sizing: border-box;
+  transform: translateY(-8px);
+  max-height: calc(56px * 5)
 }
 
 .single-contact {
@@ -919,6 +925,11 @@ Edit-View related Classes
   align-items: center;
   gap: 8px;
   cursor: pointer;
+}
+
+.checkbox.edit+label:hover {
+  border-radius: 10px;
+  background-color: rgba(117, 117, 117, 0.1);
 }
 
 .pseudo-checkbox {

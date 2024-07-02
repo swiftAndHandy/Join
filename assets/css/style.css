@@ -66,7 +66,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .checkbox:checked+label::before {
-    background-image: url('../img/icons/contacts_checkbox-active.svg');
+    background-image: url('../img/icons/checkbox_checked.svg');
     background-position: center;
 }
 
