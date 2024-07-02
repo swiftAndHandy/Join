@@ -1,21 +1,21 @@
 let addTaskTitle = "";
 let addTaskDescription = "";
-let addTaskAssignedContacts = ['Hans bauer', 'Fred schauer', 'baumgarten Wow', 'Marcel Auer'];
+let addTaskAssignedContacts = [];
+let selectedContacts = ['Hans bauer', 'Fred schauer', 'baumgarten Wow', 'Marcel Auer'];
 let addTaskDueDate = "";
 let addTaskPrio = "";
 let addTaskCategory = "";
 let addTaskSubtask = "";
 let pressedButton = 0;
 let alreadyOpen = false
-const base_URL = "https://join-256-default-rtdb.europe-west1.firebasedatabase.app/";
-
+const base_URL =
+  "https://join-256-default-rtdb.europe-west1.firebasedatabase.app/";//#endregion
 
 
   function init() {
     includeHTML();
     generateDropBoxContent();
   }
-
 
 async function postData(
   path = "tasks",
@@ -61,17 +61,43 @@ function assignedContact() {
   addTaskAssignedContacts = assignedToContact.value;
   assignedToContact.value = "";
 }
+/**
+ * 
+ * @returns {void}
+ * @param {HTMLInputElement} checkbox Contains the value of the checked element from the form tag with the id="form-desktop"
+ * @param {number} idNumber Uses a number from a for-loop to assign individual IDs.
+ */
+function handleCheckBox(checkbox, idNumber) {
+    // Überprüft, ob die Checkbox angeklickt ist
+    if (checkbox.checked) {
+        // Wenn die Checkbox angeklickt ist und der Wert noch nicht im Array ist
+        if (!addTaskAssignedContacts.includes(checkbox.value)) {
+            addTaskAssignedContacts.push(checkbox.value);
+        }
 
-function handleCheckBox(checkbox,idNumber) {
-  if (checkbox.checked) {
-    console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
-    document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('pressed-drop-box-bg-color')
-    addTaskAssignedContacts.push(checkbox.value)
-  } else {
-    console.log("Checkbox mit Wert " + checkbox.value + " ist deaktiviert.");
-    document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('pressed-drop-box-bg-color')
-  }
+        
+        console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
+        
+   
+        document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('pressed-drop-box-bg-color');
+    } else {
+    
+        const valueIndex = addTaskAssignedContacts.indexOf(checkbox.value);
+        if (valueIndex > -1) {
+            addTaskAssignedContacts.splice(valueIndex, 1);
+        }
+
+      
+        console.log("Checkbox mit Wert " + checkbox.value + " ist deaktiviert.");
+
+        document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('pressed-drop-box-bg-color');
+    }
+
+    console.log('Aktuelle ausgewählte Kontakte: ', addTaskAssignedContacts);
 }
+
+
+
 
 function toggleContactDropBox() {
    
