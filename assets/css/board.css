@@ -280,6 +280,7 @@ h2 {
   cursor: pointer;
 }
 
+
 @media (min-width: 1380px) and (max-width: 3200px) {
   .board-content {
     display: flex;

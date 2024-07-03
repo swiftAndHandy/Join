@@ -104,9 +104,9 @@ function toggleContactDropBox() {
    if(!alreadyOpen) {
     document.getElementById('contacts-drop-menu').classList.remove('d-none');
     document.getElementById('required-text-span').classList.add('d-none');
-    
     document.getElementById('contact-input-wrapper').classList.add('d-none');
     document.getElementById('contacts-show-input').classList.remove('d-none');
+    document.getElementById('contacts-show-input').classList.add('border-color-clicked');
     alreadyOpen = true
    }else {
     document.getElementById('contacts-drop-menu').classList.add('d-none');

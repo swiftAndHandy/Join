@@ -393,6 +393,11 @@ select:focus {
   align-items: center;
 }
 
+.border-color-clicked {
+  border: 1px solid #29ABE2;
+ }
+ 
+
 @media (min-width: 1125px) and (max-width: 3200px) {
   .desktop-buttons {
     display: flex;
@@ -487,7 +492,7 @@ select:focus {
   }
 
   .drop-menu {
-    height: unset;
+    height: 236px;
   }
 }
 
@@ -509,6 +514,10 @@ select:focus {
 
   .required-text {
     display: none;
+  }
+
+  #contacts-show-input {
+    width: 320px;
   }
 }
 
