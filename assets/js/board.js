@@ -51,7 +51,7 @@ async function initTasks() {
       }
 
     }
-    ifTaskField(toDoField, inProgressField, awaitFeedbackField, doneField);
+    ifTaskField([toDoField, inProgressField, awaitFeedbackField, doneField]);
   } catch (error) {
     console.error(error);
   }
@@ -75,9 +75,7 @@ async function moveTo(statusField) {
 }
 
 
-function ifTaskField(toDoField, inProgressField, awaitFeedbackField, doneField) {
-  const sections = [toDoField, inProgressField, awaitFeedbackField, doneField];
-
+function ifTaskField(sections) {
   for (let item in sections) {
      hideWindow(`task-field-${item}`, sections[item].innerHTML.trim() !== "");
   }
