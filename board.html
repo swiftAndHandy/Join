@@ -50,7 +50,7 @@
     />
     <title>Board</title>
   </head>
-  <body onload="includeHTML(); initTasks();">
+  <body onload="initBoard()">
     <div class="body-mobile">
       
       <div w3-include-html="./assets/templates/menu-bar.html"></div>
@@ -91,7 +91,7 @@
               <div class="task-fields" id="task-field-1">
                 <span>No tasks To do</span>
               </div>
-              <div class="tasks-container" id="to-do-field"></div>
+              <div class="tasks-container" id="to-do-field" ondrop="moveTo('toDo')" ondragover="allowDrop(event)"></div>
             </section>
             <section class="section-container">
               <div class="section-headline">
@@ -106,7 +106,7 @@
               <div class="task-fields" id="task-field-2">
                 <span>No tasks To do</span>
               </div>
-              <div class="tasks-container" id="in-progress-field">
+              <div class="tasks-container" id="in-progress-field" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)">
 
               </div>
             </section>
@@ -123,7 +123,7 @@
               <div class="task-fields" id="task-field-3">
                 <span>No tasks To do</span>
               </div>
-              <div class="tasks-container" id="await-feedback-field">
+              <div class="tasks-container" id="await-feedback-field" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)">
                 
               </div>
             </section>
@@ -134,7 +134,7 @@
               <div class="task-fields" id="task-field-4">
                 <span>No tasks To do</span>
               </div>
-              <div class="tasks-container" id="done-field">
+              <div class="tasks-container" id="done-field" ondrop="moveTo('done')" ondragover="allowDrop(event)">
                 
               </div>
             </section>

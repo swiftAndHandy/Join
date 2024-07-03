@@ -5,6 +5,11 @@ async function loadData(path='tasks') {
   return responseToJson;
 }
 
+function initBoard() {
+  includeHTML();
+  initTasks();
+}
+
 async function initTasks() {
   let toDoField = document.getElementById('to-do-field');
   let inProgressField = document.getElementById('in-progress-field');
@@ -19,27 +24,28 @@ async function initTasks() {
   try {
       let data = await loadData(path='tasks');
       for(let key in data) {
-          const title = data[key].title;
-          const description = data[key].description;
-          const dueDate = data[key].date;
-          const prio = data[key].prio;
-          const category = data[key].category;
-          const subTasks = data[key].subtask;
-          const taskStatus = data[key].status
+         let title = data[key].title;
+          let description = data[key].description;
+          let dueDate = data[key].date;
+          let prio = data[key].prio;
+          let category = data[key].category;
+          let subTasks = data[key].subtask;
+          let taskStatus = data[key].status
 
        
+
           if(taskStatus == "toDo") {
            
-          toDoField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks);
+          toDoField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks,);
         }
         if(taskStatus == "inProgress") {
-          inProgressField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks);
+          inProgressField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks,);
         }
         if(taskStatus == "awaitFeedback") {
-          awaitFeedbackField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks);
+          awaitFeedbackField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks,);
         }
         if(taskStatus == "done") {
-          doneField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks);
+          doneField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks,);
         }
         
       }
@@ -48,6 +54,24 @@ async function initTasks() {
       console.error(error);
   }
 }
+
+function updateAfterDrag() {
+  let statusField = key
+}
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function startDraggin(id) {
+  currentDraggedElement = id;
+}
+
+function moveTo(statusField) {
+  taskStatus = statusField
+   
+}
+
 
 function ifTaskField(toDoField, inProgressField, awaitFeedbackField, doneField) {
   // Überprüfe, ob die Felder leer sind
