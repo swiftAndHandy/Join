@@ -95,6 +95,10 @@ body::-webkit-scrollbar-thumb {
     margin-bottom: 0;
 }
 
+.mb-8 {
+    margin-bottom: 8px;
+}
+
 .simple-btn {
     display: flex;
     justify-content: center;
