@@ -38,6 +38,7 @@ async function postData(
   }
 }
 
+
 function addTitle() {
   let title = document.getElementById("task-title");
   addTaskTitle = title.value;
@@ -140,6 +141,8 @@ function taskSubtask() {
   subtask.value = "";
 }
 
+
+
 function addnewTask() {
   addTitle();
   addDescription();
@@ -147,19 +150,16 @@ function addnewTask() {
   taskDueDate();
   taskCategory();
   taskSubtask();
-  postData(
-    (path = "accounts"),
-    (data = {
-      title: addTaskTitle,
-      description: addTaskDescription,
-      contact: addTaskAssignedContacts,
-      date: addTaskDueDate,
-      prio: addTaskPrio,
-      category: addTaskCategory,
-      subtask: addTaskSubtask,
-      status: taskStatus,
-    })
-  );
+  postData('tasks', {
+    title: addTaskTitle,
+    description: addTaskDescription,
+    contact: addTaskAssignedContacts,
+    date: addTaskDueDate,
+    prio: addTaskPrio,
+    category: addTaskCategory,
+    subtask: addTaskSubtask,
+    status: taskStatus,
+  });
   window.location.href = 'board.html';
 }
 
