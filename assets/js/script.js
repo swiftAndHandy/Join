@@ -1,11 +1,3 @@
-const colors = [
-    '#FF7A00', '#FF5EB3', '#6E52FF',
-    '#9327FF', '#00BEE8', '#1FD7C1',
-    '#FF745E', '#FFA35E', '#FC71FF',
-    '#FFC701', '#0038FF', '#C3FF2B',
-    '#FFE62B', '#FF4646', '#FFBB2B'
-];
-
 const BASE_URL = 'https://join-256-default-rtdb.europe-west1.firebasedatabase.app/';
 const userId = localStorage.getItem('id');
 
@@ -14,6 +6,13 @@ const userId = localStorage.getItem('id');
  * e. g.: use this when you add a new contact, that hasn't a own user-account
  */
 function applyRandomColor() {
+    const colors = [
+        '#FF7A00', '#FF5EB3', '#6E52FF',
+        '#9327FF', '#00BEE8', '#1FD7C1',
+        '#FF745E', '#FFA35E', '#FC71FF',
+        '#FFC701', '#0038FF', '#C3FF2B',
+        '#FFE62B', '#FF4646', '#FFBB2B'
+    ];
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
 }
@@ -43,6 +42,15 @@ function hideWindow(id, method = true) {
     method ? target.classList.add('d-none') : target.classList.remove('d-none');
     return target;
 }
+
+/**
+ * Triggers a localStorage clear and replaces the url to index to logout the user.
+ */
+function logout() {
+    clearLocalstorage();
+    window.location.replace('../index.html');
+}
+
 
 /**
  * delete localStorage()
@@ -102,11 +110,11 @@ async function postData(data = {}, path = "") {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data)
-        
+
     });
     return await response.json();
-  
-    
+
+
 }
 
 /**
@@ -142,7 +150,7 @@ async function accountExists(email, password = false) {
 }
 
 
-async function getContacts(){
+async function getContacts() {
     const contactsAsJson = await readData('contacts');
     const contactList = Object.values(contactsAsJson)
     return contactList;

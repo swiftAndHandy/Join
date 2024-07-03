@@ -91,7 +91,6 @@ async function setMyAvatar(currentFile) {
 function forceLogout(currentFile) {
     const allowedFiles = ['index', 'legal_notice', 'privacy'];
     if (currentFile && !allowedFiles.includes(currentFile)) {
-        clearLocalstorage();
-        window.location.replace('../index.html');
+        logout();
     }
 }

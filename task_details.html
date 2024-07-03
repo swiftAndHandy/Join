@@ -27,18 +27,18 @@
                     <div class="close-btn" onclick="toggleVisibility('task-details-view')"></div>
                 </div>
                 <div class="details__title-wrapper">
-                    <h1 id="task-details-title" class="details__title">Kochwelt Page & Recipe Recommender</h1>
-                    <p id="task-details-description" class="details__description">Build start page with recipe recommendation.</p>
+                    <h1 id="task-details-title" class="details__title"></h1>
+                    <p id="task-details-description" class="details__description"></p>
                 </div>
                 <div class="details__info-box">
                     <strong class="details__caption">Due date:</strong>
-                    <span id="task-details-deadline" class="details__information">02/09/2023</span>
+                    <span id="task-details-deadline" class="details__information"></span>
                 </div>
                 <div class="details__info-box">
                     <strong class="details__caption">Priority:</strong>
                     <div class="details__priority-wrapper">
-                        <span id="details-priority-text" class="details__information">Medium</span>
-                        <img id="details-priority-img" class="priority-icon" src="./assets/img/icons/priority_medium.svg" alt="">
+                        <span id="details-priority-text" class="details__information"></span>
+                        <img id="details-priority-img" class="priority-icon" src="" alt="">
                     </div>
                 </div>
                 <div class="details__info-box vertical">
@@ -83,7 +83,7 @@
                 </div>
                 <div class="details__bottom">
                     <div class="icon-box" id="delete">
-                        <button class="task-link details__information" onclick="deleteTask('taskId')">
+                        <button id="task-details-delete-btn" class="task-link details__information">
                             <img src="./assets/img/icons/delete.svg" alt="">
                             <span>Delete</span>
                         </button>
@@ -91,7 +91,7 @@
                     <div class="line"></div>
                     <div class="icon-box" id="edit">
                         <div class="edit-icon"></div>
-                        <button class="task-link details__information"
+                        <button id="task-details-edit-btn" class="task-link details__information"
                             onclick="toggleVisibility('task-edit-view');toggleVisibility('task-details-view');">
                             <img src="./assets/img/icons/edit.svg" alt="">
                             <span>Edit</span>

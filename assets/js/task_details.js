@@ -2,8 +2,8 @@ let editPriority;
 
 function initTaskDetails() {
     setupListener();
-    renderContactList();
     renderTaskDetails();
+    renderContactList();
 }
 
 
