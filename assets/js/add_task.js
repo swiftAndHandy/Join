@@ -6,6 +6,7 @@ let addTaskDueDate = "";
 let addTaskPrio = "";
 let addTaskCategory = "";
 let addTaskSubtask = "";
+let taskStatus = "done";
 let pressedButton = 0;
 let alreadyOpen = false;
 
@@ -20,15 +21,7 @@ const base_URL =
 
 async function postData(
   path = "tasks",
-  data = {
-    title: addTaskTitle,
-    description: addTaskDescription,
-    contact: addTaskAssignedContacts,
-    date: addTaskDueDate,
-    prio: addTaskPrio,
-    category: addTaskCategory,
-    subtask: addTaskSubtask,
-  }
+  data = {}
 ) {
   try {
     let response = await fetch(base_URL + path + ".json", {
@@ -78,9 +71,7 @@ function handleCheckBox(checkbox, idNumber) {
         }
 
         console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
-        document.getElementById(`label-check${idNumber}`).classList.add('filter-to-white')
-        document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('ul-content-wrapper-no-click')
-        document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('pressed-drop-box-bg-color');
+        pressedCheckBoxStyle(idNumber);
     } else {
     
         const valueIndex = addTaskAssignedContacts.indexOf(checkbox.value);
@@ -89,16 +80,24 @@ function handleCheckBox(checkbox, idNumber) {
         }
 
         console.log("Checkbox mit Wert " + checkbox.value + " ist deaktiviert.");
-        document.getElementById(`label-check${idNumber}`).classList.remove('filter-to-white')
-        document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('ul-content-wrapper-no-click')
-        document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('pressed-drop-box-bg-color');
-        
+        unPressedCheckBoxStyle(idNumber);
     }
     console.log('Aktuelle ausgewählte Kontakte: ', addTaskAssignedContacts);
 }
 
+  function pressedCheckBoxStyle (idNumber) {  
+    document.getElementById(`label-check${idNumber}`).classList.add('filter-to-white')
+        document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('ul-content-wrapper-no-click')
+        document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('pressed-drop-box-bg-color');
 
+}
 
+  function unPressedCheckBoxStyle(idNumber) {
+  document.getElementById(`label-check${idNumber}`).classList.remove('filter-to-white')
+        document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('ul-content-wrapper-no-click')
+        document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('pressed-drop-box-bg-color');
+        
+  }
 
 function toggleContactDropBox() {
    
@@ -149,7 +148,7 @@ function addnewTask() {
   taskCategory();
   taskSubtask();
   postData(
-    (path = "tasks"),
+    (path = "accounts"),
     (data = {
       title: addTaskTitle,
       description: addTaskDescription,
@@ -158,6 +157,7 @@ function addnewTask() {
       prio: addTaskPrio,
       category: addTaskCategory,
       subtask: addTaskSubtask,
+      status: taskStatus,
     })
   );
   window.location.href = 'board.html';

@@ -1,4 +1,4 @@
-async function loadData(path='tasks') {
+async function loadData(path='') {
   let response = await fetch(base_URL + path + '.json');
   let responseToJson = await response.json();
   console.log(responseToJson);
@@ -6,10 +6,18 @@ async function loadData(path='tasks') {
 }
 
 async function initTasks() {
-  let addedTask = document.getElementById('added-tasks');
-  addedTask.innerHTML = '';
+  let toDoField = document.getElementById('to-do-field');
+  let inProgressField = document.getElementById('in-progress-field');
+  let awaitFeedbackField = document.getElementById('await-feedback-field');
+  let doneField = document.getElementById('done-field');
+
+  inProgressField.innerHTML = '';
+  toDoField.innerHTML = '';
+  awaitFeedbackField.innerHTML = '';
+  doneField.innerHTML = '';
+
   try {
-      let data = await loadData();
+      let data = await loadData(path='tasks');
       for(let key in data) {
           const title = data[key].title;
           const description = data[key].description;
@@ -17,13 +25,54 @@ async function initTasks() {
           const prio = data[key].prio;
           const category = data[key].category;
           const subTasks = data[key].subtask;
+          const taskStatus = data[key].status
 
-          addedTask.innerHTML += `<div id="${key}" class="card-one"><div>${title}</div><div>${description}</div>
-          <div>${dueDate}</div><div>${prio}</div><div>${category}</div>
-          <div>${subTasks}</div></div>`;
+       
+          if(taskStatus == "toDo") {
+           
+          toDoField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks);
+        }
+        if(taskStatus == "inProgress") {
+          inProgressField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks);
+        }
+        if(taskStatus == "awaitFeedback") {
+          awaitFeedbackField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks);
+        }
+        if(taskStatus == "done") {
+          doneField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks);
+        }
+        
       }
+      ifTaskField(toDoField,inProgressField,awaitFeedbackField,doneField);
   } catch (error) {
       console.error(error);
+  }
+}
+
+function ifTaskField(toDoField, inProgressField, awaitFeedbackField, doneField) {
+  // Überprüfe, ob die Felder leer sind
+  if (toDoField.innerHTML.trim() === "") {
+      document.getElementById('task-field-1').classList.remove('d-none');
+  } else {
+      document.getElementById('task-field-1').classList.add('d-none');
+  }
+
+  if (inProgressField.innerHTML.trim() === "") {
+      document.getElementById('task-field-2').classList.remove('d-none');
+  } else {
+      document.getElementById('task-field-2').classList.add('d-none');
+  }
+
+  if (awaitFeedbackField.innerHTML.trim() === "") {
+      document.getElementById('task-field-3').classList.remove('d-none');
+  } else {
+      document.getElementById('task-field-3').classList.add('d-none');
+  }
+
+  if (doneField.innerHTML.trim() === "") {
+      document.getElementById('task-field-4').classList.remove('d-none');
+  } else {
+      document.getElementById('task-field-4').classList.add('d-none');
   }
 }
 

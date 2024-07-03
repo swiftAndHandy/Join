@@ -355,7 +355,7 @@ select:focus {
 
 #contacts-show-input input{
   border: none;
-  width: 224px;
+  width:300px;
 }
 
 #contacts-show-input input:focus {

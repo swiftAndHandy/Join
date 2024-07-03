@@ -33,7 +33,7 @@ body {
 
 .body-mobile {
   position: relative;
-  overflow: hidden;
+  
 }
 
 .overflow-all-hidden {
@@ -197,7 +197,7 @@ h2 {
   width: 396px;
   height: 292px;
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   border-radius: 24px;
   gap: 16px;
@@ -366,10 +366,17 @@ h2 {
   }
 }
 
+
 @media (max-width: 1438px) {
   .dialog-main-container {
     justify-content: unset;
     right: 60px;
+  }
+}
+
+@media(max-width: 1381px) {
+  .body-mobile {
+    overflow: hidden;
   }
 }
 
