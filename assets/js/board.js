@@ -1,4 +1,4 @@
-async function loadData(path='') {
+async function loadData(path='tasks') {
   let response = await fetch(base_URL + path + '.json');
   let responseToJson = await response.json();
   console.log(responseToJson);
