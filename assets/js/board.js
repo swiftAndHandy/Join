@@ -51,7 +51,7 @@ async function initTasks() {
       }
 
     }
-    ifTaskField([toDoField, inProgressField, awaitFeedbackField, doneField]);
+    ifTaskField(toDoField, inProgressField, awaitFeedbackField, doneField);
   } catch (error) {
     console.error(error);
   }
@@ -75,11 +75,11 @@ async function moveTo(statusField) {
 }
 
 
-function ifTaskField(sections) {
-  // const sections = [toDoField, inProgressField, awaitFeedbackField, doneField]
+function ifTaskField(toDoField, inProgressField, awaitFeedbackField, doneField) {
+  const sections = [toDoField, inProgressField, awaitFeedbackField, doneField];
 
   for (let item in sections) {
-     hideWindow(`task-field-${item}`, sections[item].trim === "");
+     hideWindow(`task-field-${item}`, sections[item].innerHTML.trim() !== "");
   }
 
   // Überprüfe, ob die Felder leer sind
