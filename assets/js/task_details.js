@@ -1,5 +1,30 @@
 let editPriority;
 
+function initTaskDetails() {
+    setupListener();
+    renderContactList();
+    renderTaskDetails();
+}
+
+
+async function renderContactList() {
+    const data = await readData('contacts');
+    const keys = Object.keys(data);
+
+    for (let i = 0; i < keys.length; i++) {
+        generateContactsHtml(keys[i], data[keys[i]]);
+    }
+}
+
+// CAVE: Rendering every task. Need to adjust this later on and give a specific task to render
+async function renderTaskDetails() {
+    const data = await readData('tasks');
+    const keys = Object.keys(data);
+
+    for (let i = 0; i < keys.length; i++) {
+        generateTaskDetailsHtml(keys[i], data[keys[i]]);
+    }
+}
 
 /**
  * Controls the design of checkboxes on the assigned-contacts-list

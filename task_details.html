@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="./assets/css/board.css">
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/task_details.js"></script>
+    <script src="./assets/js/generate_taskDetailsHtml.js"></script>
 </head>
 
-<body class="flex-center" onload="setupListener()">
+<body class="flex-center" onload="initTaskDetails()">
 
     <!-- Needs position relative -->
     <section class="outer-wrapper">
@@ -22,22 +23,22 @@
         <div class="task-card-wrapper">
             <section id="task-details-view" class="task-card-view">
                 <div class="details__header">
-                    <span class="tag user-story">User Story</span>
+                    <span id="task-details-tag"></span>
                     <div class="close-btn" onclick="toggleVisibility('task-details-view')"></div>
                 </div>
                 <div class="details__title-wrapper">
-                    <h1 class="details__title">Kochwelt Page & Recipe Recommender</h1>
-                    <p class="details__description">Build start page with recipe recommendation.</p>
+                    <h1 id="task-details-title" class="details__title">Kochwelt Page & Recipe Recommender</h1>
+                    <p id="task-details-description" class="details__description">Build start page with recipe recommendation.</p>
                 </div>
                 <div class="details__info-box">
                     <strong class="details__caption">Due date:</strong>
-                    <span class="details__information">02/09/2023</span>
+                    <span id="task-details-deadline" class="details__information">02/09/2023</span>
                 </div>
                 <div class="details__info-box">
                     <strong class="details__caption">Priority:</strong>
                     <div class="details__priority-wrapper">
                         <span id="details-priority-text" class="details__information">Medium</span>
-                        <img class="priority-icon" src="./assets/img/icons/priority_medium.svg" alt="">
+                        <img id="details-priority-img" class="priority-icon" src="./assets/img/icons/priority_medium.svg" alt="">
                     </div>
                 </div>
                 <div class="details__info-box vertical">
@@ -98,6 +99,10 @@
                     </div>
                 </div>
             </section>
+
+
+
+            
             <section id="task-edit-view" class="task-card-view d-none"
                 onclick="resetInputFields();stopPropagation(event);">
                 <div class="details__header titleless">
@@ -160,20 +165,10 @@
                             <section id="edit-task-contacts-list" class="edit-task-contact-list d-none"
                                 onclick="stopPropagation(event)">
                                 <!--START: Contact-List to Render -->
-                                <div id="assign-contact-userId" class="single-contact" onclick="toggleThis('userId')">
-                                    <div class="user-box">
-                                        <div id="edit-task-avatar-userId" class="avatar at-drop-down" style="background-color: burlywood;">AS</div>
-                                        <span id="edit-task-username-userId">Anja Schulz</span>
-                                    </div>
-                                    <div id="assign-contact-pseudo-checkbox-userId" class="pseudo-checkbox"></div>
-                                    <input type="checkbox" class="contact-checkbox" id="assign-contact-checkbox-userId"
-                                        name="example-checkbox">
-                                    <label for="assign-contact-checkbox-userId"></label>
-                                </div>
                                 <!--END: Contact-List to Render -->
-                            </section>
-                            <!--START: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
+                            </section>       
                             <div class="details__inner edit assigned">
+                                <!--START: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
                                 <img class="avatar assigned-to" id="assigned-person-image-index"
                                     src="./assets/img/icons/user-proxy.svg" alt="Avatar">
                                 <!--END: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
@@ -182,8 +177,8 @@
                                     src="./assets/img/icons/user-proxy.svg" alt="Avatar">
                                 <img class="avatar assigned-to" id="assigned-person-image-2"
                                     src="./assets/img/icons/user-proxy.svg" alt="Avatar">
+                                    <!-- END: Additional ppl -->
                             </div>
-                            <!-- END: Additional ppl -->
                         </div>
                     </div>
                     <div class="details__info-box vertical mb-8">

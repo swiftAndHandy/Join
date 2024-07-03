@@ -636,6 +636,7 @@ Detail-View related Classes
 .details__priority-wrapper {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .details__priority-wrapper.edit {
