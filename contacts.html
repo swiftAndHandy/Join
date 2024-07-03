@@ -12,6 +12,7 @@
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/menu-bar-script.js"></script>
     <script src="./assets/js/generateHtml.js"></script>
+    <script src="./assets/js/contacts.js"></script>
     <link rel="icon" type="image/svg+xml" href="./assets/img/icons/favicon.svg">
     <!-- <link rel="icon" type="image/x-icon" href="./assets/img/icons/favicon.svg"> -->
     <link rel="icon" type="image/png" sizes="48x48" href="./assets/img/icons/favicon-48x48.png">
@@ -23,104 +24,15 @@
     <link rel="mask-icon" href="./assets/img/icons/favicon.svg" color="#5bbad5">
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(), putContactsToList()">
     <div w3-include-html="./assets/templates/menu-bar.html"></div>
     <div class="contact-list-and-contact-window-container">
         <div class="contact-list-container">
-            <div class="btn-container">
-                <button class="btn-add-new-contact">Add new contact<img src="./assets/img/icons/person_add.svg"
+            <div class="btn-container-add-contact">
+                <button class="btn-add-new-contact" onclick="openAddContactPage()">Add new contact<img src="./assets/img/icons/person_add.svg"
                         alt=""></button>
             </div>
-            <ul class="contact-list">
-                <li class="letter">A</li>
-                <div class="underline"></div>
-                <li class="contact-item">
-                    <div class="contact-image--small">CN</div>
-                    <div class="contact-details">
-                        <p class="contact-name">Contact name</p>
-                        <p class="contact-email">mail@to.me</p>
-                    </div>
-                </li>
-                <li class="contact-item">
-                    <div class="contact-image--small"></div>
-                    <div class="contact-details">
-                        <p class="contact-name">Contact name</p>
-                        <p class="contact-email">mail@to.me</p>
-                    </div>
-                </li>
-                <li class="letter">B</li>
-                <div class="underline"></div>
-                <li class="contact-item">
-                    <div class="contact-image--small"></div>
-                    <div class="contact-details">
-                        <p class="contact-name">Contact name</p>
-                        <p class="contact-email">mail@to.me</p>
-                    </div>
-                </li>
-                <li class="letter">C</li>
-                <div class="underline"></div>
-                <li class="contact-item">
-                    <div class="contact-image--small"></div>
-                    <div class="contact-details">
-                        <p class="contact-name">Contact name</p>
-                        <p class="contact-email">mail@to.me</p>
-                    </div>
-                </li>
-                <li class="contact-item">
-                    <div class="contact-image--small"></div>
-                    <div class="contact-details">
-                        <p class="contact-name">Contact name</p>
-                        <p class="contact-email">mail@to.me</p>
-                    </div>
-                </li>
-                <li class="letter">D</li>
-                <div class="underline"></div>
-                <li class="contact-item">
-                    <div class="contact-image--small"></div>
-                    <div class="contact-details">
-                        <p class="contact-name">Contact name</p>
-                        <p class="contact-email">mail@to.me</p>
-                    </div>
-                </li>
-                <li class="contact-item">
-                    <div class="contact-image--small"></div>
-                    <div class="contact-details">
-                        <p class="contact-name">Contact name</p>
-                        <p class="contact-email">mail@to.me</p>
-                    </div>
-                </li>
-                <li class="letter">E</li>
-                <div class="underline"></div>
-                <li class="contact-item">
-                    <div class="contact-image--small"></div>
-                    <div class="contact-details">
-                        <p class="contact-name">Contact name</p>
-                        <p class="contact-email">mail@to.me</p>
-                    </div>
-                </li>
-                <li class="contact-item">
-                    <div class="contact-image--small"></div>
-                    <div class="contact-details">
-                        <p class="contact-name">Contact name</p>
-                        <p class="contact-email">mail@to.me</p>
-                    </div>
-                </li>
-                <li class="letter">F</li>
-                <div class="underline"></div>
-                <li class="contact-item">
-                    <div class="contact-image--small"></div>
-                    <div class="contact-details">
-                        <p class="contact-name">Contact name</p>
-                        <p class="contact-email">mail@to.me</p>
-                    </div>
-                </li>
-                <li class="contact-item">
-                    <div class="contact-image--small"></div>
-                    <div class="contact-details">
-                        <p class="contact-name">Contact name</p>
-                        <p class="contact-email">mail@to.me</p>
-                    </div>
-                </li>
+            <ul id="contact-list" class="contact-list">
             </ul>
         </div>
         <div class="contact-window">
@@ -130,25 +42,8 @@
                 <span class="span-motto">Better with a team</span>
                 <div class="separator--mobile"></div>
             </div>
-            <div class="contact-info-container">
-                <div class="image-name-container">
-                    <div class="contact-image--large">MM</div>
-                    <div class="name-buttons-container">
-                        <h2 class="contact-name--large">Max Mustermann</h2>
-                        <div class="edit-delete-buttons-container">
-                            <div class="edit-button"><img src="./assets/img/icons/edit.svg" alt="edit">edit</div>
-                            <div class="delete-button"><img src="./assets/img/icons/delete.svg" alt="delete">delete
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <span class="span-contact-info">Contact information</span>
-                <div class="email-phone-container">
-                    <span class="span-email-phone">Email</span>
-                    <a id="current-contact-email" href="mailto:mmuster@gmail.com" class="contact-email">mmuster@gmail.com</a>
-                    <span class="span-email-phone">Phone</span>
-                    <a id="current-contact-phone" href="tel:00492222222" class="tel-number">+49 222 22 22</a>
-                </div>
+            <div id="contact-info-container" class="contact-info-container">
+                
             </div>
                 <div class="more-vert-button"><img src="./assets/img/icons/more_vert.svg" alt=""></div>
                 <div class="contact-options">
@@ -156,11 +51,14 @@
                     <div class="delete-button"><img src="./assets/img/icons/delete.svg" alt="delete">delete</div>
                 </div>
             </div>
-
+        </div>
+    </div>
+    <div id="addContactModal" class="modal">
+        <div class="modal-content">
+            <div id="modalBodyContent"></div>
         </div>
     </div>
     </div>
     <section id="nav-menu-bottom" class="nav-menu--bottom"></section>
 </body>
-
 </html>

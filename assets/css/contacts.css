@@ -25,7 +25,7 @@ body {
     margin: 0;
 }
 
-.btn-container {
+.btn-container-add-contact  {
     position: relative;
     left: 150px;
 }
@@ -52,8 +52,7 @@ body {
     user-select: none;
 }
 
-.btn-add-new-contact:hover,
-.more-vert-button:hover {
+.btn-add-new-contact:hover{
     background-color: #29ABE2;
     box-shadow: 0px 4px 4px 0px #00000040;
 }
@@ -140,7 +139,7 @@ body {
 }
 
 .contact-window {
-    display: none;
+    display: flex;
     flex-direction: column;
     top: 96px;
     position: relative;
@@ -181,6 +180,7 @@ body {
 }
 
 .contact-info-container {
+    display: none;
     margin-left: 40px;
 }
 
@@ -231,7 +231,7 @@ body {
 
 .edit-button,
 .delete-button {
-    display: flex;
+    display: none;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 400;
@@ -239,6 +239,10 @@ body {
     color: #2A3647;
     gap: 8px;
     cursor: pointer;
+}
+
+.more-vert-button{
+    display: none;
 }
 
 .edit-button:hover,
@@ -314,7 +318,7 @@ body {
         height: calc(100vh - 96px);
     }
 
-    .btn-container {
+    .btn-container-add-contact {
         position: sticky;
         top: 0;
         display: flex;
@@ -489,6 +493,11 @@ body {
         user-select: none;
     }
 
+    .more-vert-button:hover {
+        background-color: #29ABE2;
+        box-shadow: 0px 4px 4px 0px #00000040;
+    }
+
     .contact-options {
         animation-name: contact-options-animation;
         animation-timing-function: ease-out;
@@ -507,6 +516,7 @@ body {
 
     .edit-button,
     .delete-button {
+        display: flex;
         padding: 8px 16px 8px 16px;
     }
 }

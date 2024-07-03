@@ -140,3 +140,10 @@ async function accountExists(email, password = false) {
         return false;
     }
 }
+
+
+async function getContacts(){
+    const contactsAsJson = await readData('contacts');
+    const contactList = Object.values(contactsAsJson)
+    return contactList;
+}
