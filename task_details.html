@@ -188,8 +188,8 @@
                     </div>
                     <div class="details__info-box vertical mb-8">
                         <strong class="details__caption">Subtasks:</strong>
-                        <div id="details-subtask-box" class="details-subtask-box">
-                            <input type="text" id="details-add-subtask" class="details-subtask-add"
+                        <div id="edit-subtask-box" class="details-subtask-box">
+                            <input type="text" id="edit-add-subtask" class="details-subtask-add"
                                 placeholder="Add new subtask">
                             <div id="edit-view-subtask-add" class="cross blue" onclick="setFocus('edit')"></div>
                             <div id="edit-view-subtask-navigation" class="edit-subtask-navigation d-none"
@@ -216,7 +216,7 @@
                         </div>
                         <div id="single-subtask-input-wrapper-subtaskId" class="single-subtask-input-box d-none">
                             <input id="single-subtask-input-subtaskId" type="text">
-                            <img class="link-btn delete-btn" src="./assets/img/icons/delete.svg" alt="" onclick="discardSubtaskInput('subtaskId')">
+                            <img class="link-btn discard-btn" src="./assets/img/icons/discard.svg" alt="" onclick="discardSubtaskInput('subtaskId')">
                             <div class="vertical-line"></div>
                             <img class="link-btn accept-btn" src="./assets/img/icons/check_blue.svg" alt="" onclick="updateSubtaskInput('subtaskId')">
                         </div>

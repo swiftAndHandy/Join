@@ -19,15 +19,15 @@ function toggleThis(id) {
  * Setup some Event-Listeners for focus-design on edit-task-details input-fields (contact-search and add-new-subtask)
  */
 function focusListener() {
-    let listener = document.getElementById('details-add-subtask')
+    let listener = document.getElementById('edit-add-subtask')
     listener.addEventListener('focus', () => {
-        document.getElementById('details-subtask-box').classList.add('focus');
+        document.getElementById('edit-subtask-box').classList.add('focus');
         document.getElementById('edit-view-subtask-navigation').classList.remove('d-none');
         document.getElementById('edit-view-subtask-add').classList.add('d-none');
     });
 
     listener.addEventListener('blur', () => {
-        document.getElementById('details-subtask-box').classList.remove('focus');
+        document.getElementById('edit-subtask-box').classList.remove('focus');
         document.getElementById('edit-view-subtask-navigation').classList.add('d-none');
         document.getElementById('edit-view-subtask-add').classList.remove('d-none');
     });
@@ -73,7 +73,7 @@ function openListSearch(id) {
 }
 
 function setFocus(id) {
-    const inputField = document.getElementById(`${id}-task-list-input-field`);
+    const inputField = document.getElementById(`${id}-add-subtask`);
     inputField.focus();
 }
 
