@@ -28,6 +28,11 @@
         <article>
             <pre class="prettyprint source linenums"><code>let editPriority;
 
+
+/**
+ * Controls the design of checkboxes on the assigned-contacts-list
+ * @param {string} id 
+ */
 function toggleThis(id) {
     const contactId = document.getElementById(`assign-contact-${id}`);
     const checkboxId = document.getElementById(`assign-contact-checkbox-${id}`);
@@ -35,6 +40,45 @@ function toggleThis(id) {
     contactId.classList.toggle('list-selected');
     pseudoCheckboxId.classList.toggle('list-selected');
     checkboxId.checked = !checkboxId.checked;
+}
+
+/**
+ * Unfinished. 
+ * Setup some Event-Listeners for focus-design on edit-task-details input-fields (contact-search and add-new-subtask)
+ */
+function setupListener() {
+    let listener = document.getElementById('edit-add-subtask')
+    listener.addEventListener('focus', focusListener);
+    listener.addEventListener('blur', blurListener);
+
+    listener = document.getElementById('edit-task-list-input-field')
+    listener.addEventListener('focus', () => document.getElementById('edit-task-contact-list-input').classList.add('focus'));
+    listener.addEventListener('blur', () => document.getElementById('edit-task-contact-list-input').classList.remove('focus'));
+}
+
+/**
+ * Change Button-Design based on focus of input-field. 
+ * Show discard and save-button, when input for new subtask is active
+ */
+function focusListener() {
+    document.getElementById('edit-subtask-box').classList.add('focus');
+    document.getElementById('edit-view-subtask-navigation').classList.remove('d-none');
+    document.getElementById('edit-view-subtask-add').classList.add('d-none');
+}
+
+
+/**
+ * Change Button-Design based on focus of input-field. 
+ * Hide discard and save-button, when input for new subtask is active
+ * Show add button instead.
+ */
+function blurListener() {
+    let listener = document.getElementById('edit-add-subtask')
+    document.getElementById('edit-subtask-box').classList.remove('focus');
+    if (!listener.value) {
+        document.getElementById('edit-view-subtask-navigation').classList.add('d-none');
+        document.getElementById('edit-view-subtask-add').classList.remove('d-none');
+    }
 }
 
 /**
@@ -63,29 +107,88 @@ function setPriorityTo(level) {
     }
 }
 
+/**
+ * toggles the visibility of contact-list and contact-list input to show/hide the DOM-Content.
+ * @param {string} id - used to get the correct id for design changes
+ */
 function openListSearch(id) {
-    const btn = toggleVisibility(`${id}-task-list-btn`);
-    toggleVisibility(`${id}-task-list-input`);
+    const btn = toggleVisibility(`${id}-task-contact-list-btn`);
+    toggleVisibility(`${id}-task-contact-list-input`);
     toggleVisibility(`${id}-task-contacts-list`)
     const inputField = document.getElementById(`${id}-task-list-input-field`);
     const inputBox = inputField.parentElement.classList.add('focus');
     inputField.focus();
 }
 
+/**
+ * @param {string} id - set focus to an DOM-Content bases on the submited id
+ */
 function setFocus(id) {
-    const inputField = document.getElementById(`${id}-task-list-input-field`);
-    const inputBox = inputField.parentElement.classList.add('focus');
+    const inputField = document.getElementById(`${id}-add-subtask`);
     inputField.focus();
 }
 
-function resetInputFields() {
-    id = 'edit';
-    hideWindow(`${id}-task-list-btn`, false);
-    hideWindow(`${id}-task-list-input`);
+
+/**
+ * @param {string} id - used to complete the target-document-id
+ */
+function resetInputFields(id = 'edit') {
+    hideWindow(`${id}-task-contact-list-btn`, false);
+    hideWindow(`${id}-task-contact-list-input`);
     hideWindow(`${id}-task-contacts-list`);
 }
 
-</code></pre>
+//placeholder
+function searchForContactDemo() {
+    // Alle span-Elemente auswählen
+    const spans = document.querySelectorAll('span');
+
+    // Das span-Element mit dem gewünschten Textinhalt finden
+    const targetSpan = Array.from(spans).find(span => span.textContent.trim() === 'This is a test-task');
+
+    if (targetSpan) {
+        console.log('Element gefunden:', targetSpan);
+    } else {
+        console.log('Element nicht gefunden');
+    }
+}
+
+/**
+ * @param {string} subtaskId - build an elementId related to subtask-id and change the input-style
+ */
+function openSubtaskInput(subtaskId) {
+    document.getElementById('edit-subtask-total-subtaskId').classList.add('d-none');
+    document.getElementById('single-subtask-input-wrapper-subtaskId').classList.remove('d-none');
+    document.getElementById('single-subtask-input-subtaskId').focus();
+}
+
+// placeholder. send request to firebase
+function updateSubtaskInput(subtaskId) {
+    document.getElementById('edit-subtask-total-subtaskId').classList.remove('d-none');
+    document.getElementById('single-subtask-input-wrapper-subtaskId').classList.add('d-none');
+}
+
+//placeholder. need to change value back to origin
+function discardSubtaskInput(subtaskId) {
+    document.getElementById('edit-subtask-total-subtaskId').classList.remove('d-none');
+    document.getElementById('single-subtask-input-subtaskId').value = '';
+    document.getElementById('single-subtask-input-wrapper-subtaskId').classList.add('d-none');
+}
+
+//placeholder
+function deleteSubtask(subtaskId) {
+    console.warn('Dieser Subtask würde nun gelöscht. Geht aber noch nicht. Glückwunsch.')
+}
+
+// placeholder
+function deleteTask(taskId) {
+    console.warn('Diese Task würde nun gelöscht. Geht aber noch nicht. Glückwunsch.')
+}
+
+function saveTaskUpdate() {
+    toggleVisibility('task-edit-view');
+    toggleVisibility('task-details-view');
+}</code></pre>
         </article>
     </section>
 
@@ -95,13 +198,13 @@ function resetInputFields() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#applyRandomColor">applyRandomColor</a></li><li><a href="global.html#autofillLogin">autofillLogin</a></li><li><a href="global.html#avatarHtml">avatarHtml</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#clearLocalstorage">clearLocalstorage</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#forceLogout">forceLogout</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#handleCheckBox">handleCheckBox</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#setMyAvatar">setMyAvatar</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#toggleVisibility">toggleVisibility</a></li><li><a href="global.html#updateMenu">updateMenu</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#applyRandomColor">applyRandomColor</a></li><li><a href="global.html#autofillLogin">autofillLogin</a></li><li><a href="global.html#avatarHtml">avatarHtml</a></li><li><a href="global.html#blurListener">blurListener</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#clearLocalstorage">clearLocalstorage</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#focusListener">focusListener</a></li><li><a href="global.html#forceLogout">forceLogout</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#handleCheckBox">handleCheckBox</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openListSearch">openListSearch</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#openSubtaskInput">openSubtaskInput</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#setFocus">setFocus</a></li><li><a href="global.html#setMyAvatar">setMyAvatar</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#setupListener">setupListener</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#toggleThis">toggleThis</a></li><li><a href="global.html#toggleVisibility">toggleVisibility</a></li><li><a href="global.html#updateMenu">updateMenu</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Tue Jul 02 2024 20:40:47 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jul 03 2024 15:28:18 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

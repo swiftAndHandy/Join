@@ -34,6 +34,7 @@ let addTaskDueDate = "";
 let addTaskPrio = "";
 let addTaskCategory = "";
 let addTaskSubtask = "";
+let taskStatus = "done";
 let pressedButton = 0;
 let alreadyOpen = false;
 
@@ -48,15 +49,7 @@ const base_URL =
 
 async function postData(
   path = "tasks",
-  data = {
-    title: addTaskTitle,
-    description: addTaskDescription,
-    contact: addTaskAssignedContacts,
-    date: addTaskDueDate,
-    prio: addTaskPrio,
-    category: addTaskCategory,
-    subtask: addTaskSubtask,
-  }
+  data = {}
 ) {
   try {
     let response = await fetch(base_URL + path + ".json", {
@@ -97,18 +90,16 @@ function addDescription() {
  * @param {number} idNumber Uses a number from a for-loop to assign individual IDs.
  */
 function handleCheckBox(checkbox, idNumber) {
-    // Überprüft, ob die Checkbox angeklickt ist
+    // check if checkbox is clicked
     if (checkbox.checked) {
-        // Wenn die Checkbox angeklickt ist und der Wert noch nicht im Array ist
+       // when checkbox is clicked and value is not in array then if statment
         if (!addTaskAssignedContacts.includes(checkbox.value)) {
             addTaskAssignedContacts.push(checkbox.value);
+          
         }
 
-        
         console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
-        
-   
-        document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('pressed-drop-box-bg-color');
+        pressedCheckBoxStyle(idNumber);
     } else {
     
         const valueIndex = addTaskAssignedContacts.indexOf(checkbox.value);
@@ -116,26 +107,34 @@ function handleCheckBox(checkbox, idNumber) {
             addTaskAssignedContacts.splice(valueIndex, 1);
         }
 
-      
         console.log("Checkbox mit Wert " + checkbox.value + " ist deaktiviert.");
-
-        document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('pressed-drop-box-bg-color');
+        unPressedCheckBoxStyle(idNumber);
     }
-
     console.log('Aktuelle ausgewählte Kontakte: ', addTaskAssignedContacts);
 }
 
+  function pressedCheckBoxStyle (idNumber) {  
+    document.getElementById(`label-check${idNumber}`).classList.add('filter-to-white')
+        document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('ul-content-wrapper-no-click')
+        document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('pressed-drop-box-bg-color');
 
+}
 
+  function unPressedCheckBoxStyle(idNumber) {
+  document.getElementById(`label-check${idNumber}`).classList.remove('filter-to-white')
+        document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('ul-content-wrapper-no-click')
+        document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('pressed-drop-box-bg-color');
+        
+  }
 
 function toggleContactDropBox() {
    
    if(!alreadyOpen) {
     document.getElementById('contacts-drop-menu').classList.remove('d-none');
     document.getElementById('required-text-span').classList.add('d-none');
-    
     document.getElementById('contact-input-wrapper').classList.add('d-none');
     document.getElementById('contacts-show-input').classList.remove('d-none');
+    
     alreadyOpen = true
    }else {
     document.getElementById('contacts-drop-menu').classList.add('d-none');
@@ -177,7 +176,7 @@ function addnewTask() {
   taskCategory();
   taskSubtask();
   postData(
-    (path = "tasks"),
+    (path = "accounts"),
     (data = {
       title: addTaskTitle,
       description: addTaskDescription,
@@ -186,6 +185,7 @@ function addnewTask() {
       prio: addTaskPrio,
       category: addTaskCategory,
       subtask: addTaskSubtask,
+      status: taskStatus,
     })
   );
   window.location.href = 'board.html';
@@ -249,13 +249,13 @@ function setPrio(prio, number) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#applyRandomColor">applyRandomColor</a></li><li><a href="global.html#autofillLogin">autofillLogin</a></li><li><a href="global.html#avatarHtml">avatarHtml</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#clearLocalstorage">clearLocalstorage</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#forceLogout">forceLogout</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#handleCheckBox">handleCheckBox</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#setMyAvatar">setMyAvatar</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#toggleVisibility">toggleVisibility</a></li><li><a href="global.html#updateMenu">updateMenu</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#applyRandomColor">applyRandomColor</a></li><li><a href="global.html#autofillLogin">autofillLogin</a></li><li><a href="global.html#avatarHtml">avatarHtml</a></li><li><a href="global.html#blurListener">blurListener</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#clearLocalstorage">clearLocalstorage</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#focusListener">focusListener</a></li><li><a href="global.html#forceLogout">forceLogout</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#handleCheckBox">handleCheckBox</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openListSearch">openListSearch</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#openSubtaskInput">openSubtaskInput</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#setFocus">setFocus</a></li><li><a href="global.html#setMyAvatar">setMyAvatar</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#setupListener">setupListener</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#toggleThis">toggleThis</a></li><li><a href="global.html#toggleVisibility">toggleVisibility</a></li><li><a href="global.html#updateMenu">updateMenu</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Tue Jul 02 2024 20:40:47 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jul 03 2024 15:28:18 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

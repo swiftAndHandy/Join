@@ -14,7 +14,7 @@
     <script src="./assets/js/task_details.js"></script>
 </head>
 
-<body class="flex-center" onload="focusListener()">
+<body class="flex-center" onload="setupListener()">
 
     <!-- Needs position relative -->
     <section class="outer-wrapper">
@@ -144,14 +144,14 @@
                     <div class="details__info-box vertical">
                         <strong class="details__caption">Assigned To:</strong>
                         <div id="details-assigned-list" class="details__info-box vertical">
-                            <div id="edit-task-list-btn" class="list-btn"
+                            <div id="edit-task-contact-list-btn" class="list-btn"
                                 onclick="openListSearch('edit');stopPropagation(event);">
                                 <span id="details-edit-assigned-btn" class="list-btn__btn-text">Select contacts to
                                     assign</span>
                                 <div class="list-icon collapse"><img src="./assets/img/icons/collapse_true.svg" alt="">
                                 </div>
                             </div>
-                            <div id="edit-task-list-input" class="list-btn focus d-none"
+                            <div id="edit-task-contact-list-input" class="list-btn focus d-none"
                                 onclick="stopPropagation(event);">
                                 <input id="edit-task-list-input-field" class="list-btn__input-field" type="text">
                                 <div class="list-icon collapse"><img src="./assets/img/icons/collapse_false.svg" alt=""
@@ -194,7 +194,7 @@
                             <div id="edit-view-subtask-add" class="cross blue" onclick="setFocus('edit')"></div>
                             <div id="edit-view-subtask-navigation" class="edit-subtask-navigation d-none"
                                 onclick="stopPropagation(event);">
-                                <div class="link-btn discard-btn"></div>
+                                <div class="link-btn discard-btn"></div> <!-- discard new subcard-value -->
                                 <img class="vertical-line" src="./assets/img/icons/vertical-line.svg" alt="" class="">
                                 <div class="link-btn accept-btn"></div>
                             </div>
@@ -224,7 +224,7 @@
                     </div>
                 </div>
                 <div class="details__bottom">
-                    <div class="simple-btn small">
+                    <div class="simple-btn small" onclick="saveTaskUpdate()">
                         <span class="">Ok</span>
                         <img src="./assets/img/icons/check_white.svg" alt="">
                     </div>

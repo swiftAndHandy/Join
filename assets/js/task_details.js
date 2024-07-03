@@ -18,23 +18,39 @@ function toggleThis(id) {
  * Unfinished. 
  * Setup some Event-Listeners for focus-design on edit-task-details input-fields (contact-search and add-new-subtask)
  */
-function focusListener() {
+function setupListener() {
     let listener = document.getElementById('edit-add-subtask')
-    listener.addEventListener('focus', () => {
-        document.getElementById('edit-subtask-box').classList.add('focus');
-        document.getElementById('edit-view-subtask-navigation').classList.remove('d-none');
-        document.getElementById('edit-view-subtask-add').classList.add('d-none');
-    });
-
-    listener.addEventListener('blur', () => {
-        document.getElementById('edit-subtask-box').classList.remove('focus');
-        document.getElementById('edit-view-subtask-navigation').classList.add('d-none');
-        document.getElementById('edit-view-subtask-add').classList.remove('d-none');
-    });
+    listener.addEventListener('focus', focusListener);
+    listener.addEventListener('blur', blurListener);
 
     listener = document.getElementById('edit-task-list-input-field')
-    listener.addEventListener('focus', () => document.getElementById('edit-task-list-input').classList.add('focus'));
-    listener.addEventListener('blur', () => document.getElementById('edit-task-list-input').classList.remove('focus'));
+    listener.addEventListener('focus', () => document.getElementById('edit-task-contact-list-input').classList.add('focus'));
+    listener.addEventListener('blur', () => document.getElementById('edit-task-contact-list-input').classList.remove('focus'));
+}
+
+/**
+ * Change Button-Design based on focus of input-field. 
+ * Show discard and save-button, when input for new subtask is active
+ */
+function focusListener() {
+    document.getElementById('edit-subtask-box').classList.add('focus');
+    document.getElementById('edit-view-subtask-navigation').classList.remove('d-none');
+    document.getElementById('edit-view-subtask-add').classList.add('d-none');
+}
+
+
+/**
+ * Change Button-Design based on focus of input-field. 
+ * Hide discard and save-button, when input for new subtask is active
+ * Show add button instead.
+ */
+function blurListener() {
+    let listener = document.getElementById('edit-add-subtask')
+    document.getElementById('edit-subtask-box').classList.remove('focus');
+    if (!listener.value) {
+        document.getElementById('edit-view-subtask-navigation').classList.add('d-none');
+        document.getElementById('edit-view-subtask-add').classList.remove('d-none');
+    }
 }
 
 /**
@@ -63,27 +79,38 @@ function setPriorityTo(level) {
     }
 }
 
+/**
+ * toggles the visibility of contact-list and contact-list input to show/hide the DOM-Content.
+ * @param {string} id - used to get the correct id for design changes
+ */
 function openListSearch(id) {
-    const btn = toggleVisibility(`${id}-task-list-btn`);
-    toggleVisibility(`${id}-task-list-input`);
+    const btn = toggleVisibility(`${id}-task-contact-list-btn`);
+    toggleVisibility(`${id}-task-contact-list-input`);
     toggleVisibility(`${id}-task-contacts-list`)
     const inputField = document.getElementById(`${id}-task-list-input-field`);
     const inputBox = inputField.parentElement.classList.add('focus');
     inputField.focus();
 }
 
+/**
+ * @param {string} id - set focus to an DOM-Content bases on the submited id
+ */
 function setFocus(id) {
     const inputField = document.getElementById(`${id}-add-subtask`);
     inputField.focus();
 }
 
 
+/**
+ * @param {string} id - used to complete the target-document-id
+ */
 function resetInputFields(id = 'edit') {
-    hideWindow(`${id}-task-list-btn`, false);
-    hideWindow(`${id}-task-list-input`);
+    hideWindow(`${id}-task-contact-list-btn`, false);
+    hideWindow(`${id}-task-contact-list-input`);
     hideWindow(`${id}-task-contacts-list`);
 }
 
+//placeholder
 function searchForContactDemo() {
     // Alle span-Elemente auswählen
     const spans = document.querySelectorAll('span');
@@ -98,26 +125,39 @@ function searchForContactDemo() {
     }
 }
 
+/**
+ * @param {string} subtaskId - build an elementId related to subtask-id and change the input-style
+ */
 function openSubtaskInput(subtaskId) {
     document.getElementById('edit-subtask-total-subtaskId').classList.add('d-none');
     document.getElementById('single-subtask-input-wrapper-subtaskId').classList.remove('d-none');
     document.getElementById('single-subtask-input-subtaskId').focus();
 }
 
-function updateSubtaskInput(subtaskId){
+// placeholder. send request to firebase
+function updateSubtaskInput(subtaskId) {
     document.getElementById('edit-subtask-total-subtaskId').classList.remove('d-none');
     document.getElementById('single-subtask-input-wrapper-subtaskId').classList.add('d-none');
 }
 
-function discardSubtaskInput(subtaskId){
+//placeholder. need to change value back to origin
+function discardSubtaskInput(subtaskId) {
     document.getElementById('edit-subtask-total-subtaskId').classList.remove('d-none');
+    document.getElementById('single-subtask-input-subtaskId').value = '';
     document.getElementById('single-subtask-input-wrapper-subtaskId').classList.add('d-none');
 }
 
+//placeholder
 function deleteSubtask(subtaskId) {
     console.warn('Dieser Subtask würde nun gelöscht. Geht aber noch nicht. Glückwunsch.')
 }
 
+// placeholder
 function deleteTask(taskId) {
     console.warn('Diese Task würde nun gelöscht. Geht aber noch nicht. Glückwunsch.')
+}
+
+function saveTaskUpdate() {
+    toggleVisibility('task-edit-view');
+    toggleVisibility('task-details-view');
 }
