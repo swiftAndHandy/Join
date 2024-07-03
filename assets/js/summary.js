@@ -78,7 +78,7 @@ function animateGreeting(greeting) {
 
 
 async function updateBoardCounters() {
-    
+    readData('tasks');
 }
 
 // <span id="board-counter" class="summary-counter">1</span>

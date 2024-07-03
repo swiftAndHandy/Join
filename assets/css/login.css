@@ -164,6 +164,7 @@
         width: clamp(64px, 3vw, 100px);
         margin-top: 80px;
         margin-left: 77px;
+        user-select: none;
     }
 
     .content__head {
