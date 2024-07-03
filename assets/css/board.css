@@ -273,7 +273,6 @@ h2 {
   color: white;
   font-size: 21px;
   font-weight: 700;
-  cursor: pointer;
   justify-content: space-evenly;
   align-items: center;
   display: none;
@@ -517,7 +516,6 @@ Detail-View related Classes
 .details__title {
   font-weight: 700;
   font-size: 36px;
-  outline: 1px solid red;
 }
 
 .edit.this-entry {
@@ -571,14 +569,12 @@ Detail-View related Classes
   font-weight: 700;
   font-size: 16px;
   color: #42526e;
-  outline: 1px solid slateblue;
 }
 
 .details__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  outline: 1px solid blue;
   width: 100%;
 }
 
@@ -593,6 +589,7 @@ Detail-View related Classes
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+  transition: all 0.1s ease-in-out;
 }
 
 .close-btn:hover {
@@ -606,7 +603,6 @@ Detail-View related Classes
 .details__info-box {
   display: flex;
   gap: 25px;
-  outline: 1px solid salmon;
   align-items: center;
 }
 
@@ -614,7 +610,6 @@ Detail-View related Classes
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  outline: 1px solid blue;
   width: 100%;
 }
 
@@ -629,7 +624,6 @@ Detail-View related Classes
   display: flex;
   flex-direction: column;
   gap: 16px;
-  outline: 1px solid brown;
 }
 
 .details__title-wrapper.edit {
@@ -657,6 +651,7 @@ Detail-View related Classes
   padding: 16px 10px;
   width: 33.33%;
   box-sizing: border-box;
+  transition: all 0.08s ease-in-out;
 }
 
 .simple-btn.task-priority .urgent-img {
@@ -722,7 +717,6 @@ Detail-View related Classes
   flex-direction: column;
   gap: 4px;
   margin-left: 16px;
-  outline: 1px solid lightseagreen;
 }
 
 .details__inner {
@@ -739,14 +733,12 @@ Detail-View related Classes
   font-weight: 400;
   font-size: 16px;
   margin-block: 0;
-  outline: 1px solid orange;
 }
 
 .details__information {
   font-weight: 400;
   font-size: 16px;
   color: #000;
-  outline: 1px solid goldenrod;
 }
 
 .details__bottom {
@@ -766,7 +758,7 @@ Detail-View related Classes
   background-image: url("../img/icons/vertical_line.svg");
 }
 
-.delete-link {
+.task-link {
   display: flex;
   border: none;
   background-color: unset;
@@ -776,42 +768,8 @@ Detail-View related Classes
   user-select: none;
 }
 
-.delete-link::before {
-  content: "";
-  display: block;
-  width: 24px;
-  height: 24px;
-  background-image: url("../img/icons/delete.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.delete-link:hover::before {
-  background-image: url("../img/icons/delete_hovered.svg");
-}
-
-.edit-link {
-  display: flex;
-  border: none;
-  background-color: unset;
-  align-items: center;
-  cursor: pointer;
-  gap: 8px;
-  user-select: none;
-}
-
-.edit-link::before {
-  content: "";
-  display: block;
-  width: 24px;
-  height: 24px;
-  background-image: url("../img/icons/edit.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.edit-link:hover::before {
-  background-image: url("../img/icons/edit_hovered.svg");
+.task-link:hover {
+  filter: invert(54%) sepia(69%) saturate(562%) hue-rotate(155deg) brightness(95%) contrast(87%);
 }
 
 .checkbox.details+label:hover {
@@ -853,7 +811,6 @@ Edit-View related Classes
   display: flex;
   flex-direction: column;
   gap: 8px;
-  outline: 1px solid pink;
   padding-right: 16px;
   overflow: auto;
 }
@@ -878,7 +835,8 @@ Edit-View related Classes
   padding-right: 16px;
   box-sizing: border-box;
   transform: translateY(-8px);
-  max-height: calc(56px * 5)
+  max-height: calc(56px * 5);
+  overflow: scroll;
 }
 
 .single-contact {
@@ -897,7 +855,13 @@ Edit-View related Classes
 }
 
 .single-contact.list-selected {
-  background: #2A3647;
+  /* background: #2a3647fc; */
+  background-color: #091931;
+  color: #FFFFFF;
+}
+
+.single-contact.list-selected:hover {
+  background: #2a3647ef;
   color: #FFFFFF;
 }
 
@@ -910,7 +874,11 @@ Edit-View related Classes
   user-select: none;
 }
 
-.avatar {
+.avatar.assigned-to {
+  cursor: pointer;
+}
+
+.avatar.at-drop-down {
   height: 38px;
   width: 38px;
   color: #FFFFFF;
@@ -943,9 +911,170 @@ Edit-View related Classes
 .pseudo-checkbox {
   width: 24px;
   height: 24px;
-  background-image: url(../img/icons/checkbox_disabled.svg);
+  background-image: url('../img/icons/checkbox_disabled.svg');
 }
 
 .pseudo-checkbox.list-selected {
-  background-image: url(../img/icons/contacts_checkbox-active.svg);
+  background-image: url('../img/icons/contacts_checkbox-active.svg');
+}
+
+.details-subtask-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #D1D1D1;
+  border-radius: 10px;
+  padding: 12px 16px;
+  box-sizing: border-box;
+}
+
+.details-subtask-box.focus {
+  border: 1px solid #29ABE2;
+}
+
+.simple-btn.small {
+  gap: 4px;
+  font-weight: 700;
+  font-size: 21px;
+  padding: 18px 10px;
+}
+
+.details-subtask-add {
+  box-sizing: border-box;
+  border-radius: 10px;
+  flex: 1;
+  border: none;
+  outline: unset;
+  font-family: 'Inter';
+  font-size: 16px;
+}
+
+.details-subtask-add::placeholder {
+  color: #D1D1D1;
+}
+
+.vertical-line {
+  height: 24px;
+  width: 1px;
+  background: #A8A8A8;
+}
+
+.edit-subtask-navigation {
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.cross.blue {
+  height: 24px;
+  width: 24px;
+  background-image: url('../img/icons/add_cross_blue.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cross.blue:hover {
+  height: 24px;
+  width: 24px;
+  background-image: url('../img/icons/add_cross_blue-hovered.svg');
+}
+
+.link-btn {
+  height: 24px;
+  width: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.link-btn.discard-btn {
+  background-image: url('../img/icons/discard.svg');
+}
+
+.link-btn.discard-btn:hover {
+  background-image: url('../img/icons/close_hovered.svg');
+}
+
+.link-btn.delete-btn:hover {
+  background-image: url('../img/icons/delete_hovered.svg');
+}
+
+.link-btn.accept-btn {
+  background-image: url('../img/icons/check_blue.svg');
+}
+
+.link-btn.accept-btn:hover {
+  background-image: url('../img/icons/check-hovered.svg');
+}
+
+.edit-subtasks-list {
+  width: 100%;
+  margin-block: 0;
+  padding-inline-start: 16px;
+  box-sizing: border-box;
+}
+
+.edit-subtasks-list li {
+  position: relative;
+  width: 100%;
+  flex: 1;
+}
+
+.edit-task__overlay {
+  position: absolute;
+}
+
+.details__vertical-wrapper.ml-0 {
+  width: 100%;
+  margin-left: 0;
+}
+
+.li-wrapper {
+  width: 100%;
+  border-radius: 10px;
+  padding: 4px 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.li-wrapper:hover {
+  background-color: #D1D1D155;
+}
+
+.single-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.single-list-item .hover-overlay {
+  opacity: 0;
+  display: flex;
+  gap: 4px;
+  transition: all 0.1s ease-in-out;
+}
+
+.li-wrapper:hover .single-list-item .hover-overlay {
+  opacity: 1;
+}
+
+.single-subtask-input-box {
+  display: flex;
+  border-bottom: 1px solid #29ABE2;
+  padding: 4px 16px;
+  width: 100%;
+  gap: 4px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.single-subtask-input-box input {
+  font-family: 'Inter';
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
 }

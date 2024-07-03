@@ -14,7 +14,7 @@
     <script src="./assets/js/task_details.js"></script>
 </head>
 
-<body class="flex-center">
+<body class="flex-center" onload="focusListener()">
 
     <!-- Needs position relative -->
     <section class="outer-wrapper">
@@ -73,8 +73,8 @@
                         <!--END: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
                         <!--START: More List-Items for better visualisation of the final design -->
                         <div class="details__subtask">
-                            <input type="checkbox" class="edit checkbox" id="details-subtask-1" name="details-subtask-index"
-                                onclick="toggleThis(id)">
+                            <input type="checkbox" class="edit checkbox" id="details-subtask-1"
+                                name="details-subtask-index" onclick="toggleThis(id)">
                             <label for="details-subtask-1">Start Page Layout</label>
                         </div>
                         <!--END of additinal List-Items for better visualisation of the final design -->
@@ -82,13 +82,19 @@
                 </div>
                 <div class="details__bottom">
                     <div class="icon-box" id="delete">
-                        <button class="delete-link details__information">Delete</button>
+                        <button class="task-link details__information" onclick="deleteTask('taskId')">
+                            <img src="./assets/img/icons/delete.svg" alt="">
+                            <span>Delete</span>
+                        </button>
                     </div>
                     <div class="line"></div>
                     <div class="icon-box" id="edit">
                         <div class="edit-icon"></div>
-                        <button class="edit-link details__information"
-                            onclick="toggleVisibility('task-edit-view');toggleVisibility('task-details-view');">Edit</button>
+                        <button class="task-link details__information"
+                            onclick="toggleVisibility('task-edit-view');toggleVisibility('task-details-view');">
+                            <img src="./assets/img/icons/edit.svg" alt="">
+                            <span>Edit</span>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -146,7 +152,7 @@
                                 </div>
                             </div>
                             <div id="edit-task-list-input" class="list-btn focus d-none"
-                                onclick="stopPropagation(event);setFocus('edit-task-list-input-field');">
+                                onclick="stopPropagation(event);">
                                 <input id="edit-task-list-input-field" class="list-btn__input-field" type="text">
                                 <div class="list-icon collapse"><img src="./assets/img/icons/collapse_false.svg" alt=""
                                         onclick="resetInputFields()"></div>
@@ -156,7 +162,7 @@
                                 <!--START: Contact-List to Render -->
                                 <div id="assign-contact-userId" class="single-contact" onclick="toggleThis('userId')">
                                     <div class="user-box">
-                                        <div id="edit-task-avatar-userId" class="avatar">AS</div>
+                                        <div id="edit-task-avatar-userId" class="avatar at-drop-down" style="background-color: burlywood;">AS</div>
                                         <span id="edit-task-username-userId">Anja Schulz</span>
                                     </div>
                                     <div id="assign-contact-pseudo-checkbox-userId" class="pseudo-checkbox"></div>
@@ -168,46 +174,61 @@
                             </section>
                             <!--START: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
                             <div class="details__inner edit assigned">
-                                <img id="assigned-person-image-index" src="./assets/img/icons/user-proxy.svg"
-                                    alt="Avatar">
+                                <img class="avatar assigned-to" id="assigned-person-image-index"
+                                    src="./assets/img/icons/user-proxy.svg" alt="Avatar">
                                 <!--END: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
                                 <!-- START: Additional ppl, for better visualisation of the final result -->
-                                <img id="assigned-person-image-1" src="./assets/img/icons/user-proxy.svg" alt="Avatar">
-                                <img id="assigned-person-image-2" src="./assets/img/icons/user-proxy.svg" alt="Avatar">
+                                <img class="avatar assigned-to" id="assigned-person-image-1"
+                                    src="./assets/img/icons/user-proxy.svg" alt="Avatar">
+                                <img class="avatar assigned-to" id="assigned-person-image-2"
+                                    src="./assets/img/icons/user-proxy.svg" alt="Avatar">
                             </div>
                             <!-- END: Additional ppl -->
                         </div>
                     </div>
                     <div class="details__info-box vertical">
                         <strong class="details__caption">Subtasks:</strong>
-                        <div id="details-subtasks-list" class="details__vertical-wrapper">
-                            <!--START: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
-                            <div class="details__subtask">
-                                <input type="checkbox" class="checkbox" id="details-edit-subtask-index"
-                                    name="details-subtask-index" onclick="toggleThis(id)">
-                                <label for="details-edit-subtask-index">Implement Recipe Recommendation</label>
+                        <div id="details-subtask-box" class="details-subtask-box">
+                            <input type="text" id="details-add-subtask" class="details-subtask-add"
+                                placeholder="Add new subtask">
+                            <div id="edit-view-subtask-add" class="cross blue" onclick="setFocus('edit')"></div>
+                            <div id="edit-view-subtask-navigation" class="edit-subtask-navigation d-none"
+                                onclick="stopPropagation(event);">
+                                <div class="link-btn discard-btn"></div>
+                                <img class="vertical-line" src="./assets/img/icons/vertical-line.svg" alt="" class="">
+                                <div class="link-btn accept-btn"></div>
                             </div>
-                            <!--END: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
-                            <!--START: More List-Items for better visualisation of the final design -->
-                            <div class="details__subtask">
-                                <input type="checkbox" class="checkbox" id="details-edit-subtask-1"
-                                    name="details-subtask-index" onclick="toggleThis(id)">
-                                <label for="details-edit-subtask-1">Start Page Layout</label>
-                            </div>
-                            <!--END of additinal List-Items for better visualisation of the final design -->
                         </div>
+                        <!--START: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
+                        <div id="edit-subtask-total-subtaskId" class="li-wrapper" ondblclick="openSubtaskInput('edit-subtasks-unsorted-subtaskId');stopPropagation(event);">
+                            <ul id="edit-subtasks-unsorted-taskId" class="edit-subtasks-list"">
+                                <li>
+                                    <div class="single-list-item">
+                                        <span>This is a test-task</span>
+                                        <div class="hover-overlay" onclick="stopPropagation(event)">
+                                            <img src="./assets/img/icons/edit.svg" alt="" onclick="openSubtaskInput('subtaskId')">
+                                            <div class="vertical-line"></div>
+                                            <img src="./assets/img/icons/delete.svg" alt="" onclick="deleteSubtask('');">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="single-subtask-input-wrapper-subtaskId" class="single-subtask-input-box d-none">
+                            <input id="single-subtask-input-subtaskId" type="text">
+                            <img class="link-btn delete-btn" src="./assets/img/icons/delete.svg" alt="" onclick="discardSubtaskInput('subtaskId')">
+                            <div class="vertical-line"></div>
+                            <img class="link-btn accept-btn" src="./assets/img/icons/check_blue.svg" alt="" onclick="updateSubtaskInput('subtaskId')">
+                        </div>
+                        <!--END: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
                     </div>
                 </div>
                 <div class="details__bottom">
-                    <div class="icon-box" id="delete">
-                        <div class="delete-icon"></div>
-                        <span class="details__information">Delete</span>
+                    <div class="simple-btn small">
+                        <span class="">Ok</span>
+                        <img src="./assets/img/icons/check_white.svg" alt="">
                     </div>
-                    <div class="line"></div>
-                    <div class="icon-box" id="edit">
-                        <div class="edit-icon"></div>
-                        <span class="details__information">Edit</span>
-                    </div>
+                    <img src="" alt="">
                 </div>
             </section>
         </div>

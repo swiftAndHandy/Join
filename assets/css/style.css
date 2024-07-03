@@ -6,6 +6,11 @@ img {
     -webkit-user-drag: none;
 }
 
+:focus-visible {
+    outline: 1px solid #29ABE2;
+    outline: 1px auto #29ABE2;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -91,6 +96,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .simple-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 0;
     border-radius: 8px;
     background-color: #2A3647;
@@ -156,6 +164,10 @@ body::-webkit-scrollbar-thumb {
 
 .fw-700 {
     font-weight: 700;
+}
+
+.fsz-21 {
+    font-size: 21px;
 }
 
 .flex-center {

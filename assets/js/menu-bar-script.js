@@ -1,7 +1,5 @@
-/**
- * let for testreasons. Could become a const later on - related on the method we will use to prove a user is logged in
- * required to turn off side-menu-links 
- */
+const currentlyOpen = getCurrentFileName();
+const currentlyOpen = getCurrentFileName();
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -33,7 +31,6 @@ function getCurrentFileName() {
  * Updates Design for the side- and bottom-navigation when entering a new page.
  */
 function updateMenu() {
-    const currentlyOpen = getCurrentFileName();
     if (regularMenuPoint(currentlyOpen)) {
         const menuitemDesk = document.getElementById(`${currentlyOpen}-desk-link`);
         const menuitemMobile = document.getElementById(`${currentlyOpen}-mobile-link`);
