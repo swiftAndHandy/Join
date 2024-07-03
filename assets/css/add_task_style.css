@@ -46,7 +46,7 @@ select {
 span {
   font-size: clamp(16px, 2vw, 20px);
   font-weight: 400;
-  color: black;
+  color: #2A3647;
 }
 
 .red {
