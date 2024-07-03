@@ -38,7 +38,7 @@ function capitaliseFirstLetters(input) {
  * @param {boolean} method - hideWindow is true -> hideWindow. hideWindow is false? Show it.
  */
 function hideWindow(id, method = true) {
-    target = document.getElementById(id);
+    let target = document.getElementById(id);
     method ? target.classList.add('d-none') : target.classList.remove('d-none');
     return target;
 }

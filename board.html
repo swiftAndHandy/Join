@@ -1,53 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/generateHtml.js"></script>
     <script src="/assets/js/menu-bar-script.js"></script>
     <script src="./assets/js/board_html.js"></script>
     <script src="./assets/js/board.js"></script>
     <script src="./assets/js/add_task.js"></script>
-    <link rel="stylesheet" href="./assets/css/add_task_style_dialog.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/menu-bar.css" />
-    <link rel="stylesheet" href="./assets/css/fonts.css" />
-    <link rel="stylesheet" href="./assets/css/board.css" />
+    <link rel="stylesheet" href="./assets/css/add_task_style_dialog.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/menu-bar.css">
+    <link rel="stylesheet" href="./assets/css/fonts.css">
+    <link rel="stylesheet" href="./assets/css/board.css">
     <link
       rel="icon"
       type="image/svg+xml"
-      href="./assets/img/icons/favicon.svg"
-    />
+      href="./assets/img/icons/favicon.svg">
     <!-- <link rel="icon" type="image/x-icon" href="./assets/img/icons/favicon.svg"> -->
     <link
       rel="icon"
       type="image/png"
       sizes="48x48"
-      href="./assets/img/icons/favicon-48x48.png"
-    />
+      href="./assets/img/icons/favicon-48x48.png">
     <!-- Apple Touch Icon -->
     <link
       rel="apple-touch-icon"
       sizes="152x152"
-      href="./assets/img/icons/favicon-152x152.png"
-    />
+      href="./assets/img/icons/favicon-152x152.png">
     <link
       rel="apple-touch-icon"
       sizes="167x167"
-      href="./assets/img/icons/favicon-167x167.png"
-    />
+      href="./assets/img/icons/favicon-167x167.png">
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="./assets/img/icons/favicon-180x180.png"
-    />
+      href="./assets/img/icons/favicon-180x180.png">
     <!-- Safari Pinned Tab -->
     <link
       rel="mask-icon"
       href="./assets/img/icons/favicon.svg"
-      color="#5bbad5"
-    />
+      color="#5bbad5">
     <title>Board</title>
   </head>
   <body onload="initBoard()">
@@ -78,9 +72,21 @@
             </div>
           </div>
           <main class="board-content">
-            <section class="section-container">
+            <section class="section-container" ondrop="moveTo('todo')" ondragover="allowDrop(event)">
               <div class="section-headline">
                 <h2>To do</h2>
+                <button class="add-cross-btn-small">
+                  <img src="./assets/img/icons/add_cross_blue.svg" alt="cross">
+                </button>
+              </div>
+              <div class="task-fields" id="task-field-0">
+                <span>No tasks To do</span>
+              </div>
+              <div class="tasks-container" id="to-do-field"></div>
+            </section>
+            <section class="section-container" ondrop="moveTo('progress')" ondragover="allowDrop(event)">
+              <div class="section-headline">
+                <h2>In progress</h2>
                 <button class="add-cross-btn-small">
                   <img
                     src="./assets/img/icons/add_cross_blue.svg"
@@ -91,47 +97,32 @@
               <div class="task-fields" id="task-field-1">
                 <span>No tasks To do</span>
               </div>
-              <div class="tasks-container" id="to-do-field" ondrop="moveTo('todo')" ondragover="allowDrop(event)"></div>
-            </section>
-            <section class="section-container">
-              <div class="section-headline">
-                <h2>In progress</h2>
-                <button class="add-cross-btn-small">
-                  <img
-                    src="./assets/img/icons/add_cross_blue.svg"
-                    alt="cross"
-                  />
-                </button>
-              </div>
-              <div class="task-fields" id="task-field-2">
-                <span>No tasks To do</span>
-              </div>
-              <div class="tasks-container" id="in-progress-field" ondrop="moveTo('progress')" ondragover="allowDrop(event)">
+              <div class="tasks-container" id="in-progress-field">
 
               </div>
             </section>
-            <section class="section-container">
+            <section class="section-container" ondrop="moveTo('feedback')" ondragover="allowDrop(event)">
               <div class="section-headline">
                 <h2>Await feedback</h2>
                 <button class="add-cross-btn-small">
                   <img src="./assets/img/icons/add_cross_blue.svg" alt="cross">
                 </button>
               </div>
-              <div class="task-fields" id="task-field-3">
+              <div class="task-fields" id="task-field-2">
                 <span>No tasks To do</span>
               </div>
-              <div class="tasks-container" id="await-feedback-field" ondrop="moveTo('feedback')" ondragover="allowDrop(event)">
+              <div class="tasks-container" id="await-feedback-field">
                 
               </div>
             </section>
-            <section class="section-container">
+            <section class="section-container" ondrop="moveTo('done')" ondragover="allowDrop(event)">
               <div class="section-headline">
                 <h2>Done</h2>
               </div>
-              <div class="task-fields" id="task-field-4">
+              <div class="task-fields" id="task-field-3">
                 <span>No tasks To do</span>
               </div>
-              <div class="tasks-container" id="done-field" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+              <div class="tasks-container" id="done-field">
                 
               </div>
             </section>

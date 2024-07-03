@@ -37,13 +37,13 @@ async function initTasks() {
 
 
 
-      if (taskStatus == "toDo") {
+      if (taskStatus == "todo") {
         toDoField.innerHTML += generateTaskCard(key, title, description, dueDate, prio, category, subTasks,);
       }
-      if (taskStatus == "inProgress") {
+      if (taskStatus == "progress") {
         inProgressField.innerHTML += generateTaskCard(key, title, description, dueDate, prio, category, subTasks,);
       }
-      if (taskStatus == "awaitFeedback") {
+      if (taskStatus == "feedback") {
         awaitFeedbackField.innerHTML += generateTaskCard(key, title, description, dueDate, prio, category, subTasks,);
       }
       if (taskStatus == "done") {
@@ -51,7 +51,7 @@ async function initTasks() {
       }
 
     }
-    ifTaskField(toDoField, inProgressField, awaitFeedbackField, doneField);
+    ifTaskField([toDoField, inProgressField, awaitFeedbackField, doneField]);
   } catch (error) {
     console.error(error);
   }
@@ -69,37 +69,43 @@ function startDrag(id) {
   currentlyDragged = id;
 }
 
-function moveTo(statusField) {
-  console.log(statusField);
-  updateData(statusField, `tasks/${currentlyDragged}/status`);
+async function moveTo(statusField) {
+  await putData(statusField, `tasks/${currentlyDragged}/status`);
+  initTasks();
 }
 
 
-function ifTaskField(toDoField, inProgressField, awaitFeedbackField, doneField) {
+function ifTaskField(sections) {
+  // const sections = [toDoField, inProgressField, awaitFeedbackField, doneField]
+
+  for (let item in sections) {
+     hideWindow(`task-field-${item}`, sections[item].trim === "");
+  }
+
   // Überprüfe, ob die Felder leer sind
-  if (toDoField.innerHTML.trim() === "") {
-    document.getElementById('task-field-1').classList.remove('d-none');
-  } else {
-    document.getElementById('task-field-1').classList.add('d-none');
-  }
+  // if (toDoField.innerHTML.trim() === "") {
+  //   document.getElementById('task-field-0').classList.remove('d-none');
+  // } else {
+  //   document.getElementById('task-field-0').classList.add('d-none');
+  // }
 
-  if (inProgressField.innerHTML.trim() === "") {
-    document.getElementById('task-field-2').classList.remove('d-none');
-  } else {
-    document.getElementById('task-field-2').classList.add('d-none');
-  }
+  // if (inProgressField.innerHTML.trim() === "") {
+  //   document.getElementById('task-field-1').classList.remove('d-none');
+  // } else {
+  //   document.getElementById('task-field-1').classList.add('d-none');
+  // }
 
-  if (awaitFeedbackField.innerHTML.trim() === "") {
-    document.getElementById('task-field-3').classList.remove('d-none');
-  } else {
-    document.getElementById('task-field-3').classList.add('d-none');
-  }
+  // if (awaitFeedbackField.innerHTML.trim() === "") {
+  //   document.getElementById('task-field-2').classList.remove('d-none');
+  // } else {
+  //   document.getElementById('task-field-2').classList.add('d-none');
+  // }
 
-  if (doneField.innerHTML.trim() === "") {
-    document.getElementById('task-field-4').classList.remove('d-none');
-  } else {
-    document.getElementById('task-field-4').classList.add('d-none');
-  }
+  // if (doneField.innerHTML.trim() === "") {
+  //   document.getElementById('task-field-3').classList.remove('d-none');
+  // } else {
+  //   document.getElementById('task-field-3').classList.add('d-none');
+  // }
 }
 
 function addOpenAddTaskToButtons() {
