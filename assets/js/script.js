@@ -81,17 +81,36 @@ function stopPropagation(event) {
 /**
  * Sends a PUT request to the specified path with the provided data.
  *
- * @param {string} path - The path to which the data should be sent. Defaults to an empty string.
  * @param {Object} data - The data to be sent in the body of the PUT request. Defaults to an empty object.
+ * * @param {string} path - The path to which the data should be sent. Defaults to an empty string.
  * @returns {Promise<Object>} - A promise that resolves to the JSON response from the server.
  */
-async function putData(data = {}, path = "") {
+async function putDataset(data = {}, path = "") {
     let response = await fetch(BASE_URL + path + '.json', {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data)
+    });
+    return await response.json();
+}
+
+
+/**
+ * Sends a PUT request to the specified path with the provided data.
+ *
+ * @param {string} data - The datastring that's sent in the body of the PUT request. Defaults to an empty object.
+ * * @param {string} path - The path to which the data should be sent. Defaults to an empty string.
+ * @returns {Promise<Object>} - A promise that resolves to the JSON response from the server.
+ */
+async function putData(value, path = "") {
+    let response = await fetch(BASE_URL + path + '.json', {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(value)
     });
     return await response.json();
 }

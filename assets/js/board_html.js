@@ -1,5 +1,5 @@
 function generateTaskCard(key,title,description,dueDate,prio,category,subTasks) {
-  return`<article class="task-card-container" draggable="true" ondragstart="startDraggin('${key}')" id="${key}">
+  return`<article class="task-card-container" draggable="true" ondragstart="startDrag('${key}')" id="taskId${key}">
                   <div class="task-card-content">
                     <div class="task-group-bubble">
                       <span>${category}</span>

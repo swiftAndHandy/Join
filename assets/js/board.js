@@ -1,4 +1,6 @@
-async function loadData(path='tasks') {
+currentlyDragged = null;
+
+async function loadData(path = 'tasks') {
   let response = await fetch(base_URL + path + '.json');
   let responseToJson = await response.json();
   console.log(responseToJson);
@@ -8,6 +10,7 @@ async function loadData(path='tasks') {
 function initBoard() {
   includeHTML();
   initTasks();
+  addOpenAddTaskToButtons()
 }
 
 async function initTasks() {
@@ -22,81 +25,80 @@ async function initTasks() {
   doneField.innerHTML = '';
 
   try {
-      let data = await loadData(path='tasks');
-      for(let key in data) {
-         let title = data[key].title;
-          let description = data[key].description;
-          let dueDate = data[key].date;
-          let prio = data[key].prio;
-          let category = data[key].category;
-          let subTasks = data[key].subtask;
-          let taskStatus = data[key].status
+    let data = await loadData(path = 'tasks');
+    for (let key in data) {
+      let title = data[key].title;
+      let description = data[key].description;
+      let dueDate = data[key].date;
+      let prio = data[key].prio;
+      let category = data[key].category;
+      let subTasks = data[key].subtask;
+      let taskStatus = data[key].status;
 
-       
 
-          if(taskStatus == "toDo") {
-           
-          toDoField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks,);
-        }
-        if(taskStatus == "inProgress") {
-          inProgressField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks,);
-        }
-        if(taskStatus == "awaitFeedback") {
-          awaitFeedbackField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks,);
-        }
-        if(taskStatus == "done") {
-          doneField.innerHTML += generateTaskCard(key,title,description,dueDate,prio,category,subTasks,);
-        }
-        
+
+      if (taskStatus == "toDo") {
+        toDoField.innerHTML += generateTaskCard(key, title, description, dueDate, prio, category, subTasks,);
       }
-      ifTaskField(toDoField,inProgressField,awaitFeedbackField,doneField);
+      if (taskStatus == "inProgress") {
+        inProgressField.innerHTML += generateTaskCard(key, title, description, dueDate, prio, category, subTasks,);
+      }
+      if (taskStatus == "awaitFeedback") {
+        awaitFeedbackField.innerHTML += generateTaskCard(key, title, description, dueDate, prio, category, subTasks,);
+      }
+      if (taskStatus == "done") {
+        doneField.innerHTML += generateTaskCard(key, title, description, dueDate, prio, category, subTasks,);
+      }
+
+    }
+    ifTaskField(toDoField, inProgressField, awaitFeedbackField, doneField);
   } catch (error) {
-      console.error(error);
+    console.error(error);
   }
 }
 
 function updateAfterDrag() {
-  let statusField = key
+  let statusField = key;
 }
 
 function allowDrop(ev) {
   ev.preventDefault();
 }
 
-function startDraggin(id) {
-  currentDraggedElement = id;
+function startDrag(id) {
+  currentlyDragged = id;
 }
 
 function moveTo(statusField) {
-  taskStatus = statusField
-   
+  console.log(statusField);
+  updateData(statusField, `tasks/${currentlyDragged}/status`);
 }
 
 
 function ifTaskField(toDoField, inProgressField, awaitFeedbackField, doneField) {
   // Überprüfe, ob die Felder leer sind
   if (toDoField.innerHTML.trim() === "") {
-      document.getElementById('task-field-1').classList.remove('d-none');
+    document.getElementById('task-field-1').classList.remove('d-none');
   } else {
-      document.getElementById('task-field-1').classList.add('d-none');
+    document.getElementById('task-field-1').classList.add('d-none');
   }
 
   if (inProgressField.innerHTML.trim() === "") {
-      document.getElementById('task-field-2').classList.remove('d-none');
+    document.getElementById('task-field-2').classList.remove('d-none');
   } else {
-      document.getElementById('task-field-2').classList.add('d-none');
+    document.getElementById('task-field-2').classList.add('d-none');
   }
 
   if (awaitFeedbackField.innerHTML.trim() === "") {
-      document.getElementById('task-field-3').classList.remove('d-none');
+    document.getElementById('task-field-3').classList.remove('d-none');
   } else {
-      document.getElementById('task-field-3').classList.add('d-none');
+    document.getElementById('task-field-3').classList.add('d-none');
   }
 
   if (doneField.innerHTML.trim() === "") {
-      document.getElementById('task-field-4').classList.remove('d-none');
+    document.getElementById('task-field-4').classList.remove('d-none');
   } else {
-      document.getElementById('task-field-4').classList.add('d-none');
+    document.getElementById('task-field-4').classList.add('d-none');
   }
 }
 
@@ -138,9 +140,9 @@ function closeAddTaskPopUp() {
   document.body.classList.remove('overflow-all-hidden');
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Deine Funktion, die beim Laden der Seite aufgerufen wird
-  addOpenAddTaskToButtons(); // Füge onclick zu den Buttons hinzu
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Deine Funktion, die beim Laden der Seite aufgerufen wird
+//   addOpenAddTaskToButtons(); // Füge onclick zu den Buttons hinzu
+// });
 
 
