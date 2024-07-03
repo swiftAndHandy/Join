@@ -8,7 +8,7 @@ img {
 
 :focus-visible {
     outline: 1px solid #29ABE2;
-    outline: 1px auto #29ABE2;
+    /* outline: 1px auto #29ABE2; */
 }
 
 body {

@@ -528,13 +528,19 @@ Detail-View related Classes
   padding: 18px 21px;
 }
 
+.edit.this-entry:focus-visible {
+  border: 1px solid transparent;
+}
+
 .date-box {
   position: relative;
   display: flex;
 }
 
 .date-input::-webkit-calendar-picker-indicator {
-  visibility: hidden;
+  width: 24px;
+  height: 24px;
+  background-image: url(../img/icons/calendar.svg);
 }
 
 .edit.edit.this-entry.date-input {
@@ -545,18 +551,6 @@ Detail-View related Classes
   background: none;
   font-size: 16px;
   flex: 1;
-}
-
-.date-box::after {
-  content: url(../img/icons/calendar.svg);
-  height: 24px;
-  width: 24px;
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-90%);
-  pointer-events: none;
-  z-index: 1;
 }
 
 .details__title.edit.this-entry {
@@ -813,6 +807,7 @@ Edit-View related Classes
   gap: 8px;
   padding-right: 16px;
   overflow: auto;
+  padding-left: 1px;
 }
 
 .list-btn__input-field {
