@@ -6,6 +6,7 @@ function initBoard() {
   includeHTML();
   renderTasks();
   addOpenAddTaskToButtons()
+  document.addEventListener('dragend', () => currentlyDragged = null)
 }
 
 async function renderTasks() {
@@ -61,7 +62,7 @@ async function moveTo(statusField) {
     await putData(statusField, `tasks/${currentlyDragged}/status`);
     renderTasks();
   }
- currentlyDragged = null;
+//  currentlyDragged = null;
 }
 
 
@@ -69,31 +70,6 @@ function ifTaskField(sections) {
   for (let item in sections) {
      hideWindow(`task-field-${item}`, sections[item].innerHTML.trim() !== "");
   }
-
-  // Überprüfe, ob die Felder leer sind
-  // if (toDoField.innerHTML.trim() === "") {
-  //   document.getElementById('task-field-0').classList.remove('d-none');
-  // } else {
-  //   document.getElementById('task-field-0').classList.add('d-none');
-  // }
-
-  // if (inProgressField.innerHTML.trim() === "") {
-  //   document.getElementById('task-field-1').classList.remove('d-none');
-  // } else {
-  //   document.getElementById('task-field-1').classList.add('d-none');
-  // }
-
-  // if (awaitFeedbackField.innerHTML.trim() === "") {
-  //   document.getElementById('task-field-2').classList.remove('d-none');
-  // } else {
-  //   document.getElementById('task-field-2').classList.add('d-none');
-  // }
-
-  // if (doneField.innerHTML.trim() === "") {
-  //   document.getElementById('task-field-3').classList.remove('d-none');
-  // } else {
-  //   document.getElementById('task-field-3').classList.add('d-none');
-  // }
 }
 
 function addOpenAddTaskToButtons() {
