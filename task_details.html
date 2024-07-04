@@ -158,7 +158,7 @@
                             </div>
                             <div id="edit-task-contact-list-input" class="list-btn focus d-none"
                                 onclick="stopPropagation(event);">
-                                <input id="edit-task-list-input-field" class="list-btn__input-field" type="text">
+                                <input id="edit-task-list-input-field" class="list-btn__input-field" oninput="searchContact(this.value)" type="text">
                                 <div class="list-icon collapse"><img src="./assets/img/icons/collapse_false.svg" alt=""
                                         onclick="resetInputFields()"></div>
                             </div>

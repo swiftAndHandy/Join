@@ -136,17 +136,11 @@ function resetInputFields(id = 'edit') {
 }
 
 //placeholder
-function searchForContactDemo() {
-    // Alle span-Elemente auswählen
-    const spans = document.querySelectorAll('span');
+function searchContact(search) {
+    const contactNames = Array.from(document.querySelectorAll('div.user-box span'));
 
-    // Das span-Element mit dem gewünschten Textinhalt finden
-    const targetSpan = Array.from(spans).find(span => span.textContent.trim() === 'This is a test-task');
-
-    if (targetSpan) {
-        console.log('Element gefunden:', targetSpan);
-    } else {
-        console.log('Element nicht gefunden');
+    for (let item in contactNames) {
+        console.log(item, contactNames,contactNames[item]);
     }
 }
 

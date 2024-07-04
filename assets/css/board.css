@@ -140,7 +140,7 @@ h2 {
 
 .task-fields {
   margin-top: 15px;
-  width: 392px;
+  /* width: 392px; */
   height: 48px;
   background-color: #e7e7e7;
   border: 1px dashed #a8a8a8;
@@ -204,7 +204,7 @@ h2 {
 
 .tasks-container {
   width: 396px;
-  height: 292px;
+  /* height: 292px; */
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
@@ -335,12 +335,12 @@ h2 {
   }
 
   .task-fields {
-    width: 252px;
+    /* width: 252px; */
   }
 
   .tasks-container {
     width: 252px;
-    height: 263px;
+    /* height: 263px; */
     overflow-y: unset;
     overflow-x: unset;
     flex-direction: column;
@@ -402,12 +402,12 @@ h2 {
   }
 
   .task-fields {
-    width: 100%;
+    /* width: 100%; */
   }
 
   .tasks-container {
     width: 100%;
-    height: 342px;
+    /* height: 342px; */
   }
 }
 
@@ -423,12 +423,12 @@ h2 {
   }
 
   .task-fields {
-    width: 100%;
+    /* width: 100%; */
   }
 
   .tasks-container {
     width: 100%;
-    height: 342px;
+    /* height: 342px; */
   }
 }
 
@@ -467,7 +467,7 @@ h2 {
 
 @media (max-height: 750px) and (max-width: 420px) {
   .task-fields {
-    width: 380px;
+    /* width: 380px; */
   }
 }
 
