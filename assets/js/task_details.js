@@ -8,12 +8,14 @@ function initTaskDetails() {
 }
 
 
+/**
+ * 
+ */
 async function renderContactList() {
     const data = await readData('contacts');
-    const keys = Object.keys(data);
-
-    for (let i = 0; i < keys.length; i++) {
-        generateContactsHtml(keys[i], data[keys[i]]);
+    let entries = sortByAlphabet(data, 'contacts');
+    for (let i = 0; i < entries.length; i++) {
+        generateContactsHtml(entries[i]);
     }
 }
 

@@ -18,6 +18,19 @@ function applyRandomColor() {
 }
 
 /**
+ * Sorts contacts by name alphabetically.
+ * 
+ * @param {Object[]} data - The array of contact objects.
+ * @returns {Object[]} The sorted array of contacts with an additional key.
+ */
+function sortByAlphabet(data, origin) {
+    let entries = Object.entries(data).map(([id, contact]) => ({ 
+        id, ...contact, path: `${origin}/${id}`
+    }));
+    return entries.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/**
  * Capitalizes the first letter of the input string and converts the rest to lowercase.
  * Capitalizes the first letter after a '-' to avoid double-names-issues.
  *

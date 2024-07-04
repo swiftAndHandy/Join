@@ -44,14 +44,11 @@ async function renderTasks() {
 
       if (item.status == "todo") {
         toDoField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
-      }
-     else if (item.status == "progress") {
+      } else if (item.status == "progress") {
         inProgressField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
-      }
-     else if (item.status == "feedback") {
+      } else if (item.status == "feedback") {
         awaitFeedbackField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
-      }
-     else if (item.status == "done") {
+      } else if (item.status == "done") {
         doneField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
       }
 
@@ -96,8 +93,8 @@ async function dragTo(newLocation) {
  * @param {string} thisId - the item that should become moved
  */
 async function moveTo(newLocation, fromLocoation, thisId) {
-    await putData(newLocation, `tasks/${thisId}/status`);
-    updateBoard(thisId, fromLocoation, newLocation);
+  await putData(newLocation, `tasks/${thisId}/status`);
+  updateBoard(thisId, fromLocoation, newLocation);
 }
 
 function updateTaskFields(sections) {
