@@ -1,24 +1,31 @@
 currentlyDragged = null;
-
+currentlyDraggedCategory = null;
 
 
 function initBoard() {
   includeHTML();
   renderTasks();
   addOpenAddTaskToButtons()
-  document.addEventListener('dragend', () => currentlyDragged = null)
+  document.addEventListener('dragend', () => {
+    currentlyDragged = null;
+    currentlyDraggedCategory = null;
+  });
+}
+
+
+function updateBoard(deleteItem, fromLocation, targetLocation) {
+  const transfer = document.getElementById(`taskId${deleteItem}`);
+  document.getElementById(`taskId${deleteItem}`).remove();
+  document.getElementById(`${targetLocation}-field`).insertAdjacentElement('beforeend', transfer);
+  transfer.setAttribute('ondragstart', `startDrag('${deleteItem}', '${targetLocation}')`);
+  updateTaskFields([fromLocation, targetLocation]);
 }
 
 async function renderTasks() {
-  const toDoField = document.getElementById('to-do-field');
-  const inProgressField = document.getElementById('in-progress-field');
-  const awaitFeedbackField = document.getElementById('await-feedback-field');
+  const toDoField = document.getElementById('todo-field');
+  const inProgressField = document.getElementById('progress-field');
+  const awaitFeedbackField = document.getElementById('feedback-field');
   const doneField = document.getElementById('done-field');
-
-  inProgressField.innerHTML = '';
-  toDoField.innerHTML = '';
-  awaitFeedbackField.innerHTML = '';
-  doneField.innerHTML = '';
 
   try {
     let data = await readData('tasks');
@@ -26,20 +33,20 @@ async function renderTasks() {
       const item = data[key];
 
       if (item.status == "todo") {
-        toDoField.innerHTML += generateTaskCard(key, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
+        toDoField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
       }
       if (item.status == "progress") {
-        inProgressField.innerHTML += generateTaskCard(key, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
+        inProgressField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
       }
       if (item.status == "feedback") {
-        awaitFeedbackField.innerHTML += generateTaskCard(key, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
+        awaitFeedbackField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
       }
       if (item.status == "done") {
-        doneField.innerHTML += generateTaskCard(key, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
+        doneField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
       }
 
     }
-    ifTaskField([toDoField, inProgressField, awaitFeedbackField, doneField]);
+    updateTaskFields(['todo', 'progress', 'feedback', 'done']);
   } catch (error) {
     console.error(error);
   }
@@ -53,22 +60,23 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
-function startDrag(id) {
+function startDrag(id, fromCategory) {
   currentlyDragged = id;
+  currentlyDraggedCategory = fromCategory;
 }
 
-async function moveTo(statusField) {
-  if(currentlyDragged) {
-    await putData(statusField, `tasks/${currentlyDragged}/status`);
-    renderTasks();
+async function moveTo(newLocation) {
+  const item = currentlyDragged;
+  const from = currentlyDraggedCategory;
+  if (item) {
+    await putData(newLocation, `tasks/${item}/status`);
+    updateBoard(item, from, newLocation);
   }
-//  currentlyDragged = null;
 }
 
-
-function ifTaskField(sections) {
+function updateTaskFields(sections) {
   for (let item in sections) {
-     hideWindow(`task-field-${item}`, sections[item].innerHTML.trim() !== "");
+    hideWindow(`task-field-${sections[item]}`, document.getElementById(`${sections[item]}-field`).innerHTML.trim() !== "");
   }
 }
 
