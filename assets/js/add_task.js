@@ -151,14 +151,14 @@ function addnewTask() {
   taskCategory();
   taskSubtask();
   postData('tasks', {
-    title: addTaskTitle,
-    description: addTaskDescription,
-    contact: addTaskAssignedContacts,
-    date: addTaskDueDate,
-    prio: addTaskPrio,
-    category: addTaskCategory,
-    subtask: addTaskSubtask,
-    status: taskStatus,
+    'title': addTaskTitle,
+    'description': addTaskDescription,
+    'assigned': addTaskAssignedContacts,
+    'date': addTaskDueDate,
+    'priority': addTaskPrio,
+    'tag': addTaskCategory,
+    'subtasks': addTaskSubtask,
+    'status': taskStatus,
   });
   window.location.href = 'board.html';
 }
