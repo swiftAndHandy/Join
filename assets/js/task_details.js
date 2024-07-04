@@ -9,7 +9,9 @@ function initTaskDetails() {
 
 
 /**
- * 
+ * Rendering Contact-List in Edit-Details. 
+ * Needs further improvement (include accounts, not only contacts for example)
+ * Maybe a resort to keep the order of alphabet is required in this case
  */
 async function renderContactList() {
     const data = await readData('contacts');
@@ -93,7 +95,6 @@ function toggleVisibility(id) {
 
 /**
  * Sets the priority level by updating the `editPriority` variable and toggling the 'active' class on priority buttons.
- *
  * @param {number} level - The priority level to set. Expected values are 0 for 'low', 1 for 'medium', and 2 for 'urgent'.
  */
 function setPriorityTo(level) {
@@ -152,6 +153,9 @@ function searchContact(search) {
     }
 }
 
+/**
+ * Reset Input-Field for new Subtask
+ */
 function discardNewSubtask() {
     document.getElementById('edit-add-subtask').value = '';
     blurListener();
@@ -168,7 +172,11 @@ function openSubtaskInput(subtaskId) {
     input.focus();
 }
 
-// placeholder. send request to firebase
+/**
+ * Save the input the user made on text and set target.innerText to this input.
+ * Hide the Input(Wrapper) and show List-Item instead.
+ * @param {string} subtaskId 
+ */
 function updateSubtaskInput(subtaskId) {
     const target = document.getElementById(`subtaskspan-${subtaskId}`)
     const value = document.getElementById(`single-subtask-input-${subtaskId}`).value
@@ -177,10 +185,12 @@ function updateSubtaskInput(subtaskId) {
     document.getElementById(`single-subtask-input-wrapper-${subtaskId}`).classList.add('d-none');
 }
 
-//placeholder. need to change value back to origin
+/**
+ * Resetss the desgin of the Input/Span related to subtaskId
+ * @param {strink} subtaskId - if of an list-item
+ */
 function discardSubtaskInput(subtaskId) {
     document.getElementById(`edit-subtask-total-${subtaskId}`).classList.remove('d-none');
-    document.getElementById(`single-subtask-input-${subtaskId}`).value = '';
     document.getElementById(`single-subtask-input-wrapper-${subtaskId}`).classList.add('d-none');
 }
 
@@ -196,7 +206,21 @@ function deleteTask(taskId) {
     console.warn('Diese Task würde nun gelöscht. Geht aber noch nicht. Glückwunsch.')
 }
 
+/**
+ * placeholder
+ */
 function saveTaskUpdate() {
     toggleVisibility('task-edit-view');
     toggleVisibility('task-details-view');
+}
+
+/**
+ * puts an array based on a querySelector with every subtaskitem to firebase
+ * @param {string} relatedToTaskId - refers to a Task-ID and is used in path-param for putData
+ */
+function updateSubtasks(relatedToTaskId) {
+    let query = document.querySelectorAll('.subtaskitem')
+    let result = [];
+    query.forEach((item) => result.push(item.innerText));
+    putData(result, `tasks/${relatedToTaskId}/subtask`);
 }
