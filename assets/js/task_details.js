@@ -145,7 +145,7 @@ function searchContact(search) {
     const contactNames = Array.from(document.querySelectorAll('div.user-box span'));
     for (let item in contactNames) {
         hideWindow(contactNames[item].parentElement.parentElement.id,
-            !contactNames[item].innerHTML.includes(search)
+            !contactNames[item].innerHTML.toLocaleLowerCase().includes(search.toLocaleLowerCase())
         );
     }
 }
