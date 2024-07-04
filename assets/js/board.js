@@ -1,5 +1,5 @@
-currentlyDragged = null;
-currentlyDraggedCategory = null;
+let currentlyDragged = null;
+let currentlyDraggedCategory = null;
 
 
 function initBoard() {
