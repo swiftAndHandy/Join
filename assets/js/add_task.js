@@ -173,10 +173,11 @@ function checkIfFormFilled() {
     }
   });
   if (allFilled) {
+    document.getElementById('button-create-task').disabled = false;
     addnewTask();
   } else {
     console.log(
-      "Bitte füllen Sie alle erforderlichen Felder aus, bevor Sie absenden."
+      "Please fill out all required fields before submitting."
     );
   }
 }
