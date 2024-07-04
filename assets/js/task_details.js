@@ -152,31 +152,43 @@ function searchContact(search) {
     }
 }
 
+function discardNewSubtask() {
+    document.getElementById('edit-add-subtask').value = '';
+    blurListener();
+}
+
 /**
  * @param {string} subtaskId - build an elementId related to subtask-id and change the input-style
  */
 function openSubtaskInput(subtaskId) {
-    document.getElementById('edit-subtask-total-subtaskId').classList.add('d-none');
-    document.getElementById('single-subtask-input-wrapper-subtaskId').classList.remove('d-none');
-    document.getElementById('single-subtask-input-subtaskId').focus();
+    const input = document.getElementById(`single-subtask-input-${subtaskId}`);
+    document.getElementById(`edit-subtask-total-${subtaskId}`).classList.add('d-none');
+    document.getElementById(`single-subtask-input-wrapper-${subtaskId}`).classList.remove('d-none');
+    input.value = document.getElementById(`subtaskspan-${subtaskId}`).innerText;
+    input.focus();
 }
 
 // placeholder. send request to firebase
 function updateSubtaskInput(subtaskId) {
-    document.getElementById('edit-subtask-total-subtaskId').classList.remove('d-none');
-    document.getElementById('single-subtask-input-wrapper-subtaskId').classList.add('d-none');
+    const target = document.getElementById(`subtaskspan-${subtaskId}`)
+    const value = document.getElementById(`single-subtask-input-${subtaskId}`).value
+    target.innerText = value;
+    document.getElementById(`edit-subtask-total-${subtaskId}`).classList.remove('d-none');
+    document.getElementById(`single-subtask-input-wrapper-${subtaskId}`).classList.add('d-none');
 }
 
 //placeholder. need to change value back to origin
 function discardSubtaskInput(subtaskId) {
-    document.getElementById('edit-subtask-total-subtaskId').classList.remove('d-none');
-    document.getElementById('single-subtask-input-subtaskId').value = '';
-    document.getElementById('single-subtask-input-wrapper-subtaskId').classList.add('d-none');
+    document.getElementById(`edit-subtask-total-${subtaskId}`).classList.remove('d-none');
+    document.getElementById(`single-subtask-input-${subtaskId}`).value = '';
+    document.getElementById(`single-subtask-input-wrapper-${subtaskId}`).classList.add('d-none');
 }
 
-//placeholder
+/**
+ * @param {string} subtaskId - id of the item that should be deleted
+ */
 function deleteSubtask(subtaskId) {
-    console.warn('Dieser Subtask würde nun gelöscht. Geht aber noch nicht. Glückwunsch.')
+    document.getElementById(`edit-subtask-total-${subtaskId}`).remove();
 }
 
 // placeholder

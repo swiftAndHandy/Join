@@ -179,9 +179,9 @@
                             <div id="edit-view-subtask-add" class="cross blue" onclick="setFocus('edit')"></div>
                             <div id="edit-view-subtask-navigation" class="edit-subtask-navigation d-none"
                                 onclick="stopPropagation(event);">
-                                <div class="link-btn discard-btn"></div> <!-- discard new subcard-value -->
+                                <div class="link-btn discard-btn" onclick="discardNewSubtask()"></div> <!-- discard new subcard-value -->
                                 <img class="vertical-line" src="./assets/img/icons/vertical-line.svg" alt="" class="">
-                                <div class="link-btn accept-btn" onclick="addNewSubtask(document.getElementById('edit-add-subtask').value)"></div>
+                                <div class="link-btn accept-btn" onclick="addNewSubtask(document.getElementById('edit-add-subtask').value);blurListener();"></div>
                             </div>
                         </div>
                         <div id="edit-subtask-item-wrapper" style="width: 100%">

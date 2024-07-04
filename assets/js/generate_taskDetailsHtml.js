@@ -66,11 +66,11 @@ function addNewSubtask(value) {
 
     target.insertAdjacentHTML('beforeend',`
     <div id="edit-subtask-total-${id}" class="li-wrapper"
-        ondblclick="openSubtaskInput('edit-subtasks-unsorted-${id}');stopPropagation(event);">
+        ondblclick="openSubtaskInput('${id}');stopPropagation(event);">
         <ul id="edit-subtasks-unsorted-${id}" class="edit-subtasks-list"">
                                     <li>
                                         <div class=" single-list-item">
-            <span class="subtaskitem">${value}</span>
+            <span id="subtaskspan-${id}" class="subtaskitem">${value}</span>
             <div class="hover-overlay" onclick="stopPropagation(event)">
                 <img src="./assets/img/icons/edit.svg" alt="" onclick="openSubtaskInput('${id}')">
                 <div class="vertical-line"></div>
@@ -81,7 +81,7 @@ function addNewSubtask(value) {
     </ul>
     </div>
     <div id="single-subtask-input-wrapper-${id}" class="single-subtask-input-box d-none">
-        <input id="single-subtask-input-subtaskId" type="text">
+        <input id="single-subtask-input-${id}" type="text">
         <img class="link-btn discard-btn" src="./assets/img/icons/discard.svg" alt=""
             onclick="discardSubtaskInput('${id}')">
         <div class="vertical-line"></div>
@@ -89,4 +89,5 @@ function addNewSubtask(value) {
             onclick="updateSubtaskInput('${id}')">
     </div>
     `);
+    document.getElementById('edit-add-subtask').value = '';
 }
