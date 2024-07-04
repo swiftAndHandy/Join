@@ -45,13 +45,13 @@ async function renderTasks() {
       if (item.status == "todo") {
         toDoField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
       }
-      if (item.status == "progress") {
+     else if (item.status == "progress") {
         inProgressField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
       }
-      if (item.status == "feedback") {
+     else if (item.status == "feedback") {
         awaitFeedbackField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
       }
-      if (item.status == "done") {
+     else if (item.status == "done") {
         doneField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
       }
 
