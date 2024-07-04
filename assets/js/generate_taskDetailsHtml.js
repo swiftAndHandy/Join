@@ -14,7 +14,7 @@ function generateContactsHtml(contactId, contactInformation) {
         `;
 }
 
-function generateTaskDetailsHtml(taskId, taskDetails) {
+async function generateTaskDetailsHtml(taskId, taskDetails) {
     const tag = document.getElementById('task-details-tag');
     tag.innerHTML = taskDetails['category'];
     taskDetails['category'] === 'User Story' ? tag.setAttribute('class', 'tag user-story') : tag.setAttribute('class', 'tag technical-task')
@@ -33,6 +33,28 @@ function generateTaskDetailsHtml(taskId, taskDetails) {
     priority.innerHTML = taskDetails['prio'];
     priorityImg.src = `../assets/img/icons/priority_${taskDetails['prio'].toLowerCase()}.svg`;
 
+    const assignedTo = document.getElementById('details-assigned-list');
+    assignedTo.innerHTML = await assignedPersonsHtml(taskDetails['contacts']);
+
     const deleteBtn = document.getElementById('task-details-delete-btn');
     deleteBtn.setAttribute('onclick', `deleteTask(${taskId})`);
+}
+
+async function assignedPersonsHtml(contactIds) {
+    const data = await readData(`contacts`);
+    let output = '';
+    let keys = Object.keys(data);
+    for (let i = 0; i < keys.length; i++) {
+        try {
+            if (contactIds.includes(keys[i])) {
+                const contactInitials = initials(data[keys[i]].name);
+                output += `
+                <div class="details__inner">
+                <span id="assigned-person-${contactIds}" class="details__information">${data[keys[i]].name}</span>
+                </div>
+                `;
+            }
+        } catch (error) {}
+    }
+    return output;
 }
