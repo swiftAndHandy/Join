@@ -1,4 +1,5 @@
 let editPriority;
+let assignedPersons = null;
 
 function initTaskDetails() {
     setupListener();
@@ -135,12 +136,17 @@ function resetInputFields(id = 'edit') {
     hideWindow(`${id}-task-contacts-list`);
 }
 
-//placeholder
+/**
+ * Searchs for a contact based on a input.value and displays only contacts, who does match the search. 
+ * @param {string} search - value of a text-input
+ * example: <input type="text" oninput="searchContact(this.value)">;
+ */
 function searchContact(search) {
     const contactNames = Array.from(document.querySelectorAll('div.user-box span'));
-
     for (let item in contactNames) {
-        console.log(item, contactNames,contactNames[item]);
+        hideWindow(contactNames[item].parentElement.parentElement.id,
+            !contactNames[item].innerHTML.includes(search)
+        );
     }
 }
 

@@ -61,8 +61,8 @@ function clearLocalstorage() {
 }
 
 /**
- * 
- * @param {*} input 
+ * Used to get the initials of a Name.
+ * @param {string} input - string to modify.
  * @returns - every first character of every word in input
  */
 function initials(input) {
