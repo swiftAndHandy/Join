@@ -1,11 +1,6 @@
 currentlyDragged = null;
 
-async function loadData(path = 'tasks') {
-  let response = await fetch(base_URL + path + '.json');
-  let responseToJson = await response.json();
-  console.log(responseToJson);
-  return responseToJson;
-}
+
 
 function initBoard() {
   includeHTML();
@@ -25,7 +20,7 @@ async function renderTasks() {
   doneField.innerHTML = '';
 
   try {
-    let data = await loadData(path = 'tasks');
+    let data = await readData('tasks');
     for (let key in data) {
       const item = data[key];
 
@@ -62,8 +57,11 @@ function startDrag(id) {
 }
 
 async function moveTo(statusField) {
-  await putData(statusField, `tasks/${currentlyDragged}/status`);
-  renderTasks();
+  if(currentlyDragged) {
+    await putData(statusField, `tasks/${currentlyDragged}/status`);
+    renderTasks();
+  }
+ currentlyDragged = null;
 }
 
 
