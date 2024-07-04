@@ -13,11 +13,21 @@ function initBoard() {
 }
 
 
-function updateBoard(deleteItem, fromLocation, targetLocation) {
-  const transfer = document.getElementById(`taskId${deleteItem}`);
-  document.getElementById(`taskId${deleteItem}`).remove();
+/**
+ * saves the choossen draggable item in transfer. 
+ * removes the item from DOM and inserts it at beforeend at the new location
+ * than the item recives a new ondragstart functionality with the new location.
+ * finally update the task fields to show/hide "no tasks to do"-span.
+ * 
+ * @param {string} updateItem - part of the id of the dragged element
+ * @param {string} fromLocation - current category of the item
+ * @param {string} targetLocation - future category of the item
+ */
+function updateBoard(updateItem, fromLocation, targetLocation) {
+  const transfer = document.getElementById(`taskId${updateItem}`);
+  document.getElementById(`taskId${updateItem}`).remove();
   document.getElementById(`${targetLocation}-field`).insertAdjacentElement('beforeend', transfer);
-  transfer.setAttribute('ondragstart', `startDrag('${deleteItem}', '${targetLocation}')`);
+  transfer.setAttribute('ondragstart', `startDrag('${updateItem}', '${targetLocation}')`);
   updateTaskFields([fromLocation, targetLocation]);
 }
 
@@ -65,13 +75,29 @@ function startDrag(id, fromCategory) {
   currentlyDraggedCategory = fromCategory;
 }
 
-async function moveTo(newLocation) {
+/**
+ * updates the category of a single item via drag and drop
+ * @param {string} newLocation - the new location of the item
+ */
+async function dragTo(newLocation) {
   const item = currentlyDragged;
   const from = currentlyDraggedCategory;
   if (item) {
     await putData(newLocation, `tasks/${item}/status`);
     updateBoard(item, from, newLocation);
   }
+}
+
+/**
+ * allows to update a single item without drag and drop.
+ * call this in a button, for example.
+ * @param {string} newLocation -new category
+ * @param {string} fromLocoation - old category
+ * @param {string} thisId - the item that should become moved
+ */
+async function moveTo(newLocation, fromLocoation, thisId) {
+    await putData(newLocation, `tasks/${thisId}/status`);
+    updateBoard(thisId, fromLocoation, newLocation);
 }
 
 function updateTaskFields(sections) {
