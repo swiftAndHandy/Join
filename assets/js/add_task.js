@@ -193,6 +193,6 @@ function showPopupTaskAdded() {
     popup.style.opacity = '0';
     setTimeout(() => {
       popup.style.display = 'none';
-    },500)
+    },1000)
   },3000);
 }
