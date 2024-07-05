@@ -55,7 +55,8 @@ async function renderTasks() {
           item.date,
           item.prio,
           item.tag,
-          item.subTasks
+          item.subTasks,
+          item.assigned
         );
 
         statusFields[item.status].innerHTML += taskCardHTML;
@@ -86,7 +87,7 @@ async function renderTasks() {
  * @param {string} subTasks - The subTasks value from the database.
  * @returns {Promise<string>} A promise that includes the generated HTML for the task card.
  */
-async function callContactInformationForTasks(keyTasks, status, title, description, date, prio, tag, subTasks) {
+async function callContactInformationForTasks(keyTasks, status, title, description, date, prio, tag, subTasks,assigned) {
   let contactData = await readData('contacts');
   const entries = sortByAlphabet(contactData, 'contacts');
 
@@ -118,7 +119,8 @@ async function callContactInformationForTasks(keyTasks, status, title, descripti
     prio,
     tag,
     subTasks,
-    firstThreeEntries  // Übergabe der ersten drei Einträge an generateTaskCard
+    firstThreeEntries,
+    assigned  // Übergabe der ersten drei Einträge an generateTaskCard
   );
 
   return taskCardHTML;

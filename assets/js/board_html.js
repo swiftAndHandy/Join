@@ -1,10 +1,10 @@
-function generateTaskCard( keyTasks, status, title, description, dueDate, prio, category, subTasks, contactEntries) {
+function generateTaskCard( keyTasks, status, title, description, dueDate, prio, tag, subTasks, contactEntries,assigned) {
   
   return`
   <article class="task-card-container" draggable="true" ondragstart="startDrag('${keyTasks}', '${status}')" id="taskId${keyTasks}">
     <div class="task-card-content">
-      <div class="task-group-bubble">
-        <span>${category}</span>
+      <div class="task-group-bubble ${tag.replace(/\s+/g, "-")}">
+        <span>${tag}</span>
       </div>
       <div class="task-card-header mt-24">
         <h2>${title}</h2>
@@ -18,9 +18,9 @@ function generateTaskCard( keyTasks, status, title, description, dueDate, prio, 
       </div>
       <div class="assigned-user mt-24">
         <div class="profile-pictures">
-          <div class="profile-cricle">${initials(contactEntries[0].name)}</div>
-          <div class="profile-cricle">${initials(contactEntries[1].name)}</div>
-          <div class="profile-cricle">${initials(contactEntries[2].name)}</div>
+          <div class="profile-cricle" style= "background-color:${contactEntries[0].color}">${initials(assigned[0])}</div>
+          <div class="profile-cricle" style= "background-color:${contactEntries[1].color}">${initials(assigned[1])}</div>
+          <div class="profile-cricle" style= "background-color:${contactEntries[2].color}">${initials(assigned[2])}</div>
         </div>
         <div>
           <img id="prio-img${keyTasks}" src="./assets/img/icons/priority_medium.svg" alt="">

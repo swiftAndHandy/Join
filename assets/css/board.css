@@ -36,6 +36,11 @@ body {
   
 }
 
+.Technical-Task {
+background-color: #1FD7C1 !important;
+
+}
+
 .overflow-all-hidden {
   overflow: hidden;
 }
