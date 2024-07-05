@@ -437,6 +437,12 @@ h2 {
   }
 }
 
+@media(max-width: 431px) {
+  .search-container-width {
+    width: 275px !important;
+  }
+}
+
 @media (min-width: 1919px) {
   .body-mobile {
     max-width: 1920px;
