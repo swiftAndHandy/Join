@@ -112,6 +112,14 @@ function taskSubtask() {
   subtask.value = "";
 }
 
+function clearInputs(ids) {
+  for (let i = 0; i < ids.length; i++) {
+    let clearAll = document.getElementById(ids[i])
+    clearAll.value = "";
+  }
+
+}
+
 
 
 async function addnewTask() {
