@@ -144,6 +144,7 @@ function checkIfFormFilled() {
   if (allFilled) {
     // document.getElementById('button-create-task').disabled = false;
     addnewTask();
+    showPopupTaskAdded();
   } else {
     console.log(
       "Please fill out all required fields before submitting."
@@ -180,4 +181,18 @@ function setPrio(prio, number) {
       .getElementById(`${currentPriority}-prio-img`)
       .classList.add("pressed-prio-img");
   }
+}
+
+function showPopupTaskAdded() {
+  const popup = document.getElementById('pop-up-task-added');
+  popup.style.display = 'block';
+  setTimeout(() => {
+    popup.style.opacity = '1';
+  },10);
+  setTimeout(() => {
+    popup.style.opacity = '0';
+    setTimeout(() => {
+      popup.style.display = 'none';
+    },500)
+  },3000);
 }
