@@ -15,29 +15,30 @@ function closeAddContactPage() {
 
 
 async function putContactsToList() {
-    let contacts = await getContacts();
-    contacts.sort((a, b) => a.name.localeCompare(b.name));
+    let contacts = await readData('contacts');
+    contacts = sortByAlphabet(contacts, 'contacts');
     let currentLetter = '';
 
     for (let i = 0; i < contacts.length; i++) {
-        let name = contacts[i].name;
-        let email = contacts[i].email;
-        let color = contacts[i].color;
-        let firstLetter = name.charAt(0).toUpperCase();
+        const id = contacts[i].id;
+        const name = contacts[i].name;
+        const email = contacts[i].email;
+        const color = contacts[i].color;
+        const firstLetter = name.charAt(0);
 
 
         if (firstLetter !== currentLetter) {
             currentLetter = firstLetter;
             createContactLetterHTML(currentLetter);
         }
-        createContactListHTML(i, name, email, color);
+        createContactListHTML(id, name, email, color);
     }
 }
 
 
 function createContactListHTML(index, name, email, color) {
     document.getElementById('contact-list').innerHTML += `
-    <li id="contact-item-${index}" class="contact-item" onclick="openContactDetails(${index})">
+    <li id="contact-item-${index}" class="contact-item" onclick="openContactDetails('${index}')">
             <div class="contact-image--small" style="background-color:${color};">${showCapitaliseFirstLetters(name)}</div>
             <div class="contact-details">
                 <p class="contact-name">${name}</p>
@@ -64,13 +65,12 @@ function showCapitaliseFirstLetters(input) {
 }
 
 
-async function openContactDetails(i) {
-    let contacts = await getContacts();
-    contacts = Object.values(contacts);
-    let name = contacts[i].name;
-    let email = contacts[i].email;
-    let color = contacts[i].color;
-    let telefon = contacts[i].phone;
+async function openContactDetails(userId) {
+    let contact = await readData(`contacts/${userId}`);
+    let name = contact.name;
+    let email = contact.email;
+    let color = contact.color;
+    let telefon = contact.phone;
 
     contactDetailsHTML(name, email, telefon, color);
 }

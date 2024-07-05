@@ -74,12 +74,13 @@ function startDrag(id, fromCategory) {
 
 /**
  * updates the category of a single item via drag and drop
+ * update is only fullfilled, if a new category is choosen.
  * @param {string} newLocation - the new location of the item
  */
 async function dragTo(newLocation) {
   const item = currentlyDragged;
   const from = currentlyDraggedCategory;
-  if (item) {
+  if (item && from != newLocation) {
     await putData(newLocation, `tasks/${item}/status`);
     updateBoard(item, from, newLocation);
   }

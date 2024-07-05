@@ -78,7 +78,12 @@ function animateGreeting(greeting) {
 
 
 async function updateBoardCounters() {
-    readData('tasks');
+    const data = await readData('tasks');
+    const keys = Object.keys(data);
+    const counters = ['todo', 'done', 'urgent', 'board', 'progress', 'feedback'];
+    for (let item of counters) {
+        console.log(item);
+    }
 }
 
 // <span id="board-counter" class="summary-counter">1</span>
