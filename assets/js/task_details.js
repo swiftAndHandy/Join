@@ -8,23 +8,6 @@ function initTaskDetails() {
 }
 
 /**
- * Needs further improvement.
- * @param {string[]} subtasksArray - must contain some strings
- * @returns 
- */
-function createSubtasks(subtasksArray) {
-    const subtaskObject = {};
-    let counter = 0;
-    for (let item of subtasksArray) {
-      const subObject = {[item] : 'open'};
-      Object.assign(subtaskObject, {[counter]: subObject});
-      counter++;
-    }
-    return subtaskObject;
-  }
-
-
-/**
  * Rendering Contact-List in Edit-Details. 
  * Needs further improvement (include accounts, not only contacts for example)
  * Maybe a resort to keep the order of alphabet is required in this case
