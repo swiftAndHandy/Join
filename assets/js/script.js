@@ -202,35 +202,20 @@ async function accountExists(email, password = false) {
     }
 }
 
-
-/**
- * @param {string[]} subtasksArray -an array with some subtask-goals
- * @param {string} state - should be open or closed
- * @param {string} offset - offset for the index, must be fitted to an older Object.keys().length
- * @returns {Object.<number, Object.<string, string>>} - An Object, with numbers as key. the value is another object,
- *                                                       containing the subtask-goal and it's current state
- */
-function prepareSubtasks(subtasksArray, state = 'open', offset = 0) {
-    const subtaskObject = {};
-    let counter = offset;
-    for (let item of subtasksArray) {
-        const subObject = { [item]: state };
-        Object.assign(subtaskObject, { [counter]: subObject });
-        counter++;
-    }
-    return subtaskObject;
-}
-
 /**
  * @param {string[]} openSubtasks - an array with open subtask-goals
  * @param {string[]} closedSubtasks - an array with closed subtask-goals
  * @returns {Object.<number, Object.<string, string>>} - An Object, with numbers as key. the value is another object,
  *                                                       containing the subtask-goal and it's current state
  */
-function createSubtasks(openSubtasks = [], closedSubtasks = []) {
-    const subtaskObject = {};
-    Object.assign(subtaskObject, prepareSubtasks(openSubtasks));
-    const offset = Object.keys(subtaskObject).length;
-    Object.assign(subtaskObject, prepareSubtasks(closedSubtasks, 'closed', offset));
-    return subtaskObject;
+function createSubtasks(subtaskArray = [], done = false) {
+    const subtaskObjects = [];
+    for (item of subtaskArray) {
+        subtaskObjects.push({
+            'name': item,
+            'done': done
+        })
+    }
+
+    return subtaskObjects;
 }
