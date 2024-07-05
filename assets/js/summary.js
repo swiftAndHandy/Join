@@ -15,11 +15,12 @@ async function greetAtLogin() {
     const daytime = getDaytime();
     const greetingOverlay = document.getElementById('greeting-overlay');
     const greetingEmbedded = document.getElementById('greeting-embedded');
-    const userInformation =  await readData(`accounts/${userId}`)
+    const userInformation = await readData(`accounts/${userId}`)
     const greetingMsg = await generateGreetingHtml(daytime, userInformation);
     greetingOverlay.innerHTML = greetingMsg;
     greetingEmbedded.innerHTML = greetingMsg;
     animateGreeting(greetingOverlay);
+    updateBoardCounters();
 }
 
 /**
@@ -77,16 +78,34 @@ function animateGreeting(greeting) {
 }
 
 
+/**
+ * Iterates trough every task in database.
+ * Counts up every type is used in summary and updates the numbers.
+ */
 async function updateBoardCounters() {
     const data = await readData('tasks');
-    const counters = { 'todo': 0, 'done': 0, 'urgent': 0, 'board': Object.keys(data).length, 'progress': 0, 'feedback': 0 };
-    
+    const counters = { 'todo': 0, 'done': 0, 'board': Object.keys(data).length, 'progress': 0, 'feedback': 0 };
+    const urgents = [];
+
     for (let item in data) {
         const thisItem = data[item];
         counters[thisItem.status]++;
+        thisItem.priority.toLowerCase() === 'urgent' && urgents.push(thisItem.date);
     }
 
-    console.log(counters);
+    document.getElementById('urgent-counter').innerText = urgents.length;
+    document.getElementById('deadline-date').innerText = taskDueDate(getDeadline(urgents)[0]); 
+
+    for (let items in counters) {
+        document.getElementById(`${items}-counter`).innerText = counters[items];
+    }
 }
 
-// <span id="board-counter" class="summary-counter">1</span>
+
+/**
+ * @param {string[]} urgents - an array with date-strings, e. g. '2024-07-04'
+ * @returns {Date[]} - Returns the dates sorted from earliest to latest.
+ */
+function getDeadline(datesArray) {
+    return datesArray.sort((a, b) => new Date(a) - new Date(b));
+}

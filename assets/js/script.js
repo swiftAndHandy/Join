@@ -18,13 +18,11 @@ function applyRandomColor() {
 }
 
 //needs some changes to make this usable in every situation -> date from firebase as param
-function taskDueDate() {
-    let dueDate = document.getElementById("task-due-date");
-    let date = new Date(dueDate.value);
+function taskDueDate(date) {
+    date = new Date(date);
     let dateOption = { month: "long", day: "numeric", year: "numeric" };
     let formattedDate = date.toLocaleDateString("en-US", dateOption);
-    addTaskDueDate = formattedDate;
-    dueDate.value = "";
+    return formattedDate;
   }
 
 /**
@@ -76,7 +74,7 @@ function logout() {
 
 
 /**
- * delete localStorage()
+ * clear localStorage()
  */
 function clearLocalstorage() {
     localStorage.removeItem('id');
@@ -167,6 +165,19 @@ async function postData(data = {}, path = "") {
  */
 async function readData(path) {
     const response = await fetch(BASE_URL + path + '.json');
+    return await response.json();
+}
+
+/**
+ * Deletes data from firebase-storage
+ * @param {string} path 
+ * @returns 
+ */
+async function deleteData(path = "") {
+    let response = await fetch(BASE_URL + path + '.json',{
+        method: "DELETE",
+
+    });
     return await response.json();
 }
 
