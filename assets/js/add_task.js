@@ -133,7 +133,7 @@ async function addnewTask() {
 }
 
 function checkIfFormFilled() {
-  const form = document.getElementById("add-task-form");
+  const form = document.getElementById("form-desktop");
   const requiredFields = form.querySelectorAll("[required]");
   let allFilled = true;
   requiredFields.forEach((field) => {
@@ -170,7 +170,7 @@ function setPrio(prio, number) {
   });
 
   if (pressedButton > 0 && pressedButton <= priorities.length) {
-    const currentPriority = priorities[pressedButton - 1];
+    const currentPriority = priorities[pressedButton - 1];e
     const currentColor = colors[pressedButton - 1];
 
     document
