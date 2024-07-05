@@ -656,7 +656,7 @@ select:focus {
 
 @media (max-height: 900px) {
   .create-task-panel {
-    top: 720px;
+    top: 700px;
   }
   .form-add-task {
     height: 79%;
