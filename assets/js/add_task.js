@@ -190,7 +190,7 @@ function showPopupTaskAdded() {
     popup.style.opacity = '1';
   },10);
   setTimeout(() => {
-    popup.style.display = '0';
+    popup.style.opacity = '0';
     setTimeout(() => {
       popup.style.display = 'none';
     },500)
