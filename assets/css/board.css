@@ -334,8 +334,8 @@ h2 {
   .section-container {
     width: 252px;
     height: 688px;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     gap: 8px;
   }
 
