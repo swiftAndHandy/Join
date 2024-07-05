@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="./assets/css/fonts.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/menu-bar.css">
-    <script src="./assets/js/script.js"></script>
     <script src="./assets/js/menu-bar-script.js"></script>
-    <script src="./assets/js/generateHtml.js"></script>
     <script src="./assets/js/contacts.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
     <link rel="icon" type="image/svg+xml" href="./assets/img/icons/favicon.svg">
     <!-- <link rel="icon" type="image/x-icon" href="./assets/img/icons/favicon.svg"> -->
     <link rel="icon" type="image/png" sizes="48x48" href="./assets/img/icons/favicon-48x48.png">
@@ -24,7 +24,7 @@
     <link rel="mask-icon" href="./assets/img/icons/favicon.svg" color="#5bbad5">
 </head>
 
-<body onload="includeHTML(); putContactsToList()">
+<body onload="includeHTML(), putContactsToList()">
     <div w3-include-html="./assets/templates/menu-bar.html"></div>
     <div class="contact-list-and-contact-window-container">
         <div class="contact-list-container">
@@ -61,4 +61,5 @@
     </div>
     <section id="nav-menu-bottom" class="nav-menu--bottom"></section>
 </body>
+
 </html>

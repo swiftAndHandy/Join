@@ -34,6 +34,9 @@ body {
   }
   
   .dialog-container {
+    animation: open-contact-dialog-animation;
+    animation-timing-function:ease-in;
+    animation-duration: 500ms;
     width: 396px;
     height: 760px;
     display: flex;

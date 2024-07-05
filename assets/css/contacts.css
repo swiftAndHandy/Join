@@ -4,6 +4,10 @@ body {
     height: 100%;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 .contact-list-container {
     display: flex;
     flex-direction: column;
@@ -25,7 +29,7 @@ body {
     margin: 0;
 }
 
-.btn-container-add-contact  {
+.btn-container-add-contact {
     position: relative;
     left: 150px;
 }
@@ -41,7 +45,6 @@ body {
     border: #2A3647 1px;
     background-color: #2A3647;
     text-indent: -9999px;
-    user-select: none;
     /* hide button text */
     user-select: none;
 }
@@ -49,16 +52,14 @@ body {
 .btn-add-new-contact img {
     width: 32px;
     height: 32px;
-    user-select: none;
 }
 
-.btn-add-new-contact:hover{
+.btn-add-new-contact:hover {
     background-color: #29ABE2;
     box-shadow: 0px 4px 4px 0px #00000040;
 }
 
-.btn-add-new-contact:active,
-.more-vert-button:active {
+.btn-add-new-contact:active {
     background-color: #091931;
 }
 
@@ -312,10 +313,10 @@ body {
         flex-direction: column;
         align-items: center;
         box-shadow: 4px 0px 6px 0px #00000014;
-        margin: 96px 0 0 233px;
+        margin: 81px 0 0 0;
         /* width: 456px; */
         width: clamp(400px, 50vw - 232px, 456px);
-        height: calc(100vh - 96px);
+        height: calc(100vh - 160px);
     }
 
     .btn-container-add-contact {
@@ -378,7 +379,13 @@ body {
     }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1160px) {
+
+    .contact-list-container{
+        margin: 96px 0 0 233px;
+        height: calc(100vh - 96px);
+    }
+    
     .btn-add-new-contact {
         width: 456px;
     }
@@ -431,10 +438,6 @@ body {
         width: 90px;
         border: 1.5px solid #29ABE2;
         border-radius: 4px;
-    }
-
-    .edit-delete-buttons-container {
-        display: none;
     }
 
     .contact-name--large {
@@ -490,7 +493,6 @@ body {
     .more-vert-button img {
         width: 32px;
         height: 32px;
-        user-select: none;
     }
 
     .more-vert-button:hover {
@@ -530,5 +532,30 @@ body {
     to {
         opacity: 1;
         right: 20px;
+    }
+}
+
+@keyframes contact-information {
+    from {
+        opacity: 1;
+        right: -150px;
+    }
+
+    to {
+        opacity: 1;
+    }
+    
+}
+
+@keyframes open-contact-dialog-animation {
+    from {
+        opacity: 1;
+        position: relative;
+        right: -100vw;
+    }
+
+    to {
+        opacity: 1;
+        right: 100vw;
     }
 }

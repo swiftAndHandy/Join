@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="./assets/css/contact_dialog_style--av.css">
     <link rel="stylesheet" href="./assets/css/fonts.css">
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/contacts.js"></script>
 </head>
-    <main> content all </main>
     <div class="dialog-main">
         <div class="dialog-container">
             <div class="dialog-content">
@@ -33,33 +33,33 @@
                     <img src="./assets/img/icons/person.svg" alt="">
                 </div>
                 <div class="under-card">
-                    <form class="input-information">
+                    <form class="input-information" onsubmit="createContact(event)">
                         <div class="input-style ">
-                            <input class="profile-img-input" minlength="2" maxlength="28" type="name" placeholder="Name" required>
+                            <input id="input-contact-name" class="profile-img-input" minlength="2" maxlength="28" type="text" placeholder="Name" required>
                         </div>
                         <div class="input-style">
-                            <input class="email-img-input" minlength="2" maxlength="28" type="email" placeholder="Email" required>
+                            <input id="input-contact-email" class="email-img-input" minlength="2" maxlength="28" type="email" placeholder="Email" required>
                         </div>
                         <div class="input-style">
-                            <input class="phone-img-input" type="tel" placeholder="Phone" pattern="^\+?[0-9\s\-]{7,15}$" title="Please enter a valid phone number" required>
+                            <input id="input-contact-phone" class="phone-img-input" type="tel" placeholder="Phone" pattern="^\+?[0-9\s\-]{7,15}$" title="Please enter a valid phone number" required>
                         </div>
                        
-                        
+                        <div class="button-container">
+                            <button type="submit" class="contact-btn">
+                              <span> Create contact</span>
+                                <div>
+                                    <img src="./assets/img/icons/check.svg" alt="">
+                                </div>
+                            </button>
+                            <div class="contact-btn-cancel" onclick="closeAddContactPage()">
+                                <span> Cancel</span>
+                                  <div class="cancel-btn-symbol">
+                                      <img src="./assets/img/icons/close.svg" alt="">
+                                  </div>
+                              </div>
                         
                     </form>
-                    <div class="button-container">
-                    <div class="contact-btn" onclick="">
-                      <span> Create contact</span>
-                        <div>
-                            <img src="./assets/img/icons/check.svg" alt="">
-                        </div>
-                    </div>
-                    <div class="contact-btn-cancel" onclick="closeAddContactPage()">
-                        <span> Cancel</span>
-                          <div class="cancel-btn-symbol">
-                              <img src="./assets/img/icons/close.svg" alt="">
-                          </div>
-                      </div>
+                    
                 </div>
                 </div>
             </div>
