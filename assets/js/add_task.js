@@ -132,6 +132,10 @@ async function addnewTask() {
     'subtasks': addTaskSubtask,
     'status': taskStatus,
   }, 'tasks');
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 5584f2b43f8dea2388e15f90a9aa42cfca9a42c4
 }
 
 function checkIfFormFilled() {
@@ -188,8 +192,21 @@ function setPrio(prio, number) {
 function showPopupTaskAdded() {
   const popup = document.getElementById('pop-up-task-added');
   popup.style.display = 'block';
+<<<<<<< HEAD
     setTimeout(() => {
       popup.style.display = 'none';
       window.location.href = 'board.html';
     },1000);
+=======
+  setTimeout(() => {
+    popup.style.opacity = '1';
+  },100);
+  setTimeout(() => {
+    popup.style.opacity = '0';
+    setTimeout(() => {
+      popup.style.display = 'none';
+      window.location.href = 'board.html';
+    },1000)
+  },3000);
+>>>>>>> 5584f2b43f8dea2388e15f90a9aa42cfca9a42c4
 }
