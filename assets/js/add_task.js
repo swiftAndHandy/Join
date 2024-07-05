@@ -12,10 +12,12 @@ let alreadyOpen = false;
 
 function init() {
   includeHTML();
-  generateDropBoxContent();
+  renderContactList();
 }
 
-
+function formOfDueDate() {
+  addTaskDueDate = document.getElementById('task-due-date').value
+}
 
 function addTitle() {
   let title = document.getElementById("task-title");
@@ -110,6 +112,14 @@ function taskSubtask() {
   subtask.value = "";
 }
 
+function clearInputs(ids) {
+  for (let i = 0; i < ids.length; i++) {
+    let clearAll = document.getElementById(ids[i])
+    clearAll.value = "";
+  }
+
+}
+
 
 
 async function addnewTask() {
@@ -119,6 +129,7 @@ async function addnewTask() {
   taskDueDate();
   taskCategory();
   taskSubtask();
+  formOfDueDate();
   await postData({
     'title': addTaskTitle,
     'description': addTaskDescription,
@@ -129,7 +140,6 @@ async function addnewTask() {
     'subtasks': addTaskSubtask,
     'status': taskStatus,
   }, 'tasks');
-  window.location.href = 'board.html';
 }
 
 function checkIfFormFilled() {
@@ -186,13 +196,16 @@ function setPrio(prio, number) {
 function showPopupTaskAdded() {
   const popup = document.getElementById('pop-up-task-added');
   popup.style.display = 'block';
-  setTimeout(() => {
-    popup.style.opacity = '1';
-  },10);
-  setTimeout(() => {
-    popup.style.opacity = '0';
     setTimeout(() => {
       popup.style.display = 'none';
-    },1000)
-  },3000);
+      window.location.href = 'board.html';
+    },1000);
+}
+
+async function renderContactList() {
+  const data = await readData('contacts');
+  let entries = sortByAlphabet(data, 'contacts');
+  for (let i = 0; i < entries.length; i++) {
+    generateDropBoxContacts(entries[i]);
+  }
 }

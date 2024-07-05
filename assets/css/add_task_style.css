@@ -555,6 +555,8 @@ select:focus {
   #contacts-show-input {
     width: 320px;
   }
+
+  
 }
 
 @media (max-width: 1120px) and (min-width: 916px) {
@@ -575,12 +577,21 @@ select:focus {
   }
 }
 
+@media(max-width: 803px) and (min-width:430px) {
+  .drop-menu {
+    width: 90%;
+  }
+}
+
 @media (max-width: 800px) and (min-width: 321px) {
   .content-wrapper {
     margin-top: 65px;
   }
   .required-text {
     display: none;
+  }
+  #contacts-show-input input {
+    width: 250px;
   }
 }
 
@@ -619,9 +630,7 @@ select:focus {
     width: 32px;
     height: 32px;
   }
-  .ul-content-wrapper {
-    padding: 0;
-  }
+
  
 }
 

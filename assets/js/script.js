@@ -87,7 +87,7 @@ function clearLocalstorage() {
  * @returns - every first character of every word in input
  */
 function initials(input) {
-    return input.split(' ').map(word => word.charAt(0)).join('');
+    return input.toUpperCase().split(' ').map(word => word.charAt(0)).join('');
 }
 
 /**
