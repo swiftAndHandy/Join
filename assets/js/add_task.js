@@ -132,7 +132,7 @@ async function addnewTask() {
     'subtasks': addTaskSubtask,
     'status': taskStatus,
   }, 'tasks');
-  window.location.href = 'board.html';
+  
 }
 
 function checkIfFormFilled() {
@@ -191,11 +191,12 @@ function showPopupTaskAdded() {
   popup.style.display = 'block';
   setTimeout(() => {
     popup.style.opacity = '1';
-  },10);
+  },100);
   setTimeout(() => {
     popup.style.opacity = '0';
     setTimeout(() => {
       popup.style.display = 'none';
+      window.location.href = 'board.html';
     },1000)
   },3000);
 }
