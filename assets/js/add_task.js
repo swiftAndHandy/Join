@@ -12,7 +12,7 @@ let alreadyOpen = false;
 
 function init() {
   includeHTML();
-  generateDropBoxContent();
+  renderContactList();
 }
 
 function formOfDueDate() {
@@ -200,4 +200,12 @@ function showPopupTaskAdded() {
       popup.style.display = 'none';
       window.location.href = 'board.html';
     },1000);
+}
+
+async function renderContactList() {
+  const data = await readData('contacts');
+  let entries = sortByAlphabet(data, 'contacts');
+  for (let i = 0; i < entries.length; i++) {
+    generateDropBoxContacts(entries[i]);
+  }
 }
