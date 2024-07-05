@@ -7,6 +7,22 @@ function initTaskDetails() {
     renderContactList();
 }
 
+/**
+ * Needs further improvement.
+ * @param {string[]} subtasksArray - must contain some strings
+ * @returns 
+ */
+function createSubtasks(subtasksArray) {
+    const subtaskObject = {};
+    let counter = 0;
+    for (let item of subtasksArray) {
+      const subObject = {[item] : 'open'};
+      Object.assign(subtaskObject, {[counter]: subObject});
+      counter++;
+    }
+    return subtaskObject;
+  }
+
 
 /**
  * Rendering Contact-List in Edit-Details. 

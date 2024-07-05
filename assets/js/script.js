@@ -181,13 +181,6 @@ async function accountExists(email, password = false) {
     }
 }
 
-
-async function getContacts() {
-    const contactsAsJson = await readData('contacts');
-    const contactList = Object.values(contactsAsJson)
-    return contactList;
-}
-
 //needs some changes to make this usable in every situation -> date from firebase as param
 function taskDueDate() {
     let dueDate = document.getElementById("task-due-date");
