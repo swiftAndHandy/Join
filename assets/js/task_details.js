@@ -148,11 +148,20 @@ function searchContact(search) {
     const contactNames = Array.from(document.querySelectorAll('div.user-box span'));
     for (let item in contactNames) {
         hideWindow(contactNames[item].parentElement.parentElement.id,
-            !contactNames[item].innerHTML.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+            !contactNames[item].innerHTML.toLowerCase().includes(search.toLowerCase())
         );
     }
 }
 
+// other approach function searchContact(search) {
+    // // function searchContact(search) {
+    //     const contactNames = Array.from(document.querySelectorAll('div.user-box span'));
+    //     for (let item of contactNames) { // Iteriere über die contactNames mit "of" statt "in"
+    //         hideWindow(item.closest('.single-contact').id,
+    //             !item.innerHTML.toLowerCase().includes(search.toLowerCase())
+    //         );
+    //     }
+    // }
 /**
  * Reset Input-Field for new Subtask
  */

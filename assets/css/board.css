@@ -288,6 +288,11 @@ h2 {
   cursor: pointer;
 }
 
+.add-task-btn:hover {
+  background-color: #29ABE2;
+  border-color: #29ABE2;
+}
+
 
 @media (min-width: 1380px) and (max-width: 3200px) {
   .board-content {

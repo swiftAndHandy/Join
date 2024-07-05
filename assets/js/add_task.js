@@ -142,7 +142,8 @@ function checkIfFormFilled() {
     }
   });
   if (allFilled) {
-    document.getElementById('button-create-task').disabled = false;
+    // document.getElementById('button-create-task').disabled = false;
+    addnewTask();
   } else {
     console.log(
       "Please fill out all required fields before submitting."
