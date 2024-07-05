@@ -22,7 +22,7 @@ function generateTaskCard(key, status, title, description, dueDate, prio, catego
           <div class="profile-cricle">AD</div>
         </div>
         <div>
-          <img src="./assets/img/icons/priority_medium.svg" alt="">
+          <img id="prio-img${key}" src="./assets/img/icons/priority_medium.svg" alt="">
         </div>
       </div>
     </div>

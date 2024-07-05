@@ -196,6 +196,7 @@ h2 {
 
 .task-sub-headline {
   color: #a8a8a8;
+  min-height: 40px;
 }
 
 .mt-24 {

@@ -1,12 +1,11 @@
 let addTaskTitle = "";
 let addTaskDescription = "";
 let addTaskAssignedContacts = [];
-let selectedContacts = [];
 let addTaskDueDate = "";
 let addTaskPrio = "";
 let addTaskCategory = "";
 let addTaskSubtask = "";
-let taskStatus = "done";
+let taskStatus = "todo";
 let pressedButton = 0;
 let alreadyOpen = false;
 

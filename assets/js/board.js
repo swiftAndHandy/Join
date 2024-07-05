@@ -41,9 +41,10 @@ async function renderTasks() {
     let data = await readData('tasks');
     for (let key in data) {
       const item = data[key];
-
+     
       if (item.status == "todo") {
         toDoField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.tag, item.subTasks);
+        
       }
      else if (item.status == "progress") {
         inProgressField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.tag, item.subTasks);
@@ -54,12 +55,27 @@ async function renderTasks() {
      else if (item.status == "done") {
         doneField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.tag, item.subTasks);
       }
-
+      prioEqualImg(item ,key);
     }
+   
     updateTaskFields(['todo', 'progress', 'feedback', 'done']);
   } catch (error) {
     console.error(error);
   }
+}
+
+function prioEqualImg (prio, key) {
+  if(prio.priority === 'Urgent') {
+   let prioImg = document.getElementById(`prio-img${key}`);
+    prioImg.src = "./assets/img/icons/urgent.svg";
+  } else if(prio.priority === 'Medium') {
+    let prioImg = document.getElementById(`prio-img${key}`);
+     prioImg.src = "./assets/img/icons/medium.svg";
+}else if(prio.priority === 'Low') {
+  let prioImg = document.getElementById(`prio-img${key}`);
+   prioImg.src = "./assets/img/icons/low.svg";
+
+}
 }
 
 function updateAfterDrag() {
