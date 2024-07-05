@@ -170,7 +170,7 @@ function setPrio(prio, number) {
   });
 
   if (pressedButton > 0 && pressedButton <= priorities.length) {
-    const currentPriority = priorities[pressedButton - 1];e
+    const currentPriority = priorities[pressedButton - 1];
     const currentColor = colors[pressedButton - 1];
 
     document
