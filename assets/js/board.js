@@ -43,16 +43,16 @@ async function renderTasks() {
       const item = data[key];
 
       if (item.status == "todo") {
-        toDoField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
+        toDoField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.tag, item.subTasks);
       }
      else if (item.status == "progress") {
-        inProgressField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
+        inProgressField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.tag, item.subTasks);
       }
      else if (item.status == "feedback") {
-        awaitFeedbackField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
+        awaitFeedbackField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.tag, item.subTasks);
       }
      else if (item.status == "done") {
-        doneField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
+        doneField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.tag, item.subTasks);
       }
 
     }

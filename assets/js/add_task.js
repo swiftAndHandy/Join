@@ -15,7 +15,9 @@ function init() {
   generateDropBoxContent();
 }
 
-
+function formOfDueDate() {
+  addTaskDueDate = document.getElementById('task-due-date').value
+}
 
 function addTitle() {
   let title = document.getElementById("task-title");
@@ -119,6 +121,7 @@ async function addnewTask() {
   taskDueDate();
   taskCategory();
   taskSubtask();
+  formOfDueDate();
   await postData({
     'title': addTaskTitle,
     'description': addTaskDescription,
