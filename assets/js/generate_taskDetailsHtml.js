@@ -17,8 +17,8 @@ function generateContactsHtml(data) {
 
 async function generateTaskDetailsHtml(taskId, taskDetails) {
     const tag = document.getElementById('task-details-tag');
-    tag.innerHTML = taskDetails['category'];
-    taskDetails['category'] === 'User Story' ? tag.setAttribute('class', 'tag user-story') : tag.setAttribute('class', 'tag technical-task')
+    tag.innerHTML = taskDetails['tag'];
+    taskDetails['tag'] === 'User Story' ? tag.setAttribute('class', 'tag user-story') : tag.setAttribute('class', 'tag technical-task')
 
     const title = document.getElementById('task-details-title');
     title.innerHTML = taskDetails['title'];
@@ -31,11 +31,11 @@ async function generateTaskDetailsHtml(taskId, taskDetails) {
 
     const priority = document.getElementById('details-priority-text');
     const priorityImg = document.getElementById('details-priority-img');
-    priority.innerHTML = taskDetails['prio'];
-    priorityImg.src = `../assets/img/icons/priority_${taskDetails['prio'].toLowerCase()}.svg`;
+    priority.innerHTML = taskDetails['priority'];
+    priorityImg.src = `../assets/img/icons/priority_${taskDetails['priority'].toLowerCase()}.svg`;
 
     const assignedTo = document.getElementById('details-assigned-list');
-    assignedTo.innerHTML = await assignedPersonsHtml(taskDetails['contacts']);
+    assignedTo.innerHTML = await assignedPersonsHtml(taskDetails['assigned']);
 
     const deleteBtn = document.getElementById('task-details-delete-btn');
     deleteBtn.setAttribute('onclick', `deleteTask(${taskId})`);

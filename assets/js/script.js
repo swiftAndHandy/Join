@@ -118,7 +118,7 @@ async function putDataset(data = {}, path = "") {
  * @returns {Promise<Object>} - A promise that resolves to the JSON response from the server.
  */
 async function putData(value, path = "") {
-    let response = await fetch(BASE_URL + path + '.json', {
+    const response = await fetch(BASE_URL + path + '.json', {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -136,7 +136,7 @@ async function putData(value, path = "") {
  * @returns {Promise<Object>}
  */
 async function postData(data = {}, path = "") {
-    let response = await fetch(BASE_URL + path + '.json', {
+    const response = await fetch(BASE_URL + path + '.json', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -187,3 +187,13 @@ async function getContacts() {
     const contactList = Object.values(contactsAsJson)
     return contactList;
 }
+
+//needs some changes to make this usable in every situation -> date from firebase as param
+function taskDueDate() {
+    let dueDate = document.getElementById("task-due-date");
+    let date = new Date(dueDate.value);
+    let dateOption = { month: "long", day: "numeric", year: "numeric" };
+    let formattedDate = date.toLocaleDateString("en-US", dateOption);
+    addTaskDueDate = formattedDate;
+    dueDate.value = "";
+  }

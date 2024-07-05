@@ -1,7 +1,7 @@
 let addTaskTitle = "";
 let addTaskDescription = "";
 let addTaskAssignedContacts = [];
-let selectedContacts = ['Hans bauer', 'Fred schauer', 'baumgarten Wow', 'Marcel Auer'];
+let selectedContacts = [];
 let addTaskDueDate = "";
 let addTaskPrio = "";
 let addTaskCategory = "";
@@ -10,33 +10,11 @@ let taskStatus = "done";
 let pressedButton = 0;
 let alreadyOpen = false;
 
-const base_URL =
-  "https://join-256-default-rtdb.europe-west1.firebasedatabase.app/";//#endregion
-
-
-  function init() {
-    includeHTML();
-    generateDropBoxContent();
-  }
-
-async function postData(
-  path = "tasks",
-  data = {}
-) {
-  try {
-    let response = await fetch(base_URL + path + ".json", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    return (responseToJson = await response.json());//
-  } catch (error) {
-    console.error("Error posting data:", error);
-    return null;
-  }
+function init() {
+  includeHTML();
+  generateDropBoxContent();
 }
+
 
 
 function addTitle() {
@@ -63,70 +41,61 @@ function addDescription() {
  * @param {number} idNumber Uses a number from a for-loop to assign individual IDs.
  */
 function handleCheckBox(checkbox, idNumber) {
-    // check if checkbox is clicked
-    if (checkbox.checked) {
-       // when checkbox is clicked and value is not in array then if statment
-        if (!addTaskAssignedContacts.includes(checkbox.value)) {
-            addTaskAssignedContacts.push(checkbox.value);
-          
-        }
+  // check if checkbox is clicked
+  if (checkbox.checked) {
+    // when checkbox is clicked and value is not in array then if statment
+    if (!addTaskAssignedContacts.includes(checkbox.value)) {
+      addTaskAssignedContacts.push(checkbox.value);
 
-        console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
-        pressedCheckBoxStyle(idNumber);
-    } else {
-    
-        const valueIndex = addTaskAssignedContacts.indexOf(checkbox.value);
-        if (valueIndex > -1) {
-            addTaskAssignedContacts.splice(valueIndex, 1);
-        }
-
-        console.log("Checkbox mit Wert " + checkbox.value + " ist deaktiviert.");
-        unPressedCheckBoxStyle(idNumber);
     }
-    console.log('Aktuelle ausgewählte Kontakte: ', addTaskAssignedContacts);
-}
 
-  function pressedCheckBoxStyle (idNumber) {  
-    document.getElementById(`label-check${idNumber}`).classList.add('filter-to-white')
-        document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('ul-content-wrapper-no-click')
-        document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('pressed-drop-box-bg-color');
+    console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
+    pressedCheckBoxStyle(idNumber);
+  } else {
 
-}
+    const valueIndex = addTaskAssignedContacts.indexOf(checkbox.value);
+    if (valueIndex > -1) {
+      addTaskAssignedContacts.splice(valueIndex, 1);
+    }
 
-  function unPressedCheckBoxStyle(idNumber) {
-  document.getElementById(`label-check${idNumber}`).classList.remove('filter-to-white')
-        document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('ul-content-wrapper-no-click')
-        document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('pressed-drop-box-bg-color');
-        
+    console.log("Checkbox mit Wert " + checkbox.value + " ist deaktiviert.");
+    unPressedCheckBoxStyle(idNumber);
   }
+  console.log('Aktuelle ausgewählte Kontakte: ', addTaskAssignedContacts);
+}
+
+function pressedCheckBoxStyle(idNumber) {
+  document.getElementById(`label-check${idNumber}`).classList.add('filter-to-white')
+  document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('ul-content-wrapper-no-click')
+  document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('pressed-drop-box-bg-color');
+
+}
+
+function unPressedCheckBoxStyle(idNumber) {
+  document.getElementById(`label-check${idNumber}`).classList.remove('filter-to-white')
+  document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('ul-content-wrapper-no-click')
+  document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('pressed-drop-box-bg-color');
+
+}
 
 function toggleContactDropBox() {
-   
-   if(!alreadyOpen) {
+
+  if (!alreadyOpen) {
     document.getElementById('contacts-drop-menu').classList.remove('d-none');
     document.getElementById('required-text-span').classList.add('d-none');
     document.getElementById('contact-input-wrapper').classList.add('d-none');
     document.getElementById('contacts-show-input').classList.remove('d-none');
-    
+
     alreadyOpen = true
-   }else {
+  } else {
     document.getElementById('contacts-drop-menu').classList.add('d-none');
     document.getElementById('required-text-span').classList.remove('d-none');
     document.getElementById('contact-input-wrapper').classList.remove('d-none');
     document.getElementById('contacts-show-input').classList.add('d-none');
-   
-    
-    alreadyOpen= false 
-   }
-}
 
-function taskDueDate() {
-  let dueDate = document.getElementById("task-due-date");
-  let date = new Date(dueDate.value);
-  let dateOption = { month: "long", day: "numeric", year: "numeric" };
-  let formattedDate = date.toLocaleDateString("en-US", dateOption);
-  addTaskDueDate = formattedDate;
-  dueDate.value = "";
+
+    alreadyOpen = false
+  }
 }
 
 function taskCategory() {
@@ -143,14 +112,14 @@ function taskSubtask() {
 
 
 
-function addnewTask() {
+async function addnewTask() {
   addTitle();
   addDescription();
-//   assignedContact(); maybe not needed anymore
+  //   assignedContact(); maybe not needed anymore
   taskDueDate();
   taskCategory();
   taskSubtask();
-  postData('tasks', {
+  await postData({
     'title': addTaskTitle,
     'description': addTaskDescription,
     'assigned': addTaskAssignedContacts,
@@ -159,7 +128,7 @@ function addnewTask() {
     'tag': addTaskCategory,
     'subtasks': addTaskSubtask,
     'status': taskStatus,
-  });
+  }, 'tasks');
   window.location.href = 'board.html';
 }
 
@@ -174,7 +143,6 @@ function checkIfFormFilled() {
   });
   if (allFilled) {
     document.getElementById('button-create-task').disabled = false;
-    addnewTask();
   } else {
     console.log(
       "Please fill out all required fields before submitting."

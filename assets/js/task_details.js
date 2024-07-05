@@ -218,9 +218,13 @@ function saveTaskUpdate() {
  * puts an array based on a querySelector with every subtaskitem to firebase
  * @param {string} relatedToTaskId - refers to a Task-ID and is used in path-param for putData
  */
-function updateSubtasks(relatedToTaskId) {
+async function updateSubtasks(relatedToTaskId) {
     let query = document.querySelectorAll('.subtaskitem')
     let result = [];
     query.forEach((item) => result.push(item.innerText));
-    putData(result, `tasks/${relatedToTaskId}/subtask`);
+
+    console.log(result);
+    // await putDataset({ post }, `tasks/${relatedToTaskId}/subtasks`);
+    // await putDataset({result : false}, `tasks/${relatedToTaskId}/subtasks`);
+    // await putDataset({'name': 'horst'}, 'playground')
 }
