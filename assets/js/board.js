@@ -32,37 +32,85 @@ function updateBoard(updateItem, fromLocation, targetLocation) {
 }
 
 async function renderTasks() {
-  const toDoField = document.getElementById('todo-field');
-  const inProgressField = document.getElementById('progress-field');
-  const awaitFeedbackField = document.getElementById('feedback-field');
-  const doneField = document.getElementById('done-field');
+  const statusFields = {
+    'todo': document.getElementById('todo-field'),
+    'progress': document.getElementById('progress-field'),
+    'feedback': document.getElementById('feedback-field'),
+    'done': document.getElementById('done-field')
+  };
 
   try {
     let data = await readData('tasks');
+
     for (let key in data) {
       const item = data[key];
+
+      if (statusFields[item.status]) {
+        // Await the result of the async function call
+        const taskCardHTML = await callContactInformationForTasks(
+          key,
+          item.status,
+          item.title,
+          item.description,
+          item.date,
+          item.prio,
+          item.tag,
+          item.subTasks
+        );
+
+        statusFields[item.status].innerHTML += taskCardHTML;
+      }
+
      
-      if (item.status == "todo") {
-        toDoField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.tag, item.subTasks);
-        
-      }
-     else if (item.status == "progress") {
-        inProgressField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.tag, item.subTasks);
-      }
-     else if (item.status == "feedback") {
-        awaitFeedbackField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.tag, item.subTasks);
-      }
-     else if (item.status == "done") {
-        doneField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.tag, item.subTasks);
-      }
-      prioEqualImg(item ,key);
+      prioEqualImg(item, key);
     }
-   
-    updateTaskFields(['todo', 'progress', 'feedback', 'done']);
+
+    updateTaskFields(Object.keys(statusFields));
   } catch (error) {
-    console.error(error);
+    console.error('Error rendering tasks:', error);
   }
 }
+
+async function callContactInformationForTasks(keyTasks, status, title, description, date, prio, tag, subTasks) {
+  let contactData = await readData('contacts');
+  const entries = sortByAlphabet(contactData, 'contacts');
+
+  // array for the first three iteration to store to use them later in the generateTaskCard
+  let firstThreeEntries = [];
+  let count = 0;
+
+  for (let key in entries) {
+    const contactEntries = entries[key];
+
+    if (count < 3) {
+      firstThreeEntries.push(contactEntries);
+    }
+
+    count++;
+
+    if (count >= 3) {
+      break;
+    }
+  }
+
+  // Generiere die Aufgabenkarte mit den ersten drei Einträgen
+  let taskCardHTML = generateTaskCard(
+    keyTasks,
+    status,
+    title,
+    description,
+    date,
+    prio,
+    tag,
+    subTasks,
+    firstThreeEntries  // Übergabe der ersten drei Einträge an generateTaskCard
+  );
+
+  return taskCardHTML;
+}
+
+
+
 
 function prioEqualImg (prio, key) {
   if(prio.priority === 'Urgent') {
