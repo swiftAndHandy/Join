@@ -43,13 +43,16 @@ async function renderTasks() {
       const item = data[key];
 
       if (item.status == "todo") {
-        toDoField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.priority, item.tag, item.subTasks);
-      } else if (item.status == "progress") {
-        inProgressField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.priority, item.tag, item.subTasks);
-      } else if (item.status == "feedback") {
-        awaitFeedbackField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.priority, item.tag, item.subTasks);
-      } else if (item.status == "done") {
-        doneField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.priority, item.tag, item.subTasks);
+        toDoField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
+      }
+     else if (item.status == "progress") {
+        inProgressField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
+      }
+     else if (item.status == "feedback") {
+        awaitFeedbackField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
+      }
+     else if (item.status == "done") {
+        doneField.innerHTML += generateTaskCard(key, item.status, item.title, item.description, item.date, item.prio, item.category, item.subTasks);
       }
 
     }
@@ -74,13 +77,12 @@ function startDrag(id, fromCategory) {
 
 /**
  * updates the category of a single item via drag and drop
- * update is only fullfilled, if a new category is choosen.
  * @param {string} newLocation - the new location of the item
  */
 async function dragTo(newLocation) {
   const item = currentlyDragged;
   const from = currentlyDraggedCategory;
-  if (item && from != newLocation) {
+  if (item) {
     await putData(newLocation, `tasks/${item}/status`);
     updateBoard(item, from, newLocation);
   }
@@ -94,8 +96,8 @@ async function dragTo(newLocation) {
  * @param {string} thisId - the item that should become moved
  */
 async function moveTo(newLocation, fromLocoation, thisId) {
-  await putData(newLocation, `tasks/${thisId}/status`);
-  updateBoard(thisId, fromLocoation, newLocation);
+    await putData(newLocation, `tasks/${thisId}/status`);
+    updateBoard(thisId, fromLocoation, newLocation);
 }
 
 function updateTaskFields(sections) {
@@ -146,5 +148,3 @@ function closeAddTaskPopUp() {
 //   // Deine Funktion, die beim Laden der Seite aufgerufen wird
 //   addOpenAddTaskToButtons(); // Füge onclick zu den Buttons hinzu
 // });
-
-
