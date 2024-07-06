@@ -59,14 +59,12 @@ async function renderTasks() {
           item.subTasks,
           item.assigned
         );
-
         statusFields[item.status].innerHTML += taskCardHTML;
       }
 
 
       prioEqualImg(item, key);
     }
-
     updateTaskFields(Object.keys(statusFields));
   } catch (error) {
     console.error('Error rendering tasks:', error);
