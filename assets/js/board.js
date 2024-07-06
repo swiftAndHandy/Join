@@ -6,6 +6,7 @@ function initBoard() {
   includeHTML();
   renderTasks();
   addOpenAddTaskToButtons()
+  
   document.addEventListener('dragend', () => {
     showDragArea('', false);
     currentlyDragged = null;
@@ -121,7 +122,7 @@ async function callContactInformationForTasks(keyTasks, status, title, descripti
     firstThreeEntries,
     assigned  // Übergabe der ersten drei Einträge an generateTaskCard
   );
-
+ 
   return taskCardHTML;
 }
 

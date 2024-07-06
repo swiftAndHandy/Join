@@ -19,9 +19,9 @@ function generateTaskCard( keyTasks, status, title, description, dueDate, prio, 
         <span>1/2 Subtasks</span>
       </div>
       <div class="assigned-user mt-24">
-        <div class="profile-pictures">
+        <div id="profile-circle-container" class="profile-pictures">
           <div class="profile-cricle" id=profile-circle-container0 style= "background-color:${contactEntries[0].color}">${assigned[0]}</div>
-          <div class="profile-cricle" id=profile-circle-container1 style= "background-color:${contactEntries[1].color}">${assigned[0]}}</div>
+          <div class="profile-cricle" id=profile-circle-container1 style= "background-color:${contactEntries[1].color}">${assigned[0]}</div>
           <div class="profile-cricle" id=profile-circle-container2 style= "background-color:${contactEntries[2].color}">${assigned[0]}</div>
         </div>
         <div>
@@ -31,3 +31,16 @@ function generateTaskCard( keyTasks, status, title, description, dueDate, prio, 
     </div>
   </article>`;
 }
+
+// function addProfileCircles(keyTasks, status, title, description, date, prio, tag, subTasks, assigned, contactEntries) {
+//   let target = document.getElementById('profile-circle-container')
+
+//   // Iteriere über die zugewiesenen Kontakte und füge die Profilkreise hinzu
+//   for (let i = 0; i < assigned.length && i < 3; i++) {
+//     target.insertAdjacentHTML('beforeend', `
+//       <div class="profile-circle" id="profile-circle-container${i}" style="background-color:${contactEntries[i].color}">
+//         ${assigned[i]}
+//       </div>
+//     `);
+//   }
+// }
