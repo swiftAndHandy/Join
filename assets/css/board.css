@@ -45,6 +45,10 @@ background-color: #1FD7C1 !important;
   overflow: hidden;
 }
 
+.drag-area {
+  background-color: rgba(112, 112, 112, 0.1) !important;
+}
+
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   appearance: none;
@@ -163,6 +167,8 @@ h2 {
 
 .section-container {
   margin-top: 26px;
+  border-radius: 10px;
+  transition: background-color 0.15s ease-in-out;
 }
 
 .task-card-container {

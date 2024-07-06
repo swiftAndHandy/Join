@@ -7,6 +7,7 @@ function initBoard() {
   renderTasks();
   addOpenAddTaskToButtons()
   document.addEventListener('dragend', () => {
+    showDragArea('', false);
     currentlyDragged = null;
     currentlyDraggedCategory = null;
   });
@@ -62,7 +63,7 @@ async function renderTasks() {
         statusFields[item.status].innerHTML += taskCardHTML;
       }
 
-     
+
       prioEqualImg(item, key);
     }
 
@@ -87,7 +88,7 @@ async function renderTasks() {
  * @param {string} subTasks - The subTasks value from the database.
  * @returns {Promise<string>} A promise that includes the generated HTML for the task card.
  */
-async function callContactInformationForTasks(keyTasks, status, title, description, date, prio, tag, subTasks,assigned) {  // maybe not the right approch should check it tommorw maybe  i have to get the color form the contaacts also in the assigend tab
+async function callContactInformationForTasks(keyTasks, status, title, description, date, prio, tag, subTasks, assigned) {  // maybe not the right approch should check it tommorw maybe  i have to get the color form the contaacts also in the assigend tab
   let contactData = await readData('contacts');
   const entries = sortByAlphabet(contactData, 'contacts');
 
@@ -129,18 +130,18 @@ async function callContactInformationForTasks(keyTasks, status, title, descripti
 
 
 
-function prioEqualImg (prio, key) {
-  if(prio.priority === 'Urgent') {
-   let prioImg = document.getElementById(`prio-img${key}`);
-    prioImg.src = "./assets/img/icons/urgent.svg";
-  } else if(prio.priority === 'Medium') {
+function prioEqualImg(prio, key) {
+  if (prio.priority === 'Urgent') {
     let prioImg = document.getElementById(`prio-img${key}`);
-     prioImg.src = "./assets/img/icons/medium.svg";
-}else if(prio.priority === 'Low') {
-  let prioImg = document.getElementById(`prio-img${key}`);
-   prioImg.src = "./assets/img/icons/low.svg";
+    prioImg.src = "./assets/img/icons/urgent.svg";
+  } else if (prio.priority === 'Medium') {
+    let prioImg = document.getElementById(`prio-img${key}`);
+    prioImg.src = "./assets/img/icons/medium.svg";
+  } else if (prio.priority === 'Low') {
+    let prioImg = document.getElementById(`prio-img${key}`);
+    prioImg.src = "./assets/img/icons/low.svg";
 
-}
+  }
 }
 
 function updateAfterDrag() {
@@ -177,21 +178,23 @@ async function dragTo(newLocation) {
  * @param {string} thisId - the item that should become moved
  */
 async function moveTo(newLocation, fromLocoation, thisId) {
-    await putData(newLocation, `tasks/${thisId}/status`);
-    updateBoard(thisId, fromLocoation, newLocation);
+  await putData(newLocation, `tasks/${thisId}/status`);
+  updateBoard(thisId, fromLocoation, newLocation);
 }
 
 /**
  * 
  * @param {string} targetArea - Section where a drag- and drop-change is required
- * @param {boolean}[display = false] display - 
+ * @param {boolean}[display = true] - display drag area by default
  */
-function showDragArea(area, display = false) {
-  const targetArea = document.getElementById(`${area}-section`);
-  if (display) {
-    targetArea.classList.add('drag-area');
-  } else {
-    targetArea.classList.remove('drag-area');
+function showDragArea(area, display = true) {
+  const sections = ['todo', 'progress', 'feedback', 'done'];
+  for (let item of sections) {
+    if (item === area) {
+      document.getElementById(`${area}-section`).classList.add('drag-area');
+    } else {
+      document.getElementById(`${item}-section`).classList.remove('drag-area');
+    }
   }
 }
 
