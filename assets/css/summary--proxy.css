@@ -148,41 +148,6 @@ main {
     justify-content: center;
     box-sizing: border-box;
     width: 100%;
-    background-image: url('../img/icons/urgent-hover.svg');
-    background-repeat: no-repeat;
-    background-position: 8% center;
-}
-
-.summary-card--large:hover {
-    background-image: url('../img/icons/urgent-hover.svg');
-}
-
-.summary-todo {
-    background-image: url('../img/icons/pencil-summary.svg');
-    background-repeat: no-repeat;
-    background-position: 25% center;
-}
-
-.summary-todo:hover {
-    background-image: url('../img/icons/pencil-summary-hover.svg');
-}
-
-.summary-todo:active {
-    background-image: url('../img/icons/pencil-summary.svg');
-}
-
-.summary-done {
-    background-image: url('../img/icons/done-summary.svg');
-    background-repeat: no-repeat;
-    background-position: 25% center;
-}
-
-.summary-done:hover {
-    background-image: url('../img/icons/done-summary-hover.svg');
-}
-
-.summary-done:active {
-    background-image: url('../img/icons/done-summary.svg');
 }
 
 .summary-counter {
@@ -212,6 +177,40 @@ main {
     min-width: 40px;
     max-width: 40px;
 
+}
+
+.icon-wrapper.urgent-icon {
+    background-image: url('../img/icons/urgent-hover.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.icon-wrapper.todo-icon {
+    background-image: url('../img/icons/pencil-summary.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.summary-todo:hover .todo-icon{
+    background-image: url('../img/icons/pencil-summary-hover.svg');
+}
+
+.summary-todo:active .todo-icon {
+    background-image: url('../img/icons/pencil-summary.svg');
+}
+
+.icon-wrapper.done-icon {
+    background-image: url('../img/icons/done-summary.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.summary-done:hover .icon-wrapper.done-icon{
+    background-image: url('../img/icons/done-summary-hover.svg');
+}
+
+.summary-done:active .icon-wrapper.done-icon {
+    background-image: url('../img/icons/done-summary.svg');
 }
 
 .task-counter {

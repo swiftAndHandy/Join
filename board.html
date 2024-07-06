@@ -73,7 +73,7 @@
             </div>
           </div>
           <main class="board-content">
-            <section class="section-container" ondrop="dragTo('todo')" ondragover="allowDrop(event)">
+            <section id="todo-section" class="section-container" ondrop="dragTo('todo')" ondragover="allowDrop(event)" ondragenter="showDragArea('todo', true)" ondragleave="showDragArea('todo', false)">
               <div class="section-headline">
                 <h2>To do</h2>
                 <button class="add-cross-btn-small">

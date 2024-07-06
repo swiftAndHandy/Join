@@ -181,6 +181,20 @@ async function moveTo(newLocation, fromLocoation, thisId) {
     updateBoard(thisId, fromLocoation, newLocation);
 }
 
+/**
+ * 
+ * @param {string} targetArea - Section where a drag- and drop-change is required
+ * @param {boolean}[display = false] display - 
+ */
+function showDragArea(area, display = false) {
+  const targetArea = document.getElementById(`${area}-section`);
+  if (display) {
+    targetArea.classList.add('drag-area');
+  } else {
+    targetArea.classList.remove('drag-area');
+  }
+}
+
 function updateTaskFields(sections) {
   for (let item in sections) {
     hideWindow(`task-field-${sections[item]}`, document.getElementById(`${sections[item]}-field`).innerHTML.trim() !== "");
