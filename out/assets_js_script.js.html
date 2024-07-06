@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: assets/js/script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: assets/js/script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const BASE_URL = 'https://join-256-default-rtdb.europe-west1.firebasedatabase.app/';
+const userId = localStorage.getItem('id');
+
+/**
+ * @returns colors - a random element of global const colors. 
+ * e. g.: use this when you add a new contact, that hasn't a own user-account
+ */
+function applyRandomColor() {
+    const colors = [
+        '#FF7A00', '#FF5EB3', '#6E52FF',
+        '#9327FF', '#00BEE8', '#1FD7C1',
+        '#FF745E', '#FFA35E', '#FC71FF',
+        '#FFC701', '#0038FF', '#C3FF2B',
+        '#FFE62B', '#FF4646', '#FFBB2B'
+    ];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+}
+
+//needs some changes to make this usable in every situation -> date from firebase as param
+function taskDueDate(date) {
+    date = new Date(date);
+    let dateOption = { month: "long", day: "numeric", year: "numeric" };
+    let formattedDate = date.toLocaleDateString("en-US", dateOption);
+    return formattedDate;
+  }
+
+/**
+ * Sorts contacts by name alphabetically.
+ * 
+ * @param {Object[]} data - The array of contact objects.
+ * @returns {Object[]} The sorted array of contacts with an additional key.
+ */
+function sortByAlphabet(data, origin) {
+    let entries = Object.entries(data).map(([id, contact]) => ({ 
+        id, ...contact, path: `${origin}/${id}`
+    }));
+    return entries.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/**
+ * Capitalizes the first letter of the input string and converts the rest to lowercase.
+ * Capitalizes the first letter after a '-' to avoid double-names-issues.
+ *
+ * @param {string} input - The string to be formatted.
+ * @returns {string} - The formatted string with the first letter capitalized and the rest in lowercase.
+ */
+function capitaliseFirstLetters(input) {
+    input = input.split(' ').map(word =>
+        word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+    return input.split('-').map(word =>
+        word.charAt(0).toUpperCase() + word.slice(1)).join('-');
+}
+
+
+/**
+ * Applys d-none or removes d-none from 
+ * @param {Element} id - the document.elementId that is planed to change
+ * @param {boolean} method - hideWindow is true -> hideWindow. hideWindow is false? Show it.
+ */
+function hideWindow(id, method = true) {
+    let target = document.getElementById(id);
+    method ? target.classList.add('d-none') : target.classList.remove('d-none');
+    return target;
+}
+
+/**
+ * Triggers a localStorage clear and replaces the url to index to logout the user.
+ */
+function logout() {
+    clearLocalstorage();
+    window.location.replace('../index.html');
+}
+
+
+/**
+ * clear localStorage()
+ */
+function clearLocalstorage() {
+    localStorage.removeItem('id');
+    localStorage.removeItem('login');
+}
+
+/**
+ * Used to get the initials of a Name.
+ * @param {string} input - string to modify.
+ * @returns - every first character of every word in input
+ */
+function initials(input) {
+    return input.toUpperCase().split(' ').map(word => word.charAt(0)).join('');
+}
+
+/**
+ * Prevent event-bubbeling
+ * @param {*} event 
+ */
+function stopPropagation(event) {
+    event.stopPropagation();
+};
+
+
+/**
+ * Sends a PUT request to the specified path with the provided data.
+ *
+ * @param {Object} data - The data to be sent in the body of the PUT request. Defaults to an empty object.
+ * * @param {string} path - The path to which the data should be sent. Defaults to an empty string.
+ * @returns {Promise&lt;Object>} - A promise that resolves to the JSON response from the server.
+ */
+async function putDataset(data = {}, path = "") {
+    let response = await fetch(BASE_URL + path + '.json', {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+    });
+    return await response.json();
+}
+
+
+/**
+ * Sends a PUT request to the specified path with the provided data.
+ *
+ * @param {string} data - The datastring that's sent in the body of the PUT request. Defaults to an empty object.
+ * * @param {string} path - The path to which the data should be sent. Defaults to an empty string.
+ * @returns {Promise&lt;Object>} - A promise that resolves to the JSON response from the server.
+ */
+async function putData(value, path = "") {
+    const response = await fetch(BASE_URL + path + '.json', {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(value)
+    });
+    return await response.json();
+}
+
+
+/**
+ * Submits a POST-Query to Firebase
+ * @param {string} path - Subpath at Firebase-Server
+ * @param {Object} data - Data-Object transmitted 
+ * @returns {Promise&lt;Object>}
+ */
+async function postData(data = {}, path = "") {
+    const response = await fetch(BASE_URL + path + '.json', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+
+    });
+    return await response.json();
+
+
+}
+
+/**
+ * responseToJason is containing every user. It's iterated by every userKeyArray-Index to  
+ * compare Login-Form-Information with provided server-information.
+ * If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
+ * @param {string} path 
+ */
+async function readData(path) {
+    const response = await fetch(BASE_URL + path + '.json');
+    return await response.json();
+}
+
+/**
+ * Deletes data from firebase-storage
+ * @param {string} path 
+ * @returns -need to be added
+ */
+async function deleteData(path = "") {
+    let response = await fetch(BASE_URL + path + '.json',{
+        method: "DELETE",
+
+    });
+    return await response.json();
+}
+
+/**
+ * Checks if a user account with the given email address and optional password exists.
+ * @param {string} email - The email address to check for an existing account.
+ * @param {string} [password=false] - The password to check for. If no password is provided, only the email is checked.
+ * @returns {(Object|boolean)} - Returns the user object if an account with the given email (and optional password) exists,
+ *                               or false if no account is found or an error occurs.
+ */
+async function accountExists(email, password = false) {
+    try {
+        const output = await readData('accounts');
+        const outputArray = Object.entries(output);
+        if (!password &amp;&amp; password !== "") {
+            return outputArray.find(entry => entry[1]['email'] === email.toLowerCase());
+        } else {
+            return outputArray.find(entry => entry[1]['email'] === email.toLowerCase() &amp;&amp; entry[1]['password'] === password);
+        }
+    } catch (error) {
+        return false;
+    }
+}
+
+/**
+ * @param {string[]} openSubtasks - an array with open subtask-goals
+ * @param {string[]} closedSubtasks - an array with closed subtask-goals
+ * @returns {Object.&lt;number, Object.&lt;string, string>>} - An Object, with numbers as key. the value is another object,
+ *                                                       containing the subtask-goal and it's current state
+ */
+function createSubtasks(subtaskArray = [], done = false) {
+    const subtaskObjects = [];
+    for (item of subtaskArray) {
+        subtaskObjects.push({
+            'name': item,
+            'done': done
+        })
+    }
+
+    return subtaskObjects;
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#applyRandomColor">applyRandomColor</a></li><li><a href="global.html#autofillLogin">autofillLogin</a></li><li><a href="global.html#avatarHtml">avatarHtml</a></li><li><a href="global.html#blurListener">blurListener</a></li><li><a href="global.html#callContactInformationForTasks">callContactInformationForTasks</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#clearLocalstorage">clearLocalstorage</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#createContact">createContact</a></li><li><a href="global.html#createSubtasks">createSubtasks</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#deleteData">deleteData</a></li><li><a href="global.html#deleteSubtask">deleteSubtask</a></li><li><a href="global.html#discardNewSubtask">discardNewSubtask</a></li><li><a href="global.html#discardSubtaskInput">discardSubtaskInput</a></li><li><a href="global.html#dragTo">dragTo</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#focusListener">focusListener</a></li><li><a href="global.html#forceLogout">forceLogout</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#getDeadline">getDeadline</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#handleCheckBox">handleCheckBox</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#openEditContactPage">openEditContactPage</a></li><li><a href="global.html#openListSearch">openListSearch</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#openSubtaskInput">openSubtaskInput</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#putContactInfoToEditDialog">putContactInfoToEditDialog</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#putDataset">putDataset</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#renderContactList">renderContactList</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#saveTaskUpdate">saveTaskUpdate</a></li><li><a href="global.html#searchContact">searchContact</a></li><li><a href="global.html#setFocus">setFocus</a></li><li><a href="global.html#setMyAvatar">setMyAvatar</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#setupListener">setupListener</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#sortByAlphabet">sortByAlphabet</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#toggleThis">toggleThis</a></li><li><a href="global.html#toggleVisibility">toggleVisibility</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateBoardCounters">updateBoardCounters</a></li><li><a href="global.html#updateMenu">updateMenu</a></li><li><a href="global.html#updateSubtaskInput">updateSubtaskInput</a></li><li><a href="global.html#updateSubtasks">updateSubtasks</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Fri Jul 05 2024 22:38:42 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -36,6 +36,11 @@ body {
   
 }
 
+.Technical-Task {
+background-color: #1FD7C1 !important;
+
+}
+
 .overflow-all-hidden {
   overflow: hidden;
 }
@@ -196,6 +201,7 @@ h2 {
 
 .task-sub-headline {
   color: #a8a8a8;
+  min-height: 40px;
 }
 
 .mt-24 {

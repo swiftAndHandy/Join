@@ -171,7 +171,7 @@ async function readData(path) {
 /**
  * Deletes data from firebase-storage
  * @param {string} path 
- * @returns 
+ * @returns -need to be added
  */
 async function deleteData(path = "") {
     let response = await fetch(BASE_URL + path + '.json',{
