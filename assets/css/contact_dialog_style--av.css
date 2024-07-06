@@ -31,6 +31,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
+    z-index: 2;
   }
   
   .dialog-container {
@@ -215,6 +216,7 @@ body {
     font-weight: 700;
     line-height: 25px;
     cursor: pointer;
+    border: none;
   }
   
   .contact-save-btn:hover {
@@ -364,7 +366,6 @@ body {
   
     .close {
       top: 48px;
-      left: 1132px;
       filter: brightness(0) saturate(100%) invert(16%) sepia(48%) saturate(414%) hue-rotate(176deg) brightness(93%) contrast(89%);
     }
   
@@ -380,52 +381,12 @@ body {
   
     @media (max-width: 1160px) {
   
-      .close {
-        left: 1120px;
-      }
-  
       .upper-card {
         width: 360px;
       }
   
       .profil-img {
         left: 400px;
-      }
-    }
-  
-    @media (max-width: 1142px) {
-      .close {
-        left: 1100px;
-      }
-    }
-  
-    @media(max-width: 1123px) {
-      .close {
-        left: 1080px;
-      }
-    }
-  
-    @media(max-width: 1101px) {
-      .close {
-        left: 1050px;
-      }
-    }
-  
-    @media(max-width: 1072px) {
-      .close {
-        left: 1010px;
-      }
-    }
-  
-    @media (max-width: 1031px) {
-      .close {
-        left: 960px;
-      }
-    }
-  
-    @media(max-width: 990px) {
-      .close {
-        left: 920px;
       }
     }
   }

@@ -214,6 +214,7 @@ main {
   font-weight: 700;
   line-height: 25px;
   cursor: pointer;
+  border: none;
 }
 
 .contact-save-btn:hover {
