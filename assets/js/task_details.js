@@ -1,5 +1,5 @@
 let editPriority;
-let assignedPersons = null;
+let assignedPersons = [];
 
 function initTaskDetails() {
     setupListener();
@@ -7,8 +7,8 @@ function initTaskDetails() {
 
 async function openTaskDetails(taskId) {
     await renderTaskDetails(taskId);
+    await renderContactList();
     document.getElementById('task-details-edit-btn').setAttribute('onclick', `openEditDialog('${taskId}')`);
-    renderContactList();
 }
 
 /**
@@ -34,7 +34,7 @@ async function renderTaskDetails(taskId) {
  * Controls the design of checkboxes on the assigned-contacts-list
  * @param {string} id 
  */
-function toggleThis(id) {
+function toggleThisContact(id) {
     const contactId = document.getElementById(`assign-contact-${id}`);
     const checkboxId = document.getElementById(`assign-contact-checkbox-${id}`);
     const pseudoCheckboxId = document.getElementById(`assign-contact-pseudo-checkbox-${id}`);
@@ -48,13 +48,14 @@ function toggleThis(id) {
  * Setup some Event-Listeners for focus-design on edit-task-details input-fields (contact-search and add-new-subtask)
  */
 function setupListener() {
-    let listener = document.getElementById('edit-add-subtask')
+    let listener = document.getElementById('edit-add-subtask');
     listener.addEventListener('focus', focusListener);
     listener.addEventListener('blur', blurListener);
 
-    listener = document.getElementById('edit-task-list-input-field')
-    listener.addEventListener('focus', () => document.getElementById('edit-task-contact-list-input').classList.add('focus'));
-    listener.addEventListener('blur', () => document.getElementById('edit-task-contact-list-input').classList.remove('focus'));
+    listener = document.getElementById('edit-task-list-input-field');
+    const target = 'edit-task-contact-list-input';
+    listener.addEventListener('focus', () => document.getElementById(target).classList.add('focus'));
+    listener.addEventListener('blur', () => document.getElementById(target).classList.remove('focus'));
 }
 
 /**
@@ -63,8 +64,8 @@ function setupListener() {
  */
 function focusListener() {
     document.getElementById('edit-subtask-box').classList.add('focus');
-    document.getElementById('edit-view-subtask-navigation').classList.remove('d-none');
-    document.getElementById('edit-view-subtask-add').classList.add('d-none');
+    hideWindow('edit-view-subtask-navigation', false);
+    hideWindow('edit-view-subtask-add');
 }
 
 
@@ -77,8 +78,8 @@ function blurListener() {
     let listener = document.getElementById('edit-add-subtask')
     document.getElementById('edit-subtask-box').classList.remove('focus');
     if (!listener.value) {
-        document.getElementById('edit-view-subtask-navigation').classList.add('d-none');
-        document.getElementById('edit-view-subtask-add').classList.remove('d-none');
+        hideWindow('edit-view-subtask-navigation');
+        hideWindow('edit-view-subtask-add', false);
     }
 }
 
@@ -92,7 +93,8 @@ function toggleVisibility(id) {
     return document.getElementById(id);
 }
 
-function openEditDialog() {
+async function openEditDialog(taskId) {
+    
     toggleVisibility('task-edit-view'); toggleVisibility('task-details-view');
 }
 

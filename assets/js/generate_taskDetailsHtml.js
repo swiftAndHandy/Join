@@ -2,7 +2,7 @@
 function generateContactsHtml(data) {
     const target = document.getElementById('edit-task-contacts-list');
     target.innerHTML += `
-        <div id="assign-contact-${data.path}" class="single-contact" onclick="toggleThis('${data.path}')">
+        <div id="assign-contact-${data.path}" class="single-contact" onclick="toggleThisContact('${data.path}')">
             <div class="user-box">
                 <div id="edit-task-avatar-${data.id}" class="avatar at-drop-down" style="background-color: ${data['color']};">${initials(data.name)}</div>
                     <span id="edit-task-username-${data.id}">${data.name}</span>
@@ -34,37 +34,50 @@ async function generateTaskDetailsHtml(taskId, taskDetails) {
     priority.innerHTML = taskDetails['priority'];
     priorityImg.src = `../assets/img/icons/priority_${taskDetails['priority'].toLowerCase()}.svg`;
 
-    const assignedTo = document.getElementById('details-assigned-list');
-    assignedTo.innerHTML = await assignedPersonsDetailedHtml(taskDetails['assigned']);
+    const assignedToDetails = document.getElementById('details-assigned-list');
+    const assignedToEdit = document.getElementById('task-edit-view-assigned-persons')
+    assignedPersons = taskDetails['assigned'];
+    assignedToDetails.innerHTML = await assignedPersonsDetailsHtml(assignedPersons);
+    assignedToEdit.innerHTML = await assignedPersonsEditHtml(assignedPersons);
 
     const deleteBtn = document.getElementById('task-details-delete-btn');
     deleteBtn.setAttribute('onclick', `deleteTask('${taskId}')`);
 }
 
-async function assignedPersonsDetailedHtml(contactIds) {
-    const data = await readData(`contacts`);
+async function assignedPersonsDetailsHtml(contactIds) {
     let output = '';
-    let keys = Object.keys(data);
-    for (let i = 0; i < keys.length; i++) {
-        try {
-            if (contactIds.includes(keys[i])) {
-                output += `
+    try {
+        for (let item of contactIds) {
+            const data = await readData(`contacts/${item}`)
+            output += `
                 <div class="details__inner">
-                <div id="edit-task-avatar-ID" class="avatar at-drop-down" style="background-color: ${data[keys[i]].color};">${initials(data[keys[i]].name)}</div>
-                    <span id="edit-task-username-ID">${data[keys[i]].name}</span>
+                <div id="task-details-avatar-${item}" class="avatar at-drop-down" style="background-color: ${data.color};">${initials(data.name)}</div>
+                    <span id="edit-task-username-ID">${data.name}</span>
                 </div>
                 `;
-            }
-        } catch (error) {}
-    }
+        }
+    } catch (error) {}
+    return output;
+}
+
+async function assignedPersonsEditHtml(contactIds) {
+    let output = ''
+    for (let item of contactIds) {
+        const data = await readData(`contacts/${item}`)
+            output += `
+            <div id="edit_task_assigned-person-${item}" class="details__inner">
+                <div id="edit-task-avatar-${item}" class="avatar at-drop-down" style="background-color: ${data.color};">${initials(data.name)}</div>
+            </div>
+            `
+        }
     return output;
 }
 
 function addNewSubtask(value) {
     const target = document.getElementById('edit-subtask-item-wrapper');
-    const id = Math.random().toString(36).substr(2, 9) + '-' + Date.now();
+    const id = Math.random().toString(36).slice(2, 9) + '-' + Date.now();
 
-    target.insertAdjacentHTML('beforeend',`
+    target.insertAdjacentHTML('beforeend', `
     <div id="edit-subtask-total-${id}" class="li-wrapper"
         ondblclick="openSubtaskInput('${id}');stopPropagation(event);">
         <ul id="edit-subtasks-unsorted-${id}" class="edit-subtasks-list"">
