@@ -50,7 +50,7 @@
       
       <div w3-include-html="./assets/templates/menu-bar.html"></div>
       
-        <div class="board">
+        <div class="board" ondragenter="showDragArea('', false);stopPropagation(event);">
           <div class="board-headline">
             <div class="board-headline-container">
               <h1>Board</h1>
