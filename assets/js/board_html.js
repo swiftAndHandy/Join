@@ -20,9 +20,9 @@ function generateTaskCard( keyTasks, status, title, description, dueDate, prio, 
       </div>
       <div class="assigned-user mt-24">
         <div class="profile-pictures">
-          <div class="profile-cricle" id=profile-circle-container0 style= "background-color:${contactEntries[0].color}">${initials(assigned[0])}</div>
-          <div class="profile-cricle" id=profile-circle-container1 style= "background-color:${contactEntries[1].color}">${initials(assigned[0])}</div>
-          <div class="profile-cricle" id=profile-circle-container2 style= "background-color:${contactEntries[2].color}">${initials(assigned[0])}</div>
+          <div class="profile-cricle" id=profile-circle-container0 style= "background-color:${contactEntries[0].color}">${assigned[0]}</div>
+          <div class="profile-cricle" id=profile-circle-container1 style= "background-color:${contactEntries[1].color}">${assigned[0]}}</div>
+          <div class="profile-cricle" id=profile-circle-container2 style= "background-color:${contactEntries[2].color}">${assigned[0]}</div>
         </div>
         <div>
           <img id="prio-img${keyTasks}" src="./assets/img/icons/priority_medium.svg" alt="">
