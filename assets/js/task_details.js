@@ -4,12 +4,15 @@ let subtasksToUpdate = [];
 
 function initTaskDetails() {
     setupListener();
+    renderContactList();
 }
 
 async function openTaskDetails(taskId) {
+    hideWindow('task-details-view', false);
     const assignedContacts = await renderTaskDetails(taskId);
-    await renderContactList(assignedContacts);
+    activateAssignedContacts(assignedContacts);
     document.getElementById('task-details-edit-btn').setAttribute('onclick', `openEditDialog('${taskId}')`);
+    
 }
 
 /**
@@ -23,7 +26,6 @@ async function renderContactList(assignedContacts) {
     for (let i = 0; i < entries.length; i++) {
         generateContactsHtml(entries[i]);
     }
-    activateAssignedContacts(assignedContacts);
 }
 
 /**

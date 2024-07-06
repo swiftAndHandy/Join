@@ -2,8 +2,8 @@ let currentlyDragged = null;
 let currentlyDraggedCategory = null;
 
 
-function initBoard() {
-  includeHTML();
+async function initBoard() {
+  await includeHTML();
   renderTasks();
   addOpenAddTaskToButtons()
   
@@ -12,6 +12,8 @@ function initBoard() {
     currentlyDragged = null;
     currentlyDraggedCategory = null;
   });
+
+  initTaskDetails();
 }
 
 

@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./assets/js/script.js"></script>
     <script src="./node_modules/drag-drop-touch/DragDropTouch.js"></script>
-    <script src="./assets/js/generateHtml.js"></script>
     <script src="/assets/js/menu-bar-script.js"></script>
     <script src="./assets/js/board_html.js"></script>
     <script src="./assets/js/board.js"></script>
     <script src="./assets/js/add_task.js"></script>
+    <script src="./assets/js/task_details.js"></script>
+    <script src="./assets/js/generate_taskDetailsHtml.js"></script>
     <link rel="stylesheet" href="./assets/css/add_task_style_dialog.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/menu-bar.css">
@@ -46,8 +47,8 @@
     <title>Board</title>
   </head>
   <body onload="initBoard()">
+    <section w3-include-html="./task_details.html" class=""></section>
     <div class="body-mobile">
-      
       <div w3-include-html="./assets/templates/menu-bar.html"></div>
       
         <div class="board" ondragenter="showDragArea('', false);stopPropagation(event);">

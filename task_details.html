@@ -1,182 +1,164 @@
-<!-- Only for Testing. Planed to merge this into board.html, so it's necessary to remove basic-stuff before merge -->
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/fonts.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/board.css">
-    <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/task_details.js"></script>
-    <script src="./assets/js/generate_taskDetailsHtml.js"></script>
-</head>
-
-<body class="flex-center" onload="initTaskDetails()">
-
-    <!-- Needs position relative -->
-    <section class="outer-wrapper">
-        <!-- Start Merge here -->
-        <div class="task-card-wrapper">
-            <section id="task-details-view" class="task-card-view">
-                <div class="details__header">
-                    <span id="task-details-tag"></span>
-                    <div class="close-btn" onclick="toggleVisibility('task-details-view')"></div>
-                </div>
-                <div class="details__title-wrapper">
-                    <h1 id="task-details-title" class="details__title"></h1>
-                    <p id="task-details-description" class="details__description"></p>
-                </div>
-                <div class="details__info-box">
-                    <strong class="details__caption">Due date:</strong>
-                    <span id="task-details-deadline" class="details__information"></span>
-                </div>
-                <div class="details__info-box">
-                    <strong class="details__caption">Priority:</strong>
-                    <div class="details__priority-wrapper">
-                        <span id="details-priority-text" class="details__information"></span>
-                        <img id="details-priority-img" class="priority-icon" src="" alt="">
-                    </div>
-                </div>
-                <div class="details__info-box vertical">
-                    <strong class="details__caption">Assigned To:</strong>
-                    <div id="details-assigned-list" class="details__vertical-wrapper">
-                        <!--START: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
-                        <!-- <div class="details__inner">
+<!-- Start Merge here -->
+<div class="task-card-wrapper">
+    <section id="task-details-view" class="task-card-view d-none">
+        <div class="details__header">
+            <span id="task-details-tag"></span>
+            <div class="close-btn" onclick="toggleVisibility('task-details-view')"></div>
+        </div>
+        <div class="details__title-wrapper">
+            <h1 id="task-details-title" class="details__title"></h1>
+            <p id="task-details-description" class="details__description"></p>
+        </div>
+        <div class="details__info-box">
+            <strong class="details__caption">Due date:</strong>
+            <span id="task-details-deadline" class="details__information"></span>
+        </div>
+        <div class="details__info-box">
+            <strong class="details__caption">Priority:</strong>
+            <div class="details__priority-wrapper">
+                <span id="details-priority-text" class="details__information"></span>
+                <img id="details-priority-img" class="priority-icon" src="" alt="">
+            </div>
+        </div>
+        <div class="details__info-box vertical">
+            <strong class="details__caption">Assigned To:</strong>
+            <div id="details-assigned-list" class="details__vertical-wrapper">
+                <!--START: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
+                <!-- <div class="details__inner">
                             <img id="assigned-person-image-index" src="./assets/img/icons/user-proxy.svg" alt="Avatar">
                             <span id="assigned-person-index" class="details__information">Emmanuel Mauer</span>
                         </div> -->
-                        <!--END: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
-                    </div>
+                <!--END: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
+            </div>
+        </div>
+        <div class="details__info-box vertical">
+            <strong class="details__caption">Subtasks:</strong>
+            <div id="details-subtasks-list" class="details__vertical-wrapper">
+                <!--START: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
+                <div class="details__subtask">
+                    <input type="checkbox" class="edit checkbox" id="details-subtask-index" name="details-subtask-index"
+                        onclick="toggleThis(id)">
+                    <label id="label-for-details-subtask-index" for="details-subtask-index">Implement Recipe
+                        Recommendation</label>
                 </div>
-                <div class="details__info-box vertical">
-                    <strong class="details__caption">Subtasks:</strong>
-                    <div id="details-subtasks-list" class="details__vertical-wrapper">
-                        <!--START: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
-                        <div class="details__subtask">
-                            <input type="checkbox" class="edit checkbox" id="details-subtask-index"
-                                name="details-subtask-index" onclick="toggleThis(id)">
-                            <label id="label-for-details-subtask-index" for="details-subtask-index">Implement Recipe Recommendation</label>
-                        </div>
-                        <!--END: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
-                        <!--START: More List-Items for better visualisation of the final design -->
-                        <div class="details__subtask">
-                            <input type="checkbox" class="edit checkbox" id="details-subtask-1"
-                                name="details-subtask-index" onclick="toggleThis(id)">
-                            <label id="label-for-details-subtask-1" for="details-subtask-1">Start Page Layout</label>
-                        </div>
-                        <!--END of additinal List-Items for better visualisation of the final design -->
-                    </div>
+                <!--END: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
+                <!--START: More List-Items for better visualisation of the final design -->
+                <div class="details__subtask">
+                    <input type="checkbox" class="edit checkbox" id="details-subtask-1" name="details-subtask-index"
+                        onclick="toggleThis(id)">
+                    <label id="label-for-details-subtask-1" for="details-subtask-1">Start Page Layout</label>
                 </div>
-                <div class="details__bottom">
-                    <div class="icon-box" id="delete">
-                        <button id="task-details-delete-btn" class="task-link details__information">
-                            <img src="./assets/img/icons/delete.svg" alt="">
-                            <span>Delete</span>
-                        </button>
-                    </div>
-                    <div class="line"></div>
-                    <div class="icon-box" id="edit">
-                        <div class="edit-icon"></div>
-                        <button id="task-details-edit-btn" class="task-link details__information">
-                            <img src="./assets/img/icons/edit.svg" alt="">
-                            <span>Edit</span>
-                        </button>
-                    </div>
-                </div>
-            </section>
+                <!--END of additinal List-Items for better visualisation of the final design -->
+            </div>
+        </div>
+        <div class="details__bottom">
+            <div class="icon-box" id="delete">
+                <button id="task-details-delete-btn" class="task-link details__information">
+                    <img src="./assets/img/icons/delete.svg" alt="">
+                    <span>Delete</span>
+                </button>
+            </div>
+            <div class="line"></div>
+            <div class="icon-box" id="edit">
+                <div class="edit-icon"></div>
+                <button id="task-details-edit-btn" class="task-link details__information">
+                    <img src="./assets/img/icons/edit.svg" alt="">
+                    <span>Edit</span>
+                </button>
+            </div>
+        </div>
+    </section>
 
 
 
-            
-            <section id="task-edit-view" class="task-card-view d-none"
-                onclick="resetInputFields();stopPropagation(event);">
-                <div class="details__header titleless">
-                    <div class="close-btn"
-                        onclick="toggleVisibility('task-edit-view');toggleVisibility('task-details-view');"></div>
-                </div>
-                <div class="scroll-bar-wrapper edit">
-                    <div class="details__title-wrapper edit">
-                        <strong class="details__caption">Title:</strong>
-                        <input id="update-title" type="text" class="details__title edit this-entry"
-                            value="CSS Architecture Planning">
-                    </div>
-                    <div class="details__info-box edit">
-                        <strong class="details__caption">Description</strong>
-                        <!-- <input id="update-description" type="text" class="edit this-entry"
+
+    <section id="task-edit-view" class="task-card-view d-none" onclick="resetInputFields();stopPropagation(event);">
+        <div class="details__header titleless">
+            <div class="close-btn" onclick="toggleVisibility('task-edit-view');toggleVisibility('task-details-view');">
+            </div>
+        </div>
+        <div class="scroll-bar-wrapper edit">
+            <div class="details__title-wrapper edit">
+                <strong class="details__caption">Title:</strong>
+                <input id="update-title" type="text" class="details__title edit this-entry"
+                    value="CSS Architecture Planning">
+            </div>
+            <div class="details__info-box edit">
+                <strong class="details__caption">Description</strong>
+                <!-- <input id="update-description" type="text" class="edit this-entry"
                             value="Build start page with recipe recommandation."> -->
-                        <textarea id="update-description" class="edit this-entry" style="resize: vertical; min-height: 35px; max-height: 120px;">Build start page with recipe recommandation.</textarea>
+                <textarea id="update-description" class="edit this-entry"
+                    style="resize: vertical; min-height: 35px; max-height: 120px;">Build start page with recipe recommandation.</textarea>
+            </div>
+            <div class="details__info-box edit">
+                <strong class="details__caption">Due date:</strong>
+                <div class="date-box">
+                    <input id="update-date" type="date" class="details__information edit this-entry date-input">
+                </div>
+            </div>
+            <div class="details__info-box edit">
+                <strong class="details__caption">Priority:</strong>
+                <div class="details__priority-wrapper edit">
+                    <div id="edit-priority-btn-urgent" class="simple-btn task-priority urgent"
+                        onclick="setPriorityTo(2)">
+                        <span>Urgent</span>
+                        <div class="urgent-img"></div>
                     </div>
-                    <div class="details__info-box edit">
-                        <strong class="details__caption">Due date:</strong>
-                        <div class="date-box">
-                            <input id="update-date" type="date" class="details__information edit this-entry date-input">
+                    <div id="edit-priority-btn-medium" class="simple-btn task-priority medium"
+                        onclick="setPriorityTo(1)">
+                        <span>Medium</span>
+                        <div class="medium-img"></div>
+                    </div>
+                    <div id="edit-priority-btn-low" class="simple-btn task-priority low" onclick="setPriorityTo(0)">
+                        <span>Low</span>
+                        <div class="low-img"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="details__info-box vertical">
+                <strong class="details__caption">Assigned To:</strong>
+                <div id="details-assigned-list" class="details__info-box vertical">
+                    <div id="edit-task-contact-list-btn" class="list-btn"
+                        onclick="openListSearch('edit');stopPropagation(event);">
+                        <span id="details-edit-assigned-btn" class="list-btn__btn-text">Select contacts to
+                            assign</span>
+                        <div class="list-icon collapse"><img src="./assets/img/icons/collapse_true.svg" alt="">
                         </div>
                     </div>
-                    <div class="details__info-box edit">
-                        <strong class="details__caption">Priority:</strong>
-                        <div class="details__priority-wrapper edit">
-                            <div id="edit-priority-btn-urgent" class="simple-btn task-priority urgent"
-                                onclick="setPriorityTo(2)">
-                                <span>Urgent</span>
-                                <div class="urgent-img"></div>
-                            </div>
-                            <div id="edit-priority-btn-medium" class="simple-btn task-priority medium"
-                                onclick="setPriorityTo(1)">
-                                <span>Medium</span>
-                                <div class="medium-img"></div>
-                            </div>
-                            <div id="edit-priority-btn-low" class="simple-btn task-priority low"
-                                onclick="setPriorityTo(0)">
-                                <span>Low</span>
-                                <div class="low-img"></div>
-                            </div>
+                    <div id="edit-task-contact-list-input" class="list-btn focus d-none"
+                        onclick="stopPropagation(event);">
+                        <input id="edit-task-list-input-field" class="list-btn__input-field"
+                            oninput="searchContact(this.value)" type="text">
+                        <div class="list-icon collapse"><img src="./assets/img/icons/collapse_false.svg" alt=""
+                                onclick="resetInputFields()"></div>
+                    </div>
+                    <section id="edit-task-contacts-list" class="edit-task-contact-list d-none"
+                        onclick="stopPropagation(event)">
+                        <!--START: Contact-List to Render -->
+                        <!--END: Contact-List to Render -->
+                    </section>
+                    <div id="task-edit-view-assigned-persons" class="details__inner edit assigned">
+                    </div>
+                </div>
+            </div>
+            <div class="details__info-box vertical mb-8">
+                <strong class="details__caption">Subtasks:</strong>
+                <div id="edit-subtask-box" class="details-subtask-box">
+                    <input type="text" id="edit-add-subtask" class="details-subtask-add" placeholder="Add new subtask">
+                    <div id="edit-view-subtask-add" class="cross blue" onclick="setFocus('edit')"></div>
+                    <div id="edit-view-subtask-navigation" class="edit-subtask-navigation d-none"
+                        onclick="stopPropagation(event);">
+                        <div class="link-btn discard-btn" onclick="discardNewSubtask()"></div>
+                        <!-- discard new subcard-value -->
+                        <img class="vertical-line" src="./assets/img/icons/vertical-line.svg" alt="" class="">
+                        <div class="link-btn accept-btn"
+                            onclick="addNewSubtask(document.getElementById('edit-add-subtask').value);blurListener();">
                         </div>
                     </div>
-                    <div class="details__info-box vertical">
-                        <strong class="details__caption">Assigned To:</strong>
-                        <div id="details-assigned-list" class="details__info-box vertical">
-                            <div id="edit-task-contact-list-btn" class="list-btn"
-                                onclick="openListSearch('edit');stopPropagation(event);">
-                                <span id="details-edit-assigned-btn" class="list-btn__btn-text">Select contacts to
-                                    assign</span>
-                                <div class="list-icon collapse"><img src="./assets/img/icons/collapse_true.svg" alt="">
-                                </div>
-                            </div>
-                            <div id="edit-task-contact-list-input" class="list-btn focus d-none"
-                                onclick="stopPropagation(event);">
-                                <input id="edit-task-list-input-field" class="list-btn__input-field" oninput="searchContact(this.value)" type="text">
-                                <div class="list-icon collapse"><img src="./assets/img/icons/collapse_false.svg" alt=""
-                                        onclick="resetInputFields()"></div>
-                            </div>
-                            <section id="edit-task-contacts-list" class="edit-task-contact-list d-none"
-                                onclick="stopPropagation(event)">
-                                <!--START: Contact-List to Render -->
-                                <!--END: Contact-List to Render -->
-                            </section>       
-                            <div id="task-edit-view-assigned-persons" class="details__inner edit assigned">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="details__info-box vertical mb-8">
-                        <strong class="details__caption">Subtasks:</strong>
-                        <div id="edit-subtask-box" class="details-subtask-box">
-                            <input type="text" id="edit-add-subtask" class="details-subtask-add"
-                                placeholder="Add new subtask">
-                            <div id="edit-view-subtask-add" class="cross blue" onclick="setFocus('edit')"></div>
-                            <div id="edit-view-subtask-navigation" class="edit-subtask-navigation d-none"
-                                onclick="stopPropagation(event);">
-                                <div class="link-btn discard-btn" onclick="discardNewSubtask()"></div> <!-- discard new subcard-value -->
-                                <img class="vertical-line" src="./assets/img/icons/vertical-line.svg" alt="" class="">
-                                <div class="link-btn accept-btn" onclick="addNewSubtask(document.getElementById('edit-add-subtask').value);blurListener();"></div>
-                            </div>
-                        </div>
-                        <div id="edit-subtask-item-wrapper" style="width: 100%">
-                        <!--START: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
-                            <!-- <div id="edit-subtask-total-subtaskId" class="li-wrapper" ondblclick="openSubtaskInput('edit-subtasks-unsorted-subtaskId');stopPropagation(event);">
+                </div>
+                <div id="edit-subtask-item-wrapper" style="width: 100%">
+                    <!--START: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
+                    <!-- <div id="edit-subtask-total-subtaskId" class="li-wrapper" ondblclick="openSubtaskInput('edit-subtasks-unsorted-subtaskId');stopPropagation(event);">
                                 <ul id="edit-subtasks-unsorted-taskId" class="edit-subtasks-list"">
                                     <li>
                                         <div class="single-list-item">
@@ -196,22 +178,18 @@
                                 <div class="vertical-line"></div>
                                 <img class="link-btn accept-btn" src="./assets/img/icons/check_blue.svg" alt="" onclick="updateSubtaskInput('subtaskId')">
                             </div> -->
-                            <!--END: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
-                        </div>
-                    </div>
+                    <!--END: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
                 </div>
-                <div class="details__bottom">
-                    <div class="simple-btn small" onclick="saveTaskUpdate()">
-                        <span class="">Ok</span>
-                        <img src="./assets/img/icons/check_white.svg" alt="">
-                    </div>
-                    <img src="" alt="">
-                </div>
-            </section>
+            </div>
         </div>
-
-        <!-- End of Merge -->
+        <div class="details__bottom">
+            <div class="simple-btn small" onclick="saveTaskUpdate()">
+                <span class="">Ok</span>
+                <img src="./assets/img/icons/check_white.svg" alt="">
+            </div>
+            <img src="" alt="">
+        </div>
     </section>
-</body>
+</div>
 
-</html>
+<!-- End of Merge -->
