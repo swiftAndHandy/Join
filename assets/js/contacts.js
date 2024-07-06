@@ -1,7 +1,15 @@
+// Variables for storing the ID and color of the contact being edited
 let contactToEditId = '';
 let contactToEditColor = '';
 
 
+/**
+ * Executes the callback function if the window width is less than or equal to the specified maxWidth.
+ * Also sets up an event listener to re-check the condition on window resize.
+ * 
+ * @param {number} maxWidth - The maximum width of the window.
+ * @param {function} callback - The function to execute when the condition is met.
+ */
 function executeOnMaxWidth(maxWidth, callback) {
     if (window.innerWidth <= maxWidth) {
         callback();
@@ -13,6 +21,10 @@ function executeOnMaxWidth(maxWidth, callback) {
     });
 }
 
+
+/**
+ * Opens the 'Add Contact' page by fetching the HTML content and displaying the modal.
+ */
 async function openAddContactPage() {
     try {
         const response = await fetch('contact_dialog.html');
@@ -20,14 +32,18 @@ async function openAddContactPage() {
         document.getElementById('modalBodyContent').innerHTML = data;
         document.getElementById('addContactModal').style.display = 'block';
     } catch (error) {
-        console.error('Error loading the edit contact form:', error);
+        console.error('Error loading the add contact form:', error);
     }
 }
 
 
+/**
+ * Closes the 'Add Contact' page by hiding the modal.
+ */
 function closeAddContactPage() {
     document.getElementById('addContactModal').style.display = 'none';
 }
+
 
 /**
  * Opens the 'Edit Contact' page for the contact at the given index by fetching the HTML content 
@@ -69,6 +85,9 @@ function putContactInfoToEditDialog(name, email, telefon, color) {
 }
 
 
+/**
+ * Retrieves and displays the list of contacts sorted by name.
+ */
 async function putContactsToList() {
     document.getElementById('contact-list').innerHTML = '';
     let contacts = await readData('contacts');
@@ -82,7 +101,6 @@ async function putContactsToList() {
         const color = contacts[i].color;
         const firstLetter = name.charAt(0);
 
-
         if (firstLetter !== currentLetter) {
             currentLetter = firstLetter;
             createContactLetterHTML(currentLetter);
@@ -92,6 +110,14 @@ async function putContactsToList() {
 }
 
 
+/**
+ * Creates and inserts HTML for a contact list item.
+ * 
+ * @param {number} index - The index of the contact.
+ * @param {string} name - The name of the contact.
+ * @param {string} email - The email of the contact.
+ * @param {string} color - The color associated with the contact.
+ */
 function createContactListHTML(index, name, email, color) {
     document.getElementById('contact-list').innerHTML += `
     <li id="contact-item-${index}" class="contact-item" onclick="openContactDetails('${index}')">
@@ -105,14 +131,25 @@ function createContactListHTML(index, name, email, color) {
 }
 
 
+/**
+ * Creates and inserts HTML for a contact list letter header.
+ * 
+ * @param {string} letter - The letter to display as a header.
+ */
 function createContactLetterHTML(letter) {
     document.getElementById('contact-list').innerHTML += `
-    <li class="letter">${letter}</li>
-    <div class="underline"></div>
+        <li class="letter">${letter}</li>
+        <div class="underline"></div>
     `
 }
 
 
+/**
+ * Returns the capitalized first letters of the words in the input string.
+ * 
+ * @param {string} input - The input string.
+ * @returns {string} - The string with capitalized first letters.
+ */
 function showCapitaliseFirstLetters(input) {
     input = input.split(' ').map(word =>
         word.charAt(0).toUpperCase()).join('');
@@ -121,6 +158,13 @@ function showCapitaliseFirstLetters(input) {
 }
 
 
+/**
+ * Opens the contact details page for the specified user ID by fetching the contact data
+ * and displaying it in the contact details container. Hides the contact list container if 
+ * the window width is less than or equal to 820 pixels.
+ * 
+ * @param {string} userId - The ID of the user to display details for.
+ */
 async function openContactDetails(userId) {
     let contact = await readData(`contacts/${userId}`);
     let name = contact.name;
@@ -137,6 +181,15 @@ async function openContactDetails(userId) {
 }
 
 
+/**
+ * Creates and inserts HTML for displaying the contact details.
+ * 
+ * @param {string} name - The name of the contact.
+ * @param {string} email - The email of the contact.
+ * @param {string} telefon - The phone number of the contact.
+ * @param {string} color - The color associated with the contact.
+ * @param {number} i - The index of the contact.
+ */
 function contactDetailsHTML(name, email, telefon, color, i) {
     let contactInfoContainer = document.getElementById('contact-info-container');
     contactInfoContainer.style.display = 'block';
@@ -149,7 +202,7 @@ function contactDetailsHTML(name, email, telefon, color, i) {
                     <div id="edit-button" class="edit-button" onclick="openEditContactPage('${i}')">
                         <img src="./assets/img/icons/edit.svg" alt="edit">edit
                     </div>
-                    <div id="delete-button" class="delete-button">
+                    <div id="delete-button" class="delete-button" onclick="deleteContact('/contacts/${i}')">
                         <img src="./assets/img/icons/delete.svg" alt="delete">delete
                     </div>
                 </div>
@@ -166,6 +219,7 @@ function contactDetailsHTML(name, email, telefon, color, i) {
     document.getElementById('edit-button').style.display = 'flex';
     document.getElementById('delete-button').style.display = 'flex';
 }
+
 
 /**
  * Creates a new contact by sending the data to the server and updates the contact list.
@@ -213,6 +267,9 @@ async function editContact(event) {
 }
 
 
+/**
+ * Closes the contact modal with an animation.
+ */
 function closeContactModal() {
     let modal = document.getElementById('addContactModal');
     modal.style.animation = 'close-modal-animation';
@@ -224,6 +281,20 @@ function closeContactModal() {
         modal.style.animationName = '';
         modal.style.animationTimingFunction = '';
         modal.style.animationDuration = '';
-    }, 300);
-    
+    }, 300); 
+}
+
+
+/**
+ * Deletes a contact from the server and updates the contact list.
+ * 
+ * @param {string} path - The path to the contact data.
+ */
+async function deleteContact(path=""){
+    let response = await fetch(BASE_URL + path + ".json", {
+        method: "DELETE",
+    });
+    await putContactsToList();
+    document.getElementById('contact-info-container').style.display = 'none';
+    return await response.json();
 }
