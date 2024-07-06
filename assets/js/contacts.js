@@ -31,7 +31,6 @@ async function openEditContactPage(i) {
         .then(response => response.text())
         .then(data => {
             document.getElementById('modalBodyContent').innerHTML = data;
-            document.getElementById('addContactModal').style.display = 'block';
         })
         .catch(error => console.error('Error loading the edit contact form:', error));
 
