@@ -149,7 +149,7 @@ function startDrag(id, fromCategory) {
 async function dragTo(newLocation) {
   const item = currentlyDragged;
   const from = currentlyDraggedCategory;
-  if (item) {
+  if (item && currentlyDraggedCategory != newLocation) {
     await putData(newLocation, `tasks/${item}/status`);
     updateBoard(item, from, newLocation);
   }
