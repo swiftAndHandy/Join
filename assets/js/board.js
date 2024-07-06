@@ -46,7 +46,6 @@ async function renderTasks() {
 
     for (let key in data) {
       const item = data[key];
-
       if (statusFields[item.status]) {
         // Await the result of the async function call
         const taskCardHTML = await callContactInformationForTasks(
