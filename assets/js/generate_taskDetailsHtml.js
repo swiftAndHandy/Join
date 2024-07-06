@@ -35,13 +35,13 @@ async function generateTaskDetailsHtml(taskId, taskDetails) {
     priorityImg.src = `../assets/img/icons/priority_${taskDetails['priority'].toLowerCase()}.svg`;
 
     const assignedTo = document.getElementById('details-assigned-list');
-    assignedTo.innerHTML = await assignedPersonsHtml(taskDetails['assigned']);
+    assignedTo.innerHTML = await assignedPersonsDetailedHtml(taskDetails['assigned']);
 
     const deleteBtn = document.getElementById('task-details-delete-btn');
     deleteBtn.setAttribute('onclick', `deleteTask('${taskId}')`);
 }
 
-async function assignedPersonsHtml(contactIds) {
+async function assignedPersonsDetailedHtml(contactIds) {
     const data = await readData(`contacts`);
     let output = '';
     let keys = Object.keys(data);

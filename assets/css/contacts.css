@@ -146,6 +146,7 @@ html{
     top: 96px;
     position: relative;
     height: calc(100svh - 96px);
+    overflow: hidden;
 }
 
 .separator {

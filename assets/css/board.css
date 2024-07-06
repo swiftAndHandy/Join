@@ -754,6 +754,7 @@ Detail-View related Classes
 
 .details__inner.edit.assigned {
   gap: 8px;
+  margin-bottom: 16px;
 }
 
 .details__description {

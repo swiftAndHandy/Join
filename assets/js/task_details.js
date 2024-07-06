@@ -3,7 +3,11 @@ let assignedPersons = null;
 
 function initTaskDetails() {
     setupListener();
-    renderTaskDetails();
+}
+
+async function openTaskDetails(taskId) {
+    await renderTaskDetails(taskId);
+    document.getElementById('task-details-edit-btn').setAttribute('onclick', `openEditDialog('${taskId}')`);
     renderContactList();
 }
 
@@ -21,13 +25,9 @@ async function renderContactList() {
 }
 
 // CAVE: Rendering every task. Need to adjust this later on and give a specific task to render
-async function renderTaskDetails() {
-    const data = await readData('tasks');
-    const keys = Object.keys(data);
-
-    for (let i = 0; i < keys.length; i++) {
-        generateTaskDetailsHtml(keys[i], data[keys[i]]);
-    }
+async function renderTaskDetails(taskId) {
+    const data = await readData(`tasks/${taskId}`);
+    generateTaskDetailsHtml(taskId, data);
 }
 
 /**
@@ -90,6 +90,10 @@ function blurListener() {
 function toggleVisibility(id) {
     document.getElementById(id).classList.toggle('d-none');
     return document.getElementById(id);
+}
+
+function openEditDialog() {
+    toggleVisibility('task-edit-view'); toggleVisibility('task-details-view');
 }
 
 /**
@@ -202,7 +206,8 @@ function deleteSubtask(subtaskId) {
 
 // placeholder
 function deleteTask(taskId) {
-    console.warn('Diese Task würde nun gelöscht. Geht aber noch nicht. Glückwunsch.')
+    deleteData(`tasks/${taskId}`);
+    toggleVisibility('task-details-view');
 }
 
 /**
