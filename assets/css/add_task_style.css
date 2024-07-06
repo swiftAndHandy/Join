@@ -1,4 +1,3 @@
-
 :root {
   --sb-size: 2px;
   --sb-track-color: #f1f1f1;
@@ -55,7 +54,7 @@ span {
 }
 
 .pressed-drop-box-bg-color {
-  background-color:#2A3647 ;
+  background-color: #2A3647;
   color: white;
 }
 
@@ -107,12 +106,13 @@ span {
   border: 1px solid #d1d1d1;
   padding: 10px 21px;
   display: flex;
-    justify-content: space-between;
+  justify-content: space-between;
+  background-color: white;
 }
 
 .rotation {
-  transition: transform 0.4s ease-in-out; 
-  transform-origin: center; 
+  transition: transform 0.4s ease-in-out;
+  transform-origin: center;
   transform: rotate(180deg);
 }
 
@@ -186,8 +186,7 @@ select:focus {
 }
 
 .prio-medium {
-  filter: brightness(0) saturate(100%) invert(58%) sepia(97%) saturate(902%)
-    hue-rotate(360deg) brightness(103%) contrast(101%);
+  filter: brightness(0) saturate(100%) invert(58%) sepia(97%) saturate(902%) hue-rotate(360deg) brightness(103%) contrast(101%);
 }
 
 .create-task-panel {
@@ -226,10 +225,10 @@ select:focus {
 }
 
 .create-task-btn:disabled {
-  background-color: #d6d6d6; 
-  color: #a1a1a1; 
-  cursor: not-allowed; 
-  opacity: 0.8; 
+  background-color: #d6d6d6;
+  color: #a1a1a1;
+  cursor: not-allowed;
+  opacity: 0.8;
 }
 
 .desktop-seperator-add-contact {
@@ -271,13 +270,11 @@ select:focus {
 }
 
 .clear-btn:hover img {
-  filter: brightness(0) saturate(100%) invert(64%) sepia(56%) saturate(2707%)
-    hue-rotate(165deg) brightness(94%) contrast(88%);
+  filter: brightness(0) saturate(100%) invert(64%) sepia(56%) saturate(2707%) hue-rotate(165deg) brightness(94%) contrast(88%);
 }
 
 .clear-btn img {
-  filter: brightness(0) saturate(100%) invert(16%) sepia(48%) saturate(414%)
-    hue-rotate(176deg) brightness(93%) contrast(89%);
+  filter: brightness(0) saturate(100%) invert(16%) sepia(48%) saturate(414%) hue-rotate(176deg) brightness(93%) contrast(89%);
 }
 
 .content-wrapper {
@@ -318,7 +315,7 @@ select:focus {
   height: 289px;
   overflow-y: auto;
   border-radius: 10px;
-  
+
 }
 
 .position-relative {
@@ -327,21 +324,21 @@ select:focus {
 
 .ul-row-styling {
   justify-content: flex-end;
-  font-size: clamp(16px,3svh ,24px);
+  font-size: clamp(16px, 3svh, 24px);
   gap: 16px;
   padding: 0 16px;
   font-weight: 500;
-  
+
 }
 
 .ul-content-wrapper {
   display: flex;
-    align-items: center;
-    padding: 0 16px;
-    margin-top: 9px;
-    justify-content: space-between;
-    border-radius: 10px;
-    
+  align-items: center;
+  padding: 0 16px;
+  margin-top: 9px;
+  justify-content: space-between;
+  border-radius: 10px;
+
 }
 
 .ul-content-wrapper-no-click:hover {
@@ -353,9 +350,9 @@ select:focus {
   filter: invert(100%) sepia(1%) saturate(308%) hue-rotate(210deg) brightness(116%) contrast(100%);
 }
 
-#contacts-show-input input{
+#contacts-show-input input {
   border: none;
-  width:300px;
+  width: 300px;
 }
 
 #contacts-show-input input:focus {
@@ -395,17 +392,17 @@ select:focus {
 
 .border-color-clicked {
   border: 1px solid #29ABE2;
- }
+}
 
- .pop-up-task-added {
+.pop-up-task-added {
   display: none;
- }
+}
 
- .task-added-popup {
+.task-added-popup {
   width: 326px;
   height: 74px;
   border-radius: 20px;
-  background-color: rgba(42,54,71,1);
+  background-color: rgba(42, 54, 71, 1);
   position: fixed;
   top: 50%;
   left: 50%;
@@ -415,9 +412,9 @@ select:focus {
   flex-direction: row;
   justify-content: center;
   align-items: center;
- }
+}
 
- .popup-text {
+.popup-text {
   width: 235px;
   height: 24px;
   font-family: 'Inter';
@@ -425,14 +422,14 @@ select:focus {
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-  color: rgba(255,255,255,1);
+  color: rgba(255, 255, 255, 1);
 }
 
- .popup-img {
+.popup-img {
   width: 30px;
   height: 30px;
- }
- 
+}
+
 
 @media (min-width: 1125px) and (max-width: 3200px) {
   .desktop-buttons {
@@ -456,14 +453,14 @@ select:focus {
     display: flex;
     gap: 59px;
     overflow-x: unset;
-        overflow-y: unset;
+    overflow-y: unset;
   }
 
   .form-desktop-view {
-      
-        height: 100%;
-        display: flex;
-        gap: 59px;
+
+    height: 100%;
+    display: flex;
+    gap: 59px;
   }
 
   .add-task-container {
@@ -480,6 +477,7 @@ select:focus {
   select {
     width: 480px;
   }
+
   #assigned-to-contact {
     width: 436px;
   }
@@ -487,6 +485,7 @@ select:focus {
   .create-task-panel {
     display: none;
   }
+
   .desktop-seperator-add-contact {
     display: block;
   }
@@ -505,6 +504,7 @@ select:focus {
   textarea {
     width: 320px;
   }
+
   select {
     width: 364px;
   }
@@ -519,7 +519,7 @@ select:focus {
 
   .ul-row-styling {
     font-size: 16px;
-    
+
   }
 
   .profile-initials-circle {
@@ -556,7 +556,7 @@ select:focus {
     width: 320px;
   }
 
-  
+
 }
 
 @media (max-width: 1120px) and (min-width: 916px) {
@@ -570,10 +570,11 @@ select:focus {
     top: 825px;
   }
 }
+
 @media (max-width: 803px) {
   .ul-row-styling {
     font-size: 16px;
-    
+
   }
 }
 
@@ -587,9 +588,11 @@ select:focus {
   .content-wrapper {
     margin-top: 65px;
   }
+
   .required-text {
     display: none;
   }
+
   #contacts-show-input input {
     width: 250px;
   }
@@ -597,7 +600,7 @@ select:focus {
 
 @media(max-width: 441px) {
   .create-task-panel {
-   margin-top: 40px;
+    margin-top: 40px;
     top: 740px;
   }
 }
@@ -619,9 +622,11 @@ select:focus {
   .add-task-container {
     width: 320px;
   }
+
   .content-wrapper {
     margin-left: 24px;
   }
+
   .create-task-panel span {
     font-size: 18px;
   }
@@ -631,7 +636,7 @@ select:focus {
     height: 32px;
   }
 
- 
+
 }
 
 @media (max-width: 377px) {
@@ -659,7 +664,7 @@ select:focus {
     width: 30px;
     height: 30px;
   }
-  
+
 }
 
 
@@ -667,9 +672,10 @@ select:focus {
   .create-task-panel {
     top: 700px;
   }
+
   .form-add-task {
     height: 79%;
-}
+  }
 }
 
 @media(max-height:875px) and (min-height: 800px) {
@@ -682,6 +688,7 @@ select:focus {
   .add-task-container {
     height: 500px;
   }
+
   .create-task-panel {
     top: 625px;
   }
@@ -691,6 +698,7 @@ select:focus {
   .add-task-container {
     height: 385px;
   }
+
   .create-task-panel {
     top: 500px;
   }
@@ -704,10 +712,11 @@ select:focus {
 }
 
 
-@media (max-width:1161px) and (min-width: 802px)  {
+@media (max-width:1161px) and (min-width: 802px) {
   .menu-bar-mobile {
     display: none !important;
   }
+
   .menu-bar-desktop {
     display: flex !important;
   }

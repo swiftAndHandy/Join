@@ -38,7 +38,7 @@ async function generateTaskDetailsHtml(taskId, taskDetails) {
     assignedTo.innerHTML = await assignedPersonsHtml(taskDetails['assigned']);
 
     const deleteBtn = document.getElementById('task-details-delete-btn');
-    deleteBtn.setAttribute('onclick', `deleteTask(${taskId})`);
+    deleteBtn.setAttribute('onclick', `deleteTask('${taskId}')`);
 }
 
 async function assignedPersonsHtml(contactIds) {

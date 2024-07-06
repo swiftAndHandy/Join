@@ -876,6 +876,7 @@ Edit-View related Classes
   align-items: center;
   border-radius: 10px;
   cursor: pointer;
+  margin-bottom: 2px;
 }
 
 .single-contact:hover {
