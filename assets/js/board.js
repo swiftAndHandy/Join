@@ -51,14 +51,7 @@ async function renderTasks() {
         // Await the result of the async function call
         const taskCardHTML = await callContactInformationForTasks(
           key,
-          item.status,
-          item.title,
-          item.description,
-          item.date,
-          item.prio,
-          item.tag,
-          item.subTasks,
-          item.assigned
+          item
         );
         statusFields[item.status].innerHTML += taskCardHTML;
       }
@@ -87,7 +80,7 @@ async function renderTasks() {
  * @param {string} subTasks - The subTasks value from the database.
  * @returns {Promise<string>} A promise that includes the generated HTML for the task card.
  */
-async function callContactInformationForTasks(keyTasks, status, title, description, date, prio, tag, subTasks, assigned) {  // maybe not the right approch should check it tommorw maybe  i have to get the color form the contaacts also in the assigend tab
+async function callContactInformationForTasks(keyTasks,item) {  // maybe not the right approch should check it tommorw maybe  i have to get the color form the contaacts also in the assigend tab
   let contactData = await readData('contacts');
   const entries = sortByAlphabet(contactData, 'contacts');
 
@@ -112,15 +105,8 @@ async function callContactInformationForTasks(keyTasks, status, title, descripti
   // Generiere die Aufgabenkarte mit den ersten drei Einträgen
   let taskCardHTML = generateTaskCard(
     keyTasks,
-    status,
-    title,
-    description,
-    date,
-    prio,
-    tag,
-    subTasks,
-    firstThreeEntries,
-    assigned  // Übergabe der ersten drei Einträge an generateTaskCard
+    item ,
+    firstThreeEntries // Übergabe der ersten drei Einträge an generateTaskCard
   );
  
   return taskCardHTML;
