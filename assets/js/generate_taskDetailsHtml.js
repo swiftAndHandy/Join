@@ -15,6 +15,12 @@ function generateContactsHtml(data) {
         `;
 }
 
+/**
+ * Generates the Task-Detail-View-HTML
+ * @param {string} taskId - contains the current tasks ID
+ * @param {object} taskDetails contains the current tasks details
+ * @returns - an array, that contains all assigned contacts
+ */
 async function generateTaskDetailsHtml(taskId, taskDetails) {
     const tag = document.getElementById('task-details-tag');
     tag.innerHTML = taskDetails['tag'];
@@ -43,6 +49,11 @@ async function generateTaskDetailsHtml(taskId, taskDetails) {
     return assignedTo;
 }
 
+/**
+ * 
+ * @param {[]} contactIds an array, that contains all assigned contacts
+ * @returns 
+ */
 async function assignedPersonsDetailsHtml(contactIds) {
     let output = '';
     try {
@@ -59,6 +70,11 @@ async function assignedPersonsDetailsHtml(contactIds) {
     return output;
 }
 
+/**
+ * 
+ * @param {string} contactIds - the ID of a single contact, that avatar needs to be rendered
+ * @returns 
+ */
 async function assignedPersonsEditHtml(contactIds) {
     const data = await readData(`contacts/${contactIds}`)
     const output = `
