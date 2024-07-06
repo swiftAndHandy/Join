@@ -87,7 +87,7 @@ async function renderTasks() {
  * @param {string} subTasks - The subTasks value from the database.
  * @returns {Promise<string>} A promise that includes the generated HTML for the task card.
  */
-async function callContactInformationForTasks(keyTasks, status, title, description, date, prio, tag, subTasks,assigned) {
+async function callContactInformationForTasks(keyTasks, status, title, description, date, prio, tag, subTasks,assigned) {  // maybe not the right approch should check it tommorw maybe  i have to get the color form the contaacts also in the assigend tab
   let contactData = await readData('contacts');
   const entries = sortByAlphabet(contactData, 'contacts');
 
