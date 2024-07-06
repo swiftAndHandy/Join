@@ -216,6 +216,7 @@ main {
 .task-counter {
     display: flex;
     flex-direction: column;
+    min-width: 60px;
 }
 
 .task-counter--design {
@@ -275,6 +276,24 @@ main {
 @media (min-width: 1160px) {
     .greeting-msg--mobile p {
         transform: translateX(116px);
+    }
+
+    .task-counter--design {
+        gap: 18px;
+    }
+
+    .icon-wrapper {
+        min-height: 69px;
+        max-height: 69px;
+        min-width: 69px;
+        max-width: 69px;
+    }
+
+    .icon-wrapper.icon-wrapper.urgent-icon {
+        min-height: 60px;
+        max-height: 60px;
+        min-width: 60px;
+        max-width: 60px;
     }
 
     main {

@@ -21,7 +21,6 @@ function closeModalContent() {
  */
 async function openEditContactPage(i) {
     const contact = await readData(`contacts/${i}`);
-
     try {
         const response = await fetch('contact_edit_dialog.html');
         const data = await response.text();
