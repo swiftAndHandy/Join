@@ -85,7 +85,7 @@
               </div>
               <div class="tasks-container" id="todo-field"></div>
             </section>
-            <section class="section-container" ondrop="dragTo('progress')" ondragover="allowDrop(event)">
+            <section id="progress-section" class="section-container" ondrop="dragTo('progress')" ondragover="allowDrop(event)" ondragenter="showDragArea('progress', true)" ondragleave="showDragArea('progress', false)">
               <div class="section-headline">
                 <h2>In progress</h2>
                 <button class="add-cross-btn-small">
@@ -101,7 +101,7 @@
               <div class="tasks-container" id="progress-field">
               </div>
             </section>
-            <section class="section-container" ondrop="dragTo('feedback')" ondragover="allowDrop(event)">
+            <section id="feedback-section" class="section-container" ondrop="dragTo('feedback')" ondragover="allowDrop(event)" ondragenter="showDragArea('feedback', true)" ondragleave="showDragArea('feedback', false)">
               <div class="section-headline">
                 <h2>Await feedback</h2>
                 <button class="add-cross-btn-small">
@@ -114,7 +114,7 @@
               <div class="tasks-container" id="feedback-field">
               </div>
             </section>
-            <section class="section-container" ondrop="dragTo('done')" ondragover="allowDrop(event)">
+            <section id="done-section" class="section-container" ondrop="dragTo('done')" ondragover="allowDrop(event)" ondragenter="showDragArea('done', true)" ondragleave="showDragArea('done', false)">
               <div class="section-headline">
                 <h2>Done</h2>
               </div>
