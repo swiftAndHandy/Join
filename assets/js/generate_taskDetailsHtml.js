@@ -35,13 +35,12 @@ async function generateTaskDetailsHtml(taskId, taskDetails) {
     priorityImg.src = `../assets/img/icons/priority_${taskDetails['priority'].toLowerCase()}.svg`;
 
     const assignedToDetails = document.getElementById('details-assigned-list');
-    const assignedToEdit = document.getElementById('task-edit-view-assigned-persons')
-    assignedPersons = taskDetails['assigned'];
-    assignedToDetails.innerHTML = await assignedPersonsDetailsHtml(assignedPersons);
-    assignedToEdit.innerHTML = await assignedPersonsEditHtml(assignedPersons);
+    const assignedTo = taskDetails['assigned'];
+    assignedToDetails.innerHTML = await assignedPersonsDetailsHtml(assignedTo);
 
     const deleteBtn = document.getElementById('task-details-delete-btn');
     deleteBtn.setAttribute('onclick', `deleteTask('${taskId}')`);
+    return assignedTo;
 }
 
 async function assignedPersonsDetailsHtml(contactIds) {
@@ -56,20 +55,17 @@ async function assignedPersonsDetailsHtml(contactIds) {
                 </div>
                 `;
         }
-    } catch (error) {}
+    } catch (error) { }
     return output;
 }
 
 async function assignedPersonsEditHtml(contactIds) {
-    let output = ''
-    for (let item of contactIds) {
-        const data = await readData(`contacts/${item}`)
-            output += `
-            <div id="edit_task_assigned-person-${item}" class="details__inner">
-                <div id="edit-task-avatar-${item}" class="avatar at-drop-down" style="background-color: ${data.color};">${initials(data.name)}</div>
+    const data = await readData(`contacts/${contactIds}`)
+    const output = `
+            <div id="edit_task_assigned-person-${contactIds}" class="details__inner">
+                <div id="edit-task-avatar-${contactIds}" class="avatar at-drop-down" style="background-color: ${data.color};">${initials(data.name)}</div>
             </div>
             `
-        }
     return output;
 }
 

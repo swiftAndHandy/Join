@@ -1,13 +1,14 @@
 let editPriority;
-let assignedPersons = [];
+let assignedPersonsToUpdate = [];
+let subtasksToUpdate = [];
 
 function initTaskDetails() {
     setupListener();
 }
 
 async function openTaskDetails(taskId) {
-    await renderTaskDetails(taskId);
-    await renderContactList();
+    const assignedContacts = await renderTaskDetails(taskId);
+    await renderContactList(assignedContacts);
     document.getElementById('task-details-edit-btn').setAttribute('onclick', `openEditDialog('${taskId}')`);
 }
 
@@ -16,31 +17,63 @@ async function openTaskDetails(taskId) {
  * Needs further improvement (include accounts, not only contacts for example)
  * Maybe a resort to keep the order of alphabet is required in this case
  */
-async function renderContactList() {
+async function renderContactList(assignedContacts) {
     const data = await readData('contacts');
     let entries = sortByAlphabet(data, 'contacts');
     for (let i = 0; i < entries.length; i++) {
         generateContactsHtml(entries[i]);
     }
+    activateAssignedContacts(assignedContacts);
 }
 
-// CAVE: Rendering every task. Need to adjust this later on and give a specific task to render
+/**
+ * Simulates an click on every assigned contact to activate it for contact list and submit array (assignedPersonsToUpdate)
+ */
+async function activateAssignedContacts(assignedContacts) {
+    const assignedToEdit = document.getElementById('task-edit-view-assigned-persons');
+    for (let item of assignedContacts) {
+        document.getElementById(`assign-contact-contacts/${item}`).click();
+    }
+}
+
+/**
+ * Start rendering process for Task details.
+ * @param {string} taskId - string is containing the taskId that should become shown
+ */
 async function renderTaskDetails(taskId) {
     const data = await readData(`tasks/${taskId}`);
-    generateTaskDetailsHtml(taskId, data);
+    return generateTaskDetailsHtml(taskId, data);
 }
 
 /**
  * Controls the design of checkboxes on the assigned-contacts-list
+ * CAVE: id contains contacts/ (or theoretically accounts/). 
+ * This is the optimum, so we can stop use pathes at readData and allow to assign users
+ * For the moment, since it's not used trough the whole project, i'll filter and remove it.
  * @param {string} id 
  */
-function toggleThisContact(id) {
+async function toggleThisContact(id) {
     const contactId = document.getElementById(`assign-contact-${id}`);
     const checkboxId = document.getElementById(`assign-contact-checkbox-${id}`);
     const pseudoCheckboxId = document.getElementById(`assign-contact-pseudo-checkbox-${id}`);
+    id = id.replace('contacts/', '');
+    await updateAssignedPersons(id);
     contactId.classList.toggle('list-selected');
     pseudoCheckboxId.classList.toggle('list-selected');
     checkboxId.checked = !checkboxId.checked;
+}
+
+
+async function updateAssignedPersons(id) {
+    const index = assignedPersonsToUpdate.indexOf(id);
+    const assignedToEdit = document.getElementById('task-edit-view-assigned-persons');
+    if (index === -1) {
+        assignedPersonsToUpdate.push(id);
+        assignedToEdit.insertAdjacentHTML('beforeend', await assignedPersonsEditHtml(id));
+    } else {
+        assignedPersonsToUpdate.splice(index, 1);
+        document.getElementById(`edit_task_assigned-person-${id}`).remove();
+    }
 }
 
 /**
@@ -94,7 +127,7 @@ function toggleVisibility(id) {
 }
 
 async function openEditDialog(taskId) {
-    
+
     toggleVisibility('task-edit-view'); toggleVisibility('task-details-view');
 }
 
@@ -206,7 +239,7 @@ function deleteSubtask(subtaskId) {
     document.getElementById(`edit-subtask-total-${subtaskId}`).remove();
 }
 
-// placeholder
+// Deletes the submitted taskId and closes task-detail-view
 function deleteTask(taskId) {
     deleteData(`tasks/${taskId}`);
     toggleVisibility('task-details-view');
@@ -221,16 +254,16 @@ function saveTaskUpdate() {
 }
 
 /**
- * puts an array based on a querySelector with every subtaskitem to firebase
+ * updates an global array, based on a querySelector, that will be pushed to firebase
  * @param {string} relatedToTaskId - refers to a Task-ID and is used in path-param for putData
  */
-async function updateSubtasks(relatedToTaskId) {
+async function updateSubtasksArray() {
     let query = document.querySelectorAll('.subtaskitem')
     let result = [];
-    query.forEach((item) => result.push(item.innerText));
-
-    console.log(result);
-    // await putDataset({ post }, `tasks/${relatedToTaskId}/subtasks`);
-    // await putDataset({result : false}, `tasks/${relatedToTaskId}/subtasks`);
-    // await putDataset({'name': 'horst'}, 'playground')
+    query.forEach((item) => result.push(
+        {
+            'name': item.innerText,
+            'done': false
+        }
+    ));
 }

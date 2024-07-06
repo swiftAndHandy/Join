@@ -33,11 +33,11 @@ body {
 
 .body-mobile {
   position: relative;
-  
+
 }
 
 .Technical-Task {
-background-color: #1FD7C1 !important;
+  background-color: #1FD7C1 !important;
 
 }
 
@@ -131,12 +131,12 @@ h2 {
   user-select: none;
 }
 
-.add-cross-btn-small:hover  {
+.add-cross-btn-small:hover {
   border-color: #29ABE2;
 }
 
 .add-cross-btn-small:hover img {
-  
+
   filter: brightness(0) saturate(100%) invert(73%) sepia(72%) saturate(4323%) hue-rotate(165deg) brightness(97%) contrast(82%);
 }
 
@@ -755,6 +755,7 @@ Detail-View related Classes
 .details__inner.edit.assigned {
   gap: 8px;
   margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 
 .details__description {
