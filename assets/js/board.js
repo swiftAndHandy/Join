@@ -6,6 +6,7 @@ function initBoard() {
   includeHTML();
   renderTasks();
   addOpenAddTaskToButtons()
+  
   document.addEventListener('dragend', () => {
     showDragArea('', false);
     currentlyDragged = null;
@@ -59,14 +60,12 @@ async function renderTasks() {
           item.subTasks,
           item.assigned
         );
-
         statusFields[item.status].innerHTML += taskCardHTML;
       }
 
 
       prioEqualImg(item, key);
     }
-
     updateTaskFields(Object.keys(statusFields));
   } catch (error) {
     console.error('Error rendering tasks:', error);
@@ -123,7 +122,7 @@ async function callContactInformationForTasks(keyTasks, status, title, descripti
     firstThreeEntries,
     assigned  // Übergabe der ersten drei Einträge an generateTaskCard
   );
-
+ 
   return taskCardHTML;
 }
 
