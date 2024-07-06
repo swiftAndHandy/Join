@@ -46,6 +46,7 @@ async function renderTasks() {
 
     for (let key in data) {
       const item = data[key];
+
       if (statusFields[item.status]) {
         // Await the result of the async function call
         const taskCardHTML = await callContactInformationForTasks(
@@ -148,7 +149,7 @@ function startDrag(id, fromCategory) {
 async function dragTo(newLocation) {
   const item = currentlyDragged;
   const from = currentlyDraggedCategory;
-  if (item && currentlyDraggedCategory != newLocation) {
+  if (item) {
     await putData(newLocation, `tasks/${item}/status`);
     updateBoard(item, from, newLocation);
   }
