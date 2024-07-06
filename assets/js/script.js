@@ -203,10 +203,10 @@ async function accountExists(email, password = false) {
 }
 
 /**
- * @param {string[]} openSubtasks - an array with open subtask-goals
- * @param {string[]} closedSubtasks - an array with closed subtask-goals
- * @returns {Object.<number, Object.<string, string>>} - An Object, with numbers as key. the value is another object,
- *                                                       containing the subtask-goal and it's current state
+ * 
+ * @param {string[]} subtaskArray - an Array with all subtask titles
+ * @param {boolean} done - future state of subtask. normaly it's false when creating a new.
+ * @returns 
  */
 function createSubtasks(subtaskArray = [], done = false) {
     const subtaskObjects = [];
