@@ -1,75 +1,73 @@
-<script>
-    function editContact(event) {
-        event.preventDefault();
-        if (document.getElementById('form').checkValidity()) {
-            console.log("Edit contact");
-        } else {
-            document.getElementById('form').reportValidity();
-        }
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/contact_dialog_style.css">
+    <link rel="stylesheet" href="./assets/css/fonts.css">
+    <script src="./assets/js/contacts.js"></script>
 
-    function deleteContact() {
-        console.log("Delete contact");
-    }
-</script>
-
-<div class="dialog-main">
-    <div class="dialog-container">
-        <div class="dialog-content">
-            <div class="close" onclick="">
-                <img src="./assets/img/icons/close.svg" alt="">
-            </div>
-            <div class="upper-card">
-                <div class="upper-card-content">
-                    <div class="join-logo-popup">
-                        <img src="./assets/img/icons/join_logo.svg" alt="">
+</head>
+<body>
+    <main> content all </main>
+    <div class="dialog-main">
+        <div class="dialog-container">
+            <div class="dialog-content">
+                <div class="upper-card">
+                    <div class="close" onclick="closeContactModal()">
+                        <img src="./assets/img/icons/close.svg" alt="">
                     </div>
-                    <div class="upper-card-headline">
-                        <h1> Edit contact</h1>
-
-                        <div class="seperator"></div>
-                    </div>
-
-                </div>
-
-            </div>
-            <div id="profile-img" class="profil-img">
-                <span id="first-letters">AM</span>
-            </div>
-            <div class="under-card">
-                <form class="input-information" id="form" onsubmit="editContact(indexOfEditContactPage,event)">
-                    <div class="input-style ">
-                        <input id="name-input" class="profile-img-input" minlength="2" maxlength="28" type="name"
-                            placeholder="Name" pattern="^[A-Za-zÀ-ÖØ-öø-ÿ\s'\-]+$" title="Please enter a valid name"
-                            required>
-                    </div>
-                    <div class="input-style">
-                        <input id="email-input" class="email-img-input" minlength="2" maxlength="28" type="email"
-                            placeholder="Email" required>
-                    </div>
-                    <div class="input-style">
-                        <input id="phone-input" class="phone-img-input" type="tel" placeholder="Phone"
-                            pattern="^\+?[0-9\s\-]{7,15}$" title="Please enter a valid phone number" required>
-                    </div>
-
-                    <div class="button-container">
-                        <div class="contact-delete-btn" onclick="deleteContact()">
-                            <span>Delete</span>
+                    <div class="upper-card-content">
+                        <div class="join-logo-popup">
+                            <img src="./assets/img/icons/join_logo.svg" alt="">
                         </div>
-                        <button type="submit" class="contact-save-btn">
-                            <span> Save</span>
-                            <div>
-                                <img src="./assets/img/icons/check.svg" alt="">
-                            </div>
-                        </button>
+                        <div class="upper-card-headline">
+                            <h1> Edit contact</h1>
+                       
+                            <div class="seperator"></div>
+                        </div>
+                    
                     </div>
-
-                </form>
-
-
+                
+                </div>
+                <div id="profile-img" class="profil-img">
+                  <span id="first-letters">AM</span>
+                </div>
+                <div class="under-card">
+                    <form class="input-information" id="form" onsubmit="editContact(event)">
+                        <div class="input-style ">
+                            <input id="name-input" class="profile-img-input" minlength="2" maxlength="28" type="name" placeholder="Name" pattern="^[A-Za-zÀ-ÖØ-öø-ÿ\s'\-]+$" title="Please enter a valid name" required>
+                        </div>
+                        <div class="input-style">
+                            <input id="email-input" class="email-img-input" minlength="2" maxlength="28" type="email" placeholder="Email" required>
+                        </div>
+                        <div class="input-style">
+                            <input id="phone-input" class="phone-img-input" type="tel" placeholder="Phone" pattern="^\+?[0-9\s\-]{7,15}$" title="Please enter a valid phone number" required>
+                        </div>
+                       
+                        <div class="button-container">
+                            <div class="contact-delete-btn" onclick="deleteContact()">
+                                <span>Delete</span>
+                            </div>
+                            <button type="submit" class="contact-save-btn">
+                                <span> Save</span>
+                                  <div>
+                                      <img src="./assets/img/icons/check.svg" alt="">
+                                  </div>
+                                </button>
+                        </div>
+                        
+                    </form>
+                    
+                    
+                </div>
             </div>
+            
         </div>
+    </div>
+    
 
     </div>
-</div>
-</div>
+</body>
+</html>

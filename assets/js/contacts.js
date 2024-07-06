@@ -1,16 +1,32 @@
-function openAddContactPage() {
-    fetch('contact_dialog.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('modalBodyContent').innerHTML = data;
-            document.getElementById('addContactModal').style.display = 'block';
-        })
-        .catch(error => console.error('Error loading the add contact form:', error));
+let contactToEditId = '';
+let contactToEditColor = '';
+
+
+function executeOnMaxWidth(maxWidth, callback) {
+    if (window.innerWidth <= maxWidth) {
+        callback();
+    }
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= maxWidth) {
+            callback();
+        }
+    });
+}
+
+async function openAddContactPage() {
+    try {
+        const response = await fetch('contact_dialog.html');
+        const data = await response.text();
+        document.getElementById('modalBodyContent').innerHTML = data;
+        document.getElementById('addContactModal').style.display = 'block';
+    } catch (error) {
+        console.error('Error loading the edit contact form:', error);
+    }
 }
 
 
-function closeModalContent() {
-    document.getElementById('modalBodyContent').innerHTML = '';
+function closeAddContactPage() {
+    document.getElementById('addContactModal').style.display = 'none';
 }
 
 /**
@@ -20,11 +36,14 @@ function closeModalContent() {
  * @param {number} i - The index of the contact to be edited.
  */
 async function openEditContactPage(i) {
+    contactToEditId = i;
     const contact = await readData(`contacts/${i}`);
+    contactToEditColor = contact.color;
     try {
         const response = await fetch('contact_edit_dialog.html');
         const data = await response.text();
         document.getElementById('modalBodyContent').innerHTML = data;
+        document.getElementById('addContactModal').style.display = 'block';
     } catch (error) {
         console.error('Error loading the edit contact form:', error);
     }
@@ -110,6 +129,11 @@ async function openContactDetails(userId) {
     let telefon = contact.phone;
 
     contactDetailsHTML(name, email, telefon, color, userId);
+    executeOnMaxWidth(820, async() =>{
+        document.getElementById('contact-list-container').style.display = 'none';
+        document.getElementById('contact-window').style.display = 'flex';
+        document.getElementById('contact-info-container').style.animation = 'unset';
+    });
 }
 
 
@@ -161,7 +185,7 @@ async function createContact(event) {
         'color': applyRandomColor()
     }, 'contacts');
     await putContactsToList();
-    closeModalContent();
+    closeContactModal();
 }
 
 
@@ -171,15 +195,35 @@ async function createContact(event) {
  * @param {string} contactId - The ID of the contact to edit.
  * @param {Event} event - The form submit event.
  */
-async function editContact(contactId, event) {
+async function editContact(event) {
     event.preventDefault();
     let nameInput = document.getElementById('name-input').value;
     let emailInput = document.getElementById('email-input').value.toLowerCase();
     let phoneInput = document.getElementById('phone-input').value;
 
     await putData({
+        'color': contactToEditColor,
         'email': emailInput,
         'name': nameInput,
         'phone': phoneInput,
-    }, `contacts/${contactId}`);
+    }, `contacts/${contactToEditId}`);
+    await putContactsToList();
+    openContactDetails(contactToEditId);
+    closeContactModal();
+}
+
+
+function closeContactModal() {
+    let modal = document.getElementById('addContactModal');
+    modal.style.animation = 'close-modal-animation';
+    modal.style.animationTimingFunction = 'ease-in';
+    modal.style.animationDuration = '300ms';
+
+    setTimeout(() => {
+        modal.style.display = 'none';
+        modal.style.animationName = '';
+        modal.style.animationTimingFunction = '';
+        modal.style.animationDuration = '';
+    }, 300);
+    
 }

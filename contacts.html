@@ -9,11 +9,10 @@
     <link rel="stylesheet" href="./assets/css/fonts.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/menu-bar.css">
-    <link rel="stylesheet" href="./assets/css/contact_dialog_style.css">
+    
     <script src="./assets/js/menu-bar-script.js"></script>
     <script src="./assets/js/contacts.js"></script>
     <script src="./assets/js/script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
     <link rel="icon" type="image/svg+xml" href="./assets/img/icons/favicon.svg">
     <!-- <link rel="icon" type="image/x-icon" href="./assets/img/icons/favicon.svg"> -->
     <link rel="icon" type="image/png" sizes="48x48" href="./assets/img/icons/favicon-48x48.png">
@@ -28,7 +27,7 @@
 <body onload="includeHTML(), putContactsToList()">
     <div w3-include-html="./assets/templates/menu-bar.html"></div>
     <div class="contact-list-and-contact-window-container">
-        <div class="contact-list-container">
+        <div id="contact-list-container" class="contact-list-container">
             <div class="btn-container-add-contact">
                 <button class="btn-add-new-contact" onclick="openAddContactPage()">Add new contact<img src="./assets/img/icons/person_add.svg"
                         alt=""></button>
@@ -36,7 +35,7 @@
             <ul id="contact-list" class="contact-list">
             </ul>
         </div>
-        <div class="contact-window">
+        <div id="contact-window" class="contact-window">
             <div class="h1-and-motto-container">
                 <h1>Contacts</h1>
                 <div class="separator"></div>

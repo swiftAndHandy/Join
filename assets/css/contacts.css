@@ -15,8 +15,9 @@ html{
     box-shadow: 4px 0px 6px 0px #00000014;
     margin: 80px 0 80px 0;
     overflow: scroll;
-    height: calc(100vh - 96px);
+    height: calc(100vh - 160px);
     background-color: #fff;
+    overflow-x: hidden;
 }
 
 
@@ -183,6 +184,9 @@ html{
 .contact-info-container {
     display: none;
     margin-left: 40px;
+    animation: open-contact-dialog-animation;
+    animation-timing-function: ease-in;
+    animation-duration: 300ms;
 }
 
 .image-name-container {
@@ -306,7 +310,7 @@ html{
 
 /* responsive */
 
-@media (min-width: 820px) {
+@media (min-width: 821px) {
 
     .contact-list-container {
         display: flex;
@@ -397,7 +401,7 @@ html{
 
 @media (max-width:820px) {
     .contact-window {
-        display: flex;
+        display: none;
     }
 
     .contact-list-and-contact-window-container {
@@ -468,16 +472,22 @@ html{
         margin-left: 16px;
     }
 
+    .addContactModal{
+        animation:open-contact-dialog-animation-mobile;
+        animation-duration: 300ms;
+        animation-timing-function: ease-in;
+    }
 
     .btn-add-new-contact {
         display: flex;
         position: fixed;
         right: 20px;
         bottom: 102px;
+        cursor: pointer;
     }
 
     .more-vert-button {
-        display: flex;
+        display: none;
         position: fixed;
         width: 32px;
         height: 32px;
@@ -501,6 +511,7 @@ html{
     }
 
     .contact-options {
+        display: none;
         animation-name: contact-options-animation;
         animation-timing-function: ease-out;
         animation-duration: 300ms;
@@ -555,5 +566,26 @@ html{
 
     to {
         transform: translate(0%);
+    }
+}
+
+@keyframes open-contact-dialog-animation-mobile {
+    from {
+        position: relative;
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translate(0%)
+    }
+}
+
+@keyframes close-modal-animation {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
     }
 }
