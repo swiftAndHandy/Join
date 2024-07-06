@@ -1,10 +1,14 @@
 /**
  * This function is used @summary.html to initalize everything.
- * Todo: Get Username and start greeting, when it's saved
+ * Adds an eventListener on every summary card, that leads to board.html when clicked.
+ * This method is used to prevent regular link-style
  */
 function initSummary() {
     includeHTML();
     greetAtLogin();
+    document.querySelectorAll('.summary-card').forEach(card => {
+        card.addEventListener('click', () => window.location.href = "./board.html");
+    })
 }
 
 /**
@@ -90,11 +94,18 @@ async function updateBoardCounters() {
     for (let item in data) {
         const thisItem = data[item];
         counters[thisItem.status]++;
-        thisItem.priority.toLowerCase() === 'urgent' && urgents.push(thisItem.date);
+        if (thisItem.priority.toLowerCase() === 'urgent' && thisItem.status !== 'done') {
+            urgents.push(thisItem.date);
+        }
     }
 
     document.getElementById('urgent-counter').innerText = urgents.length;
-    document.getElementById('deadline-date').innerText = taskDueDate(getDeadline(urgents)[0]); 
+    if (urgents.length > 0) {
+        document.getElementById('deadline-date').innerText = taskDueDate(getDeadline(urgents)[0]);
+        document.getElementById('deadline-description').innerText = 'Upcoming Deadline'
+    } else {
+        document.getElementById('deadline-description').innerHTML = '<b>No upcoming deadline.</b><br>Take a breath.'
+    }
 
     for (let items in counters) {
         document.getElementById(`${items}-counter`).innerText = counters[items];
