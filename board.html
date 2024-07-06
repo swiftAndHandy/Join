@@ -72,8 +72,8 @@
               </button>
             </div>
           </div>
-          <main class="board-content">
-            <section id="todo-section" class="section-container" ondrop="dragTo('todo')" ondragover="allowDrop(event)" ondragenter="showDragArea('todo')">
+          <main class="board-content" ondragenter="showDragArea('', false)">
+            <section id="todo-section" class="section-container" ondrop="dragTo('todo')" ondragover="allowDrop(event)" ondragenter="showDragArea('todo');stopPropagation(event);">
               <div class="section-headline">
                 <h2>To do</h2>
                 <button class="add-cross-btn-small">
@@ -85,7 +85,7 @@
               </div>
               <div class="tasks-container" id="todo-field"></div>
             </section>
-            <section id="progress-section" class="section-container" ondrop="dragTo('progress')" ondragover="allowDrop(event)" ondragenter="showDragArea('progress')">
+            <section id="progress-section" class="section-container" ondrop="dragTo('progress')" ondragover="allowDrop(event)" ondragenter="showDragArea('progress');stopPropagation(event);">
               <div class="section-headline">
                 <h2>In progress</h2>
                 <button class="add-cross-btn-small">
@@ -101,7 +101,7 @@
               <div class="tasks-container" id="progress-field">
               </div>
             </section>
-            <section id="feedback-section" class="section-container" ondrop="dragTo('feedback')" ondragover="allowDrop(event)" ondragenter="showDragArea('feedback')">
+            <section id="feedback-section" class="section-container" ondrop="dragTo('feedback')" ondragover="allowDrop(event)" ondragenter="showDragArea('feedback');stopPropagation(event);">
               <div class="section-headline">
                 <h2>Await feedback</h2>
                 <button class="add-cross-btn-small">
@@ -114,7 +114,7 @@
               <div class="tasks-container" id="feedback-field">
               </div>
             </section>
-            <section id="done-section" class="section-container" ondrop="dragTo('done')" ondragover="allowDrop(event)" ondragenter="showDragArea('done')">
+            <section id="done-section" class="section-container" ondrop="dragTo('done')" ondragover="allowDrop(event)" ondragenter="showDragArea('done');stopPropagation(event);">
               <div class="section-headline">
                 <h2>Done</h2>
               </div>
