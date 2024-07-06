@@ -211,7 +211,7 @@ async function accountExists(email, password = false) {
  * 
  * @param {string[]} subtaskArray - an Array with all subtask titles
  * @param {boolean} done - future state of subtask. normaly it's false when creating a new.
- * @returns 
+ * @returns - an Array with subtakObjects, containing name: string and done: boolean
  */
 function createSubtasks(subtaskArray = [], done = false) {
     const subtaskObjects = [];

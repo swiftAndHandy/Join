@@ -9,8 +9,8 @@ function openAddContactPage() {
 }
 
 
-function closeAddContactPage() {
-    document.getElementById('addContactModal').style.display = 'none';
+function closeModalContent() {
+    document.getElementById('modalBodyContent').innerHTML = '';
 }
 
 /**
@@ -162,7 +162,7 @@ async function createContact(event) {
         'color': applyRandomColor()
     }, 'contacts');
     await putContactsToList();
-    closeAddContactPage();
+    closeModalContent();
 }
 
 
