@@ -119,6 +119,13 @@ function clearInputs(ids) {
 
 }
 
+function convertArrayToObject(array) {
+  let obj = {};
+  array.forEach((value, index) => {
+    obj[index] = value;
+  });
+  return obj;
+}
 
 
 async function addnewTask() {
@@ -129,10 +136,13 @@ async function addnewTask() {
   taskCategory();
   taskSubtask();
   formOfDueDate();
+
+  let assignedContactsObject = convertArrayToObject(addTaskAssignedContacts);
+
   await postData({
     'title': addTaskTitle,
     'description': addTaskDescription,
-    'assigned': addTaskAssignedContacts,
+    'assigned': assignedContactsObject,
     'date': addTaskDueDate,
     'priority': addTaskPrio,
     'tag': addTaskCategory,
@@ -204,7 +214,8 @@ function showPopupTaskAdded() {
 async function renderContactList() {
   const data = await readData('contacts');
   let entries = sortByAlphabet(data, 'contacts');
+  let dataKeys =Object.keys(data);
   for (let i = 0; i < entries.length; i++) {
-    generateDropBoxContacts(entries[i]);
+    generateDropBoxContacts(entries[i],dataKeys[i]);
   }
 }
