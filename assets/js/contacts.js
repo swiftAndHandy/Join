@@ -20,21 +20,17 @@ function closeAddContactPage() {
  * @param {number} i - The index of the contact to be edited.
  */
 async function openEditContactPage(i) {
+    const contact = await readData(`contacts/${i}`);
 
-    let contact = await readData(`contacts/${i}`); 
-    let name = contact.name;
-    let email = contact.email;
-    let color = contact.color;
-    let telefon = contact.phone;
+    try {
+        const response = await fetch('contact_edit_dialog.html');
+        const data = await response.text();
+        document.getElementById('modalBodyContent').innerHTML = data;
+    } catch (error) {
+        console.error('Error loading the edit contact form:', error);
+    }
 
-    await fetch('contact_edit_dialog.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('modalBodyContent').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading the edit contact form:', error));
-
-    putContactInfoToEditDialog(name, email, telefon, color);
+    putContactInfoToEditDialog(contact.name, contact.email, contact.phone, contact.color);
 }
 
 
@@ -114,7 +110,7 @@ async function openContactDetails(userId) {
     let color = contact.color;
     let telefon = contact.phone;
 
-    contactDetailsHTML(name, email, telefon, color,userId);
+    contactDetailsHTML(name, email, telefon, color, userId);
 }
 
 
