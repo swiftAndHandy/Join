@@ -125,10 +125,7 @@ function convertArrayToObject(array) {
   return obj;
 }
 
-function clearFormAfterSubmit() {
-  const form = document.getElementById('form-desktop');
-  form.reset();
-}
+
 
 function loadTaskForm() {
   addTitle();
