@@ -27,6 +27,11 @@
   .outer-wrapper {
     position: relative;
   }
+
+  .description-wrapper {
+    max-height: 100px;
+    overflow: scroll;
+  }
   
   .task-card-view {
     display: flex;
