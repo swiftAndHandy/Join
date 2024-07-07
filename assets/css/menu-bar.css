@@ -286,6 +286,7 @@ header {
 
 .header-mobile {
     display: none;
+    z-index: 1;
 }
 
 @media (max-width: 900px) {

@@ -4,13 +4,15 @@ let subtasksToUpdate = [];
 
 function initTaskDetails() {
     setupListener();
-    renderContactList();
     document.getElementById('update-date').valueAsDate = new Date();
 }
 
 async function openTaskDetails(taskId) {
-    hideWindow('task-details-view', false);
+    await renderContactList();
     const assignedContacts = await renderTaskDetails(taskId);
+    hideWindow('task-details-view', false);
+    document.getElementById('task-card-wrapper').classList.toggle('dimm');
+    document.getElementById('body').style = "overflow: hidden;"
     activateAssignedContacts(assignedContacts);
     document.getElementById('task-details-edit-btn').setAttribute('onclick', `openEditDialog('${taskId}')`);
 
@@ -33,10 +35,10 @@ async function renderContactList(assignedContacts) {
  * Simulates an click on every assigned contact to activate it for contact list and submit array (assignedPersonsToUpdate)
  */
 async function activateAssignedContacts(assignedContacts) {
-    const assignedToEdit = document.getElementById('task-edit-view-assigned-persons');
     for (let item of assignedContacts) {
         try {
             document.getElementById(`assign-contact-contacts/${item}`).click();
+            console.log(`${item} is toggled`);
         } catch(error) {
             console.warn(`The contact with the ID ${item} has been deleted and won't be displayed.`);
         }
@@ -82,6 +84,18 @@ async function updateAssignedPersons(id) {
         assignedPersonsToUpdate.splice(index, 1);
         document.getElementById(`edit_task_assigned-person-${id}`).remove();
     }
+}
+
+/**
+ * Reset everything on closeDetails, to prepare a new fresh detail-page
+ */
+function closeDetails() {
+    toggleVisibility('task-details-view');
+    document.getElementById('task-card-wrapper').classList.toggle('dimm');
+    document.getElementById('body').style = "overflow: unset;"
+    document.getElementById('task-edit-view-assigned-persons').innerHTML = '';
+    assignedPersonsToUpdate = [];
+    document.getElementById('edit-task-contacts-list').innerHTML = '';
 }
 
 /**
@@ -135,7 +149,6 @@ function toggleVisibility(id) {
 }
 
 async function openEditDialog(taskId) {
-
     toggleVisibility('task-edit-view'); toggleVisibility('task-details-view');
 }
 
