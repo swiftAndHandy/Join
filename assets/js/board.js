@@ -50,7 +50,7 @@ async function renderTasks() {
       const item = data[key];
       const taskCardHTML = await callContactInformationForTasks(key, item);
       statusFields[item.status].innerHTML += taskCardHTML;
-      document.getElementById(`profile-circle-container-${key}`).innerHTML = await generateCircleProfiles(item.assigned, key);
+      document.getElementById(`profile-circle-container-${key}`).innerHTML = await generateCircleProfiles(item.assigned, key, data);
 
 
       prioEqualImg(item, key);
