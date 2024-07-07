@@ -1,4 +1,5 @@
 function generateTaskCard(keyTasks, item) {
+  
   return `
   <article class="task-card-container" ondblclick="openTaskDetails('${keyTasks}')" draggable="true" ondragstart="startDrag('${keyTasks}', '${item.status}')" id="taskId${keyTasks}">
     <div class="task-card-content">
@@ -7,7 +8,7 @@ function generateTaskCard(keyTasks, item) {
       </div>
       <div class="task-card-header mt-24">
         <h2>${item.title}</h2>
-        <span class="task-sub-headline">${trimToSixtyCharacters(item.description)} </span>
+        <span id="description-content${keyTasks}" class="task-sub-headline">${trimToSixtyCharacters(item.description)} </span>
       </div>
       <div class="sub-task-container mt-24">
         <div class="sub-task-progress-bar">

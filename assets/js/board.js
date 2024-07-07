@@ -200,7 +200,7 @@ function closeAddTaskPopUp() {
 // });
 
 function trimToSixtyCharacters(inputString) {
-  if (inputString.length > 60) {
+  if (inputString.length > 80) {
     return inputString.substring(0, 80) + '...'; 
   }
   return inputString; 
