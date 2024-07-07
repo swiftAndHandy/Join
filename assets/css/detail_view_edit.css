@@ -1,0 +1,299 @@
+
+.list-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .list-btn:active {
+    border: 1px solid #A8A8A8;
+  }
+  
+  .list-btn.focus {
+    border: 1px solid #29ABE2;
+  }
+  
+  .list-icon {
+    width: 24px;
+    height: 24px;
+    user-select: none;
+  }
+  
+  .scroll-bar-wrapper.edit {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 16px;
+    overflow: auto;
+    padding-left: 1px;
+  }
+  
+  .list-btn__input-field {
+    font-family: 'Inter';
+    font-size: 16px;
+    width: 100%;
+    border: none;
+  }
+  
+  .list-btn__input-field:focus-visible {
+    width: 100%;
+    border: none;
+    outline: none;
+  }
+  
+  .edit-task-contact-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-right: 16px;
+    box-sizing: border-box;
+    transform: translateY(-8px);
+    max-height: calc(56px * 5);
+    overflow: scroll;
+  }
+  
+  .single-contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 7px 16px;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 2px;
+  }
+  
+  .single-contact:hover {
+    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+  }
+  
+  .single-contact.list-selected {
+    background-color: #091931;
+    color: #FFFFFF;
+  }
+  
+  .single-contact.list-selected:hover {
+    background: #2A3D59;
+    color: #FFFFFF;
+  }
+  
+  .user-box {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+    gap: 16px;
+    user-select: none;
+  }
+  
+  .avatar.assigned-to {
+    cursor: pointer;
+  }
+  
+  .avatar.at-drop-down {
+    height: 38px;
+    width: 38px;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 45px;
+  }
+  
+  .contact-checkbox {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+  }
+  
+  .contact-checkbox+label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+  
+  .checkbox.edit+label:hover {
+    border-radius: 10px;
+    background-color: rgba(117, 117, 117, 0.1);
+  }
+  
+  .pseudo-checkbox {
+    width: 24px;
+    height: 24px;
+    background-image: url('../img/icons/checkbox_disabled.svg');
+  }
+  
+  .pseudo-checkbox.list-selected {
+    background-image: url('../img/icons/contacts_checkbox-active.svg');
+  }
+  
+  .details-subtask-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 12px 16px;
+    box-sizing: border-box;
+  }
+  
+  .details-subtask-box.focus {
+    border: 1px solid #29ABE2;
+  }
+  
+  .simple-btn.small {
+    gap: 4px;
+    font-weight: 700;
+    font-size: 21px;
+    padding: 18px 10px;
+  }
+  
+  .details-subtask-add {
+    box-sizing: border-box;
+    border-radius: 10px;
+    flex: 1;
+    border: none;
+    outline: unset;
+    font-family: 'Inter';
+    font-size: 16px;
+  }
+  
+  .details-subtask-add::placeholder {
+    color: #D1D1D1;
+  }
+  
+  .vertical-line {
+    height: 24px;
+    width: 1px;
+    background: #A8A8A8;
+  }
+  
+  .edit-subtask-navigation {
+    display: flex;
+    gap: 4px;
+    cursor: pointer;
+  }
+  
+  .cross.blue {
+    height: 24px;
+    width: 24px;
+    background-image: url('../img/icons/add_cross_blue.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .cross.blue:hover {
+    height: 24px;
+    width: 24px;
+    background-image: url('../img/icons/add_cross_blue-hovered.svg');
+  }
+  
+  .link-btn {
+    height: 24px;
+    width: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  
+  .link-btn.discard-btn {
+    background-image: url('../img/icons/discard.svg');
+  }
+  
+  .link-btn.discard-btn:hover {
+    background-image: url('../img/icons/close_hovered.svg');
+  }
+  
+  .link-btn.delete-btn:hover {
+    background-image: url('../img/icons/delete_hovered.svg');
+  }
+  
+  .link-btn.accept-btn {
+    background-image: url('../img/icons/check_blue.svg');
+  }
+  
+  .link-btn.accept-btn:hover {
+    background-image: url('../img/icons/check-hovered.svg');
+  }
+  
+  .edit-subtasks-list {
+    width: 100%;
+    margin-block: 0;
+    padding-inline-start: 16px;
+    box-sizing: border-box;
+  }
+  
+  .edit-subtasks-list li {
+    position: relative;
+    width: 100%;
+    flex: 1;
+  }
+  
+  .edit-task__overlay {
+    position: absolute;
+  }
+  
+  .details__vertical-wrapper.ml-0 {
+    width: 100%;
+    margin-left: 0;
+  }
+  
+  .li-wrapper {
+    width: 100%;
+    border-radius: 10px;
+    padding: 4px 16px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+  }
+  
+  .li-wrapper:hover {
+    background-color: #D1D1D155;
+  }
+  
+  .single-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .single-list-item .hover-overlay {
+    opacity: 0;
+    display: flex;
+    gap: 4px;
+    transition: all 0.1s ease-in-out;
+  }
+  
+  .li-wrapper:hover .single-list-item .hover-overlay {
+    opacity: 1;
+  }
+  
+  .single-subtask-input-box {
+    display: flex;
+    border-bottom: 1px solid #29ABE2;
+    padding: 4px 16px;
+    width: 100%;
+    gap: 4px;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+  .single-subtask-input-box input {
+    font-family: 'Inter';
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+  }

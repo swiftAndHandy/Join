@@ -11,7 +11,7 @@ function generateTaskCard(keyTasks, item) {
       </div>
       <div class="sub-task-container mt-24">
         <div class="sub-task-progress-bar">
-           <div id="progress-length"></div>
+           <div id="progress-length${keyTasks}"></div>
         </div>
         <span>1/2 Subtasks</span>
       </div>
