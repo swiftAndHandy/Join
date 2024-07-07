@@ -21,13 +21,13 @@ function formOfDueDate() {
 function addTitle() {
   let title = document.getElementById("task-title");
   addTaskTitle = title.value;
-  
+
 }
 
 function addDescription() {
   let taskDescription = document.getElementById("task-description");
   addTaskDescription = taskDescription.value;
-
+  
 }
 
 function taskCategory() {
@@ -108,6 +108,17 @@ function toggleContactDropBox() {
 
 
 
+function clearInputs() {
+  
+  let form = document.getElementById('form-desktop')
+  // form.setAttribute('novalidate', true);
+  form.reset();
+//   setTimeout(() => {
+//     // form.removeAttribute('novalidate', false); // Aktiviere die Standardvalidierung wieder
+// }, 100);
+}
+
+
 function clearInputs(event) {
   event.preventDefault();
   let form = document.getElementById('form-desktop')
@@ -119,6 +130,16 @@ function clearInputs(event) {
 }
 
 
+function clearInputs(event) {
+event.preventDefault()
+  let form = document.getElementById('form-desktop')
+  form.setAttribute('novalidate', true);
+  
+setTimeout(() => {
+  form.removeAttribute('novalidate', false);
+}, 100);
+form.reset();
+  }
 
 
 
@@ -131,19 +152,13 @@ function convertArrayToObject(array) {
 }
 
 
-
-function loadTaskForm() {
+async function addnewTask(event) {
   addTitle();
   addDescription();
   taskDueDate();
   taskCategory();
   taskSubtask();
   formOfDueDate();
-
-}
-
-async function addnewTask(event) {
-  loadTaskForm();
   clearInputs(event)
   let assignedContactsObject = convertArrayToObject(addTaskAssignedContacts);
 
