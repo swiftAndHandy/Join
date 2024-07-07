@@ -28,14 +28,16 @@ function generateTaskCard(keyTasks, item) {
 
 async function generateCircleProfiles(contactEntries, taskId, data) {
   let output = '';
-  for (let contacts of contactEntries) {
-    const user = await readData(`contacts/${contacts}`);
-    try {
-      output += `
+  if (contactEntries) {
+    for (let contacts of contactEntries) {
+      const user = await readData(`contacts/${contacts}`);
+      try {
+        output += `
       <div class="profile-cricle" id=profile-circle-container-${contacts}" style= "background-color:${user.color}">${initials(user.name)}</div>
       `;
-    } catch (error) {
-      console.warn(`'${data[taskId].title}' (ID: ${taskId}), is assigned to Contact-ID ${contacts}. That assigned contact doesn't exist anymore!`);
+      } catch (error) {
+        console.warn(`'${data[taskId].title}' (ID: ${taskId}), is assigned to Contact-ID ${contacts}. That assigned contact doesn't exist anymore!`);
+      }
     }
   }
   return output;
