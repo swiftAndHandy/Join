@@ -30,7 +30,8 @@
 
   .description-wrapper {
     max-height: 100px;
-    overflow: scroll;
+    overflow: auto;
+    word-break: break-word;
   }
   
   .task-card-view {

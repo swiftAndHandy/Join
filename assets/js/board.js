@@ -198,3 +198,10 @@ function closeAddTaskPopUp() {
 //   // Deine Funktion, die beim Laden der Seite aufgerufen wird
 //   addOpenAddTaskToButtons(); // Füge onclick zu den Buttons hinzu
 // });
+
+function trimToSixtyCharacters(inputString) {
+  if (inputString.length > 60) {
+    return inputString.substring(0, 80) + '...'; 
+  }
+  return inputString; 
+}
