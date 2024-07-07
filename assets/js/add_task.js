@@ -113,9 +113,14 @@ function clearInputs(event) {
   let form = document.getElementById('form-desktop')
   form.setAttribute('novalidate', true);
   form.reset();
- 
-
+  setTimeout(() => {
+    form.removeAttribute('novalidate'); // Aktiviere die Standardvalidierung wieder
+}, 100);
 }
+
+
+
+
 
 function convertArrayToObject(array) {
   let obj = {};
