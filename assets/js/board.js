@@ -6,7 +6,7 @@ async function initBoard() {
   await includeHTML();
   renderTasks();
   addOpenAddTaskToButtons()
-  
+
   document.addEventListener('dragend', () => {
     showDragArea('', false);
     currentlyDragged = null;
@@ -48,15 +48,9 @@ async function renderTasks() {
 
     for (let key in data) {
       const item = data[key];
-
-      if (statusFields[item.status]) {
-        // Await the result of the async function call
-        const taskCardHTML = await callContactInformationForTasks(
-          key,
-          item
-        );
-        statusFields[item.status].innerHTML += taskCardHTML;
-      }
+      const taskCardHTML = await callContactInformationForTasks(key, item);
+      statusFields[item.status].innerHTML += taskCardHTML;
+      document.getElementById(`profile-circle-container-${key}`).innerHTML = await generateCircleProfiles(item.assigned, key);
 
 
       prioEqualImg(item, key);
@@ -73,44 +67,16 @@ async function renderTasks() {
  * renderTasks provides the necessary parameters for this function to work with.
  * 
  * @param {string} keyTasks - The unique key from the Tasks database.
- * @param {string} status - The status value from the database.
- * @param {string} title - The title value from the database.
- * @param {string} description - The description value from the database.
- * @param {string} date - The date value from the database.
- * @param {string} prio - The priority value from the database.
- * @param {string} tag - The tag value from the database. Must be one of: Low, Medium, or Urgent.
- * @param {string} subTasks - The subTasks value from the database.
+ * @param {} item -
  * @returns {Promise<string>} A promise that includes the generated HTML for the task card.
  */
-async function callContactInformationForTasks(keyTasks,item) {  // maybe not the right approch should check it tommorw maybe  i have to get the color form the contaacts also in the assigend tab
+async function callContactInformationForTasks(keyTasks, item) {  // maybe not the right approch should check it tommorw maybe  i have to get the color form the contaacts also in the assigend tab
   let contactData = await readData('contacts');
   const entries = sortByAlphabet(contactData, 'contacts');
 
-  // array for the first three iteration to store to use them later in the generateTaskCard
-  let firstThreeEntries = [];
-  let count = 0;
-
-  for (let key in entries) {
-    const contactEntries = entries[key];
-
-    if (count < 3) {
-      firstThreeEntries.push(contactEntries);
-    }
-
-    count++;
-
-    if (count >= 3) {
-      break;
-    }
-  }
-
   // Generiere die Aufgabenkarte mit den ersten drei Einträgen
-  let taskCardHTML = generateTaskCard(
-    keyTasks,
-    item ,
-    firstThreeEntries // Übergabe der ersten drei Einträge an generateTaskCard
-  );
- 
+  let taskCardHTML = generateTaskCard(keyTasks, item);
+
   return taskCardHTML;
 }
 
@@ -127,7 +93,6 @@ function prioEqualImg(prio, key) {
   } else if (prio.priority === 'Low') {
     let prioImg = document.getElementById(`prio-img${key}`);
     prioImg.src = "./assets/img/icons/low.svg";
-
   }
 }
 

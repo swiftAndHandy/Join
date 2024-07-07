@@ -1,8 +1,5 @@
-function generateTaskCard( keyTasks, item, contactEntries) {
-  
-
-  
-  return`
+function generateTaskCard(keyTasks, item) {
+  return `
   <article class="task-card-container" ondblclick="openTaskDetails('${keyTasks}')" draggable="true" ondragstart="startDrag('${keyTasks}', '${item.status}')" id="taskId${keyTasks}">
     <div class="task-card-content">
       <div class="task-group-bubble ${item.tag.replace(/\s+/g, "-")}">
@@ -19,10 +16,7 @@ function generateTaskCard( keyTasks, item, contactEntries) {
         <span>1/2 Subtasks</span>
       </div>
       <div class="assigned-user mt-24">
-        <div id="profile-circle-container" class="profile-pictures">
-          <div class="profile-cricle" id=profile-circle-container0 style= "background-color:${contactEntries[0].color}">${item.assigned[0]}</div>
-          <div class="profile-cricle" id=profile-circle-container1 style= "background-color:${contactEntries[1].color}">${item.assigned[0]}</div>
-          <div class="profile-cricle" id=profile-circle-container2 style= "background-color:${contactEntries[2].color}">${item.assigned[0]}</div>
+        <div id="profile-circle-container-${keyTasks}" class="profile-pictures">
         </div>
         <div>
           <img id="prio-img${keyTasks}" src="./assets/img/icons/priority_medium.svg" alt="">
@@ -32,15 +26,17 @@ function generateTaskCard( keyTasks, item, contactEntries) {
   </article>`;
 }
 
-// function addProfileCircles(keyTasks, status, title, description, date, prio, tag, subTasks, assigned, contactEntries) {
-//   let target = document.getElementById('profile-circle-container')
-
-//   // Iteriere über die zugewiesenen Kontakte und füge die Profilkreise hinzu
-//   for (let i = 0; i < assigned.length && i < 3; i++) {
-//     target.insertAdjacentHTML('beforeend', `
-//       <div class="profile-circle" id="profile-circle-container${i}" style="background-color:${contactEntries[i].color}">
-//         ${assigned[i]}
-//       </div>
-//     `);
-//   }
-// }
+async function generateCircleProfiles(contactEntries, taskId) {
+  let output = '';
+  for (let contacts of contactEntries) {
+    const user = await readData(`contacts/${contacts}`);
+    try {
+      output += `
+      <div class="profile-cricle" id=profile-circle-container-${contacts}" style= "background-color:${user.color}">${initials(user.name)}</div>
+      `
+    } catch (error) {
+      console.warn(`User-ID ${contacts}, that's was assigned to this task, has been deleted!`);
+    }
+  }
+  return output;
+}

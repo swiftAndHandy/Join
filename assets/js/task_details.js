@@ -22,7 +22,8 @@ async function openTaskDetails(taskId) {
         document.getElementById('task-details-edit-btn').setAttribute('onclick', `openEditDialog('${taskId}')`);
         activateAssignedContacts(assignedContacts);
     } catch (error) {
-        console.warn('This Task has been deleted by another user.')
+        console.warn('This Task has been deleted by another user.');
+        document.getElementById(`taskId${taskId}`).remove();
     }
 }
 
