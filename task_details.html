@@ -7,7 +7,9 @@
         </div>
         <div class="details__title-wrapper">
             <h1 id="task-details-title" class="details__title"></h1>
-            <p id="task-details-description" class="details__description"></p>
+            <div class="description-wrapper">
+                <p id="task-details-description" class="details__description"></p>
+            </div>
         </div>
         <div class="details__info-box">
             <strong class="details__caption">Due date:</strong>
@@ -69,7 +71,7 @@
         </div>
     </section>
 
-<!-- Start of Second Part -->
+    <!-- Start of Second Part -->
 
     <section id="task-edit-view" class="task-card-view d-none" onclick="resetInputFields();stopPropagation(event);">
         <div class="details__header titleless">
