@@ -394,9 +394,6 @@ select:focus {
   border: 1px solid #29ABE2;
 }
 
-.pop-up-task-added {
-  display: none;
-}
 
 .task-added-popup {
   width: 326px;
@@ -406,12 +403,13 @@ select:focus {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 715%);
   z-index: 1000;
-  display: flex;
+  display: none;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  transition: 0.5s ease-out !important;
 }
 
 .popup-text {
@@ -428,6 +426,11 @@ select:focus {
 .popup-img {
   width: 30px;
   height: 30px;
+}
+
+.form-down-to-up-transition {
+  transform: translate(-50%, 0%) !important;
+  
 }
 
 
