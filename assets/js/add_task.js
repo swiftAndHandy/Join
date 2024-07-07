@@ -245,7 +245,7 @@ function showPopupTaskAdded() {
           popup.style.display = "none";
    
           window.location.href = 'board.html';
-      }, 3000); 
+      }, 1000); 
   }, 100); 
 }
 
