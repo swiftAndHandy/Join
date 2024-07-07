@@ -119,11 +119,11 @@
             />
           </div>
           <div class="desktop-buttons">
-            <button class="clear-btn" onclick="clearInputs(['task-title','task-description','select-task-category','task-due-date','task-subtask'])"> Clear
+            <button id="clear-button" class="clear-btn" onclick="clearInputs(event)"> Clear
               <img src="./assets/img/icons/close.svg" alt="">
             </button>
             
-            <button class="create-task-btn" id="button-create-task" onclick="checkIfFormFilled()" >Create Task
+            <button class="create-task-btn" id="button-create-task" onclick="checkIfFormFilled(event)" >Create Task
               <img src="./assets/img/icons/check.svg" alt="">
             </button>
             
@@ -148,8 +148,8 @@
     
     </div>
     </div>
-    <div id="pop-up-task-added" class="pop-up-task-added">
-      <div class="task-added-popup">
+    <div id="pop-up-task-added" >
+      <div id="pop-up-transition" class="task-added-popup">
         <div class="popup-text">Task added to board</div>
         <img class="popup-img" src="/assets/img/icons/board.icon.svg">
       </div>

@@ -21,20 +21,27 @@ function formOfDueDate() {
 function addTitle() {
   let title = document.getElementById("task-title");
   addTaskTitle = title.value;
-  title.value = "";
+  
 }
 
 function addDescription() {
   let taskDescription = document.getElementById("task-description");
   addTaskDescription = taskDescription.value;
-  taskDescription.value = "";
+
 }
 
-// function assignedContact() {
-//   let assignedToContact = document.getElementById("assigned-to-contact");
-//   addTaskAssignedContacts = addTaskAssignedContacts
-//   assignedToContact.value = "";
-// } maybe no use for it anymore
+function taskCategory() {
+  let category = document.getElementById("select-task-category");
+  addTaskCategory = category.value;
+  
+}
+
+function taskSubtask() {
+  let subtask = document.getElementById("task-subtask");
+  addTaskSubtask = subtask.value;
+  
+}
+
 /**
  * 
  * @returns {void}
@@ -99,23 +106,14 @@ function toggleContactDropBox() {
   }
 }
 
-function taskCategory() {
-  let category = document.getElementById("select-task-category");
-  addTaskCategory = category.value;
-  category.value = "";
-}
 
-function taskSubtask() {
-  let subtask = document.getElementById("task-subtask");
-  addTaskSubtask = subtask.value;
-  subtask.value = "";
-}
 
-function clearInputs(ids) {
-  for (let i = 0; i < ids.length; i++) {
-    let clearAll = document.getElementById(ids[i])
-    clearAll.value = "";
-  }
+function clearInputs(event) {
+  event.preventDefault();
+  let form = document.getElementById('form-desktop')
+  form.setAttribute('novalidate', true);
+  form.reset();
+ 
 
 }
 
@@ -127,16 +125,24 @@ function convertArrayToObject(array) {
   return obj;
 }
 
+function clearFormAfterSubmit() {
+  const form = document.getElementById('form-desktop');
+  form.reset();
+}
 
-async function addnewTask() {
+function loadTaskForm() {
   addTitle();
   addDescription();
-  //   assignedContact(); maybe not needed anymore
   taskDueDate();
   taskCategory();
   taskSubtask();
   formOfDueDate();
 
+}
+
+async function addnewTask(event) {
+  loadTaskForm();
+  clearInputs(event)
   let assignedContactsObject = convertArrayToObject(addTaskAssignedContacts);
 
   await postData({
@@ -151,7 +157,7 @@ async function addnewTask() {
   }, 'tasks');
 }
 
-function checkIfFormFilled() {
+function checkIfFormFilled(event) {
   const form = document.getElementById("form-desktop");
   const requiredFields = form.querySelectorAll("[required]");
   let allFilled = true;
@@ -162,7 +168,7 @@ function checkIfFormFilled() {
   });
   if (allFilled) {
     // document.getElementById('button-create-task').disabled = false;
-    addnewTask();
+    addnewTask(event);
     showPopupTaskAdded();
   } else {
     console.log(
@@ -170,6 +176,8 @@ function checkIfFormFilled() {
     );
   }
 }
+
+
 
 function setPrio(prio, number) {
   const priorities = ["urgent", "medium", "low"];
@@ -203,13 +211,27 @@ function setPrio(prio, number) {
 }
 
 function showPopupTaskAdded() {
-  const popup = document.getElementById('pop-up-task-added');
-  popup.style.display = 'block';
-    setTimeout(() => {
-      popup.style.display = 'none';
-      window.location.href = 'board.html';
-    },1000);
+  const popup = document.getElementById('pop-up-transition'); // Korrekte Methode getElementById
+
+
+  popup.style.display = "flex";
+
+ 
+  setTimeout(() => {
+ 
+      popup.classList.add('form-down-to-up-transition');
+
+      setTimeout(() => {
+    
+
+          popup.classList.remove('form-down-to-up-transition');
+          popup.style.display = "none";
+   
+          window.location.href = 'board.html';
+      }, 3000); 
+  }, 100); 
 }
+
 
 async function renderContactList() {
   const data = await readData('contacts');
