@@ -5,6 +5,7 @@ let subtasksToUpdate = [];
 function initTaskDetails() {
     setupListener();
     renderContactList();
+    document.getElementById('update-date').valueAsDate = new Date();
 }
 
 async function openTaskDetails(taskId) {
@@ -12,7 +13,7 @@ async function openTaskDetails(taskId) {
     const assignedContacts = await renderTaskDetails(taskId);
     activateAssignedContacts(assignedContacts);
     document.getElementById('task-details-edit-btn').setAttribute('onclick', `openEditDialog('${taskId}')`);
-    
+
 }
 
 /**
@@ -34,7 +35,11 @@ async function renderContactList(assignedContacts) {
 async function activateAssignedContacts(assignedContacts) {
     const assignedToEdit = document.getElementById('task-edit-view-assigned-persons');
     for (let item of assignedContacts) {
-        document.getElementById(`assign-contact-contacts/${item}`).click();
+        try {
+            document.getElementById(`assign-contact-contacts/${item}`).click();
+        } catch(error) {
+            console.warn(`The contact with the ID ${item} has been deleted and won't be displayed.`);
+        }
     }
 }
 

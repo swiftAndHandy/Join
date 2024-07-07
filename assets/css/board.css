@@ -895,13 +895,12 @@ Edit-View related Classes
 }
 
 .single-contact.list-selected {
-  /* background: #2a3647fc; */
   background-color: #091931;
   color: #FFFFFF;
 }
 
 .single-contact.list-selected:hover {
-  background: #2a3647ef;
+  background: #2A3D59;
   color: #FFFFFF;
 }
 
