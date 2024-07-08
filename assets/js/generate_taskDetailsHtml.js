@@ -56,8 +56,8 @@ async function generateTaskDetailsHtml(taskId, taskDetails) {
  */
 async function assignedPersonsDetailsHtml(contactIds) {
     let output = '';
-    try {
-        for (let item of contactIds) {
+    for (let item of contactIds) {
+        try {
             const data = await readData(`${item}`)
             output += `
                 <div class="details__inner">
@@ -65,8 +65,8 @@ async function assignedPersonsDetailsHtml(contactIds) {
                     <span id="edit-task-username-ID">${data.name}</span>
                 </div>
                 `;
-        }
-    } catch (error) { }
+        } catch (error) { }
+    }
     return output;
 }
 
