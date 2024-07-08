@@ -93,23 +93,24 @@ function deleteSubtask(subtaskId) {
 /**
  * updates an global array, based on a querySelector, that will be pushed to firebase
  * @param {string} relatedToTaskId - refers to a Task-ID and is used in path-param for putData
+ * @returns {Object[]} return of an JSON-Array with this information:
+ * @returns {string} return[].goal - Archived when this goal is reached
+ * @returns {boolean} return[].done Tracks when it is archived
+ * 
+ * How to use this: 
+ * For new Tasks: add .subtaskitem to every task-item you want to create. 
+ * For existing and finished tasks: add .subtask-checkbox to every checkbox and add a label, that contains the task-text
  */
-async function updateSubtasksArray() {
+ function updateSubtasksArray() {
     let query = document.querySelectorAll('.subtaskitem')
     let result = [];
     query.forEach((item) => result.push(
-        {
-            'name': item.innerText,
-            'done': false
-        }
+        {'goal': item.innerText, 'done': false}
     ));
 
     query = document.querySelectorAll('input[type="checkbox"].subtask-checkbox:checked + label');
     query.forEach((item) => result.push (
-        {
-            name: item.innerText,
-            'done': true
-        }
+        {'goal': item.innerText, 'done': true}
     ));
     return result; 
 }
