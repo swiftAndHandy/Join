@@ -51,8 +51,6 @@ async function renderTasks() {
       const taskCardHTML = await callContactInformationForTasks(key, item);
       statusFields[item.status].innerHTML += taskCardHTML;
       document.getElementById(`profile-circle-container-${key}`).innerHTML = await generateCircleProfiles(item.assigned, key, data);
-
-
       prioEqualImg(item, key);
     }
     updateTaskFields(Object.keys(statusFields));
@@ -60,6 +58,8 @@ async function renderTasks() {
     console.error('Error rendering tasks:', error);
   }
 }
+
+
 /**
 /**
  * The function calls generateTaskCard at the end to return the HTML for the task card.

@@ -7,11 +7,10 @@ const userId = localStorage.getItem('id');
  */
 function applyRandomColor() {
     const colors = [
-        '#FF7A00', '#FF5EB3', '#6E52FF',
-        '#9327FF', '#00BEE8', '#1FD7C1',
-        '#FF745E', '#FFA35E', '#FC71FF',
-        '#FFC701', '#0038FF', '#C3FF2B',
-        '#FFE62B', '#FF4646', '#FFBB2B'
+        '#FF7A00', '#9327FF', '#6E52FF',
+        '#FC71FF', '#FFBB2B', '#1FD7C1',
+        '#462F8A', '#FF4646', '#00BEE8',
+        '#FF7A00'
     ];
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];

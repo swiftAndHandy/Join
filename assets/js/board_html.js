@@ -1,5 +1,5 @@
 function generateTaskCard(keyTasks, item) {
-  
+
   return `
   <article class="task-card-container" ondblclick="openTaskDetails('${keyTasks}')" draggable="true" ondragstart="startDrag('${keyTasks}', '${item.status}')" id="taskId${keyTasks}">
     <div class="task-card-content">
@@ -29,14 +29,18 @@ function generateTaskCard(keyTasks, item) {
 
 async function generateCircleProfiles(contactEntries, taskId, data) {
   let output = '';
+  let counter = 0;
   if (contactEntries) {
     for (let contacts of contactEntries) {
-      const user = await readData(`${contacts}`);
       try {
-        output += `
-      <div class="profile-cricle" id=profile-circle-container-${contacts}" style= "background-color:${user.color}">${initials(user.name)}</div>
-      `;
-      } catch (error) {}
+        const user = await readData(`${contacts}`);
+        output += `<div class="profile-cricle" id=profile-circle-container-${contacts}" style= "background-color:${user.color}">${initials(user.name)}</div>`;
+        counter++;
+        if (counter >= 13) {
+          output += `<div class="profile-cricle" id=profile-circle-container-${contacts}" style= "background-color:#29ABE2}">...</div>`;
+          break;
+        }
+      } catch (error) { }
     }
   }
   return output;
