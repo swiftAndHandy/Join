@@ -45,15 +45,14 @@ async function renderTasks() {
 
   try {
     let data = await readData('tasks');
-
     for (let key in data) {
       const item = data[key];
       const taskCardHTML = await callContactInformationForTasks(key, item);
+      updateTaskFields(Object.keys(statusFields));
       statusFields[item.status].innerHTML += taskCardHTML;
       document.getElementById(`profile-circle-container-${key}`).innerHTML = await generateCircleProfiles(item.assigned, key, data);
       prioEqualImg(item, key);
     }
-    updateTaskFields(Object.keys(statusFields));
   } catch (error) {
     console.error('Error rendering tasks:', error);
   }

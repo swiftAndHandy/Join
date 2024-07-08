@@ -231,12 +231,12 @@ h2 {
 
 .tasks-container {
   width: 396px;
-  /* height: 292px; */
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
   border-radius: 24px;
   gap: 16px;
+  padding: 10px 8px;
 }
 
 .sub-task-container {
@@ -368,6 +368,7 @@ h2 {
     overflow-y: unset;
     overflow-x: unset;
     flex-direction: column;
+    padding: 0 8px;
   }
 
   .task-card-content {
