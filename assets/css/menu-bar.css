@@ -82,7 +82,7 @@ header {
     border-bottom-right-radius: 20px;
     padding: 10px;
     background-color: rgba(42, 54, 71, 1);
-    position: absolute;
+    position: fixed;
     right: 10px;
     top: 97px;
     display: flex;
@@ -93,15 +93,16 @@ header {
 
 .show-overlay-menu {
     opacity: 1;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
 }
 
 .avatar-menu {
     width: 140px;
     height: 46px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
+    display: flex;
+    align-items: center;
 }
 
 .avatar-link {
