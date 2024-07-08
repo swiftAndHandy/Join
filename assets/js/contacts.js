@@ -277,7 +277,7 @@ function closeContactModal() {
     let modal = document.getElementById('addContactModal');
     modal.style.animation = 'close-modal-animation';
     modal.style.animationTimingFunction = 'ease-in';
-    modal.style.animationDuration = '300ms';
+    modal.style.animationDuration = '301ms';
 
     setTimeout(() => {
         modal.style.display = 'none';
