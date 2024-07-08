@@ -46,7 +46,6 @@
     width: calc(80vw + 0.5em);
     max-width: 396px;
     gap: 16px;
-  
     z-index: 1;
     top: 50%;
     left: 50%;
@@ -153,6 +152,13 @@
     align-items: flex-start;
     gap: 8px;
     width: 100%;
+  }
+
+  .scrollbar-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    gap: 16px;
   }
   
   .details__info-box.edit {

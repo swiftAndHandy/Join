@@ -5,52 +5,54 @@
             <span id="task-details-tag"></span>
             <div class="close-btn" onclick="closeDetails()"></div>
         </div>
-        <div class="details__title-wrapper">
-            <h1 id="task-details-title" class="details__title"></h1>
-            <div class="description-wrapper">
-                <p id="task-details-description" class="details__description"></p>
+        <div class="scrollbar-wrapper">
+            <div class="details__title-wrapper">
+                <h1 id="task-details-title" class="details__title"></h1>
+                <div class="description-wrapper">
+                    <p id="task-details-description" class="details__description"></p>
+                </div>
             </div>
-        </div>
-        <div class="details__info-box">
-            <strong class="details__caption">Due date:</strong>
-            <span id="task-details-deadline" class="details__information"></span>
-        </div>
-        <div class="details__info-box">
-            <strong class="details__caption">Priority:</strong>
-            <div class="details__priority-wrapper">
-                <span id="details-priority-text" class="details__information"></span>
-                <img id="details-priority-img" class="priority-icon" src="" alt="">
+            <div class="details__info-box">
+                <strong class="details__caption">Due date:</strong>
+                <span id="task-details-deadline" class="details__information"></span>
             </div>
-        </div>
-        <div class="details__info-box vertical">
-            <strong class="details__caption">Assigned To:</strong>
-            <div id="details-assigned-list" class="details__vertical-wrapper">
-                <!--START: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
-                <!-- <div class="details__inner">
+            <div class="details__info-box">
+                <strong class="details__caption">Priority:</strong>
+                <div class="details__priority-wrapper">
+                    <span id="details-priority-text" class="details__information"></span>
+                    <img id="details-priority-img" class="priority-icon" src="" alt="">
+                </div>
+            </div>
+            <div class="details__info-box vertical">
+                <strong class="details__caption">Assigned To:</strong>
+                <div id="details-assigned-list" class="details__vertical-wrapper">
+                    <!--START: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
+                    <!-- <div class="details__inner">
                             <img id="assigned-person-image-index" src="./assets/img/icons/user-proxy.svg" alt="Avatar">
                             <span id="assigned-person-index" class="details__information">Emmanuel Mauer</span>
                         </div> -->
-                <!--END: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
+                    <!--END: This must be generated as HTML-Template, by targeting details-assigned-list.html. Keep in mind to use `${i} as index`-->
+                </div>
             </div>
-        </div>
-        <div class="details__info-box vertical">
-            <strong class="details__caption">Subtasks:</strong>
-            <div id="details-subtasks-list" class="details__vertical-wrapper">
-                <!--START: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
-                <div class="details__subtask">
-                    <input type="checkbox" class="edit checkbox" id="details-subtask-index" name="details-subtask-index"
-                        onclick="toggleThis(id)">
-                    <label id="label-for-details-subtask-index" for="details-subtask-index">Implement Recipe
-                        Recommendation</label>
+            <div class="details__info-box vertical">
+                <strong class="details__caption">Subtasks:</strong>
+                <div id="details-subtasks-list" class="details__vertical-wrapper">
+                    <!--START: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
+                    <div class="details__subtask">
+                        <input type="checkbox" class="edit checkbox" id="details-subtask-index"
+                            name="details-subtask-index" onclick="toggleThis(id)">
+                        <label id="label-for-details-subtask-index" for="details-subtask-index">Implement Recipe
+                            Recommendation</label>
+                    </div>
+                    <!--END: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
+                    <!--START: More List-Items for better visualisation of the final design -->
+                    <div class="details__subtask">
+                        <input type="checkbox" class="edit checkbox" id="details-subtask-1" name="details-subtask-index"
+                            onclick="toggleThis(id)">
+                        <label id="label-for-details-subtask-1" for="details-subtask-1">Start Page Layout</label>
+                    </div>
+                    <!--END of additinal List-Items for better visualisation of the final design -->
                 </div>
-                <!--END: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
-                <!--START: More List-Items for better visualisation of the final design -->
-                <div class="details__subtask">
-                    <input type="checkbox" class="edit checkbox" id="details-subtask-1" name="details-subtask-index"
-                        onclick="toggleThis(id)">
-                    <label id="label-for-details-subtask-1" for="details-subtask-1">Start Page Layout</label>
-                </div>
-                <!--END of additinal List-Items for better visualisation of the final design -->
             </div>
         </div>
         <div class="details__bottom">
@@ -78,7 +80,7 @@
             <div class="close-btn" onclick="toggleVisibility('task-edit-view');toggleVisibility('task-details-view');">
             </div>
         </div>
-        <div class="scroll-bar-wrapper edit">
+        <div class="scrollbar-wrapper">
             <div class="details__title-wrapper edit">
                 <strong class="details__caption">Title:</strong>
                 <input id="update-title" type="text" class="details__title edit this-entry"
