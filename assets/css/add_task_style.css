@@ -208,7 +208,7 @@ select:focus {
   padding: 16px;
   border-radius: 10px;
   color: white;
-  font-size: 21px;
+  font-size: clamp(16px, 2svw ,21px);
   line-height: 25px;
   font-weight: 700;
   display: flex;
@@ -439,7 +439,7 @@ select:focus {
 }
 
 
-@media (min-width: 1125px) and (max-width: 3200px) {
+@media (min-width: 1025px) and (max-width: 3200px) {
   .desktop-buttons {
     display: flex;
   }
@@ -540,11 +540,18 @@ select:focus {
   }
 }
 
-@media (max-width: 1125px) and (min-width: 430px) {
+@media (max-width: 1161px) and (min-width: 801px) {
+.content-wrapper {
+  margin-left: 100px;
+}
+}
+
+@media (max-width: 1025px) and (min-width: 430px) {
   .content-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 70px;
   }
 
   .headline-add-task {
@@ -573,9 +580,9 @@ select:focus {
   }
 }
 
-@media (max-width: 1125px) and (min-width: 802px) {
+@media (max-width: 1025px) and (min-width: 802px) {
   .create-task-panel {
-    top: 825px;
+    top: 790px;
   }
 }
 
@@ -592,7 +599,7 @@ select:focus {
   }
 }
 
-@media (max-width: 800px) and (min-width: 321px) {
+@media (max-width: 800px) and (min-width: 300px) {
   .content-wrapper {
     margin-top: 65px;
   }
@@ -719,7 +726,7 @@ select:focus {
   }
 }
 
-
+/* 
 @media (max-width:1161px) and (min-width: 802px) {
   .menu-bar-mobile {
     display: none !important;
@@ -728,4 +735,4 @@ select:focus {
   .menu-bar-desktop {
     display: flex !important;
   }
-}
+} */
