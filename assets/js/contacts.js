@@ -167,16 +167,19 @@ function showCapitaliseFirstLetters(input) {
  */
 async function openContactDetails(userId) {
     let contact = await readData(`contacts/${userId}`);
+    contactToEditId = userId;
+    contactToEditColor = contact.color;
     let name = contact.name;
     let email = contact.email;
     let color = contact.color;
     let telefon = contact.phone;
 
     contactDetailsHTML(name, email, telefon, color, userId);
-    executeOnMaxWidth(820, async() =>{
+    executeOnMaxWidth(820, async () => {
         document.getElementById('contact-list-container').style.display = 'none';
         document.getElementById('contact-window').style.display = 'flex';
         document.getElementById('contact-info-container').style.animation = 'unset';
+        document.getElementById('more-vert-button').style.display = 'flex';
     });
 }
 
@@ -281,7 +284,7 @@ function closeContactModal() {
         modal.style.animationName = '';
         modal.style.animationTimingFunction = '';
         modal.style.animationDuration = '';
-    }, 300); 
+    }, 300);
 }
 
 
@@ -290,11 +293,55 @@ function closeContactModal() {
  * 
  * @param {string} path - The path to the contact data.
  */
-async function deleteContact(path=""){
+async function deleteContact(path = "") {
     let response = await fetch(BASE_URL + path + ".json", {
         method: "DELETE",
     });
     await putContactsToList();
     document.getElementById('contact-info-container').style.display = 'none';
+    
+    executeOnMaxWidth(820, async () => {
+        document.getElementById('contact-list-container').style.display = 'block';
+        document.getElementById('contact-window').style.display = 'none';
+        document.getElementById('more-vert-button').style.display = 'none';
+    });
     return await response.json();
 }
+
+/**
+ * Closes the contact window and displays the contact list container.
+ */
+function closeContactWindow() {
+    document.getElementById('contact-window').style.display = 'none';
+    document.getElementById('contact-list-container').style.display = 'block';
+}
+
+
+/**
+ * Opens the contact options by displaying the options and hiding the "more-vert" button.
+ */
+function openContactOptions() {
+    document.getElementById('more-vert-button').style.display = 'none';
+    document.getElementById('contact-options').style.display = 'block';
+    document.getElementById('contact-options').style.animationName = 'contact-options-animation';
+}
+
+
+/**
+ * Closes the contact options with an animation and displays the "more-vert" button.
+ */
+function closeContactOptions() {
+    document.getElementById('more-vert-button').style.display = 'block';
+    document.getElementById('contact-options').style.animationName = 'contact-options-animation-close';
+    setTimeout(() => {
+        document.getElementById('contact-options').style.display = 'none';
+    }, 300); 
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('click', (event) => {
+        if (!event.target.closest('#contact-options') && !event.target.closest('#more-vert-button')) {
+            closeContactOptions();
+        }
+    });
+});

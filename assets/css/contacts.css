@@ -4,7 +4,7 @@ body {
     height: 100%;
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
@@ -235,6 +235,10 @@ html{
     gap: 14px;
 }
 
+.back-to-contacts-button {
+    display: none;
+}
+
 .edit-button,
 .delete-button {
     display: none;
@@ -247,7 +251,7 @@ html{
     cursor: pointer;
 }
 
-.more-vert-button{
+.more-vert-button {
     display: none;
 }
 
@@ -386,11 +390,11 @@ html{
 
 @media (min-width: 1160px) {
 
-    .contact-list-container{
+    .contact-list-container {
         margin: 96px 0 0 233px;
         height: calc(100vh - 96px);
     }
-    
+
     .btn-add-new-contact {
         width: 456px;
     }
@@ -457,6 +461,10 @@ html{
         font-weight: 400;
     }
 
+    .edit-delete-buttons-container {
+        display: none;
+    }
+
     .image-name-container {
         gap: 20px;
     }
@@ -473,10 +481,19 @@ html{
         margin-left: 16px;
     }
 
-    .addContactModal{
-        animation:open-contact-dialog-animation-mobile;
+    .addContactModal {
+        animation: open-contact-dialog-animation-mobile;
         animation-duration: 300ms;
         animation-timing-function: ease-in;
+    }
+
+    .back-to-contacts-button {
+        width: 42px;
+        display: block;
+        position: fixed;
+        top: 138px;
+        right: 20px;
+        cursor: pointer;
     }
 
     .btn-add-new-contact {
@@ -497,8 +514,9 @@ html{
         border: #2A3647 1px;
         background-color: #2A3647;
         right: 20px;
-        bottom: 160px;
+        bottom: 102px;
         user-select: none;
+        cursor: pointer;
     }
 
     .more-vert-button img {
@@ -524,7 +542,7 @@ html{
         box-shadow: 0px 4px 4px 0px #00000040;
         position: fixed;
         right: 20px;
-        bottom: 230px;
+        bottom: 102px;
         background-color: #ffffff;
     }
 
@@ -547,6 +565,19 @@ html{
     }
 }
 
+@keyframes contact-options-animation-close {
+    from {
+        opacity: 1;
+        right: 20px;
+
+    }
+
+    to {
+        opacity: 0;
+        right: -150px;
+    }
+}
+
 @keyframes contact-information {
     from {
         opacity: 1;
@@ -556,7 +587,6 @@ html{
     to {
         opacity: 1;
     }
-    
 }
 
 @keyframes open-contact-dialog-animation {

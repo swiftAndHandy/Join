@@ -37,6 +37,8 @@
         </div>
         <div id="contact-window" class="contact-window">
             <div class="h1-and-motto-container">
+                <img id="back-to-contacts-button" class="back-to-contacts-button"
+                    src="./assets/img/icons/arrow-left-line.svg" alt="back" onclick="closeContactWindow()">
                 <h1>Contacts</h1>
                 <div class="separator"></div>
                 <span class="span-motto">Better with a team</span>
@@ -45,9 +47,11 @@
             <div id="contact-info-container" class="contact-info-container">
 
             </div>
-            <div class="more-vert-button"><img src="./assets/img/icons/more_vert.svg" alt=""></div>
-            <div class="contact-options">
-                <div class="edit-button"><img src="./assets/img/icons/edit.svg" alt="edit">edit</div>
+            <div id="more-vert-button" class="more-vert-button" onclick="openContactOptions()"><img
+                    src="./assets/img/icons/more_vert.svg" alt=""></div>
+            <div id="contact-options" class="contact-options">
+                <div class="edit-button" onclick="openEditContactPage(contactToEditId)"><img
+                        src="./assets/img/icons/edit.svg" alt="edit">edit</div>
                 <div class="delete-button" onclick="deleteContact(`/contacts/${contactToEditId}`)"><img
                         src="./assets/img/icons/delete.svg" alt="delete">delete</div>
             </div>
