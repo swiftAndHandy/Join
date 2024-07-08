@@ -297,3 +297,7 @@
     border: none;
     outline: none;
   }
+
+  .subtaskitem {
+    overflow-wrap: anywhere;
+  }

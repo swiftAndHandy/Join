@@ -113,8 +113,3 @@ async function updateSubtasksArray() {
     ));
     return result; 
 }
-
-async function toggleThisSubtask(id) {
-
-}
-
