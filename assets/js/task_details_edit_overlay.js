@@ -11,7 +11,7 @@ function saveTaskUpdate() {
  */
 function closeDetails() {
     toggleVisibility('task-details-view');
-    document.getElementById('task-card-wrapper').classList.toggle('dimm');
+    document.getElementById('task-card-wrapper').classList.remove('dimm');
     document.getElementById('body').style = "overflow: unset;"
     document.getElementById('task-edit-view-assigned-persons').innerHTML = '';
     assignedPersonsToUpdate = [];

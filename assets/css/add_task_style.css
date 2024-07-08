@@ -540,7 +540,7 @@ select:focus {
   }
 }
 
-@media (max-width: 1161px) and (min-width: 801px) {
+@media (max-width: 1159px) and (min-width: 801px) {
 .content-wrapper {
   margin-left: 100px;
 }
@@ -725,14 +725,3 @@ select:focus {
     gap: 24px;
   }
 }
-
-/* 
-@media (max-width:1161px) and (min-width: 802px) {
-  .menu-bar-mobile {
-    display: none !important;
-  }
-
-  .menu-bar-desktop {
-    display: flex !important;
-  }
-} */

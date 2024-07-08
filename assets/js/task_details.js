@@ -17,7 +17,7 @@ async function openTaskDetails(taskId) {
     try {
         const assignedContacts = await renderTaskDetails(taskId);
         hideWindow('task-details-view', false);
-        document.getElementById('task-card-wrapper').classList.toggle('dimm');
+        document.getElementById('task-card-wrapper').classList.add('dimm');
         document.getElementById('body').style = "overflow: hidden;"   
         document.getElementById('task-details-edit-btn').setAttribute('onclick', `openEditDialog('${taskId}')`);
         activateAssignedContacts(assignedContacts);

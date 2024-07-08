@@ -1,7 +1,7 @@
 function generateTaskCard(keyTasks, item) {
 
   return `
-  <article class="task-card-container" ondblclick="openTaskDetails('${keyTasks}')" draggable="true" ondragstart="startDrag('${keyTasks}', '${item.status}')" id="taskId${keyTasks}">
+  <article class="task-card-container" onclick="openTaskDetails('${keyTasks}')" draggable="true" ondragstart="startDrag('${keyTasks}', '${item.status}')" id="taskId${keyTasks}">
     <div class="task-card-content">
       <div class="task-group-bubble ${item.tag.replace(/\s+/g, "-")}">
         <span>${item.tag}</span>
