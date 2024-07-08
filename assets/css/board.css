@@ -404,7 +404,7 @@ h2 {
   }
 }
 
-@media (min-width: 1159px) and (max-width: 1379px) {
+@media (min-width: 1160px) and (max-width: 1379px) {
   .board {
     margin-left: 232px;
     padding: 0 64px;

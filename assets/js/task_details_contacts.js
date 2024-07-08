@@ -27,7 +27,7 @@ async function activateAssignedContacts(assignedContacts) {
             try {
                 document.getElementById(`assign-contact-${item}`).click();
             } catch (error) {
-                console.warm(`assign-contact-contacts/${item} couldn't be toggled`);
+                console.warn(`assign-contact-contacts/${item} couldn't be toggled`);
             }
         }
     }

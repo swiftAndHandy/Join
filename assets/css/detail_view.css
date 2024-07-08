@@ -38,7 +38,7 @@
     display: flex;
     flex-direction: column;
     position: fixed;
-    max-height: 640px;
+    height: clamp(400px, 65svh, 750px);
     background-color: #fff;
     box-shadow: 0 0 4px 0 #00000029;
     border-radius: 30px;
@@ -159,6 +159,7 @@
     flex-direction: column;
     overflow: scroll;
     gap: 16px;
+    flex: 1;
   }
   
   .details__info-box.edit {
