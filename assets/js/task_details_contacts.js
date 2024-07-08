@@ -26,9 +26,8 @@ async function activateAssignedContacts(assignedContacts) {
         for (let item of assignedContacts) {
             try {
                 document.getElementById(`assign-contact-${item}`).click();
-                console.log(`assign-contact-contacts/${item} is toggled`);
             } catch (error) {
-                console.log(`assign-contact-contacts/${item} couldn't be toggled`);
+                console.warm(`assign-contact-contacts/${item} couldn't be toggled`);
             }
         }
     }
@@ -74,7 +73,6 @@ async function toggleThisContact(id) {
     const contactId = document.getElementById(`assign-contact-${id}`);
     const checkboxId = document.getElementById(`assign-contact-checkbox-${id}`);
     const pseudoCheckboxId = document.getElementById(`assign-contact-pseudo-checkbox-${id}`);
-    // id = id.replace('contacts/', '');
     await updateAssignedPersons(id);
     contactId.classList.toggle('list-selected');
     pseudoCheckboxId.classList.toggle('list-selected');

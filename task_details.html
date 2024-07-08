@@ -39,16 +39,16 @@
                 <div id="details-subtasks-list" class="details__vertical-wrapper">
                     <!--START: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
                     <div class="details__subtask">
-                        <input type="checkbox" class="edit checkbox" id="details-subtask-index"
-                            name="details-subtask-index" onclick="toggleThis(id)">
+                        <input type="checkbox" class="edit checkbox subtask-checkbox" id="details-subtask-index"
+                            name="details-subtask-index" onclick="toggleThisSubtask(id)">
                         <label id="label-for-details-subtask-index" for="details-subtask-index">Implement Recipe
                             Recommendation</label>
                     </div>
                     <!--END: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
                     <!--START: More List-Items for better visualisation of the final design -->
                     <div class="details__subtask">
-                        <input type="checkbox" class="edit checkbox" id="details-subtask-1" name="details-subtask-index"
-                            onclick="toggleThis(id)">
+                        <input type="checkbox" class="edit checkbox subtask-checkbox" id="details-subtask-1" name="details-subtask-index"
+                            onclick="toggleThisSubtask(id)">
                         <label id="label-for-details-subtask-1" for="details-subtask-1">Start Page Layout</label>
                     </div>
                     <!--END of additinal List-Items for better visualisation of the final design -->
@@ -160,28 +160,6 @@
                     </div>
                 </div>
                 <div id="edit-subtask-item-wrapper" style="width: 100%">
-                    <!--START: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
-                    <!-- <div id="edit-subtask-total-subtaskId" class="li-wrapper" ondblclick="openSubtaskInput('edit-subtasks-unsorted-subtaskId');stopPropagation(event);">
-                                <ul id="edit-subtasks-unsorted-taskId" class="edit-subtasks-list"">
-                                    <li>
-                                        <div class="single-list-item">
-                                            <span class="subtaskitem">This is a test-task</span>
-                                            <div class="hover-overlay" onclick="stopPropagation(event)">
-                                                <img src="./assets/img/icons/edit.svg" alt="" onclick="openSubtaskInput('subtaskId')">
-                                                <div class="vertical-line"></div>
-                                                <img src="./assets/img/icons/delete.svg" alt="" onclick="deleteSubtask('');">
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div id="single-subtask-input-wrapper-subtaskId" class="single-subtask-input-box d-none">
-                                <input id="single-subtask-input-subtaskId" type="text">
-                                <img class="link-btn discard-btn" src="./assets/img/icons/discard.svg" alt="" onclick="discardSubtaskInput('subtaskId')">
-                                <div class="vertical-line"></div>
-                                <img class="link-btn accept-btn" src="./assets/img/icons/check_blue.svg" alt="" onclick="updateSubtaskInput('subtaskId')">
-                            </div> -->
-                    <!--END: This must be generated as HTML-Template, by targeting details-subtask-list.html. Keep in mind to use `${i} as index`-->
                 </div>
             </div>
         </div>

@@ -104,5 +104,17 @@ async function updateSubtasksArray() {
         }
     ));
 
-    //needs to be adjusted for done: true
+    query = document.querySelectorAll('input[type="checkbox"].subtask-checkbox:checked + label');
+    query.forEach((item) => result.push (
+        {
+            name: item.innerText,
+            'done': true
+        }
+    ));
+    return result; 
 }
+
+async function toggleThisSubtask(id) {
+
+}
+
