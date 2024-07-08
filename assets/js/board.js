@@ -45,6 +45,7 @@ async function renderTasks() {
 
   try {
     let data = await readData('tasks');
+
     for (let key in data) {
       const item = data[key];
       const taskCardHTML = await callContactInformationForTasks(key, item);

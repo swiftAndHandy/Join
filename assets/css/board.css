@@ -230,7 +230,6 @@ h2 {
 }
 
 .tasks-container {
-  width: 396px;
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
@@ -364,7 +363,6 @@ h2 {
   }
 
   .tasks-container {
-    width: 252px;
     overflow-y: unset;
     overflow-x: unset;
     flex-direction: column;
@@ -411,11 +409,6 @@ h2 {
     margin-left: 232px;
     padding: 0 64px;
   }
-
-  .tasks-container {
-    width: 100%;
-    /* height: 342px; */
-  }
 }
 
 @media (min-width: 1379px) and (max-width: 1394px) {
@@ -427,11 +420,6 @@ h2 {
 @media (min-width: 470px) and (max-width: 1158px) {
   .board {
     padding: 0 32px;
-  }
-
-  .tasks-container {
-    width: 100%;
-    /* height: 342px; */
   }
 }
 
