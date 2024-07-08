@@ -8,7 +8,7 @@ function generateTaskCard(keyTasks, item) {
       </div>
       <div class="task-card-header mt-24">
         <h2>${item.title}</h2>
-        <span id="description-content${keyTasks}" class="task-sub-headline">${trimToSixtyCharacters(item.description)} </span>
+        <span id="description-content${keyTasks}" class="task-sub-headline">${limitLengthOf(item.description, 80)} </span>
       </div>
       <div class="sub-task-container mt-24">
         <div class="sub-task-progress-bar">

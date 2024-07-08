@@ -200,14 +200,15 @@ function applyGreyScreen() {
   greyScreen.classList.toggle('d-none');
 }
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   // Deine Funktion, die beim Laden der Seite aufgerufen wird
-//   addOpenAddTaskToButtons(); // Füge onclick zu den Buttons hinzu
-// });
-
-function trimToSixtyCharacters(inputString) {
-  if (inputString.length > 80) {
-    return inputString.substring(0, 80) + '...'; 
+/**
+ * Limits the length of a string to a chosen limit
+ * @param {string} inputString - string, that should become limited in length
+ * @param {int} limit - max-length of the string
+ * @returns {string} - shortened string
+ */
+function limitLengthOf(inputString, limit) {
+  if (inputString.length > limit) {
+    return inputString.substring(0, limit) + '...'; 
   }
   return inputString; 
 }
