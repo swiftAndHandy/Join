@@ -45,6 +45,7 @@ body {
     flex-direction: column;
     overflow: hidden;
     border-radius: 30px;
+    margin: 0 16px;
   }
   
   .dialog-content {
