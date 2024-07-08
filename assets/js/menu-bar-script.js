@@ -1,4 +1,5 @@
 const currentlyOpen = getCurrentFileName();
+let clickedButton = false;
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -13,6 +14,16 @@ async function includeHTML() {
         }
     }
     updateMenu();
+}
+
+function showOverlayMenu() {
+    if(clickedButton === false) {
+        document.getElementById('menu-bar-avatar').classList.add('show-overlay-menu');
+        clickedButton = true;
+    } else {
+        document.getElementById('menu-bar-avatar').classList.remove('show-overlay-menu');
+        clickedButton = false;
+    }
 }
 
 /**

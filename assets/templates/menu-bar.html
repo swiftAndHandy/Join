@@ -7,7 +7,7 @@
 
                 </div>
             </a>
-            <div id="my-avatar-desktop" class="headline-profile-name"></div>
+            <div id="my-avatar-desktop" class="headline-profile-name" onclick="showOverlayMenu()"></div>
         </div>
     </div>
 </header>
@@ -17,10 +17,15 @@
         <img class="header-mobile-img" src="/assets/img/icons/join_logo_header.svg">
     </div>
     <div id="header-mobile__right-content" class="right-content">
-        <div id="my-avatar-mobile" class="header-mobile-profile"></div>
+        <div id="my-avatar-mobile" class="header-mobile-profile" onclick="showOverlayMenu()"></div>
     </div>
 </div>
 
+<div id="menu-bar-avatar" class="overlay-menu-avatar">
+    <div class="avatar-menu"><a class="avatar-link" href="legal_notice.html">Legal Notice</a></div>
+    <div class="avatar-menu"><a class="avatar-link" href="privacy.html">Privacy Policy</a></div>
+    <div class="avatar-menu"><span onclick="logout()" class="avatar-link" href="">Log out</span></div>
+</div>
 
 <div class="menu-bar-desktop">
     <div class="menu-bar-one"><img class="icon-join" src="./assets/img/icons/join_logo.svg"></div>
