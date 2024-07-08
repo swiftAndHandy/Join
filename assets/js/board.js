@@ -168,7 +168,7 @@ function addOpenAddTaskToButtons() {
 function handleButtonClickOnWidth() {
   const screenWidth = window.innerWidth;
 
-  if (screenWidth < 1260) {
+  if (screenWidth < 1160) {
     return switchToAddTask();
   } else {
     return openAddTask();
@@ -178,7 +178,7 @@ function handleButtonClickOnWidth() {
 function openAddTask() {
   let popUpTranstion = document.getElementById("add-task-transition");
   popUpTranstion.classList.add("transition-right");
-  document.getElementById('add-task-transition').classList.add('grey-out-bg');
+  applyGreyScreen();
   document.body.classList.add('overflow-all-hidden');
 }
 
@@ -190,8 +190,14 @@ function switchToAddTask() {
 function closeAddTaskPopUp() {
   let popUpTranstion = document.getElementById("add-task-transition");
   popUpTranstion.classList.remove("transition-right");
-  document.getElementById('add-task-transition').classList.remove('grey-out-bg');
+  applyGreyScreen();
   document.body.classList.remove('overflow-all-hidden');
+}
+
+function applyGreyScreen() {
+  const greyScreen = document.getElementById('grey-screen');
+  greyScreen.classList.toggle('grey-screen');
+  greyScreen.classList.toggle('d-none');
 }
 
 // document.addEventListener("DOMContentLoaded", function () {

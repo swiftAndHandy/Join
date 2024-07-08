@@ -39,8 +39,7 @@ select {
   transform: translateX(100%);
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: center;
+  display: none;
 }
 
 .transition-right {
@@ -61,8 +60,9 @@ select {
   background-color: white;
   border-radius: 30px;
   position: relative;
-  left: 160px;
-  top: 92px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .headline-add-task {
@@ -322,4 +322,10 @@ select {
   background-color: #7AE229;
   font-weight: 700;
   color: white;
+}
+
+@media (min-width: 1160px) {
+  .dialog-main-container {
+    display: flex;
+  }
 }
