@@ -20,7 +20,7 @@ function generateTaskCard(keyTasks, item) {
         <div id="profile-circle-container-${keyTasks}" class="profile-pictures">
         </div>
         <div>
-          <img id="prio-img${keyTasks}" src="./assets/img/icons/priority_medium.svg" alt="">
+          <img id="prio-img${keyTasks}" alt="${item.priority}">
         </div>
       </div>
     </div>

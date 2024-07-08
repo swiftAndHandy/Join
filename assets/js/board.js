@@ -52,7 +52,7 @@ async function renderTasks() {
       updateTaskFields(Object.keys(statusFields));
       statusFields[item.status].innerHTML += taskCardHTML;
       document.getElementById(`profile-circle-container-${key}`).innerHTML = await generateCircleProfiles(item.assigned, key, data);
-      prioEqualImg(item, key);
+      prioEqualImg(item.priority, key);
     }
   } catch (error) {
     console.error('Error rendering tasks:', error);
@@ -83,17 +83,10 @@ async function callContactInformationForTasks(keyTasks, item) {  // maybe not th
 
 
 
-function prioEqualImg(prio, key) {
-  if (prio.priority === 'Urgent') {
-    let prioImg = document.getElementById(`prio-img${key}`);
-    prioImg.src = "./assets/img/icons/urgent.svg";
-  } else if (prio.priority === 'Medium') {
-    let prioImg = document.getElementById(`prio-img${key}`);
-    prioImg.src = "./assets/img/icons/medium.svg";
-  } else if (prio.priority === 'Low') {
-    let prioImg = document.getElementById(`prio-img${key}`);
-    prioImg.src = "./assets/img/icons/low.svg";
-  }
+function prioEqualImg(priority, key) {
+  priority = priority.toLowerCase();
+  const target = document.getElementById(`prio-img${key}`);
+  target.src = `./assets/img/icons/priority_${priority}.svg`;
 }
 
 function updateAfterDrag() {
