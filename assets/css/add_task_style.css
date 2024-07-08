@@ -335,10 +335,10 @@ select:focus {
   display: flex;
   align-items: center;
   padding: 0 16px;
-  margin-top: 9px;
+  margin-top: 2px;
   justify-content: space-between;
   border-radius: 10px;
-
+  cursor: pointer;
 }
 
 .ul-content-wrapper-no-click:hover {
@@ -362,10 +362,6 @@ select:focus {
 .ul-content-wrapper input {
   width: 20px;
   padding-left: 200px;
-}
-
-.cursor-default {
-  cursor: default;
 }
 
 .cursor-pointer {

@@ -109,13 +109,8 @@ function toggleContactDropBox() {
 
 
 function clearInputs() {
-
   let form = document.getElementById('form-desktop')
-  // form.setAttribute('novalidate', true);
   form.reset();
-  //   setTimeout(() => {
-  //     // form.removeAttribute('novalidate', false); // Aktiviere die Standardvalidierung wieder
-  // }, 100);
 }
 
 
