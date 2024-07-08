@@ -23,7 +23,7 @@ async function openTaskDetails(taskId) {
         activateAssignedContacts(assignedContacts);
     } catch (error) {
         console.warn('This Task has been deleted by another user.');
-        document.getElementById(`taskId-${taskId}`).remove();
+        document.getElementById(`taskId${taskId}`).remove();
     }
 }
 
@@ -76,4 +76,10 @@ function setFocus(id) {
 function deleteTask(taskId) {
     deleteData(`tasks/${taskId}`);
     toggleVisibility('task-details-view');
+    document.getElementById('task-card-wrapper').classList.toggle('dimm');
+    document.getElementById('body').style = "overflow: unset;"
+    document.getElementById('task-edit-view-assigned-persons').innerHTML = '';
+    assignedPersonsToUpdate = [];
+    document.getElementById('edit-task-contacts-list').innerHTML = '';
+    document.getElementById(`taskId${taskId}`).remove();
 }
