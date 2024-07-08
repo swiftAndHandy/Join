@@ -23,7 +23,7 @@ async function openTaskDetails(taskId) {
         activateAssignedContacts(assignedContacts);
     } catch (error) {
         console.warn('This Task has been deleted by another user.');
-        document.getElementById(`taskId${taskId}`).remove();
+        document.getElementById(`taskId-${taskId}`).remove();
     }
 }
 

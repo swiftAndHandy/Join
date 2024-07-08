@@ -16,12 +16,12 @@ async function renderContactList() {
  * Simulates an click on every assigned contact to activate it for contact list and submit array (assignedPersonsToUpdate)
  */
 async function activateAssignedContacts(assignedContacts) {
-    for (let item of assignedContacts) {
-        try {
-            document.getElementById(`assign-contact-contacts/${item}`).click();
-            console.log(`${item} is toggled`);
-        } catch(error) {
-            console.warn(`The contact with the ID ${item} has been deleted and won't be displayed.`);
+    if (assignedContacts) {
+        for (let item of assignedContacts) {
+            try {
+                document.getElementById(`assign-contact-contacts/${item}`).click();
+                // console.log(`${item} is toggled`);
+            } catch (error) {}
         }
     }
 }

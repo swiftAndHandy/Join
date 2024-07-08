@@ -37,7 +37,7 @@ async function generateCircleProfiles(contactEntries, taskId, data) {
       <div class="profile-cricle" id=profile-circle-container-${contacts}" style= "background-color:${user.color}">${initials(user.name)}</div>
       `;
       } catch (error) {
-        console.warn(`'${data[taskId].title}' (ID: ${taskId}), is assigned to Contact-ID ${contacts}. That assigned contact doesn't exist anymore!`);
+        // console.warn(`'${data[taskId].title}' (ID: ${taskId}), is assigned to Contact-ID ${contacts}. That assigned contact doesn't exist anymore!`);
       }
     }
   }

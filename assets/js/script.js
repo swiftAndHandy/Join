@@ -149,17 +149,18 @@ async function putData(value, path = "") {
  * @returns {Promise<Object>}
  */
 async function postData(data = {}, path = "") {
-    const response = await fetch(BASE_URL + path + '.json', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
-
-    });
-    return await response.json();
-
-
+    try {
+        const response = await fetch(BASE_URL + path + '.json', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+        });
+        return await response.json();
+    } catch (error) {
+        console.error(`Submit data to Server failed.`)   
+    }
 }
 
 /**
@@ -169,8 +170,11 @@ async function postData(data = {}, path = "") {
  * @param {string} path 
  */
 async function readData(path) {
-    const response = await fetch(BASE_URL + path + '.json');
-    return await response.json();
+    try {
+        const response = await fetch(BASE_URL + path + '.json');
+        return await response.json();   
+    }
+    catch (error) {}
 }
 
 /**
@@ -179,11 +183,12 @@ async function readData(path) {
  * @returns -need to be added
  */
 async function deleteData(path = "") {
-    let response = await fetch(BASE_URL + path + '.json',{
-        method: "DELETE",
-
-    });
-    return await response.json();
+    try {
+        let response = await fetch(BASE_URL + path + '.json',{
+            method: "DELETE",
+        });
+        return await response.json();   
+    } catch (error) {}
 }
 
 /**
