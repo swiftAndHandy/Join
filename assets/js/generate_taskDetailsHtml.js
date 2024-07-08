@@ -58,7 +58,7 @@ async function assignedPersonsDetailsHtml(contactIds) {
     let output = '';
     try {
         for (let item of contactIds) {
-            const data = await readData(`contacts/${item}`)
+            const data = await readData(`${item}`)
             output += `
                 <div class="details__inner">
                 <div id="task-details-avatar-${item}" class="avatar at-drop-down" style="background-color: ${data.color};">${initials(data.name)}</div>
@@ -76,7 +76,7 @@ async function assignedPersonsDetailsHtml(contactIds) {
  * @returns 
  */
 async function assignedPersonsEditHtml(contactIds) {
-    const data = await readData(`contacts/${contactIds}`)
+    const data = await readData(`${contactIds}`)
     const output = `
             <div id="edit_task_assigned-person-${contactIds}" class="details__inner">
                 <div id="edit-task-avatar-${contactIds}" class="avatar at-drop-down" style="background-color: ${data.color};">${initials(data.name)}</div>

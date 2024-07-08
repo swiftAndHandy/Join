@@ -27,19 +27,19 @@ function addTitle() {
 function addDescription() {
   let taskDescription = document.getElementById("task-description");
   addTaskDescription = taskDescription.value;
-  
+
 }
 
 function taskCategory() {
   let category = document.getElementById("select-task-category");
   addTaskCategory = category.value;
-  
+
 }
 
 function taskSubtask() {
   let subtask = document.getElementById("task-subtask");
   addTaskSubtask = subtask.value;
-  
+
 }
 
 /**
@@ -109,13 +109,13 @@ function toggleContactDropBox() {
 
 
 function clearInputs() {
-  
+
   let form = document.getElementById('form-desktop')
   // form.setAttribute('novalidate', true);
   form.reset();
-//   setTimeout(() => {
-//     // form.removeAttribute('novalidate', false); // Aktiviere die Standardvalidierung wieder
-// }, 100);
+  //   setTimeout(() => {
+  //     // form.removeAttribute('novalidate', false); // Aktiviere die Standardvalidierung wieder
+  // }, 100);
 }
 
 
@@ -126,20 +126,20 @@ function clearInputs(event) {
   form.reset();
   setTimeout(() => {
     form.removeAttribute('novalidate'); // Aktiviere die Standardvalidierung wieder
-}, 100);
+  }, 100);
 }
 
 
 function clearInputs(event) {
-event.preventDefault()
+  event.preventDefault()
   let form = document.getElementById('form-desktop')
   form.setAttribute('novalidate', true);
-  
-setTimeout(() => {
-  form.removeAttribute('novalidate', false);
-}, 100);
-form.reset();
-  }
+
+  setTimeout(() => {
+    form.removeAttribute('novalidate', false);
+  }, 100);
+  form.reset();
+}
 
 
 
@@ -233,28 +233,32 @@ function showPopupTaskAdded() {
 
   popup.style.display = "flex";
 
- 
+
   setTimeout(() => {
- 
-      popup.classList.add('form-down-to-up-transition');
 
-      setTimeout(() => {
-    
+    popup.classList.add('form-down-to-up-transition');
 
-          popup.classList.remove('form-down-to-up-transition');
-          popup.style.display = "none";
-   
-          window.location.href = 'board.html';
-      }, 1000); 
-  }, 100); 
+    setTimeout(() => {
+
+
+      popup.classList.remove('form-down-to-up-transition');
+      popup.style.display = "none";
+
+      window.location.href = 'board.html';
+    }, 1000);
+  }, 100);
 }
 
 
 async function renderContactList() {
-  const data = await readData('contacts');
-  let entries = sortByAlphabet(data, 'contacts');
-  let dataKeys =Object.keys(data);
+  let contacts = await readData('contacts');
+  contacts = setPrefixToKey('contacts', contacts);
+  let accounts = await readData('accounts');
+  accounts = setPrefixToKey('accounts', accounts);
+  let data = {}; await Object.assign(data, accounts, contacts);
+  let entries = sortByAlphabet(data);
+  let dataKeys = Object.keys(data);
   for (let i = 0; i < entries.length; i++) {
-    generateDropBoxContacts(entries[i],dataKeys[i]);
+    generateDropBoxContacts(entries[i], dataKeys[i]);
   }
 }

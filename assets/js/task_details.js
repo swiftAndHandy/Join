@@ -13,7 +13,7 @@ function initTaskDetails() {
  * @param {string} taskId - equivalent to the id of the task in firebase
  */
 async function openTaskDetails(taskId) {
-    await renderContactList();
+    await renderDetailsContactList();
     try {
         const assignedContacts = await renderTaskDetails(taskId);
         hideWindow('task-details-view', false);

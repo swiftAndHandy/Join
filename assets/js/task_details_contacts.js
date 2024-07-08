@@ -4,9 +4,14 @@
  * Needs further improvement (include accounts, not only contacts for example)
  * Maybe a resort to keep the order of alphabet is required in this case
  */
-async function renderContactList() {
-    const data = await readData('contacts');
-    let entries = sortByAlphabet(data, 'contacts');
+async function renderDetailsContactList() {
+    let contacts = await readData('contacts');
+    contacts = setPrefixToKey('contacts', contacts);
+    let accounts = await readData('accounts');
+    accounts = setPrefixToKey('accounts', accounts);
+    let data = {};
+    await Object.assign(data, accounts, contacts);
+    let entries = sortByAlphabet(data);
     for (let i = 0; i < entries.length; i++) {
         generateContactsHtml(entries[i]);
     }
@@ -14,14 +19,17 @@ async function renderContactList() {
 
 /**
  * Simulates an click on every assigned contact to activate it for contact list and submit array (assignedPersonsToUpdate)
+ * CAVE: I try to enable user accounts also. in this case it needs to be set up to assign-contact-${item}, since contacts will be added by algorithm.
  */
 async function activateAssignedContacts(assignedContacts) {
     if (assignedContacts) {
         for (let item of assignedContacts) {
             try {
-                document.getElementById(`assign-contact-contacts/${item}`).click();
-                // console.log(`${item} is toggled`);
-            } catch (error) {}
+                document.getElementById(`assign-contact-${item}`).click();
+                console.log(`assign-contact-contacts/${item} is toggled`);
+            } catch (error) {
+                console.log(`assign-contact-contacts/${item} couldn't be toggled`);
+            }
         }
     }
 }
@@ -66,7 +74,7 @@ async function toggleThisContact(id) {
     const contactId = document.getElementById(`assign-contact-${id}`);
     const checkboxId = document.getElementById(`assign-contact-checkbox-${id}`);
     const pseudoCheckboxId = document.getElementById(`assign-contact-pseudo-checkbox-${id}`);
-    id = id.replace('contacts/', '');
+    // id = id.replace('contacts/', '');
     await updateAssignedPersons(id);
     contactId.classList.toggle('list-selected');
     pseudoCheckboxId.classList.toggle('list-selected');

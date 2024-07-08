@@ -31,9 +31,9 @@ function taskDueDate(date) {
  * @param {Object[]} data - The array of contact objects.
  * @returns {Object[]} The sorted array of contacts with an additional key.
  */
-function sortByAlphabet(data, origin) {
+function sortByAlphabet(data) {
     let entries = Object.entries(data).map(([id, contact]) => ({ 
-        id, ...contact, path: `${origin}/${id}`
+        id, ...contact
     }));
     return entries.sort((a, b) => a.name.localeCompare(b.name));
 }
@@ -229,3 +229,20 @@ function createSubtasks(subtaskArray = [], done = false) {
 
     return subtaskObjects;
 }
+
+/**
+ * This function adds an additional key: value to an existing ObjectObject
+ * @param {string} prefix - prefix that should be added 
+ * @param {Object} data - the data that has been fetched from firebase
+ * @returns {Object} - the original data + a new key:value -> path: prefix + id
+ */
+function setPrefixToKey(prefix, data) {
+    const prefixedData = {};
+  
+    for (const key in data) {
+      const value = data[key];
+      prefixedData[key] = { ...value, 'path': `${prefix}/${key}` };
+    }
+  
+    return prefixedData;
+  }

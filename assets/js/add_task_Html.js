@@ -8,7 +8,7 @@ function generateDropBoxContacts(entries,data) {
                   <ul class="ul-row-styling cursor-default ">${entries.name}
                   </ul>
                   </div>
-                  <input class="checkbox" id="contact-check${entries.path}" type="checkbox" value="${entries.id}" onchange="handleCheckBox(this,'${entries.path}')">
+                  <input class="checkbox" id="contact-check${entries.path}" type="checkbox" value="${entries.path}" onchange="handleCheckBox(this,'${entries.path}')">
                   <label id="label-check${entries.path}" for="contact-check${entries.path}" form="form-desktop"></label>
                 </div>`
     }
