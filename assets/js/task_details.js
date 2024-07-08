@@ -1,6 +1,7 @@
 let editPriority;
 let assignedPersonsToUpdate = [];
 let subtasksToUpdate = [];
+let currentDetailId = null;
 
 function initTaskDetails() {
     setupListener();
@@ -15,16 +16,38 @@ function initTaskDetails() {
 async function openTaskDetails(taskId) {
     await renderDetailsContactList();
     try {
-        const assignedContacts = await renderTaskDetails(taskId);
-        hideWindow('task-details-view', false);
-        document.getElementById('task-card-wrapper').classList.add('dimm');
-        document.getElementById('body').style = "overflow: hidden;"   
-        document.getElementById('task-details-edit-btn').setAttribute('onclick', `openEditDialog('${taskId}')`);
-        activateAssignedContacts(assignedContacts);
+        applyTaskStyles(taskId);
+        const data = await renderTaskDetails(taskId);
+        activateAssignedContacts(data.assigned);
+        renderEditView();
     } catch (error) {
         console.warn('This Task has been deleted by another user.');
         document.getElementById(`taskId${taskId}`).remove();
     }
+}
+
+/**
+ * Reset everything on closeDetails, to prepare a new fresh detail-page
+ */
+function closeDetails() {
+    toggleVisibility('task-details-view');
+    document.getElementById('task-card-wrapper').classList.remove('dimm');
+    document.getElementById('body').style = "overflow: unset;"
+    document.getElementById('task-edit-view-assigned-persons').innerHTML = '';
+    assignedPersonsToUpdate = [];
+    document.getElementById('edit-task-contacts-list').innerHTML = '';
+    resetDetailCardHtml();
+}
+
+/**
+ * This function is called in openTaskDetails and sets a
+ * @param {string} taskId - the Task-Card that should be affected by this function
+ */
+function applyTaskStyles(taskId) {
+    hideWindow('task-details-view', false);
+    document.getElementById('task-card-wrapper').classList.add('dimm');
+    document.getElementById('body').style = "overflow: hidden;"
+    document.getElementById('task-details-edit-btn').setAttribute('onclick', `openEditDialog('${taskId}')`);
 }
 
 /**
@@ -37,6 +60,13 @@ async function renderTaskDetails(taskId) {
     return generateTaskDetailsHtml(taskId, data);
 }
 
+
+/**
+ * Updates the global Array assignedPersonsToUpdate. If the id isn't in the Array
+ * add the id to the Array. Also add the Icon with assignedPersonsEditHtml. 
+ * Otherwise delete the Index that is used by the id and remove the Avatar-Icon.
+ * @param {string} id - related to the assigned Contact
+ */
 async function updateAssignedPersons(id) {
     const index = assignedPersonsToUpdate.indexOf(id);
     const assignedToEdit = document.getElementById('task-edit-view-assigned-persons');
@@ -59,8 +89,11 @@ function toggleVisibility(id) {
     return document.getElementById(id);
 }
 
-async function openEditDialog(taskId) {
-    toggleVisibility('task-edit-view'); 
+/**
+ * Swaps the Visibility of Detail-View and Edit-View
+ */
+async function openEditDialog() {
+    toggleVisibility('task-edit-view');
     toggleVisibility('task-details-view');
 }
 
@@ -72,7 +105,10 @@ function setFocus(id) {
     inputField.focus();
 }
 
-// Deletes the submitted taskId and closes task-detail-view
+/**
+ * Deletes the submitted taskId and closes task-detail-view
+ * @param {string} taskId - ID of the task that will be deleted
+ */
 function deleteTask(taskId) {
     deleteData(`tasks/${taskId}`);
     toggleVisibility('task-details-view');

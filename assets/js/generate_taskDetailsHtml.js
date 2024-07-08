@@ -30,7 +30,7 @@ async function generateTaskDetailsHtml(taskId, taskDetails) {
     title.innerHTML = taskDetails['title'];
 
     const description = document.getElementById('task-details-description');
-    description.innerHTML = taskDetails['description']
+    description.innerHTML = taskDetails['description'];
 
     const deadline = document.getElementById('task-details-deadline');
     deadline.innerHTML = taskDetails['date'].split('-').join('/');
@@ -46,7 +46,33 @@ async function generateTaskDetailsHtml(taskId, taskDetails) {
 
     const deleteBtn = document.getElementById('task-details-delete-btn');
     deleteBtn.setAttribute('onclick', `deleteTask('${taskId}')`);
-    return assignedTo;
+    return taskDetails;
+}
+
+function resetDetailCardHtml() {
+    const tag = document.getElementById('task-details-tag');
+    tag.innerHTML = '';
+    tag.setAttribute('class', '');
+
+    const title = document.getElementById('task-details-title');
+    title.innerHTML = '';
+
+    const description = document.getElementById('task-details-description');
+    description.innerHTML = '';
+
+    const deadline = document.getElementById('task-details-deadline');
+    deadline.innerHTML = '';
+
+    const priority = document.getElementById('details-priority-text');
+    const priorityImg = document.getElementById('details-priority-img');
+    priority.innerHTML = '';
+    priorityImg.src = ``;
+
+    const assignedToDetails = document.getElementById('details-assigned-list');
+    assignedToDetails.innerHTML = '';
+
+    const deleteBtn = document.getElementById('task-details-delete-btn');
+    deleteBtn.setAttribute('onclick', `deleteTask('')`);
 }
 
 /**

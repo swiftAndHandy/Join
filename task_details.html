@@ -1,6 +1,6 @@
 <!-- Start Merge here -->
-<div id="task-card-wrapper" class="task-card-wrapper">
-    <section id="task-details-view" class="task-card-view d-none">
+<div id="task-card-wrapper" class="task-card-wrapper" onclick="closeDetails();">
+    <section id="task-details-view" class="task-card-view d-none" onclick="stopPropagation(event)">
         <div class="details__header">
             <span id="task-details-tag"></span>
             <div class="close-btn" onclick="closeDetails()"></div>

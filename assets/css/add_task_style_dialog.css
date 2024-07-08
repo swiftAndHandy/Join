@@ -137,6 +137,8 @@ textarea:focus {
   padding: 18px 21px;
   border: 1px solid #d1d1d1;
   border-radius: 10px;
+  max-width: 350px;
+  max-height: 125px;
 }
 
 select:focus {
