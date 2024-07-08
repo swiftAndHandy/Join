@@ -131,6 +131,8 @@ main {
   position: absolute;
   transform: translateY(-50%) translateX(-60px);
   left: 50%;
+  color: white;
+  font-size: 47px;
 }
 
 .input-information {
@@ -187,7 +189,6 @@ main {
 }
 
 .contact-btn {
-  width: 202px;
   height: 51px;
   border-radius: 10px;
   background-color: #2a3647;
@@ -208,8 +209,6 @@ main {
 }
 
 .contact-save-btn {
-  width: 99px;
-  height: 51px;
   border-radius: 10px;
   background-color: #2a3647;
   display: flex;
@@ -218,8 +217,10 @@ main {
   justify-content: space-evenly;
   color: white;
   font-weight: 700;
+  font-size: 21px;
   line-height: 25px;
   cursor: pointer;
+  padding: 16px;
   border: none;
 }
 
@@ -245,9 +246,9 @@ main {
   font-weight: 400;
   line-height: 24px;
   border: 1px solid #2a3647;
-  height: 51px;
   width: 82px;
   border-radius: 10px;
+  padding: 15px 24px;
   cursor: pointer;
 }
 
