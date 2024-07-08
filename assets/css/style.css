@@ -232,4 +232,8 @@ a {
     .main-pl {
         padding-left: 96px;
     }
+
+    .hide-on-desktop {
+        display: none;
+    }
 }

@@ -4,7 +4,6 @@
         <div id="header-desktop__right-content" class="headline-profile">
             <a href="help.html">
                 <div class="help-logo">
-
                 </div>
             </a>
             <div id="my-avatar-desktop" class="headline-profile-name" onclick="showOverlayMenu()"></div>
@@ -22,9 +21,10 @@
 </div>
 
 <div id="menu-bar-avatar" class="overlay-menu-avatar">
-    <div class="avatar-menu"><a class="avatar-link" href="legal_notice.html">Legal Notice</a></div>
-    <div class="avatar-menu"><a class="avatar-link" href="privacy.html">Privacy Policy</a></div>
-    <div class="avatar-menu"><span onclick="logout()" class="avatar-link" href="">Log out</span></div>
+    <a class="avatar-link hide-on-desktop" href="legal_notice.html"><div class="avatar-menu">Help</div></a>
+    <a class="avatar-link" href="legal_notice.html"><div class="avatar-menu">Legal Notice</div></a>
+    <a class="avatar-link" href="privacy.html"><div class="avatar-menu">Privacy Policy</div></a>
+    <div class="avatar-menu" onclick="logout()"><span class="avatar-link" href="">Log out</span></div>
 </div>
 
 <div class="menu-bar-desktop">
