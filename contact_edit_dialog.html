@@ -2,10 +2,13 @@
     <div class="dialog-main">
         <div class="dialog-container">
             <div class="dialog-content">
-                <div class="close" onclick="closeContactModal()">
+                <div class="close desktop" onclick="closeContactModal()">
                     <img src="./assets/img/icons/close.svg" alt="">
                 </div>
                 <div class="upper-card">
+                    <div class="close mobile" onclick="closeContactModal()">
+                        <img src="./assets/img/icons/close.svg" alt="">
+                    </div>
                     <div class="upper-card-content">
                         <div class="join-logo-popup">
                             <img src="./assets/img/icons/join_logo.svg" alt="">
@@ -19,10 +22,10 @@
                     </div>
                 
                 </div>
-                <div id="profile-img" class="profil-img">
-                  <span id="first-letters">AM</span>
-                </div>
                 <div class="under-card">
+                    <div id="profile-img" class="profil-img">
+                        <span id="first-letters">AM</span>
+                      </div>
                     <form class="input-information" id="form" onsubmit="editContact(event)">
                         <div class="input-style ">
                             <input id="name-input" class="profile-img-input" minlength="2" maxlength="28" type="name" placeholder="Name" pattern="^[A-Za-zÀ-ÖØ-öø-ÿ\s'\-]+$" title="Please enter a valid name" required>
