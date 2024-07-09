@@ -6,8 +6,9 @@ let addTaskPrio = "";
 let addTaskCategory = "";
 let addTaskSubtask = "";
 let taskStatus = "todo";
-let pressedButton = 0;
 let alreadyOpen = false;
+pressedButton = 0;
+previousButton = 0;
 
 function init() {
   includeHTML();
@@ -195,39 +196,38 @@ function checkIfFormFilled(event) {
 
 
 
+
+
 function setPrio(prio, number) {
   const priorities = ["urgent", "medium", "low"];
   const colors = ["orange", "yellow", "green"];
-  let pressedButton;
 
-  // Setze die aktuelle Priorität und die Nummer des gedrückten Buttons
-  addTaskPrio = prio;
-  pressedButton = number;
 
-  // Entferne die Klassen von allen Prio-Buttons
   priorities.forEach((priority, index) => {
-    const prioElement = document.getElementById(`${priority}-prio`);
-    const prioImgElement = document.getElementById(`${priority}-prio-img`);
-
-    prioElement.classList.remove(`pressed-color-${colors[index]}`);
-    prioImgElement.classList.remove("pressed-prio-img");
+    document.getElementById(`${priority}-prio`).classList.remove(`pressed-color-${colors[index]}`);
+    document.getElementById(`${priority}-prio-img`).classList.remove("pressed-prio-img");
   });
 
-  if (pressedButton > 0 && pressedButton <= priorities.length) {
-    const currentPriority = priorities[pressedButton - 1];
-    const currentColor = colors[pressedButton - 1];
+  if (number === previousButton) {
+    addTaskPrio = "Low";
+    previousButton = 0;
+  } else {
+    addTaskPrio = prio;
+    previousButton = number;
+  }
 
-    document
-      .getElementById(`${currentPriority}-prio`)
-      .classList.add(`pressed-color-${currentColor}`);
-    document
-      .getElementById(`${currentPriority}-prio-img`)
-      .classList.add("pressed-prio-img");
+  if (previousButton > 0 && previousButton <= priorities.length) {
+    const currentPriority = priorities[previousButton - 1];
+    const currentColor = colors[previousButton - 1];
+
+    document.getElementById(`${currentPriority}-prio`).classList.add(`pressed-color-${currentColor}`);
+    document.getElementById(`${currentPriority}-prio-img`).classList.add("pressed-prio-img");
   }
 }
 
+
 function showPopupTaskAdded() {
-  const popup = document.getElementById('pop-up-transition'); // Korrekte Methode getElementById
+  const popup = document.getElementById('pop-up-transition'); 
 
 
   popup.style.display = "flex";
