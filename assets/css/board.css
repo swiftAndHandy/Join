@@ -358,7 +358,7 @@ h2 {
 
   .section-container {
     width: 252px;
-    height: 688px;
+    min-height: 688px;
     gap: 8px;
   }
 
