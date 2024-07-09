@@ -82,8 +82,8 @@ header {
     padding: 10px;
     background-color: rgba(42, 54, 71, 1);
     right: 10px;
-    top: 97px;
-    display: flex;
+    top: 80px;
+    display: none;
     flex-direction: column;
     gap: 8px;
     opacity: 0;
@@ -348,7 +348,8 @@ header {
 @media (max-width: 1159px) {
 
     .overlay-menu-avatar {
-        transform: translateX(100%);
+        transform: translateX(calc(100% + 16px));
+        display: flex;
     }
 
     header {
