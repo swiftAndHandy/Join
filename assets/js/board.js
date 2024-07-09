@@ -6,6 +6,7 @@ async function initBoard() {
   await includeHTML();
   renderTasks();
   addOpenAddTaskToButtons()
+  renderContactList();
 
   document.addEventListener('dragend', () => {
     showDragArea('', false);

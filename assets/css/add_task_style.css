@@ -42,14 +42,14 @@ select {
   overflow-x: hidden;
 }
 
-span {
+.add-task-container span {
   font-size: clamp(16px, 2vw, 20px);
   font-weight: 400;
   color: #2A3647;
 }
 
 .red {
-  color: #ff8190;
+  color: #ff8190 !important;
   font-weight: 400;
 }
 
@@ -378,8 +378,8 @@ select:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  font-size: 14px;
+  color: white  !important;
+  font-size: 14px !important;
 }
 
 .group-pb-cricle-with-name {

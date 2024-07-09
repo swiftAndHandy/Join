@@ -139,6 +139,7 @@ textarea:focus {
   border-radius: 10px;
   max-width: 350px;
   max-height: 125px;
+  font-family: inter;
 }
 
 select:focus {
@@ -325,6 +326,28 @@ select {
   font-weight: 700;
   color: white;
 }
+
+.dialog-padding {
+  padding: 16px 100px;
+}
+
+.dialog-padding input,   textarea {
+  width: 320px !important;
+}
+
+.dialog-padding select {
+  width: 364px !important;
+}
+
+.dialog-padding #assigned-to-contact {
+  width: 320px !important;
+}
+
+.dialog-padding .prio-container  {
+  width: 364px;
+}
+
+
 
 @media (min-width: 1160px) {
   .dialog-main-container {
