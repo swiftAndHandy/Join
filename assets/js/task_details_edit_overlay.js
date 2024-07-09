@@ -15,7 +15,7 @@ async function saveTaskUpdate(taskId) {
     toggleVisibility('task-details-view');
     await putData(data, `tasks/${taskId}`);
     await renderTaskDetails(taskId);
-
+    document.getElementById('edit-subtask-item-wrapper').innerHTML = '';
 }
 
 function createTaskObject(tag, title, description, deadline, priority, subtasks) {
@@ -25,7 +25,7 @@ function createTaskObject(tag, title, description, deadline, priority, subtasks)
         'description': description,
         'date': deadline,
         'priority': priority,
-        'assigned': assignedPersonsToUpdate, 
+        'assigned': assignedPersonsToUpdate,
         'subtasks': subtasks,
         'status': currentDetailLocation
     }
@@ -140,4 +140,16 @@ function updateSubtasksArray() {
         { 'goal': item.innerText, 'done': true }
     ));
     return result;
+}
+
+
+
+function renderOpenSubtasks() {
+    const query = Array.from(document.querySelectorAll('input[type="checkbox"].subtask-checkbox + label'));
+    const removeFromQuery = Array.from(document.querySelectorAll('input[type="checkbox"].subtask-checkbox:checked + label'));
+    const openSubtasks = query.filter(subtask => !removeFromQuery.includes(subtask));
+    
+    openSubtasks.forEach(item => {
+        addNewSubtask(item.innerText);
+    });
 }
