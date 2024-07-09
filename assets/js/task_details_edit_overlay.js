@@ -1,7 +1,7 @@
 /**
  * placeholder
  */
-function saveTaskUpdate(taskId) {
+async function saveTaskUpdate(taskId) {
     toggleVisibility('task-edit-view');
     toggleVisibility('task-details-view');
     const tag = document.getElementById('task-details-tag').textContent;
@@ -11,7 +11,9 @@ function saveTaskUpdate(taskId) {
     const priority = getCurrentPriority();
     const subtasks = updateSubtasksArray();
     const data = createTaskObject(tag, title, description, deadline, priority, subtasks);
-    putData(data, `tasks/${taskId}`);
+    await putData(data, `tasks/${taskId}`);
+    const rerender = await renderTaskDetails(taskId);
+    renderEditView(rerender, taskId);
 }
 
 function createTaskObject(tag, title, description, deadline, priority, subtasks) {

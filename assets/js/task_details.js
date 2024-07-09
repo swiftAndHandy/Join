@@ -30,7 +30,8 @@ async function openTaskDetails(taskId) {
  * Reset everything on closeDetails, to prepare a new fresh detail-page
  */
 function closeDetails() {
-    toggleVisibility('task-details-view');
+    hideWindow('task-details-view');
+    hideWindow('task-edit-view');
     currentDetailLocation = null;
     document.getElementById('task-card-wrapper').classList.remove('dimm');
     document.getElementById('body').style = "overflow: unset;"
