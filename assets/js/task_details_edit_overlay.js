@@ -14,6 +14,7 @@ async function saveTaskUpdate(taskId) {
     await putData(data, `tasks/${taskId}`);
     const rerender = await renderTaskDetails(taskId);
     renderEditView(rerender, taskId);
+    rerenderTaskOnBoard(rerender, taskId);
 }
 
 function createTaskObject(tag, title, description, deadline, priority, subtasks) {

@@ -48,42 +48,17 @@ async function renderTasks() {
 
     for (let key in data) {
       const item = data[key];
-      const taskCardHTML = await callContactInformationForTasks(key, item);
+      const target = statusFields[item.status];
+      await generateTaskCard(key, item, target);
       updateTaskFields(Object.keys(statusFields));
-      statusFields[item.status].innerHTML += taskCardHTML;
-      document.getElementById(`profile-circle-container-${key}`).innerHTML = await generateCircleProfiles(item.assigned, key, data);
-      prioEqualImg(item.priority, key);
+      priorityEqualImg(item.priority, key);
     }
   } catch (error) {
     console.error('Error rendering tasks:', error);
   }
 }
 
-
-/**
-/**
- * The function calls generateTaskCard at the end to return the HTML for the task card.
- * It is essential for accessing the contacts database.
- * renderTasks provides the necessary parameters for this function to work with.
- * 
- * @param {string} keyTasks - The unique key from the Tasks database.
- * @param {} item -
- * @returns {Promise<string>} A promise that includes the generated HTML for the task card.
- */
-async function callContactInformationForTasks(keyTasks, item) {  // maybe not the right approch should check it tommorw maybe  i have to get the color form the contaacts also in the assigend tab
-  let contactData = await readData('contacts');
-  const entries = sortByAlphabet(contactData, 'contacts');
-
-  // Generiere die Aufgabenkarte mit den ersten drei Einträgen
-  let taskCardHTML = generateTaskCard(keyTasks, item);
-
-  return taskCardHTML;
-}
-
-
-
-
-function prioEqualImg(priority, key) {
+function priorityEqualImg(priority, key) {
   priority = priority.toLowerCase();
   const target = document.getElementById(`prio-img${key}`);
   target.src = `./assets/img/icons/priority_${priority}.svg`;
@@ -204,4 +179,8 @@ function limitLengthOf(inputString, limit) {
     return inputString.substring(0, limit) + '...'; 
   }
   return inputString; 
+}
+
+function rerenderTaskOnBoard(rerender, taskId) {
+
 }
