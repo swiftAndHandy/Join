@@ -42,6 +42,7 @@ async function generateTaskDetailsHtml(taskId, taskDetails) {
 
     // const assignedToDetails = document.getElementById('details-assigned-list');
     const assignedTo = taskDetails['assigned'];
+    document.getElementById('details-assigned-list').innerHTML = ''
     assignedPersonsDetailsHtml(assignedTo);
 
     const deleteBtn = document.getElementById('task-details-delete-btn');
@@ -163,8 +164,9 @@ function addNewSubtask(value, target = 'edit-subtask-item-wrapper') {
  * @param {string} taskId - the Key of the current read Task
  */
 async function listAttachedSubtasks(data, taskId) {
+    const targetLocation = document.getElementById('details-subtasks-list');
+
     if (Array.isArray(data.subtasks)) {
-        const targetLocation = document.getElementById('details-subtasks-list');
         targetLocation.innerHTML = '';
         for (let i = 0; i < data.subtasks.length; i++) {
             targetLocation.insertAdjacentHTML('beforeend', `
@@ -175,6 +177,12 @@ async function listAttachedSubtasks(data, taskId) {
             `);
         }
     } else {
+        noSubtasksAttached();
         console.warn('Firebase issue. Pls ensure to save JSON-Arrays or nothing in subtasks. Strings will not be displayed!')
     }
+}
+
+function noSubtasksAttached() {
+    const targetLocation = document.getElementById('details-subtasks-list');
+    targetLocation.innerHTML = "This Task has no Subtasks.";
 }
