@@ -53,6 +53,7 @@ async function renderTasks() {
       generateTaskCard(key, item, target);
       updateTaskFields(Object.keys(statusFields));
       priorityEqualImg(item.priority, key);
+     
     }
   } catch (error) {
     console.error('Error rendering tasks:', error);
@@ -188,3 +189,11 @@ function rerenderTaskOnBoard(data, taskId) {
   generateTaskCard(taskId, data, targetLocation);
   priorityEqualImg(data.priority, taskId);
 }
+
+ function renderTaskTitles(containerId) {
+  for (let i = 0; i < currentTitles; i++) {
+   document.getElementById(`${containerId}`.innerHTML =`${currentTitles[i]}`)
+    
+  }
+ }
+

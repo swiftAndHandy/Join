@@ -261,3 +261,19 @@ async function renderContactList() {
     generateDropBoxContacts(entries[i], dataKeys[i]);
   }
 }
+
+
+function searchContact(search) {
+  // select all content in the class and created a array with it 
+  const contactNames = Array.from(document.querySelectorAll('div.group-pb-cricle-with-name'));
+
+  // move through all contacts 
+  contactNames.forEach(item => {
+    // validate if the name is included with the search value  (case insensitive)
+    const contactName = item.textContent.trim().toLowerCase();
+    const isVisible = contactName.includes(search.toLowerCase());
+
+    // hide none searched names.
+    hideWindow(item.parentElement.id, !isVisible);
+  });
+}
