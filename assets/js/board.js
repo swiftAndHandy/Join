@@ -199,7 +199,7 @@ function searchAndShowTasks(searchTerm) {
       const title = titleElement.textContent.trim().toLowerCase();
       const isVisible = title.includes(searchTerm.toLowerCase());
 
-      // Das nächste übergeordnete article-Element finden
+     
       const articleElement = taskCard.closest('article');
       if (articleElement) {
         hideWindow(articleElement.id, !isVisible);
@@ -207,3 +207,4 @@ function searchAndShowTasks(searchTerm) {
     }
   });
 }
+
