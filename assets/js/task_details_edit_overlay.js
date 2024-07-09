@@ -1,13 +1,38 @@
 /**
  * placeholder
  */
-function saveTaskUpdate() {
+function saveTaskUpdate(taskId) {
     toggleVisibility('task-edit-view');
     toggleVisibility('task-details-view');
+    const tag = document.getElementById('task-details-tag').textContent;
+    const title = document.getElementById('update-title').value
+    const description = document.getElementById('update-description').value;
+    const deadline = document.getElementById('update-date').value;
+    const priority = getCurrentPriority();
+    const subtasks = updateSubtasksArray();
+    const data = createTaskObject(tag, title, description, deadline, priority, subtasks);
+    putData(data, `tasks/${taskId}`);
 }
 
-function renderEditView() {
-    
+function createTaskObject(tag, title, description, deadline, priority, subtasks) {
+    return {
+        'tag': tag,
+        'title': title,
+        'description': description,
+        'date': deadline,
+        'priority': priority,
+        'assigned': assignedPersonsToUpdate, 
+        'subtasks': subtasks,
+        'status': currentDetailLocation
+    }
+}
+
+function renderEditView(task, key) {
+    document.getElementById('save-task-update').setAttribute('onclick', `saveTaskUpdate('${key}')`)
+    document.getElementById('update-title').value = task.title;
+    document.getElementById('update-description').innerText = task.description;
+    document.getElementById('update-date').value = task.date;
+    document.getElementById(`edit-priority-btn-${task.priority.toLowerCase()}`).click();
 }
 
 /**
@@ -32,6 +57,12 @@ function setPriorityTo(level) {
             i == editPriority ? currentButton.classList.add('active') : currentButton.classList.remove('active');
         }
     }
+}
+
+function getCurrentPriority() {
+    let activeBtn = document.querySelector('.task-priority.active');
+    activeBtn = activeBtn.id.split('edit-priority-btn-').join('');
+    return capitaliseFirstLetters(activeBtn);
 }
 
 /**
@@ -93,16 +124,16 @@ function deleteSubtask(subtaskId) {
  * For new Tasks: add .subtaskitem to every task-item you want to create. 
  * For existing and finished tasks: add .subtask-checkbox to every checkbox and add a label, that contains the task-text
  */
- function updateSubtasksArray() {
+function updateSubtasksArray() {
     let query = document.querySelectorAll('.subtaskitem')
     let result = [];
     query.forEach((item) => result.push(
-        {'goal': item.innerText, 'done': false}
+        { 'goal': item.innerText, 'done': false }
     ));
 
     query = document.querySelectorAll('input[type="checkbox"].subtask-checkbox:checked + label');
-    query.forEach((item) => result.push (
-        {'goal': item.innerText, 'done': true}
+    query.forEach((item) => result.push(
+        { 'goal': item.innerText, 'done': true }
     ));
-    return result; 
+    return result;
 }

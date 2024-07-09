@@ -157,9 +157,11 @@
   .scrollbar-wrapper {
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     gap: 16px;
     flex: 1;
+    padding: 0 1px;
   }
   
   .details__info-box.edit {

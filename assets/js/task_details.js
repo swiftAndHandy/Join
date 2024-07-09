@@ -1,11 +1,10 @@
 let editPriority;
 let assignedPersonsToUpdate = [];
 let subtasksToUpdate = [];
-let currentDetailId = null;
+let currentDetailLocation = null;
 
 function initTaskDetails() {
     setupListener();
-    document.getElementById('update-date').valueAsDate = new Date();
 }
 
 
@@ -18,8 +17,9 @@ async function openTaskDetails(taskId) {
     try {
         applyTaskStyles(taskId);
         const data = await renderTaskDetails(taskId);
+        currentDetailLocation = data.status;
         activateAssignedContacts(data.assigned);
-        renderEditView();
+        renderEditView(data, taskId);
     } catch (error) {
         console.warn('This Task has been deleted by another user.');
         document.getElementById(`taskId${taskId}`).remove();
@@ -31,6 +31,7 @@ async function openTaskDetails(taskId) {
  */
 function closeDetails() {
     toggleVisibility('task-details-view');
+    currentDetailLocation = null;
     document.getElementById('task-card-wrapper').classList.remove('dimm');
     document.getElementById('body').style = "overflow: unset;"
     document.getElementById('task-edit-view-assigned-persons').innerHTML = '';

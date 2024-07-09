@@ -221,11 +221,10 @@ function createSubtasks(subtaskArray = [], done = false) {
     const subtaskObjects = [];
     for (item of subtaskArray) {
         subtaskObjects.push({
-            'name': item,
+            'goal': item,
             'done': done
         })
     }
-
     return subtaskObjects;
 }
 
