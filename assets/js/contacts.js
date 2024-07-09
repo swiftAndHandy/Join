@@ -195,6 +195,9 @@ async function openContactDetails(userId) {
  * @param {string} userId - The ID of the contact being selected.
  */
 function changeContactItemColor(userId) {
+    if (window.innerWidth <= 820) {
+        return;
+    }
     if (currentSelectedContactId !== null) {
         let previousContactItem = document.getElementById(`contact-item-${currentSelectedContactId}`);
         if (previousContactItem) {
@@ -202,10 +205,9 @@ function changeContactItemColor(userId) {
             previousContactItem.classList.add('contact-item');
         }
     }
-
-    let contactItem = document.getElementById(`contact-item-${userId}`);
-    contactItem.classList.add('contact-item-selected');
-    contactItem.classList.remove('contact-item');
+        let contactItem = document.getElementById(`contact-item-${userId}`);
+        contactItem.classList.add('contact-item-selected');
+        contactItem.classList.remove('contact-item');
 
     currentSelectedContactId = userId;
 }
@@ -327,7 +329,7 @@ async function deleteContact(path = "") {
     });
     await putContactsToList();
     document.getElementById('contact-info-container').style.display = 'none';
-    
+
     executeOnMaxWidth(820, async () => {
         document.getElementById('contact-list-container').style.display = 'block';
         document.getElementById('contact-window').style.display = 'none';
@@ -363,7 +365,7 @@ function closeContactOptions() {
     document.getElementById('contact-options').style.animationName = 'contact-options-animation-close';
     setTimeout(() => {
         document.getElementById('contact-options').style.display = 'none';
-    }, 300); 
+    }, 300);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
