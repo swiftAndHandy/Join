@@ -181,7 +181,9 @@ function limitLengthOf(inputString, limit) {
   return inputString;
 }
 
-function rerenderTaskOnBoard(rerender, taskId) {
-  document.getElementById(`taskId${taskId}`);
-  generateTaskCard(taskId, item, target);
+function rerenderTaskOnBoard(data, taskId) {
+  const target = document.getElementById(`taskId${taskId}`).remove();
+  targetLocation = document.getElementById(`${data.status}-field`)
+  generateTaskCard(taskId, data, targetLocation);
+  priorityEqualImg(data.priority, taskId);
 }
