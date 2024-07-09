@@ -124,3 +124,9 @@ function deleteTask(taskId) {
     document.getElementById('edit-task-contacts-list').innerHTML = '';
     document.getElementById(`taskId${taskId}`).remove();
 }
+
+function updateSingleSubtask(path, target) {
+    value = document.getElementById(`${target}`).checked;
+    console.log(path, value);
+    putData(value, path);
+}
