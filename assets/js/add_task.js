@@ -59,6 +59,7 @@ function handleCheckBox(checkbox, idNumber) {
 
     console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
     pressedCheckBoxStyle(idNumber);
+    
   } else {
 
     const valueIndex = addTaskAssignedContacts.indexOf(checkbox.value);
@@ -69,6 +70,8 @@ function handleCheckBox(checkbox, idNumber) {
     console.log("Checkbox mit Wert " + checkbox.value + " ist deaktiviert.");
     unPressedCheckBoxStyle(idNumber);
   }
+
+  generateCircleProfilesLine()
   console.log('Aktuelle ausgewählte Kontakte: ', addTaskAssignedContacts);
 }
 
@@ -181,6 +184,7 @@ function checkIfFormFilled(event) {
   if (allFilled) {
     // document.getElementById('button-create-task').disabled = false;
     addnewTask(event);
+   
     showPopupTaskAdded();
   } else {
     console.log(

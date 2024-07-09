@@ -382,6 +382,20 @@ select:focus {
   font-size: 14px !important;
 }
 
+.profile-initials-circle-line {
+  background-color: #2725d9;
+  border-radius: 45px;
+  max-width: 42px;
+  height: 42px;
+  border: 2px solid #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white  !important;
+  font-size: 14px !important;
+  flex: 1 1 42px;
+}
+
 .group-pb-cricle-with-name {
   display: flex;
   align-items: center;
@@ -433,6 +447,12 @@ select:focus {
 .form-down-to-up-transition {
   transform: translate(-50%, 0%) !important;
   
+}
+
+.display-contacts-pictures {
+  display: flex;
+  flex-wrap: wrap;
+
 }
 
 
@@ -712,7 +732,7 @@ select:focus {
   }
 
   .create-task-panel {
-    top: 500px;
+    top: 475px;
   }
 }
 

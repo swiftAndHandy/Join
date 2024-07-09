@@ -256,7 +256,7 @@ h2 {
   height: 8px;
 }
 
-#progress-length {
+.progress-length {
   height: 100%;
   width: 50%;
   background-color: #4589ff;

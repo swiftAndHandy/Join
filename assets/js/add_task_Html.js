@@ -11,4 +11,35 @@ function generateDropBoxContacts(entries,data) {
                   <input class="checkbox" id="contact-check${entries.path}" type="checkbox" value="${entries.path}" onchange="handleCheckBox(this,'${entries.path}')">
                   <label id="label-check${entries.path}" for="contact-check${entries.path}" onclick="stopPropagation(event)"></label>
                 </div>`
+
+               
     }
+
+
+
+
+    async function generateCircleProfilesLine() {
+      // Annahme: Der Ziel-Container hat eine ID, die dem Kontaktpfad entspricht
+      const target = document.getElementById(`contacts-img-line`);
+    
+      if (target) {
+        // Lösche den bestehenden Inhalt des Containers, bevor neue Profile hinzugefügt werden
+        target.innerHTML = '';
+    
+        for (let contact of addTaskAssignedContacts) {
+          try {
+            const user = await readData(`${contact}`);
+            target.insertAdjacentHTML('beforeend', `<div class="profile-initials-circle-line" id="profile-cicle-${contact}" style="background-color:${user.color}">${initials(user.name)}</div>`);
+            
+            if (target.childElementCount >= 11) {
+              target.insertAdjacentHTML('beforeend', `<div class="profile-initials-circle-line" id="profile-circle-container-${contact}" style="background-color:#29ABE2">...</div>`);
+                
+              break;
+            }
+          } catch (error) {
+            console.error('error by reading the contacs', error);
+          }
+        }
+      }
+      }
+    
