@@ -190,10 +190,20 @@ function rerenderTaskOnBoard(data, taskId) {
   priorityEqualImg(data.priority, taskId);
 }
 
- function renderTaskTitles(containerId) {
-  for (let i = 0; i < currentTitles; i++) {
-   document.getElementById(`${containerId}`.innerHTML =`${currentTitles[i]}`)
-    
-  }
- }
+function searchAndShowTasks(searchTerm) {
+  const taskCards = document.querySelectorAll('.task-card-container');
 
+  taskCards.forEach(taskCard => {
+    const titleElement = taskCard.querySelector('.task-card-header h2');
+    if (titleElement) {
+      const title = titleElement.textContent.trim().toLowerCase();
+      const isVisible = title.includes(searchTerm.toLowerCase());
+
+      // Das nächste übergeordnete article-Element finden
+      const articleElement = taskCard.closest('article');
+      if (articleElement) {
+        hideWindow(articleElement.id, !isVisible);
+      }
+    }
+  });
+}
