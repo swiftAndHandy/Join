@@ -39,6 +39,7 @@ function closeDetails() {
     document.getElementById('task-edit-view-assigned-persons').innerHTML = '';
     assignedPersonsToUpdate = [];
     document.getElementById('edit-task-contacts-list').innerHTML = '';
+    document.getElementById('edit-subtask-item-wrapper').innerHTML = '';
     resetDetailCardHtml();
 }
 
@@ -98,6 +99,7 @@ function toggleVisibility(id) {
 async function openEditDialog() {
     toggleVisibility('task-edit-view');
     toggleVisibility('task-details-view');
+    renderOpenSubtasks();
 }
 
 /**
