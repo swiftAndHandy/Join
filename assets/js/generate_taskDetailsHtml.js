@@ -82,16 +82,18 @@ function resetDetailCardHtml() {
  */
 async function assignedPersonsDetailsHtml(contactIds) {
     let output = '';
-    for (let item of contactIds) {
-        try {
-            const data = await readData(`${item}`)
-            output += `
+    if (contactIds) {
+        for (let item of contactIds) {
+            try {
+                const data = await readData(`${item}`)
+                output += `
                 <div class="details__inner">
                 <div id="task-details-avatar-${item}" class="avatar at-drop-down" style="background-color: ${data.color};">${initials(data.name)}</div>
                     <span id="edit-task-username-ID">${data.name}</span>
                 </div>
                 `;
-        } catch (error) { }
+            } catch (error) { }
+        }
     }
     return output;
 }

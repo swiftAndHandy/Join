@@ -49,7 +49,7 @@ async function renderTasks() {
     for (let key in data) {
       const item = data[key];
       const target = statusFields[item.status];
-      await generateTaskCard(key, item, target);
+      generateTaskCard(key, item, target);
       updateTaskFields(Object.keys(statusFields));
       priorityEqualImg(item.priority, key);
     }
@@ -176,11 +176,12 @@ function applyGreyScreen() {
  */
 function limitLengthOf(inputString, limit) {
   if (inputString.length > limit) {
-    return inputString.substring(0, limit) + '...'; 
+    return inputString.substring(0, limit) + '...';
   }
-  return inputString; 
+  return inputString;
 }
 
 function rerenderTaskOnBoard(rerender, taskId) {
-
+  document.getElementById(`taskId${taskId}`);
+  generateTaskCard(taskId, item, target);
 }

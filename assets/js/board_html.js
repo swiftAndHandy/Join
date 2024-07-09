@@ -1,5 +1,4 @@
-async function generateTaskCard(taskId, item, target) {
-
+function generateTaskCard(taskId, item, target) {
   target.insertAdjacentHTML('beforeend', `
   <article class="task-card-container" onclick="openTaskDetails('${taskId}')" draggable="true" ondragstart="startDrag('${taskId}', '${item.status}')" id="taskId${taskId}">
     <div class="task-card-content">
@@ -27,8 +26,6 @@ async function generateTaskCard(taskId, item, target) {
   </article>`);
 
   generateCircleProfiles(item.assigned, taskId);
-
-  // return output;
 }
 
 async function generateCircleProfiles(contactEntries, taskId) {

@@ -22,6 +22,7 @@ async function openTaskDetails(taskId) {
         renderEditView(data, taskId);
     } catch (error) {
         console.warn('This Task has been deleted by another user.');
+        console.error(error);
         document.getElementById(`taskId${taskId}`).remove();
     }
 }
