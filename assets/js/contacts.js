@@ -1,7 +1,7 @@
 // Variables for storing the ID and color of the contact being edited
 let contactToEditId = '';
 let contactToEditColor = '';
-
+let currentSelectedContactId = '';
 
 /**
  * Executes the callback function if the window width is less than or equal to the specified maxWidth.
@@ -174,6 +174,7 @@ async function openContactDetails(userId) {
     let color = contact.color;
     let telefon = contact.phone;
 
+    changeContactItemColor(userId);
     contactDetailsHTML(name, email, telefon, color, userId);
     executeOnMaxWidth(820, async () => {
         document.getElementById('contact-list-container').style.display = 'none';
@@ -182,6 +183,33 @@ async function openContactDetails(userId) {
         document.getElementById('more-vert-button').style.display = 'flex';
     });
 }
+
+
+/**
+ * Changes the color of the selected contact item.
+ * 
+ * Removes the "selected" class from the previously selected contact (if any),
+ * adds it to the newly selected contact, and updates the global 
+ * `currentSelectedContactId`.
+ * 
+ * @param {string} userId - The ID of the contact being selected.
+ */
+function changeContactItemColor(userId) {
+    if (currentSelectedContactId !== null) {
+        let previousContactItem = document.getElementById(`contact-item-${currentSelectedContactId}`);
+        if (previousContactItem) {
+            previousContactItem.classList.remove('contact-item-selected');
+            previousContactItem.classList.add('contact-item');
+        }
+    }
+
+    let contactItem = document.getElementById(`contact-item-${userId}`);
+    contactItem.classList.add('contact-item-selected');
+    contactItem.classList.remove('contact-item');
+
+    currentSelectedContactId = userId;
+}
+
 
 
 /**
