@@ -127,6 +127,5 @@ function deleteTask(taskId) {
 
 function updateSingleSubtask(path, target) {
     value = document.getElementById(`${target}`).checked;
-    console.log(path, value);
     putData(value, path);
 }

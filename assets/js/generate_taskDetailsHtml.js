@@ -177,7 +177,7 @@ async function listAttachedSubtasks(data, taskId) {
         }
     } else {
         noSubtasksAttached();
-        console.warn('Firebase issue. Pls ensure to save JSON-Arrays or nothing in subtasks. Strings will not be displayed!')
+        data.subtasks && console.warn('Firebase issue. Pls ensure to save JSON-Arrays or nothing in subtasks. Strings will not be displayed!');
     }
 }
 
