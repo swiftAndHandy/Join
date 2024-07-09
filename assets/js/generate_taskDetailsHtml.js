@@ -40,9 +40,9 @@ async function generateTaskDetailsHtml(taskId, taskDetails) {
     priority.innerHTML = taskDetails['priority'];
     priorityImg.src = `../assets/img/icons/priority_${taskDetails['priority'].toLowerCase()}.svg`;
 
-    const assignedToDetails = document.getElementById('details-assigned-list');
+    // const assignedToDetails = document.getElementById('details-assigned-list');
     const assignedTo = taskDetails['assigned'];
-    assignedToDetails.innerHTML = await assignedPersonsDetailsHtml(assignedTo);
+    assignedPersonsDetailsHtml(assignedTo);
 
     const deleteBtn = document.getElementById('task-details-delete-btn');
     deleteBtn.setAttribute('onclick', `deleteTask('${taskId}')`);
@@ -71,12 +71,15 @@ function resetDetailCardHtml() {
     const assignedToDetails = document.getElementById('details-assigned-list');
     assignedToDetails.innerHTML = '';
 
+    const subtaskList = document.getElementById('details-subtasks-list');
+    subtaskList.innerHTML = '';
+
     const deleteBtn = document.getElementById('task-details-delete-btn');
     deleteBtn.setAttribute('onclick', `deleteTask('')`);
 }
 
 /**
- * 
+ * Generates HTML for 
  * @param {[]} contactIds an array, that contains all assigned contacts
  * @returns 
  */
@@ -86,12 +89,12 @@ async function assignedPersonsDetailsHtml(contactIds) {
         for (let item of contactIds) {
             try {
                 const data = await readData(`${item}`)
-                output += `
+                document.getElementById('details-assigned-list').insertAdjacentHTML('beforeend', `
                 <div class="details__inner">
                 <div id="task-details-avatar-${item}" class="avatar at-drop-down" style="background-color: ${data.color};">${initials(data.name)}</div>
                     <span id="edit-task-username-ID">${data.name}</span>
                 </div>
-                `;
+                `);
             } catch (error) { }
         }
     }
@@ -113,9 +116,16 @@ async function assignedPersonsEditHtml(contactIds) {
     return output;
 }
 
-function addNewSubtask(value) {
-    const target = document.getElementById('edit-subtask-item-wrapper');
-    const id = Math.random().toString(36).slice(2, 9) + '-' + Date.now();
+
+/**
+ * Creates HTML for Creating new Subtasks. This is originaly written for task-details, but changed in 
+ * a way you can select a individual target-location and reuse this code on other pages.
+ * Applys a random 
+ * @param {string} value 
+ */
+function addNewSubtask(value, target = 'edit-subtask-item-wrapper') {
+    target = document.getElementById(`${target}`);
+    const id = randomId();
 
     target.insertAdjacentHTML('beforeend', `
     <div id="edit-subtask-total-${id}" class="li-wrapper"
@@ -143,4 +153,28 @@ function addNewSubtask(value) {
     </div>
     `);
     document.getElementById('edit-add-subtask').value = '';
+}
+
+
+/**
+ * Creates HTML for every subtask Element thats given to a task and iterates trough data.subtasks.length to ensure
+ * a unique ID for every checkbox/label-pair.
+ * @param {Object} data - contains all information related to taskId
+ * @param {string} taskId - the Key of the current read Task
+ */
+async function listAttachedSubtasks(data, taskId) {
+    if (Array.isArray(data.subtasks)) {
+        const targetLocation = document.getElementById('details-subtasks-list');
+        targetLocation.innerHTML = '';
+        for (let i = 0; i < data.subtasks.length; i++) {
+            targetLocation.insertAdjacentHTML('beforeend', `
+            <div class="details__subtask">
+                <input type="checkbox" class="edit checkbox subtask-checkbox" id="details-task${taskId}-subtask-${i}" name="details-task${taskId}-subtask-${i}" ${data.subtasks[i].done ? 'checked' : ''}>
+                <label id="label-for-details-task${taskId}-subtask-${i}" for="details-task${taskId}-subtask-${i}">${data.subtasks[i].goal}</label>
+            </div>
+            `);
+        }
+    } else {
+        console.warn('Firebase issue. Pls ensure to save JSON-Arrays or nothing in subtasks. Strings will not be displayed!')
+    }
 }

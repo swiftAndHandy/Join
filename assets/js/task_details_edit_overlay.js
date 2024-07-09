@@ -143,7 +143,11 @@ function updateSubtasksArray() {
 }
 
 
-
+/**
+ * Selects every checkbox+ label pair on Task-Details-View,
+ * and a second selection of all checked checkbox-label-pairs.
+ * Substracts every checked (done) subtask from pool, since they shouldn't become displayed in edit-view.
+ */
 function renderOpenSubtasks() {
     const query = Array.from(document.querySelectorAll('input[type="checkbox"].subtask-checkbox + label'));
     const removeFromQuery = Array.from(document.querySelectorAll('input[type="checkbox"].subtask-checkbox:checked + label'));

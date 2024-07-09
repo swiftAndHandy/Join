@@ -16,6 +16,14 @@ function applyRandomColor() {
     return colors[randomIndex];
 }
 
+/**
+ * Generates a randomized string, based on Timestamp, that can be used to prevent two generated items will get the same ID.
+ * @returns {string}
+ */
+function randomId() {
+    return Math.random().toString(36).slice(2, 9) + '-' + Date.now();
+}
+
 //needs some changes to make this usable in every situation -> date from firebase as param
 function taskDueDate(date) {
     date = new Date(date);

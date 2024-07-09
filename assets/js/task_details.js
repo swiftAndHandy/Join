@@ -61,6 +61,7 @@ function applyTaskStyles(taskId) {
  */
 async function renderTaskDetails(taskId) {
     const data = await readData(`tasks/${taskId}`);
+    listAttachedSubtasks(data, taskId);
     return generateTaskDetailsHtml(taskId, data);
 }
 
