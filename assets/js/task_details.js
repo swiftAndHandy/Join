@@ -125,6 +125,7 @@ function deleteTask(taskId) {
     assignedPersonsToUpdate = [];
     document.getElementById('edit-task-contacts-list').innerHTML = '';
     document.getElementById(`taskId${taskId}`).remove();
+    updateTaskFields(['todo', 'progress', 'await', 'done']);
 }
 
 async function updateSingleSubtask(path, target, taskId) {
