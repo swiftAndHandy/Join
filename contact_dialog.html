@@ -27,10 +27,10 @@
                     </div>
                     <form class="input-information" onsubmit="createContact(event)">
                         <div class="input-style ">
-                            <input id="input-contact-name" class="profile-img-input" minlength="2" maxlength="28" type="text" placeholder="Name" required>
+                            <input id="input-contact-name" class="profile-img-input" pattern="^[A-Za-z]+\s+[A-Za-z]+.*" type="text" placeholder="Name" required>
                         </div>
                         <div class="input-style">
-                            <input id="input-contact-email" class="email-img-input" minlength="2" maxlength="28" type="email" placeholder="Email" required>
+                            <input id="input-contact-email" class="email-img-input" type="email" placeholder="Email" required>
                         </div>
                         <div class="input-style">
                             <input id="input-contact-phone" class="phone-img-input" type="tel" placeholder="Phone" pattern="^\+?[0-9\s\-]{7,15}$" title="Please enter a valid phone number" required>

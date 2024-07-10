@@ -158,7 +158,7 @@ main {
   display: flex;
   width: clamp(280px, 30vw, 364px);
   border: 1px solid #d1d1d1;
-  padding: 13px 21px 13px 21px;
+  padding: 13px 40px 13px 21px;
   gap: 10px;
   border-radius: 10px;
   font-size: 20px;

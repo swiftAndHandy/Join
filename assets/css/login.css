@@ -122,7 +122,10 @@
     box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
     width: min(90%, 598px);
     align-self: center;
-    transform: translateY(25%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .login-buttons {
