@@ -83,7 +83,7 @@ header {
     padding: 10px;
     background-color: rgba(42, 54, 71, 1);
     right: 0;
-    top: 58px;
+    top: 73px;
     display: none;
     flex-direction: column;
     gap: 8px;
@@ -115,6 +115,7 @@ header {
     cursor: pointer;
     background-color: #2A3D59;
     background-size: contain;
+    transform: scale(1.02, 1.02);
 }
 
 .avatar-link {
