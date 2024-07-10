@@ -206,3 +206,7 @@ function renderOpenSubtasks() {
         addNewSubtask(item.innerText);
     });
 }
+
+function scrollToLastSubtask() {
+    document.getElementById('edit-view-scrollbar').lastElementChild.scrollIntoView({behavior: 'smooth', block: 'end'});
+}
