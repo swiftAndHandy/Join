@@ -69,6 +69,7 @@ header {
     font-weight: 700;
     cursor: pointer;
     user-select: none;
+    position: relative;
 }
 
 .headline-profile-name:hover {
@@ -76,13 +77,13 @@ header {
 }
 
 .overlay-menu-avatar {
-    position: fixed;
+    position: absolute;
     width: 150px;
     border-radius: 20px 0 20px 20px;
     padding: 10px;
     background-color: rgba(42, 54, 71, 1);
-    right: 10px;
-    top: 80px;
+    right: 0;
+    top: 58px;
     display: none;
     flex-direction: column;
     gap: 8px;
@@ -400,6 +401,7 @@ header {
         color: #29ABE2;
         border-radius: 50%;
         cursor: pointer;
+        position: relative;
     }
 
     .header-mobile-profile:hover {

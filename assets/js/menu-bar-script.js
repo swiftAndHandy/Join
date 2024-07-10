@@ -1,5 +1,4 @@
 const currentlyOpen = getCurrentFileName();
-let clickedButton = false;
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -16,14 +15,8 @@ async function includeHTML() {
     updateMenu();
 }
 
-function showOverlayMenu() {
-    if(clickedButton === false) {
-        document.getElementById('menu-bar-avatar').classList.add('show-overlay-menu');
-        clickedButton = true;
-    } else {
-        document.getElementById('menu-bar-avatar').classList.remove('show-overlay-menu');
-        clickedButton = false;
-    }
+function showOverlayMenu(target) {
+        document.getElementById(`${target}`).classList.toggle('show-overlay-menu');
 }
 
 /**
@@ -111,6 +104,6 @@ function forceLogout(currentFile) {
  * @param {string} content - Initials of logged in Account or - if not logged in 'G'.
  */
 function avatarHtml(content) {
-    document.getElementById('my-avatar-desktop').innerHTML = content;
-    document.getElementById('my-avatar-mobile').innerHTML = content;
+    document.getElementById('my-avatar-desktop').insertAdjacentHTML('afterbegin', content);
+    document.getElementById('my-avatar-mobile').insertAdjacentHTML('afterbegin', content);
 }
