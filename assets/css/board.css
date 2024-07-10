@@ -238,6 +238,27 @@ h2 {
   padding: 10px 8px;
 }
 
+.tasks-container::before,
+.tasks-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 20px; /* Breite des Blur-Effekts */
+  z-index: 1;
+  pointer-events: none; /* Verhindert, dass der Benutzer diese Elemente anklicken kann */
+}
+
+.tasks-container::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.tasks-container::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
 .sub-task-container {
   width: 240px;
   height: 16px;
