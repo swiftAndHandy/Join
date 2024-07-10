@@ -119,7 +119,7 @@
             </div>
             <div class="details__info-box vertical mb-8">
                 <strong class="details__caption">Subtasks:</strong>
-                <div id="edit-subtask-box" class="details-subtask-box">
+                <form id="edit-subtask-box" class="details-subtask-box" onsubmit="addNewSubtask(document.getElementById('edit-add-subtask').value);return false;">
                     <input type="text" id="edit-add-subtask" class="details-subtask-add" placeholder="Add new subtask">
                     <div id="edit-view-subtask-add" class="cross blue" onclick="setFocus('edit')"></div>
                     <div id="edit-view-subtask-navigation" class="edit-subtask-navigation d-none"
@@ -130,7 +130,7 @@
                             onclick="addNewSubtask(document.getElementById('edit-add-subtask').value);blurListener();">
                         </div>
                     </div>
-                </div>
+                </form>
                 <div id="edit-subtask-item-wrapper" style="width: 100%">
                 </div>
             </div>
