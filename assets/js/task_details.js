@@ -40,7 +40,9 @@ function closeDetails() {
     document.getElementById('edit-task-contacts-list').innerHTML = '';
     document.getElementById('edit-subtask-item-wrapper').innerHTML = '';
     resetDetailCardHtml();
+    resetPriorityButtons();
 }
+
 
 /**
  * This function is called in openTaskDetails and sets a

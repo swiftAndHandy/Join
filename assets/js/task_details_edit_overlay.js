@@ -104,6 +104,17 @@ function getCurrentPriority() {
 }
 
 /**
+ * Removes active class from every priority button to prevent that it is forced to add a priority when 
+ * you edit a card without priority after opening another card, that has a priority.
+ */
+function resetPriorityButtons() {
+    const btns = ['low', 'medium', 'urgent'];
+    btns.forEach(id => {
+        document.getElementById(`edit-priority-btn-${id}`).classList.remove('active');
+    });
+}
+
+/**
  * Reset Input-Field for new Subtask, when discarded.
  */
 function discardNewSubtask() {
