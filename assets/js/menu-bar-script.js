@@ -15,8 +15,15 @@ async function includeHTML() {
     updateMenu();
 }
 
-function showOverlayMenu(target) {
-        document.getElementById(`${target}`).classList.toggle('show-overlay-menu');
+
+function showOverlayMenu(toggle = false) {
+    if (toggle) {
+        document.getElementById('menu-bar-avatar').classList.toggle('show-overlay-menu');
+        document.getElementById('menu-bar-avatar-mobile').classList.toggle('show-overlay-menu');
+    } else {
+        document.getElementById('menu-bar-avatar').classList.remove('show-overlay-menu');
+        document.getElementById('menu-bar-avatar-mobile').classList.remove('show-overlay-menu');
+    }
 }
 
 /**
@@ -86,6 +93,28 @@ async function setMyAvatar(currentFile) {
         } else if (currentFile && currentFile != 'index') {
             avatarHtml(myInitials);
         }
+    setupAvatarMenu();
+}
+
+
+/**
+ * Installs an eventListener on the whole document, listening for clicks.
+ * clickedOnAvatar is true, if the click happens on an element in dropDownMenus[], otherwise false.
+ * clickedOnIgnored is true, if the click happens on the dropdown-menus themself. 
+ * If the user is clicking on the Avatar the overlay is shown.  Since the ignores items are childs of the Avatars.
+ * So a click on ignored causes allways a true on a click on avatar. That why it also requires clickedOnIgnores false in first condition.
+ * If it's neither a click on Avatar nor the Menu itself, close the overlay-Menu.
+ */
+function setupAvatarMenu() {
+    const dropDownMenus = [document.getElementById('my-avatar-mobile'), document.getElementById('my-avatar-desktop')];
+    const ignore = [document.getElementById('menu-bar-avatar'), document.getElementById('menu-bar-avatar-mobile')];
+
+    document.addEventListener('click', (event) => {
+        const clickedOnAvatar = dropDownMenus.some(element => element.contains(event.target));
+        const clickedOnIgnored = ignore.some(element => element.contains(event.target));
+        console.log(clickedOnAvatar, clickedOnIgnored);
+        clickedOnAvatar && !clickedOnIgnored ? showOverlayMenu(true) : !clickedOnIgnored ? showOverlayMenu(false) : false;
+    });
 }
 
 /**
