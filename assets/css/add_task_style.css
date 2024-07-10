@@ -497,7 +497,7 @@ select:focus {
 }
 
 
-@media (min-width: 1000px) and (max-width: 3200px) {
+@media (min-width: 1000px) and (max-width: 4200px) {
   .desktop-buttons {
     display: flex;
   }
