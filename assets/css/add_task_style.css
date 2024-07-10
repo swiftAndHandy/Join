@@ -456,7 +456,7 @@ select:focus {
 }
 
 
-@media (min-width: 1025px) and (max-width: 3200px) {
+@media (min-width: 1000px) and (max-width: 3200px) {
   .desktop-buttons {
     display: flex;
   }
@@ -563,7 +563,7 @@ select:focus {
 }
 }
 
-@media (max-width: 1025px) and (min-width: 430px) {
+@media (max-width:999px) and (min-width: 430px) {
   .content-wrapper {
     display: flex;
     flex-direction: column;
