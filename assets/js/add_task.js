@@ -414,7 +414,7 @@ function removeValidation() {
   }
 }
 
-function stopEnterForm () {
+function stopEnterForm() {
   const form = document.getElementById('form-desktop');
 
   form.addEventListener('keydown', function(event) {
