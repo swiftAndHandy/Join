@@ -296,6 +296,31 @@ select {
   width: 136px;
 }
 
+.drop-menu-dialog {
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  width: 364px;
+  height: 216px;
+  overflow-y: auto;
+  border-radius: 10px;
+  
+}
+
+.drop-menu-dialog ul {
+  font-size: 16px;
+}
+
+.display-contacts-pictures-dialog {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+#contacts-show-input {
+  width: 320px;
+}
+
+
 .required-text {
   top: 779px;
   left: 74px;
@@ -345,6 +370,12 @@ select {
 
 .dialog-padding .prio-container  {
   width: 364px;
+}
+
+.dialog-button-fixed {
+  position: absolute;
+    top: 754px;
+    margin: 0;
 }
 
 

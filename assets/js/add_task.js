@@ -15,6 +15,7 @@ function init() {
   includeHTML();
   renderContactList();
   
+  
 }
 
 function formOfDueDate() {
@@ -33,11 +34,11 @@ function addDescription() {
 
 }
 
-function taskCategory() {
-  let category = document.getElementById("select-task-category");
-  addTaskCategory = category.value;
+// function taskCategory() {
+//   let category = document.getElementById("select-task-category");
+//   addTaskCategory = category.value;
 
-}
+// }
 
 function taskSubtask() {
   let subtask = document.getElementById("task-subtask");
@@ -186,7 +187,7 @@ async function addnewTask(event) {
   addTitle();
   addDescription();
   taskDueDate();
-  taskCategory();
+  // taskCategory();
   taskSubtask();
   formOfDueDate();
   
@@ -218,8 +219,10 @@ function checkIfFormFilled(event) {
     // document.getElementById('button-create-task').disabled = false;
     addnewTask(event);
     showPopupTaskAdded();
+    
     clearForm(event);
   } else {
+   
     console.log(
       "Please fill out all required fields before submitting."
     );
@@ -311,4 +314,31 @@ function searchContact(search) {
     hideWindow(item.parentElement.id, !isVisible);
   });
 }
+
+ function toggleCategoryDropBox() {
+  if (!alreadyOpen) {
+    document.getElementById('arrow').classList.remove('rotation-back');
+    document.getElementById('category-drop-menu').classList.remove('d-none');
+    document.getElementById('arrow').classList.add('rotation');
+    document.getElementById('select-category').classList.remove('d-none');
+
+    alreadyOpen = true
+  } else {
+    document.getElementById('category-drop-menu').classList.add('d-none');
+    document.getElementById('arrow').classList.remove('rotation');
+    document.getElementById('arrow').classList.add('rotation-back');
+
+
+    alreadyOpen = false
+  }
+}
+
+function selectCategory (category) {
+ addTaskCategory = category
+  const parent = document.getElementById('select-category');
+  const spanElement = parent.querySelector('span');
+  spanElement.textContent = `${category}`;
+ toggleCategoryDropBox();
+}
+
 
