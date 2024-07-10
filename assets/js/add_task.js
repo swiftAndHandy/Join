@@ -116,11 +116,6 @@ function toggleContactDropBox(forcedClose = false) {
 
 
 
-
-
-
-
-
 function clearInputs(event) {
   event.preventDefault()
   let form = document.getElementById('form-desktop')
@@ -198,7 +193,6 @@ async function addnewTask(event) {
   taskSubtask();
   formOfDueDate();
   
-
   let assignedContactsObject = convertArrayToObject(addTaskAssignedContacts);
 
   await postData({
@@ -238,9 +232,6 @@ function checkIfFormFilled(event) {
 }
 
 
-
-
-
 function setPrio(prio, number) {
   const priorities = ["urgent", "medium", "low"];
   const colors = ["orange", "yellow", "green"];
@@ -267,8 +258,6 @@ function setPrio(prio, number) {
     document.getElementById(`${currentPriority}-prio-img`).classList.add("pressed-prio-img");
   }
 }
-
-
 
 
 function showPopupTaskAdded() {
@@ -349,81 +338,76 @@ function selectCategory (category) {
  toggleCategoryDropBox();
 }
 
-
- function ownValidation() {
-  const form = document.querySelector('#form-desktop');
-  const requiredFields = form.querySelectorAll('[required]');
-  requiredFields.forEach(field => {
-     
-      if (field.value.trim() === '' && !field.parentNode.querySelector('.error-message')) {
-         
-          const errorMessage = document.createElement('span');
-          errorMessage.textContent = 'This field ist required.';
-          errorMessage.classList.add('error-message'); 
-          field.parentNode.appendChild(errorMessage);
-      }
-      field.addEventListener('input', function() {
-          if (field.value.trim() !== '') {
-          
-              const errorMessage = field.parentNode.querySelector('.error-message');
-              if (errorMessage) {
-                  errorMessage.remove();
-              }
-          }
-      });
-  });
-}
-
-function checkCategoryfield () {
-  const selectCategoryDiv = document.getElementById('category-input-wrapper');
-    const selectedCategory = selectCategoryDiv.innerText.trim();
-    if (selectedCategory !== 'Technical Task' && selectedCategory !== 'User Story') {
-        if (!selectCategoryDiv.parentNode.querySelector('.error-message')) {
+  function ownValidation() {
+    const form = document.querySelector('#form-desktop');
+    const requiredFields = form.querySelectorAll('[required]');
+    requiredFields.forEach(field => {
+      
+        if (field.value.trim() === '' && !field.parentNode.querySelector('.error-message')) {
             const errorMessage = document.createElement('span');
             errorMessage.textContent = 'This field ist required.';
-            errorMessage.classList.add('error-message');
-            selectCategoryDiv.parentNode.appendChild(errorMessage);
+            errorMessage.classList.add('error-message'); 
+            field.parentNode.appendChild(errorMessage);
         }
-    } else {
-        const errorMessage = selectCategoryDiv.parentNode.querySelector('.error-message');
+        field.addEventListener('input', function() {
+            if (field.value.trim() !== '') {
+            
+                const errorMessage = field.parentNode.querySelector('.error-message');
+                if (errorMessage) {
+                    errorMessage.remove();
+                }
+            }
+        });
+    });
+  }
+
+  function checkCategoryfield () {
+    const selectCategoryDiv = document.getElementById('category-input-wrapper');
+      const selectedCategory = selectCategoryDiv.innerText.trim();
+      if (selectedCategory !== 'Technical Task' && selectedCategory !== 'User Story') {
+          if (!selectCategoryDiv.parentNode.querySelector('.error-message')) {
+              const errorMessage = document.createElement('span');
+              errorMessage.textContent = 'This field ist required.';
+              errorMessage.classList.add('error-message');
+              selectCategoryDiv.parentNode.appendChild(errorMessage);
+          }
+      } else {
+          const errorMessage = selectCategoryDiv.parentNode.querySelector('.error-message');
+          if (errorMessage) {
+              errorMessage.remove();
+          }
+      }
+
+  }
+
+  function removeValidation() {
+    const form = document.querySelector('#form-desktop');
+    const requiredFields = form.querySelectorAll('[required]');
+    
+    requiredFields.forEach(field => {
+        const errorMessage = field.parentNode.querySelector('.error-message');
         if (errorMessage) {
             errorMessage.remove();
         }
-    }
-
-}
-
-
-function removeValidation() {
-  // Remove validation messages from required fields
-  const form = document.querySelector('#form-desktop');
-  const requiredFields = form.querySelectorAll('[required]');
+    });
   
-  requiredFields.forEach(field => {
-      const errorMessage = field.parentNode.querySelector('.error-message');
-      if (errorMessage) {
-          errorMessage.remove();
-      }
-  });
-
-  // Remove validation message from category field
-  const selectCategoryDiv = document.getElementById('category-input-wrapper');
-  const errorMessageCategory = selectCategoryDiv.parentNode.querySelector('.error-message');
-  if (errorMessageCategory) {
-      errorMessageCategory.remove();
+    const selectCategoryDiv = document.getElementById('category-input-wrapper');
+    const errorMessageCategory = selectCategoryDiv.parentNode.querySelector('.error-message');
+    if (errorMessageCategory) {
+        errorMessageCategory.remove();
+    }
   }
-}
 
-function stopEnterForm() {
-  const form = document.getElementById('form-desktop');
+  function stopEnterForm() {
+    const form = document.getElementById('form-desktop');
 
-  form.addEventListener('keydown', function(event) {
-      // Check if Enter key was pressed (key code 13)
-      if (event.key === 'Enter') {
-          // Prevent default behavior of form submission
-          event.preventDefault();
-      }
-  })
-};
+    form.addEventListener('keydown', function(event) {
+        
+        if (event.key === 'Enter') {
+        
+            event.preventDefault();
+        }
+    })
+  };
 
 
