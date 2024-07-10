@@ -170,7 +170,16 @@ async function listAttachedSubtasks(data, taskId) {
         for (let i = 0; i < data.subtasks.length; i++) {
             targetLocation.insertAdjacentHTML('beforeend', `
             <div class="details__subtask">
-                <input type="checkbox" onchange="updateSingleSubtask('tasks/${taskId}/subtasks/${i}/done', 'details-task${taskId}-subtask-${i}')" class="edit checkbox subtask-checkbox" id="details-task${taskId}-subtask-${i}" name="details-task${taskId}-subtask-${i}" ${data.subtasks[i].done ? 'checked' : ''}>
+                <input type="checkbox" 
+                onchange="updateSingleSubtask(
+                    'tasks/${taskId}/subtasks/${i}/done', 
+                    'details-task${taskId}-subtask-${i}', 
+                    '${taskId}'
+                )"
+                class="edit checkbox subtask-checkbox" 
+                id="details-task${taskId}-subtask-${i}" 
+                name="details-task${taskId}-subtask-${i}" 
+                ${data.subtasks[i].done ? 'checked' : ''}>
                 <label id="label-for-details-task${taskId}-subtask-${i}" for="details-task${taskId}-subtask-${i}">${data.subtasks[i].goal}</label>
             </div>
             `);

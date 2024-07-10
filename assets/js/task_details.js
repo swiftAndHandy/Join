@@ -125,7 +125,8 @@ function deleteTask(taskId) {
     document.getElementById(`taskId${taskId}`).remove();
 }
 
-function updateSingleSubtask(path, target) {
+async function updateSingleSubtask(path, target, taskId) {
     value = document.getElementById(`${target}`).checked;
-    putData(value, path);
+    await putData(value, path);
+    getSubtaskProgress(await readData(`tasks/${taskId}/subtasks`), taskId);
 }

@@ -194,7 +194,7 @@ function limitLengthOf(inputString, limit) {
 function rerenderTaskOnBoard(data, taskId) {
   const target = document.getElementById(`taskId${taskId}`).remove();
   targetLocation = document.getElementById(`${data.status}-field`)
-  generateTaskCard(taskId, data, targetLocation);
+  generateTaskCard(taskId, data, targetLocation, 'afterbegin');
   priorityEqualImg(data.priority, taskId);
 }
 
@@ -217,4 +217,43 @@ function searchAndShowTasks(searchTerm) {
 }
 
 
+/**
+ * sets up two counters. one for finished subtasks, and one for the total amount.
+ * checks every Object in Object[] and adds 1 to the total amount.
+ * if element.done is true, also doneSubtasks increase. 
+ * @param {Object[]} subtasks - Every Subtask Object related to the taskId
+ * @param {string} taskId - taskId of the currently rendered task
+ */
+async function getSubtaskProgress(subtasks, taskId) {
+  let doneSubtasks = 0; let totalSubtasks = 0;
 
+  if (subtasks) {
+    subtasks.forEach(element => {
+      totalSubtasks++;
+      element.done && doneSubtasks++;
+    });
+  }
+
+  calculateSubtaskProgressOf(taskId, doneSubtasks, totalSubtasks);
+}
+
+
+/**
+ * Calculates Percentage of solved Subtasks and changes the Inline-Style of the
+ * related Progress bar. Also updates the text.
+ * If no subtask is added to a task, hide the progress bar(parent element) and the counter (parents sibling).
+ * @param {string} taskId - ID of the task that should be calculated
+ * @param {number} done - amount of completed subtask goals.
+ * @param {number} total - total amount of subtasks, added to this taskId
+ */
+async function calculateSubtaskProgressOf(taskId, done, total) {
+  const target = document.getElementById(`progress-length${taskId}`);
+  let progress = Number(done*100/total).toFixed(0);
+  if (!isNaN(progress)) {
+    target.style.width = `${progress}%`;
+    target.parentElement.nextElementSibling.innerHTML = `${done}/${total} Subtasks`;
+  } else {
+    target.parentElement.classList.add('d-none');
+    target.parentElement.nextElementSibling.classList.add('d-none');
+  }
+}

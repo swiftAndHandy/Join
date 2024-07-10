@@ -1,5 +1,5 @@
-function generateTaskCard(taskId, item, target) {
-  target.insertAdjacentHTML('beforeend', `
+function generateTaskCard(taskId, item, target, position = 'beforeend') {
+  target.insertAdjacentHTML(`${position}`, `
   <article class="task-card-container" onclick="openTaskDetails('${taskId}')" draggable="true" ondragstart="startDrag('${taskId}', '${item.status}')" id="taskId${taskId}">
     <div class="task-card-content">
       <div class="task-group-bubble ${item.tag.replace(/\s+/g, "-")}">
@@ -28,6 +28,12 @@ function generateTaskCard(taskId, item, target) {
   generateCircleProfiles(item.assigned, taskId);
 }
 
+/**
+ * contactEntries is iterated to read server-data. then, when server-data is fetched a new
+ * avatar should be created for the user that's found. When 11 Accounts are have an Avatar, add an Placeholder for the 12+ Assigned Person.
+ * @param {Object[]} contactEntries pathes to every contact and account that are assigned to the current taskId
+ * @param {string} taskId - id of the task that should be rendered
+ */
 async function generateCircleProfiles(contactEntries, taskId) {
   const target = document.getElementById(`profile-circle-container-${taskId}`);
   if (contactEntries) {
@@ -41,30 +47,5 @@ async function generateCircleProfiles(contactEntries, taskId) {
         }
       } catch (error) { }
     }
-  }
-}
-
-async function getSubtaskProgress(subtasks, taskId) {
-  let doneSubtasks = 0; let totalSubtasks = 0;
-
-  if (subtasks) {
-    subtasks.forEach(element => {
-      totalSubtasks++;
-      element.done && doneSubtasks++;
-    });
-  }
-
-  calculateSubtaskProgressOf(taskId, doneSubtasks, totalSubtasks);
-}
-
-async function calculateSubtaskProgressOf(taskId, done, total) {
-  const target = document.getElementById(`progress-length${taskId}`);
-  let progress = Number(done*100/total).toFixed(0);
-  if (!isNaN(progress)) {
-    target.style.width = `${progress}%`;
-    target.parentElement.nextElementSibling.innerHTML = `${done}/${total} Subtasks`;
-  } else {
-    target.parentElement.classList.add('d-none');
-    target.parentElement.nextElementSibling.classList.add('d-none');
   }
 }
