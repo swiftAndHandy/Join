@@ -141,7 +141,7 @@ header {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    height: min(100%, 1080px);
+    height: min(100%, calc(1080px - 250px));
     justify-content: space-between;
     overflow-y: auto;
     --sb-track-color: #2A3647;

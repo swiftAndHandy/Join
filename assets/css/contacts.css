@@ -28,6 +28,13 @@ html {
 .contact-list {
     padding: 0;
     margin: 0;
+    max-height: calc(1080px - 182px);
+    overflow: scroll;
+    --sb-track-color: transparent;
+    --sb-thumb-color: #0A1931;
+    --sb-size: 6px;
+    scrollbar-width: var(--sb-size);
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
 }
 
 .btn-container-add-contact {

@@ -104,10 +104,11 @@ main {
 @media (min-width: 1160px) {
 
     main {
-        /* margin-top: 206px; */
         margin-left: 232px;
         margin-bottom: 80px;
         max-width: calc(1920px - 232px);
+        max-height: calc(1080px - 128px);
+        overflow: scroll;
     }
 
     .content {
