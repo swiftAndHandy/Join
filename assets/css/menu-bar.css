@@ -490,4 +490,8 @@ header {
         width: 24px;
         height: 24px;
     }
+    .overlay-menu-avatar {
+        top: 58px;
+    }
+    
 }
