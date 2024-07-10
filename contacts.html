@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./assets/css/contact_dialog_media-querys.css">
     <script src="./assets/js/menu-bar-script.js"></script>
     <script src="./assets/js/contacts.js"></script>
+    <script src="./assets/js/contacts-html.js"></script>
     <script src="./assets/js/script.js"></script>
     <link rel="icon" type="image/svg+xml" href="./assets/img/icons/favicon.svg">
     <!-- <link rel="icon" type="image/x-icon" href="./assets/img/icons/favicon.svg"> -->
@@ -52,9 +53,9 @@
                     src="./assets/img/icons/more_vert.svg" alt=""></div>
             <div id="contact-options" class="contact-options">
                 <div class="edit-button" onclick="openEditContactPage(contactToEditId)"><img
-                        src="./assets/img/icons/edit.svg" alt="edit">edit</div>
-                <div class="delete-button" onclick="deleteContact(`/contacts/${contactToEditId}`)"><img
-                        src="./assets/img/icons/delete.svg" alt="delete">delete</div>
+                    src="./assets/img/icons/edit.svg" alt="edit">edit</div>
+            <div class="delete-button" onclick="deleteContact(`contacts/${contactToEditId}`, `${contactToEditId}`)"><img
+                    src="./assets/img/icons/delete.svg" alt="delete">delete</div>
             </div>
         </div>
     </div>
