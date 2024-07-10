@@ -13,6 +13,7 @@ previousButton = 0;
 function init() {
   includeHTML();
   renderContactList();
+  setDateRange() ;
 }
 
 function formOfDueDate() {
@@ -277,3 +278,17 @@ function searchContact(search) {
     hideWindow(item.parentElement.id, !isVisible);
   });
 }
+
+function setDateRange() {
+  const dateInput = document.getElementById('task-due-date');
+  dateInput.addEventListener('input', function() {
+      const minDate = new Date(dateInput.min);
+      const maxDate = new Date(dateInput.max);
+      const selectedDate = new Date(dateInput.value);
+
+      if (selectedDate < minDate || selectedDate > maxDate) {
+          
+          dateInput.value = ''; // Reset the value if it's out of range
+      }
+  });
+};
