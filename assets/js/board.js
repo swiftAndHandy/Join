@@ -159,12 +159,17 @@ function switchToAddTask() {
   window.location.href = addTaskUrl;
 }
 
-function closeAddTaskPopUp() {
+function closeAddTaskPopUp(event) {
   let popUpTranstion = document.getElementById("add-task-transition");
   popUpTranstion.classList.remove("transition-right");
   applyGreyScreen();
   document.body.classList.remove('overflow-all-hidden');
   removeValidation();
+  clearFormPrio();
+  clearFormContactStyle();
+  document.getElementById('form-desktop').reset()
+ 
+  
 }
 
 function applyGreyScreen() {
