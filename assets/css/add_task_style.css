@@ -484,6 +484,12 @@ select:focus {
   
 }
 
+.error-message {
+  color: #FF8190 !important;
+  font-size: 12px;
+  font-weight: 400;
+}
+
 .display-contacts-pictures {
   display: flex;
   flex-wrap: wrap;

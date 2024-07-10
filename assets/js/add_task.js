@@ -351,7 +351,6 @@ function selectCategory (category) {
          
           const errorMessage = document.createElement('span');
           errorMessage.textContent = 'This field ist required.';
-          errorMessage.style.color = 'red'; 
           errorMessage.classList.add('error-message'); 
           field.parentNode.appendChild(errorMessage);
       }
@@ -368,13 +367,12 @@ function selectCategory (category) {
 }
 
 function checkCategoryfield () {
-  const selectCategoryDiv = document.getElementById('select-category');
+  const selectCategoryDiv = document.getElementById('category-input-wrapper');
     const selectedCategory = selectCategoryDiv.innerText.trim();
     if (selectedCategory !== 'Technical Task' && selectedCategory !== 'User Story') {
         if (!selectCategoryDiv.parentNode.querySelector('.error-message')) {
             const errorMessage = document.createElement('span');
             errorMessage.textContent = 'This field ist required.';
-            errorMessage.style.color = 'red';
             errorMessage.classList.add('error-message');
             selectCategoryDiv.parentNode.appendChild(errorMessage);
         }
