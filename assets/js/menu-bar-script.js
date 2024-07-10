@@ -112,7 +112,6 @@ function setupAvatarMenu() {
     document.addEventListener('click', (event) => {
         const clickedOnAvatar = dropDownMenus.some(element => element.contains(event.target));
         const clickedOnIgnored = ignore.some(element => element.contains(event.target));
-        console.log(clickedOnAvatar, clickedOnIgnored);
         clickedOnAvatar && !clickedOnIgnored ? showOverlayMenu(true) : !clickedOnIgnored ? showOverlayMenu(false) : false;
     });
 }
