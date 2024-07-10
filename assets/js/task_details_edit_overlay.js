@@ -81,7 +81,7 @@ function setPriorityTo(level) {
     for (let i = 0; i < btns.length; i++) {
         const currentButton = document.getElementById(`edit-priority-btn-${btns[i]}`);
         if (currentButton) {
-            i == editPriority ? currentButton.classList.add('active') : currentButton.classList.remove('active');
+            i == editPriority ? currentButton.classList.toggle('active') : currentButton.classList.remove('active');
         }
     }
 }
