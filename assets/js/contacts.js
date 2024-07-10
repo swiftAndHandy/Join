@@ -46,6 +46,23 @@ function closeAddContactPage() {
 
 
 /**
+ * Shows the "Contact Created" modal with animations.
+ * The modal appears, stays for 1s, then closes and resets.
+ */
+function showCreatedContactModal() {
+    let contactCreatedModal = document.getElementById('contact-created-modal');
+    contactCreatedModal.classList.add('contact-created-modal-open');
+    setTimeout(() => {
+        contactCreatedModal.classList.add('contact-created-modal-close');
+        setTimeout(() => {
+            contactCreatedModal.classList.remove('contact-created-modal-close');
+            contactCreatedModal.classList.remove('contact-created-modal-open');
+        }, 190);
+    }, 1000);
+}
+
+
+/**
  * Opens the 'Edit Contact' page for the contact at the given index by fetching the HTML content 
  * and displaying the modal with the contact's information filled in.
  * 
@@ -198,6 +215,7 @@ async function createContact(event) {
     }, 'contacts');
     await putContactsToList();
     closeContactModal();
+    showCreatedContactModal();
 }
 
 
@@ -325,6 +343,9 @@ function closeContactOptions() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    if (window.innerWidth >= 820){
+        return;
+    } 
     window.addEventListener('click', (event) => {
         if (!event.target.closest('#contact-options') && !event.target.closest('#more-vert-button')) {
             closeContactOptions();
