@@ -1,5 +1,8 @@
 /**
- * placeholder
+ * saves the updated information of the current task in firebase and rerenders
+ * 1. edit view
+ * 2. the single card on board
+ * 3. task details
  */
 async function saveTaskUpdate(taskId) {
     const tag = document.getElementById('task-details-tag').textContent;
@@ -18,6 +21,17 @@ async function saveTaskUpdate(taskId) {
     document.getElementById('edit-subtask-item-wrapper').innerHTML = '';
 }
 
+
+/**
+ * Used to create an object that will be posted to the server
+ * @param {string} tag - tag of the task
+ * @param {string} title - new title of the task
+ * @param {string} description - new description of the task
+ * @param {string} deadline -formated yyyy-mm-dd, new deadline of the task
+ * @param {string} priority - empty or Low, Medium or Urgent
+ * @param {[]} subtasks - contains every subtask with goal and an information about done or not
+ * @returns {Object[]} - containing all updated data from above.
+ */
 function createTaskObject(tag, title, description, deadline, priority, subtasks) {
     return {
         'tag': tag,
@@ -31,12 +45,21 @@ function createTaskObject(tag, title, description, deadline, priority, subtasks)
     }
 }
 
+/**
+ * Renders the Edit-View of a Task by updating the save Button and set 
+ * title, description, date, priority 
+ * to the current tasks values.
+ * @param {Object} task - Containes the information collection of the current task, fetched from firebase
+ * @param {string} key - Contains the task ID.
+ */
 function renderEditView(task, key) {
     document.getElementById('save-task-update').setAttribute('onclick', `saveTaskUpdate('${key}')`)
     document.getElementById('update-title').value = task.title;
     document.getElementById('update-description').innerText = task.description;
     document.getElementById('update-date').value = task.date;
-    document.getElementById(`edit-priority-btn-${task.priority.toLowerCase()}`).click();
+    try {
+       document.getElementById(`edit-priority-btn-${task.priority.toLowerCase()}`).click();
+    } catch (error) { console.warn('This Task has no priority.'); }
 }
 
 /**
@@ -71,9 +94,13 @@ function setPriorityTo(level) {
  * @returns {string} - Returns the priority of the Actice Button as string.
  */
 function getCurrentPriority() {
-    let activeBtn = document.querySelector('.task-priority.active');
-    activeBtn = activeBtn.id.split('edit-priority-btn-').join('');
-    return capitaliseFirstLetters(activeBtn);
+    try {
+        let activeBtn = document.querySelector('.task-priority.active');
+        activeBtn = activeBtn.id.split('edit-priority-btn-').join('');
+        return capitaliseFirstLetters(activeBtn);
+    } catch {
+        return '';
+    }
 }
 
 /**
@@ -102,10 +129,12 @@ function openSubtaskInput(subtaskId) {
  */
 function updateSubtaskInput(subtaskId) {
     const target = document.getElementById(`subtaskspan-${subtaskId}`)
-    const value = document.getElementById(`single-subtask-input-${subtaskId}`).value
-    target.innerText = value;
-    document.getElementById(`edit-subtask-total-${subtaskId}`).classList.remove('d-none');
-    document.getElementById(`single-subtask-input-wrapper-${subtaskId}`).classList.add('d-none');
+    const value = document.getElementById(`single-subtask-input-${subtaskId}`).value.trim()
+    if (value) {
+        target.innerText = value;
+        document.getElementById(`edit-subtask-total-${subtaskId}`).classList.remove('d-none');
+        document.getElementById(`single-subtask-input-wrapper-${subtaskId}`).classList.add('d-none');
+    }
 }
 
 /**
@@ -161,7 +190,7 @@ function renderOpenSubtasks() {
     const query = Array.from(document.querySelectorAll('input[type="checkbox"].subtask-checkbox + label'));
     const removeFromQuery = Array.from(document.querySelectorAll('input[type="checkbox"].subtask-checkbox:checked + label'));
     const openSubtasks = query.filter(subtask => !removeFromQuery.includes(subtask));
-    
+
     openSubtasks.forEach(item => {
         addNewSubtask(item.innerText);
     });
