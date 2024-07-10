@@ -47,18 +47,20 @@ function closeAddContactPage() {
 
 /**
  * Shows the "Contact Created" modal with animations.
- * The modal appears, stays for 1s, then closes and resets.
+ * The modal appears, stays for 1.5s, then closes and resets.
  */
 function showCreatedContactModal() {
     let contactCreatedModal = document.getElementById('contact-created-modal');
+    setTimeout(() => {
     contactCreatedModal.classList.add('contact-created-modal-open');
+    },500);
     setTimeout(() => {
         contactCreatedModal.classList.add('contact-created-modal-close');
         setTimeout(() => {
             contactCreatedModal.classList.remove('contact-created-modal-close');
             contactCreatedModal.classList.remove('contact-created-modal-open');
         }, 190);
-    }, 1000);
+    }, 1500);
 }
 
 
@@ -197,7 +199,8 @@ function changeContactItemColor(userId) {
 
 
 /**
- * Creates a new contact by sending the data to the server and updates the contact list.
+ * Creates a new contact by sending the data to the server, updates the contact list,
+ * and opens the details of the newly created contact if it matches the input data.
  * 
  * @param {Event} event - The form submit event.
  */
@@ -206,16 +209,39 @@ async function createContact(event) {
     let nameInput = document.getElementById('input-contact-name').value;
     let emailInput = document.getElementById('input-contact-email').value.toLowerCase();
     let phoneInput = document.getElementById('input-contact-phone').value;
+    let nameToCompare = capitaliseFirstLetters(nameInput);
 
     await postData({
         'email': emailInput,
-        'name': capitaliseFirstLetters(nameInput),
+        'name': nameToCompare,
         'phone': phoneInput,
         'color': applyRandomColor()
     }, 'contacts');
+
     await putContactsToList();
+    await openCreatedContact(nameToCompare, emailInput, phoneInput);
     closeContactModal();
     showCreatedContactModal();
+}
+
+
+/**
+ * Searches for a contact that matches the provided name, email, and phone number,
+ * and opens the contact details if a match is found.
+ * 
+ * @param {string} nameToCompare - The name to compare against the contacts.
+ * @param {string} emailToCompare - The email to compare against the contacts.
+ * @param {string} phoneToCompare - The phone number to compare against the contacts.
+ */
+async function openCreatedContact(nameToCompare, emailToCompare, phoneToCompare) {
+    let contacts = await readData('contacts');
+    for (let id in contacts) {
+        let contact = contacts[id];
+        if (contact.name === nameToCompare && contact.email === emailToCompare && contact.phone === phoneToCompare) {
+            openContactDetails(id);
+            break;
+        }
+    }
 }
 
 
