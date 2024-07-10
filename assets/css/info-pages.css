@@ -108,30 +108,13 @@ main {
         margin-bottom: 80px;
         max-width: calc(1920px - 232px);
         max-height: calc(1080px - 128px);
-        overflow: scroll;
     }
 
     .content {
-        padding: 0 32px 0 64px;
+        padding: 0 32px 24px 64px;
     }
 
     .back-btn {
         margin-right: 32px;
     }
-/* 
-    .nav-menu--side {
-        position: fixed;
-        display: flex;
-        flex-direction: column;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        width: 232px;
-        height: 100%;
-        background-color: #2A3647;
-    } */
-
-    /* .nav-menu--bottom {
-        display: none;
-    } */
 }
