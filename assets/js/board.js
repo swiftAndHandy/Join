@@ -184,7 +184,7 @@ function applyGreyScreen() {
  * @param {int} limit - max-length of the string
  * @returns {string} - shortened string
  */
-function limitLengthOf(inputString, limit) {
+function limitLengthOf(inputString, limit = 80) {
   if (inputString.length > limit) {
     return inputString.substring(0, limit) + '...';
   }
@@ -192,9 +192,12 @@ function limitLengthOf(inputString, limit) {
 }
 
 function rerenderTaskOnBoard(data, taskId) {
-  const target = document.getElementById(`taskId${taskId}`).remove();
-  targetLocation = document.getElementById(`${data.status}-field`)
-  generateTaskCard(taskId, data, targetLocation, 'afterbegin');
+  const description = document.getElementById(`description-content${taskId}`);
+  const title = description.previousElementSibling.innerText = data.title;
+  description.innerText = limitLengthOf(data.description, 80);
+  document.getElementById(`profile-circle-container-${taskId}`).innerHTML = '';
+  generateCircleProfiles(data.assigned, taskId);
+  getSubtaskProgress(data.subtasks, taskId);
   priorityEqualImg(data.priority, taskId);
 }
 
