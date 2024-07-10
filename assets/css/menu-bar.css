@@ -136,7 +136,7 @@ header {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    height: 100%;
+    height: min(100%, 1080px);
     justify-content: space-between;
     overflow-y: auto;
     --sb-track-color: #2A3647;
@@ -174,7 +174,6 @@ header {
     background-color: #2A3647;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     z-index: 2;
 }
