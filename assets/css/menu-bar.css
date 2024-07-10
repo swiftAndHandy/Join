@@ -76,6 +76,10 @@ header {
     background-color: #0C2E621F;
 }
 
+.headline-profile-name:has(.overlay-menu-avatar:hover) {
+    background-color: unset;
+}
+
 .overlay-menu-avatar {
     position: absolute;
     width: 150px;
@@ -406,6 +410,10 @@ header {
 
     .header-mobile-profile:hover {
         background-color: #0C2E621F;
+    }
+
+    .header-mobile-profile:has(.overlay-menu-avatar:hover) {
+        background-color: unset;
     }
 
     .menu-bar-desktop {
