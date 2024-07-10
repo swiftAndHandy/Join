@@ -151,6 +151,7 @@ function addNewSubtask(value, target = 'edit-subtask-item-wrapper') {
     </form>
     `);
     document.getElementById('edit-add-subtask').value = '';
+    document.getElementById('edit-view-scrollbar').lastElementChild.scrollIntoView({behavior: 'smooth', block: 'end'});
     }
 }
 

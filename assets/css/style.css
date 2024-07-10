@@ -23,21 +23,8 @@ body {
     --sb-track-color: transparent;
     --sb-thumb-color: #0A1931;
     --sb-size: 6px;
-}
-
-body::-webkit-scrollbar {
-    width: var(--sb-size)
-}
-
-body::-webkit-scrollbar-track {
-    background: var(--sb-track-color);
-    border-radius: 3px;
-}
-
-body::-webkit-scrollbar-thumb {
-    background: var(--sb-thumb-color);
-    border-radius: 3px;
-
+    scrollbar-width: var(--sb-size);
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
 }
 
 .scrolling--blocked {
