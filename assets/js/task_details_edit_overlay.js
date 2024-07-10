@@ -63,6 +63,13 @@ function setPriorityTo(level) {
     }
 }
 
+
+/**
+ * Selects the first (and only) Priority Button with .task-priority.active and 
+ * strips the priority level out of the Buttons id. Since we save the Priority with an Uppercase first Letter,
+ * the string is returned with a capitalized first letter.
+ * @returns {string} - Returns the priority of the Actice Button as string.
+ */
 function getCurrentPriority() {
     let activeBtn = document.querySelector('.task-priority.active');
     activeBtn = activeBtn.id.split('edit-priority-btn-').join('');
@@ -70,7 +77,7 @@ function getCurrentPriority() {
 }
 
 /**
- * Reset Input-Field for new Subtask
+ * Reset Input-Field for new Subtask, when discarded.
  */
 function discardNewSubtask() {
     document.getElementById('edit-add-subtask').value = '';
@@ -111,6 +118,7 @@ function discardSubtaskInput(subtaskId) {
 }
 
 /**
+ * Deletes an Subtask-Item from Edit-View, not from Firebase!
  * @param {string} subtaskId - id of the item that should be deleted
  */
 function deleteSubtask(subtaskId) {
@@ -147,6 +155,7 @@ function updateSubtasksArray() {
  * Selects every checkbox+ label pair on Task-Details-View,
  * and a second selection of all checked checkbox-label-pairs.
  * Substracts every checked (done) subtask from pool, since they shouldn't become displayed in edit-view.
+ * Iterates trough this filtered openSubtasks-Array and let do addNewSubtask() the magic ;-)
  */
 function renderOpenSubtasks() {
     const query = Array.from(document.querySelectorAll('input[type="checkbox"].subtask-checkbox + label'));

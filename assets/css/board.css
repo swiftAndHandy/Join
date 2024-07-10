@@ -254,6 +254,8 @@ h2 {
   color: #f4f4f4;
   width: 128px;
   height: 8px;
+  background-color: #F4F4F4;
+  border-radius: 8px;
 }
 
 .progress-length {
