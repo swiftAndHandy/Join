@@ -350,7 +350,7 @@ function selectCategory (category) {
       if (field.value.trim() === '' && !field.parentNode.querySelector('.error-message')) {
          
           const errorMessage = document.createElement('span');
-          errorMessage.textContent = 'Dieses Feld ist erforderlich.';
+          errorMessage.textContent = 'This field ist required.';
           errorMessage.style.color = 'red'; 
           errorMessage.classList.add('error-message'); 
           field.parentNode.appendChild(errorMessage);
@@ -373,7 +373,7 @@ function checkCategoryfield () {
     if (selectedCategory !== 'Technical Task' && selectedCategory !== 'User Story') {
         if (!selectCategoryDiv.parentNode.querySelector('.error-message')) {
             const errorMessage = document.createElement('span');
-            errorMessage.textContent = 'Dieses Feld ist erforderlich.';
+            errorMessage.textContent = 'This field ist required.';
             errorMessage.style.color = 'red';
             errorMessage.classList.add('error-message');
             selectCategoryDiv.parentNode.appendChild(errorMessage);
