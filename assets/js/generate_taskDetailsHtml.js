@@ -120,39 +120,38 @@ async function assignedPersonsEditHtml(contactIds) {
 /**
  * Creates HTML for Creating new Subtasks. This is originaly written for task-details, but changed in 
  * a way you can select a individual target-location and reuse this code on other pages.
- * Applys a random 
+ * Applys a random ID to this item. Submits only, if value isn't empty after trim spaces from begin and end
  * @param {string} value 
  */
 function addNewSubtask(value, target = 'edit-subtask-item-wrapper') {
     target = document.getElementById(`${target}`);
     const id = randomId();
-
-    target.insertAdjacentHTML('beforeend', `
-    <div id="edit-subtask-total-${id}" class="li-wrapper"
-        ondblclick="openSubtaskInput('${id}');stopPropagation(event);">
+    value = value.trim();
+    if (value) {
+        target.insertAdjacentHTML('beforeend', `
+    <div id="edit-subtask-total-${id}" class="li-wrapper" ondblclick="openSubtaskInput('${id}');stopPropagation(event);">
         <ul id="edit-subtasks-unsorted-${id}" class="edit-subtasks-list"">
-                                    <li>
-                                        <div class=" single-list-item">
-            <span id="subtaskspan-${id}" class="subtaskitem">${value}</span>
-            <div class="hover-overlay" onclick="stopPropagation(event)">
-                <img src="./assets/img/icons/edit.svg" alt="" onclick="openSubtaskInput('${id}')">
-                <div class="vertical-line"></div>
-                <img src="./assets/img/icons/delete.svg" alt="" onclick="deleteSubtask('${id}');">
-            </div>
+            <li>
+                <div class=" single-list-item">
+                    <span id="subtaskspan-${id}" class="subtaskitem">${value}</span>
+                    <div class="hover-overlay" onclick="stopPropagation(event)">
+                        <img src="./assets/img/icons/edit.svg" alt="" onclick="openSubtaskInput('${id}')">
+                        <div class="vertical-line"></div>
+                        <img src="./assets/img/icons/delete.svg" alt="" onclick="deleteSubtask('${id}');">
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
-    </li>
-    </ul>
-    </div>
-    <div id="single-subtask-input-wrapper-${id}" class="single-subtask-input-box d-none">
+    <form id="single-subtask-input-wrapper-${id}" class="single-subtask-input-box d-none" onsubmit="updateSubtaskInput('${id}');return false;">
         <input id="single-subtask-input-${id}" type="text">
-        <img class="link-btn discard-btn" src="./assets/img/icons/discard.svg" alt=""
-            onclick="discardSubtaskInput('${id}')">
+        <img class="link-btn discard-btn" src="./assets/img/icons/discard.svg" alt="" onclick="discardSubtaskInput('${id}')">
         <div class="vertical-line"></div>
-        <img class="link-btn accept-btn" src="./assets/img/icons/check_blue.svg" alt=""
-            onclick="updateSubtaskInput('${id}')">
-    </div>
+        <img class="link-btn accept-btn" src="./assets/img/icons/check_blue.svg" alt="" onclick="updateSubtaskInput('${id}')">
+    </form>
     `);
     document.getElementById('edit-add-subtask').value = '';
+    }
 }
 
 
