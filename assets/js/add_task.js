@@ -327,7 +327,7 @@ function searchContact(search) {
     document.getElementById('category-drop-menu').classList.add('d-none');
     document.getElementById('arrow').classList.remove('rotation');
     document.getElementById('arrow').classList.add('rotation-back');
-    checkCategoryfield ()
+    checkCategoryfield()
 
     alreadyOpen = false
   }
@@ -343,7 +343,7 @@ function selectCategory (category) {
 
 
  function ownValidation() {
-  const form = document.querySelector('form');
+  const form = document.querySelector('#form-desktop');
   const requiredFields = form.querySelectorAll('[required]');
   requiredFields.forEach(field => {
      

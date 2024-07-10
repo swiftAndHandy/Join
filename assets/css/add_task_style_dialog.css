@@ -46,12 +46,18 @@ select {
   transform: translateX(0);
 }
 
+
+
 #close-btn {
   position: absolute;
   top: 64px;
   left: 1044px;
   border: none;
   background: none;
+  cursor: pointer;
+}
+#select-category {
+  cursor: pointer;
 }
 
 .dialog-container {

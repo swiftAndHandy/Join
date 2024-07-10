@@ -6,9 +6,9 @@
     <script src="./assets/js/script.js"></script>
     <script src="./node_modules/drag-drop-touch/DragDropTouch.js"></script>
     <script src="/assets/js/menu-bar-script.js"></script>
-    <script src="./assets/js/board_html.js"></script>
     <script src="./assets/js/board.js"></script>
-    <script src="./assets/js/add_task.js"></script>
+    <script src="./assets/js/board_html.js"></script>
+    <script src="./assets/js/add_task.js" ></script>
     <script src="./assets/js/task_details.js"></script>
     <script src="./assets/js/task_details_event_listener.js"></script>
     <script src="./assets/js/task_details_contacts.js"></script>
@@ -70,7 +70,7 @@
                 class="input-img"
                 type="search"
                 placeholder="Find Task "
-                required
+                
                 
               />
               <button class="add-task-btn">
@@ -162,6 +162,7 @@
                     type="text"
                     placeholder="Enter a title"
                     id="task-title"
+                    
                   />
                 </div>
                 <div class="flex-column-inputs mb-32">
@@ -202,7 +203,7 @@
                   <span>Due date<span class="red">*</span></span>
                   <input
                     required
-                    class="date-standard"
+                    class="date-standard "
                     type="date"
                     id="task-due-date"
                   />
@@ -232,8 +233,8 @@
                 <div>
                   <div class="flex-column-inputs mb-32">
                     <span>Category<span class="red">*</span></span>
-                    <div  id="category-input-wrapper " onclick="toggleCategoryDropBox()">
-                      <div  class="input-standard required" id="select-category" >
+                    <div  id="category-input-wrapper" onclick="stopPropagation(event)">
+                      <div onclick="toggleCategoryDropBox()" class="input-standard " id="select-category" >
                         <span >Select contact to assign</span>
                         <img  id="arrow" class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" alt="">
                       </div>

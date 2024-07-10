@@ -7,6 +7,8 @@ async function initBoard() {
   renderTasks();
   addOpenAddTaskToButtons()
   renderContactList();
+  ownValidation()
+  
 
   document.addEventListener('dragend', () => {
     showDragArea('', false);
@@ -207,4 +209,6 @@ function searchAndShowTasks(searchTerm) {
     }
   });
 }
+
+
 
