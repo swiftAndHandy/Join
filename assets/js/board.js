@@ -8,7 +8,7 @@ async function initBoard() {
   addOpenAddTaskToButtons()
   renderContactList();
   stopEnterForm();
-  
+
 
   document.addEventListener('dragend', () => {
     showDragArea('', false);
@@ -55,7 +55,7 @@ async function renderTasks() {
       generateTaskCard(key, item, target);
       updateTaskFields(Object.keys(statusFields));
       priorityEqualImg(item.priority, key);
-     
+      setBottomTaskCardVisibility(item, key);
     }
   } catch (error) {
     console.error('Error rendering tasks:', error);
@@ -68,8 +68,12 @@ function priorityEqualImg(priority, key) {
   target.src = `./assets/img/icons/priority_${priority}.svg`;
 }
 
-function updateAfterDrag() {
-  let statusField = key;
+function setBottomTaskCardVisibility(card, taskId) {
+  if (!card.assigned && !card.priority) {
+    document.getElementById(`bottom--board-card-wrapper${taskId}`).classList.add('d-none');
+  } else {
+    document.getElementById(`bottom--board-card-wrapper${taskId}`).classList.remove('d-none');
+  }
 }
 
 function allowDrop(ev) {
@@ -168,8 +172,8 @@ function closeAddTaskPopUp(event) {
   clearFormPrio();
   clearFormContactStyle();
   document.getElementById('form-desktop').reset()
- 
-  
+
+
 }
 
 function applyGreyScreen() {
@@ -199,6 +203,7 @@ function rerenderTaskOnBoard(data, taskId) {
   generateCircleProfiles(data.assigned, taskId);
   getSubtaskProgress(data.subtasks, taskId);
   priorityEqualImg(data.priority, taskId);
+  setBottomTaskCardVisibility(data, taskId);
 }
 
 function searchAndShowTasks(searchTerm) {
@@ -210,7 +215,7 @@ function searchAndShowTasks(searchTerm) {
       const title = titleElement.textContent.trim().toLowerCase();
       const isVisible = title.includes(searchTerm.toLowerCase());
 
-     
+
       const articleElement = taskCard.closest('article');
       if (articleElement) {
         hideWindow(articleElement.id, !isVisible);
@@ -244,19 +249,21 @@ async function getSubtaskProgress(subtasks, taskId) {
 /**
  * Calculates Percentage of solved Subtasks and changes the Inline-Style of the
  * related Progress bar. Also updates the text.
- * If no subtask is added to a task, hide the progress bar(parent element) and the counter (parents sibling).
+ * If no subtask is added to the task, hide the progress bar(parents parent element).
+ * If a subtask is added to the tash, show parents parent element. This is necessairy, since
+ * the object could be d-noned by rendering and need to be displayed after adding a first subtask.
  * @param {string} taskId - ID of the task that should be calculated
  * @param {number} done - amount of completed subtask goals.
  * @param {number} total - total amount of subtasks, added to this taskId
  */
 async function calculateSubtaskProgressOf(taskId, done, total) {
   const target = document.getElementById(`progress-length${taskId}`);
-  let progress = Number(done*100/total).toFixed(0);
+  let progress = Number(done * 100 / total).toFixed(0);
   if (!isNaN(progress)) {
     target.style.width = `${progress}%`;
     target.parentElement.nextElementSibling.innerHTML = `${done}/${total} Subtasks`;
+    target.parentElement.parentElement.classList.remove('d-none');
   } else {
-    target.parentElement.classList.add('d-none');
-    target.parentElement.nextElementSibling.classList.add('d-none');
+    target.parentElement.parentElement.classList.add('d-none');
   }
 }

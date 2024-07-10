@@ -5,22 +5,21 @@ function generateTaskCard(taskId, item, target, position = 'beforeend') {
       <div class="task-group-bubble ${item.tag.replace(/\s+/g, "-")}">
         <span>${item.tag}</span>
       </div>
-      <div class="task-card-header mt-24">
+      <div class="task-card-header mtb-24">
         <h2>${item.title}</h2>
         <span id="description-content${taskId}" class="task-sub-headline">${limitLengthOf(item.description, 80)} </span>
       </div>
-      <div class="sub-task-container mt-24">
+      <div class="sub-task-container">
         <div class="sub-task-progress-bar">
            <div class="progress-length " id="progress-length${taskId}"></div>
         </div>
         <span>1/2 Subtasks</span>
       </div>
-      <div class="assigned-user mt-24">
+      <div id="bottom--board-card-wrapper${taskId}" class="assigned-user mt-24">
         <div id="profile-circle-container-${taskId}" class="profile-pictures">
         </div>
-        <div>
-          <img id="prio-img${taskId}" alt="${item.priority}">
-        </div>
+      <div>
+        <img id="prio-img${taskId}" alt="${item.priority}">
       </div>
     </div>
   </article>`);

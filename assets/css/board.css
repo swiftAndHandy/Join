@@ -175,8 +175,8 @@ h2 {
 }
 
 .task-card-container {
+  height: fit-content;
   width: 252px;
-  height: 263px;
   background-color: white;
   padding: 16px;
   margin-top: 16px;
@@ -221,13 +221,16 @@ h2 {
 
 .task-sub-headline {
   color: #a8a8a8;
-  min-height: 60px;
   max-height: 60px;
   word-break: break-word ;
 }
 
 .mt-24 {
   margin-top: 24px;
+}
+
+.mtb-24 {
+  margin: 24px 0;
 }
 
 .tasks-container {
@@ -237,6 +240,7 @@ h2 {
   border-radius: 24px;
   gap: 16px;
   padding: 10px 8px;
+  align-items: center;
 }
 
 .sub-task-container {
@@ -262,6 +266,7 @@ h2 {
   width: 50%;
   background-color: #4589ff;
   border-radius: 16px;
+  transition: width 0.2s ease-in-out;
 }
 
 .assigned-user {
@@ -415,6 +420,10 @@ h2 {
 @media (min-width: 1379px) and (max-width: 1394px) {
   .board {
     padding: 0 50px;
+  }
+
+  .task-card-container {
+    /* height: fit-content; */
   }
 }
 
