@@ -7,7 +7,7 @@ async function initBoard() {
   renderTasks();
   addOpenAddTaskToButtons()
   renderContactList();
-  ownValidation()
+
   
 
   document.addEventListener('dragend', () => {
@@ -164,6 +164,7 @@ function closeAddTaskPopUp() {
   popUpTranstion.classList.remove("transition-right");
   applyGreyScreen();
   document.body.classList.remove('overflow-all-hidden');
+  removeValidation();
 }
 
 function applyGreyScreen() {

@@ -384,3 +384,26 @@ function checkCategoryfield () {
     }
 
 }
+
+
+function removeValidation() {
+  // Remove validation messages from required fields
+  const form = document.querySelector('#form-desktop');
+  const requiredFields = form.querySelectorAll('[required]');
+  
+  requiredFields.forEach(field => {
+      const errorMessage = field.parentNode.querySelector('.error-message');
+      if (errorMessage) {
+          errorMessage.remove();
+      }
+  });
+
+  // Remove validation message from category field
+  const selectCategoryDiv = document.getElementById('category-input-wrapper');
+  const errorMessageCategory = selectCategoryDiv.parentNode.querySelector('.error-message');
+  if (errorMessageCategory) {
+      errorMessageCategory.remove();
+  }
+}
+
+
