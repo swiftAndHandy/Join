@@ -9,11 +9,12 @@ let taskStatus = "todo";
 let alreadyOpen = false;
 pressedButton = 0;
 previousButton = 0;
+styledCheckbox = [];
 
 function init() {
   includeHTML();
   renderContactList();
-  setDateRange() ;
+  
 }
 
 function formOfDueDate() {
@@ -56,7 +57,8 @@ function handleCheckBox(checkbox, idNumber) {
     // when checkbox is clicked and value is not in array then if statment
     if (!addTaskAssignedContacts.includes(checkbox.value)) {
       addTaskAssignedContacts.push(checkbox.value);
-
+      styledCheckbox.push(idNumber);
+      
     }
 
     console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
@@ -113,21 +115,9 @@ function toggleContactDropBox() {
 
 
 
-function clearInputs() {
-  let form = document.getElementById('form-desktop')
-  form.reset();
-}
 
 
-function clearInputs(event) {
-  event.preventDefault();
-  let form = document.getElementById('form-desktop')
-  form.setAttribute('novalidate', true);
-  form.reset();
-  setTimeout(() => {
-    form.removeAttribute('novalidate'); // Aktiviere die Standardvalidierung wieder
-  }, 100);
-}
+
 
 
 function clearInputs(event) {
@@ -139,8 +129,48 @@ function clearInputs(event) {
     form.removeAttribute('novalidate', false);
   }, 100);
   form.reset();
+ 
+  
+  
 }
 
+function clearForm (event) {
+  clearInputs(event);
+  clearFormPrio();
+  clearFormContactStyle();
+}
+
+function clearFormPrio() {
+ pressedButton = 0;
+ previousButton = 0;
+ addTaskPrio = 'Low';
+ const priorities = ["urgent", "medium", "low"];
+ const colors = ["orange", "yellow", "green"];
+ 
+ priorities.forEach((priority, index) => {
+   document.getElementById(`${priority}-prio`).classList.remove(`pressed-color-${colors[index]}`);
+   document.getElementById(`${priority}-prio-img`).classList.remove("pressed-prio-img");
+ });
+
+}
+
+function clearFormContactStyle() {
+  styledCheckbox.forEach(checkboxId => {
+    const label = document.getElementById(`label-check${checkboxId}`);
+    const background = document.getElementById(`background-drop-menu-background${checkboxId}`);
+
+    if (label) {
+      label.classList.remove('filter-to-white');
+    }
+    if (background) {
+      background.classList.add('ul-content-wrapper-no-click');
+      background.classList.remove('pressed-drop-box-bg-color');
+    }
+  });
+  document.getElementById('contacts-img-line').innerHTML = "";
+  addTaskAssignedContacts = [];
+  styledCheckboxes = [];
+}
 
 
 function convertArrayToObject(array) {
@@ -159,7 +189,8 @@ async function addnewTask(event) {
   taskCategory();
   taskSubtask();
   formOfDueDate();
-  clearInputs(event)
+  
+
   let assignedContactsObject = convertArrayToObject(addTaskAssignedContacts);
 
   await postData({
@@ -186,8 +217,8 @@ function checkIfFormFilled(event) {
   if (allFilled) {
     // document.getElementById('button-create-task').disabled = false;
     addnewTask(event);
-   
     showPopupTaskAdded();
+    clearForm(event);
   } else {
     console.log(
       "Please fill out all required fields before submitting."
@@ -203,7 +234,7 @@ function setPrio(prio, number) {
   const priorities = ["urgent", "medium", "low"];
   const colors = ["orange", "yellow", "green"];
 
-
+  
   priorities.forEach((priority, index) => {
     document.getElementById(`${priority}-prio`).classList.remove(`pressed-color-${colors[index]}`);
     document.getElementById(`${priority}-prio-img`).classList.remove("pressed-prio-img");
@@ -225,6 +256,8 @@ function setPrio(prio, number) {
     document.getElementById(`${currentPriority}-prio-img`).classList.add("pressed-prio-img");
   }
 }
+
+
 
 
 function showPopupTaskAdded() {
