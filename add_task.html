@@ -15,7 +15,7 @@
     
     <title>Join- Add task</title>
   </head>
-  <body onload="init()">
+  <body onload="init()" onclick="toggleContactDropBox(true)">
     <div class="mobile-body">
       <div class="content-wrapper" >
       <div class="headline-add-task">
@@ -45,16 +45,18 @@
           </div>
           <div class="flex-column-inputs mb-32 position-relative">
             <span>Assigned to</span>
-            <div id="contact-input-wrapper" onclick="toggleContactDropBox()">
-            <div class="input-standard" id="assigned-to-contact">
+            <div id="contact-input-wrapper" onclick="stopPropagation(event)">
+            <div class="input-standard" id="assigned-to-contact" onclick="toggleContactDropBox()">
               <span>Select contact to assign</span>
-              <img class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" alt="">
+              <div onclick="stopPropagation(event)">
+                <img class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" onclick="toggleContactDropBox()" alt="">
+              </div>
             </div>
             
           </div>
-          <div id="contacts-show-input" class="input-standard border-color-clicked d-none" onclick="toggleContactDropBox()" >
+          <div id="contacts-show-input" class="input-standard border-color-clicked d-none" onclick="stopPropagation(event)" >
             <input onclick="stopPropagation(event)" type="search" oninput="searchContact(this.value)">
-            <img class="rotation cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" alt="">
+            <img class="rotation cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" onclick="toggleContactDropBox()" alt="">
           </div>
             <div id="contacts-drop-menu" class="drop-menu d-none">
                 <div id="contacts-drop-menu-content" class="drop-menu-contacts">
@@ -102,7 +104,7 @@
           <div>
             <div class="flex-column-inputs mb-32">
               <span>Category<span class="red">*</span></span>
-              <select required class="input-standard" id="select-task-category">
+              <select required class="input-standard custom-select" id="select-task-category">
                 <option value="" disabled selected>
                   Select task category
                 </option>

@@ -155,6 +155,18 @@ select:focus {
   outline-color: #29abe2;
 }
 
+
+.custom-select {
+  appearance: none; 
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  width: 100%;
+  position: relative;
+  background-image: url('../img/icons/arrow_drop_down_select_field.svg');
+  background-position: right 20px center;
+  background-repeat: no-repeat;
+}
+
 .prio-container {
   display: flex;
   flex-direction: column;

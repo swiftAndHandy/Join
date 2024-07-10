@@ -93,9 +93,9 @@ function unPressedCheckBoxStyle(idNumber) {
 
 }
 
-function toggleContactDropBox() {
+function toggleContactDropBox(forcedClose = false) {
 
-  if (!alreadyOpen) {
+  if (!alreadyOpen && forcedClose === false) {
     document.getElementById('contacts-drop-menu').classList.remove('d-none');
     document.getElementById('required-text-span').classList.add('d-none');
     document.getElementById('contact-input-wrapper').classList.add('d-none');
