@@ -7,7 +7,7 @@ async function initBoard() {
   renderTasks();
   addOpenAddTaskToButtons()
   renderContactList();
-
+  stopEnterForm();
   
 
   document.addEventListener('dragend', () => {

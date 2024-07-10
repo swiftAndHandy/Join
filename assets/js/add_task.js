@@ -14,7 +14,7 @@ styledCheckbox = [];
 function init() {
   includeHTML();
   renderContactList();
-  
+  stopEnterForm ();
   
 }
 
@@ -131,8 +131,15 @@ function clearInputs(event) {
   }, 100);
   form.reset();
  
-  
-  
+}
+
+function stopStandartValidationMessage(event) {
+  event.preventDefault()
+  let form = document.getElementById('form-desktop')
+  form.setAttribute('novalidate', true);
+  setTimeout(() => {
+    form.removeAttribute('novalidate', false);
+  }, 100);
 }
 
 function clearForm (event) {
@@ -221,6 +228,7 @@ function checkIfFormFilled(event) {
     showPopupTaskAdded();
     clearForm(event);
   } else {
+    stopStandartValidationMessage(event);
     ownValidation() 
     checkCategoryfield ()
     console.log(
@@ -405,5 +413,17 @@ function removeValidation() {
       errorMessageCategory.remove();
   }
 }
+
+function stopEnterForm () {
+  const form = document.getElementById('form-desktop');
+
+  form.addEventListener('keydown', function(event) {
+      // Check if Enter key was pressed (key code 13)
+      if (event.key === 'Enter') {
+          // Prevent default behavior of form submission
+          event.preventDefault();
+      }
+  })
+};
 
 
