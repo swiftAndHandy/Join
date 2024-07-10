@@ -249,7 +249,7 @@ function closeContactModal() {
  * @param {string} path - The path to the contact data.
  */
 async function deleteContact(path = "", contactId) {
-    // await deleteData(path);
+    await deleteData(path);
     const container = document.getElementById('contact-info-container');
     container.innerHTML = ''; 
     container.nextElementSibling.nextElementSibling.style = '';
