@@ -24,7 +24,7 @@ function generateTaskCard(taskId, item, target) {
       </div>
     </div>
   </article>`);
-
+  getSubtaskProgress(item.subtasks, taskId);
   generateCircleProfiles(item.assigned, taskId);
 }
 
@@ -41,5 +41,30 @@ async function generateCircleProfiles(contactEntries, taskId) {
         }
       } catch (error) { }
     }
+  }
+}
+
+async function getSubtaskProgress(subtasks, taskId) {
+  let doneSubtasks = 0; let totalSubtasks = 0;
+
+  if (subtasks) {
+    subtasks.forEach(element => {
+      totalSubtasks++;
+      element.done && doneSubtasks++;
+    });
+  }
+
+  calculateSubtaskProgressOf(taskId, doneSubtasks, totalSubtasks);
+}
+
+async function calculateSubtaskProgressOf(taskId, done, total) {
+  const target = document.getElementById(`progress-length${taskId}`);
+  let progress = Number(done*100/total).toFixed(0);
+  if (!isNaN(progress)) {
+    target.style.width = `${progress}%`;
+    target.parentElement.nextElementSibling.innerHTML = `${done}/${total} Subtasks`;
+  } else {
+    target.parentElement.classList.add('d-none');
+    target.parentElement.nextElementSibling.classList.add('d-none');
   }
 }
