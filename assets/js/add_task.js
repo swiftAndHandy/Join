@@ -219,10 +219,10 @@ function checkIfFormFilled(event) {
     // document.getElementById('button-create-task').disabled = false;
     addnewTask(event);
     showPopupTaskAdded();
-    
     clearForm(event);
   } else {
-   
+    ownValidation() 
+    checkCategoryfield ()
     console.log(
       "Please fill out all required fields before submitting."
     );
@@ -327,7 +327,7 @@ function searchContact(search) {
     document.getElementById('category-drop-menu').classList.add('d-none');
     document.getElementById('arrow').classList.remove('rotation');
     document.getElementById('arrow').classList.add('rotation-back');
-
+    checkCategoryfield ()
 
     alreadyOpen = false
   }
@@ -342,3 +342,47 @@ function selectCategory (category) {
 }
 
 
+ function ownValidation() {
+  const form = document.querySelector('form');
+  const requiredFields = form.querySelectorAll('[required]');
+  requiredFields.forEach(field => {
+     
+      if (field.value.trim() === '' && !field.parentNode.querySelector('.error-message')) {
+         
+          const errorMessage = document.createElement('span');
+          errorMessage.textContent = 'Dieses Feld ist erforderlich.';
+          errorMessage.style.color = 'red'; 
+          errorMessage.classList.add('error-message'); 
+          field.parentNode.appendChild(errorMessage);
+      }
+      field.addEventListener('input', function() {
+          if (field.value.trim() !== '') {
+          
+              const errorMessage = field.parentNode.querySelector('.error-message');
+              if (errorMessage) {
+                  errorMessage.remove();
+              }
+          }
+      });
+  });
+}
+
+function checkCategoryfield () {
+  const selectCategoryDiv = document.getElementById('select-category');
+    const selectedCategory = selectCategoryDiv.innerText.trim();
+    if (selectedCategory !== 'Technical Task' && selectedCategory !== 'User Story') {
+        if (!selectCategoryDiv.parentNode.querySelector('.error-message')) {
+            const errorMessage = document.createElement('span');
+            errorMessage.textContent = 'Dieses Feld ist erforderlich.';
+            errorMessage.style.color = 'red';
+            errorMessage.classList.add('error-message');
+            selectCategoryDiv.parentNode.appendChild(errorMessage);
+        }
+    } else {
+        const errorMessage = selectCategoryDiv.parentNode.querySelector('.error-message');
+        if (errorMessage) {
+            errorMessage.remove();
+        }
+    }
+
+}
