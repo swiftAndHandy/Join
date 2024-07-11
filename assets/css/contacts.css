@@ -133,8 +133,6 @@ html {
     font-weight: 400;
     font-size: 20px;
     margin: 0 0 8px 0;
-    text-overflow: ellipsis;
-    overflow: hidden;
 }
 
 .contact-email {
@@ -143,8 +141,6 @@ html {
     font-size: 16px;
     color: #007CEE;
     margin: 0;
-    text-overflow: ellipsis;
-    overflow: hidden;
 }
 
 /* style for contact window */
@@ -160,7 +156,6 @@ html {
     position: relative;
     height: calc(100svh - 96px);
     overflow: hidden;
-    width: 66%;
 }
 
 .separator {
