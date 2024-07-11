@@ -16,7 +16,7 @@ function generateTaskCard(taskId, item, target, position = 'beforeend') {
         </div>
         <span>1/2 Subtasks</span>
       </div>
-      <div id="bottom--board-card-wrapper${taskId}" class="assigned-user mt-24">
+      <div id="bottom-board-card-wrapper${taskId}" class="assigned-user mt-24">
         <div id="profile-circle-container-${taskId}" class="profile-pictures">
         </div>
       <div>

@@ -69,10 +69,10 @@ function priorityEqualImg(priority, key) {
 }
 
 function setBottomTaskCardVisibility(card, taskId) {
-  if (!card.assigned && !card.priority) {
-    document.getElementById(`bottom--board-card-wrapper${taskId}`).classList.add('d-none');
+  if ((!card.assigned || card.assigned.length === 0) && (!card.priority || card.priority==='')) {
+    document.getElementById(`bottom-board-card-wrapper${taskId}`).classList.add('d-none');
   } else {
-    document.getElementById(`bottom--board-card-wrapper${taskId}`).classList.remove('d-none');
+    document.getElementById(`bottom-board-card-wrapper${taskId}`).classList.remove('d-none');
   }
 }
 
