@@ -69,11 +69,20 @@ function priorityEqualImg(priority, key) {
 }
 
 function setBottomTaskCardVisibility(card, taskId) {
-  if ((!card.assigned || card.assigned.length === 0) && (!card.priority || card.priority==='')) {
+  if (emptyBottomOf(card)) {
     document.getElementById(`bottom-board-card-wrapper${taskId}`).classList.add('d-none');
   } else {
     document.getElementById(`bottom-board-card-wrapper${taskId}`).classList.remove('d-none');
   }
+}
+
+/**
+ * @param {object} card - contains all card information
+ * @returns {boolean} - true if (card.assigned is unset or an empty[]) and also(!) 
+ *                    there is no card.priority set or the card.priority is an empty string
+ */
+function emptyBottomOf(card) {
+  return (!card.assigned || card.assigned.length === 0) && (!card.priority || card.priority==='');
 }
 
 function allowDrop(ev) {
