@@ -11,8 +11,8 @@ function createContactListHTML(index, name, email, color) {
     <li id="contact-item-${index}" class="contact-item" onclick="openContactDetails('${index}')">
             <div class="contact-image--small" style="background-color:${color};">${showCapitaliseFirstLetters(name)}</div>
             <div class="contact-details">
-                <p class="contact-name">${name}</p>
-                <p class="contact-email">${email}</p>
+                <p class="contact-name-list">${name}</p>
+                <p class="contact-email-list">${email}</p>
             </div>
         </li>
     `;

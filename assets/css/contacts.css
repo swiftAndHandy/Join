@@ -11,13 +11,13 @@ html {
 .contact-list-container {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     align-items: center;
     box-shadow: 4px 0px 6px 0px #00000014;
     margin: 80px 0 80px 0;
     overflow: scroll;
     height: calc(100vh - 160px);
     background-color: #fff;
-    overflow-x: hidden;
 }
 
 
@@ -26,7 +26,7 @@ html {
 }
 
 .contact-list {
-    padding: 0;
+    padding: 0 16px 24px 16px;
     margin: 0;
     max-height: calc(1080px - 182px);
     overflow: scroll;
@@ -136,6 +136,21 @@ html {
 }
 
 .contact-email {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #007CEE;
+    margin: 0;
+}
+
+.contact-name-list {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin: 0 0 8px 0;
+}
+
+.contact-email-list {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 16px;
