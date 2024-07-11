@@ -2,6 +2,9 @@ let currentlyDragged = null;
 let currentlyDraggedCategory = null;
 
 
+/**
+ * Initializing the Board by running various functions
+ */
 async function initBoard() {
   await includeHTML();
   renderTasks();
@@ -9,13 +12,12 @@ async function initBoard() {
   renderContactList();
   stopEnterForm();
 
-
   document.addEventListener('dragend', () => {
     if (currentlyDragged !== null) {
       rotateTaskDragEnd(currentlyDragged);
     }
     showDragArea('', false);
-    currentlyDragged = null;
+    currentlyDragged = null; 
     currentlyDraggedCategory = null;
   });
 
@@ -41,6 +43,7 @@ function updateBoard(updateItem, fromLocation, targetLocation) {
   updateTaskFields([fromLocation, targetLocation]);
 }
 
+
 async function renderTasks() {
   const statusFields = {
     'todo': document.getElementById('todo-field'),
@@ -65,12 +68,24 @@ async function renderTasks() {
   }
 }
 
+
+/**
+ * Sets the priority image of the target to a lowercase-variant of priority-param
+ * @param {string} priority - Urgent, Medium or Low
+ * @param {*string} key - key of current task
+ */
 function priorityEqualImg(priority, key) {
   priority = priority.toLowerCase();
   const target = document.getElementById(`prio-img${key}`);
   target.src = `./assets/img/icons/priority_${priority}.svg`;
 }
 
+
+/**
+ * Display or hide the Bottom-DIV of a task-card at the board
+ * @param {*} card 
+ * @param {*} taskId 
+ */
 function setBottomTaskCardVisibility(card, taskId) {
   if (emptyBottomOf(card)) {
     document.getElementById(`bottom-board-card-wrapper${taskId}`).classList.add('d-none');
@@ -78,6 +93,7 @@ function setBottomTaskCardVisibility(card, taskId) {
     document.getElementById(`bottom-board-card-wrapper${taskId}`).classList.remove('d-none');
   }
 }
+
 
 /**
  * @param {object} card - contains all card information
@@ -88,10 +104,21 @@ function emptyBottomOf(card) {
   return (!card.assigned || card.assigned.length === 0) && (!card.priority || card.priority==='');
 }
 
+
+/**
+ * Prevents default behaviour
+ * @param {DragEvent} ev - DravEvent listener
+ */
 function allowDrop(ev) {
-  ev.preventDefault();
+  ev.preventDefault()
 }
 
+
+/**
+ * Sets global Variables that are required for an proper drag-process.
+ * @param {string} id - id of the task that is dragged. will be set to a global.
+ * @param {*} fromCategory - the category of the currently dragged item, will be set to a global.
+ */
 function startDrag(id, fromCategory) {
   currentlyDragged = id;
   currentlyDraggedCategory = fromCategory;
@@ -112,6 +139,7 @@ async function dragTo(newLocation) {
   }
 }
 
+
 /**
  * allows to update a single item without drag and drop.
  * call this in a button, for example.
@@ -123,6 +151,7 @@ async function moveTo(newLocation, fromLocoation, thisId) {
   await putData(newLocation, `tasks/${thisId}/status`);
   updateBoard(thisId, fromLocoation, newLocation);
 }
+
 
 /**
  * 
@@ -140,12 +169,24 @@ function showDragArea(area, display = true) {
   }
 }
 
+
+/**
+ * calls hideWindow for every section. if the innerHTML without leading and trailing spaces is
+ * empty the comparsion is false, to the oposite of hideWindow -> showWindow will happen. 
+ * Otherwise the message must become hidden.
+ * @param {Array} sections - contains all sections of the board, so that they can be iterated. 
+ */
 function updateTaskFields(sections) {
   for (let item in sections) {
     hideWindow(`task-field-${sections[item]}`, document.getElementById(`${sections[item]}-field`).innerHTML.trim() !== "");
   }
 }
 
+
+/**
+ * Pls write your own JSdoc, Phillip
+ * this should be (only) your function
+ */
 function addOpenAddTaskToButtons() {
   const buttons = document.querySelectorAll(
     "button.add-cross-btn-small, button.add-task-btn, button.add-cross-btn"
@@ -155,6 +196,11 @@ function addOpenAddTaskToButtons() {
   });
 }
 
+
+/**
+ * Pls write your own JSdoc, Phillip
+ * this should be (only) your function
+ */
 function handleButtonClickOnWidth() {
   const screenWidth = window.innerWidth;
 
@@ -165,6 +211,11 @@ function handleButtonClickOnWidth() {
   }
 }
 
+
+/**
+ * Pls write your own JSdoc, Phillip
+ * this should be (only) your function
+ */
 function openAddTask() {
   let popUpTranstion = document.getElementById("add-task-transition");
   popUpTranstion.classList.add("transition-right");
@@ -172,11 +223,21 @@ function openAddTask() {
   document.body.classList.add('overflow-all-hidden');
 }
 
+
+/**
+ * Pls write your own JSdoc, Phillip
+ * this should be (only) your function
+ */
 function switchToAddTask() {
   let addTaskUrl = "../add_task.html";
   window.location.href = addTaskUrl;
 }
 
+
+/**
+ * Pls write your own JSdoc, Phillip
+ * this should be (only) your function
+ */
 function closeAddTaskPopUp(event) {
   let popUpTranstion = document.getElementById("add-task-transition");
   popUpTranstion.classList.remove("transition-right");
@@ -186,10 +247,13 @@ function closeAddTaskPopUp(event) {
   clearFormPrio();
   clearFormContactStyle();
   document.getElementById('form-desktop').reset()
-
-
 }
 
+
+/**
+ * Pls write your own JSdoc, Phillip
+ * this should be (only) your function
+ */
 function applyGreyScreen() {
   const greyScreen = document.getElementById('grey-screen');
   greyScreen.classList.toggle('grey-screen');
@@ -209,6 +273,10 @@ function limitLengthOf(inputString, limit = 80) {
   return inputString;
 }
 
+
+/**
+ * I'll add this later. --Andre
+ */
 function rerenderTaskOnBoard(data, taskId) {
   const description = document.getElementById(`description-content${taskId}`);
   const hiddenDescription = document.getElementById(`hidden-description-content${taskId}`);
@@ -222,6 +290,12 @@ function rerenderTaskOnBoard(data, taskId) {
   setBottomTaskCardVisibility(data, taskId);
 }
 
+
+/**
+ * Feel free to write JSdoc, @Phillip.
+ * Otherwise i'll can do it later on, since this is based on my search-engine and i've recorded smaller parts.
+ * -- Andre
+ */
 function searchAndShowTasks(searchTerm) {
   const taskCards = document.querySelectorAll('.task-card-container');
 
@@ -285,12 +359,18 @@ async function calculateSubtaskProgressOf(taskId, done, total) {
 }
 
 
+/**
+ * Applies a rotation-effect on the currently dragged task-card
+ */
 function rotateTaskDragStart(id) {
   let rotateTask = document.getElementById(`taskId${id}`);
   rotateTask.classList.add('draggable'); 
   rotateTask.style.transform = "rotate(5deg)";
 }
 
+/**
+ * Removes a rotation-effect on the currently dragged task-card
+ */
 function rotateTaskDragEnd(id) {
   let rotateTask = document.getElementById(`taskId${id}`);
   rotateTask.classList.remove('draggable'); 
