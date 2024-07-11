@@ -58,7 +58,7 @@ function resetDetailCardHtml() {
     title.innerHTML = '';
 
     const description = document.getElementById('task-details-description');
-    description.innerHTML = '';
+    description.value = '';
 
     const deadline = document.getElementById('task-details-deadline');
     deadline.innerHTML = '';
