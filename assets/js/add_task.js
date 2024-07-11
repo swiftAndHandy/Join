@@ -4,7 +4,6 @@ let addTaskAssignedContacts = [];
 let addTaskDueDate = "";
 let addTaskPrio = "";
 let addTaskCategory = "";
-let addTaskSubtask = "";
 let taskStatus = "todo";
 let alreadyOpen = false;
 pressedButton = 0;
@@ -15,6 +14,7 @@ function init() {
   includeHTML();
   renderContactList();
   stopEnterForm ();
+  setupListenerForAddTasks();
   
 }
 
@@ -40,11 +40,6 @@ function addDescription() {
 
 // }
 
-function taskSubtask() {
-  let subtask = document.getElementById("task-subtask");
-  addTaskSubtask = subtask.value;
-
-}
 
 /**
  * 
@@ -185,12 +180,12 @@ function convertArrayToObject(array) {
 }
 
 
-async function addnewTask(event) {
+async function addnewTask() {
+  const addTaskSubTask = createSubtasks();
   addTitle();
   addDescription();
   taskDueDate();
   // taskCategory();
-  taskSubtask();
   formOfDueDate();
   
   let assignedContactsObject = convertArrayToObject(addTaskAssignedContacts);
@@ -202,7 +197,7 @@ async function addnewTask(event) {
     'date': addTaskDueDate,
     'priority': addTaskPrio,
     'tag': addTaskCategory,
-    'subtasks': addTaskSubtask,
+    'subtasks': addTaskSubTask,
     'status': taskStatus,
   }, 'tasks');
 }

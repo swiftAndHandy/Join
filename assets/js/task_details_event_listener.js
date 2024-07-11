@@ -13,6 +13,12 @@ function setupListener() {
     listener.addEventListener('blur', () => document.getElementById(target).classList.remove('focus'));
 }
 
+function setupListenerForAddTasks() {
+    let listener = document.getElementById('edit-add-subtask');
+    listener.addEventListener('focus', focusListener);
+    listener.addEventListener('blur', blurListener);
+}
+
 /**
  * Change Button-Design based on focus of input-field. 
  * Show discard and save-button, when input for new subtask is active
