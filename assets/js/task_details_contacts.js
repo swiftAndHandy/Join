@@ -1,13 +1,16 @@
 
 /**
  * Rendering Contact-List in Edit-Details. 
- * The Contact-List Contains contacts and accounts
+ * The Contact-List Contains contacts and accounts, so after fetching both
+ * they recive a prefix that leads to there path on the server.
+ * For every of those items HTML is generated.
  */
 async function renderDetailsContactList() {
     let contacts = await readData('contacts');
     contacts = setPrefixToKey('contacts', contacts);
     let accounts = await readData('accounts');
     accounts = setPrefixToKey('accounts', accounts);
+
     let data = {};
     await Object.assign(data, accounts, contacts);
     let entries = sortByAlphabet(data);
