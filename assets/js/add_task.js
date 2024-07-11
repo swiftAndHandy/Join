@@ -212,7 +212,6 @@ function checkIfFormFilled(event) {
     }
   });
   if (allFilled) {
-    // document.getElementById('button-create-task').disabled = false;
     addnewTask(event);
     showPopupTaskAdded();
     clearForm(event);
