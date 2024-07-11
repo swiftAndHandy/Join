@@ -324,6 +324,10 @@ h2 {
   border-color: #29ABE2;
 }
 
+.draggable {
+  transition: transform 0.3s ease;
+}
+
 
 @media (min-width: 1380px) and (max-width: 4200px) {
   .board-content {

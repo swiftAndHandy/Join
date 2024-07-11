@@ -11,6 +11,9 @@ async function initBoard() {
 
 
   document.addEventListener('dragend', () => {
+    if (currentlyDragged !== null) {
+      rotateTaskDragEnd(currentlyDragged);
+    }
     showDragArea('', false);
     currentlyDragged = null;
     currentlyDraggedCategory = null;
@@ -92,6 +95,7 @@ function allowDrop(ev) {
 function startDrag(id, fromCategory) {
   currentlyDragged = id;
   currentlyDraggedCategory = fromCategory;
+  rotateTaskDragStart(id);
 }
 
 /**
@@ -104,6 +108,7 @@ async function dragTo(newLocation) {
   if (item && currentlyDraggedCategory != newLocation) {
     await putData(newLocation, `tasks/${item}/status`);
     updateBoard(item, from, newLocation);
+    rotateTaskDragEnd(item);
   }
 }
 
@@ -277,4 +282,17 @@ async function calculateSubtaskProgressOf(taskId, done, total) {
   } else {
     target.parentElement.parentElement.classList.add('d-none');
   }
+}
+
+
+function rotateTaskDragStart(id) {
+  let rotateTask = document.getElementById(`taskId${id}`);
+  rotateTask.classList.add('draggable'); 
+  rotateTask.style.transform = "rotate(5deg)";
+}
+
+function rotateTaskDragEnd(id) {
+  let rotateTask = document.getElementById(`taskId${id}`);
+  rotateTask.classList.remove('draggable'); 
+  rotateTask.style.transform = "rotate(0deg)";
 }
