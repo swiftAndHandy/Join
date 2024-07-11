@@ -9,7 +9,8 @@ function initTaskDetails() {
 
 
 /**
- * Displays 
+ * set up fetching task-information from server. updates currentDetailLocation, so that this information can be used later when task is saved.
+ * activates assigned contacts in contact-list and renders the edit-view also.
  * @param {string} taskId - equivalent to the id of the task in firebase
  */
 async function openTaskDetails(taskId) {
@@ -26,26 +27,46 @@ async function openTaskDetails(taskId) {
     }
 }
 
+
 /**
- * Reset everything on closeDetails, to prepare a new fresh detail-page
+ * Reset everything at closing details, to prepare a new fresh detail-page.
  */
 function closeDetails() {
     hideWindow('task-details-view');
     hideWindow('task-edit-view');
     currentDetailLocation = null;
-    document.getElementById('task-card-wrapper').classList.remove('dimm');
-    document.getElementById('body').style = "overflow: unset;"
-    document.getElementById('task-edit-view-assigned-persons').innerHTML = '';
-    assignedPersonsToUpdate = [];
-    document.getElementById('edit-task-contacts-list').innerHTML = '';
-    document.getElementById('edit-subtask-item-wrapper').innerHTML = '';
     resetDetailCardHtml();
     resetPriorityButtons();
+    resetAssignedPersons();
+    returnToBoard();
 }
 
 
 /**
- * This function is called in openTaskDetails and sets a
+ * Called when a task is deleted or detail-view is closed to 
+ * - reset Board-Styles 
+ * - clear Subtasks and Contact-Lists
+ */
+function returnToBoard() {
+    document.getElementById('task-card-wrapper').classList.remove('dimm');
+    document.getElementById('body').style = "overflow: unset;"
+    document.getElementById('edit-subtask-item-wrapper').innerHTML = '';
+}
+
+
+/**
+ * Called when a task is deleted or detail-view is closed to 
+ * - reset Board-Styles 
+ * - clear Subtasks and Contact-Lists
+ */
+function resetAssignedPersons() {
+    document.getElementById('edit-task-contacts-list').innerHTML = '';
+    document.getElementById('edit-task-view-assigned-persons').innerHTML = '';
+    assignedPersonsToUpdate = [];
+}
+
+/**
+ * This function is called in openTaskDetails and sets the design
  * @param {string} taskId - the Task-Card that should be affected by this function
  */
 function applyTaskStyles(taskId) {
@@ -54,6 +75,7 @@ function applyTaskStyles(taskId) {
     document.getElementById('body').style = "overflow: hidden;"
     document.getElementById('task-details-edit-btn').setAttribute('onclick', `openEditDialog('${taskId}')`);
 }
+
 
 /**
  * Start rendering process for Task details.
@@ -75,7 +97,7 @@ async function renderTaskDetails(taskId) {
  */
 async function updateAssignedPersons(id) {
     const index = assignedPersonsToUpdate.indexOf(id);
-    const assignedToEdit = document.getElementById('task-edit-view-assigned-persons');
+    const assignedToEdit = document.getElementById('edit-task-view-assigned-persons');
     if (index === -1) {
         assignedPersonsToUpdate.push(id);
         assignedToEdit.insertAdjacentHTML('beforeend', await assignedPersonsEditHtml(id));
@@ -84,6 +106,7 @@ async function updateAssignedPersons(id) {
         document.getElementById(`edit_task_assigned-person-${id}`).remove();
     }
 }
+
 
 /**
  * Applys d-none to a specific DOM-Object
@@ -95,14 +118,17 @@ function toggleVisibility(id) {
     return document.getElementById(id);
 }
 
+
 /**
  * Swaps the Visibility of Detail-View and Edit-View
+ * Initiates renderOpenSubtasks to display an up-to-date-list
  */
 async function openEditDialog() {
     toggleVisibility('task-edit-view');
     toggleVisibility('task-details-view');
     renderOpenSubtasks();
 }
+
 
 /**
  * @param {string} id - set focus to an DOM-Content bases on the submited id
@@ -112,22 +138,28 @@ function setFocus(id) {
     inputField.focus();
 }
 
+
 /**
- * Deletes the submitted taskId and closes task-detail-view
+ * Deletes the submitted taskId and closes task-detail-view.
+ * Resets the style changes that are applyed when opening a taskDetail-View
  * @param {string} taskId - ID of the task that will be deleted
  */
-function deleteTask(taskId) {
-    deleteData(`tasks/${taskId}`);
+async function deleteTask(taskId) {
+    await deleteData(`tasks/${taskId}`);
     toggleVisibility('task-details-view');
-    document.getElementById('task-card-wrapper').classList.toggle('dimm');
-    document.getElementById('body').style = "overflow: unset;"
-    document.getElementById('task-edit-view-assigned-persons').innerHTML = '';
-    assignedPersonsToUpdate = [];
-    document.getElementById('edit-task-contacts-list').innerHTML = '';
     document.getElementById(`taskId${taskId}`).remove();
-    updateTaskFields(['todo', 'progress', 'await', 'done']);
+    updateTaskFields(['todo', 'progress', 'feedback', 'done']);
+    resetAssignedPersons();
+    returnToBoard();
 }
 
+
+/**
+ * posts true of false depending on checkbox.checked
+ * @param {string} path complete path of the subtask-done-value
+ * @param {string} target id of the specific checkbox
+ * @param {string} taskId id of the main-task
+ */
 async function updateSingleSubtask(path, target, taskId) {
     value = document.getElementById(`${target}`).checked;
     await putData(value, path);
