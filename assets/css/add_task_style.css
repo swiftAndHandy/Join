@@ -139,6 +139,14 @@ select {
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
   width: 100%;
   border-radius: 10px;
+  position: relative;
+}
+
+#category-drop-menu-content {
+  background-color: white;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
 }
 
 .date-standard {
@@ -280,6 +288,7 @@ select:focus {
   gap: 16px;
   padding-right: 16px;
   display: none;
+  margin-top: 40px;
 }
 
 .content-wrapper {
@@ -343,8 +352,13 @@ select:focus {
 
 .required-text {
   position: absolute;
-  top: 779px;
+  bottom: 110px;
 }
+
+#padding-placeholder {
+  padding: 4px 16px;
+}
+
 
 .drop-menu {
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
@@ -560,7 +574,16 @@ select:focus {
   .prios {
     width: 136px;
   }
+  .input-width {
+    width: 480px !important;
+  }
+  
+  #category-input-wrapper {
+    width: 480px;
+  }
+  
 }
+ 
 
 @media (max-width: 1415px) and (min-width: 802px) {
   .content-wrapper {
@@ -597,11 +620,21 @@ select:focus {
   .drop-menu {
     height: 236px;
   }
+
+  .input-width {
+    width: 364px !important;
+  }
+  
+  #category-input-wrapper {
+    width: 364px;
+  }
+  
 }
 
 @media (max-width: 1159px) and (min-width: 801px) {
 .content-wrapper {
   margin-left: 100px;
+  margin-top: 85px;
 }
 }
 
@@ -652,6 +685,7 @@ select:focus {
   .ul-row-styling {
     font-size: 16px;
   }
+
 }
 
 @media(max-width: 803px) and (min-width:430px) {

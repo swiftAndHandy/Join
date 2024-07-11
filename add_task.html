@@ -122,7 +122,7 @@
               </div>
               <div class="flex-column-inputs mb-32">
                 <span class="details__caption">Subtasks</span>
-                <div id="edit-subtask-box" class="details-subtask-box" onsubmit="addNewSubtask(document.getElementById('edit-add-subtask').value);scrollToLastSubtask();return false;">
+                <div id="edit-subtask-box" class="details-subtask-box input-width" onsubmit="addNewSubtask(document.getElementById('edit-add-subtask').value);scrollToLastSubtask();return false;">
                     <input type="text" id="edit-add-subtask" class="details-subtask-add" placeholder="Add new subtask">
                     <div id="edit-view-subtask-add" class="cross blue" onclick="setFocus('edit')"></div>
                     <div id="edit-view-subtask-navigation" class="edit-subtask-navigation d-none"
@@ -130,12 +130,13 @@
                         <div class="link-btn discard-btn" onclick="discardNewSubtask()"></div>
                         <img class="vertical-line" src="./assets/img/icons/vertical-line.svg" alt="" class="">
                         <div class="link-btn accept-btn"
-                            onclick="addNewSubtask(document.getElementById('edit-add-subtask').value,'edit-subtask-item-wrapper','div');scrollToLastSubtask();blurListener();">
+                            onclick="addNewSubtask(document.getElementById('edit-add-subtask').value,'edit-subtask-item-wrapper','div');scrollToLastSubtask();blurListener(); hideWindow('padding-placeholder');">
                         </div>
                     </div>
                 </div>
                 <div id="edit-view-scrollbar">
                 <div id="edit-subtask-item-wrapper" style="width: 100%">
+                  <div id="padding-placeholder"></div>
                 </div>
               </div>
             </div>
