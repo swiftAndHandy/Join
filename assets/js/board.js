@@ -197,9 +197,11 @@ function limitLengthOf(inputString, limit = 80) {
 
 function rerenderTaskOnBoard(data, taskId) {
   const description = document.getElementById(`description-content${taskId}`);
+  const hiddenDescription = document.getElementById(`hidden-description-content${taskId}`);
   const title = description.previousElementSibling.innerText = data.title;
   description.innerText = limitLengthOf(data.description, 80);
   document.getElementById(`profile-circle-container-${taskId}`).innerHTML = '';
+  hiddenDescription.innerText = data.description;
   generateCircleProfiles(data.assigned, taskId);
   getSubtaskProgress(data.subtasks, taskId);
   priorityEqualImg(data.priority, taskId);
@@ -210,7 +212,7 @@ function searchAndShowTasks(searchTerm) {
   const taskCards = document.querySelectorAll('.task-card-container');
 
   taskCards.forEach(taskCard => {
-    const titleElement = taskCard.querySelector('.task-card-header h2');
+    const titleElement = taskCard.querySelector('.task-card-header');
     if (titleElement) {
       const title = titleElement.textContent.trim().toLowerCase();
       const isVisible = title.includes(searchTerm.toLowerCase());

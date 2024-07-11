@@ -7,7 +7,8 @@ function generateTaskCard(taskId, item, target, position = 'beforeend') {
       </div>
       <div class="task-card-header mtb-24">
         <h2>${item.title}</h2>
-        <span id="description-content${taskId}" class="task-sub-headline">${limitLengthOf(item.description, 80)} </span>
+        <span id="description-content${taskId}" class="task-sub-headline">${limitLengthOf(item.description, 80)}</span>
+        <span id="hidden-description-content${taskId}" class="d-none">${item.description}</span>
       </div>
       <div class="sub-task-container">
         <div class="sub-task-progress-bar">
