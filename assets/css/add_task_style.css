@@ -636,6 +636,10 @@ select:focus {
   margin-left: 100px;
   margin-top: 85px;
 }
+
+.required-text {
+  bottom: 145px;
+}
 }
 
 @media (max-width:999px) and (min-width: 430px) {
