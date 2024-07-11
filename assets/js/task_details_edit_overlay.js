@@ -6,8 +6,8 @@
  */
 async function saveTaskUpdate(taskId) {
     const tag = document.getElementById('task-details-tag').textContent;
-    const title = document.getElementById('update-title').value
-    const description = document.getElementById('update-description').value;
+    const title = isNotEmpty('title');
+    const description = isNotEmpty('description');
     const deadline = document.getElementById('update-date').value;
     const priority = getCurrentPriority();
     const subtasks = updateSubtasksArray();
@@ -19,6 +19,14 @@ async function saveTaskUpdate(taskId) {
     await putData(data, `tasks/${taskId}`);
     await renderTaskDetails(taskId);
     document.getElementById('edit-subtask-item-wrapper').innerHTML = '';
+}
+
+function isNotEmpty(target) { 
+    if (document.getElementById(`update-${target}`).value.trim() != '') {
+        return document.getElementById(`update-${target}`).value.trim()
+    } else {
+        return document.getElementById(`task-details-${target}`).innerText;
+    }
 }
 
 
