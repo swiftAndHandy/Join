@@ -109,8 +109,6 @@ function toggleContactDropBox(forcedClose = false) {
   }
 }
 
-
-
 function clearInputs(event) {
   event.preventDefault()
   let form = document.getElementById('form-desktop')
@@ -170,7 +168,6 @@ function clearFormContactStyle() {
   styledCheckboxes = [];
 }
 
-
 function convertArrayToObject(array) {
   let obj = {};
   array.forEach((value, index) => {
@@ -178,7 +175,6 @@ function convertArrayToObject(array) {
   });
   return obj;
 }
-
 
 async function addnewTask() {
   const addTaskSubTask = createSubtasks();
@@ -224,7 +220,6 @@ function checkIfFormFilled(event) {
     );
   }
 }
-
 
 function setPrio(prio, number) {
   const priorities = ["urgent", "medium", "low"];
