@@ -1,8 +1,7 @@
 
 /**
  * Rendering Contact-List in Edit-Details. 
- * Needs further improvement (include accounts, not only contacts for example)
- * Maybe a resort to keep the order of alphabet is required in this case
+ * The Contact-List Contains contacts and accounts
  */
 async function renderDetailsContactList() {
     let contacts = await readData('contacts');

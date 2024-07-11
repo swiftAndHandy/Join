@@ -425,10 +425,6 @@ h2 {
   .board {
     padding: 0 50px;
   }
-
-  .task-card-container {
-    /* height: fit-content; */
-  }
 }
 
 @media (min-width: 470px) and (max-width: 1158px) {
