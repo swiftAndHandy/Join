@@ -21,6 +21,13 @@ async function saveTaskUpdate(taskId) {
     document.getElementById('edit-subtask-item-wrapper').innerHTML = '';
 }
 
+
+/**
+ * checks the value of an Element without leading and trailing spaces. 
+ * If it's empty, return the old value, otherwise the new one. 
+ * @param {string} target - part of the ElementID in "update-" and "task-details-"
+ * @returns 
+ */
 function isNotEmpty(target) { 
     if (document.getElementById(`update-${target}`).value.trim() != '') {
         return document.getElementById(`update-${target}`).value.trim()
