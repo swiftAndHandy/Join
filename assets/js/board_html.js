@@ -1,3 +1,14 @@
+/**
+ * Genereates HTML for the board..
+ * The hidden description is used for search engine, since this one is not shortended by limitLengthOf().
+ * Calls the async functions for the progressBar and the avatarCircles without await, so the result can be added later, 
+ * while the next card is allready rendering.
+ * @param {*} taskId - ID of the current task
+ * @param {*} item - the Object that is fetched from taskId.
+ * @param {HTMLElement} target - HTML Element that is adressed.
+ * @param {*} [position='beforeend'] - position of insertAdjacentHTML. Only set for the rare case you might need and afterbegin or whatever.
+ */
+
 function generateTaskCard(taskId, item, target, position = 'beforeend') {
   target.insertAdjacentHTML(`${position}`, `
   <article class="task-card-container" onclick="openTaskDetails('${taskId}')" draggable="true" ondragstart="startDrag('${taskId}', '${item.status}')" id="taskId${taskId}">

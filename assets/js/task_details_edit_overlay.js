@@ -21,6 +21,13 @@ async function saveTaskUpdate(taskId) {
     document.getElementById('edit-subtask-item-wrapper').innerHTML = '';
 }
 
+
+/**
+ * checks the value of an Element without leading and trailing spaces. 
+ * If it's empty, return the old value, otherwise the new one. 
+ * @param {string} target - part of the ElementID in "update-" and "task-details-"
+ * @returns 
+ */
 function isNotEmpty(target) { 
     if (document.getElementById(`update-${target}`).value.trim() != '') {
         return document.getElementById(`update-${target}`).value.trim()
@@ -216,6 +223,10 @@ function renderOpenSubtasks() {
     });
 }
 
+
+/**
+ * add this, when a new subtask is submitted. This function must be called explicite.
+ */
 function scrollToLastSubtask() {
     document.getElementById('edit-view-scrollbar').lastElementChild.scrollIntoView({behavior: 'smooth', block: 'end'});
 }
