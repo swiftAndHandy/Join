@@ -251,7 +251,7 @@ function searchAndShowTasks(searchTerm) {
 async function getSubtaskProgress(subtasks, taskId) {
   let doneSubtasks = 0; let totalSubtasks = 0;
 
-  if (subtasks) {
+  if (Array.isArray(subtasks)) {
     subtasks.forEach(element => {
       totalSubtasks++;
       element.done && doneSubtasks++;
