@@ -92,8 +92,8 @@ async function setMyAvatar(currentFile) {
             forceLogout(currentFile);
         } else if (currentFile && currentFile != 'index') {
             avatarHtml(myInitials);
+            setupAvatarMenu();
         }
-    setupAvatarMenu();
 }
 
 
