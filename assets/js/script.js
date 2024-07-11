@@ -225,7 +225,7 @@ async function accountExists(email, password = false) {
  * @param {boolean} done - future state of subtask. normaly it's false when creating a new.
  * @returns - an Array with subtakObjects, containing name: string and done: boolean
  */
-function createSubtasks(subtaskArray = [], done = false) {
+function createSubtasks() {
     let query = document.querySelectorAll('.subtaskitem')
     let result = [];
     
@@ -233,7 +233,7 @@ function createSubtasks(subtaskArray = [], done = false) {
         { 'goal': item.innerText, 'done': false }
     ));
 
-    return subtaskObjects;
+    return result;
 }
 
 /**
