@@ -15,6 +15,7 @@ function init() {
   renderContactList();
   stopEnterForm ();
   setupListenerForAddTasks();
+  addEntertoSubTasks ();
   
 }
 
@@ -401,3 +402,14 @@ function selectCategory (category) {
     return document.getElementById('task-description') === document.activeElement;
   }
 
+function addEntertoSubTasks () {
+  document.getElementById('edit-add-subtask').addEventListener('keypress', handleEnter);
+}
+
+function handleEnter(event) {
+  if (event.key === 'Enter') {
+      // Hier rufe deine Funktion auf, die du aufrufen möchtest
+      addNewSubtask(document.getElementById('edit-add-subtask').value,'edit-subtask-item-wrapper','div');scrollToLastSubtask();blurListener(); hideWindow('padding-placeholder');;
+      
+  }
+}
