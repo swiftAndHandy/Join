@@ -66,7 +66,8 @@ function renderEditView(task, key) {
     document.getElementById('update-description').innerText = task.description;
     document.getElementById('update-date').value = task.date;
     try {
-       document.getElementById(`edit-priority-btn-${task.priority.toLowerCase()}`).click();
+       const button = document.getElementById(`edit-priority-btn-${task.priority.toLowerCase()}`);
+       !button.classList.contains('active') && document.getElementById(`edit-priority-btn-${task.priority.toLowerCase()}`).click();
     } catch (error) { console.warn('This Task has no priority.'); }
 }
 
