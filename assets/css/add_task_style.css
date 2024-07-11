@@ -639,6 +639,15 @@ select:focus {
   }
 }
 
+@media (max-width: 999px) {
+  .mb-assigned-to {
+    margin-bottom: 15px;
+  }
+  .display-contacts-pictures {
+    margin-bottom: 17px;
+  }
+}
+
 @media (max-width: 803px) {
   .ul-row-styling {
     font-size: 16px;
