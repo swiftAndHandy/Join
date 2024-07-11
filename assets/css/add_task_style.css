@@ -233,7 +233,7 @@ select:focus {
   gap: 20px;
   justify-content: space-evenly;
   position: fixed;
-  top: 760px;
+  bottom: 70px;
 }
 
 .create-task-panel span {
@@ -639,16 +639,9 @@ select:focus {
   }
 }
 
-@media (max-width: 1025px) and (min-width: 802px) {
-  .create-task-panel {
-    top: 790px;
-  }
-}
-
 @media (max-width: 803px) {
   .ul-row-styling {
     font-size: 16px;
-
   }
 }
 
@@ -669,13 +662,6 @@ select:focus {
 
   #contacts-show-input input {
     width: 250px;
-  }
-}
-
-@media(max-width: 441px) {
-  .create-task-panel {
-    margin-top: 40px;
-    top: 740px;
   }
 }
 
@@ -743,18 +729,8 @@ select:focus {
 
 
 @media (max-height: 900px) {
-  .create-task-panel {
-    top: 700px;
-  }
-
   .form-add-task {
     height: 79%;
-  }
-}
-
-@media(max-height:875px) and (min-height: 800px) {
-  .create-task-panel {
-    top: 780px;
   }
 }
 
@@ -762,19 +738,11 @@ select:focus {
   .add-task-container {
     height: 500px;
   }
-
-  .create-task-panel {
-    top: 625px;
-  }
 }
 
 @media (max-height: 765px) {
   .add-task-container {
     height: 385px;
-  }
-
-  .create-task-panel {
-    top: 475px;
   }
 }
 
