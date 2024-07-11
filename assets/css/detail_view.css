@@ -29,9 +29,7 @@
   }
 
   .description-wrapper {
-    max-height: 100px;
-    overflow: auto;
-    word-break: break-word;
+    
   }
   
   .task-card-view {
