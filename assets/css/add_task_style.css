@@ -511,6 +511,38 @@ select:focus {
 
 }
 
+#edit-view-scrollbar {
+  overflow-y: auto;
+  max-height: 40px;
+  max-width: 480px;
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: #2a3647 #f1f1f1;
+}
+
+
+.edit-view-scrollbar::-webkit-scrollbar {
+  height: 8px; /* Thin height for horizontal scrollbar */
+}
+
+.edit-view-scrollbarr::-webkit-scrollbar-thumb {
+  background-color: #888; /* Scrollbar color */
+  border-radius: 10px; /* Rounded edges */
+}
+
+.edit-view-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Darker color when hovered */
+  
+}
+
+.edit-view-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+}
+
+/* Optional: To remove the scrollbar arrows */
+.edit-view-scrollbarr::-webkit-scrollbar-button {
+  display: none;
+}
+
 
 @media (min-width: 1000px) and (max-width: 4200px) {
   .desktop-buttons {
