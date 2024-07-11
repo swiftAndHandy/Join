@@ -12,21 +12,32 @@ function toggleRemember() {
     rememberMe = !rememberMe;
 }
 
+
 /**
  * Initialising of index.html by starting animation on mobile-devices.
+ * Since a guest shouldn't be able to autologin localstorage is cleared.
+ * Starts Animation of the start Screen also.
  */
 function initIndex() {
     if (userId === 'guest') {
         clearLocalstorage();
     }
+    startScreenAnimation();
+    includeHTML();
+    document.getElementById('remember').checked = rememberMe;
+    rememberMe && autofillLogin();
+}
+
+
+/**
+ * Applys classes to various Elements, to animate the Join-Intro
+ */
+function startScreenAnimation() {
     const startscreen = document.getElementById('startscreen');
     startscreen.classList.add('startscreen--animate');
     setTimeout(() => {
         startscreen.classList.add('over');
     }, 1000);
-    includeHTML();
-    document.getElementById('remember').checked = rememberMe;
-    rememberMe && autofillLogin();
 }
 
 
@@ -36,7 +47,7 @@ function initIndex() {
  * If the email already exists, the function returns false.
  *
  * @returns {Promise<boolean>|string} - A promise that resolves to true if the user was created successfully,
- *                               or false if the email already exists.
+ *                                      or false if the email already exists.
  */
 async function createUser() {
     const email = document.getElementById('email').value.toLowerCase();
@@ -79,6 +90,10 @@ async function login() {
     }
 }
 
+
+/**
+ * Sets localStorage to guest-account-values and redirects to the summary.
+ */
 function guestLogin() {
     localStorage.setItem('id', 'guest');
     localStorage.setItem('login', false);
@@ -87,7 +102,7 @@ function guestLogin() {
 
 
 /**
- * sets the value of privacyCheckboxActive to the opposite and 
+ * toggles the value of privacyCheckboxActive and 
  * disables or enables the submit-button based on the new value
  */
 function togglePrivacy() {
