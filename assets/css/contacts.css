@@ -156,6 +156,7 @@ html {
     position: relative;
     height: calc(100svh - 96px);
     overflow: hidden;
+    width: 66%;
 }
 
 .separator {
