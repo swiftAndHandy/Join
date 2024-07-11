@@ -226,13 +226,13 @@ async function accountExists(email, password = false) {
  * @returns - an Array with subtakObjects, containing name: string and done: boolean
  */
 function createSubtasks(subtaskArray = [], done = false) {
-    const subtaskObjects = [];
-    for (item of subtaskArray) {
-        subtaskObjects.push({
-            'goal': item,
-            'done': done
-        })
-    }
+    let query = document.querySelectorAll('.subtaskitem')
+    let result = [];
+    
+    query.forEach((item) => result.push(
+        { 'goal': item.innerText, 'done': false }
+    ));
+
     return subtaskObjects;
 }
 
