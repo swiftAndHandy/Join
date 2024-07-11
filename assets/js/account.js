@@ -116,6 +116,7 @@ function togglePrivacy() {
     }
 }
 
+
 /**
  * toggles the currrent show/hide-password variable. 
  * calls the required function to set the correct eye-icon on input-field.
@@ -134,6 +135,7 @@ function togglePasswordDesign(id) {
     }
 }
 
+
 /**
  * on password-create field:
  * swaps out the lock-image for the eye-image or vice vera.
@@ -150,6 +152,7 @@ function setPasswordCreateDesign() {
         targetInput.type = 'text';
     }
 }
+
 
 /**
  * on password-validation field:
@@ -168,6 +171,7 @@ function setPasswordValidationDesign() {
     }
 }
 
+
 /**
  * on password-validation field:
  * swaps out the lock-image for the eye-image or vice vera.
@@ -184,6 +188,7 @@ function setPasswordDesign() {
         targetInput.type = 'text';
     }
 }
+
 
 /**
  * evaluates value of both password-inputs. if a value is set, it will call the setPasswordInputDesign-Function
@@ -258,8 +263,9 @@ async function submitSignUp() {
     }
 }
 
+
 /**
- * Fade-In of popup-msg
+ * Fade-In of popup-msg in sign-up-overlay when submitting
  * @param {boolean} success - true, if a new account could be created
  * @param {string} msg - Content of popup
  */
@@ -271,6 +277,7 @@ function signUpAnimation(success, msg) {
     msgWrapper.add('msg-wrapper--z-push');
     success ? successAnimation(signUp, msgWrapper) : failureAnimation(signUp, msgWrapper);
 }
+
 
 /**
  * Triggers a success animation by removing specified classes from the target elements after a delay.
@@ -285,6 +292,7 @@ function successAnimation(target, wrapper) {
     }, 1000);
 }
 
+
 /**
  * Triggers a failure animation by removing specified classes from the target elements after a delay.
  * @param {DOMTokenList} target - The target element's class list from which the 'popup-msg--fade-in' class will be removed.
@@ -298,6 +306,7 @@ function failureAnimation(target, wrapper) {
         }, 300);
     }, 2000);
 }
+
 
 /**
  * Resets every input.value of sign-up-dialog. 
@@ -319,6 +328,7 @@ function closeSignUp() {
     compareRegistrationPasswords();
 }
 
+
 /**
  * Removes display: none from sign-up-dialog to give access to the sign-up-form
  */
@@ -327,8 +337,10 @@ function openSignUp() {
     document.getElementById('login-wrapper').classList.add('d-none');
 }
 
+
 /**
- * 
+ * If remember me is active and the Account is not guest, 
+ * the login form is filled with the correct user-data and auto submitted.
  */
 async function autofillLogin() {
     const data = await readData(`accounts/${userId}`);
