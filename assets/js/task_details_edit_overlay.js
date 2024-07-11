@@ -8,7 +8,7 @@ async function saveTaskUpdate(taskId) {
     const tag = document.getElementById('task-details-tag').textContent;
     const title = isNotEmpty('title');
     const description = isNotEmpty('description');
-    const deadline = document.getElementById('update-date').value;
+    const deadline = isNotEmpty('date');
     const priority = getCurrentPriority();
     const subtasks = updateSubtasksArray();
     const data = createTaskObject(tag, title, description, deadline, priority, subtasks);
@@ -32,7 +32,8 @@ function isNotEmpty(target) {
     if (document.getElementById(`update-${target}`).value.trim() != '') {
         return document.getElementById(`update-${target}`).value.trim()
     } else {
-        return document.getElementById(`task-details-${target}`).innerText;
+        let result = document.getElementById(`task-details-${target}`).innerText;
+        return result.replaceAll('/', '-');
     }
 }
 

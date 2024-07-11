@@ -32,7 +32,7 @@ async function generateTaskDetailsHtml(taskId, taskDetails) {
     const description = document.getElementById('task-details-description');
     description.innerHTML = taskDetails['description'];
 
-    const deadline = document.getElementById('task-details-deadline');
+    const deadline = document.getElementById('task-details-date');
     deadline.innerHTML = taskDetails['date'].split('-').join('/');
 
     const priority = document.getElementById('details-priority-text');
@@ -60,7 +60,7 @@ function resetDetailCardHtml() {
     const description = document.getElementById('task-details-description');
     description.value = '';
 
-    const deadline = document.getElementById('task-details-deadline');
+    const deadline = document.getElementById('task-details-date');
     deadline.innerHTML = '';
 
     const priority = document.getElementById('details-priority-text');
