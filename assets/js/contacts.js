@@ -202,30 +202,58 @@ async function openContactDetails(userId) {
 }
 
 
+/**
+ * Manages the visibility of the contact list and contact details based on the window width.
+ * If the window width is less than or equal to 820 pixels, it toggles the visibility of 
+ * the contact list and contact details. Otherwise, it shows the contact list and hides the 
+ * contact details if necessary.
+ */
 function hideContactListForMobile() {
+    let contactInfoContainer = document.getElementById('contact-info-container').style.display;
     if (window.innerWidth <= 820) {
-        document.getElementById('contact-list-container').style.display = 'none';
-        document.getElementById('contact-window').style.display = 'flex';
+        if (contactInfoContainer === 'none' || contactInfoContainer === '') {
+            document.getElementById('contact-list-container').style.display = 'block';
+            document.getElementById('contact-window').style.display = 'none';
+        } else {
+            document.getElementById('contact-list-container').style.display = 'none';
+            document.getElementById('contact-window').style.display = 'flex';
+        }
         document.getElementById('contact-info-container').style.animation = 'unset';
         document.getElementById('more-vert-button').style.display = 'flex';
         document.getElementById('back-to-contacts-button').style.display = 'flex';
+    } else { 
+        if (contactInfoContainer === 'none') {
+            document.getElementById('contact-list-container').style.display = 'block';
+            document.getElementById('contact-window').style.display = 'none';
+        }
     }
 }
 
 
+/**
+ * Handles window resize events to manage the visibility of the contact list and contact details.
+ * If the window width is greater than 820 pixels, it shows the contact list and contact details.
+ * If the window width is less than or equal to 820 pixels, it toggles the visibility of the contact 
+ * list and contact details based on their current display states.
+ */
 function handleResize() {
     if (window.innerWidth > 820) {
         document.getElementById('contact-list-container').style.display = 'block';
         document.getElementById('contact-window').style.display = 'flex';
         document.getElementById('back-to-contacts-button').style.display = 'none';
     } else {
-        if (document.getElementById('contact-window').style.display === 'flex') {
-            document.getElementById('contact-list-container').style.display = 'none';
-            document.getElementById('back-to-contacts-button').style.display = 'flex';
+        let contactInfoContainer = document.getElementById('contact-info-container').style.display;
+        if (contactInfoContainer === 'none' || contactInfoContainer === '') {
+            document.getElementById('contact-list-container').style.display = 'block';
+            document.getElementById('contact-window').style.display = 'none';
+        } else {
+            if (document.getElementById('contact-window').style.display === 'flex') {
+                document.getElementById('contact-list-container').style.display = 'none';
+                document.getElementById('back-to-contacts-button').style.display = 'flex';
+            }
         }
     }
 }
-
 
 window.addEventListener('resize', handleResize);
 
