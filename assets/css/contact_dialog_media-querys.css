@@ -126,9 +126,14 @@
 }
 
 
-@media (max-width: 335px) {
+@media (max-width: 360px) {
     .input-style {
-        width: 320px;
+        width: clamp(200px, 30vw, 364px);
+    }
+
+    .upper-card-headline {
+        width: unset;
+        height: unset;
     }
 
     .upper-card {

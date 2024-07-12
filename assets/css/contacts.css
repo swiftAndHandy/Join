@@ -28,7 +28,7 @@ html {
 .contact-list {
     padding: 0 16px 24px 16px;
     margin: 0;
-    max-height: calc(1080px - 182px);
+    max-height: calc(100svh - 96x);
     overflow: scroll;
     --sb-track-color: transparent;
     --sb-thumb-color: #0A1931;
@@ -93,6 +93,7 @@ html {
     align-items: center;
     border-radius: 10px;
     padding: 15px 24px;
+    margin: 8px 0;
     gap: 35px;
 }
 
@@ -324,7 +325,7 @@ html {
 
 }
 
-.contact-created-modal{
+.contact-created-modal {
     animation-name: contact-created-open-animation;
     animation-duration: 900ms;
     display: none;
@@ -334,23 +335,34 @@ html {
     margin-top: 40px;
     width: 326px;
     height: 74px;
-    background-color:#2A3647;
+    background-color: #2A3647;
     border-radius: 20px;
     box-shadow: 0px 0px 4px 0px #00000026;
     color: white;
     font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-weight: 400;
-    
+
 }
 
-.contact-created-modal-open{
+.contact-created-modal-open {
     display: flex;
     animation-name: contact-created-open-animation;
-    animation-duration: 200ms;
+    animation-duration: 300ms;
 }
 
-.contact-created-modal-close{
+.contact-created-modal-close {
     animation-name: contact-created-close-animation;
-    animation-duration: 200ms;
+    animation-duration: 300ms;
+}
+
+.contact-created-modal-open-mobile {
+    display: flex;
+    animation-name: contact-created-open-animation-mobile;
+    animation-duration: 300ms;
+}
+
+.contact-created-modal-close-mobile {
+    animation-name: contact-created-close-animation-mobile;
+    animation-duration: 300ms;
 }
