@@ -218,7 +218,6 @@ h2 {
 
 .task-sub-headline {
   color: #a8a8a8;
-  max-height: 60px;
   word-break: break-word ;
 }
 
@@ -268,7 +267,6 @@ h2 {
 
 .assigned-user {
   width: 240px;
-  height: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -278,8 +276,6 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   margin: 8px;
-  min-height: 60px;
-  max-height: 60px;
   align-items: center;
 }
 
