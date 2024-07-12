@@ -71,7 +71,7 @@ function createTaskObject(tag, title, description, deadline, priority, subtasks)
 function renderEditView(task, key) {
     document.getElementById('save-task-update').setAttribute('onclick', `saveTaskUpdate('${key}')`)
     document.getElementById('update-title').value = task.title;
-    document.getElementById('update-description').innerText = task.description;
+    document.getElementById('update-description').value = task.description;
     document.getElementById('update-date').value = task.date;
     try {
        const button = document.getElementById(`edit-priority-btn-${task.priority.toLowerCase()}`);
@@ -231,3 +231,9 @@ function renderOpenSubtasks() {
 function scrollToLastSubtask(specialTarget = '') {
     document.getElementById(`edit-view-scrollbar${specialTarget}`).lastElementChild.scrollIntoView({behavior: 'smooth', block: 'end'});
 }
+
+// function closeEditView() {
+//     toggleVisibility('task-edit-view');
+//     toggleVisibility('task-details-view');
+//     document.getElementById('edit-subtask-item-wrapper').innerHTML = '';
+// }
