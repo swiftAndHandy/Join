@@ -46,6 +46,11 @@ function updateBoard(updateItem, fromLocation, targetLocation) {
 }
 
 
+/**
+ * Renders tasks based on their status and displays them in corresponding fields.
+ * Retrieves task data asynchronously and iterates through each task to generate
+ * task cards and update task fields accordingly.
+ */
 async function renderTasks() {
   const statusFields = {
     'todo': document.getElementById('todo-field'),
@@ -186,8 +191,8 @@ function updateTaskFields(sections) {
 
 
 /**
- * Pls write your own JSdoc, Phillip
- * this should be (only) your function
+ * Adds an onclick attribute to buttons with specific classes.
+ * When clicked, invokes the handleButtonClickOnWidth function.
  */
 function addOpenAddTaskToButtons() {
   const buttons = document.querySelectorAll(
@@ -200,8 +205,9 @@ function addOpenAddTaskToButtons() {
 
 
 /**
- * Pls write your own JSdoc, Phillip
- * this should be (only) your function
+ * Checks the screen width and performs different actions based on the width.
+ * If the screen width is less than 1160px, redirects to the add_task.html page.
+ * Otherwise, performs another action to open the add task interface.
  */
 function handleButtonClickOnWidth() {
   const screenWidth = window.innerWidth;
@@ -215,8 +221,8 @@ function handleButtonClickOnWidth() {
 
 
 /**
- * Pls write your own JSdoc, Phillip
- * this should be (only) your function
+ * Opens the add task dialog field 
+ * 
  */
 function openAddTask() {
   let popUpTranstion = document.getElementById("add-task-transition");
@@ -227,8 +233,7 @@ function openAddTask() {
 
 
 /**
- * Pls write your own JSdoc, Phillip
- * this should be (only) your function
+ * Redirects the user to the add_task.html page when called.
  */
 function switchToAddTask() {
   let addTaskUrl = "../add_task.html";
@@ -264,7 +269,11 @@ function applyGreyScreen() {
 
 
 /**
- * I'll add this later. --Andre
+ * Rerenders a task on the board with updated data when a user edits the task directly on board.
+ * Updates the task title, description, assigned profiles, subtask progress,
+ * priority indicator, and visibility of bottom task card based on provided data.
+ * @param {object} data - The updated task data object.
+ * @param {string} taskId - The ID of the task element to rerender.
  */
 function rerenderTaskOnBoard(data, taskId) {
   const description = document.getElementById(`description-content${taskId}`);
