@@ -69,7 +69,9 @@ function closeAddContactPage() {
  */
 function showCreatedContactModal() {
     let contactCreatedModal = document.getElementById('contact-created-modal');
+
     setTimeout(() => {
+        contactCreatedModal.style.display = 'flex';
         contactCreatedModal.classList.add('contact-created-modal-open');
     }, 500);
     setTimeout(() => {
@@ -77,11 +79,13 @@ function showCreatedContactModal() {
         setTimeout(() => {
             contactCreatedModal.classList.remove('contact-created-modal-close');
             contactCreatedModal.classList.remove('contact-created-modal-open');
+            contactCreatedModal.style.display = 'none';
         }, 190);
     }, 1500);
 
     executeOnMaxWidth(820, async () => {
         setTimeout(() => {
+
             contactCreatedModal.classList.add('contact-created-modal-open-mobile');
         }, 500);
         setTimeout(() => {
@@ -89,6 +93,7 @@ function showCreatedContactModal() {
             setTimeout(() => {
                 contactCreatedModal.classList.remove('contact-created-modal-close-mobile');
                 contactCreatedModal.classList.remove('contact-created-modal-open-mobile');
+                contactCreatedModal.style.display = 'none';
             }, 190);
         }, 1500);
     })
@@ -194,9 +199,7 @@ async function openContactDetails(userId) {
     changeContactItemColor(userId);
     contactDetailsHTML(name, email, telefon, color, userId);
     hideContactListForMobile();
-    showContactListForDesktop();
 }
-
 
 function hideContactListForMobile() {
     if (window.innerWidth <= 820) {
@@ -205,18 +208,23 @@ function hideContactListForMobile() {
         document.getElementById('contact-info-container').style.animation = 'unset';
         document.getElementById('more-vert-button').style.display = 'flex';
         document.getElementById('back-to-contacts-button').style.display = 'flex';
-    };
+    }
 }
 
-
-function showContactListForDesktop() {
-    executeOnMinWidth(821, async () => {
-        document.getElementById('contact-list-container').style.display = 'flex';
+function handleResize() {
+    if (window.innerWidth > 820) {
+        document.getElementById('contact-list-container').style.display = 'block';
         document.getElementById('contact-window').style.display = 'flex';
         document.getElementById('back-to-contacts-button').style.display = 'none';
-    });
+    } else {
+        if (document.getElementById('contact-window').style.display === 'flex') {
+            document.getElementById('contact-list-container').style.display = 'none';
+            document.getElementById('back-to-contacts-button').style.display = 'flex';
+        }
+    }
 }
 
+window.addEventListener('resize', handleResize);
 
 /**
  * Changes the color of the selected contact item.
@@ -228,21 +236,29 @@ function showContactListForDesktop() {
  * @param {string} userId - The ID of the contact being selected.
  */
 function changeContactItemColor(userId) {
-    if (window.innerWidth <= 820) {
+    let contactItem = document.getElementById(`contact-item-${userId}`);
+    executeOnMaxWidth(820, async () => {
+        contactItem.classList.remove('contact-item-selected');
+        contactItem.classList.add('contact-item');
         return;
-    }
+    });
+
     if (currentSelectedContactId !== null) {
         let previousContactItem = document.getElementById(`contact-item-${currentSelectedContactId}`);
         if (previousContactItem) {
             previousContactItem.classList.remove('contact-item-selected');
             previousContactItem.classList.add('contact-item');
         }
+
     }
-    let contactItem = document.getElementById(`contact-item-${userId}`);
+    if (window.innerWidth > 820){
     contactItem.classList.add('contact-item-selected');
     contactItem.classList.remove('contact-item');
-
+    };
     currentSelectedContactId = userId;
+    
+
+
 }
 
 

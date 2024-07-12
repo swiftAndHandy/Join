@@ -11,6 +11,10 @@
         overflow: hidden;
     }
 
+    .contact-list{
+        max-height: calc(100svh - 288px);
+    }
+
     .btn-container-add-contact {
         position: sticky;
         top: 0;
@@ -69,6 +73,9 @@
     .contact-list-container {
         margin: 96px 0 0 233px;
         height: calc(100vh - 96px);
+    }
+    .contact-list{
+        max-height: calc(100svh - 222px);
     }
 }
 
@@ -240,12 +247,15 @@
 
     .contact-item {
         padding: 15px 0;
+        gap: 16px;
     }
-}
 
-@media (max-width: 1160px) {
-    .contact-window {
-        top: 0;
+    .contact-list{
+        padding: 0 8px 24px 8px;
+    }
+
+    .contact-created-modal{
+        width: 280px;
     }
 }
 
