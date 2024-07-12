@@ -146,8 +146,9 @@
     }
 
     .login-wrapper {
-        transform: unset;
-        margin-top: 10vh;
+        max-height: 350px;
+        overflow: scroll;
+        transform: translate(-50%, -60%);
     }
 
     .document-links {
