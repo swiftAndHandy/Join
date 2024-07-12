@@ -1,7 +1,4 @@
-let addTaskTitle = "";
-let addTaskDescription = "";
 let addTaskAssignedContacts = [];
-let addTaskDueDate = "";
 let addTaskPrio = "";
 let addTaskCategory = "";
 let taskStatus = "todo";
@@ -17,45 +14,10 @@ function init() {
   stopEnterForm ();
   setupListenerForAddTasks();
   addEntertoSubTasks ();
-  
 }
 
 /**
- * Retrieves the value of the input field with the ID 'task-due-date'
- * and assigns it to the variable addTaskDueDate.
  * 
- */
-function formOfDueDate() {
-  addTaskDueDate = document.getElementById('task-due-date').value
-}
-
-/**
- * Retrieves the value of the input field with the ID 'task-title'
- * and assigns it to the variable addTaskDueDate.
- * 
- */
-function addTitle() {
-  let title = document.getElementById("task-title");
-  addTaskTitle = title.value;
-
-}
-
-/**
- * Retrieves the value of the input field with the ID 'task-due-date'
- * and assigns it to the variable addTaskDueDate.
- * 
- */
-
-function addDescription() {
-  let taskDescription = document.getElementById("task-description");
-  addTaskDescription = taskDescription.value;
-
-}
-
-
-/**
- * 
- * @returns {void}
  * @param {HTMLInputElement} checkbox Contains the value of the checked element from the form tag with the id="form-desktop"
  * @param {number} idNumber Uses a number from a for-loop to assign individual IDs.
  */
@@ -64,10 +26,8 @@ function handleCheckBox(checkbox, idNumber) {
     if (!addTaskAssignedContacts.includes(checkbox.value)) {
       addTaskAssignedContacts.push(checkbox.value);
       styledCheckbox.push(idNumber);
-      
     }
     pressedCheckBoxStyle(idNumber);
-    
   } else {
     const valueIndex = addTaskAssignedContacts.indexOf(checkbox.value);
     if (valueIndex > -1) {
@@ -76,7 +36,6 @@ function handleCheckBox(checkbox, idNumber) {
     unPressedCheckBoxStyle(idNumber);
   }
   generateCircleProfilesLine()
-  console.log('Aktuelle ausgewählte Kontakte: ', addTaskAssignedContacts);
 }
 
 
@@ -126,7 +85,7 @@ function clearInputs(event) {
 }
 
 
-function stopStandartValidationMessage(event) {
+function stopStandardValidationMessage(event) {
   event.preventDefault()
   let form = document.getElementById('form-desktop')
   form.setAttribute('novalidate', true);
@@ -167,7 +126,6 @@ function clearFormContactStyle() {
   styledCheckbox.forEach(checkboxId => {
     const label = document.getElementById(`label-check${checkboxId}`);
     const background = document.getElementById(`background-drop-menu-background${checkboxId}`);
-
     if (label) {
       label.classList.remove('filter-to-white');
     }
@@ -192,21 +150,16 @@ function convertArrayToObject(array) {
 
 async function addnewTask() {
   const addTaskSubTask = createSubtasks();
-  addTitle();
-  addDescription();
-  taskDueDate();
-  formOfDueDate();
-  
   let assignedContactsObject = convertArrayToObject(addTaskAssignedContacts);
 
   await postData({
-    'title': addTaskTitle,
-    'description': addTaskDescription,
+    'title': document.getElementById('task-title').value,
+    'description': document.getElementById('task-description').value,
     'assigned': assignedContactsObject,
-    'date': addTaskDueDate,
+    'date': document.getElementById('task-due-date').value,
     'priority': addTaskPrio,
     'tag': addTaskCategory,
-    'subtasks': addTaskSubTask,
+    'subtasks': createSubtasks(),
     'status': taskStatus,
   }, 'tasks');
 }
@@ -230,7 +183,7 @@ function checkIfFormFilled(event) {
     showPopupTaskAdded();
     clearForm(event);
   } else {
-    stopStandartValidationMessage(event);
+    stopStandardValidationMessage(event);
     ownValidation();
     checkCategoryfield ();
   }
@@ -322,11 +275,9 @@ function searchContact(search) {
 
 
 function selectCategory (category) {
- addTaskCategory = category
-  const parent = document.getElementById('select-category');
-  const spanElement = parent.querySelector('span');
-  spanElement.textContent = `${category}`;
- toggleCategoryDropBox();
+  addTaskCategory = category;
+  document.getElementById('selected-category').textContent = `${category}`;
+  toggleCategoryDropBox();
 }
 
 
@@ -398,6 +349,5 @@ function selectCategory (category) {
 
 
   function clearSubtasksContainerDialog() {
-    document.getElementById('edit-subtask-item-wrapper-dialog').innerHTML = "";
-    
+    document.getElementById('edit-subtask-item-wrapper-dialog').innerHTML = ""; 
   }

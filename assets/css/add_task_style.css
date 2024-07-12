@@ -139,7 +139,6 @@ select {
   width: 100%;
   border-radius: 10px;
   position: relative;
-  
 }
 
 #category-drop-menu-content {
@@ -364,8 +363,7 @@ select:focus {
   width: 100%;
   overflow-y: auto;
   border-radius: 10px;
- 
-
+  max-height: 200px;
 }
 
 .position-relative {

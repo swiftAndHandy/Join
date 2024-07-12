@@ -23,18 +23,13 @@ async function generateCircleProfilesLine() {
   const target = document.getElementById(`contacts-img-line`);
   if (target) {
     target.innerHTML = '';
-
     for (let contact of addTaskAssignedContacts) {
-      try {
         const user = await readData(`${contact}`);
         target.insertAdjacentHTML('beforeend', `<div class="profile-initials-circle-line" id="profile-cicle-${contact}" style="background-color:${user.color}">${initials(user.name)}</div>`);
         if (target.childElementCount >= 11) {
           target.insertAdjacentHTML('beforeend', `<div class="profile-initials-circle-line" id="profile-circle-container-${contact}" style="background-color:#29ABE2">...</div>`);
           break;
         }
-      } catch (error) {
-        console.error('error by reading the contacs', error);
-      }
     }
   }
 }
