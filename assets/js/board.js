@@ -288,19 +288,20 @@ function rerenderTaskOnBoard(data, taskId) {
  */
 function searchAndShowTasks(searchTerm) {
   const taskCards = document.querySelectorAll('.task-card-container');
-
+  let counter = 0;
   taskCards.forEach(taskCard => {
     const titleElement = taskCard.querySelector('.task-card-header');
     if (titleElement) {
       const title = titleElement.textContent.trim().toLowerCase();
       const isVisible = title.includes(searchTerm.toLowerCase());
-      isVisible ? hideWindow('empty-results') : hideWindow('empty-results', false);
+      isVisible && counter++;
       const articleElement = taskCard.closest('article');
       if (articleElement) {
         hideWindow(articleElement.id, !isVisible);
       }
     }
   });
+  counter > 0 ? hideWindow('empty-results') : hideWindow('empty-results', false);
 }
 
 
