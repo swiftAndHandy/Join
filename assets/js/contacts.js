@@ -23,6 +23,24 @@ function executeOnMaxWidth(maxWidth, callback) {
 
 
 /**
+ * Executes the callback function if the window width is greater than or equal to the specified minWidth.
+ * Also sets up an event listener to re-check the condition on window resize.
+ * 
+ * @param {number} minWidth - The minimum width of the window.
+ * @param {function} callback - The function to execute when the condition is met.
+ */
+function executeOnMinWidth(minWidth, callback) {
+    if (window.innerWidth >= minWidth) {
+        callback();
+    }
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= minWidth) {
+            callback();
+        }
+    });
+}
+
+/**
  * Opens the 'Add Contact' page by fetching the HTML content and displaying the modal.
  */
 async function openAddContactPage() {
@@ -52,8 +70,8 @@ function closeAddContactPage() {
 function showCreatedContactModal() {
     let contactCreatedModal = document.getElementById('contact-created-modal');
     setTimeout(() => {
-    contactCreatedModal.classList.add('contact-created-modal-open');
-    },500);
+        contactCreatedModal.classList.add('contact-created-modal-open');
+    }, 500);
     setTimeout(() => {
         contactCreatedModal.classList.add('contact-created-modal-close');
         setTimeout(() => {
@@ -61,6 +79,19 @@ function showCreatedContactModal() {
             contactCreatedModal.classList.remove('contact-created-modal-open');
         }, 190);
     }, 1500);
+
+    executeOnMaxWidth(820, async () => {
+        setTimeout(() => {
+            contactCreatedModal.classList.add('contact-created-modal-open-mobile');
+        }, 500);
+        setTimeout(() => {
+            contactCreatedModal.classList.add('contact-created-modal-close-mobile');
+            setTimeout(() => {
+                contactCreatedModal.classList.remove('contact-created-modal-close-mobile');
+                contactCreatedModal.classList.remove('contact-created-modal-open-mobile');
+            }, 190);
+        }, 1500);
+    })
 }
 
 
@@ -158,14 +189,31 @@ async function openContactDetails(userId) {
     let email = contact.email;
     let color = contact.color;
     let telefon = contact.phone;
+    document.getElementById('more-vert-button').style.display = 'none';
 
     changeContactItemColor(userId);
     contactDetailsHTML(name, email, telefon, color, userId);
-    executeOnMaxWidth(820, async () => {
+    hideContactListForMobile();
+    showContactListForDesktop();
+}
+
+
+function hideContactListForMobile() {
+    if (window.innerWidth <= 820) {
         document.getElementById('contact-list-container').style.display = 'none';
         document.getElementById('contact-window').style.display = 'flex';
         document.getElementById('contact-info-container').style.animation = 'unset';
         document.getElementById('more-vert-button').style.display = 'flex';
+        document.getElementById('back-to-contacts-button').style.display = 'flex';
+    };
+}
+
+
+function showContactListForDesktop() {
+    executeOnMinWidth(821, async () => {
+        document.getElementById('contact-list-container').style.display = 'block';
+        document.getElementById('contact-window').style.display = 'flex';
+        document.getElementById('back-to-contacts-button').style.display = 'none';
     });
 }
 
@@ -190,9 +238,9 @@ function changeContactItemColor(userId) {
             previousContactItem.classList.add('contact-item');
         }
     }
-        let contactItem = document.getElementById(`contact-item-${userId}`);
-        contactItem.classList.add('contact-item-selected');
-        contactItem.classList.remove('contact-item');
+    let contactItem = document.getElementById(`contact-item-${userId}`);
+    contactItem.classList.add('contact-item-selected');
+    contactItem.classList.remove('contact-item');
 
     currentSelectedContactId = userId;
 }
@@ -295,11 +343,11 @@ function closeContactModal() {
 async function deleteContact(path = "", contactId) {
     await deleteData(path);
     const container = document.getElementById('contact-info-container');
-    container.innerHTML = ''; 
+    container.innerHTML = '';
     container.nextElementSibling.nextElementSibling.style = '';
     container.nextElementSibling.style = '';
     container.style = '';
-    
+
     removeContactFromInterface(contactId);
     document.getElementById('modalBodyContent').innerHTML = '';
     mobileDeleteRules();
@@ -369,9 +417,9 @@ function closeContactOptions() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (window.innerWidth >= 820){
+    if (window.innerWidth >= 820) {
         return;
-    } 
+    }
     window.addEventListener('click', (event) => {
         if (!event.target.closest('#contact-options') && !event.target.closest('#more-vert-button')) {
             closeContactOptions();

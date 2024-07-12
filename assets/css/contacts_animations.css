@@ -1,4 +1,3 @@
-
 @keyframes contact-options-animation {
     from {
         opacity: 0;
@@ -67,24 +66,54 @@
     }
 }
 
-@keyframes contact-created-open-animation{
+@keyframes contact-created-open-animation {
     from {
-        position:static;
-        transform: translateX(200%);
+        position: static;
+        transform: translateX(300%);
+        opacity: 0;
     }
 
     to {
         transform: translate(0%);
+        opacity: 1;
     }
 }
 
-@keyframes contact-created-close-animation{
+@keyframes contact-created-close-animation {
     from {
-        position:static;
+        position: static;
         transform: translate(0%);
+        opacity: 1;
     }
 
     to {
-        transform: translateX(200%);
+        transform: translateX(300%);
+        opacity: 0;
+    }
+}
+
+@keyframes contact-created-open-animation-mobile {
+    from {
+        position: static;
+        transform: translateY(100%);
+        opacity: 0
+    }
+
+    to {
+        transform: translate(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes contact-created-close-animation-mobile {
+    from {
+        position: static;
+        transform: translate(0%);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(100%);
+        opacity: 0;
     }
 }
