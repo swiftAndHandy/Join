@@ -418,7 +418,7 @@ function selectCategory (category) {
       subtaskDialog.addEventListener('keypress', (event) => handleEnter(event, id));
     }
   
-    // Überprüfen, ob das Element mit der spezifischen ID existiert, bevor der Event-Listener hinzugefügt wird
+  
     const singleSubtaskInputWrapper = document.getElementById(`single-subtask-input-wrapper-${id}`);
     if (singleSubtaskInputWrapper) {
       singleSubtaskInputWrapper.addEventListener('keypress', (event) => handleEnter(event, id));
@@ -448,7 +448,6 @@ function handleEnter(event, id) {
       console.error('Cannot find subtask input element');
     }
 
-    // Unabhängige Ausführung von updateSubtaskInput
     const editSubtaskInput = document.getElementById(`single-subtask-input-${id}`);
     if (editSubtaskInput) {
       updateSubtaskInput(id);
