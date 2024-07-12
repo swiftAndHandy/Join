@@ -396,7 +396,8 @@ function selectCategory (category) {
 
   function handleEnter(event) {
     if (event.key === 'Enter') {
-      addNewSubtask(document.getElementById('edit-add-subtask').value,'edit-subtask-item-wrapper','div');scrollToLastSubtask();blurListener(); hideWindow('padding-placeholder');;
-      
+      addNewSubtask(document.getElementById('edit-add-subtask').value,'edit-subtask-item-wrapper','div');
+      scrollToLastSubtask();blurListener();
+      hideWindow('padding-placeholder');
     }
   }

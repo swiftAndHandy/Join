@@ -40,7 +40,8 @@ function setupListenerForAddTasksDialog() {
 function focusListenerDialog() {
     document.getElementById('edit-subtask-box-dialog').classList.add('focus');
     hideWindow('edit-view-subtask-navigation-dialog', false);
-    hideWindow('edit-view-subtask-add');
+    hideWindow('edit-view-subtask-add-dialog');
+    console.log("bla");
 }
 
 
@@ -51,7 +52,7 @@ function focusListenerDialog() {
  */
 function blurListenerDialog() {
     let listener = document.getElementById('edit-add-subtask-dialog')
-    document.getElementById('edit-subtask-box').classList.remove('focus');
+    document.getElementById('edit-subtask-box-dialog').classList.remove('focus');
     if (!listener.value) {
         hideWindow('edit-view-subtask-navigation-dialog');
         hideWindow('edit-view-subtask-add-dialog', false);

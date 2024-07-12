@@ -228,6 +228,6 @@ function renderOpenSubtasks() {
 /**
  * add this, when a new subtask is submitted. This function must be called explicite.
  */
-function scrollToLastSubtask() {
-    document.getElementById('edit-view-scrollbar').lastElementChild.scrollIntoView({behavior: 'smooth', block: 'end'});
+function scrollToLastSubtask(specialTarget = '') {
+    document.getElementById(`edit-view-scrollbar${specialTarget}`).lastElementChild.scrollIntoView({behavior: 'smooth', block: 'end'});
 }
