@@ -212,6 +212,10 @@ function checkIfFormFilled(event) {
       allFilled = false;
     }
   });
+  const selectedCategory = document.getElementById("selected-category");
+  if (selectedCategory.textContent.trim() === "Select category") {
+    allFilled = false;
+  }
   if (allFilled) {
     addnewTask(event);
     showPopupTaskAdded();
