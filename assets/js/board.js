@@ -11,7 +11,6 @@ async function initBoard() {
   addOpenAddTaskToButtons()
   renderContactList();
   stopEnterForm();
-  setupListenerForAddTasks();
   setupListenerForAddTasksDialog();
 
   document.addEventListener('dragend', () => {
@@ -237,10 +236,10 @@ function switchToAddTask() {
 
 
 /**
- * Pls write your own JSdoc, Phillip
- * this should be (only) your function
+ *  Closes the add task dialog and resets its state, including removing values and validations
+ * 
  */
-function closeAddTaskPopUp(event) {
+function closeAddTaskPopUp() {
   let popUpTranstion = document.getElementById("add-task-transition");
   popUpTranstion.classList.remove("transition-right");
   applyGreyScreen();
@@ -253,8 +252,8 @@ function closeAddTaskPopUp(event) {
 
 
 /**
- * Pls write your own JSdoc, Phillip
- * this should be (only) your function
+ *Applies a grey screen background when the add task dialog opens.
+ * 
  */
 function applyGreyScreen() {
   const greyScreen = document.getElementById('grey-screen');
@@ -294,9 +293,10 @@ function rerenderTaskOnBoard(data, taskId) {
 
 
 /**
- * Feel free to write JSdoc, @Phillip.
- * Otherwise i'll can do it later on, since this is based on my search-engine and i've recorded smaller parts.
- * -- Andre
+ * Searches task cards for the specified search term and shows or hides them accordingly.
+ * 
+ * @param {string} searchTerm - The search term to look for.
+ * @returns {void}
  */
 function searchAndShowTasks(searchTerm) {
   const taskCards = document.querySelectorAll('.task-card-container');
