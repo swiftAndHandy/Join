@@ -131,6 +131,11 @@ function clearForm (event) {
   clearInputs(event);
   clearFormPrio();
   clearFormContactStyle();
+  clearSubtasksContainer();
+  if (window.location.pathname === '/board.html')  {
+    clearSubtasksContainerDialog()
+  }
+ 
 }
 
 
@@ -400,4 +405,13 @@ function selectCategory (category) {
       scrollToLastSubtask();blurListener();
       hideWindow('padding-placeholder');
     }
+  }
+
+  function clearSubtasksContainer() {
+    document.getElementById('edit-subtask-item-wrapper').innerHTML = "";
+
+  }
+
+  function clearSubtasksContainerDialog() {
+    document.getElementById('edit-subtask-item-wrapper-dialog').innerHTML = "";
   }
