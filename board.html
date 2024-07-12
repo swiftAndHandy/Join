@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="./assets/css/add_task_media_querys.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/menu-bar.css">
+    <link rel="stylesheet" href="./assets/css/menu-bar_media-querys.css">
     <link rel="stylesheet" href="./assets/css/fonts.css">
     <link rel="stylesheet" href="./assets/css/board.css">
     <link rel="stylesheet" href="./assets/css/board_media_querys.css">
@@ -170,22 +171,22 @@
                 </div>
                 <div class="flex-column-inputs mb-32 position-relative">
                   <span>Assigned to</span>
-                  <div id="contact-input-wrapper" onclick="toggleContactDropBox()">
-                  <div class="input-standard" id="assigned-to-contact">
-                    <span>Select contact to assign</span>
-                    <img class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" alt="">
-                  </div>
-                  
-                </div>
-                <div id="contacts-show-input" class="input-standard border-color-clicked d-none" onclick="toggleContactDropBox()" >
-                  <input onclick="stopPropagation(event)" type="text">
-                  <img class="rotation cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" alt="">
-                </div>
-                  <div id="contacts-drop-menu" class="drop-menu d-none">
-                      <div id="contacts-drop-menu-content" class="drop-menu-contacts">
-      
-                      
+                  <div id="contact-input-wrapper" onclick="stopPropagation(event)">
+                    <div class="input-standard" id="assigned-to-contact" onclick="toggleContactDropBox()">
+                      <span>Select contact to assign</span>
+                      <div onclick="stopPropagation(event)">
+                        <img class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" onclick="toggleContactDropBox()" alt="">
                       </div>
+                    </div>
+                  </div>
+                  <div id="contacts-show-input" class="input-standard border-color-clicked d-none" onclick="stopPropagation(event)">
+                    <input onclick="stopPropagation(event)" type="search" oninput="searchContact(this.value)">
+                    <img class="rotation cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" onclick="toggleContactDropBox()" alt="">
+                  </div>
+                  <div id="contacts-drop-menu" onclick="stopPropagation(event)" class="drop-menu d-none">
+                    <div id="contacts-drop-menu-content" class="drop-menu-contacts">
+                      <!-- Drop-down content goes here -->
+                    </div>
                   </div>
                 </div>
               </div>
