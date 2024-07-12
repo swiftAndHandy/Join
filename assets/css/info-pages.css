@@ -15,6 +15,7 @@
 main {
     margin-top: 128px;
     margin-bottom: 128px;
+    cursor: default;
 }
 
 .main--no-account {
