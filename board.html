@@ -71,8 +71,10 @@
               </button>
             </div>
             <div class="search-row">
-              <input id="search-title" oninput="searchAndShowTasks(this.value)" class="search-container-width" class="input-img" type="search" placeholder="Find Task" required>
-              <span id="empty-results" class="d-none" style="color: red; margin: 16px; font-weight: 700;">No task matches your search query</span>
+              <div class="search-wrapper">
+                <input id="search-title" oninput="searchAndShowTasks(this.value)" class="search-container-width" class="input-img" type="search" placeholder="Find Task" required>
+                <span id="empty-results" class="d-none">No task matches your query</span>
+              </div>
               <button class="add-task-btn">
                 <span>Add task</span>
                 <img src="./assets/img/icons/add_cross.svg" alt="add-cross" />

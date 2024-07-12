@@ -4,6 +4,10 @@
       gap: 24px;
       margin-top: 48px;
     }
+
+    .search-wrapper span {
+      top: 40px;
+    }
   
     .board {
       margin-left: 232px;

@@ -78,8 +78,20 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .search-row {
   margin-bottom: 24px;
+}
+
+.search-wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
+}
+
+.search-wrapper span {
+  color: red;
+  margin: 16px;
+  font-weight: 700;
+  position: absolute;
+  bottom: 40px;
 }
 
 .search-row input {
