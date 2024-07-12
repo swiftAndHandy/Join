@@ -48,7 +48,7 @@ body {
 
 .checkbox+label::before {
     content: '';
-    width: 24px;
+    min-width: 24px;
     height: 24px;
     background-image: url('../img/icons/checkbox_disabled.svg');
     background-position: center;
