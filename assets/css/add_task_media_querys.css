@@ -93,19 +93,14 @@
       width: 320px;
     }
   
-    .ul-row-styling {
-      font-size: 16px;
-  
-    }
-  
     .profile-initials-circle {
       width: 36px;
       height: 36px;
     }
   
-    .drop-menu {
+    /* .drop-menu {
       height: 236px;
-    }
+    } */
   
     .input-width {
       width: 364px !important;
