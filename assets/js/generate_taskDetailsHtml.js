@@ -1,20 +1,3 @@
-// Checkbox must become active also, when contact is currently assigned
-function generateContactsHtml(data) {
-    const target = document.getElementById('edit-task-contacts-list');
-    target.innerHTML += `
-        <div id="assign-contact-${data.path}" class="single-contact" onclick="toggleThisContact('${data.path}')">
-            <div class="user-box">
-                <div id="edit-task-avatar-${data.id}" class="avatar at-drop-down" style="background-color: ${data['color']};">${initials(data.name)}</div>
-                    <span id="edit-task-username-${data.id}">${data.name}</span>
-                </div>
-            <div id="assign-contact-pseudo-checkbox-${data.path}" class="pseudo-checkbox">
-            </div>
-                <input type="checkbox" class="contact-checkbox" id="assign-contact-checkbox-${data.path}" name="example-checkbox">
-                <label for="assign-contact-checkbox-${data.path}"></label>
-        </div>
-        `;
-}
-
 /**
  * Generates the Task-Detail-View-HTML
  * @param {string} taskId - contains the current tasks ID
