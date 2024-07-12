@@ -479,10 +479,11 @@ function handleEnter(event, id) {
 
   function clearSubtasksContainer() {
     document.getElementById('edit-subtask-item-wrapper').innerHTML = "";
-
+    document.getElementById('padding-placeholder').classList.remove('d-none')
   }
 
 
   function clearSubtasksContainerDialog() {
     document.getElementById('edit-subtask-item-wrapper-dialog').innerHTML = "";
+    
   }
