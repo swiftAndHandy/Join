@@ -52,7 +52,7 @@
   
   .details__title {
     font-weight: 700;
-    font-size: 36px;
+    font-size: clamp(18px, 5vw, 36px);
   }
   
   .edit.this-entry {

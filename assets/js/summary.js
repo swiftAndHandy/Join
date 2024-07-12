@@ -90,7 +90,6 @@ async function updateBoardCounters() {
     const data = await readData('tasks');
     const counters = { 'todo': 0, 'done': 0, 'board': 0, 'progress': 0, 'feedback': 0 };
     const urgents = [];
-
     for (let item in data) {
         const thisItem = data[item];
         counters[thisItem.status]++;
@@ -100,16 +99,24 @@ async function updateBoardCounters() {
         }
     }
 
+    setOpenUrgents(urgents);
+
+    for (let items in counters) {
+        document.getElementById(`${items}-counter`).innerText = counters[items];
+    }
+}
+
+
+/**
+ * Renders the Text for Urgent Tasks, that are NOT done yet.
+ */
+function setOpenUrgents(urgents) {
     document.getElementById('urgent-counter').innerText = urgents.length;
     if (urgents.length > 0) {
         document.getElementById('deadline-date').innerText = taskDueDate(getDeadline(urgents)[0]);
         document.getElementById('deadline-description').innerText = 'Upcoming Deadline'
     } else {
         document.getElementById('deadline-description').innerHTML = '<b>No upcoming deadline.</b><br>Take a breath.'
-    }
-
-    for (let items in counters) {
-        document.getElementById(`${items}-counter`).innerText = counters[items];
     }
 }
 
