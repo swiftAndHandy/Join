@@ -29,6 +29,8 @@ function setupListenerForAddTasksDialog() {
     let listener = document.getElementById('edit-add-subtask-dialog');
     listener.addEventListener('focus', focusListenerDialog);
     listener.addEventListener('blur', blurListenerDialog);
+
+    document.getElementById('task_add-popup-dialog').addEventListener('click', toggleContactDropBox);
 }
 
 
@@ -41,7 +43,6 @@ function focusListenerDialog() {
     document.getElementById('edit-subtask-box-dialog').classList.add('focus');
     hideWindow('edit-view-subtask-navigation-dialog', false);
     hideWindow('edit-view-subtask-add-dialog');
-    console.log("bla");
 }
 
 
