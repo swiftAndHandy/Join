@@ -211,7 +211,7 @@ function hideContactListForMobile() {
 
 function showContactListForDesktop() {
     executeOnMinWidth(821, async () => {
-        document.getElementById('contact-list-container').style.display = 'block';
+        document.getElementById('contact-list-container').style.display = 'flex';
         document.getElementById('contact-window').style.display = 'flex';
         document.getElementById('back-to-contacts-button').style.display = 'none';
     });
