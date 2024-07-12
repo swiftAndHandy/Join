@@ -29,7 +29,8 @@ html {
     padding: 0 16px 24px 16px;
     margin: 0;
     max-height: calc(100svh - 96x);
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     --sb-track-color: transparent;
     --sb-thumb-color: #0A1931;
     --sb-size: 6px;
