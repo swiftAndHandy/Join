@@ -12,6 +12,7 @@ async function initBoard() {
   renderContactList();
   stopEnterForm();
   setupListenerForAddTasksDialog();
+  addEntertoSubTasks();
 
   document.addEventListener('dragend', () => {
     if (currentlyDragged !== null) {

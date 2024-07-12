@@ -396,21 +396,36 @@ function selectCategory (category) {
 
   function addEntertoSubTasks () {
     document.getElementById('edit-add-subtask').addEventListener('keypress', handleEnter);
+    if(window.location.pathname === '/board.html') {
+      document.getElementById('edit-add-subtask-dialog').addEventListener('keypress', handleEnter);
+    }
+   
 }
 
 
-  function handleEnter(event) {
-    if (event.key === 'Enter') {
-      addNewSubtask(document.getElementById('edit-add-subtask').value,'edit-subtask-item-wrapper','div');
-      scrollToLastSubtask();blurListener();
+function handleEnter(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    if (window.location.pathname === '/add_task.html') {
+      addNewSubtask(document.getElementById('edit-add-subtask').value, 'edit-subtask-item-wrapper', 'div');
+      scrollToLastSubtask();
+      blurListener();
       hideWindow('padding-placeholder');
     }
+   
+    if (window.location.pathname === '/board.html') {
+      addNewSubtask(document.getElementById('edit-add-subtask-dialog').value, 'edit-subtask-item-wrapper-dialog', 'div', '-dialog');
+      scrollToLastSubtask('-dialog');
+      blurListener();
+    }
   }
+}
 
   function clearSubtasksContainer() {
     document.getElementById('edit-subtask-item-wrapper').innerHTML = "";
 
   }
+
 
   function clearSubtasksContainerDialog() {
     document.getElementById('edit-subtask-item-wrapper-dialog').innerHTML = "";
