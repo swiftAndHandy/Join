@@ -179,6 +179,7 @@ h2 {
   box-shadow: 0px 0px 10px 3px #00000014;
   border-radius: 24px;
   cursor: pointer;
+  min-height: 160px;
 }
 
 .task-card-wrapper.dimm {
