@@ -1,4 +1,3 @@
-
 /**
  * Prevents form submission on Enter key press after checking if the requirements are met.
  * Enter is not allowed when neither isSubtaskInputFocused nor textAreaSelected are true.
@@ -11,6 +10,7 @@ function stopEnterForm() {
         }
     });
 }
+
 
 /**
  * Checks if any subtask input field is focused.
@@ -37,10 +37,23 @@ function isSubtaskInputFocused() {
 }
 
 
+/**
+ * Checks if the textarea with the ID 'task-description' is the active element.
+ * This ensures that the Enter key is not blocked when typing in this textarea.
+ * 
+ * @returns {boolean} True if the 'task-description' textarea is the active element, otherwise false.
+ */
   function textAreaSelected() {
     return document.getElementById('task-description') === document.activeElement;
   }
-  function addEntertoSubTasks(event, id) {
+
+
+ /**
+ * Adds an event listener to subtask input fields to handle Enter key presses.
+ * 
+ * @param {string} id - The unique identifier for the subtask input wrapper.
+ */
+  function addEntertoSubTasks(id) {
     const subtaskInput = document.getElementById('edit-add-subtask');
     const subtaskDialog = document.getElementById('edit-subtask-box-dialog');
     if (subtaskInput) {
@@ -55,6 +68,13 @@ function isSubtaskInputFocused() {
     }
   }
 
+/**
+ * Handles the Enter key press event, preventing the default form submission if certain conditions are met.
+ * If Enter is pressed within the form-desktop element, it performs specific actions based on the current page.
+ * 
+ * @param {Event} event - The event object from the key press.
+ * @param {string} id - The unique identifier for the subtask input wrapper.
+ */
 
 function handleEnter(event, id) {
     if (event.key === 'Enter' && event.target.closest('#form-desktop')) {

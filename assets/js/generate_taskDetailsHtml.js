@@ -127,7 +127,7 @@ function addNewSubtask(value, target = 'edit-subtask-item-wrapper', form = 'form
         </ul>
     </div>
     <${form} id="single-subtask-input-wrapper-${id}" class="single-subtask-input-box d-none" onsubmit="updateSubtaskInput('${id}');return false;">
-        <input id="single-subtask-input-${id}" onkeydown="addEntertoSubTasks(event, '${id}')" type="text">
+        <input id="single-subtask-input-${id}" onkeydown="addEntertoSubTasks('${id}')" type="text">
         <img class="link-btn discard-btn" src="./assets/img/icons/discard.svg" alt="" onclick="discardSubtaskInput('${id}')">
         <div class="vertical-line"></div>
         <img class="link-btn accept-btn" src="./assets/img/icons/check_blue.svg" alt="" onclick="updateSubtaskInput('${id}')">

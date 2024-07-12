@@ -434,6 +434,7 @@ function removeContactFromInterface(contactId) {
     item.remove();
 }
 
+
 /**
  * Closes the contact window and displays the contact list container.
  */
