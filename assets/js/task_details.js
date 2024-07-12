@@ -3,6 +3,9 @@ let assignedPersonsToUpdate = [];
 let subtasksToUpdate = [];
 let currentDetailLocation = null;
 
+/**
+ * Initialization of Task-Detail-View.
+ */
 function initTaskDetails() {
     setupListener();
 }
@@ -131,6 +134,7 @@ async function openEditDialog() {
 
 
 /**
+ * Used to set the focus to an specific subtask element.
  * @param {string} id - set focus to an DOM-Content bases on the submited id
  */
 function setFocus(id) {

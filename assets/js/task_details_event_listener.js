@@ -14,7 +14,8 @@ function setupListener() {
 }
 
 /**
- * 
+ * Setup some Listeners, thats needed for Subtasks.
+ * It's implemented by Phillip on base of setupListener. 
  */
 function setupListenerForAddTasks() {
     let listener = document.getElementById('edit-add-subtask');
@@ -23,7 +24,8 @@ function setupListenerForAddTasks() {
 }
 
 /**
- * 
+ * Setup some Listeners, thats needed for Subtasks.
+ * It's implemented by Phillip on base of setupListener. 
  */
 function setupListenerForAddTasksDialog() {
     let listener = document.getElementById('edit-add-subtask-dialog');
