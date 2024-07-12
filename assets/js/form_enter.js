@@ -68,6 +68,7 @@ function isSubtaskInputFocused() {
     }
   }
 
+  
 /**
  * Handles the Enter key press event, preventing the default form submission if certain conditions are met.
  * If Enter is pressed within the form-desktop element, it performs specific actions based on the current page.
@@ -75,7 +76,6 @@ function isSubtaskInputFocused() {
  * @param {Event} event - The event object from the key press.
  * @param {string} id - The unique identifier for the subtask input wrapper.
  */
-
 function handleEnter(event, id) {
     if (event.key === 'Enter' && event.target.closest('#form-desktop')) {
     event.preventDefault();

@@ -1,4 +1,13 @@
-function generateDropBoxContacts(entries, data) {
+/**
+ * Generates contact elements in the dropdown menu. Data is fetched from the Firebase backend.
+ * 
+ * @param {Object} entries - The contact entries fetched from the backend.
+ * @param {string} entries.path - The unique path or ID of the contact.
+ * @param {string} entries.color - The color associated with the contact.
+ * @param {string} entries.name - The name of the contact.
+ */
+
+function generateDropBoxContacts(entries) {
   let boxContent = document.getElementById('contacts-drop-menu-content');
 
   boxContent.innerHTML += `
@@ -19,6 +28,11 @@ function generateDropBoxContacts(entries, data) {
 }
 
 
+/**
+ * Generates profile pictures with the right initials for the contact box.
+ * Fetches user data and creates profile circles with initials for each assigned contact.
+ * If there are more than 10 contacts, the function will add a circle with "..." to indicate more contacts.
+ */
 async function generateCircleProfilesLine() {
   const target = document.getElementById(`contacts-img-line`);
   if (target) {
