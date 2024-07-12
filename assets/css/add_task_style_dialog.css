@@ -58,6 +58,7 @@ select {
 }
 #select-category {
   cursor: pointer;
+  width: 320px;
 }
 
 .dialog-container {
@@ -388,7 +389,13 @@ select {
   font-size: 16px !important;
 }
 
+#category-input-wrapper  {
+  width: 364px;
+}
 
+.details-subtask-box {
+width: 364px !important;
+}
 
 .profile-initials-circle-line {
   height: 32px !important;
