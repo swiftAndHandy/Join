@@ -56,7 +56,7 @@ function isSubtaskInputFocused() {
 
 
 function handleEnter(event, id) {
-  if (event.key === 'Enter') {
+    if (event.key === 'Enter' && event.target.closest('#form-desktop')) {
     event.preventDefault();
     const subtaskInput = document.getElementById('edit-add-subtask');
 
