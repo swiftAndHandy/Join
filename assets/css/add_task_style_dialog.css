@@ -58,6 +58,11 @@ select {
 }
 #select-category {
   cursor: pointer;
+  width: 320px;
+}
+
+#edit-subtask-box-dialog {
+  width: 364px !important;
 }
 
 .dialog-container {
