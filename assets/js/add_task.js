@@ -395,7 +395,7 @@ function selectCategory (category) {
     const form = document.getElementById('form-desktop');
 
     form.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter' && !isSubtaskInputFocused()) {
+        if (event.key === 'Enter' && !isSubtaskInputFocused() && !textAreaSelected()) {
             event.preventDefault();
         }
     });
