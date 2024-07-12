@@ -88,12 +88,13 @@ function animateGreeting(greeting) {
  */
 async function updateBoardCounters() {
     const data = await readData('tasks');
-    const counters = { 'todo': 0, 'done': 0, 'board': Object.keys(data).length, 'progress': 0, 'feedback': 0 };
+    const counters = { 'todo': 0, 'done': 0, 'board': 0, 'progress': 0, 'feedback': 0 };
     const urgents = [];
 
     for (let item in data) {
         const thisItem = data[item];
         counters[thisItem.status]++;
+        counters.board++;
         if (thisItem.priority.toLowerCase() === 'urgent' && thisItem.status !== 'done') {
             urgents.push(thisItem.date);
         }
