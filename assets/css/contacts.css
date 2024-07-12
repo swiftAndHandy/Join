@@ -79,6 +79,7 @@ html {
     line-height: 24px;
     list-style: none;
     padding: 17px 36px;
+    cursor: default;
 }
 
 .underline {
@@ -194,6 +195,7 @@ html {
     height: 75px;
     gap: 30px;
     align-self: baseline;
+    cursor: default;
 }
 
 .h1-and-motto-container h1 {
