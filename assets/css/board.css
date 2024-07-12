@@ -159,6 +159,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   height: 40px;
+  cursor: default;
 }
 
 .task-fields {
