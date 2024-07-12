@@ -151,7 +151,6 @@ function addNewSubtask(value, target = 'edit-subtask-item-wrapper', form = 'form
     </${form}}>
     `);
     document.getElementById(`edit-add-subtask${specialTarget}`).value = '';
-    document.getElementById(`edit-add-subtask${specialTarget}`).focus();
     }
 }
 

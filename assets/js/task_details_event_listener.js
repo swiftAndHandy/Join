@@ -34,6 +34,31 @@ function setupListenerForAddTasksDialog() {
 }
 
 
+/**
+ * Change Button-Design based on focus of input-field. 
+ * Show discard and save-button, when input for new subtask is active
+ */
+function focusListener() {
+    document.getElementById('edit-subtask-box').classList.add('focus');
+    hideWindow('edit-view-subtask-navigation', false);
+    hideWindow('edit-view-subtask-add');
+}
+
+
+/**
+ * Change Button-Design based on focus of input-field. 
+ * Hide discard and save-button, when input for new subtask is active
+ * Show add button instead.
+ */
+function blurListener() {
+    let listener = document.getElementById('edit-add-subtask')
+    document.getElementById('edit-subtask-box').classList.remove('focus');
+    if (!listener.value) {
+        hideWindow('edit-view-subtask-navigation');
+        hideWindow('edit-view-subtask-add', false);
+    }
+}
+
 
 /**
  * Change Button-Design based on focus of input-field. 
@@ -57,31 +82,5 @@ function blurListenerDialog() {
     if (!listener.value) {
         hideWindow('edit-view-subtask-navigation-dialog');
         hideWindow('edit-view-subtask-add-dialog', false);
-    }
-}
-
-
-/**
- * Change Button-Design based on focus of input-field. 
- * Show discard and save-button, when input for new subtask is active
- */
-function focusListener() {
-    document.getElementById('edit-subtask-box').classList.add('focus');
-    hideWindow('edit-view-subtask-navigation', false);
-    hideWindow('edit-view-subtask-add');
-}
-
-
-/**
- * Change Button-Design based on focus of input-field. 
- * Hide discard and save-button, when input for new subtask is active
- * Show add button instead.
- */
-function blurListener() {
-    let listener = document.getElementById('edit-add-subtask')
-    document.getElementById('edit-subtask-box').classList.remove('focus');
-    if (!listener.value) {
-        hideWindow('edit-view-subtask-navigation');
-        hideWindow('edit-view-subtask-add', false);
     }
 }
