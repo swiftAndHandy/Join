@@ -1,5 +1,6 @@
 const currentlyOpen = getCurrentFileName();
 
+
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
@@ -26,6 +27,7 @@ function showOverlayMenu(toggle = false) {
     }
 }
 
+
 /**
  * fetchs the currently open html-file-name and removes .html.
  * This function is used to handle the navigation-design.
@@ -36,6 +38,7 @@ function getCurrentFileName() {
     let fileName = path.substring(path.lastIndexOf('/') + 1);
     return fileName.replace('.html', '');
 }
+
 
 /**
  * Updates Design for the side- and bottom-navigation when entering a new page.
@@ -69,6 +72,7 @@ function hideMenu() {
     hideWindow('header-desktop__right-content');
     document.getElementById('main-wrapper').setAttribute('style', 'margin-bottom: 0');
 }
+
 
 /**
  * Used for if-statement readability
