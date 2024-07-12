@@ -256,7 +256,7 @@
 
     .contact-email-list {
         text-overflow: ellipsis;
-        max-width: 250px;
+        width: min(250px, 60vw);
         overflow: hidden;
     }
 }
