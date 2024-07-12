@@ -507,7 +507,11 @@ select:focus {
 
 }
 
-#edit-view-scrollbar {
+.stay-white {
+  background-color: white;
+}
+
+.add-task__subtask-scrollbar {
   overflow-y: auto;
   max-height: 40px;
   max-width: 480px;
@@ -516,26 +520,26 @@ select:focus {
 }
 
 
-.edit-view-scrollbar::-webkit-scrollbar {
+.add-task__subtask-scrollbar::-webkit-scrollbar {
   height: 8px; 
 }
 
-.edit-view-scrollbarr::-webkit-scrollbar-thumb {
+.add-task__subtask-scrollbar::-webkit-scrollbar-thumb {
   background-color: #888; 
   border-radius: 10px; 
 }
 
-.edit-view-scrollbar::-webkit-scrollbar-thumb:hover {
+.add-task__subtask-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: #555; 
   
 }
 
-.edit-view-scrollbar::-webkit-scrollbar-track {
+.add-task__subtask-scrollbar::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
 
-.edit-view-scrollbarr::-webkit-scrollbar-button {
+.add-task__subtask-scrollbar::-webkit-scrollbar-button {
   display: none;
 }
 

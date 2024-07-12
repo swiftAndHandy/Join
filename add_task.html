@@ -123,8 +123,8 @@
               </div>
               <div class="flex-column-inputs mb-32">
                 <span class="details__caption">Subtasks</span>
-                <div id="edit-subtask-box" class="details-subtask-box input-width" onsubmit="addNewSubtask(document.getElementById('edit-add-subtask').value);scrollToLastSubtask();return false;">
-                    <input type="text" id="edit-add-subtask" class="details-subtask-add" placeholder="Add new subtask">
+                <div id="edit-subtask-box" class="details-subtask-box stay-white input-width" onsubmit="addNewSubtask(document.getElementById('edit-add-subtask').value);scrollToLastSubtask();return false;">
+                    <input type="text" id="edit-add-subtask" class="details-subtask-add " placeholder="Add new subtask">
                     <div id="edit-view-subtask-add" class="cross blue" onclick="setFocus('edit')"></div>
                     <div id="edit-view-subtask-navigation" class="edit-subtask-navigation d-none"
                         onclick="stopPropagation(event);">
@@ -135,7 +135,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="edit-view-scrollbar">
+                <div id="edit-view-scrollbar" class="add-task__subtask-scrollbar">
                 <div id="edit-subtask-item-wrapper" style="width: 100%">
                   <div id="padding-placeholder"></div>
                 </div>
