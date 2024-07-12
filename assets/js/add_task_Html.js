@@ -6,7 +6,6 @@
  * @param {string} entries.color - The color associated with the contact.
  * @param {string} entries.name - The name of the contact.
  */
-
 function generateDropBoxContacts(entries) {
   let boxContent = document.getElementById('contacts-drop-menu-content');
 
