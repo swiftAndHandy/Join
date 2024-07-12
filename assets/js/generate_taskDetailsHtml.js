@@ -123,7 +123,7 @@ async function assignedPersonsEditHtml(contactIds) {
  * Applys a random ID to this item. Submits only, if value isn't empty after trim spaces from begin and end
  * @param {string} value 
  */
-function addNewSubtask(value, target = 'edit-subtask-item-wrapper', form = 'form') {
+function addNewSubtask(value, target = 'edit-subtask-item-wrapper', form = 'form', specialTarget = '') {
     target = document.getElementById(`${target}`);
     const id = randomId();
     value = value.trim();
@@ -150,7 +150,8 @@ function addNewSubtask(value, target = 'edit-subtask-item-wrapper', form = 'form
         <img class="link-btn accept-btn" src="./assets/img/icons/check_blue.svg" alt="" onclick="updateSubtaskInput('${id}')">
     </${form}}>
     `);
-    document.getElementById('edit-add-subtask').value = '';
+    document.getElementById(`edit-add-subtask${specialTarget}`).value = '';
+    document.getElementById(`edit-add-subtask${specialTarget}`).focus();
     }
 }
 
