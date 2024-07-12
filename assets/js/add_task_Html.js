@@ -31,13 +31,13 @@ function generateDropBoxContacts(entries,data) {
             
             if (target.childElementCount >= 11) {
               target.insertAdjacentHTML('beforeend', `<div class="profile-initials-circle-line" id="profile-circle-container-${contact}" style="background-color:#29ABE2">...</div>`);
-                
               break;
             }
+
           } catch (error) {
             console.error('error by reading the contacs', error);
           }
         }
       }
-      }
+    }
     
