@@ -133,6 +133,7 @@ main {
   left: 50%;
   color: white;
   font-size: 47px;
+  overflow: hidden;
 }
 
 .input-information {

@@ -48,7 +48,7 @@ function contactDetailsHTML(name, email, telefon, color, i) {
         <div class="image-name-container">
             <div class="contact-image--large" style="background-color:${color};">${showCapitaliseFirstLetters(name)}</div>
             <div class="name-buttons-container">
-                <h2 class="contact-name--large">${name}</h2>
+                <h2 class="contact-name--large">${limitLengthOf(name, 20)}</h2>
                 <div class="edit-delete-buttons-container">
                     <div id="edit-button" class="edit-button" onclick="openEditContactPage('${i}')">
                         <img src="./assets/img/icons/edit.svg" alt="edit">edit

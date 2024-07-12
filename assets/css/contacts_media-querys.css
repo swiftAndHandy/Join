@@ -130,7 +130,7 @@
     }
 
     .contact-name--large {
-        font-size: clamp(26px, 7vw, 36px);
+        font-size: clamp(18px, 7vw, 36px);
         font-weight: 700;
     }
 
@@ -251,12 +251,14 @@
 
 @media (max-width: 1600px) {
     .contact-name-list {
-        max-width: 250px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: min(250px, 60vw);
     }
 
     .contact-email-list {
         text-overflow: ellipsis;
-        width: min(250px, 60vw);
         overflow: hidden;
+        width: min(250px, 60vw);
     }
 }

@@ -254,3 +254,15 @@ function setPrefixToKey(prefix, data) {
   }
 
 
+/**
+ * Limits the length of a string to a chosen limit
+ * @param {string} inputString - string, that should become limited in length
+ * @param {int} limit - max-length of the string
+ * @returns {string} - shortened string
+ */
+function limitLengthOf(inputString, limit = 80) {
+    if (inputString.length > limit) {
+      return inputString.substring(0, limit) + '...';
+    }
+    return inputString;
+  }
