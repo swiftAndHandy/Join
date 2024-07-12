@@ -231,9 +231,3 @@ function renderOpenSubtasks() {
 function scrollToLastSubtask(specialTarget = '') {
     document.getElementById(`edit-view-scrollbar${specialTarget}`).lastElementChild.scrollIntoView({behavior: 'smooth', block: 'end'});
 }
-
-// function closeEditView() {
-//     toggleVisibility('task-edit-view');
-//     toggleVisibility('task-details-view');
-//     document.getElementById('edit-subtask-item-wrapper').innerHTML = '';
-// }
