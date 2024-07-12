@@ -224,3 +224,7 @@ a {
         display: none;
     }
 }
+
+.stay-white {
+    background-color: white;
+  }

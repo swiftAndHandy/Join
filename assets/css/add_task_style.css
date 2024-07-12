@@ -508,10 +508,6 @@ select:focus {
 
 }
 
-.stay-white {
-  background-color: white;
-}
-
 .add-task__subtask-scrollbar {
   overflow-y: auto;
   max-height: 40px;
