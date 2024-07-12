@@ -395,13 +395,35 @@ function selectCategory (category) {
     const form = document.getElementById('form-desktop');
 
     form.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter' && !textAreaSelected()) {
+        if (event.key === 'Enter' && !isSubtaskInputFocused()) {
             event.preventDefault();
         }
-    })
-  };
+    });
+}
 
-  
+function isSubtaskInputFocused() {
+    const subtaskInput = document.getElementById('edit-add-subtask');
+    const subtaskDialogInput = document.getElementById('edit-add-subtask-dialog');
+    const singleSubtaskInputs = document.querySelectorAll('[id^=single-subtask-input-]');
+
+    if (subtaskInput && subtaskInput === document.activeElement) {
+        return true;
+    }
+
+    if (subtaskDialogInput && subtaskDialogInput === document.activeElement) {
+        return true;
+    }
+
+    for (let i = 0; i < singleSubtaskInputs.length; i++) {
+        if (singleSubtaskInputs[i] === document.activeElement) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
   function textAreaSelected() {
     return document.getElementById('task-description') === document.activeElement;
   }

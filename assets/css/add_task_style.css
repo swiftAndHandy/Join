@@ -139,6 +139,7 @@ select {
   width: 100%;
   border-radius: 10px;
   position: relative;
+  
 }
 
 #category-drop-menu-content {
@@ -364,6 +365,7 @@ select:focus {
   height: 217px;
   overflow-y: auto;
   border-radius: 10px;
+ 
 
 }
 
@@ -543,3 +545,4 @@ select:focus {
 #contact-input-wrapper, #category-input-wrapper, .category-drop-box-field {
   cursor: pointer;
 }
+
