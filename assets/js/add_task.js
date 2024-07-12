@@ -29,13 +29,22 @@ function formOfDueDate() {
   addTaskDueDate = document.getElementById('task-due-date').value
 }
 
-
+/**
+ * Retrieves the value of the input field with the ID 'task-title'
+ * and assigns it to the variable addTaskDueDate.
+ * 
+ */
 function addTitle() {
   let title = document.getElementById("task-title");
   addTaskTitle = title.value;
 
 }
 
+/**
+ * Retrieves the value of the input field with the ID 'task-due-date'
+ * and assigns it to the variable addTaskDueDate.
+ * 
+ */
 
 function addDescription() {
   let taskDescription = document.getElementById("task-description");
@@ -397,30 +406,52 @@ function selectCategory (category) {
     return document.getElementById('task-description') === document.activeElement;
   }
 
-
-  function addEntertoSubTasks () {
-    document.getElementById('edit-add-subtask').addEventListener('keypress', handleEnter);
-    if(window.location.pathname === '/board.html') {
-      document.getElementById('edit-add-subtask-dialog').addEventListener('keypress', handleEnter);
+  function addEntertoSubTasks(event, id) {
+    const subtaskInput = document.getElementById('edit-add-subtask');
+    const subtaskDialog = document.getElementById('edit-subtask-box-dialog');
+  
+    if (subtaskInput) {
+      subtaskInput.addEventListener('keypress', (event) => handleEnter(event, id));
     }
-   
-}
+  
+    if (window.location.pathname === '/board.html' && subtaskDialog) {
+      subtaskDialog.addEventListener('keypress', (event) => handleEnter(event, id));
+    }
+  
+    // Überprüfen, ob das Element mit der spezifischen ID existiert, bevor der Event-Listener hinzugefügt wird
+    const singleSubtaskInputWrapper = document.getElementById(`single-subtask-input-wrapper-${id}`);
+    if (singleSubtaskInputWrapper) {
+      singleSubtaskInputWrapper.addEventListener('keypress', (event) => handleEnter(event, id));
+    }
+  }
 
 
-function handleEnter(event) {
+function handleEnter(event, id) {
   if (event.key === 'Enter') {
     event.preventDefault();
-    if (window.location.pathname === '/add_task.html') {
-      addNewSubtask(document.getElementById('edit-add-subtask').value, 'edit-subtask-item-wrapper', 'div');
-      scrollToLastSubtask();
-      blurListener();
-      hideWindow('padding-placeholder');
+    const subtaskInput = document.getElementById('edit-add-subtask');
+
+    if (subtaskInput) {
+      const inputValue = subtaskInput.value;
+
+      if (window.location.pathname === '/add_task.html') {
+        addNewSubtask(inputValue, 'edit-subtask-item-wrapper', 'div');
+        scrollToLastSubtask();
+        blurListener();
+        hideWindow('padding-placeholder');
+      }
+
+      if (window.location.pathname === '/board.html') {
+     addNewSubtask(document.getElementById('edit-add-subtask-dialog').value,'edit-subtask-item-wrapper-dialog','div', '-dialog');scrollToLastSubtask('-dialog');blurListener();
+      }
+    } else {
+      console.error('Cannot find subtask input element');
     }
-   
-    if (window.location.pathname === '/board.html') {
-      addNewSubtask(document.getElementById('edit-add-subtask-dialog').value, 'edit-subtask-item-wrapper-dialog', 'div', '-dialog');
-      scrollToLastSubtask('-dialog');
-      blurListener();
+
+    // Unabhängige Ausführung von updateSubtaskInput
+    const editSubtaskInput = document.getElementById(`single-subtask-input-${id}`);
+    if (editSubtaskInput) {
+      updateSubtaskInput(id);
     }
   }
 }
