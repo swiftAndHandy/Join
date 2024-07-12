@@ -384,7 +384,18 @@ select {
     margin: 0;
 }
 
+.ul-row-styling {
+  font-size: 16px !important;
+}
 
+.drop-menu {
+  height: 220px !important;
+}
+
+.profile-initials-circle-line {
+  height: 32px !important;
+  max-width: 32px !important  ;
+}
 
 @media (min-width: 1160px) {
   .dialog-main-container {
