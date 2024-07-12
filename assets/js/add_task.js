@@ -7,7 +7,12 @@ pressedButton = 0;
 previousButton = 0;
 styledCheckbox = [];
 
-
+/**
+ * Initializes necessary functions to ensure proper display and form validation.
+ * This includes importing HTML content, rendering the contact list,
+ * preventing form submission on Enter key press,
+ * setting up listeners for adding tasks, and enabling Enter key functionality for subtasks.
+ */
 function init() {
   includeHTML();
   renderContactList();
@@ -16,10 +21,11 @@ function init() {
   addEntertoSubTasks ();
 }
 
+
 /**
  * 
- * @param {HTMLInputElement} checkbox Contains the value of the checked element from the form tag with the id="form-desktop"
- * @param {number} idNumber Uses a number from a for-loop to assign individual IDs.
+ * @param {HTMLInputElement} checkbox - Contains the value of the checked element from the form tag with the id="form-desktop"
+ * @param {string}  idNumber - gives the path back of an object
  */
 function handleCheckBox(checkbox, idNumber) {
   if (checkbox.checked) {
@@ -39,6 +45,10 @@ function handleCheckBox(checkbox, idNumber) {
 }
 
 
+/**
+ * Implements the styling of the checkboxes when pressed.
+ * @param {string} idNumber - The path identifier of an object.
+ */
 function pressedCheckBoxStyle(idNumber) {
   document.getElementById(`label-check${idNumber}`).classList.add('filter-to-white')
   document.getElementById(`background-drop-menu-background${idNumber}`).classList.remove('ul-content-wrapper-no-click')
@@ -47,6 +57,10 @@ function pressedCheckBoxStyle(idNumber) {
 }
 
 
+/**
+ * removes the checkbox styling after uncheck them
+ * @param {*} idNumber 
+ */
 function unPressedCheckBoxStyle(idNumber) {
   document.getElementById(`label-check${idNumber}`).classList.remove('filter-to-white')
   document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('ul-content-wrapper-no-click')
@@ -54,6 +68,11 @@ function unPressedCheckBoxStyle(idNumber) {
 
 }
 
+
+/**
+ * Toggles the visibility of the contact drop-down menu.
+ * @param {boolean} [forcedClose=false] - Flag indicating if the drop-down should be forcefully closed.
+ */
 
 function toggleContactDropBox(forcedClose = false) {
   if (!alreadyOpen && forcedClose === false) {
@@ -72,6 +91,12 @@ function toggleContactDropBox(forcedClose = false) {
 }
 
 
+/**
+ * Clears the inputs in the form with the id 'form-desktop' and prevents the form's standard validation
+ * with a timeout to ensure the site is not reloaded.
+ * 
+ * @param {Event} event - The event object triggered when the form is submitted.
+ */
 function clearInputs(event) {
   event.preventDefault()
   let form = document.getElementById('form-desktop')
@@ -84,6 +109,10 @@ function clearInputs(event) {
  
 }
 
+/**
+ * Removes the standard validation message
+ * @param {Event} event 
+ */
 
 function stopStandardValidationMessage(event) {
   event.preventDefault()
@@ -95,6 +124,11 @@ function stopStandardValidationMessage(event) {
 }
 
 
+/**
+ * Calls all clear functions to ensure the clear button clears everything including styling.
+ * 
+ * @param {Event} event - The event object triggered when the clear button is clicked.
+ */
 function clearForm (event) {
   clearInputs(event);
   clearFormPrio();
@@ -106,6 +140,10 @@ function clearForm (event) {
  
 }
 
+
+/**
+ * Clears the form styling after pressing the clear button 
+ */
 
 function clearFormPrio() {
  pressedButton = 0;
@@ -121,6 +159,11 @@ function clearFormPrio() {
 
 }
 
+
+
+/**
+ * Clears the checkbox styles and resets the associated values after removing them.
+ */
 
 function clearFormContactStyle() {
   styledCheckbox.forEach(checkboxId => {
@@ -139,6 +182,12 @@ function clearFormContactStyle() {
   styledCheckboxes = [];
 }
 
+
+/**
+ * Converts an array into an object where array values become object properties.
+ * @param {array} array The array to be converted into an object.
+ * @returns {object} The resulting object with numeric indices as keys.
+ */
 function convertArrayToObject(array) {
   let obj = {};
   array.forEach((value, index) => {
@@ -148,6 +197,11 @@ function convertArrayToObject(array) {
 }
 
 
+/**
+ * Posts a new task to the backend.
+ * Collects task data from form inputs and sends it via POST request to the backend API.
+ * @returns {Promise<void>} A promise that resolves when the task is successfully posted.
+ */
 async function addnewTask() {
   const addTaskSubTask = createSubtasks();
   let assignedContactsObject = convertArrayToObject(addTaskAssignedContacts);
@@ -165,6 +219,14 @@ async function addnewTask() {
 }
 
 
+/**
+ * Checks if the form is completely filled and validates whether the form is ready to submit or not.
+ * If all required fields are filled and a category is selected, the new task is added, a success popup is shown,
+ * and the form is cleared.
+ * If not all required fields are filled or no category is selected, standard form validation messages are stopped,
+ * custom validation is performed, and category field is checked.
+ * @param {Event} event The event object, typically from a form submission.
+ */
 function checkIfFormFilled(event) {
   const form = document.getElementById("form-desktop");
   const requiredFields = form.querySelectorAll("[required]");
@@ -190,6 +252,12 @@ function checkIfFormFilled(event) {
 }
 
 
+/**
+ * Sets the priority of a task and updates its visual styling when clicked.
+ * Clears previous selections and applies the selected priority and its corresponding color.
+ * @param {string} prio- The priority level, one of "urgent", "medium", or "low".
+ * @param {number} number - number The index of the priority button clicked to determine which priority to set
+ */
 function setPrio(prio, number) {
   const priorities = ["urgent", "medium", "low"];
   const colors = ["orange", "yellow", "green"];
@@ -217,6 +285,10 @@ function setPrio(prio, number) {
 }
 
 
+/**
+ * Display the successfully created a task pop-up with a little animation
+ */
+
 function showPopupTaskAdded() {
   const popup = document.getElementById('pop-up-transition'); 
 
@@ -233,6 +305,10 @@ function showPopupTaskAdded() {
 }
 
 
+/**
+ * Fetches contact and account data from the backend, processes it, and renders
+ * the contact list in the drop-box.
+ */
 async function renderContactList() {
   let contacts = await readData('contacts');
   contacts = setPrefixToKey('contacts', contacts);
@@ -247,6 +323,13 @@ async function renderContactList() {
 }
 
 
+/**
+ * Filters contact elements based on the search term and toggles their visibility.
+ * Elements with class 'group-pb-cricle-with-name' are iterated over and displayed
+ * based on whether their text content matches the search term.
+ * 
+ * @param {string} search The search term to filter contact elements.
+ */
 function searchContact(search) {
   const contactNames = Array.from(document.querySelectorAll('div.group-pb-cricle-with-name'));
   contactNames.forEach(item => {
@@ -256,7 +339,9 @@ function searchContact(search) {
   });
 }
 
-
+/**
+ * Open or close the category drop-box when clicked
+ */
  function toggleCategoryDropBox() {
   if (!alreadyOpen) {
     document.getElementById('arrow').classList.remove('rotation-back');
@@ -274,6 +359,12 @@ function searchContact(search) {
 }
 
 
+/**
+ * Sets the selected category for the task and updates the displayed category text.
+ * Closes the category drop-down box after selection.
+ * 
+ * @param {string} category - The category selected for the task.
+ */
 function selectCategory (category) {
   addTaskCategory = category;
   document.getElementById('selected-category').textContent = `${category}`;
@@ -281,6 +372,9 @@ function selectCategory (category) {
 }
 
 
+/**
+ * Creates custom validation error messages when form fields are not filled.
+ */
   function ownValidation() {
     const form = document.querySelector('#form-desktop');
     const requiredFields = form.querySelectorAll('[required]');
@@ -305,6 +399,9 @@ function selectCategory (category) {
   }
 
 
+/**
+ * checks the category field because it can't have the required tag but is required for the form to be filled.
+ */
   function checkCategoryfield () {
     const selectCategoryDiv = document.getElementById('category-input-wrapper');
       const selectedCategory = selectCategoryDiv.innerText.trim();
@@ -325,6 +422,9 @@ function selectCategory (category) {
   }
 
 
+/**
+ * Removes validation error messages when fields are filled out
+ */
   function removeValidation() {
     const form = document.querySelector('#form-desktop');
     const requiredFields = form.querySelectorAll('[required]');
@@ -342,12 +442,17 @@ function selectCategory (category) {
   }
 
 
+/**
+ * Clears the subtask container when the clear button is clicked.
+ */
   function clearSubtasksContainer() {
     document.getElementById('edit-subtask-item-wrapper').innerHTML = "";
     document.getElementById('padding-placeholder').classList.remove('d-none')
   }
 
-
+/**
+ * Clears the subtask container in the board add task dialog field.
+ */
   function clearSubtasksContainerDialog() {
     document.getElementById('edit-subtask-item-wrapper-dialog').innerHTML = ""; 
   }
