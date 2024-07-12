@@ -145,7 +145,8 @@ function discardNewSubtask() {
 
 
 /**
- * @param {string} subtaskId - build an elementId related to subtask-id and change the input-style
+ * Opens the Input Field for a subtask the user wants to edit.
+ * @param {string} subtaskId -id of the subtask input that should become oppened
  */
 function openSubtaskInput(subtaskId) {
     const input = document.getElementById(`single-subtask-input-${subtaskId}`);
@@ -236,6 +237,7 @@ function renderOpenSubtasks() {
 
 /**
  * add this, when a new subtask is submitted. This function must be called explicite.
+ * param was added later make this function apple to be used from team-members.
  */
 function scrollToLastSubtask(specialTarget = '') {
     document.getElementById(`edit-view-scrollbar${specialTarget}`).lastElementChild.scrollIntoView({behavior: 'smooth', block: 'end'});
