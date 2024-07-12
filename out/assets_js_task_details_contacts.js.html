@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: assets/js/summary.js</title>
+    <title>JSDoc: Source: assets/js/task_details_contacts.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: assets/js/summary.js</h1>
+    <h1 class="page-title">Source: assets/js/task_details_contacts.js</h1>
 
     
 
@@ -26,127 +26,87 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * This function is used @summary.html to initalize everything.
- * Adds an eventListener on every summary card, that leads to board.html when clicked.
- * This method is used to prevent regular link-style
- */
-function initSummary() {
-    includeHTML();
-    greetAtLogin();
-    document.querySelectorAll('.summary-card').forEach(card => {
-        card.addEventListener('click', () => window.location.href = "./board.html");
-    })
-}
-
+            <pre class="prettyprint source linenums"><code>
 /**
- * Runs various functions, to use the correct greeting for users/guests.
- * To do: Check for Login/Username...
+ * Rendering Contact-List in Edit-Details. 
+ * The Contact-List Contains contacts and accounts, so after fetching both
+ * they recive a prefix that leads to there path on the server.
+ * For every of those items HTML is generated.
  */
-async function greetAtLogin() {
-    const daytime = getDaytime();
-    const greetingOverlay = document.getElementById('greeting-overlay');
-    const greetingEmbedded = document.getElementById('greeting-embedded');
-    const userInformation = await readData(`accounts/${userId}`)
-    const greetingMsg = await generateGreetingHtml(daytime, userInformation);
-    greetingOverlay.innerHTML = greetingMsg;
-    greetingEmbedded.innerHTML = greetingMsg;
-    animateGreeting(greetingOverlay);
-    updateBoardCounters();
-}
+async function renderDetailsContactList() {
+    let contacts = await readData('contacts');
+    contacts = setPrefixToKey('contacts', contacts);
+    let accounts = await readData('accounts');
+    accounts = setPrefixToKey('accounts', accounts);
 
-/**
- * @returns a string with the current daytime &lt;br>&lt;br>
- */
-function getDaytime() {
-    const currentDate = new Date();
-    const hours = currentDate.getHours();
-
-    if (isMorning(hours)) {
-        return 'morning';
-    } else if (isAfternoon(hours)) {
-        return hours === 12 ? 'noon' : 'afternoon';
-    } else if (isEvening(hours)) {
-        return 'evening';
-    } else {
-        return 'night';
+    let data = {};
+    await Object.assign(data, accounts, contacts);
+    let entries = sortByAlphabet(data);
+    for (let i = 0; i &lt; entries.length; i++) {
+        generateContactsHtml(entries[i]);
     }
 }
 
 /**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 6 or up to 11) or false&lt;br>&lt;br>
+ * Simulates an click on every assigned contact to activate it for contact list and submit array (assignedPersonsToUpdate)
+ * CAVE: I try to enable user accounts also. in this case it needs to be set up to assign-contact-${item}, since contacts will be added by algorithm.
  */
-function isMorning(hours) {
-    return hours >= 6 &amp;&amp; hours &lt; 12;
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 12 and up to 17) or false&lt;br>&lt;br>
- */
-function isAfternoon(hours) {
-    return hours >= 12 &amp;&amp; hours &lt; 18;
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 18 and up to 23) or false&lt;br>&lt;br>
- */
-function isEvening(hours) {
-    return hours >= 18 &amp;&amp; hours &lt; 24;
-}
-
-/**
- * This function controlls css classes, that are required for the login animation.
- * @param {Element} greeting - target HTML-Element.
- */
-function animateGreeting(greeting) {
-    greeting.classList.add('greeting-msg--mobile--fade-out');
-    document.getElementById('summary').classList.add('summary-animation--fade-in');
-    setTimeout(() => {
-        greeting.classList.add('d-none');
-    }, 1600);
-}
-
-
-/**
- * Iterates trough every task in database.
- * Counts up every type is used in summary and updates the numbers.
- */
-async function updateBoardCounters() {
-    const data = await readData('tasks');
-    const counters = { 'todo': 0, 'done': 0, 'board': Object.keys(data).length, 'progress': 0, 'feedback': 0 };
-    const urgents = [];
-
-    for (let item in data) {
-        const thisItem = data[item];
-        counters[thisItem.status]++;
-        if (thisItem.priority.toLowerCase() === 'urgent' &amp;&amp; thisItem.status !== 'done') {
-            urgents.push(thisItem.date);
+async function activateAssignedContacts(assignedContacts) {
+    if (assignedContacts) {
+        for (let item of assignedContacts) {
+            try {
+                document.getElementById(`assign-contact-${item}`).click();
+            } catch (error) {
+                console.warn(`assign-contact-contacts/${item} couldn't be toggled`);
+            }
         }
     }
-
-    document.getElementById('urgent-counter').innerText = urgents.length;
-    if (urgents.length > 0) {
-        document.getElementById('deadline-date').innerText = taskDueDate(getDeadline(urgents)[0]);
-        document.getElementById('deadline-description').innerText = 'Upcoming Deadline'
-    } else {
-        document.getElementById('deadline-description').innerHTML = '&lt;b>No upcoming deadline.&lt;/b>&lt;br>Take a breath.'
-    }
-
-    for (let items in counters) {
-        document.getElementById(`${items}-counter`).innerText = counters[items];
-    }
 }
 
 
 /**
- * @param {string[]} urgents - an array with date-strings, e. g. '2024-07-04'
- * @returns {Date[]} - Returns the dates sorted from earliest to latest.
+ * toggles the visibility of contact-list and contact-list input to show/hide the DOM-Content.
+ * @param {string} id - used to get the correct id for design changes
  */
-function getDeadline(datesArray) {
-    return datesArray.sort((a, b) => new Date(a) - new Date(b));
+function openListSearch(id) {
+    const btn = toggleVisibility(`${id}-task-contact-list-btn`);
+    toggleVisibility(`${id}-task-contact-list-input`);
+    toggleVisibility(`${id}-task-contacts-list`)
+    const inputField = document.getElementById(`${id}-task-list-input-field`);
+    const inputBox = inputField.parentElement.classList.add('focus');
+    inputField.focus();
+}
+
+
+/**
+ * Searchs for a contact based on a input.value and displays only contacts, who does match the search. 
+ * @param {string} search - value of a text-input
+ * example: &lt;input type="text" oninput="searchContact(this.value)">;
+ */
+function searchContact(search) {
+    const contactNames = Array.from(document.querySelectorAll('div.user-box span'));
+    for (let item in contactNames) {
+        hideWindow(contactNames[item].parentElement.parentElement.id,
+            !contactNames[item].innerHTML.toLowerCase().includes(search.toLowerCase())
+        );
+    }
+}
+
+/**
+ * Controls the design of checkboxes on the assigned-contacts-list
+ * CAVE: id contains contacts/ (or theoretically accounts/). 
+ * This is the optimum, so we can stop use pathes at readData and allow to assign users
+ * For the moment, since it's not used trough the whole project, i'll filter and remove it.
+ * @param {string} id 
+ */
+async function toggleThisContact(id) {
+    const contactId = document.getElementById(`assign-contact-${id}`);
+    const checkboxId = document.getElementById(`assign-contact-checkbox-${id}`);
+    const pseudoCheckboxId = document.getElementById(`assign-contact-pseudo-checkbox-${id}`);
+    await updateAssignedPersons(id);
+    contactId.classList.toggle('list-selected');
+    pseudoCheckboxId.classList.toggle('list-selected');
+    checkboxId.checked = !checkboxId.checked;
 }</code></pre>
         </article>
     </section>

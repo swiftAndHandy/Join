@@ -260,7 +260,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line196">line 196</a>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line208">line 208</a>
     </li></ul></dd>
     
 
@@ -289,8 +289,7 @@
 
         
 <div class="param-desc">
-    - Returns the user object if an account with the given email (and optional password) exists,
-                              or false if no account is found or an error occurs.
+    - Returns the user object if an account with the given email (and optional password) exists,                              or false if no account is found or an error occurs.
 </div>
 
 
@@ -311,6 +310,456 @@
 </dl>
 
     
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="activateAssignedContacts"><span class="type-signature">(async) </span>activateAssignedContacts<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Simulates an click on every assigned contact to activate it for contact list and submit array (assignedPersonsToUpdate)CAVE: I try to enable user accounts also. in this case it needs to be set up to assign-contact-${item}, since contacts will be added by algorithm.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details_contacts.js.html">assets/js/task_details_contacts.js</a>, <a href="assets_js_task_details_contacts.js.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="addNewSubtask"><span class="type-signature"></span>addNewSubtask<span class="signature">(value)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates HTML for Creating new Subtasks. This is originaly written for task-details, but changed in a way you can select a individual target-location and reuse this code on other pages.Applys a random ID to this item. Submits only, if value isn't empty after trim spaces from begin and end
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line126">line 126</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="addOpenAddTaskToButtons"><span class="type-signature"></span>addOpenAddTaskToButtons<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Pls write your own JSdoc, Phillipthis should be (only) your function
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line190">line 190</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="allowDrop"><span class="type-signature"></span>allowDrop<span class="signature">(ev)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Prevents default behaviour
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ev</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">DragEvent</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">DravEvent listener</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line112">line 112</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -423,7 +872,95 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line72">line 72</a>
+        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line76">line 76</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="applyGreyScreen"><span class="type-signature"></span>applyGreyScreen<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Pls write your own JSdoc, Phillipthis should be (only) your function
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line257">line 257</a>
     </li></ul></dd>
     
 
@@ -536,10 +1073,423 @@
 
         
 <div class="param-desc">
-    colors - a random element of global const colors. 
-e. g.: use this when you add a new contact, that hasn't a own user-account
+    colors - a random element of global const colors. e. g.: use this when you add a new contact, that hasn't a own user-account
 </div>
 
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="applyTaskStyles"><span class="type-signature"></span>applyTaskStyles<span class="signature">(taskId)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function is called in openTaskDetails and sets the design
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the Task-Card that should be affected by this function</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line72">line 72</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="assignedPersonsDetailsHtml"><span class="type-signature">(async) </span>assignedPersonsDetailsHtml<span class="signature">(contactIds)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Generates HTML for
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>contactIds</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line86">line 86</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="assignedPersonsEditHtml"><span class="type-signature">(async) </span>assignedPersonsEditHtml<span class="signature">(contactIds)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>contactIds</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the ID of a single contact, that avatar needs to be rendered</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line109">line 109</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 
 
     
@@ -560,6 +1510,10 @@ e. g.: use this when you add a new contact, that hasn't a own user-account
     
 
 
+
+<div class="description">
+    If remember me is active and the Account is not guest, the login form is filled with the correct user-data and auto submitted.
+</div>
 
 
 
@@ -602,7 +1556,7 @@ e. g.: use this when you add a new contact, that hasn't a own user-account
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line318">line 318</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line347">line 347</a>
     </li></ul></dd>
     
 
@@ -739,7 +1693,7 @@ e. g.: use this when you add a new contact, that hasn't a own user-account
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line102">line 102</a>
+        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line134">line 134</a>
     </li></ul></dd>
     
 
@@ -783,9 +1737,7 @@ e. g.: use this when you add a new contact, that hasn't a own user-account
 
 
 <div class="description">
-    Change Button-Design based on focus of input-field. 
-Hide discard and save-button, when input for new subtask is active
-Show add button instead.
+    Change Button-Design based on focus of input-field. Hide discard and save-button, when input for new subtask is activeShow add button instead.
 </div>
 
 
@@ -829,7 +1781,7 @@ Show add button instead.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line76">line 76</a>
+        <a href="assets_js_task_details_event_listener.js.html">assets/js/task_details_event_listener.js</a>, <a href="assets_js_task_details_event_listener.js.html#line38">line 38</a>
     </li></ul></dd>
     
 
@@ -865,7 +1817,7 @@ Show add button instead.
     
 
     
-    <h4 class="name" id="callContactInformationForTasks"><span class="type-signature">(async) </span>callContactInformationForTasks<span class="signature">(keyTasks, status, title, description, date, prio, tag, subTasks)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
+    <h4 class="name" id="calculateSubtaskProgressOf"><span class="type-signature">(async) </span>calculateSubtaskProgressOf<span class="signature">(taskId, done, total)</span><span class="type-signature"></span></h4>
     
 
     
@@ -873,10 +1825,7 @@ Show add button instead.
 
 
 <div class="description">
-    /**
-The function calls generateTaskCard at the end to return the HTML for the task card.
-It is essential for accessing the contacts database.
-renderTasks provides the necessary parameters for this function to work with.
+    Calculates Percentage of solved Subtasks and changes the Inline-Style of therelated Progress bar. Also updates the text.If no subtask is added to the task, hide the progress bar(parents parent element).If a subtask is added to the tash, show parents parent element. This is necessairy, sincethe object could be d-noned by rendering and need to be displayed after adding a first subtask.
 </div>
 
 
@@ -912,7 +1861,7 @@ renderTasks provides the necessary parameters for this function to work with.
 
         <tr>
             
-                <td class="name"><code>keyTasks</code></td>
+                <td class="name"><code>taskId</code></td>
             
 
             <td class="type">
@@ -928,20 +1877,20 @@ renderTasks provides the necessary parameters for this function to work with.
 
             
 
-            <td class="description last">The unique key from the Tasks database.</td>
+            <td class="description last">ID of the task that should be calculated</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>status</code></td>
+                <td class="name"><code>done</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">number</span>
 
 
             
@@ -951,20 +1900,20 @@ renderTasks provides the necessary parameters for this function to work with.
 
             
 
-            <td class="description last">The status value from the database.</td>
+            <td class="description last">amount of completed subtask goals.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>title</code></td>
+                <td class="name"><code>total</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">number</span>
 
 
             
@@ -974,122 +1923,7 @@ renderTasks provides the necessary parameters for this function to work with.
 
             
 
-            <td class="description last">The title value from the database.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>description</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The description value from the database.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>date</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The date value from the database.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>prio</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The priority value from the database.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>tag</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The tag value from the database. Must be one of: Low, Medium, or Urgent.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>subTasks</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The subTasks value from the database.</td>
+            <td class="description last">total amount of subtasks, added to this taskId</td>
         </tr>
 
     
@@ -1130,7 +1964,7 @@ renderTasks provides the necessary parameters for this function to work with.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line83">line 83</a>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line349">line 349</a>
     </li></ul></dd>
     
 
@@ -1155,28 +1989,6 @@ renderTasks provides the necessary parameters for this function to work with.
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A promise that includes the generated HTML for the task card.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;string></span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -1196,8 +2008,7 @@ renderTasks provides the necessary parameters for this function to work with.
 
 
 <div class="description">
-    Capitalizes the first letter of the input string and converts the rest to lowercase.
-Capitalizes the first letter after a '-' to avoid double-names-issues.
+    Capitalizes the first letter of the input string and converts the rest to lowercase.Capitalizes the first letter after a '-' to avoid double-names-issues.
 </div>
 
 
@@ -1290,7 +2101,7 @@ Capitalizes the first letter after a '-' to avoid double-names-issues.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line48">line 48</a>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line55">line 55</a>
     </li></ul></dd>
     
 
@@ -1337,6 +2148,143 @@ Capitalizes the first letter after a '-' to avoid double-names-issues.
 </dl>
 
     
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="changeContactItemColor"><span class="type-signature"></span>changeContactItemColor<span class="signature">(userId)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Changes the color of the selected contact item.Removes the "selected" class from the previously selected contact (if any),adds it to the newly selected contact, and updates the global `currentSelectedContactId`.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the contact being selected.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line182">line 182</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1400,7 +2348,535 @@ Capitalizes the first letter after a '-' to avoid double-names-issues.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line79">line 79</a>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line86">line 86</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeAddContactPage"><span class="type-signature"></span>closeAddContactPage<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes the 'Add Contact' page by hiding the modal.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeAddTaskPopUp"><span class="type-signature"></span>closeAddTaskPopUp<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Pls write your own JSdoc, Phillipthis should be (only) your function
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line241">line 241</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeContactModal"><span class="type-signature"></span>closeContactModal<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes the contact modal with an animation.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line275">line 275</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeContactOptions"><span class="type-signature"></span>closeContactOptions<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes the contact options with an animation and displays the "more-vert" button.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line363">line 363</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeContactWindow"><span class="type-signature"></span>closeContactWindow<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes the contact window and displays the contact list container.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line344">line 344</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeDetails"><span class="type-signature"></span>closeDetails<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Reset everything at closing details, to prepare a new fresh detail-page.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -1444,9 +2920,7 @@ Capitalizes the first letter after a '-' to avoid double-names-issues.
 
 
 <div class="description">
-    Resets every input.value of sign-up-dialog. 
-Also resets images by passwordInputIcon()
-does another password compare, to reset missmatch-msg.
+    Resets every input.value of sign-up-dialog. Also resets images by passwordInputIcon()does another password compare, to reset missmatch-msg.
 </div>
 
 
@@ -1490,7 +2964,7 @@ does another password compare, to reset missmatch-msg.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line292">line 292</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line318">line 318</a>
     </li></ul></dd>
     
 
@@ -1534,8 +3008,7 @@ does another password compare, to reset missmatch-msg.
 
 
 <div class="description">
-    compares both password fields during sign-up. 
-comparsion starts, when the validation field gets a value
+    compares both password fields during sign-up. comparsion starts, when the validation field gets a value
 </div>
 
 
@@ -1579,7 +3052,236 @@ comparsion starts, when the validation field gets a value
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line198">line 198</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line219">line 219</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="contactDetailsHTML"><span class="type-signature"></span>contactDetailsHTML<span class="signature">(name, email, telefon, color, i)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates and inserts HTML for displaying the contact details.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the contact.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>email</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The email of the contact.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>telefon</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The phone number of the contact.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>color</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The color associated with the contact.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>i</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The index of the contact.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts-html.js.html">assets/js/contacts-html.js</a>, <a href="assets_js_contacts-html.js.html#line44">line 44</a>
     </li></ul></dd>
     
 
@@ -1623,7 +3325,7 @@ comparsion starts, when the validation field gets a value
 
 
 <div class="description">
-    Creates a new contact by sending the data to the server and updates the contact list.
+    Creates a new contact by sending the data to the server, updates the contact list,and opens the details of the newly created contact if it matches the input data.
 </div>
 
 
@@ -1716,7 +3418,350 @@ comparsion starts, when the validation field gets a value
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line152">line 152</a>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line207">line 207</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createContactLetterHTML"><span class="type-signature"></span>createContactLetterHTML<span class="signature">(letter)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates and inserts HTML for a contact list letter header.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>letter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The letter to display as a header.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts-html.js.html">assets/js/contacts-html.js</a>, <a href="assets_js_contacts-html.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createContactListHTML"><span class="type-signature"></span>createContactListHTML<span class="signature">(index, name, email, color)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates and inserts HTML for a contact list item.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The index of the contact.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the contact.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>email</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The email of the contact.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>color</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The color associated with the contact.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts-html.js.html">assets/js/contacts-html.js</a>, <a href="assets_js_contacts-html.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -1782,8 +3827,6 @@ comparsion starts, when the validation field gets a value
         
 
         
-        <th>Default</th>
-        
 
         <th class="last">Description</th>
     </tr>
@@ -1809,10 +3852,6 @@ comparsion starts, when the validation field gets a value
             
 
             
-                <td class="default">
-                
-                </td>
-            
 
             <td class="description last">an Array with all subtask titles</td>
         </tr>
@@ -1835,12 +3874,6 @@ comparsion starts, when the validation field gets a value
 
             
 
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
             
 
             <td class="description last">future state of subtask. normaly it's false when creating a new.</td>
@@ -1884,7 +3917,7 @@ comparsion starts, when the validation field gets a value
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line216">line 216</a>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line228">line 228</a>
     </li></ul></dd>
     
 
@@ -1930,6 +3963,275 @@ comparsion starts, when the validation field gets a value
     
 
     
+    <h4 class="name" id="createTaskObject"><span class="type-signature"></span>createTaskObject<span class="signature">(tag, title, description, deadline, priority, subtasks)</span><span class="type-signature"> &rarr; {Array.&lt;Object>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Used to create an object that will be posted to the server
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">tag of the task</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">new title of the task</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">new description of the task</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>deadline</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">formated yyyy-mm-dd, new deadline of the task</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>priority</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">empty or Low, Medium or Urgent</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subtasks</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line51">line 51</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - containing all updated data from above.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;Object></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="createUser"><span class="type-signature">(async) </span>createUser<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;boolean>|string}</span></h4>
     
 
@@ -1938,9 +4240,7 @@ comparsion starts, when the validation field gets a value
 
 
 <div class="description">
-    Attempts to create a new user account with the provided email, name, and password.
-If the email does not already exist, a new user is created and the data is posted.
-If the email already exists, the function returns false.
+    Attempts to create a new user account with the provided email, name, and password.If the email does not already exist, a new user is created and the data is posted.If the email already exists, the function returns false.
 </div>
 
 
@@ -1984,7 +4284,7 @@ If the email already exists, the function returns false.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line41">line 41</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -2013,8 +4313,7 @@ If the email already exists, the function returns false.
 
         
 <div class="param-desc">
-    - A promise that resolves to true if the user was created successfully,
-                              or false if the email already exists.
+    - A promise that resolves to true if the user was created successfully,                                     or false if the email already exists.
 </div>
 
 
@@ -2035,6 +4334,143 @@ If the email already exists, the function returns false.
 </dl>
 
     
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="deleteContact"><span class="type-signature">(async) </span>deleteContact<span class="signature">(path)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Deletes a contact from the server and triggers an update of the contact list.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The path to the contact data.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line295">line 295</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2147,7 +4583,7 @@ If the email already exists, the function returns false.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line181">line 181</a>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line192">line 192</a>
     </li></ul></dd>
     
 
@@ -2199,6 +4635,10 @@ If the email already exists, the function returns false.
     
 
 
+
+<div class="description">
+    Deletes an Subtask-Item from Edit-View, not from Firebase!
+</div>
 
 
 
@@ -2290,7 +4730,144 @@ If the email already exists, the function returns false.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line199">line 199</a>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line181">line 181</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="deleteTask"><span class="type-signature">(async) </span>deleteTask<span class="signature">(taskId)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Deletes the submitted taskId and closes task-detail-view.Resets the style changes that are applyed when opening a taskDetail-View
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">ID of the task that will be deleted</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line147">line 147</a>
     </li></ul></dd>
     
 
@@ -2334,7 +4911,7 @@ If the email already exists, the function returns false.
 
 
 <div class="description">
-    Reset Input-Field for new Subtask
+    Reset Input-Field for new Subtask, when discarded.
 </div>
 
 
@@ -2378,7 +4955,7 @@ If the email already exists, the function returns false.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line158">line 158</a>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line137">line 137</a>
     </li></ul></dd>
     
 
@@ -2464,7 +5041,7 @@ If the email already exists, the function returns false.
             <td class="type">
             
                 
-<span class="param-type">strink</span>
+<span class="param-type">string</span>
 
 
             
@@ -2515,7 +5092,7 @@ If the email already exists, the function returns false.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line191">line 191</a>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line172">line 172</a>
     </li></ul></dd>
     
 
@@ -2652,7 +5229,7 @@ If the email already exists, the function returns false.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line149">line 149</a>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line132">line 132</a>
     </li></ul></dd>
     
 
@@ -2812,7 +5389,322 @@ If the email already exists, the function returns false.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line175">line 175</a>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line254">line 254</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="emptyBottomOf"><span class="type-signature"></span>emptyBottomOf<span class="signature">(card)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>card</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">contains all card information</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line103">line 103</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - true if (card.assigned is unset or an empty[]) and also(!)                    there is no card.priority set or the card.priority is an empty string
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="executeOnMaxWidth"><span class="type-signature"></span>executeOnMaxWidth<span class="signature">(maxWidth, callback)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Executes the callback function if the window width is less than or equal to the specified maxWidth.Also sets up an event listener to re-check the condition on window resize.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>maxWidth</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The maximum width of the window.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function to execute when the condition is met.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -2972,7 +5864,7 @@ If the email already exists, the function returns false.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line278">line 278</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line303">line 303</a>
     </li></ul></dd>
     
 
@@ -3016,8 +5908,7 @@ If the email already exists, the function returns false.
 
 
 <div class="description">
-    Change Button-Design based on focus of input-field. 
-Show discard and save-button, when input for new subtask is active
+    Change Button-Design based on focus of input-field. Show discard and save-button, when input for new subtask is active
 </div>
 
 
@@ -3061,7 +5952,7 @@ Show discard and save-button, when input for new subtask is active
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line64">line 64</a>
+        <a href="assets_js_task_details_event_listener.js.html">assets/js/task_details_event_listener.js</a>, <a href="assets_js_task_details_event_listener.js.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -3198,7 +6089,255 @@ Show discard and save-button, when input for new subtask is active
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line91">line 91</a>
+        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line123">line 123</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="formOfDueDate"><span class="type-signature"></span>formOfDueDate<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Retrieves the value of the input field with the ID 'task-due-date'and assigns it to the variable addTaskDueDate.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="generateCircleProfiles"><span class="type-signature">(async) </span>generateCircleProfiles<span class="signature">(contactEntries, taskId)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    contactEntries is iterated to read server-data. then, when server-data is fetched a newavatar should be created for the user that's found. When 11 Accounts are have an Avatar, add an Placeholder for the 12+ Assigned Person.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>contactEntries</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Object></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">pathes to every contact and account that are assigned to the current taskId</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">id of the task that should be rendered</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board_html.js.html">assets/js/board_html.js</a>, <a href="assets_js_board_html.js.html#line48">line 48</a>
     </li></ul></dd>
     
 
@@ -3383,6 +6522,438 @@ Show discard and save-button, when input for new subtask is active
 
 
 
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="generateTaskCard"><span class="type-signature"></span>generateTaskCard<span class="signature">(taskId, item, target, position<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Genereates HTML for the board..The hidden description is used for search engine, since this one is not shortended by limitLengthOf().Calls the async functions for the progressBar and the avatarCircles without await, so the result can be added later, while the next card is allready rendering.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">ID of the current task</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>item</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the Object that is fetched from taskId.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>target</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">HTML Element that is adressed.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>position</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'beforeend'
+                
+                </td>
+            
+
+            <td class="description last">position of insertAdjacentHTML. Only set for the rare case you might need and afterbegin or whatever.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board_html.js.html">assets/js/board_html.js</a>, <a href="assets_js_board_html.js.html#line12">line 12</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="generateTaskDetailsHtml"><span class="type-signature">(async) </span>generateTaskDetailsHtml<span class="signature">(taskId, taskDetails)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Generates the Task-Detail-View-HTML
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">contains the current tasks ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>taskDetails</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">contains the current tasks details</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - an array, that contains all assigned contacts
+</div>
+
+
+
+    
 
 
 
@@ -3666,8 +7237,7 @@ Show discard and save-button, when input for new subtask is active
 
 
 <div class="description">
-    fetchs the currently open html-file-name and removes .html.
-This function is used to handle the navigation-design.
+    fetchs the currently open html-file-name and removes .html.This function is used to handle the navigation-design.
 </div>
 
 
@@ -3711,7 +7281,7 @@ This function is used to handle the navigation-design.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line23">line 23</a>
+        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -3744,6 +7314,116 @@ This function is used to handle the navigation-design.
 </div>
 
 
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getCurrentPriority"><span class="type-signature"></span>getCurrentPriority<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Selects the first (and only) Priority Button with .task-priority.active and strips the priority level out of the Buttons id. Since we save the Priority with an Uppercase first Letter,the string is returned with a capitalized first letter.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line113">line 113</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Returns the priority of the Actice Button as string.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
 
     
 
@@ -3805,7 +7485,7 @@ This function is used to handle the navigation-design.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line29">line 29</a>
+        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line33">line 33</a>
     </li></ul></dd>
     
 
@@ -3948,7 +7628,7 @@ This function is used to handle the navigation-design.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line109">line 109</a>
+        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line120">line 120</a>
     </li></ul></dd>
     
 
@@ -4006,6 +7686,166 @@ This function is used to handle the navigation-design.
     
 
     
+    <h4 class="name" id="getSubtaskProgress"><span class="type-signature">(async) </span>getSubtaskProgress<span class="signature">(subtasks, taskId)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    sets up two counters. one for finished subtasks, and one for the total amount.checks every Object in Object[] and adds 1 to the total amount.if element.done is true, also doneSubtasks increase.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>subtasks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Object></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Every Subtask Object related to the taskId</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">taskId of the currently rendered task</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line325">line 325</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="greetAtLogin"><span class="type-signature">(async) </span>greetAtLogin<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
@@ -4014,8 +7854,7 @@ This function is used to handle the navigation-design.
 
 
 <div class="description">
-    Runs various functions, to use the correct greeting for users/guests.
-To do: Check for Login/Username...
+    Runs various functions, to use the correct greeting for users/guests.To do: Check for Login/Username...
 </div>
 
 
@@ -4059,7 +7898,183 @@ To do: Check for Login/Username...
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line14">line 14</a>
+        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line18">line 18</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="guestLogin"><span class="type-signature"></span>guestLogin<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sets localStorage to guest-account-values and redirects to the summary.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line98">line 98</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="handleButtonClickOnWidth"><span class="type-signature"></span>handleButtonClickOnWidth<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Pls write your own JSdoc, Phillipthis should be (only) your function
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line204">line 204</a>
     </li></ul></dd>
     
 
@@ -4215,7 +8230,7 @@ To do: Check for Login/Username...
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line44">line 44</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -4277,9 +8292,7 @@ To do: Check for Login/Username...
 
 
 <div class="description">
-    Hides the menu bars by adding the 'd-none' class to the menu elements.
-This function targets the elements with the IDs 'menu-bar-two' and 'menu-bar-mobile',
-and adds the 'd-none' class to both, making them hidden.
+    Hides the menu bars by adding the 'd-none' class to the menu elements.This function targets the elements with the IDs 'menu-bar-two' and 'menu-bar-mobile',and adds the 'd-none' class to both, making them hidden.
 </div>
 
 
@@ -4323,7 +8336,7 @@ and adds the 'd-none' class to both, making them hidden.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line54">line 54</a>
+        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line65">line 65</a>
     </li></ul></dd>
     
 
@@ -4495,7 +8508,95 @@ and adds the 'd-none' class to both, making them hidden.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line61">line 61</a>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line68">line 68</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="initBoard"><span class="type-signature">(async) </span>initBoard<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Initializing the Board by running various functions
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -4539,7 +8640,7 @@ and adds the 'd-none' class to both, making them hidden.
 
 
 <div class="description">
-    Initialising of index.html by starting animation on mobile-devices.
+    Initialising of index.html by starting animation on mobile-devices.Since a guest shouldn't be able to autologin localstorage is cleared.Starts Animation of the start Screen also.
 </div>
 
 
@@ -4583,7 +8684,7 @@ and adds the 'd-none' class to both, making them hidden.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line18">line 18</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -4627,8 +8728,7 @@ and adds the 'd-none' class to both, making them hidden.
 
 
 <div class="description">
-    This function is used @summary.html to initalize everything.
-Todo: Get Username and start greeting, when it's saved
+    This function is used @summary.html to initalize everything.Adds an eventListener on every summary card, that leads to board.html when clicked.This method is used to prevent regular link-style
 </div>
 
 
@@ -4672,7 +8772,7 @@ Todo: Get Username and start greeting, when it's saved
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line5">line 5</a>
+        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -4809,7 +8909,7 @@ Todo: Get Username and start greeting, when it's saved
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line89">line 89</a>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line96">line 96</a>
     </li></ul></dd>
     
 
@@ -4952,7 +9052,7 @@ Todo: Get Username and start greeting, when it's saved
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line56">line 56</a>
+        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line60">line 60</a>
     </li></ul></dd>
     
 
@@ -5095,7 +9195,7 @@ Todo: Get Username and start greeting, when it's saved
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line64">line 64</a>
+        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line68">line 68</a>
     </li></ul></dd>
     
 
@@ -5238,7 +9338,7 @@ Todo: Get Username and start greeting, when it's saved
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line48">line 48</a>
+        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line52">line 52</a>
     </li></ul></dd>
     
 
@@ -5284,6 +9384,503 @@ Todo: Get Username and start greeting, when it's saved
     
 
     
+    <h4 class="name" id="isNotEmpty"><span class="type-signature"></span>isNotEmpty<span class="signature">(target)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    checks the value of an Element without leading and trailing spaces. If it's empty, return the old value, otherwise the new one.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>target</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">part of the ElementID in "update-" and "task-details-"</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="limitLengthOf"><span class="type-signature"></span>limitLengthOf<span class="signature">(inputString, limit)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Limits the length of a string to a chosen limit
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputString</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">string, that should become limited in length</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>limit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    80
+                
+                </td>
+            
+
+            <td class="description last">max-length of the string</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line269">line 269</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - shortened string
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="listAttachedSubtasks"><span class="type-signature">(async) </span>listAttachedSubtasks<span class="signature">(data, taskId)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates HTML for every subtask Element thats given to a task and iterates trough data.subtasks.length to ensurea unique ID for every checkbox/label-pair.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">contains all information related to taskId</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the Key of the current read Task</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line164">line 164</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="login"><span class="type-signature">(async) </span>login<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
     
 
@@ -5292,9 +9889,7 @@ Todo: Get Username and start greeting, when it's saved
 
 
 <div class="description">
-    Attempts to log in a user with the provided email and password.
-If the login is successful, the user is redirected to the summary page.
-If the login fails, a warning is logged to the console.
+    Attempts to log in a user with the provided email and password.If the login is successful, the user is redirected to the summary page.If the login fails, a warning is logged to the console.
 </div>
 
 
@@ -5338,7 +9933,7 @@ If the login fails, a warning is logged to the console.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line65">line 65</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line77">line 77</a>
     </li></ul></dd>
     
 
@@ -5448,7 +10043,95 @@ If the login fails, a warning is logged to the console.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line70">line 70</a>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line77">line 77</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="mobileDeleteRules"><span class="type-signature"></span>mobileDeleteRules<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Chances some styles to display the correct screen, when contacts is opened on a mobile device
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line312">line 312</a>
     </li></ul></dd>
     
 
@@ -5492,8 +10175,7 @@ If the login fails, a warning is logged to the console.
 
 
 <div class="description">
-    allows to update a single item without drag and drop.
-call this in a button, for example.
+    allows to update a single item without drag and drop.call this in a button, for example.
 </div>
 
 
@@ -5632,7 +10314,591 @@ call this in a button, for example.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line165">line 165</a>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line150">line 150</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="openAddContactPage"><span class="type-signature">(async) </span>openAddContactPage<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Opens the 'Add Contact' page by fetching the HTML content and displaying the modal.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="openAddTask"><span class="type-signature"></span>openAddTask<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Pls write your own JSdoc, Phillipthis should be (only) your function
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line219">line 219</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="openContactDetails"><span class="type-signature">(async) </span>openContactDetails<span class="signature">(userId)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Opens the contact details page for the specified user ID by fetching the contact dataand displaying it in the contact details container. Hides the contact list container if the window width is less than or equal to 820 pixels.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the user to display details for.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line153">line 153</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="openContactOptions"><span class="type-signature"></span>openContactOptions<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Opens the contact options by displaying the options and hiding the "more-vert" button.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line353">line 353</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="openCreatedContact"><span class="type-signature">(async) </span>openCreatedContact<span class="signature">(nameToCompare, emailToCompare, phoneToCompare)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Searches for a contact that matches the provided name, email, and phone number,and opens the contact details if a match is found.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>nameToCompare</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name to compare against the contacts.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>emailToCompare</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The email to compare against the contacts.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>phoneToCompare</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The phone number to compare against the contacts.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line236">line 236</a>
     </li></ul></dd>
     
 
@@ -5676,8 +10942,7 @@ call this in a button, for example.
 
 
 <div class="description">
-    Opens the 'Edit Contact' page for the contact at the given index by fetching the HTML content 
-and displaying the modal with the contact's information filled in.
+    Opens the 'Edit Contact' page for the contact at the given index by fetching the HTML content and displaying the modal with the contact's information filled in.
 </div>
 
 
@@ -5770,7 +11035,95 @@ and displaying the modal with the contact's information filled in.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line22">line 22</a>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line73">line 73</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="openEditDialog"><span class="type-signature">(async) </span>openEditDialog<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Swaps the Visibility of Detail-View and Edit-ViewInitiates renderOpenSubtasks to display an up-to-date-list
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line126">line 126</a>
     </li></ul></dd>
     
 
@@ -5907,7 +11260,7 @@ and displaying the modal with the contact's information filled in.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line114">line 114</a>
+        <a href="assets_js_task_details_contacts.js.html">assets/js/task_details_contacts.js</a>, <a href="assets_js_task_details_contacts.js.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -5995,7 +11348,7 @@ and displaying the modal with the contact's information filled in.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line310">line 310</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line337">line 337</a>
     </li></ul></dd>
     
 
@@ -6128,7 +11481,144 @@ and displaying the modal with the contact's information filled in.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line166">line 166</a>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line145">line 145</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="openTaskDetails"><span class="type-signature">(async) </span>openTaskDetails<span class="signature">(taskId)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    set up fetching task-information from server. updates currentDetailLocation, so that this information can be used later when task is saved.activates assigned contacts in contact-list and renders the edit-view also.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">equivalent to the id of the task in firebase</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -6172,9 +11662,7 @@ and displaying the modal with the contact's information filled in.
 
 
 <div class="description">
-    evaluates value of both password-inputs. if a value is set, it will call the setPasswordInputDesign-Function
-and also add a pointer class + set an onclick attribute to toggle hide/show-password-variables.
-otherwise it will reset those changes.
+    evaluates value of both password-inputs. if a value is set, it will call the setPasswordInputDesign-Functionand also add a pointer class + set an onclick attribute to toggle hide/show-password-variables.otherwise it will reset those changes.
 </div>
 
 
@@ -6267,7 +11755,7 @@ otherwise it will reset those changes.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line179">line 179</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line200">line 200</a>
     </li></ul></dd>
     
 
@@ -6311,8 +11799,7 @@ otherwise it will reset those changes.
 
 
 <div class="description">
-    Statement, checking validationPassword for a existing value.
-if a value is given, and it's the same than the regular-password, return true.
+    Statement, checking validationPassword for a existing value.if a value is given, and it's the same than the regular-password, return true.
 </div>
 
 
@@ -6428,7 +11915,7 @@ if a value is given, and it's the same than the regular-password, return true.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line220">line 220</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line242">line 242</a>
     </li></ul></dd>
     
 
@@ -6598,7 +12085,7 @@ if a value is given, and it's the same than the regular-password, return true.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line151">line 151</a>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line158">line 158</a>
     </li></ul></dd>
     
 
@@ -6641,6 +12128,161 @@ if a value is given, and it's the same than the regular-password, return true.
 </dl>
 
     
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="priorityEqualImg"><span class="type-signature"></span>priorityEqualImg<span class="signature">(priority, key)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sets the priority image of the target to a lowercase-variant of priority-param
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>priority</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Urgent, Medium or Low</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line77">line 77</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6822,7 +12464,95 @@ if a value is given, and it's the same than the regular-password, return true.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line45">line 45</a>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line98">line 98</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="putContactsToList"><span class="type-signature">(async) </span>putContactsToList<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Retrieves and displays the list of contacts sorted by name.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line110">line 110</a>
     </li></ul></dd>
     
 
@@ -6918,8 +12648,7 @@ if a value is given, and it's the same than the regular-password, return true.
 
             
 
-            <td class="description last">The datastring that's sent in the body of the PUT request. Defaults to an empty object.
-* @param {string} path - The path to which the data should be sent. Defaults to an empty string.</td>
+            <td class="description last">The datastring that's sent in the body of the PUT request. Defaults to an empty object.* @param {string} path - The path to which the data should be sent. Defaults to an empty string.</td>
         </tr>
 
     
@@ -6960,7 +12689,7 @@ if a value is given, and it's the same than the regular-password, return true.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line133">line 133</a>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line140">line 140</a>
     </li></ul></dd>
     
 
@@ -7078,8 +12807,7 @@ if a value is given, and it's the same than the regular-password, return true.
 
             
 
-            <td class="description last">The data to be sent in the body of the PUT request. Defaults to an empty object.
-* @param {string} path - The path to which the data should be sent. Defaults to an empty string.</td>
+            <td class="description last">The data to be sent in the body of the PUT request. Defaults to an empty object.* @param {string} path - The path to which the data should be sent. Defaults to an empty string.</td>
         </tr>
 
     
@@ -7120,7 +12848,7 @@ if a value is given, and it's the same than the regular-password, return true.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line114">line 114</a>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line121">line 121</a>
     </li></ul></dd>
     
 
@@ -7178,6 +12906,112 @@ if a value is given, and it's the same than the regular-password, return true.
     
 
     
+    <h4 class="name" id="randomId"><span class="type-signature"></span>randomId<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Generates a randomized string, based on Timestamp, that can be used to prevent two generated items will get the same ID.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line23">line 23</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="readData"><span class="type-signature">(async) </span>readData<span class="signature">(path)</span><span class="type-signature"></span></h4>
     
 
@@ -7186,9 +13020,7 @@ if a value is given, and it's the same than the regular-password, return true.
 
 
 <div class="description">
-    responseToJason is containing every user. It's iterated by every userKeyArray-Index to  
-compare Login-Form-Information with provided server-information.
-If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
+    responseToJason is containing every user. It's iterated by every userKeyArray-Index to  compare Login-Form-Information with provided server-information.If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
 </div>
 
 
@@ -7281,7 +13113,7 @@ If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognit
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line171">line 171</a>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line179">line 179</a>
     </li></ul></dd>
     
 
@@ -7418,7 +13250,7 @@ If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognit
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line67">line 67</a>
+        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line78">line 78</a>
     </li></ul></dd>
     
 
@@ -7464,7 +13296,7 @@ If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognit
     
 
     
-    <h4 class="name" id="renderContactList"><span class="type-signature">(async) </span>renderContactList<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="removeContactFromInterface"><span class="type-signature"></span>removeContactFromInterface<span class="signature">(contactId)</span><span class="type-signature"></span></h4>
     
 
     
@@ -7472,9 +13304,144 @@ If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognit
 
 
 <div class="description">
-    Rendering Contact-List in Edit-Details. 
-Needs further improvement (include accounts, not only contacts for example)
-Maybe a resort to keep the order of alphabet is required in this case
+    If the deleted contact is the last contact of a letter, the letter and the underline must be deleted. So this function uses the current contacts position on contact-list and checks the previous and next item. If the next one is another letter, and the previous one is an underlineit IS the last item. If there is no next sibling, simulate it has the value of 'letter' to prevent a crash.So the previous to Element Siblings needs to be deleted.The item itself needs to be deleted in each case.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>contactId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the ID of the Contact that needs to be checked</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line329">line 329</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderDetailsContactList"><span class="type-signature">(async) </span>renderDetailsContactList<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Rendering Contact-List in Edit-Details. The Contact-List Contains contacts and accounts, so after fetching boththey recive a prefix that leads to there path on the server.For every of those items HTML is generated.
 </div>
 
 
@@ -7518,7 +13485,574 @@ Maybe a resort to keep the order of alphabet is required in this case
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line15">line 15</a>
+        <a href="assets_js_task_details_contacts.js.html">assets/js/task_details_contacts.js</a>, <a href="assets_js_task_details_contacts.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderEditView"><span class="type-signature"></span>renderEditView<span class="signature">(task, key)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders the Edit-View of a Task by updating the save Button and set title, description, date, priority to the current tasks values.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>task</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Containes the information collection of the current task, fetched from firebase</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Contains the task ID.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderOpenSubtasks"><span class="type-signature"></span>renderOpenSubtasks<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Selects every checkbox+ label pair on Task-Details-View,and a second selection of all checked checkbox-label-pairs.Substracts every checked (done) subtask from pool, since they shouldn't become displayed in edit-view.Iterates trough this filtered openSubtasks-Array and let do addNewSubtask() the magic ;-)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line217">line 217</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderTaskDetails"><span class="type-signature">(async) </span>renderTaskDetails<span class="signature">(taskId)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Start rendering process for Task details.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">string is containing the taskId that should become shown</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line85">line 85</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="rerenderTaskOnBoard"><span class="type-signature"></span>rerenderTaskOnBoard<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    I'll add this later. --Andre
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line280">line 280</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="resetAssignedPersons"><span class="type-signature"></span>resetAssignedPersons<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Called when a task is deleted or detail-view is closed to - reset Board-Styles - clear Subtasks and Contact-Lists
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line62">line 62</a>
     </li></ul></dd>
     
 
@@ -7659,7 +14193,7 @@ Maybe a resort to keep the order of alphabet is required in this case
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line135">line 135</a>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line85">line 85</a>
     </li></ul></dd>
     
 
@@ -7695,7 +14229,7 @@ Maybe a resort to keep the order of alphabet is required in this case
     
 
     
-    <h4 class="name" id="saveTaskUpdate"><span class="type-signature"></span>saveTaskUpdate<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="resetPriorityButtons"><span class="type-signature"></span>resetPriorityButtons<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -7703,7 +14237,7 @@ Maybe a resort to keep the order of alphabet is required in this case
 
 
 <div class="description">
-    placeholder
+    Removes active class from every priority button to prevent that it is forced to add a priority when you edit a card without priority after opening another card, that has a priority.
 </div>
 
 
@@ -7747,7 +14281,535 @@ Maybe a resort to keep the order of alphabet is required in this case
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line211">line 211</a>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line127">line 127</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="returnToBoard"><span class="type-signature"></span>returnToBoard<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Called when a task is deleted or detail-view is closed to - reset Board-Styles - clear Subtasks and Contact-Lists
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line50">line 50</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="rotateTaskDragEnd"><span class="type-signature"></span>rotateTaskDragEnd<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Removes a rotation-effect on the currently dragged task-card
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line374">line 374</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="rotateTaskDragStart"><span class="type-signature"></span>rotateTaskDragStart<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Applies a rotation-effect on the currently dragged task-card
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line365">line 365</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="saveTaskUpdate"><span class="type-signature">(async) </span>saveTaskUpdate<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    saves the updated information of the current task in firebase and rerenders1. edit view2. the single card on board3. task details
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="scrollToLastSubtask"><span class="type-signature"></span>scrollToLastSubtask<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    add this, when a new subtask is submitted. This function must be called explicite.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line231">line 231</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="searchAndShowTasks"><span class="type-signature"></span>searchAndShowTasks<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Feel free to write JSdoc, @Phillip.Otherwise i'll can do it later on, since this is based on my search-engine and i've recorded smaller parts.-- Andre
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line299">line 299</a>
     </li></ul></dd>
     
 
@@ -7843,8 +14905,7 @@ Maybe a resort to keep the order of alphabet is required in this case
 
             
 
-            <td class="description last">value of a text-input
-example: <input type="text" oninput="searchContact(this.value)">;</td>
+            <td class="description last">value of a text-inputexample: <input type="text" oninput="searchContact(this.value)">;</td>
         </tr>
 
     
@@ -7885,7 +14946,167 @@ example: <input type="text" oninput="searchContact(this.value)">;</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line146">line 146</a>
+        <a href="assets_js_task_details_contacts.js.html">assets/js/task_details_contacts.js</a>, <a href="assets_js_task_details_contacts.js.html#line58">line 58</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setBottomTaskCardVisibility"><span class="type-signature"></span>setBottomTaskCardVisibility<span class="signature">(card, taskId)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Display or hide the Bottom-DIV of a task-card at the board
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>card</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line89">line 89</a>
     </li></ul></dd>
     
 
@@ -8018,7 +15239,7 @@ example: <input type="text" oninput="searchContact(this.value)">;</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line126">line 126</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line136">line 136</a>
     </li></ul></dd>
     
 
@@ -8062,8 +15283,7 @@ example: <input type="text" oninput="searchContact(this.value)">;</td>
 
 
 <div class="description">
-    Get the Initials for the Avatar-Divs and call avatarHtml to write the innerHtml.
-If no Initials there, use the string 'G' for "Guest".
+    Get the Initials for the Avatar-Divs and call avatarHtml to write the innerHtml.If no Initials there, use the string 'G' for "Guest".
 </div>
 
 
@@ -8107,7 +15327,7 @@ If no Initials there, use the string 'G' for "Guest".
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line77">line 77</a>
+        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line88">line 88</a>
     </li></ul></dd>
     
 
@@ -8151,9 +15371,7 @@ If no Initials there, use the string 'G' for "Guest".
 
 
 <div class="description">
-    on password-create field:
-swaps out the lock-image for the eye-image or vice vera.
-swaps out the password-type for a text-type or vice versa.
+    on password-create field:swaps out the lock-image for the eye-image or vice vera.swaps out the password-type for a text-type or vice versa.
 </div>
 
 
@@ -8197,7 +15415,7 @@ swaps out the password-type for a text-type or vice versa.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line127">line 127</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line145">line 145</a>
     </li></ul></dd>
     
 
@@ -8241,9 +15459,7 @@ swaps out the password-type for a text-type or vice versa.
 
 
 <div class="description">
-    on password-validation field:
-swaps out the lock-image for the eye-image or vice vera.
-swaps out the password-type for a text-type or vice versa.
+    on password-validation field:swaps out the lock-image for the eye-image or vice vera.swaps out the password-type for a text-type or vice versa.
 </div>
 
 
@@ -8287,7 +15503,7 @@ swaps out the password-type for a text-type or vice versa.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line161">line 161</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line181">line 181</a>
     </li></ul></dd>
     
 
@@ -8331,9 +15547,7 @@ swaps out the password-type for a text-type or vice versa.
 
 
 <div class="description">
-    on password-validation field:
-swaps out the lock-image for the eye-image or vice vera.
-swaps out the password-type for a text-type or vice versa.
+    on password-validation field:swaps out the lock-image for the eye-image or vice vera.swaps out the password-type for a text-type or vice versa.
 </div>
 
 
@@ -8377,7 +15591,7 @@ swaps out the password-type for a text-type or vice versa.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line144">line 144</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line163">line 163</a>
     </li></ul></dd>
     
 
@@ -8402,6 +15616,188 @@ swaps out the password-type for a text-type or vice versa.
 
 
 
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setPrefixToKey"><span class="type-signature"></span>setPrefixToKey<span class="signature">(prefix, data)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function adds an additional key: value to an existing ObjectObject
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>prefix</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">prefix that should be added</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the data that has been fetched from firebase</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line245">line 245</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the original data + a new key:value -> path: prefix + id
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -8514,7 +15910,7 @@ swaps out the password-type for a text-type or vice versa.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line99">line 99</a>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line95">line 95</a>
     </li></ul></dd>
     
 
@@ -8550,7 +15946,7 @@ swaps out the password-type for a text-type or vice versa.
     
 
     
-    <h4 class="name" id="setupListener"><span class="type-signature"></span>setupListener<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setupAvatarMenu"><span class="type-signature"></span>setupAvatarMenu<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -8558,8 +15954,7 @@ swaps out the password-type for a text-type or vice versa.
 
 
 <div class="description">
-    Unfinished. 
-Setup some Event-Listeners for focus-design on edit-task-details input-fields (contact-search and add-new-subtask)
+    Installs an eventListener on the whole document, listening for clicks.clickedOnAvatar is true, if the click happens on an element in dropDownMenus[], otherwise false.clickedOnIgnored is true, if the click happens on the dropdown-menus themself. If the user is clicking on the Avatar the overlay is shown.  Since the ignores items are childs of the Avatars.So a click on ignored causes allways a true on a click on avatar. That why it also requires clickedOnIgnores false in first condition.If it's neither a click on Avatar nor the Menu itself, close the overlay-Menu.
 </div>
 
 
@@ -8603,7 +15998,342 @@ Setup some Event-Listeners for focus-design on edit-task-details input-fields (c
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line50">line 50</a>
+        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line108">line 108</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setupListener"><span class="type-signature"></span>setupListener<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Setup some Event-Listeners for focus-design on edit-task-details input-fields (contact-search and add-new-subtask)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details_event_listener.js.html">assets/js/task_details_event_listener.js</a>, <a href="assets_js_task_details_event_listener.js.html#line5">line 5</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="showCapitaliseFirstLetters"><span class="type-signature"></span>showCapitaliseFirstLetters<span class="signature">(input)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Returns the capitalized first letters of the words in the input string.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>input</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The input string.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line138">line 138</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The string with capitalized first letters.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="showCreatedContactModal"><span class="type-signature"></span>showCreatedContactModal<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Shows the "Contact Created" modal with animations.The modal appears, stays for 1.5s, then closes and resets.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_contacts.js.html">assets/js/contacts.js</a>, <a href="assets_js_contacts.js.html#line52">line 52</a>
     </li></ul></dd>
     
 
@@ -8791,7 +16521,7 @@ Setup some Event-Listeners for focus-design on edit-task-details input-fields (c
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line175">line 175</a>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line161">line 161</a>
     </li></ul></dd>
     
 
@@ -8835,7 +16565,7 @@ Setup some Event-Listeners for focus-design on edit-task-details input-fields (c
 
 
 <div class="description">
-    Fade-In of popup-msg
+    Fade-In of popup-msg in sign-up-overlay when submitting
 </div>
 
 
@@ -8951,7 +16681,7 @@ Setup some Event-Listeners for focus-design on edit-task-details input-fields (c
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line251">line 251</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line274">line 274</a>
     </li></ul></dd>
     
 
@@ -9088,7 +16818,7 @@ Setup some Event-Listeners for focus-design on edit-task-details input-fields (c
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line34">line 34</a>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line41">line 41</a>
     </li></ul></dd>
     
 
@@ -9135,6 +16865,254 @@ Setup some Event-Listeners for focus-design on edit-task-details input-fields (c
 </dl>
 
     
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="startDrag"><span class="type-signature"></span>startDrag<span class="signature">(id, fromCategory)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sets global Variables that are required for an proper drag-process.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">id of the task that is dragged. will be set to a global.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fromCategory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the category of the currently dragged item, will be set to a global.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line122">line 122</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="startScreenAnimation"><span class="type-signature"></span>startScreenAnimation<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Applys classes to various Elements, to animate the Join-Intro
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9247,7 +17225,7 @@ Setup some Event-Listeners for focus-design on edit-task-details input-fields (c
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line102">line 102</a>
+        <a href="assets_js_script.js.html">assets/js/script.js</a>, <a href="assets_js_script.js.html#line109">line 109</a>
     </li></ul></dd>
     
 
@@ -9291,10 +17269,7 @@ Setup some Event-Listeners for focus-design on edit-task-details input-fields (c
 
 
 <div class="description">
-    try to submit sign-up-form/use html form-validation.
-if everything is valid, try to createUser().
-If createUser() is possible, animate the success-overlay and close popup after the animation is done.
-Otherwise warn, that user-account is allready existing.
+    try to submit sign-up-form/use html form-validation.if everything is valid, try to createUser().If createUser() is possible, animate the success-overlay and close popup after the animation is done.Otherwise warn, that user-account is allready existing.
 </div>
 
 
@@ -9338,7 +17313,7 @@ Otherwise warn, that user-account is allready existing.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line231">line 231</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line253">line 253</a>
     </li></ul></dd>
     
 
@@ -9498,7 +17473,95 @@ Otherwise warn, that user-account is allready existing.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line265">line 265</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line289">line 289</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="switchToAddTask"><span class="type-signature"></span>switchToAddTask<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Pls write your own JSdoc, Phillipthis should be (only) your function
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line231">line 231</a>
     </li></ul></dd>
     
 
@@ -9542,8 +17605,7 @@ Otherwise warn, that user-account is allready existing.
 
 
 <div class="description">
-    toggles the currrent show/hide-password variable. 
-calls the required function to set the correct eye-icon on input-field.
+    toggles the currrent show/hide-password variable. calls the required function to set the correct eye-icon on input-field.
 </div>
 
 
@@ -9636,7 +17698,7 @@ calls the required function to set the correct eye-icon on input-field.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line109">line 109</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line126">line 126</a>
     </li></ul></dd>
     
 
@@ -9680,8 +17742,7 @@ calls the required function to set the correct eye-icon on input-field.
 
 
 <div class="description">
-    sets the value of privacyCheckboxActive to the opposite and 
-disables or enables the submit-button based on the new value
+    toggles the value of privacyCheckboxActive and disables or enables the submit-button based on the new value
 </div>
 
 
@@ -9725,7 +17786,7 @@ disables or enables the submit-button based on the new value
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line93">line 93</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line109">line 109</a>
     </li></ul></dd>
     
 
@@ -9769,8 +17830,7 @@ disables or enables the submit-button based on the new value
 
 
 <div class="description">
-    Toggles the remember me state.
-This function inverses the value of the global variable `rememberMe`.
+    Toggles the remember me state.This function inverses the value of the global variable `rememberMe`.
 </div>
 
 
@@ -9814,7 +17874,7 @@ This function inverses the value of the global variable `rememberMe`.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line11">line 11</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -9850,7 +17910,7 @@ This function inverses the value of the global variable `rememberMe`.
     
 
     
-    <h4 class="name" id="toggleThis"><span class="type-signature"></span>toggleThis<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="toggleThisContact"><span class="type-signature">(async) </span>toggleThisContact<span class="signature">(id)</span><span class="type-signature"></span></h4>
     
 
     
@@ -9858,7 +17918,7 @@ This function inverses the value of the global variable `rememberMe`.
 
 
 <div class="description">
-    Controls the design of checkboxes on the assigned-contacts-list
+    Controls the design of checkboxes on the assigned-contacts-listCAVE: id contains contacts/ (or theoretically accounts/). This is the optimum, so we can stop use pathes at readData and allow to assign usersFor the moment, since it's not used trough the whole project, i'll filter and remove it.
 </div>
 
 
@@ -9951,7 +18011,7 @@ This function inverses the value of the global variable `rememberMe`.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line37">line 37</a>
+        <a href="assets_js_task_details_contacts.js.html">assets/js/task_details_contacts.js</a>, <a href="assets_js_task_details_contacts.js.html#line74">line 74</a>
     </li></ul></dd>
     
 
@@ -10088,7 +18148,7 @@ This function inverses the value of the global variable `rememberMe`.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line90">line 90</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line116">line 116</a>
     </li></ul></dd>
     
 
@@ -10149,6 +18209,143 @@ This function inverses the value of the global variable `rememberMe`.
     
 
     
+    <h4 class="name" id="updateAssignedPersons"><span class="type-signature">(async) </span>updateAssignedPersons<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Updates the global Array assignedPersonsToUpdate. If the id isn't in the Arrayadd the id to the Array. Also add the Icon with assignedPersonsEditHtml. Otherwise delete the Index that is used by the id and remove the Avatar-Icon.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">related to the assigned Contact</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line98">line 98</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="updateBoard"><span class="type-signature"></span>updateBoard<span class="signature">(updateItem, fromLocation, targetLocation)</span><span class="type-signature"></span></h4>
     
 
@@ -10157,10 +18354,7 @@ This function inverses the value of the global variable `rememberMe`.
 
 
 <div class="description">
-    saves the choossen draggable item in transfer. 
-removes the item from DOM and inserts it at beforeend at the new location
-than the item recives a new ondragstart functionality with the new location.
-finally update the task fields to show/hide "no tasks to do"-span.
+    saves the choossen draggable item in transfer. removes the item from DOM and inserts it at beforeend at the new locationthan the item recives a new ondragstart functionality with the new location.finally update the task fields to show/hide "no tasks to do"-span.
 </div>
 
 
@@ -10299,7 +18493,7 @@ finally update the task fields to show/hide "no tasks to do"-span.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line28">line 28</a>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line38">line 38</a>
     </li></ul></dd>
     
 
@@ -10343,8 +18537,7 @@ finally update the task fields to show/hide "no tasks to do"-span.
 
 
 <div class="description">
-    Iterates trough every task in database.
-Counts up every type is used in summary and updates the numbers.
+    Iterates trough every task in database.Counts up every type is used in summary and updates the numbers.
 </div>
 
 
@@ -10388,7 +18581,7 @@ Counts up every type is used in summary and updates the numbers.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line85">line 85</a>
+        <a href="assets_js_summary.js.html">assets/js/summary.js</a>, <a href="assets_js_summary.js.html#line89">line 89</a>
     </li></ul></dd>
     
 
@@ -10476,7 +18669,190 @@ Counts up every type is used in summary and updates the numbers.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line32">line 32</a>
+        <a href="assets_js_menu-bar-script.js.html">assets/js/menu-bar-script.js</a>, <a href="assets_js_menu-bar-script.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="updateSingleSubtask"><span class="type-signature">(async) </span>updateSingleSubtask<span class="signature">(path, target, taskId)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    posts true of false depending on checkbox.checked
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">complete path of the subtask-done-value</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>target</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">id of the specific checkbox</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">id of the main-task</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line163">line 163</a>
     </li></ul></dd>
     
 
@@ -10520,8 +18896,7 @@ Counts up every type is used in summary and updates the numbers.
 
 
 <div class="description">
-    Save the input the user made on text and set target.innerText to this input.
-Hide the Input(Wrapper) and show List-Item instead.
+    Save the input the user made on text and set target.innerText to this input.Hide the Input(Wrapper) and show List-Item instead.
 </div>
 
 
@@ -10614,7 +18989,7 @@ Hide the Input(Wrapper) and show List-Item instead.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line179">line 179</a>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line158">line 158</a>
     </li></ul></dd>
     
 
@@ -10650,7 +19025,7 @@ Hide the Input(Wrapper) and show List-Item instead.
     
 
     
-    <h4 class="name" id="updateSubtasks"><span class="type-signature">(async) </span>updateSubtasks<span class="signature">(relatedToTaskId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateSubtasksArray"><span class="type-signature"></span>updateSubtasksArray<span class="signature">(relatedToTaskId)</span><span class="type-signature"> &rarr; {Array.&lt;Object>|string|boolean}</span></h4>
     
 
     
@@ -10658,7 +19033,7 @@ Hide the Input(Wrapper) and show List-Item instead.
 
 
 <div class="description">
-    puts an array based on a querySelector with every subtaskitem to firebase
+    updates an global array, based on a querySelector, that will be pushed to firebase
 </div>
 
 
@@ -10751,7 +19126,206 @@ Hide the Input(Wrapper) and show List-Item instead.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line220">line 220</a>
+        <a href="assets_js_task_details_edit_overlay.js.html">assets/js/task_details_edit_overlay.js</a>, <a href="assets_js_task_details_edit_overlay.js.html#line196">line 196</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+<ul>
+        <li>
+<div class="param-desc">
+    return of an JSON-Array with this information:
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;Object></span>
+
+
+    </dd>
+</dl>
+</li>
+    
+        <li>
+<div class="param-desc">
+    return[].goal - Archived when this goal is reached
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+</li>
+    
+        <li>
+<div class="param-desc">
+    return[].done Tracks when it is archivedHow to use this: For new Tasks: add .subtaskitem to every task-item you want to create. For existing and finished tasks: add .subtask-checkbox to every checkbox and add a label, that contains the task-text
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+</li>
+    </ul>
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="updateTaskFields"><span class="type-signature"></span>updateTaskFields<span class="signature">(sections)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    calls hideWindow for every section. if the innerHTML without leading and trailing spaces isempty the comparsion is false, to the oposite of hideWindow -> showWindow will happen. Otherwise the message must become hidden.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sections</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">contains all sections of the board, so that they can be iterated.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line179">line 179</a>
     </li></ul></dd>
     
 
@@ -10797,13 +19371,13 @@ Hide the Input(Wrapper) and show List-Item instead.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#applyRandomColor">applyRandomColor</a></li><li><a href="global.html#autofillLogin">autofillLogin</a></li><li><a href="global.html#avatarHtml">avatarHtml</a></li><li><a href="global.html#blurListener">blurListener</a></li><li><a href="global.html#callContactInformationForTasks">callContactInformationForTasks</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#clearLocalstorage">clearLocalstorage</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#createContact">createContact</a></li><li><a href="global.html#createSubtasks">createSubtasks</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#deleteData">deleteData</a></li><li><a href="global.html#deleteSubtask">deleteSubtask</a></li><li><a href="global.html#discardNewSubtask">discardNewSubtask</a></li><li><a href="global.html#discardSubtaskInput">discardSubtaskInput</a></li><li><a href="global.html#dragTo">dragTo</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#focusListener">focusListener</a></li><li><a href="global.html#forceLogout">forceLogout</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#getDeadline">getDeadline</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#handleCheckBox">handleCheckBox</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#openEditContactPage">openEditContactPage</a></li><li><a href="global.html#openListSearch">openListSearch</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#openSubtaskInput">openSubtaskInput</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#putContactInfoToEditDialog">putContactInfoToEditDialog</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#putDataset">putDataset</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#renderContactList">renderContactList</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#saveTaskUpdate">saveTaskUpdate</a></li><li><a href="global.html#searchContact">searchContact</a></li><li><a href="global.html#setFocus">setFocus</a></li><li><a href="global.html#setMyAvatar">setMyAvatar</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#setupListener">setupListener</a></li><li><a href="global.html#showDragArea">showDragArea</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#sortByAlphabet">sortByAlphabet</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#toggleThis">toggleThis</a></li><li><a href="global.html#toggleVisibility">toggleVisibility</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateBoardCounters">updateBoardCounters</a></li><li><a href="global.html#updateMenu">updateMenu</a></li><li><a href="global.html#updateSubtaskInput">updateSubtaskInput</a></li><li><a href="global.html#updateSubtasks">updateSubtasks</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#activateAssignedContacts">activateAssignedContacts</a></li><li><a href="global.html#addNewSubtask">addNewSubtask</a></li><li><a href="global.html#addOpenAddTaskToButtons">addOpenAddTaskToButtons</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#applyGreyScreen">applyGreyScreen</a></li><li><a href="global.html#applyRandomColor">applyRandomColor</a></li><li><a href="global.html#applyTaskStyles">applyTaskStyles</a></li><li><a href="global.html#assignedPersonsDetailsHtml">assignedPersonsDetailsHtml</a></li><li><a href="global.html#assignedPersonsEditHtml">assignedPersonsEditHtml</a></li><li><a href="global.html#autofillLogin">autofillLogin</a></li><li><a href="global.html#avatarHtml">avatarHtml</a></li><li><a href="global.html#blurListener">blurListener</a></li><li><a href="global.html#calculateSubtaskProgressOf">calculateSubtaskProgressOf</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#changeContactItemColor">changeContactItemColor</a></li><li><a href="global.html#clearLocalstorage">clearLocalstorage</a></li><li><a href="global.html#closeAddContactPage">closeAddContactPage</a></li><li><a href="global.html#closeAddTaskPopUp">closeAddTaskPopUp</a></li><li><a href="global.html#closeContactModal">closeContactModal</a></li><li><a href="global.html#closeContactOptions">closeContactOptions</a></li><li><a href="global.html#closeContactWindow">closeContactWindow</a></li><li><a href="global.html#closeDetails">closeDetails</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#contactDetailsHTML">contactDetailsHTML</a></li><li><a href="global.html#createContact">createContact</a></li><li><a href="global.html#createContactLetterHTML">createContactLetterHTML</a></li><li><a href="global.html#createContactListHTML">createContactListHTML</a></li><li><a href="global.html#createSubtasks">createSubtasks</a></li><li><a href="global.html#createTaskObject">createTaskObject</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#deleteData">deleteData</a></li><li><a href="global.html#deleteSubtask">deleteSubtask</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#discardNewSubtask">discardNewSubtask</a></li><li><a href="global.html#discardSubtaskInput">discardSubtaskInput</a></li><li><a href="global.html#dragTo">dragTo</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#emptyBottomOf">emptyBottomOf</a></li><li><a href="global.html#executeOnMaxWidth">executeOnMaxWidth</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#focusListener">focusListener</a></li><li><a href="global.html#forceLogout">forceLogout</a></li><li><a href="global.html#formOfDueDate">formOfDueDate</a></li><li><a href="global.html#generateCircleProfiles">generateCircleProfiles</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#generateTaskCard">generateTaskCard</a></li><li><a href="global.html#generateTaskDetailsHtml">generateTaskDetailsHtml</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getCurrentPriority">getCurrentPriority</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#getDeadline">getDeadline</a></li><li><a href="global.html#getSubtaskProgress">getSubtaskProgress</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#guestLogin">guestLogin</a></li><li><a href="global.html#handleButtonClickOnWidth">handleButtonClickOnWidth</a></li><li><a href="global.html#handleCheckBox">handleCheckBox</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#initBoard">initBoard</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#isNotEmpty">isNotEmpty</a></li><li><a href="global.html#limitLengthOf">limitLengthOf</a></li><li><a href="global.html#listAttachedSubtasks">listAttachedSubtasks</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#mobileDeleteRules">mobileDeleteRules</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#openAddContactPage">openAddContactPage</a></li><li><a href="global.html#openAddTask">openAddTask</a></li><li><a href="global.html#openContactDetails">openContactDetails</a></li><li><a href="global.html#openContactOptions">openContactOptions</a></li><li><a href="global.html#openCreatedContact">openCreatedContact</a></li><li><a href="global.html#openEditContactPage">openEditContactPage</a></li><li><a href="global.html#openEditDialog">openEditDialog</a></li><li><a href="global.html#openListSearch">openListSearch</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#openSubtaskInput">openSubtaskInput</a></li><li><a href="global.html#openTaskDetails">openTaskDetails</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#priorityEqualImg">priorityEqualImg</a></li><li><a href="global.html#putContactInfoToEditDialog">putContactInfoToEditDialog</a></li><li><a href="global.html#putContactsToList">putContactsToList</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#putDataset">putDataset</a></li><li><a href="global.html#randomId">randomId</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#removeContactFromInterface">removeContactFromInterface</a></li><li><a href="global.html#renderDetailsContactList">renderDetailsContactList</a></li><li><a href="global.html#renderEditView">renderEditView</a></li><li><a href="global.html#renderOpenSubtasks">renderOpenSubtasks</a></li><li><a href="global.html#renderTaskDetails">renderTaskDetails</a></li><li><a href="global.html#rerenderTaskOnBoard">rerenderTaskOnBoard</a></li><li><a href="global.html#resetAssignedPersons">resetAssignedPersons</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPriorityButtons">resetPriorityButtons</a></li><li><a href="global.html#returnToBoard">returnToBoard</a></li><li><a href="global.html#rotateTaskDragEnd">rotateTaskDragEnd</a></li><li><a href="global.html#rotateTaskDragStart">rotateTaskDragStart</a></li><li><a href="global.html#saveTaskUpdate">saveTaskUpdate</a></li><li><a href="global.html#scrollToLastSubtask">scrollToLastSubtask</a></li><li><a href="global.html#searchAndShowTasks">searchAndShowTasks</a></li><li><a href="global.html#searchContact">searchContact</a></li><li><a href="global.html#setBottomTaskCardVisibility">setBottomTaskCardVisibility</a></li><li><a href="global.html#setFocus">setFocus</a></li><li><a href="global.html#setMyAvatar">setMyAvatar</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPrefixToKey">setPrefixToKey</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#setupAvatarMenu">setupAvatarMenu</a></li><li><a href="global.html#setupListener">setupListener</a></li><li><a href="global.html#showCapitaliseFirstLetters">showCapitaliseFirstLetters</a></li><li><a href="global.html#showCreatedContactModal">showCreatedContactModal</a></li><li><a href="global.html#showDragArea">showDragArea</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#sortByAlphabet">sortByAlphabet</a></li><li><a href="global.html#startDrag">startDrag</a></li><li><a href="global.html#startScreenAnimation">startScreenAnimation</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#switchToAddTask">switchToAddTask</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#toggleThisContact">toggleThisContact</a></li><li><a href="global.html#toggleVisibility">toggleVisibility</a></li><li><a href="global.html#updateAssignedPersons">updateAssignedPersons</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateBoardCounters">updateBoardCounters</a></li><li><a href="global.html#updateMenu">updateMenu</a></li><li><a href="global.html#updateSingleSubtask">updateSingleSubtask</a></li><li><a href="global.html#updateSubtaskInput">updateSubtaskInput</a></li><li><a href="global.html#updateSubtasksArray">updateSubtasksArray</a></li><li><a href="global.html#updateTaskFields">updateTaskFields</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Sat Jul 06 2024 13:20:07 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Fri Jul 12 2024 08:04:54 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

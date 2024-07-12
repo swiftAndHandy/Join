@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: assets/js/summary.js</title>
+    <title>JSDoc: Source: assets/js/generate_taskDetailsHtml.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: assets/js/summary.js</h1>
+    <h1 class="page-title">Source: assets/js/generate_taskDetailsHtml.js</h1>
 
     
 
@@ -26,127 +26,200 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * This function is used @summary.html to initalize everything.
- * Adds an eventListener on every summary card, that leads to board.html when clicked.
- * This method is used to prevent regular link-style
- */
-function initSummary() {
-    includeHTML();
-    greetAtLogin();
-    document.querySelectorAll('.summary-card').forEach(card => {
-        card.addEventListener('click', () => window.location.href = "./board.html");
-    })
+            <pre class="prettyprint source linenums"><code>// Checkbox must become active also, when contact is currently assigned
+function generateContactsHtml(data) {
+    const target = document.getElementById('edit-task-contacts-list');
+    target.innerHTML += `
+        &lt;div id="assign-contact-${data.path}" class="single-contact" onclick="toggleThisContact('${data.path}')">
+            &lt;div class="user-box">
+                &lt;div id="edit-task-avatar-${data.id}" class="avatar at-drop-down" style="background-color: ${data['color']};">${initials(data.name)}&lt;/div>
+                    &lt;span id="edit-task-username-${data.id}">${data.name}&lt;/span>
+                &lt;/div>
+            &lt;div id="assign-contact-pseudo-checkbox-${data.path}" class="pseudo-checkbox">
+            &lt;/div>
+                &lt;input type="checkbox" class="contact-checkbox" id="assign-contact-checkbox-${data.path}" name="example-checkbox">
+                &lt;label for="assign-contact-checkbox-${data.path}">&lt;/label>
+        &lt;/div>
+        `;
 }
 
 /**
- * Runs various functions, to use the correct greeting for users/guests.
- * To do: Check for Login/Username...
+ * Generates the Task-Detail-View-HTML
+ * @param {string} taskId - contains the current tasks ID
+ * @param {object} taskDetails contains the current tasks details
+ * @returns - an array, that contains all assigned contacts
  */
-async function greetAtLogin() {
-    const daytime = getDaytime();
-    const greetingOverlay = document.getElementById('greeting-overlay');
-    const greetingEmbedded = document.getElementById('greeting-embedded');
-    const userInformation = await readData(`accounts/${userId}`)
-    const greetingMsg = await generateGreetingHtml(daytime, userInformation);
-    greetingOverlay.innerHTML = greetingMsg;
-    greetingEmbedded.innerHTML = greetingMsg;
-    animateGreeting(greetingOverlay);
-    updateBoardCounters();
+async function generateTaskDetailsHtml(taskId, taskDetails) {
+    const tag = document.getElementById('task-details-tag');
+    tag.innerHTML = taskDetails['tag'];
+    taskDetails['tag'] === 'User Story' ? tag.setAttribute('class', 'tag user-story') : tag.setAttribute('class', 'tag technical-task')
+
+    const title = document.getElementById('task-details-title');
+    title.innerHTML = taskDetails['title'];
+
+    const description = document.getElementById('task-details-description');
+    description.innerHTML = taskDetails['description'];
+
+    const deadline = document.getElementById('task-details-date');
+    deadline.innerHTML = taskDetails['date'].split('-').join('/');
+
+    const priority = document.getElementById('details-priority-text');
+    const priorityImg = document.getElementById('details-priority-img');
+    priority.innerHTML = taskDetails['priority'];
+    priorityImg.src = `../assets/img/icons/priority_${taskDetails['priority'].toLowerCase()}.svg`;
+
+    const assignedTo = taskDetails['assigned'];
+    document.getElementById('details-assigned-list').innerHTML = ''
+    assignedPersonsDetailsHtml(assignedTo);
+
+    const deleteBtn = document.getElementById('task-details-delete-btn');
+    deleteBtn.setAttribute('onclick', `deleteTask('${taskId}')`);
+    return taskDetails;
+}
+
+function resetDetailCardHtml() {
+    const tag = document.getElementById('task-details-tag');
+    tag.innerHTML = '';
+    tag.setAttribute('class', '');
+
+    const title = document.getElementById('task-details-title');
+    title.innerHTML = '';
+
+    const description = document.getElementById('task-details-description');
+    description.value = '';
+
+    const deadline = document.getElementById('task-details-date');
+    deadline.innerHTML = '';
+
+    const priority = document.getElementById('details-priority-text');
+    const priorityImg = document.getElementById('details-priority-img');
+    priority.innerHTML = '';
+    priorityImg.src = ``;
+
+    const assignedToDetails = document.getElementById('details-assigned-list');
+    assignedToDetails.innerHTML = '';
+
+    const subtaskList = document.getElementById('details-subtasks-list');
+    subtaskList.innerHTML = '';
+
+    const deleteBtn = document.getElementById('task-details-delete-btn');
+    deleteBtn.setAttribute('onclick', `deleteTask('')`);
 }
 
 /**
- * @returns a string with the current daytime &lt;br>&lt;br>
+ * Generates HTML for 
+ * @param {[]} contactIds an array, that contains all assigned contacts
+ * @returns 
  */
-function getDaytime() {
-    const currentDate = new Date();
-    const hours = currentDate.getHours();
-
-    if (isMorning(hours)) {
-        return 'morning';
-    } else if (isAfternoon(hours)) {
-        return hours === 12 ? 'noon' : 'afternoon';
-    } else if (isEvening(hours)) {
-        return 'evening';
-    } else {
-        return 'night';
-    }
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 6 or up to 11) or false&lt;br>&lt;br>
- */
-function isMorning(hours) {
-    return hours >= 6 &amp;&amp; hours &lt; 12;
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 12 and up to 17) or false&lt;br>&lt;br>
- */
-function isAfternoon(hours) {
-    return hours >= 12 &amp;&amp; hours &lt; 18;
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 18 and up to 23) or false&lt;br>&lt;br>
- */
-function isEvening(hours) {
-    return hours >= 18 &amp;&amp; hours &lt; 24;
-}
-
-/**
- * This function controlls css classes, that are required for the login animation.
- * @param {Element} greeting - target HTML-Element.
- */
-function animateGreeting(greeting) {
-    greeting.classList.add('greeting-msg--mobile--fade-out');
-    document.getElementById('summary').classList.add('summary-animation--fade-in');
-    setTimeout(() => {
-        greeting.classList.add('d-none');
-    }, 1600);
-}
-
-
-/**
- * Iterates trough every task in database.
- * Counts up every type is used in summary and updates the numbers.
- */
-async function updateBoardCounters() {
-    const data = await readData('tasks');
-    const counters = { 'todo': 0, 'done': 0, 'board': Object.keys(data).length, 'progress': 0, 'feedback': 0 };
-    const urgents = [];
-
-    for (let item in data) {
-        const thisItem = data[item];
-        counters[thisItem.status]++;
-        if (thisItem.priority.toLowerCase() === 'urgent' &amp;&amp; thisItem.status !== 'done') {
-            urgents.push(thisItem.date);
+async function assignedPersonsDetailsHtml(contactIds) {
+    let output = '';
+    if (contactIds) {
+        for (let item of contactIds) {
+            try {
+                const data = await readData(`${item}`)
+                document.getElementById('details-assigned-list').insertAdjacentHTML('beforeend', `
+                &lt;div class="details__inner">
+                &lt;div id="task-details-avatar-${item}" class="avatar at-drop-down" style="background-color: ${data.color};">${initials(data.name)}&lt;/div>
+                    &lt;span id="edit-task-username-ID">${data.name}&lt;/span>
+                &lt;/div>
+                `);
+            } catch (error) { }
         }
     }
+    return output;
+}
 
-    document.getElementById('urgent-counter').innerText = urgents.length;
-    if (urgents.length > 0) {
-        document.getElementById('deadline-date').innerText = taskDueDate(getDeadline(urgents)[0]);
-        document.getElementById('deadline-description').innerText = 'Upcoming Deadline'
-    } else {
-        document.getElementById('deadline-description').innerHTML = '&lt;b>No upcoming deadline.&lt;/b>&lt;br>Take a breath.'
-    }
+/**
+ * 
+ * @param {string} contactIds - the ID of a single contact, that avatar needs to be rendered
+ * @returns 
+ */
+async function assignedPersonsEditHtml(contactIds) {
+    const data = await readData(`${contactIds}`)
+    const output = `
+            &lt;div id="edit_task_assigned-person-${contactIds}" class="details__inner">
+                &lt;div id="edit-task-avatar-${contactIds}" class="avatar at-drop-down" style="background-color: ${data.color};">${initials(data.name)}&lt;/div>
+            &lt;/div>
+            `
+    return output;
+}
 
-    for (let items in counters) {
-        document.getElementById(`${items}-counter`).innerText = counters[items];
+
+/**
+ * Creates HTML for Creating new Subtasks. This is originaly written for task-details, but changed in 
+ * a way you can select a individual target-location and reuse this code on other pages.
+ * Applys a random ID to this item. Submits only, if value isn't empty after trim spaces from begin and end
+ * @param {string} value 
+ */
+function addNewSubtask(value, target = 'edit-subtask-item-wrapper', form = 'form') {
+    target = document.getElementById(`${target}`);
+    const id = randomId();
+    value = value.trim();
+    if (value) {
+        target.insertAdjacentHTML('beforeend', `
+    &lt;div id="edit-subtask-total-${id}" class="li-wrapper" ondblclick="openSubtaskInput('${id}');stopPropagation(event);">
+        &lt;ul id="edit-subtasks-unsorted-${id}" class="edit-subtasks-list"">
+            &lt;li>
+                &lt;div class=" single-list-item">
+                    &lt;span id="subtaskspan-${id}" class="subtaskitem">${value}&lt;/span>
+                    &lt;div class="hover-overlay" onclick="stopPropagation(event)">
+                        &lt;img src="./assets/img/icons/edit.svg" alt="" onclick="openSubtaskInput('${id}')">
+                        &lt;div class="vertical-line">&lt;/div>
+                        &lt;img src="./assets/img/icons/delete.svg" alt="" onclick="deleteSubtask('${id}');">
+                    &lt;/div>
+                &lt;/div>
+            &lt;/li>
+        &lt;/ul>
+    &lt;/div>
+    &lt;${form} id="single-subtask-input-wrapper-${id}" class="single-subtask-input-box d-none" onsubmit="updateSubtaskInput('${id}');return false;">
+        &lt;input id="single-subtask-input-${id}" type="text">
+        &lt;img class="link-btn discard-btn" src="./assets/img/icons/discard.svg" alt="" onclick="discardSubtaskInput('${id}')">
+        &lt;div class="vertical-line">&lt;/div>
+        &lt;img class="link-btn accept-btn" src="./assets/img/icons/check_blue.svg" alt="" onclick="updateSubtaskInput('${id}')">
+    &lt;/${form}}>
+    `);
+    document.getElementById('edit-add-subtask').value = '';
     }
 }
 
 
 /**
- * @param {string[]} urgents - an array with date-strings, e. g. '2024-07-04'
- * @returns {Date[]} - Returns the dates sorted from earliest to latest.
+ * Creates HTML for every subtask Element thats given to a task and iterates trough data.subtasks.length to ensure
+ * a unique ID for every checkbox/label-pair.
+ * @param {Object} data - contains all information related to taskId
+ * @param {string} taskId - the Key of the current read Task
  */
-function getDeadline(datesArray) {
-    return datesArray.sort((a, b) => new Date(a) - new Date(b));
+async function listAttachedSubtasks(data, taskId) {
+    const targetLocation = document.getElementById('details-subtasks-list');
+
+    if (Array.isArray(data.subtasks)) {
+        targetLocation.innerHTML = '';
+        for (let i = 0; i &lt; data.subtasks.length; i++) {
+            targetLocation.insertAdjacentHTML('beforeend', `
+            &lt;div class="details__subtask">
+                &lt;input type="checkbox" 
+                onchange="updateSingleSubtask(
+                    'tasks/${taskId}/subtasks/${i}/done', 
+                    'details-task${taskId}-subtask-${i}', 
+                    '${taskId}'
+                )"
+                class="edit checkbox subtask-checkbox" 
+                id="details-task${taskId}-subtask-${i}" 
+                name="details-task${taskId}-subtask-${i}" 
+                ${data.subtasks[i].done ? 'checked' : ''}>
+                &lt;label id="label-for-details-task${taskId}-subtask-${i}" for="details-task${taskId}-subtask-${i}">${data.subtasks[i].goal}&lt;/label>
+            &lt;/div>
+            `);
+        }
+    } else {
+        noSubtasksAttached();
+        data.subtasks &amp;&amp; console.warn('Firebase issue. Pls ensure to save JSON-Arrays or nothing in subtasks. Strings will not be displayed!');
+    }
+}
+
+function noSubtasksAttached() {
+    const targetLocation = document.getElementById('details-subtasks-list');
+    targetLocation.innerHTML = "This Task has no Subtasks.";
 }</code></pre>
         </article>
     </section>

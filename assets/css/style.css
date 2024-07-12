@@ -210,11 +210,10 @@ a {
     display: none !important;
 }
 
+.d-block {
+    display: block !important;
+}
 
-
-/* .main-pl {
-    padding-left: 96px;
-} */
 
 @media (min-width: 1160px) {
     .main-pl {

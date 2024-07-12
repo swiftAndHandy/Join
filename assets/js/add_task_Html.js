@@ -14,9 +14,7 @@ function generateDropBoxContacts(entries,data) {
 
                
     }
-
-
-
+    
 
     async function generateCircleProfilesLine() {
       // Annahme: Der Ziel-Container hat eine ID, die dem Kontaktpfad entspricht

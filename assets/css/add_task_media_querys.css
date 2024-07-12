@@ -1,0 +1,287 @@
+@media (min-width: 1000px) and (max-width: 4200px) {
+    .desktop-buttons {
+      display: flex;
+    }
+  
+    .content-wrapper {
+      margin-left: 320px;
+    }
+  
+    .add-task-container {
+      padding: 0;
+    }
+  
+    .headline-add-task {
+      padding: 20px 0px 8px;
+    }
+  
+    .form-add-task {
+      height: 100%;
+      display: flex;
+      gap: 59px;
+      overflow-x: unset;
+      overflow-y: unset;
+    }
+  
+    .form-desktop-view {
+  
+      height: 100%;
+      display: flex;
+      gap: 59px;
+    }
+  
+    .add-task-container {
+      height: 100%;
+      width: 100%;
+      margin-top: 38px;
+    }
+  
+    input,
+    textarea {
+      width: 436px;
+    }
+  
+    select {
+      width: 480px;
+    }
+  
+    #assigned-to-contact {
+      width: 436px;
+    }
+  
+    .create-task-panel {
+      display: none;
+    }
+  
+    .desktop-seperator-add-contact {
+      display: block;
+    }
+  
+    .prios {
+      width: 136px;
+    }
+    .input-width {
+      width: 480px !important;
+    }
+    
+    #category-input-wrapper {
+      width: 480px;
+    }
+    
+  }
+   
+  
+  @media (max-width: 1415px) and (min-width: 802px) {
+    .content-wrapper {
+      margin-left: 280px;
+    }
+  
+    input,
+    textarea {
+      width: 320px;
+    }
+  
+    select {
+      width: 364px;
+    }
+  
+    .prios {
+      width: 90px;
+    }
+  
+    #assigned-to-contact {
+      width: 320px;
+    }
+  
+    .ul-row-styling {
+      font-size: 16px;
+  
+    }
+  
+    .profile-initials-circle {
+      width: 36px;
+      height: 36px;
+    }
+  
+    .drop-menu {
+      height: 236px;
+    }
+  
+    .input-width {
+      width: 364px !important;
+    }
+    
+    #category-input-wrapper {
+      width: 364px;
+    }
+    
+  }
+  
+  @media (max-width: 1159px) and (min-width: 801px) {
+  .content-wrapper {
+    margin-left: 100px;
+    margin-top: 85px;
+  }
+  
+  .required-text {
+    bottom: 145px;
+  }
+  }
+  
+  @media (max-width:999px) and (min-width: 430px) {
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 70px;
+    }
+  
+    .headline-add-task {
+      margin-left: 42px;
+    }
+  
+    .form-add-task {
+      height: 88%;
+      overflow-x: hidden;
+    }
+  
+    .required-text {
+      display: none;
+    }
+  
+    #contacts-show-input {
+      width: 320px;
+    }
+  
+  
+  }
+  
+  @media (max-width: 1120px) and (min-width: 916px) {
+    .form-add-task {
+      height: 92%;
+    }
+  }
+  
+  @media (max-width: 999px) {
+    .mb-assigned-to {
+      margin-bottom: 15px;
+    }
+    .display-contacts-pictures {
+      margin-bottom: 17px;
+    }
+  }
+  
+  @media (max-width: 803px) {
+    .ul-row-styling {
+      font-size: 16px;
+    }
+  
+  }
+  
+  @media(max-width: 803px) and (min-width:430px) {
+    .drop-menu {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 800px) and (min-width: 300px) {
+    .content-wrapper {
+      margin-top: 65px;
+    }
+  
+    .required-text {
+      display: none;
+    }
+  
+    #contacts-show-input input {
+      width: 250px;
+    }
+  }
+  
+  @media (max-width: 422px) {
+    .create-task-btn {
+      font-size: clamp(15px, 2vw, 20px);
+      padding: 9px;
+    }
+  
+    .prio-content {
+      flex-direction: column;
+    }
+  
+    .prios {
+      width: 93%;
+    }
+  
+    .add-task-container {
+      width: 320px;
+    }
+  
+    .content-wrapper {
+      margin-left: 24px;
+    }
+  
+    .create-task-panel span {
+      font-size: 18px;
+    }
+  
+    .profile-initials-circle {
+      width: 32px;
+      height: 32px;
+    }
+  
+  
+  }
+  
+  @media (max-width: 377px) {
+    .content-wrapper {
+      margin-left: 10px;
+    }
+  }
+  
+  @media (max-width: 356px) {
+    .content-wrapper {
+      margin-left: 0;
+    }
+  
+    .create-task-panel span {
+      font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 340px) {
+    .add-task-container {
+      width: 300px;
+    }
+  
+    .profile-initials-circle {
+      width: 30px;
+      height: 30px;
+    }
+  
+  }
+  
+  
+  @media (max-height: 900px) {
+    .form-add-task {
+      height: 79%;
+    }
+  }
+  
+  @media (max-height: 875px) {
+    .add-task-container {
+      height: 500px;
+    }
+  }
+  
+  @media (max-height: 765px) {
+    .add-task-container {
+      height: 385px;
+    }
+  }
+  
+  @media (max-height: 765px) and (max-width: 1119px) and (min-width: 905px) {
+    .create-task-panel {
+      top: 510px;
+      gap: 24px;
+    }
+  }

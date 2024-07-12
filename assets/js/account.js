@@ -4,6 +4,7 @@ let passwordValidationInputHidden = true;
 let passwordInputHidden = true;
 let rememberMe = localStorage.getItem('login') === 'true';
 
+
 /**
  * Toggles the remember me state.
  * This function inverses the value of the global variable `rememberMe`.
@@ -229,6 +230,7 @@ function compareRegistrationPasswords() {
         document.getElementById('password-check').classList.remove('password-check');
     }
 }
+
 
 /**
  * Statement, checking validationPassword for a existing value.

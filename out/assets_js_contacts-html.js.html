@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: assets/js/summary.js</title>
+    <title>JSDoc: Source: assets/js/contacts-html.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: assets/js/summary.js</h1>
+    <h1 class="page-title">Source: assets/js/contacts-html.js</h1>
 
     
 
@@ -27,127 +27,79 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * This function is used @summary.html to initalize everything.
- * Adds an eventListener on every summary card, that leads to board.html when clicked.
- * This method is used to prevent regular link-style
+ * Creates and inserts HTML for a contact list item.
+ * 
+ * @param {number} index - The index of the contact.
+ * @param {string} name - The name of the contact.
+ * @param {string} email - The email of the contact.
+ * @param {string} color - The color associated with the contact.
  */
-function initSummary() {
-    includeHTML();
-    greetAtLogin();
-    document.querySelectorAll('.summary-card').forEach(card => {
-        card.addEventListener('click', () => window.location.href = "./board.html");
-    })
-}
-
-/**
- * Runs various functions, to use the correct greeting for users/guests.
- * To do: Check for Login/Username...
- */
-async function greetAtLogin() {
-    const daytime = getDaytime();
-    const greetingOverlay = document.getElementById('greeting-overlay');
-    const greetingEmbedded = document.getElementById('greeting-embedded');
-    const userInformation = await readData(`accounts/${userId}`)
-    const greetingMsg = await generateGreetingHtml(daytime, userInformation);
-    greetingOverlay.innerHTML = greetingMsg;
-    greetingEmbedded.innerHTML = greetingMsg;
-    animateGreeting(greetingOverlay);
-    updateBoardCounters();
-}
-
-/**
- * @returns a string with the current daytime &lt;br>&lt;br>
- */
-function getDaytime() {
-    const currentDate = new Date();
-    const hours = currentDate.getHours();
-
-    if (isMorning(hours)) {
-        return 'morning';
-    } else if (isAfternoon(hours)) {
-        return hours === 12 ? 'noon' : 'afternoon';
-    } else if (isEvening(hours)) {
-        return 'evening';
-    } else {
-        return 'night';
-    }
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 6 or up to 11) or false&lt;br>&lt;br>
- */
-function isMorning(hours) {
-    return hours >= 6 &amp;&amp; hours &lt; 12;
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 12 and up to 17) or false&lt;br>&lt;br>
- */
-function isAfternoon(hours) {
-    return hours >= 12 &amp;&amp; hours &lt; 18;
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 18 and up to 23) or false&lt;br>&lt;br>
- */
-function isEvening(hours) {
-    return hours >= 18 &amp;&amp; hours &lt; 24;
-}
-
-/**
- * This function controlls css classes, that are required for the login animation.
- * @param {Element} greeting - target HTML-Element.
- */
-function animateGreeting(greeting) {
-    greeting.classList.add('greeting-msg--mobile--fade-out');
-    document.getElementById('summary').classList.add('summary-animation--fade-in');
-    setTimeout(() => {
-        greeting.classList.add('d-none');
-    }, 1600);
+function createContactListHTML(index, name, email, color) {
+    document.getElementById('contact-list').innerHTML += `
+    &lt;li id="contact-item-${index}" class="contact-item" onclick="openContactDetails('${index}')">
+            &lt;div class="contact-image--small" style="background-color:${color};">${showCapitaliseFirstLetters(name)}&lt;/div>
+            &lt;div class="contact-details">
+                &lt;p class="contact-name-list">${name}&lt;/p>
+                &lt;p class="contact-email-list">${email}&lt;/p>
+            &lt;/div>
+        &lt;/li>
+    `;
 }
 
 
 /**
- * Iterates trough every task in database.
- * Counts up every type is used in summary and updates the numbers.
+ * Creates and inserts HTML for a contact list letter header.
+ * 
+ * @param {string} letter - The letter to display as a header.
  */
-async function updateBoardCounters() {
-    const data = await readData('tasks');
-    const counters = { 'todo': 0, 'done': 0, 'board': Object.keys(data).length, 'progress': 0, 'feedback': 0 };
-    const urgents = [];
-
-    for (let item in data) {
-        const thisItem = data[item];
-        counters[thisItem.status]++;
-        if (thisItem.priority.toLowerCase() === 'urgent' &amp;&amp; thisItem.status !== 'done') {
-            urgents.push(thisItem.date);
-        }
-    }
-
-    document.getElementById('urgent-counter').innerText = urgents.length;
-    if (urgents.length > 0) {
-        document.getElementById('deadline-date').innerText = taskDueDate(getDeadline(urgents)[0]);
-        document.getElementById('deadline-description').innerText = 'Upcoming Deadline'
-    } else {
-        document.getElementById('deadline-description').innerHTML = '&lt;b>No upcoming deadline.&lt;/b>&lt;br>Take a breath.'
-    }
-
-    for (let items in counters) {
-        document.getElementById(`${items}-counter`).innerText = counters[items];
-    }
+function createContactLetterHTML(letter) {
+    document.getElementById('contact-list').innerHTML += `
+        &lt;li class="letter">${letter}&lt;/li>
+        &lt;div class="underline">&lt;/div>
+    `;
 }
 
 
 /**
- * @param {string[]} urgents - an array with date-strings, e. g. '2024-07-04'
- * @returns {Date[]} - Returns the dates sorted from earliest to latest.
+ * Creates and inserts HTML for displaying the contact details.
+ * 
+ * @param {string} name - The name of the contact.
+ * @param {string} email - The email of the contact.
+ * @param {string} telefon - The phone number of the contact.
+ * @param {string} color - The color associated with the contact.
+ * @param {number} i - The index of the contact.
  */
-function getDeadline(datesArray) {
-    return datesArray.sort((a, b) => new Date(a) - new Date(b));
-}</code></pre>
+function contactDetailsHTML(name, email, telefon, color, i) {
+    let contactInfoContainer = document.getElementById('contact-info-container');
+    contactInfoContainer.style.display = 'block';
+    contactInfoContainer.innerHTML = `
+        &lt;div class="image-name-container">
+            &lt;div class="contact-image--large" style="background-color:${color};">${showCapitaliseFirstLetters(name)}&lt;/div>
+            &lt;div class="name-buttons-container">
+                &lt;h2 class="contact-name--large">${name}&lt;/h2>
+                &lt;div class="edit-delete-buttons-container">
+                    &lt;div id="edit-button" class="edit-button" onclick="openEditContactPage('${i}')">
+                        &lt;img src="./assets/img/icons/edit.svg" alt="edit">edit
+                    &lt;/div>
+                    &lt;div id="delete-button" class="delete-button" onclick="deleteContact('contacts/${i}', '${contactToEditId}')">
+                        &lt;img src="./assets/img/icons/delete.svg" alt="delete">delete
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+        &lt;span class="span-contact-info">Contact information&lt;/span>
+        &lt;div class="email-phone-container">
+            &lt;span class="span-email-phone">Email&lt;/span>
+            &lt;a id="current-contact-email" href="mailto:${email}" class="contact-email">${email}&lt;/a>
+            &lt;span class="span-email-phone">Phone&lt;/span>
+            &lt;a id="current-contact-phone" href="tel:${telefon}" class="tel-number">${telefon}&lt;/a>
+        &lt;/div>
+    `;
+    document.getElementById('edit-button').style.display = 'flex';
+    document.getElementById('delete-button').style.display = 'flex';
+}
+
+</code></pre>
         </article>
     </section>
 

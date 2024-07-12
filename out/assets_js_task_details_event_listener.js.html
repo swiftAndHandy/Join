@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: assets/js/summary.js</title>
+    <title>JSDoc: Source: assets/js/task_details_event_listener.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: assets/js/summary.js</h1>
+    <h1 class="page-title">Source: assets/js/task_details_event_listener.js</h1>
 
     
 
@@ -26,127 +26,50 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * This function is used @summary.html to initalize everything.
- * Adds an eventListener on every summary card, that leads to board.html when clicked.
- * This method is used to prevent regular link-style
+            <pre class="prettyprint source linenums"><code>
+/**
+ * Setup some Event-Listeners for focus-design on edit-task-details input-fields (contact-search and add-new-subtask)
  */
-function initSummary() {
-    includeHTML();
-    greetAtLogin();
-    document.querySelectorAll('.summary-card').forEach(card => {
-        card.addEventListener('click', () => window.location.href = "./board.html");
-    })
+function setupListener() {
+    let listener = document.getElementById('edit-add-subtask');
+    listener.addEventListener('focus', focusListener);
+    listener.addEventListener('blur', blurListener);
+
+    listener = document.getElementById('edit-task-list-input-field');
+    const target = 'edit-task-contact-list-input';
+    listener.addEventListener('focus', () => document.getElementById(target).classList.add('focus'));
+    listener.addEventListener('blur', () => document.getElementById(target).classList.remove('focus'));
+}
+
+function setupListenerForAddTasks() {
+    let listener = document.getElementById('edit-add-subtask');
+    listener.addEventListener('focus', focusListener);
+    listener.addEventListener('blur', blurListener);
 }
 
 /**
- * Runs various functions, to use the correct greeting for users/guests.
- * To do: Check for Login/Username...
+ * Change Button-Design based on focus of input-field. 
+ * Show discard and save-button, when input for new subtask is active
  */
-async function greetAtLogin() {
-    const daytime = getDaytime();
-    const greetingOverlay = document.getElementById('greeting-overlay');
-    const greetingEmbedded = document.getElementById('greeting-embedded');
-    const userInformation = await readData(`accounts/${userId}`)
-    const greetingMsg = await generateGreetingHtml(daytime, userInformation);
-    greetingOverlay.innerHTML = greetingMsg;
-    greetingEmbedded.innerHTML = greetingMsg;
-    animateGreeting(greetingOverlay);
-    updateBoardCounters();
+function focusListener() {
+    document.getElementById('edit-subtask-box').classList.add('focus');
+    hideWindow('edit-view-subtask-navigation', false);
+    hideWindow('edit-view-subtask-add');
 }
 
-/**
- * @returns a string with the current daytime &lt;br>&lt;br>
- */
-function getDaytime() {
-    const currentDate = new Date();
-    const hours = currentDate.getHours();
 
-    if (isMorning(hours)) {
-        return 'morning';
-    } else if (isAfternoon(hours)) {
-        return hours === 12 ? 'noon' : 'afternoon';
-    } else if (isEvening(hours)) {
-        return 'evening';
-    } else {
-        return 'night';
+/**
+ * Change Button-Design based on focus of input-field. 
+ * Hide discard and save-button, when input for new subtask is active
+ * Show add button instead.
+ */
+function blurListener() {
+    let listener = document.getElementById('edit-add-subtask')
+    document.getElementById('edit-subtask-box').classList.remove('focus');
+    if (!listener.value) {
+        hideWindow('edit-view-subtask-navigation');
+        hideWindow('edit-view-subtask-add', false);
     }
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 6 or up to 11) or false&lt;br>&lt;br>
- */
-function isMorning(hours) {
-    return hours >= 6 &amp;&amp; hours &lt; 12;
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 12 and up to 17) or false&lt;br>&lt;br>
- */
-function isAfternoon(hours) {
-    return hours >= 12 &amp;&amp; hours &lt; 18;
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 18 and up to 23) or false&lt;br>&lt;br>
- */
-function isEvening(hours) {
-    return hours >= 18 &amp;&amp; hours &lt; 24;
-}
-
-/**
- * This function controlls css classes, that are required for the login animation.
- * @param {Element} greeting - target HTML-Element.
- */
-function animateGreeting(greeting) {
-    greeting.classList.add('greeting-msg--mobile--fade-out');
-    document.getElementById('summary').classList.add('summary-animation--fade-in');
-    setTimeout(() => {
-        greeting.classList.add('d-none');
-    }, 1600);
-}
-
-
-/**
- * Iterates trough every task in database.
- * Counts up every type is used in summary and updates the numbers.
- */
-async function updateBoardCounters() {
-    const data = await readData('tasks');
-    const counters = { 'todo': 0, 'done': 0, 'board': Object.keys(data).length, 'progress': 0, 'feedback': 0 };
-    const urgents = [];
-
-    for (let item in data) {
-        const thisItem = data[item];
-        counters[thisItem.status]++;
-        if (thisItem.priority.toLowerCase() === 'urgent' &amp;&amp; thisItem.status !== 'done') {
-            urgents.push(thisItem.date);
-        }
-    }
-
-    document.getElementById('urgent-counter').innerText = urgents.length;
-    if (urgents.length > 0) {
-        document.getElementById('deadline-date').innerText = taskDueDate(getDeadline(urgents)[0]);
-        document.getElementById('deadline-description').innerText = 'Upcoming Deadline'
-    } else {
-        document.getElementById('deadline-description').innerHTML = '&lt;b>No upcoming deadline.&lt;/b>&lt;br>Take a breath.'
-    }
-
-    for (let items in counters) {
-        document.getElementById(`${items}-counter`).innerText = counters[items];
-    }
-}
-
-
-/**
- * @param {string[]} urgents - an array with date-strings, e. g. '2024-07-04'
- * @returns {Date[]} - Returns the dates sorted from earliest to latest.
- */
-function getDeadline(datesArray) {
-    return datesArray.sort((a, b) => new Date(a) - new Date(b));
 }</code></pre>
         </article>
     </section>

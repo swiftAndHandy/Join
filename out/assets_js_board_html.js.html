@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: assets/js/summary.js</title>
+    <title>JSDoc: Source: assets/js/board_html.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: assets/js/summary.js</h1>
+    <h1 class="page-title">Source: assets/js/board_html.js</h1>
 
     
 
@@ -27,126 +27,66 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * This function is used @summary.html to initalize everything.
- * Adds an eventListener on every summary card, that leads to board.html when clicked.
- * This method is used to prevent regular link-style
+ * Genereates HTML for the board..
+ * The hidden description is used for search engine, since this one is not shortended by limitLengthOf().
+ * Calls the async functions for the progressBar and the avatarCircles without await, so the result can be added later, 
+ * while the next card is allready rendering.
+ * @param {*} taskId - ID of the current task
+ * @param {*} item - the Object that is fetched from taskId.
+ * @param {HTMLElement} target - HTML Element that is adressed.
+ * @param {*} [position='beforeend'] - position of insertAdjacentHTML. Only set for the rare case you might need and afterbegin or whatever.
  */
-function initSummary() {
-    includeHTML();
-    greetAtLogin();
-    document.querySelectorAll('.summary-card').forEach(card => {
-        card.addEventListener('click', () => window.location.href = "./board.html");
-    })
+
+function generateTaskCard(taskId, item, target, position = 'beforeend') {
+  target.insertAdjacentHTML(`${position}`, `
+  &lt;article class="task-card-container" onclick="openTaskDetails('${taskId}')" draggable="true" ondragstart="startDrag('${taskId}', '${item.status}')" id="taskId${taskId}">
+    &lt;div class="task-card-content">
+      &lt;div class="task-group-bubble ${item.tag.replace(/\s+/g, "-")}">
+        &lt;span>${item.tag}&lt;/span>
+      &lt;/div>
+      &lt;div class="task-card-header mtb-24">
+        &lt;h2>${item.title}&lt;/h2>
+        &lt;span id="description-content${taskId}" class="task-sub-headline">${limitLengthOf(item.description, 80)}&lt;/span>
+        &lt;span id="hidden-description-content${taskId}" class="d-none">${item.description}&lt;/span>
+      &lt;/div>
+      &lt;div class="sub-task-container">
+        &lt;div class="sub-task-progress-bar">
+           &lt;div class="progress-length " id="progress-length${taskId}">&lt;/div>
+        &lt;/div>
+        &lt;span>1/2 Subtasks&lt;/span>
+      &lt;/div>
+      &lt;div id="bottom-board-card-wrapper${taskId}" class="assigned-user mt-24">
+        &lt;div id="profile-circle-container-${taskId}" class="profile-pictures">
+        &lt;/div>
+      &lt;div>
+        &lt;img id="prio-img${taskId}" alt="${item.priority}">
+      &lt;/div>
+    &lt;/div>
+  &lt;/article>`);
+  getSubtaskProgress(item.subtasks, taskId);
+  generateCircleProfiles(item.assigned, taskId);
 }
 
 /**
- * Runs various functions, to use the correct greeting for users/guests.
- * To do: Check for Login/Username...
+ * contactEntries is iterated to read server-data. then, when server-data is fetched a new
+ * avatar should be created for the user that's found. When 11 Accounts are have an Avatar, add an Placeholder for the 12+ Assigned Person.
+ * @param {Object[]} contactEntries pathes to every contact and account that are assigned to the current taskId
+ * @param {string} taskId - id of the task that should be rendered
  */
-async function greetAtLogin() {
-    const daytime = getDaytime();
-    const greetingOverlay = document.getElementById('greeting-overlay');
-    const greetingEmbedded = document.getElementById('greeting-embedded');
-    const userInformation = await readData(`accounts/${userId}`)
-    const greetingMsg = await generateGreetingHtml(daytime, userInformation);
-    greetingOverlay.innerHTML = greetingMsg;
-    greetingEmbedded.innerHTML = greetingMsg;
-    animateGreeting(greetingOverlay);
-    updateBoardCounters();
-}
-
-/**
- * @returns a string with the current daytime &lt;br>&lt;br>
- */
-function getDaytime() {
-    const currentDate = new Date();
-    const hours = currentDate.getHours();
-
-    if (isMorning(hours)) {
-        return 'morning';
-    } else if (isAfternoon(hours)) {
-        return hours === 12 ? 'noon' : 'afternoon';
-    } else if (isEvening(hours)) {
-        return 'evening';
-    } else {
-        return 'night';
-    }
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 6 or up to 11) or false&lt;br>&lt;br>
- */
-function isMorning(hours) {
-    return hours >= 6 &amp;&amp; hours &lt; 12;
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 12 and up to 17) or false&lt;br>&lt;br>
- */
-function isAfternoon(hours) {
-    return hours >= 12 &amp;&amp; hours &lt; 18;
-}
-
-/**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 18 and up to 23) or false&lt;br>&lt;br>
- */
-function isEvening(hours) {
-    return hours >= 18 &amp;&amp; hours &lt; 24;
-}
-
-/**
- * This function controlls css classes, that are required for the login animation.
- * @param {Element} greeting - target HTML-Element.
- */
-function animateGreeting(greeting) {
-    greeting.classList.add('greeting-msg--mobile--fade-out');
-    document.getElementById('summary').classList.add('summary-animation--fade-in');
-    setTimeout(() => {
-        greeting.classList.add('d-none');
-    }, 1600);
-}
-
-
-/**
- * Iterates trough every task in database.
- * Counts up every type is used in summary and updates the numbers.
- */
-async function updateBoardCounters() {
-    const data = await readData('tasks');
-    const counters = { 'todo': 0, 'done': 0, 'board': Object.keys(data).length, 'progress': 0, 'feedback': 0 };
-    const urgents = [];
-
-    for (let item in data) {
-        const thisItem = data[item];
-        counters[thisItem.status]++;
-        if (thisItem.priority.toLowerCase() === 'urgent' &amp;&amp; thisItem.status !== 'done') {
-            urgents.push(thisItem.date);
+async function generateCircleProfiles(contactEntries, taskId) {
+  const target = document.getElementById(`profile-circle-container-${taskId}`);
+  if (contactEntries) {
+    for (let contacts of contactEntries) {
+      try {
+        const user = await readData(`${contacts}`);
+        target.insertAdjacentHTML('beforeend', `&lt;div class="profile-cricle" id=profile-circle-container-${contacts}" style= "background-color:${user.color}">${initials(user.name)}&lt;/div>`);
+        if (target.childElementCount >= 11) {
+          target.insertAdjacentHTML('beforeend', `&lt;div class="profile-cricle" id=profile-circle-container-${contacts}" style= "background-color:#29ABE2}">...&lt;/div>`);
+          break;
         }
+      } catch (error) { }
     }
-
-    document.getElementById('urgent-counter').innerText = urgents.length;
-    if (urgents.length > 0) {
-        document.getElementById('deadline-date').innerText = taskDueDate(getDeadline(urgents)[0]);
-        document.getElementById('deadline-description').innerText = 'Upcoming Deadline'
-    } else {
-        document.getElementById('deadline-description').innerHTML = '&lt;b>No upcoming deadline.&lt;/b>&lt;br>Take a breath.'
-    }
-
-    for (let items in counters) {
-        document.getElementById(`${items}-counter`).innerText = counters[items];
-    }
-}
-
-
-/**
- * @param {string[]} urgents - an array with date-strings, e. g. '2024-07-04'
- * @returns {Date[]} - Returns the dates sorted from earliest to latest.
- */
-function getDeadline(datesArray) {
-    return datesArray.sort((a, b) => new Date(a) - new Date(b));
+  }
 }</code></pre>
         </article>
     </section>

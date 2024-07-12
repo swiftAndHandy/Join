@@ -10,6 +10,7 @@ pressedButton = 0;
 previousButton = 0;
 styledCheckbox = [];
 
+
 function init() {
   includeHTML();
   renderContactList();
@@ -19,9 +20,15 @@ function init() {
   
 }
 
+/**
+ * Retrieves the value of the input field with the ID 'task-due-date'
+ * and assigns it to the variable addTaskDueDate.
+ * 
+ */
 function formOfDueDate() {
   addTaskDueDate = document.getElementById('task-due-date').value
 }
+
 
 function addTitle() {
   let title = document.getElementById("task-title");
@@ -29,17 +36,12 @@ function addTitle() {
 
 }
 
+
 function addDescription() {
   let taskDescription = document.getElementById("task-description");
   addTaskDescription = taskDescription.value;
 
 }
-
-// function taskCategory() {
-//   let category = document.getElementById("select-task-category");
-//   addTaskCategory = category.value;
-
-// }
 
 
 /**
@@ -49,32 +51,25 @@ function addDescription() {
  * @param {number} idNumber Uses a number from a for-loop to assign individual IDs.
  */
 function handleCheckBox(checkbox, idNumber) {
-  // check if checkbox is clicked
   if (checkbox.checked) {
-    // when checkbox is clicked and value is not in array then if statment
     if (!addTaskAssignedContacts.includes(checkbox.value)) {
       addTaskAssignedContacts.push(checkbox.value);
       styledCheckbox.push(idNumber);
       
     }
-
-    console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
     pressedCheckBoxStyle(idNumber);
     
   } else {
-
     const valueIndex = addTaskAssignedContacts.indexOf(checkbox.value);
     if (valueIndex > -1) {
       addTaskAssignedContacts.splice(valueIndex, 1);
     }
-
-    console.log("Checkbox mit Wert " + checkbox.value + " ist deaktiviert.");
     unPressedCheckBoxStyle(idNumber);
   }
-
   generateCircleProfilesLine()
   console.log('Aktuelle ausgewählte Kontakte: ', addTaskAssignedContacts);
 }
+
 
 function pressedCheckBoxStyle(idNumber) {
   document.getElementById(`label-check${idNumber}`).classList.add('filter-to-white')
@@ -83,6 +78,7 @@ function pressedCheckBoxStyle(idNumber) {
 
 }
 
+
 function unPressedCheckBoxStyle(idNumber) {
   document.getElementById(`label-check${idNumber}`).classList.remove('filter-to-white')
   document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('ul-content-wrapper-no-click')
@@ -90,25 +86,23 @@ function unPressedCheckBoxStyle(idNumber) {
 
 }
 
-function toggleContactDropBox(forcedClose = false) {
 
+function toggleContactDropBox(forcedClose = false) {
   if (!alreadyOpen && forcedClose === false) {
     document.getElementById('contacts-drop-menu').classList.remove('d-none');
     document.getElementById('required-text-span').classList.add('d-none');
     document.getElementById('contact-input-wrapper').classList.add('d-none');
     document.getElementById('contacts-show-input').classList.remove('d-none');
-
     alreadyOpen = true
   } else {
     document.getElementById('contacts-drop-menu').classList.add('d-none');
     document.getElementById('required-text-span').classList.remove('d-none');
     document.getElementById('contact-input-wrapper').classList.remove('d-none');
     document.getElementById('contacts-show-input').classList.add('d-none');
-
-
     alreadyOpen = false
   }
 }
+
 
 function clearInputs(event) {
   event.preventDefault()
@@ -122,6 +116,7 @@ function clearInputs(event) {
  
 }
 
+
 function stopStandartValidationMessage(event) {
   event.preventDefault()
   let form = document.getElementById('form-desktop')
@@ -131,11 +126,13 @@ function stopStandartValidationMessage(event) {
   }, 100);
 }
 
+
 function clearForm (event) {
   clearInputs(event);
   clearFormPrio();
   clearFormContactStyle();
 }
+
 
 function clearFormPrio() {
  pressedButton = 0;
@@ -150,6 +147,7 @@ function clearFormPrio() {
  });
 
 }
+
 
 function clearFormContactStyle() {
   styledCheckbox.forEach(checkboxId => {
@@ -177,12 +175,12 @@ function convertArrayToObject(array) {
   return obj;
 }
 
+
 async function addnewTask() {
   const addTaskSubTask = createSubtasks();
   addTitle();
   addDescription();
   taskDueDate();
-  // taskCategory();
   formOfDueDate();
   
   let assignedContactsObject = convertArrayToObject(addTaskAssignedContacts);
@@ -199,6 +197,7 @@ async function addnewTask() {
   }, 'tasks');
 }
 
+
 function checkIfFormFilled(event) {
   const form = document.getElementById("form-desktop");
   const requiredFields = form.querySelectorAll("[required]");
@@ -214,19 +213,16 @@ function checkIfFormFilled(event) {
     clearForm(event);
   } else {
     stopStandartValidationMessage(event);
-    ownValidation() 
-    checkCategoryfield ()
-    console.log(
-      "Please fill out all required fields before submitting."
-    );
+    ownValidation();
+    checkCategoryfield ();
   }
 }
+
 
 function setPrio(prio, number) {
   const priorities = ["urgent", "medium", "low"];
   const colors = ["orange", "yellow", "green"];
 
-  
   priorities.forEach((priority, index) => {
     document.getElementById(`${priority}-prio`).classList.remove(`pressed-color-${colors[index]}`);
     document.getElementById(`${priority}-prio-img`).classList.remove("pressed-prio-img");
@@ -253,20 +249,13 @@ function setPrio(prio, number) {
 function showPopupTaskAdded() {
   const popup = document.getElementById('pop-up-transition'); 
 
-
   popup.style.display = "flex";
-
-
   setTimeout(() => {
-
     popup.classList.add('form-down-to-up-transition');
 
     setTimeout(() => {
-
-
       popup.classList.remove('form-down-to-up-transition');
       popup.style.display = "none";
-
       window.location.href = 'board.html';
     }, 1000);
   }, 100);
@@ -288,19 +277,14 @@ async function renderContactList() {
 
 
 function searchContact(search) {
-  // select all content in the class and created a array with it 
   const contactNames = Array.from(document.querySelectorAll('div.group-pb-cricle-with-name'));
-
-  // move through all contacts 
   contactNames.forEach(item => {
-    // validate if the name is included with the search value  (case insensitive)
     const contactName = item.textContent.trim().toLowerCase();
     const isVisible = contactName.includes(search.toLowerCase());
-
-    // hide none searched names.
     hideWindow(item.parentElement.id, !isVisible);
   });
 }
+
 
  function toggleCategoryDropBox() {
   if (!alreadyOpen) {
@@ -308,17 +292,16 @@ function searchContact(search) {
     document.getElementById('category-drop-menu').classList.remove('d-none');
     document.getElementById('arrow').classList.add('rotation');
     document.getElementById('select-category').classList.remove('d-none');
-
     alreadyOpen = true
   } else {
     document.getElementById('category-drop-menu').classList.add('d-none');
     document.getElementById('arrow').classList.remove('rotation');
     document.getElementById('arrow').classList.add('rotation-back');
     checkCategoryfield()
-
     alreadyOpen = false
   }
 }
+
 
 function selectCategory (category) {
  addTaskCategory = category
@@ -327,6 +310,7 @@ function selectCategory (category) {
   spanElement.textContent = `${category}`;
  toggleCategoryDropBox();
 }
+
 
   function ownValidation() {
     const form = document.querySelector('#form-desktop');
@@ -351,6 +335,7 @@ function selectCategory (category) {
     });
   }
 
+
   function checkCategoryfield () {
     const selectCategoryDiv = document.getElementById('category-input-wrapper');
       const selectedCategory = selectCategoryDiv.innerText.trim();
@@ -370,23 +355,23 @@ function selectCategory (category) {
 
   }
 
+
   function removeValidation() {
     const form = document.querySelector('#form-desktop');
     const requiredFields = form.querySelectorAll('[required]');
-    
     requiredFields.forEach(field => {
         const errorMessage = field.parentNode.querySelector('.error-message');
         if (errorMessage) {
             errorMessage.remove();
         }
     });
-  
     const selectCategoryDiv = document.getElementById('category-input-wrapper');
     const errorMessageCategory = selectCategoryDiv.parentNode.querySelector('.error-message');
     if (errorMessageCategory) {
         errorMessageCategory.remove();
     }
   }
+
 
   function stopEnterForm() {
     const form = document.getElementById('form-desktop');
@@ -398,18 +383,20 @@ function selectCategory (category) {
     })
   };
 
+  
   function textAreaSelected() {
     return document.getElementById('task-description') === document.activeElement;
   }
 
-function addEntertoSubTasks () {
-  document.getElementById('edit-add-subtask').addEventListener('keypress', handleEnter);
+
+  function addEntertoSubTasks () {
+    document.getElementById('edit-add-subtask').addEventListener('keypress', handleEnter);
 }
 
-function handleEnter(event) {
-  if (event.key === 'Enter') {
-      // Hier rufe deine Funktion auf, die du aufrufen möchtest
+
+  function handleEnter(event) {
+    if (event.key === 'Enter') {
       addNewSubtask(document.getElementById('edit-add-subtask').value,'edit-subtask-item-wrapper','div');scrollToLastSubtask();blurListener(); hideWindow('padding-placeholder');;
       
+    }
   }
-}

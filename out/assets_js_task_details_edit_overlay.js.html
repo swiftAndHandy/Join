@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: assets/js/summary.js</title>
+    <title>JSDoc: Source: assets/js/task_details_edit_overlay.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: assets/js/summary.js</h1>
+    <h1 class="page-title">Source: assets/js/task_details_edit_overlay.js</h1>
 
     
 
@@ -27,126 +27,237 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * This function is used @summary.html to initalize everything.
- * Adds an eventListener on every summary card, that leads to board.html when clicked.
- * This method is used to prevent regular link-style
+ * saves the updated information of the current task in firebase and rerenders
+ * 1. edit view
+ * 2. the single card on board
+ * 3. task details
  */
-function initSummary() {
-    includeHTML();
-    greetAtLogin();
-    document.querySelectorAll('.summary-card').forEach(card => {
-        card.addEventListener('click', () => window.location.href = "./board.html");
-    })
+async function saveTaskUpdate(taskId) {
+    const tag = document.getElementById('task-details-tag').textContent;
+    const title = isNotEmpty('title');
+    const description = isNotEmpty('description');
+    const deadline = isNotEmpty('date');
+    const priority = getCurrentPriority();
+    const subtasks = updateSubtasksArray();
+    const data = createTaskObject(tag, title, description, deadline, priority, subtasks);
+    renderEditView(data, taskId);
+    rerenderTaskOnBoard(data, taskId);
+    toggleVisibility('task-edit-view');
+    toggleVisibility('task-details-view');
+    await putData(data, `tasks/${taskId}`);
+    await renderTaskDetails(taskId);
+    document.getElementById('edit-subtask-item-wrapper').innerHTML = '';
 }
 
-/**
- * Runs various functions, to use the correct greeting for users/guests.
- * To do: Check for Login/Username...
- */
-async function greetAtLogin() {
-    const daytime = getDaytime();
-    const greetingOverlay = document.getElementById('greeting-overlay');
-    const greetingEmbedded = document.getElementById('greeting-embedded');
-    const userInformation = await readData(`accounts/${userId}`)
-    const greetingMsg = await generateGreetingHtml(daytime, userInformation);
-    greetingOverlay.innerHTML = greetingMsg;
-    greetingEmbedded.innerHTML = greetingMsg;
-    animateGreeting(greetingOverlay);
-    updateBoardCounters();
-}
 
 /**
- * @returns a string with the current daytime &lt;br>&lt;br>
+ * checks the value of an Element without leading and trailing spaces. 
+ * If it's empty, return the old value, otherwise the new one. 
+ * @param {string} target - part of the ElementID in "update-" and "task-details-"
+ * @returns 
  */
-function getDaytime() {
-    const currentDate = new Date();
-    const hours = currentDate.getHours();
-
-    if (isMorning(hours)) {
-        return 'morning';
-    } else if (isAfternoon(hours)) {
-        return hours === 12 ? 'noon' : 'afternoon';
-    } else if (isEvening(hours)) {
-        return 'evening';
+function isNotEmpty(target) { 
+    if (document.getElementById(`update-${target}`).value.trim() != '') {
+        return document.getElementById(`update-${target}`).value.trim()
     } else {
-        return 'night';
+        let result = document.getElementById(`task-details-${target}`).innerText;
+        return result.replaceAll('/', '-');
+    }
+}
+
+
+/**
+ * Used to create an object that will be posted to the server
+ * @param {string} tag - tag of the task
+ * @param {string} title - new title of the task
+ * @param {string} description - new description of the task
+ * @param {string} deadline -formated yyyy-mm-dd, new deadline of the task
+ * @param {string} priority - empty or Low, Medium or Urgent
+ * @param {[]} subtasks - contains every subtask with goal and an information about done or not
+ * @returns {Object[]} - containing all updated data from above.
+ */
+function createTaskObject(tag, title, description, deadline, priority, subtasks) {
+    return {
+        'tag': tag,
+        'title': title,
+        'description': description,
+        'date': deadline,
+        'priority': priority,
+        'assigned': assignedPersonsToUpdate,
+        'subtasks': subtasks,
+        'status': currentDetailLocation
     }
 }
 
 /**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 6 or up to 11) or false&lt;br>&lt;br>
+ * Renders the Edit-View of a Task by updating the save Button and set 
+ * title, description, date, priority 
+ * to the current tasks values.
+ * @param {Object} task - Containes the information collection of the current task, fetched from firebase
+ * @param {string} key - Contains the task ID.
  */
-function isMorning(hours) {
-    return hours >= 6 &amp;&amp; hours &lt; 12;
+function renderEditView(task, key) {
+    document.getElementById('save-task-update').setAttribute('onclick', `saveTaskUpdate('${key}')`)
+    document.getElementById('update-title').value = task.title;
+    document.getElementById('update-description').innerText = task.description;
+    document.getElementById('update-date').value = task.date;
+    try {
+       const button = document.getElementById(`edit-priority-btn-${task.priority.toLowerCase()}`);
+       !button.classList.contains('active') &amp;&amp; document.getElementById(`edit-priority-btn-${task.priority.toLowerCase()}`).click();
+    } catch (error) { console.warn('This Task has no priority.'); }
 }
 
 /**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 12 and up to 17) or false&lt;br>&lt;br>
+ * @param {string} id - used to complete the target-document-id
  */
-function isAfternoon(hours) {
-    return hours >= 12 &amp;&amp; hours &lt; 18;
+function resetInputFields(id = 'edit') {
+    hideWindow(`${id}-task-contact-list-btn`, false);
+    hideWindow(`${id}-task-contact-list-input`);
+    hideWindow(`${id}-task-contacts-list`);
 }
 
 /**
- * @param {number} hours  new Date().getHours();
- * @returns true (hours between 18 and up to 23) or false&lt;br>&lt;br>
+ * Sets the priority level by updating the `editPriority` variable and toggling the 'active' class on priority buttons.
+ * @param {number} level - The priority level to set. Expected values are 0 for 'low', 1 for 'medium', and 2 for 'urgent'.
  */
-function isEvening(hours) {
-    return hours >= 18 &amp;&amp; hours &lt; 24;
-}
-
-/**
- * This function controlls css classes, that are required for the login animation.
- * @param {Element} greeting - target HTML-Element.
- */
-function animateGreeting(greeting) {
-    greeting.classList.add('greeting-msg--mobile--fade-out');
-    document.getElementById('summary').classList.add('summary-animation--fade-in');
-    setTimeout(() => {
-        greeting.classList.add('d-none');
-    }, 1600);
-}
-
-
-/**
- * Iterates trough every task in database.
- * Counts up every type is used in summary and updates the numbers.
- */
-async function updateBoardCounters() {
-    const data = await readData('tasks');
-    const counters = { 'todo': 0, 'done': 0, 'board': Object.keys(data).length, 'progress': 0, 'feedback': 0 };
-    const urgents = [];
-
-    for (let item in data) {
-        const thisItem = data[item];
-        counters[thisItem.status]++;
-        if (thisItem.priority.toLowerCase() === 'urgent' &amp;&amp; thisItem.status !== 'done') {
-            urgents.push(thisItem.date);
+function setPriorityTo(level) {
+    editPriority = level;
+    const btns = ['low', 'medium', 'urgent']
+    for (let i = 0; i &lt; btns.length; i++) {
+        const currentButton = document.getElementById(`edit-priority-btn-${btns[i]}`);
+        if (currentButton) {
+            i == editPriority ? currentButton.classList.toggle('active') : currentButton.classList.remove('active');
         }
     }
-
-    document.getElementById('urgent-counter').innerText = urgents.length;
-    if (urgents.length > 0) {
-        document.getElementById('deadline-date').innerText = taskDueDate(getDeadline(urgents)[0]);
-        document.getElementById('deadline-description').innerText = 'Upcoming Deadline'
-    } else {
-        document.getElementById('deadline-description').innerHTML = '&lt;b>No upcoming deadline.&lt;/b>&lt;br>Take a breath.'
-    }
-
-    for (let items in counters) {
-        document.getElementById(`${items}-counter`).innerText = counters[items];
-    }
 }
 
 
 /**
- * @param {string[]} urgents - an array with date-strings, e. g. '2024-07-04'
- * @returns {Date[]} - Returns the dates sorted from earliest to latest.
+ * Selects the first (and only) Priority Button with .task-priority.active and 
+ * strips the priority level out of the Buttons id. Since we save the Priority with an Uppercase first Letter,
+ * the string is returned with a capitalized first letter.
+ * @returns {string} - Returns the priority of the Actice Button as string.
  */
-function getDeadline(datesArray) {
-    return datesArray.sort((a, b) => new Date(a) - new Date(b));
+function getCurrentPriority() {
+    try {
+        let activeBtn = document.querySelector('.task-priority.active');
+        activeBtn = activeBtn.id.split('edit-priority-btn-').join('');
+        return capitaliseFirstLetters(activeBtn);
+    } catch {
+        return '';
+    }
+}
+
+/**
+ * Removes active class from every priority button to prevent that it is forced to add a priority when 
+ * you edit a card without priority after opening another card, that has a priority.
+ */
+function resetPriorityButtons() {
+    const btns = ['low', 'medium', 'urgent'];
+    btns.forEach(id => {
+        document.getElementById(`edit-priority-btn-${id}`).classList.remove('active');
+    });
+}
+
+/**
+ * Reset Input-Field for new Subtask, when discarded.
+ */
+function discardNewSubtask() {
+    document.getElementById('edit-add-subtask').value = '';
+    blurListener();
+}
+
+/**
+ * @param {string} subtaskId - build an elementId related to subtask-id and change the input-style
+ */
+function openSubtaskInput(subtaskId) {
+    const input = document.getElementById(`single-subtask-input-${subtaskId}`);
+    document.getElementById(`edit-subtask-total-${subtaskId}`).classList.add('d-none');
+    document.getElementById(`single-subtask-input-wrapper-${subtaskId}`).classList.remove('d-none');
+    input.value = document.getElementById(`subtaskspan-${subtaskId}`).innerText;
+    input.focus();
+}
+
+/**
+ * Save the input the user made on text and set target.innerText to this input.
+ * Hide the Input(Wrapper) and show List-Item instead.
+ * @param {string} subtaskId 
+ */
+function updateSubtaskInput(subtaskId) {
+    const target = document.getElementById(`subtaskspan-${subtaskId}`)
+    const value = document.getElementById(`single-subtask-input-${subtaskId}`).value.trim()
+    if (value) {
+        target.innerText = value;
+        document.getElementById(`edit-subtask-total-${subtaskId}`).classList.remove('d-none');
+        document.getElementById(`single-subtask-input-wrapper-${subtaskId}`).classList.add('d-none');
+    }
+}
+
+/**
+ * Resetss the desgin of the Input/Span related to subtaskId
+ * @param {string} subtaskId - if of an list-item
+ */
+function discardSubtaskInput(subtaskId) {
+    document.getElementById(`edit-subtask-total-${subtaskId}`).classList.remove('d-none');
+    document.getElementById(`single-subtask-input-wrapper-${subtaskId}`).classList.add('d-none');
+}
+
+/**
+ * Deletes an Subtask-Item from Edit-View, not from Firebase!
+ * @param {string} subtaskId - id of the item that should be deleted
+ */
+function deleteSubtask(subtaskId) {
+    document.getElementById(`edit-subtask-total-${subtaskId}`).remove();
+}
+
+/**
+ * updates an global array, based on a querySelector, that will be pushed to firebase
+ * @param {string} relatedToTaskId - refers to a Task-ID and is used in path-param for putData
+ * @returns {Object[]} return of an JSON-Array with this information:
+ * @returns {string} return[].goal - Archived when this goal is reached
+ * @returns {boolean} return[].done Tracks when it is archived
+ * 
+ * How to use this: 
+ * For new Tasks: add .subtaskitem to every task-item you want to create. 
+ * For existing and finished tasks: add .subtask-checkbox to every checkbox and add a label, that contains the task-text
+ */
+function updateSubtasksArray() {
+    let query = document.querySelectorAll('.subtaskitem')
+    let result = [];
+    query.forEach((item) => result.push(
+        { 'goal': item.innerText, 'done': false }
+    ));
+
+    query = document.querySelectorAll('input[type="checkbox"].subtask-checkbox:checked + label');
+    query.forEach((item) => result.push(
+        { 'goal': item.innerText, 'done': true }
+    ));
+    return result;
+}
+
+
+/**
+ * Selects every checkbox+ label pair on Task-Details-View,
+ * and a second selection of all checked checkbox-label-pairs.
+ * Substracts every checked (done) subtask from pool, since they shouldn't become displayed in edit-view.
+ * Iterates trough this filtered openSubtasks-Array and let do addNewSubtask() the magic ;-)
+ */
+function renderOpenSubtasks() {
+    const query = Array.from(document.querySelectorAll('input[type="checkbox"].subtask-checkbox + label'));
+    const removeFromQuery = Array.from(document.querySelectorAll('input[type="checkbox"].subtask-checkbox:checked + label'));
+    const openSubtasks = query.filter(subtask => !removeFromQuery.includes(subtask));
+
+    openSubtasks.forEach(item => {
+        addNewSubtask(item.innerText);
+    });
+}
+
+
+/**
+ * add this, when a new subtask is submitted. This function must be called explicite.
+ */
+function scrollToLastSubtask() {
+    document.getElementById('edit-view-scrollbar').lastElementChild.scrollIntoView({behavior: 'smooth', block: 'end'});
 }</code></pre>
         </article>
     </section>

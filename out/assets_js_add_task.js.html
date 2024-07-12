@@ -32,37 +32,46 @@ let addTaskAssignedContacts = [];
 let addTaskDueDate = "";
 let addTaskPrio = "";
 let addTaskCategory = "";
-let addTaskSubtask = "";
 let taskStatus = "todo";
-let pressedButton = 0;
 let alreadyOpen = false;
+pressedButton = 0;
+previousButton = 0;
+styledCheckbox = [];
+
 
 function init() {
   includeHTML();
   renderContactList();
+  stopEnterForm ();
+  setupListenerForAddTasks();
+  addEntertoSubTasks ();
+  
 }
 
+/**
+ * Retrieves the value of the input field with the ID 'task-due-date'
+ * and assigns it to the variable addTaskDueDate.
+ * 
+ */
 function formOfDueDate() {
   addTaskDueDate = document.getElementById('task-due-date').value
 }
 
+
 function addTitle() {
   let title = document.getElementById("task-title");
   addTaskTitle = title.value;
-  title.value = "";
+
 }
+
 
 function addDescription() {
   let taskDescription = document.getElementById("task-description");
   addTaskDescription = taskDescription.value;
-  taskDescription.value = "";
+
 }
 
-// function assignedContact() {
-//   let assignedToContact = document.getElementById("assigned-to-contact");
-//   addTaskAssignedContacts = addTaskAssignedContacts
-//   assignedToContact.value = "";
-// } maybe no use for it anymore
+
 /**
  * 
  * @returns {void}
@@ -70,28 +79,25 @@ function addDescription() {
  * @param {number} idNumber Uses a number from a for-loop to assign individual IDs.
  */
 function handleCheckBox(checkbox, idNumber) {
-  // check if checkbox is clicked
   if (checkbox.checked) {
-    // when checkbox is clicked and value is not in array then if statment
     if (!addTaskAssignedContacts.includes(checkbox.value)) {
       addTaskAssignedContacts.push(checkbox.value);
-
+      styledCheckbox.push(idNumber);
+      
     }
-
-    console.log("Checkbox mit Wert " + checkbox.value + " ist aktiviert.");
     pressedCheckBoxStyle(idNumber);
+    
   } else {
-
     const valueIndex = addTaskAssignedContacts.indexOf(checkbox.value);
     if (valueIndex > -1) {
       addTaskAssignedContacts.splice(valueIndex, 1);
     }
-
-    console.log("Checkbox mit Wert " + checkbox.value + " ist deaktiviert.");
     unPressedCheckBoxStyle(idNumber);
   }
+  generateCircleProfilesLine()
   console.log('Aktuelle ausgewählte Kontakte: ', addTaskAssignedContacts);
 }
+
 
 function pressedCheckBoxStyle(idNumber) {
   document.getElementById(`label-check${idNumber}`).classList.add('filter-to-white')
@@ -100,6 +106,7 @@ function pressedCheckBoxStyle(idNumber) {
 
 }
 
+
 function unPressedCheckBoxStyle(idNumber) {
   document.getElementById(`label-check${idNumber}`).classList.remove('filter-to-white')
   document.getElementById(`background-drop-menu-background${idNumber}`).classList.add('ul-content-wrapper-no-click')
@@ -107,69 +114,119 @@ function unPressedCheckBoxStyle(idNumber) {
 
 }
 
-function toggleContactDropBox() {
 
-  if (!alreadyOpen) {
+function toggleContactDropBox(forcedClose = false) {
+  if (!alreadyOpen &amp;&amp; forcedClose === false) {
     document.getElementById('contacts-drop-menu').classList.remove('d-none');
     document.getElementById('required-text-span').classList.add('d-none');
     document.getElementById('contact-input-wrapper').classList.add('d-none');
     document.getElementById('contacts-show-input').classList.remove('d-none');
-
     alreadyOpen = true
   } else {
     document.getElementById('contacts-drop-menu').classList.add('d-none');
     document.getElementById('required-text-span').classList.remove('d-none');
     document.getElementById('contact-input-wrapper').classList.remove('d-none');
     document.getElementById('contacts-show-input').classList.add('d-none');
-
-
     alreadyOpen = false
   }
 }
 
-function taskCategory() {
-  let category = document.getElementById("select-task-category");
-  addTaskCategory = category.value;
-  category.value = "";
+
+function clearInputs(event) {
+  event.preventDefault()
+  let form = document.getElementById('form-desktop')
+  form.setAttribute('novalidate', true);
+
+  setTimeout(() => {
+    form.removeAttribute('novalidate', false);
+  }, 100);
+  form.reset();
+ 
 }
 
-function taskSubtask() {
-  let subtask = document.getElementById("task-subtask");
-  addTaskSubtask = subtask.value;
-  subtask.value = "";
+
+function stopStandartValidationMessage(event) {
+  event.preventDefault()
+  let form = document.getElementById('form-desktop')
+  form.setAttribute('novalidate', true);
+  setTimeout(() => {
+    form.removeAttribute('novalidate', false);
+  }, 100);
 }
 
-function clearInputs(ids) {
-  for (let i = 0; i &lt; ids.length; i++) {
-    let clearAll = document.getElementById(ids[i])
-    clearAll.value = "";
-  }
+
+function clearForm (event) {
+  clearInputs(event);
+  clearFormPrio();
+  clearFormContactStyle();
+}
+
+
+function clearFormPrio() {
+ pressedButton = 0;
+ previousButton = 0;
+ addTaskPrio = 'Low';
+ const priorities = ["urgent", "medium", "low"];
+ const colors = ["orange", "yellow", "green"];
+ 
+ priorities.forEach((priority, index) => {
+   document.getElementById(`${priority}-prio`).classList.remove(`pressed-color-${colors[index]}`);
+   document.getElementById(`${priority}-prio-img`).classList.remove("pressed-prio-img");
+ });
 
 }
 
+
+function clearFormContactStyle() {
+  styledCheckbox.forEach(checkboxId => {
+    const label = document.getElementById(`label-check${checkboxId}`);
+    const background = document.getElementById(`background-drop-menu-background${checkboxId}`);
+
+    if (label) {
+      label.classList.remove('filter-to-white');
+    }
+    if (background) {
+      background.classList.add('ul-content-wrapper-no-click');
+      background.classList.remove('pressed-drop-box-bg-color');
+    }
+  });
+  document.getElementById('contacts-img-line').innerHTML = "";
+  addTaskAssignedContacts = [];
+  styledCheckboxes = [];
+}
+
+function convertArrayToObject(array) {
+  let obj = {};
+  array.forEach((value, index) => {
+    obj[index] = value;
+  });
+  return obj;
+}
 
 
 async function addnewTask() {
+  const addTaskSubTask = createSubtasks();
   addTitle();
   addDescription();
-  //   assignedContact(); maybe not needed anymore
   taskDueDate();
-  taskCategory();
-  taskSubtask();
   formOfDueDate();
+  
+  let assignedContactsObject = convertArrayToObject(addTaskAssignedContacts);
+
   await postData({
     'title': addTaskTitle,
     'description': addTaskDescription,
-    'assigned': addTaskAssignedContacts,
+    'assigned': assignedContactsObject,
     'date': addTaskDueDate,
     'priority': addTaskPrio,
     'tag': addTaskCategory,
-    'subtasks': addTaskSubtask,
+    'subtasks': addTaskSubTask,
     'status': taskStatus,
   }, 'tasks');
 }
 
-function checkIfFormFilled() {
+
+function checkIfFormFilled(event) {
   const form = document.getElementById("form-desktop");
   const requiredFields = form.querySelectorAll("[required]");
   let allFilled = true;
@@ -179,64 +236,198 @@ function checkIfFormFilled() {
     }
   });
   if (allFilled) {
-    // document.getElementById('button-create-task').disabled = false;
-    addnewTask();
+    addnewTask(event);
     showPopupTaskAdded();
+    clearForm(event);
   } else {
-    console.log(
-      "Please fill out all required fields before submitting."
-    );
+    stopStandartValidationMessage(event);
+    ownValidation();
+    checkCategoryfield ();
   }
 }
+
 
 function setPrio(prio, number) {
   const priorities = ["urgent", "medium", "low"];
   const colors = ["orange", "yellow", "green"];
-  let pressedButton;
 
-  // Setze die aktuelle Priorität und die Nummer des gedrückten Buttons
-  addTaskPrio = prio;
-  pressedButton = number;
-
-  // Entferne die Klassen von allen Prio-Buttons
   priorities.forEach((priority, index) => {
-    const prioElement = document.getElementById(`${priority}-prio`);
-    const prioImgElement = document.getElementById(`${priority}-prio-img`);
-
-    prioElement.classList.remove(`pressed-color-${colors[index]}`);
-    prioImgElement.classList.remove("pressed-prio-img");
+    document.getElementById(`${priority}-prio`).classList.remove(`pressed-color-${colors[index]}`);
+    document.getElementById(`${priority}-prio-img`).classList.remove("pressed-prio-img");
   });
 
-  if (pressedButton > 0 &amp;&amp; pressedButton &lt;= priorities.length) {
-    const currentPriority = priorities[pressedButton - 1];
-    const currentColor = colors[pressedButton - 1];
+  if (number === previousButton) {
+    addTaskPrio = "Low";
+    previousButton = 0;
+  } else {
+    addTaskPrio = prio;
+    previousButton = number;
+  }
 
-    document
-      .getElementById(`${currentPriority}-prio`)
-      .classList.add(`pressed-color-${currentColor}`);
-    document
-      .getElementById(`${currentPriority}-prio-img`)
-      .classList.add("pressed-prio-img");
+  if (previousButton > 0 &amp;&amp; previousButton &lt;= priorities.length) {
+    const currentPriority = priorities[previousButton - 1];
+    const currentColor = colors[previousButton - 1];
+
+    document.getElementById(`${currentPriority}-prio`).classList.add(`pressed-color-${currentColor}`);
+    document.getElementById(`${currentPriority}-prio-img`).classList.add("pressed-prio-img");
   }
 }
+
 
 function showPopupTaskAdded() {
-  const popup = document.getElementById('pop-up-task-added');
-  popup.style.display = 'block';
+  const popup = document.getElementById('pop-up-transition'); 
+
+  popup.style.display = "flex";
+  setTimeout(() => {
+    popup.classList.add('form-down-to-up-transition');
+
     setTimeout(() => {
-      popup.style.display = 'none';
+      popup.classList.remove('form-down-to-up-transition');
+      popup.style.display = "none";
       window.location.href = 'board.html';
-    },1000);
+    }, 1000);
+  }, 100);
 }
 
+
 async function renderContactList() {
-  const data = await readData('contacts');
-  let entries = sortByAlphabet(data, 'contacts');
+  let contacts = await readData('contacts');
+  contacts = setPrefixToKey('contacts', contacts);
+  let accounts = await readData('accounts');
+  accounts = setPrefixToKey('accounts', accounts);
+  let data = {}; await Object.assign(data, accounts, contacts);
+  let entries = sortByAlphabet(data);
+  let dataKeys = Object.keys(data);
   for (let i = 0; i &lt; entries.length; i++) {
-    generateDropBoxContacts(entries[i]);
+    generateDropBoxContacts(entries[i], dataKeys[i]);
   }
 }
-</code></pre>
+
+
+function searchContact(search) {
+  const contactNames = Array.from(document.querySelectorAll('div.group-pb-cricle-with-name'));
+  contactNames.forEach(item => {
+    const contactName = item.textContent.trim().toLowerCase();
+    const isVisible = contactName.includes(search.toLowerCase());
+    hideWindow(item.parentElement.id, !isVisible);
+  });
+}
+
+
+ function toggleCategoryDropBox() {
+  if (!alreadyOpen) {
+    document.getElementById('arrow').classList.remove('rotation-back');
+    document.getElementById('category-drop-menu').classList.remove('d-none');
+    document.getElementById('arrow').classList.add('rotation');
+    document.getElementById('select-category').classList.remove('d-none');
+    alreadyOpen = true
+  } else {
+    document.getElementById('category-drop-menu').classList.add('d-none');
+    document.getElementById('arrow').classList.remove('rotation');
+    document.getElementById('arrow').classList.add('rotation-back');
+    checkCategoryfield()
+    alreadyOpen = false
+  }
+}
+
+
+function selectCategory (category) {
+ addTaskCategory = category
+  const parent = document.getElementById('select-category');
+  const spanElement = parent.querySelector('span');
+  spanElement.textContent = `${category}`;
+ toggleCategoryDropBox();
+}
+
+
+  function ownValidation() {
+    const form = document.querySelector('#form-desktop');
+    const requiredFields = form.querySelectorAll('[required]');
+    requiredFields.forEach(field => {
+      
+        if (field.value.trim() === '' &amp;&amp; !field.parentNode.querySelector('.error-message')) {
+            const errorMessage = document.createElement('span');
+            errorMessage.textContent = 'This field ist required.';
+            errorMessage.classList.add('error-message'); 
+            field.parentNode.appendChild(errorMessage);
+        }
+        field.addEventListener('input', function() {
+            if (field.value.trim() !== '') {
+            
+                const errorMessage = field.parentNode.querySelector('.error-message');
+                if (errorMessage) {
+                    errorMessage.remove();
+                }
+            }
+        });
+    });
+  }
+
+
+  function checkCategoryfield () {
+    const selectCategoryDiv = document.getElementById('category-input-wrapper');
+      const selectedCategory = selectCategoryDiv.innerText.trim();
+      if (selectedCategory !== 'Technical Task' &amp;&amp; selectedCategory !== 'User Story') {
+          if (!selectCategoryDiv.parentNode.querySelector('.error-message')) {
+              const errorMessage = document.createElement('span');
+              errorMessage.textContent = 'This field ist required.';
+              errorMessage.classList.add('error-message');
+              selectCategoryDiv.parentNode.appendChild(errorMessage);
+          }
+      } else {
+          const errorMessage = selectCategoryDiv.parentNode.querySelector('.error-message');
+          if (errorMessage) {
+              errorMessage.remove();
+          }
+      }
+
+  }
+
+
+  function removeValidation() {
+    const form = document.querySelector('#form-desktop');
+    const requiredFields = form.querySelectorAll('[required]');
+    requiredFields.forEach(field => {
+        const errorMessage = field.parentNode.querySelector('.error-message');
+        if (errorMessage) {
+            errorMessage.remove();
+        }
+    });
+    const selectCategoryDiv = document.getElementById('category-input-wrapper');
+    const errorMessageCategory = selectCategoryDiv.parentNode.querySelector('.error-message');
+    if (errorMessageCategory) {
+        errorMessageCategory.remove();
+    }
+  }
+
+
+  function stopEnterForm() {
+    const form = document.getElementById('form-desktop');
+
+    form.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' &amp;&amp; !textAreaSelected) {
+            event.preventDefault();
+        }
+    })
+  };
+
+  
+  function textAreaSelected() {
+    return document.getElementById('task-description') === document.activeElement;
+  }
+
+
+  function addEntertoSubTasks () {
+    document.getElementById('edit-add-subtask').addEventListener('keypress', handleEnter);
+}
+
+
+  function handleEnter(event) {
+    if (event.key === 'Enter') {
+      addNewSubtask(document.getElementById('edit-add-subtask').value,'edit-subtask-item-wrapper','div');scrollToLastSubtask();blurListener(); hideWindow('padding-placeholder');;
+      
+    }
+  }</code></pre>
         </article>
     </section>
 
@@ -246,13 +437,13 @@ async function renderContactList() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#applyRandomColor">applyRandomColor</a></li><li><a href="global.html#autofillLogin">autofillLogin</a></li><li><a href="global.html#avatarHtml">avatarHtml</a></li><li><a href="global.html#blurListener">blurListener</a></li><li><a href="global.html#callContactInformationForTasks">callContactInformationForTasks</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#clearLocalstorage">clearLocalstorage</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#createContact">createContact</a></li><li><a href="global.html#createSubtasks">createSubtasks</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#deleteData">deleteData</a></li><li><a href="global.html#deleteSubtask">deleteSubtask</a></li><li><a href="global.html#discardNewSubtask">discardNewSubtask</a></li><li><a href="global.html#discardSubtaskInput">discardSubtaskInput</a></li><li><a href="global.html#dragTo">dragTo</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#focusListener">focusListener</a></li><li><a href="global.html#forceLogout">forceLogout</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#getDeadline">getDeadline</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#handleCheckBox">handleCheckBox</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#openEditContactPage">openEditContactPage</a></li><li><a href="global.html#openListSearch">openListSearch</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#openSubtaskInput">openSubtaskInput</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#putContactInfoToEditDialog">putContactInfoToEditDialog</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#putDataset">putDataset</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#renderContactList">renderContactList</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#saveTaskUpdate">saveTaskUpdate</a></li><li><a href="global.html#searchContact">searchContact</a></li><li><a href="global.html#setFocus">setFocus</a></li><li><a href="global.html#setMyAvatar">setMyAvatar</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#setupListener">setupListener</a></li><li><a href="global.html#showDragArea">showDragArea</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#sortByAlphabet">sortByAlphabet</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#toggleThis">toggleThis</a></li><li><a href="global.html#toggleVisibility">toggleVisibility</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateBoardCounters">updateBoardCounters</a></li><li><a href="global.html#updateMenu">updateMenu</a></li><li><a href="global.html#updateSubtaskInput">updateSubtaskInput</a></li><li><a href="global.html#updateSubtasks">updateSubtasks</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#activateAssignedContacts">activateAssignedContacts</a></li><li><a href="global.html#addNewSubtask">addNewSubtask</a></li><li><a href="global.html#addOpenAddTaskToButtons">addOpenAddTaskToButtons</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#applyGreyScreen">applyGreyScreen</a></li><li><a href="global.html#applyRandomColor">applyRandomColor</a></li><li><a href="global.html#applyTaskStyles">applyTaskStyles</a></li><li><a href="global.html#assignedPersonsDetailsHtml">assignedPersonsDetailsHtml</a></li><li><a href="global.html#assignedPersonsEditHtml">assignedPersonsEditHtml</a></li><li><a href="global.html#autofillLogin">autofillLogin</a></li><li><a href="global.html#avatarHtml">avatarHtml</a></li><li><a href="global.html#blurListener">blurListener</a></li><li><a href="global.html#calculateSubtaskProgressOf">calculateSubtaskProgressOf</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#changeContactItemColor">changeContactItemColor</a></li><li><a href="global.html#clearLocalstorage">clearLocalstorage</a></li><li><a href="global.html#closeAddContactPage">closeAddContactPage</a></li><li><a href="global.html#closeAddTaskPopUp">closeAddTaskPopUp</a></li><li><a href="global.html#closeContactModal">closeContactModal</a></li><li><a href="global.html#closeContactOptions">closeContactOptions</a></li><li><a href="global.html#closeContactWindow">closeContactWindow</a></li><li><a href="global.html#closeDetails">closeDetails</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#contactDetailsHTML">contactDetailsHTML</a></li><li><a href="global.html#createContact">createContact</a></li><li><a href="global.html#createContactLetterHTML">createContactLetterHTML</a></li><li><a href="global.html#createContactListHTML">createContactListHTML</a></li><li><a href="global.html#createSubtasks">createSubtasks</a></li><li><a href="global.html#createTaskObject">createTaskObject</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#deleteData">deleteData</a></li><li><a href="global.html#deleteSubtask">deleteSubtask</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#discardNewSubtask">discardNewSubtask</a></li><li><a href="global.html#discardSubtaskInput">discardSubtaskInput</a></li><li><a href="global.html#dragTo">dragTo</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#emptyBottomOf">emptyBottomOf</a></li><li><a href="global.html#executeOnMaxWidth">executeOnMaxWidth</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#focusListener">focusListener</a></li><li><a href="global.html#forceLogout">forceLogout</a></li><li><a href="global.html#formOfDueDate">formOfDueDate</a></li><li><a href="global.html#generateCircleProfiles">generateCircleProfiles</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#generateTaskCard">generateTaskCard</a></li><li><a href="global.html#generateTaskDetailsHtml">generateTaskDetailsHtml</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getCurrentPriority">getCurrentPriority</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#getDeadline">getDeadline</a></li><li><a href="global.html#getSubtaskProgress">getSubtaskProgress</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#guestLogin">guestLogin</a></li><li><a href="global.html#handleButtonClickOnWidth">handleButtonClickOnWidth</a></li><li><a href="global.html#handleCheckBox">handleCheckBox</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#initBoard">initBoard</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#isNotEmpty">isNotEmpty</a></li><li><a href="global.html#limitLengthOf">limitLengthOf</a></li><li><a href="global.html#listAttachedSubtasks">listAttachedSubtasks</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#mobileDeleteRules">mobileDeleteRules</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#openAddContactPage">openAddContactPage</a></li><li><a href="global.html#openAddTask">openAddTask</a></li><li><a href="global.html#openContactDetails">openContactDetails</a></li><li><a href="global.html#openContactOptions">openContactOptions</a></li><li><a href="global.html#openCreatedContact">openCreatedContact</a></li><li><a href="global.html#openEditContactPage">openEditContactPage</a></li><li><a href="global.html#openEditDialog">openEditDialog</a></li><li><a href="global.html#openListSearch">openListSearch</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#openSubtaskInput">openSubtaskInput</a></li><li><a href="global.html#openTaskDetails">openTaskDetails</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#priorityEqualImg">priorityEqualImg</a></li><li><a href="global.html#putContactInfoToEditDialog">putContactInfoToEditDialog</a></li><li><a href="global.html#putContactsToList">putContactsToList</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#putDataset">putDataset</a></li><li><a href="global.html#randomId">randomId</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#removeContactFromInterface">removeContactFromInterface</a></li><li><a href="global.html#renderDetailsContactList">renderDetailsContactList</a></li><li><a href="global.html#renderEditView">renderEditView</a></li><li><a href="global.html#renderOpenSubtasks">renderOpenSubtasks</a></li><li><a href="global.html#renderTaskDetails">renderTaskDetails</a></li><li><a href="global.html#rerenderTaskOnBoard">rerenderTaskOnBoard</a></li><li><a href="global.html#resetAssignedPersons">resetAssignedPersons</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPriorityButtons">resetPriorityButtons</a></li><li><a href="global.html#returnToBoard">returnToBoard</a></li><li><a href="global.html#rotateTaskDragEnd">rotateTaskDragEnd</a></li><li><a href="global.html#rotateTaskDragStart">rotateTaskDragStart</a></li><li><a href="global.html#saveTaskUpdate">saveTaskUpdate</a></li><li><a href="global.html#scrollToLastSubtask">scrollToLastSubtask</a></li><li><a href="global.html#searchAndShowTasks">searchAndShowTasks</a></li><li><a href="global.html#searchContact">searchContact</a></li><li><a href="global.html#setBottomTaskCardVisibility">setBottomTaskCardVisibility</a></li><li><a href="global.html#setFocus">setFocus</a></li><li><a href="global.html#setMyAvatar">setMyAvatar</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPrefixToKey">setPrefixToKey</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#setupAvatarMenu">setupAvatarMenu</a></li><li><a href="global.html#setupListener">setupListener</a></li><li><a href="global.html#showCapitaliseFirstLetters">showCapitaliseFirstLetters</a></li><li><a href="global.html#showCreatedContactModal">showCreatedContactModal</a></li><li><a href="global.html#showDragArea">showDragArea</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#sortByAlphabet">sortByAlphabet</a></li><li><a href="global.html#startDrag">startDrag</a></li><li><a href="global.html#startScreenAnimation">startScreenAnimation</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#switchToAddTask">switchToAddTask</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#toggleThisContact">toggleThisContact</a></li><li><a href="global.html#toggleVisibility">toggleVisibility</a></li><li><a href="global.html#updateAssignedPersons">updateAssignedPersons</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateBoardCounters">updateBoardCounters</a></li><li><a href="global.html#updateMenu">updateMenu</a></li><li><a href="global.html#updateSingleSubtask">updateSingleSubtask</a></li><li><a href="global.html#updateSubtaskInput">updateSubtaskInput</a></li><li><a href="global.html#updateSubtasksArray">updateSubtasksArray</a></li><li><a href="global.html#updateTaskFields">updateTaskFields</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Sat Jul 06 2024 13:20:07 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Fri Jul 12 2024 08:04:54 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

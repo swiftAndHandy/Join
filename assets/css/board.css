@@ -1,4 +1,3 @@
-/* Hide the clear button in search inputs */
 :root {
   --sb-size: 1px;
   --sb-track-color: #f1f1f1;
@@ -6,7 +5,6 @@
   --sb-border-radius: 10px;
 }
 
-/* Scrollbar für das body-Element */
 body::-webkit-scrollbar {
   width: var(--sb-size);
 }
@@ -139,7 +137,6 @@ h2 {
 }
 
 .add-cross-btn-small:hover img {
-
   filter: brightness(0) saturate(100%) invert(73%) sepia(72%) saturate(4323%) hue-rotate(165deg) brightness(97%) contrast(82%);
 }
 
@@ -152,7 +149,6 @@ h2 {
 
 .task-fields {
   margin-top: 15px;
-  /* width: 392px; */
   height: 48px;
   background-color: #e7e7e7;
   border: 1px dashed #a8a8a8;
@@ -326,138 +322,4 @@ h2 {
 
 .draggable {
   transition: transform 0.3s ease;
-}
-
-
-@media (min-width: 1380px) and (max-width: 4200px) {
-  .board-content {
-    display: flex;
-    gap: 24px;
-    margin-top: 48px;
-  }
-
-  .board {
-    margin-left: 232px;
-    padding-left: 64px;
-    margin-top: 170px;
-  }
-
-  .board-headline {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 1056px;
-  }
-
-  .add-task-btn {
-    display: flex;
-  }
-
-  .board-headline-container {
-    margin: 0;
-  }
-
-  .search-row input {
-    width: 312px;
-    height: 48px;
-  }
-
-  .add-cross-btn {
-    display: none;
-  }
-
-  .section-container {
-    width: 252px;
-    min-height: 688px;
-    gap: 8px;
-  }
-
-  .tasks-container {
-    overflow-y: unset;
-    overflow-x: unset;
-    flex-direction: column;
-    padding: 0 8px;
-  }
-
-  .task-card-content {
-    width: 220px;
-  }
-
-  .task-card-container {
-    width: 220px;
-  }
-
-  .sub-task-container {
-    width: 220px;
-  }
-
-  .assigned-user {
-    width: 220px;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-
-  .search-row {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    gap: 32px;
-    margin: 0;
-  }
-}
-
-@media(max-width: 1381px) {
-  .body-mobile {
-    overflow: hidden;
-  }
-}
-
-@media (min-width: 1160px) and (max-width: 1379px) {
-  .board {
-    margin-left: 232px;
-    padding: 0 64px;
-  }
-}
-
-@media (min-width: 1379px) and (max-width: 1394px) {
-  .board {
-    padding: 0 50px;
-  }
-}
-
-@media (min-width: 470px) and (max-width: 1158px) {
-  .board {
-    padding: 0 32px;
-  }
-}
-
-@media(max-width: 431px) {
-  .search-container-width {
-    width: 275px !important;
-  }
-}
-
-@media (min-width: 1919px) {
-  .body-mobile {
-    display: flex;
-    justify-content: center;
-  }
-
-  .board {
-    margin-left: 0;
-  }
-}
-
-@media (max-height: 1020px) {
-  .board {
-    margin-top: 128px;
-  }
-}
-
-@media (max-width: 322px) {
-  .search-row input {
-    width: 380px;
-  }
 }

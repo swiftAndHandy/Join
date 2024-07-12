@@ -30,16 +30,26 @@
 let currentlyDraggedCategory = null;
 
 
-function initBoard() {
-  includeHTML();
+/**
+ * Initializing the Board by running various functions
+ */
+async function initBoard() {
+  await includeHTML();
   renderTasks();
   addOpenAddTaskToButtons()
-  
+  renderContactList();
+  stopEnterForm();
+
   document.addEventListener('dragend', () => {
+    if (currentlyDragged !== null) {
+      rotateTaskDragEnd(currentlyDragged);
+    }
     showDragArea('', false);
-    currentlyDragged = null;
+    currentlyDragged = null; 
     currentlyDraggedCategory = null;
   });
+
+  initTaskDetails();
 }
 
 
@@ -61,6 +71,7 @@ function updateBoard(updateItem, fromLocation, targetLocation) {
   updateTaskFields([fromLocation, targetLocation]);
 }
 
+
 async function renderTasks() {
   const statusFields = {
     'todo': document.getElementById('todo-field'),
@@ -74,100 +85,72 @@ async function renderTasks() {
 
     for (let key in data) {
       const item = data[key];
-
-      if (statusFields[item.status]) {
-        // Await the result of the async function call
-        const taskCardHTML = await callContactInformationForTasks(
-          key,
-          item
-        );
-        statusFields[item.status].innerHTML += taskCardHTML;
-      }
-
-
-      prioEqualImg(item, key);
+      const target = statusFields[item.status];
+      generateTaskCard(key, item, target);
+      updateTaskFields(Object.keys(statusFields));
+      priorityEqualImg(item.priority, key);
+      setBottomTaskCardVisibility(item, key);
     }
-    updateTaskFields(Object.keys(statusFields));
   } catch (error) {
     console.error('Error rendering tasks:', error);
   }
 }
+
+
 /**
-/**
- * The function calls generateTaskCard at the end to return the HTML for the task card.
- * It is essential for accessing the contacts database.
- * renderTasks provides the necessary parameters for this function to work with.
- * 
- * @param {string} keyTasks - The unique key from the Tasks database.
- * @param {string} status - The status value from the database.
- * @param {string} title - The title value from the database.
- * @param {string} description - The description value from the database.
- * @param {string} date - The date value from the database.
- * @param {string} prio - The priority value from the database.
- * @param {string} tag - The tag value from the database. Must be one of: Low, Medium, or Urgent.
- * @param {string} subTasks - The subTasks value from the database.
- * @returns {Promise&lt;string>} A promise that includes the generated HTML for the task card.
+ * Sets the priority image of the target to a lowercase-variant of priority-param
+ * @param {string} priority - Urgent, Medium or Low
+ * @param {*string} key - key of current task
  */
-async function callContactInformationForTasks(keyTasks,item) {  // maybe not the right approch should check it tommorw maybe  i have to get the color form the contaacts also in the assigend tab
-  let contactData = await readData('contacts');
-  const entries = sortByAlphabet(contactData, 'contacts');
-
-  // array for the first three iteration to store to use them later in the generateTaskCard
-  let firstThreeEntries = [];
-  let count = 0;
-
-  for (let key in entries) {
-    const contactEntries = entries[key];
-
-    if (count &lt; 3) {
-      firstThreeEntries.push(contactEntries);
-    }
-
-    count++;
-
-    if (count >= 3) {
-      break;
-    }
-  }
-
-  // Generiere die Aufgabenkarte mit den ersten drei Einträgen
-  let taskCardHTML = generateTaskCard(
-    keyTasks,
-    item ,
-    firstThreeEntries // Übergabe der ersten drei Einträge an generateTaskCard
-  );
- 
-  return taskCardHTML;
+function priorityEqualImg(priority, key) {
+  priority = priority.toLowerCase();
+  const target = document.getElementById(`prio-img${key}`);
+  target.src = `./assets/img/icons/priority_${priority}.svg`;
 }
 
 
-
-
-function prioEqualImg(prio, key) {
-  if (prio.priority === 'Urgent') {
-    let prioImg = document.getElementById(`prio-img${key}`);
-    prioImg.src = "./assets/img/icons/urgent.svg";
-  } else if (prio.priority === 'Medium') {
-    let prioImg = document.getElementById(`prio-img${key}`);
-    prioImg.src = "./assets/img/icons/medium.svg";
-  } else if (prio.priority === 'Low') {
-    let prioImg = document.getElementById(`prio-img${key}`);
-    prioImg.src = "./assets/img/icons/low.svg";
-
+/**
+ * Display or hide the Bottom-DIV of a task-card at the board
+ * @param {*} card 
+ * @param {*} taskId 
+ */
+function setBottomTaskCardVisibility(card, taskId) {
+  if (emptyBottomOf(card)) {
+    document.getElementById(`bottom-board-card-wrapper${taskId}`).classList.add('d-none');
+  } else {
+    document.getElementById(`bottom-board-card-wrapper${taskId}`).classList.remove('d-none');
   }
 }
 
-function updateAfterDrag() {
-  let statusField = key;
+
+/**
+ * @param {object} card - contains all card information
+ * @returns {boolean} - true if (card.assigned is unset or an empty[]) and also(!) 
+ *                    there is no card.priority set or the card.priority is an empty string
+ */
+function emptyBottomOf(card) {
+  return (!card.assigned || card.assigned.length === 0) &amp;&amp; (!card.priority || card.priority==='');
 }
 
+
+/**
+ * Prevents default behaviour
+ * @param {DragEvent} ev - DravEvent listener
+ */
 function allowDrop(ev) {
-  ev.preventDefault();
+  ev.preventDefault()
 }
 
+
+/**
+ * Sets global Variables that are required for an proper drag-process.
+ * @param {string} id - id of the task that is dragged. will be set to a global.
+ * @param {*} fromCategory - the category of the currently dragged item, will be set to a global.
+ */
 function startDrag(id, fromCategory) {
   currentlyDragged = id;
   currentlyDraggedCategory = fromCategory;
+  rotateTaskDragStart(id);
 }
 
 /**
@@ -180,8 +163,10 @@ async function dragTo(newLocation) {
   if (item &amp;&amp; currentlyDraggedCategory != newLocation) {
     await putData(newLocation, `tasks/${item}/status`);
     updateBoard(item, from, newLocation);
+    rotateTaskDragEnd(item);
   }
 }
+
 
 /**
  * allows to update a single item without drag and drop.
@@ -194,6 +179,7 @@ async function moveTo(newLocation, fromLocoation, thisId) {
   await putData(newLocation, `tasks/${thisId}/status`);
   updateBoard(thisId, fromLocoation, newLocation);
 }
+
 
 /**
  * 
@@ -211,12 +197,24 @@ function showDragArea(area, display = true) {
   }
 }
 
+
+/**
+ * calls hideWindow for every section. if the innerHTML without leading and trailing spaces is
+ * empty the comparsion is false, to the oposite of hideWindow -> showWindow will happen. 
+ * Otherwise the message must become hidden.
+ * @param {Array} sections - contains all sections of the board, so that they can be iterated. 
+ */
 function updateTaskFields(sections) {
   for (let item in sections) {
     hideWindow(`task-field-${sections[item]}`, document.getElementById(`${sections[item]}-field`).innerHTML.trim() !== "");
   }
 }
 
+
+/**
+ * Pls write your own JSdoc, Phillip
+ * this should be (only) your function
+ */
 function addOpenAddTaskToButtons() {
   const buttons = document.querySelectorAll(
     "button.add-cross-btn-small, button.add-task-btn, button.add-cross-btn"
@@ -226,39 +224,186 @@ function addOpenAddTaskToButtons() {
   });
 }
 
+
+/**
+ * Pls write your own JSdoc, Phillip
+ * this should be (only) your function
+ */
 function handleButtonClickOnWidth() {
   const screenWidth = window.innerWidth;
 
-  if (screenWidth &lt; 1260) {
+  if (screenWidth &lt; 1160) {
     return switchToAddTask();
   } else {
     return openAddTask();
   }
 }
 
+
+/**
+ * Pls write your own JSdoc, Phillip
+ * this should be (only) your function
+ */
 function openAddTask() {
   let popUpTranstion = document.getElementById("add-task-transition");
   popUpTranstion.classList.add("transition-right");
-  document.getElementById('add-task-transition').classList.add('grey-out-bg');
+  applyGreyScreen();
   document.body.classList.add('overflow-all-hidden');
 }
 
+
+/**
+ * Pls write your own JSdoc, Phillip
+ * this should be (only) your function
+ */
 function switchToAddTask() {
   let addTaskUrl = "../add_task.html";
   window.location.href = addTaskUrl;
 }
 
-function closeAddTaskPopUp() {
+
+/**
+ * Pls write your own JSdoc, Phillip
+ * this should be (only) your function
+ */
+function closeAddTaskPopUp(event) {
   let popUpTranstion = document.getElementById("add-task-transition");
   popUpTranstion.classList.remove("transition-right");
-  document.getElementById('add-task-transition').classList.remove('grey-out-bg');
+  applyGreyScreen();
   document.body.classList.remove('overflow-all-hidden');
+  removeValidation();
+  clearFormPrio();
+  clearFormContactStyle();
+  document.getElementById('form-desktop').reset()
 }
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   // Deine Funktion, die beim Laden der Seite aufgerufen wird
-//   addOpenAddTaskToButtons(); // Füge onclick zu den Buttons hinzu
-// });</code></pre>
+
+/**
+ * Pls write your own JSdoc, Phillip
+ * this should be (only) your function
+ */
+function applyGreyScreen() {
+  const greyScreen = document.getElementById('grey-screen');
+  greyScreen.classList.toggle('grey-screen');
+  greyScreen.classList.toggle('d-none');
+}
+
+/**
+ * Limits the length of a string to a chosen limit
+ * @param {string} inputString - string, that should become limited in length
+ * @param {int} limit - max-length of the string
+ * @returns {string} - shortened string
+ */
+function limitLengthOf(inputString, limit = 80) {
+  if (inputString.length > limit) {
+    return inputString.substring(0, limit) + '...';
+  }
+  return inputString;
+}
+
+
+/**
+ * I'll add this later. --Andre
+ */
+function rerenderTaskOnBoard(data, taskId) {
+  const description = document.getElementById(`description-content${taskId}`);
+  const hiddenDescription = document.getElementById(`hidden-description-content${taskId}`);
+  const title = description.previousElementSibling.innerText = data.title;
+  description.innerText = limitLengthOf(data.description, 80);
+  document.getElementById(`profile-circle-container-${taskId}`).innerHTML = '';
+  hiddenDescription.innerText = data.description;
+  generateCircleProfiles(data.assigned, taskId);
+  getSubtaskProgress(data.subtasks, taskId);
+  priorityEqualImg(data.priority, taskId);
+  setBottomTaskCardVisibility(data, taskId);
+}
+
+
+/**
+ * Feel free to write JSdoc, @Phillip.
+ * Otherwise i'll can do it later on, since this is based on my search-engine and i've recorded smaller parts.
+ * -- Andre
+ */
+function searchAndShowTasks(searchTerm) {
+  const taskCards = document.querySelectorAll('.task-card-container');
+
+  taskCards.forEach(taskCard => {
+    const titleElement = taskCard.querySelector('.task-card-header');
+    if (titleElement) {
+      const title = titleElement.textContent.trim().toLowerCase();
+      const isVisible = title.includes(searchTerm.toLowerCase());
+
+
+      const articleElement = taskCard.closest('article');
+      if (articleElement) {
+        hideWindow(articleElement.id, !isVisible);
+      }
+    }
+  });
+}
+
+
+/**
+ * sets up two counters. one for finished subtasks, and one for the total amount.
+ * checks every Object in Object[] and adds 1 to the total amount.
+ * if element.done is true, also doneSubtasks increase. 
+ * @param {Object[]} subtasks - Every Subtask Object related to the taskId
+ * @param {string} taskId - taskId of the currently rendered task
+ */
+async function getSubtaskProgress(subtasks, taskId) {
+  let doneSubtasks = 0; let totalSubtasks = 0;
+
+  if (Array.isArray(subtasks)) {
+    subtasks.forEach(element => {
+      totalSubtasks++;
+      element.done &amp;&amp; doneSubtasks++;
+    });
+  }
+
+  calculateSubtaskProgressOf(taskId, doneSubtasks, totalSubtasks);
+}
+
+
+/**
+ * Calculates Percentage of solved Subtasks and changes the Inline-Style of the
+ * related Progress bar. Also updates the text.
+ * If no subtask is added to the task, hide the progress bar(parents parent element).
+ * If a subtask is added to the tash, show parents parent element. This is necessairy, since
+ * the object could be d-noned by rendering and need to be displayed after adding a first subtask.
+ * @param {string} taskId - ID of the task that should be calculated
+ * @param {number} done - amount of completed subtask goals.
+ * @param {number} total - total amount of subtasks, added to this taskId
+ */
+async function calculateSubtaskProgressOf(taskId, done, total) {
+  const target = document.getElementById(`progress-length${taskId}`);
+  let progress = Number(done * 100 / total).toFixed(0);
+  if (!isNaN(progress)) {
+    target.style.width = `${progress}%`;
+    target.parentElement.nextElementSibling.innerHTML = `${done}/${total} Subtasks`;
+    target.parentElement.parentElement.classList.remove('d-none');
+  } else {
+    target.parentElement.parentElement.classList.add('d-none');
+  }
+}
+
+
+/**
+ * Applies a rotation-effect on the currently dragged task-card
+ */
+function rotateTaskDragStart(id) {
+  let rotateTask = document.getElementById(`taskId${id}`);
+  rotateTask.classList.add('draggable'); 
+  rotateTask.style.transform = "rotate(5deg)";
+}
+
+/**
+ * Removes a rotation-effect on the currently dragged task-card
+ */
+function rotateTaskDragEnd(id) {
+  let rotateTask = document.getElementById(`taskId${id}`);
+  rotateTask.classList.remove('draggable'); 
+  rotateTask.style.transform = "rotate(0deg)";
+}</code></pre>
         </article>
     </section>
 
@@ -268,13 +413,13 @@ function closeAddTaskPopUp() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#applyRandomColor">applyRandomColor</a></li><li><a href="global.html#autofillLogin">autofillLogin</a></li><li><a href="global.html#avatarHtml">avatarHtml</a></li><li><a href="global.html#blurListener">blurListener</a></li><li><a href="global.html#callContactInformationForTasks">callContactInformationForTasks</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#clearLocalstorage">clearLocalstorage</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#createContact">createContact</a></li><li><a href="global.html#createSubtasks">createSubtasks</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#deleteData">deleteData</a></li><li><a href="global.html#deleteSubtask">deleteSubtask</a></li><li><a href="global.html#discardNewSubtask">discardNewSubtask</a></li><li><a href="global.html#discardSubtaskInput">discardSubtaskInput</a></li><li><a href="global.html#dragTo">dragTo</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#focusListener">focusListener</a></li><li><a href="global.html#forceLogout">forceLogout</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#getDeadline">getDeadline</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#handleCheckBox">handleCheckBox</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#openEditContactPage">openEditContactPage</a></li><li><a href="global.html#openListSearch">openListSearch</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#openSubtaskInput">openSubtaskInput</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#putContactInfoToEditDialog">putContactInfoToEditDialog</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#putDataset">putDataset</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#renderContactList">renderContactList</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#saveTaskUpdate">saveTaskUpdate</a></li><li><a href="global.html#searchContact">searchContact</a></li><li><a href="global.html#setFocus">setFocus</a></li><li><a href="global.html#setMyAvatar">setMyAvatar</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#setupListener">setupListener</a></li><li><a href="global.html#showDragArea">showDragArea</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#sortByAlphabet">sortByAlphabet</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#toggleThis">toggleThis</a></li><li><a href="global.html#toggleVisibility">toggleVisibility</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateBoardCounters">updateBoardCounters</a></li><li><a href="global.html#updateMenu">updateMenu</a></li><li><a href="global.html#updateSubtaskInput">updateSubtaskInput</a></li><li><a href="global.html#updateSubtasks">updateSubtasks</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#activateAssignedContacts">activateAssignedContacts</a></li><li><a href="global.html#addNewSubtask">addNewSubtask</a></li><li><a href="global.html#addOpenAddTaskToButtons">addOpenAddTaskToButtons</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#applyGreyScreen">applyGreyScreen</a></li><li><a href="global.html#applyRandomColor">applyRandomColor</a></li><li><a href="global.html#applyTaskStyles">applyTaskStyles</a></li><li><a href="global.html#assignedPersonsDetailsHtml">assignedPersonsDetailsHtml</a></li><li><a href="global.html#assignedPersonsEditHtml">assignedPersonsEditHtml</a></li><li><a href="global.html#autofillLogin">autofillLogin</a></li><li><a href="global.html#avatarHtml">avatarHtml</a></li><li><a href="global.html#blurListener">blurListener</a></li><li><a href="global.html#calculateSubtaskProgressOf">calculateSubtaskProgressOf</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#changeContactItemColor">changeContactItemColor</a></li><li><a href="global.html#clearLocalstorage">clearLocalstorage</a></li><li><a href="global.html#closeAddContactPage">closeAddContactPage</a></li><li><a href="global.html#closeAddTaskPopUp">closeAddTaskPopUp</a></li><li><a href="global.html#closeContactModal">closeContactModal</a></li><li><a href="global.html#closeContactOptions">closeContactOptions</a></li><li><a href="global.html#closeContactWindow">closeContactWindow</a></li><li><a href="global.html#closeDetails">closeDetails</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#contactDetailsHTML">contactDetailsHTML</a></li><li><a href="global.html#createContact">createContact</a></li><li><a href="global.html#createContactLetterHTML">createContactLetterHTML</a></li><li><a href="global.html#createContactListHTML">createContactListHTML</a></li><li><a href="global.html#createSubtasks">createSubtasks</a></li><li><a href="global.html#createTaskObject">createTaskObject</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#deleteData">deleteData</a></li><li><a href="global.html#deleteSubtask">deleteSubtask</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#discardNewSubtask">discardNewSubtask</a></li><li><a href="global.html#discardSubtaskInput">discardSubtaskInput</a></li><li><a href="global.html#dragTo">dragTo</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#emptyBottomOf">emptyBottomOf</a></li><li><a href="global.html#executeOnMaxWidth">executeOnMaxWidth</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#focusListener">focusListener</a></li><li><a href="global.html#forceLogout">forceLogout</a></li><li><a href="global.html#formOfDueDate">formOfDueDate</a></li><li><a href="global.html#generateCircleProfiles">generateCircleProfiles</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#generateTaskCard">generateTaskCard</a></li><li><a href="global.html#generateTaskDetailsHtml">generateTaskDetailsHtml</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getCurrentPriority">getCurrentPriority</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#getDeadline">getDeadline</a></li><li><a href="global.html#getSubtaskProgress">getSubtaskProgress</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#guestLogin">guestLogin</a></li><li><a href="global.html#handleButtonClickOnWidth">handleButtonClickOnWidth</a></li><li><a href="global.html#handleCheckBox">handleCheckBox</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#initBoard">initBoard</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#isNotEmpty">isNotEmpty</a></li><li><a href="global.html#limitLengthOf">limitLengthOf</a></li><li><a href="global.html#listAttachedSubtasks">listAttachedSubtasks</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#mobileDeleteRules">mobileDeleteRules</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#openAddContactPage">openAddContactPage</a></li><li><a href="global.html#openAddTask">openAddTask</a></li><li><a href="global.html#openContactDetails">openContactDetails</a></li><li><a href="global.html#openContactOptions">openContactOptions</a></li><li><a href="global.html#openCreatedContact">openCreatedContact</a></li><li><a href="global.html#openEditContactPage">openEditContactPage</a></li><li><a href="global.html#openEditDialog">openEditDialog</a></li><li><a href="global.html#openListSearch">openListSearch</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#openSubtaskInput">openSubtaskInput</a></li><li><a href="global.html#openTaskDetails">openTaskDetails</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#priorityEqualImg">priorityEqualImg</a></li><li><a href="global.html#putContactInfoToEditDialog">putContactInfoToEditDialog</a></li><li><a href="global.html#putContactsToList">putContactsToList</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#putDataset">putDataset</a></li><li><a href="global.html#randomId">randomId</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#removeContactFromInterface">removeContactFromInterface</a></li><li><a href="global.html#renderDetailsContactList">renderDetailsContactList</a></li><li><a href="global.html#renderEditView">renderEditView</a></li><li><a href="global.html#renderOpenSubtasks">renderOpenSubtasks</a></li><li><a href="global.html#renderTaskDetails">renderTaskDetails</a></li><li><a href="global.html#rerenderTaskOnBoard">rerenderTaskOnBoard</a></li><li><a href="global.html#resetAssignedPersons">resetAssignedPersons</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPriorityButtons">resetPriorityButtons</a></li><li><a href="global.html#returnToBoard">returnToBoard</a></li><li><a href="global.html#rotateTaskDragEnd">rotateTaskDragEnd</a></li><li><a href="global.html#rotateTaskDragStart">rotateTaskDragStart</a></li><li><a href="global.html#saveTaskUpdate">saveTaskUpdate</a></li><li><a href="global.html#scrollToLastSubtask">scrollToLastSubtask</a></li><li><a href="global.html#searchAndShowTasks">searchAndShowTasks</a></li><li><a href="global.html#searchContact">searchContact</a></li><li><a href="global.html#setBottomTaskCardVisibility">setBottomTaskCardVisibility</a></li><li><a href="global.html#setFocus">setFocus</a></li><li><a href="global.html#setMyAvatar">setMyAvatar</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPrefixToKey">setPrefixToKey</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#setupAvatarMenu">setupAvatarMenu</a></li><li><a href="global.html#setupListener">setupListener</a></li><li><a href="global.html#showCapitaliseFirstLetters">showCapitaliseFirstLetters</a></li><li><a href="global.html#showCreatedContactModal">showCreatedContactModal</a></li><li><a href="global.html#showDragArea">showDragArea</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#sortByAlphabet">sortByAlphabet</a></li><li><a href="global.html#startDrag">startDrag</a></li><li><a href="global.html#startScreenAnimation">startScreenAnimation</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#switchToAddTask">switchToAddTask</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#toggleThisContact">toggleThisContact</a></li><li><a href="global.html#toggleVisibility">toggleVisibility</a></li><li><a href="global.html#updateAssignedPersons">updateAssignedPersons</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateBoardCounters">updateBoardCounters</a></li><li><a href="global.html#updateMenu">updateMenu</a></li><li><a href="global.html#updateSingleSubtask">updateSingleSubtask</a></li><li><a href="global.html#updateSubtaskInput">updateSubtaskInput</a></li><li><a href="global.html#updateSubtasksArray">updateSubtasksArray</a></li><li><a href="global.html#updateTaskFields">updateTaskFields</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Sat Jul 06 2024 13:20:07 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Fri Jul 12 2024 08:04:54 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>
