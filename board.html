@@ -17,6 +17,7 @@
     <script src="./assets/js/add_task_Html.js"></script>
     <link rel="stylesheet" href="./assets/css/add_task_style_dialog.css">
     <link rel="stylesheet" href="./assets/css/add_task_style.css  ">
+    <link rel="stylesheet" href="./assets/css/add_task_media_querys.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/menu-bar.css">
     <link rel="stylesheet" href="./assets/css/fonts.css">
@@ -24,6 +25,7 @@
     <link rel="stylesheet" href="./assets/css/board_media_querys.css">
     <link rel="stylesheet" href="./assets/css/detail_view.css">
     <link rel="stylesheet" href="./assets/css/detail_view_edit.css">
+    
     <link
       rel="icon"
       type="image/svg+xml"
@@ -223,24 +225,44 @@
                 <div>
                   <div class="flex-column-inputs mb-32">
                     <span>Category<span class="red">*</span></span>
-                    <select required class="input-standard" id="select-task-category">
-                      <option value="" disabled selected>
-                        Select task category
-                      </option>
-                      <option value="Technical Task">Technical Task</option>
-                      <option value="User Story">User Story</option>
-                    </select>
+                    <div onclick="stopPropagation(event)" id="category-input-wrapper">
+                      <div onclick="toggleCategoryDropBox()" class="input-standard" id="select-category">
+                        <span>Select category</span>
+                        <img id="arrow" class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" alt="">
+                      </div>
+                    </div>
+                    <div id="category-drop-menu" class="drop-menu-category d-none">
+                      <div id="category-drop-menu-content" class="drop-menu-contacts">
+                        <div onclick="selectCategory('Technical Task')" class="category-drop-box-field">
+                          <span>Technical Task</span>
+                        </div>
+                        <div onclick="selectCategory('User Story')" class="category-drop-box-field">
+                          <span>User Story</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="flex-column-inputs mb-32">
-                  <span>Subtasks</span>
-                  <input
-                    class="input-standard"
-                    type="text"
-                    placeholder="Add new subtask"
-                    id="task-subtask"
-                  />
+                  <span class="details__caption">Subtasks</span>
+                  <div id="edit-subtask-box" class="details-subtask-box stay-white input-width" onsubmit="addNewSubtask(document.getElementById('edit-add-subtask').value);scrollToLastSubtask();return false;">
+                      <input type="text" id="edit-add-subtask" class="details-subtask-add " placeholder="Add new subtask">
+                      <div id="edit-view-subtask-add" class="cross blue" onclick="setFocus('edit')"></div>
+                      <div id="edit-view-subtask-navigation" class="edit-subtask-navigation d-none"
+                          onclick="stopPropagation(event);">
+                          <div class="link-btn discard-btn" onclick="discardNewSubtask()"></div>
+                          <img class="vertical-line" src="./assets/img/icons/vertical-line.svg" alt="" class="">
+                          <div class="link-btn accept-btn"
+                              onclick="addNewSubtask(document.getElementById('edit-add-subtask').value,'edit-subtask-item-wrapper','div');scrollToLastSubtask();blurListener(); hideWindow('padding-placeholder');">
+                          </div>
+                      </div>
+                  </div>
+                  <div id="edit-view-scrollbar" class="add-task__subtask-scrollbar">
+                  <div id="edit-subtask-item-wrapper" style="width: 100%">
+                    <div id="padding-placeholder"></div>
+                  </div>
                 </div>
+              </div>
                 <div class="desktop-buttons">
                   <button class="clear-btn" onclick="clearInputs(event)"> Clear
                     <img src="./assets/img/icons/close.svg" alt="">
