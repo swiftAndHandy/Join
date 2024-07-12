@@ -61,6 +61,7 @@ function createTaskObject(tag, title, description, deadline, priority, subtasks)
     }
 }
 
+
 /**
  * Renders the Edit-View of a Task by updating the save Button and set 
  * title, description, date, priority 
@@ -79,6 +80,7 @@ function renderEditView(task, key) {
     } catch (error) { console.warn('This Task has no priority.'); }
 }
 
+
 /**
  * @param {string} id - used to complete the target-document-id
  */
@@ -87,6 +89,7 @@ function resetInputFields(id = 'edit') {
     hideWindow(`${id}-task-contact-list-input`);
     hideWindow(`${id}-task-contacts-list`);
 }
+
 
 /**
  * Sets the priority level by updating the `editPriority` variable and toggling the 'active' class on priority buttons.
@@ -119,6 +122,7 @@ function getCurrentPriority() {
     }
 }
 
+
 /**
  * Removes active class from every priority button to prevent that it is forced to add a priority when 
  * you edit a card without priority after opening another card, that has a priority.
@@ -130,6 +134,7 @@ function resetPriorityButtons() {
     });
 }
 
+
 /**
  * Reset Input-Field for new Subtask, when discarded.
  */
@@ -137,6 +142,7 @@ function discardNewSubtask() {
     document.getElementById('edit-add-subtask').value = '';
     blurListener();
 }
+
 
 /**
  * @param {string} subtaskId - build an elementId related to subtask-id and change the input-style
@@ -148,6 +154,7 @@ function openSubtaskInput(subtaskId) {
     input.value = document.getElementById(`subtaskspan-${subtaskId}`).innerText;
     input.focus();
 }
+
 
 /**
  * Save the input the user made on text and set target.innerText to this input.
@@ -164,6 +171,7 @@ function updateSubtaskInput(subtaskId) {
     }
 }
 
+
 /**
  * Resetss the desgin of the Input/Span related to subtaskId
  * @param {string} subtaskId - if of an list-item
@@ -173,6 +181,7 @@ function discardSubtaskInput(subtaskId) {
     document.getElementById(`single-subtask-input-wrapper-${subtaskId}`).classList.add('d-none');
 }
 
+
 /**
  * Deletes an Subtask-Item from Edit-View, not from Firebase!
  * @param {string} subtaskId - id of the item that should be deleted
@@ -180,6 +189,7 @@ function discardSubtaskInput(subtaskId) {
 function deleteSubtask(subtaskId) {
     document.getElementById(`edit-subtask-total-${subtaskId}`).remove();
 }
+
 
 /**
  * updates an global array, based on a querySelector, that will be pushed to firebase
@@ -229,4 +239,20 @@ function renderOpenSubtasks() {
  */
 function scrollToLastSubtask(specialTarget = '') {
     document.getElementById(`edit-view-scrollbar${specialTarget}`).lastElementChild.scrollIntoView({behavior: 'smooth', block: 'end'});
+}
+
+
+/**
+ * Generates HTML for assigned Persons in the task-edit-window.
+ * @param {string} contactIds - the ID of a single contact, that avatar needs to be rendered
+ * @returns 
+ */
+async function assignedPersonsEditHtml(contactIds) {
+    const data = await readData(`${contactIds}`)
+    const output = `
+            <div id="edit_task_assigned-person-${contactIds}" class="details__inner">
+                <div id="edit-task-avatar-${contactIds}" class="avatar at-drop-down" style="background-color: ${data.color};">${initials(data.name)}</div>
+            </div>
+            `
+    return output;
 }

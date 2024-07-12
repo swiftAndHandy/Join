@@ -1,6 +1,10 @@
 const currentlyOpen = getCurrentFileName();
 
-
+/**
+ * query-selects all Elements that have a w3-include-attribute and starts to fetch the file 
+ * that is assigned to the attribute.
+ * Triggers the updateMenu-Funktion
+ */
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
@@ -17,6 +21,10 @@ async function includeHTML() {
 }
 
 
+/**
+ * Toggles (and hides) the Avatar-Dropdown-Menu
+ * @param {boolean} toggle - true if the user clicks on an the avatar-menu-button, false in generell
+ */
 function showOverlayMenu(toggle = false) {
     if (toggle) {
         document.getElementById('menu-bar-avatar').classList.toggle('show-overlay-menu');

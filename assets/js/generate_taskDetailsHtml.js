@@ -32,6 +32,11 @@ async function generateTaskDetailsHtml(taskId, taskDetails) {
     return taskDetails;
 }
 
+
+/**
+ * Resets Details of a Card. 
+ * I used variables for better readablity, even if this results in more than 14 LOC.
+ */
 function resetDetailCardHtml() {
     const tag = document.getElementById('task-details-tag');
     tag.innerHTML = '';
@@ -62,7 +67,7 @@ function resetDetailCardHtml() {
 }
 
 /**
- * Generates HTML for 
+ * Generates HTML for persons that shown in the assigned list in Task-Details
  * @param {[]} contactIds an array, that contains all assigned contacts
  * @returns 
  */
@@ -81,21 +86,6 @@ async function assignedPersonsDetailsHtml(contactIds) {
             } catch (error) { }
         }
     }
-    return output;
-}
-
-/**
- * 
- * @param {string} contactIds - the ID of a single contact, that avatar needs to be rendered
- * @returns 
- */
-async function assignedPersonsEditHtml(contactIds) {
-    const data = await readData(`${contactIds}`)
-    const output = `
-            <div id="edit_task_assigned-person-${contactIds}" class="details__inner">
-                <div id="edit-task-avatar-${contactIds}" class="avatar at-drop-down" style="background-color: ${data.color};">${initials(data.name)}</div>
-            </div>
-            `
     return output;
 }
 
