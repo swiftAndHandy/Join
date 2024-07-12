@@ -26,7 +26,7 @@ async function saveTaskUpdate(taskId) {
  * checks the value of an Element without leading and trailing spaces. 
  * If it's empty, return the old value, otherwise the new one. 
  * @param {string} target - part of the ElementID in "update-" and "task-details-"
- * @returns 
+ * @returns {string} - date in the format yyyy-mm-dd
  */
 function isNotEmpty(target) { 
     if (document.getElementById(`update-${target}`).value.trim() != '') {
@@ -45,7 +45,7 @@ function isNotEmpty(target) {
  * @param {string} description - new description of the task
  * @param {string} deadline -formated yyyy-mm-dd, new deadline of the task
  * @param {string} priority - empty or Low, Medium or Urgent
- * @param {[]} subtasks - contains every subtask with goal and an information about done or not
+ * @param {Array} subtasks - contains every subtask with goal and an information about done or not
  * @returns {Object[]} - containing all updated data from above.
  */
 function createTaskObject(tag, title, description, deadline, priority, subtasks) {
@@ -247,7 +247,7 @@ function scrollToLastSubtask(specialTarget = '') {
 /**
  * Generates HTML for assigned Persons in the task-edit-window.
  * @param {string} contactIds - the ID of a single contact, that avatar needs to be rendered
- * @returns 
+ * @returns {string} - contains the rendered HTML
  */
 async function assignedPersonsEditHtml(contactIds) {
     const data = await readData(`${contactIds}`)

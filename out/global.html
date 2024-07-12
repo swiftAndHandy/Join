@@ -289,7 +289,8 @@
 
         
 <div class="param-desc">
-    - Returns the user object if an account with the given email (and optional password) exists,                              or false if no account is found or an error occurs.
+    - Returns the user object if an account with the given email (and optional password) exists,
+                              or false if no account is found or an error occurs.
 </div>
 
 
@@ -329,7 +330,8 @@
 
 
 <div class="description">
-    Simulates an click on every assigned contact to activate it for contact list and submit array (assignedPersonsToUpdate)CAVE: I try to enable user accounts also. in this case it needs to be set up to assign-contact-${item}, since contacts will be added by algorithm.
+    Simulates an click on every assigned contact to activate it for contact list and submit array (assignedPersonsToUpdate)
+CAVE: I try to enable user accounts also. in this case it needs to be set up to assign-contact-${item}, since contacts will be added by algorithm.
 </div>
 
 
@@ -554,7 +556,9 @@
 
 
 <div class="description">
-    Creates HTML for Creating new Subtasks. This is originaly written for task-details, but changed in a way you can select a individual target-location and reuse this code on other pages.Applys a random ID to this item. Submits only, if value isn't empty after trim spaces from begin and end
+    Creates HTML for Creating new Subtasks. This is originaly written for task-details, but changed in 
+a way you can select a individual target-location and reuse this code on other pages.
+Applys a random ID to this item. Submits only, if value isn't empty after trim spaces from begin and end
 </div>
 
 
@@ -691,7 +695,8 @@
 
 
 <div class="description">
-    Adds an onclick attribute to buttons with specific classes.When clicked, invokes the handleButtonClickOnWidth function.
+    Adds an onclick attribute to buttons with specific classes.
+When clicked, invokes the handleButtonClickOnWidth function.
 </div>
 
 
@@ -779,7 +784,8 @@
 
 
 <div class="description">
-    Posts a new task to the backend.Collects task data from form inputs and sends it via POST request to the backend API.
+    Posts a new task to the backend.
+Collects task data from form inputs and sends it via POST request to the backend API.
 </div>
 
 
@@ -1320,7 +1326,8 @@
 
         
 <div class="param-desc">
-    colors - a random element of global const colors. e. g.: use this when you add a new contact, that hasn't a own user-account
+    colors - a random element of global const colors. 
+e. g.: use this when you add a new contact, that hasn't a own user-account
 </div>
 
 
@@ -1474,7 +1481,7 @@
     
 
     
-    <h4 class="name" id="assignedPersonsDetailsHtml"><span class="type-signature">(async) </span>assignedPersonsDetailsHtml<span class="signature">(contactIds)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="assignedPersonsDetailsHtml"><span class="type-signature">(async) </span>assignedPersonsDetailsHtml<span class="signature">(contactIds)</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
     
@@ -1523,13 +1530,18 @@
 
             <td class="type">
             
+                
+<span class="param-type">Array</span>
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last">an array, that contains all assigned contacts</td>
         </tr>
 
     
@@ -1598,7 +1610,23 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    - HTML Content that was rendered
+</div>
 
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
 
     
 
@@ -1612,7 +1640,7 @@
     
 
     
-    <h4 class="name" id="assignedPersonsEditHtml"><span class="type-signature">(async) </span>assignedPersonsEditHtml<span class="signature">(contactIds)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="assignedPersonsEditHtml"><span class="type-signature">(async) </span>assignedPersonsEditHtml<span class="signature">(contactIds)</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
     
@@ -1741,7 +1769,23 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    - contains the rendered HTML
+</div>
 
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
 
     
 
@@ -1763,7 +1807,8 @@
 
 
 <div class="description">
-    If remember me is active and the Account is not guest, the login form is filled with the correct user-data and auto submitted.
+    If remember me is active and the Account is not guest, 
+the login form is filled with the correct user-data and auto submitted.
 </div>
 
 
@@ -1988,7 +2033,9 @@
 
 
 <div class="description">
-    Change Button-Design based on focus of input-field. Hide discard and save-button, when input for new subtask is activeShow add button instead.
+    Change Button-Design based on focus of input-field. 
+Hide discard and save-button, when input for new subtask is active
+Show add button instead.
 </div>
 
 
@@ -2076,7 +2123,9 @@
 
 
 <div class="description">
-    Change Button-Design based on focus of input-field. Hide discard and save-button, when input for new subtask is activeShow add button instead.
+    Change Button-Design based on focus of input-field. 
+Hide discard and save-button, when input for new subtask is active
+Show add button instead.
 </div>
 
 
@@ -2164,7 +2213,11 @@
 
 
 <div class="description">
-    Calculates Percentage of solved Subtasks and changes the Inline-Style of therelated Progress bar. Also updates the text.If no subtask is added to the task, hide the progress bar(parents parent element).If a subtask is added to the tash, show parents parent element. This is necessairy, sincethe object could be d-noned by rendering and need to be displayed after adding a first subtask.
+    Calculates Percentage of solved Subtasks and changes the Inline-Style of the
+related Progress bar. Also updates the text.
+If no subtask is added to the task, hide the progress bar(parents parent element).
+If a subtask is added to the tash, show parents parent element. This is necessairy, since
+the object could be d-noned by rendering and need to be displayed after adding a first subtask.
 </div>
 
 
@@ -2347,7 +2400,8 @@
 
 
 <div class="description">
-    Capitalizes the first letter of the input string and converts the rest to lowercase.Capitalizes the first letter after a '-' to avoid double-names-issues.
+    Capitalizes the first letter of the input string and converts the rest to lowercase.
+Capitalizes the first letter after a '-' to avoid double-names-issues.
 </div>
 
 
@@ -2506,7 +2560,11 @@
 
 
 <div class="description">
-    Changes the color of the selected contact item.Removes the "selected" class from the previously selected contact (if any),adds it to the newly selected contact, and updates the global `currentSelectedContactId`.
+    Changes the color of the selected contact item.
+
+Removes the "selected" class from the previously selected contact (if any),
+adds it to the newly selected contact, and updates the global 
+`currentSelectedContactId`.
 </div>
 
 
@@ -2731,7 +2789,11 @@
 
 
 <div class="description">
-    Checks if the form is completely filled and validates whether the form is ready to submit or not.If all required fields are filled and a category is selected, the new task is added, a success popup is shown,and the form is cleared.If not all required fields are filled or no category is selected, standard form validation messages are stopped,custom validation is performed, and category field is checked.
+    Checks if the form is completely filled and validates whether the form is ready to submit or not.
+If all required fields are filled and a category is selected, the new task is added, a success popup is shown,
+and the form is cleared.
+If not all required fields are filled or no category is selected, standard form validation messages are stopped,
+custom validation is performed, and category field is checked.
 </div>
 
 
@@ -3181,7 +3243,8 @@
 
 
 <div class="description">
-    Clears the inputs in the form with the id 'form-desktop' and prevents the form's standard validationwith a timeout to ensure the site is not reloaded.
+    Clears the inputs in the form with the id 'form-desktop' and prevents the form's standard validation
+with a timeout to ensure the site is not reloaded.
 </div>
 
 
@@ -4110,7 +4173,9 @@
 
 
 <div class="description">
-    Resets every input.value of sign-up-dialog. Also resets images by passwordInputIcon()does another password compare, to reset missmatch-msg.
+    Resets every input.value of sign-up-dialog. 
+Also resets images by passwordInputIcon()
+does another password compare, to reset missmatch-msg.
 </div>
 
 
@@ -4198,7 +4263,8 @@
 
 
 <div class="description">
-    compares both password fields during sign-up. comparsion starts, when the validation field gets a value
+    compares both password fields during sign-up. 
+comparsion starts, when the validation field gets a value
 </div>
 
 
@@ -4674,7 +4740,8 @@
 
 
 <div class="description">
-    Creates a new contact by sending the data to the server, updates the contact list,and opens the details of the newly created contact if it matches the input data.
+    Creates a new contact by sending the data to the server, updates the contact list,
+and opens the details of the newly created contact if it matches the input data.
 </div>
 
 
@@ -5476,13 +5543,18 @@
 
             <td class="type">
             
+                
+<span class="param-type">Array</span>
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last">contains every subtask with goal and an information about done or not</td>
         </tr>
 
     
@@ -5589,7 +5661,9 @@
 
 
 <div class="description">
-    Attempts to create a new user account with the provided email, name, and password.If the email does not already exist, a new user is created and the data is posted.If the email already exists, the function returns false.
+    Attempts to create a new user account with the provided email, name, and password.
+If the email does not already exist, a new user is created and the data is posted.
+If the email already exists, the function returns false.
 </div>
 
 
@@ -5662,7 +5736,8 @@
 
         
 <div class="param-desc">
-    - A promise that resolves to true if the user was created successfully,                                     or false if the email already exists.
+    - A promise that resolves to true if the user was created successfully,
+                                     or false if the email already exists.
 </div>
 
 
@@ -6123,7 +6198,8 @@
 
 
 <div class="description">
-    Deletes the submitted taskId and closes task-detail-view.Resets the style changes that are applyed when opening a taskDetail-View
+    Deletes the submitted taskId and closes task-detail-view.
+Resets the style changes that are applyed when opening a taskDetail-View
 </div>
 
 
@@ -6900,7 +6976,8 @@
 
         
 <div class="param-desc">
-    - true if (card.assigned is unset or an empty[]) and also(!)                    there is no card.priority set or the card.priority is an empty string
+    - true if (card.assigned is unset or an empty[]) and also(!) 
+                   there is no card.priority set or the card.priority is an empty string
 </div>
 
 
@@ -6937,7 +7014,8 @@
 
 
 <div class="description">
-    Executes the callback function if the window width is less than or equal to the specified maxWidth.Also sets up an event listener to re-check the condition on window resize.
+    Executes the callback function if the window width is less than or equal to the specified maxWidth.
+Also sets up an event listener to re-check the condition on window resize.
 </div>
 
 
@@ -7097,7 +7175,8 @@
 
 
 <div class="description">
-    Executes the callback function if the window width is greater than or equal to the specified minWidth.Also sets up an event listener to re-check the condition on window resize.
+    Executes the callback function if the window width is greater than or equal to the specified minWidth.
+Also sets up an event listener to re-check the condition on window resize.
 </div>
 
 
@@ -7417,7 +7496,8 @@
 
 
 <div class="description">
-    Change Button-Design based on focus of input-field. Show discard and save-button, when input for new subtask is active
+    Change Button-Design based on focus of input-field. 
+Show discard and save-button, when input for new subtask is active
 </div>
 
 
@@ -7505,7 +7585,8 @@
 
 
 <div class="description">
-    Change Button-Design based on focus of input-field. Show discard and save-button, when input for new subtask is active
+    Change Button-Design based on focus of input-field. 
+Show discard and save-button, when input for new subtask is active
 </div>
 
 
@@ -7730,7 +7811,8 @@
 
 
 <div class="description">
-    contactEntries is iterated to read server-data. then, when server-data is fetched a newavatar should be created for the user that's found. When 11 Accounts are have an Avatar, add an Placeholder for the 12+ Assigned Person.
+    contactEntries is iterated to read server-data. then, when server-data is fetched a new
+avatar should be created for the user that's found. When 11 Accounts are have an Avatar, add an Placeholder for the 12+ Assigned Person.
 </div>
 
 
@@ -7890,7 +7972,9 @@
 
 
 <div class="description">
-    Generates profile pictures with the right initials for the contact box.Fetches user data and creates profile circles with initials for each assigned contact.If there are more than 10 contacts, the function will add a circle with "..." to indicate more contacts.
+    Generates profile pictures with the right initials for the contact box.
+Fetches user data and creates profile circles with initials for each assigned contact.
+If there are more than 10 contacts, the function will add a circle with "..." to indicate more contacts.
 </div>
 
 
@@ -7934,7 +8018,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task_Html.js.html">assets/js/add_task_Html.js</a>, <a href="assets_js_add_task_Html.js.html#line36">line 36</a>
+        <a href="assets_js_add_task_Html.js.html">assets/js/add_task_Html.js</a>, <a href="assets_js_add_task_Html.js.html#line35">line 35</a>
     </li></ul></dd>
     
 
@@ -8303,7 +8387,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task_Html.js.html">assets/js/add_task_Html.js</a>, <a href="assets_js_add_task_Html.js.html#line10">line 10</a>
+        <a href="assets_js_add_task_Html.js.html">assets/js/add_task_Html.js</a>, <a href="assets_js_add_task_Html.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -8507,7 +8591,10 @@
 
 
 <div class="description">
-    Genereates HTML for the board..The hidden description is used for search engine, since this one is not shortended by limitLengthOf().Calls the async functions for the progressBar and the avatarCircles without await, so the result can be added later, while the next card is allready rendering.
+    Genereates HTML for the board..
+The hidden description is used for search engine, since this one is not shortended by limitLengthOf().
+Calls the async functions for the progressBar and the avatarCircles without await, so the result can be added later, 
+while the next card is allready rendering.
 </div>
 
 
@@ -9203,7 +9290,8 @@
 
 
 <div class="description">
-    fetchs the currently open html-file-name and removes .html.This function is used to handle the navigation-design.
+    fetchs the currently open html-file-name and removes .html.
+This function is used to handle the navigation-design.
 </div>
 
 
@@ -9301,7 +9389,9 @@
 
 
 <div class="description">
-    Selects the first (and only) Priority Button with .task-priority.active and strips the priority level out of the Buttons id. Since we save the Priority with an Uppercase first Letter,the string is returned with a capitalized first letter.
+    Selects the first (and only) Priority Button with .task-priority.active and 
+strips the priority level out of the Buttons id. Since we save the Priority with an Uppercase first Letter,
+the string is returned with a capitalized first letter.
 </div>
 
 
@@ -9660,7 +9750,9 @@
 
 
 <div class="description">
-    sets up two counters. one for finished subtasks, and one for the total amount.checks every Object in Object[] and adds 1 to the total amount.if element.done is true, also doneSubtasks increase.
+    sets up two counters. one for finished subtasks, and one for the total amount.
+checks every Object in Object[] and adds 1 to the total amount.
+if element.done is true, also doneSubtasks increase.
 </div>
 
 
@@ -9820,7 +9912,8 @@
 
 
 <div class="description">
-    Runs various functions, to use the correct greeting for users/guests.To do: Check for Login/Username...
+    Runs various functions, to use the correct greeting for users/guests.
+To do: Check for Login/Username...
 </div>
 
 
@@ -9996,7 +10089,9 @@
 
 
 <div class="description">
-    Checks the screen width and performs different actions based on the width.If the screen width is less than 1160px, redirects to the add_task.html page.Otherwise, performs another action to open the add task interface.
+    Checks the screen width and performs different actions based on the width.
+If the screen width is less than 1160px, redirects to the add_task.html page.
+Otherwise, performs another action to open the add task interface.
 </div>
 
 
@@ -10240,7 +10335,8 @@
 
 
 <div class="description">
-    Handles the Enter key press event, preventing the default form submission if certain conditions are met.If Enter is pressed within the form-desktop element, it performs specific actions based on the current page.
+    Handles the Enter key press event, preventing the default form submission if certain conditions are met.
+If Enter is pressed within the form-desktop element, it performs specific actions based on the current page.
 </div>
 
 
@@ -10400,7 +10496,10 @@
 
 
 <div class="description">
-    Handles window resize events to manage the visibility of the contact list and contact details.If the window width is greater than 820 pixels, it shows the contact list and contact details.If the window width is less than or equal to 820 pixels, it toggles the visibility of the contact list and contact details based on their current display states.
+    Handles window resize events to manage the visibility of the contact list and contact details.
+If the window width is greater than 820 pixels, it shows the contact list and contact details.
+If the window width is less than or equal to 820 pixels, it toggles the visibility of the contact 
+list and contact details based on their current display states.
 </div>
 
 
@@ -10488,7 +10587,10 @@
 
 
 <div class="description">
-    Manages the visibility of the contact list and contact details based on the window width.If the window width is less than or equal to 820 pixels, it toggles the visibility of the contact list and contact details. Otherwise, it shows the contact list and hides the contact details if necessary.
+    Manages the visibility of the contact list and contact details based on the window width.
+If the window width is less than or equal to 820 pixels, it toggles the visibility of 
+the contact list and contact details. Otherwise, it shows the contact list and hides the 
+contact details if necessary.
 </div>
 
 
@@ -10576,7 +10678,9 @@
 
 
 <div class="description">
-    Hides the menu bars by adding the 'd-none' class to the menu elements.This function targets the elements with the IDs 'menu-bar-two' and 'menu-bar-mobile',and adds the 'd-none' class to both, making them hidden.
+    Hides the menu bars by adding the 'd-none' class to the menu elements.
+This function targets the elements with the IDs 'menu-bar-two' and 'menu-bar-mobile',
+and adds the 'd-none' class to both, making them hidden.
 </div>
 
 
@@ -10836,7 +10940,9 @@
 
 
 <div class="description">
-    query-selects all Elements that have a w3-include-attribute and starts to fetch the file that is assigned to the attribute.Triggers the updateMenu-Funktion
+    query-selects all Elements that have a w3-include-attribute and starts to fetch the file 
+that is assigned to the attribute.
+Triggers the updateMenu-Funktion
 </div>
 
 
@@ -10924,7 +11030,10 @@
 
 
 <div class="description">
-    Initializes necessary functions to ensure proper display and form validation.This includes importing HTML content, rendering the contact list,preventing form submission on Enter key press,setting up listeners for adding tasks, and enabling Enter key functionality for subtasks.
+    Initializes necessary functions to ensure proper display and form validation.
+This includes importing HTML content, rendering the contact list,
+preventing form submission on Enter key press,
+setting up listeners for adding tasks, and enabling Enter key functionality for subtasks.
 </div>
 
 
@@ -11100,7 +11209,9 @@
 
 
 <div class="description">
-    Initialising of index.html by starting animation on mobile-devices.Since a guest shouldn't be able to autologin localstorage is cleared.Starts Animation of the start Screen also.
+    Initialising of index.html by starting animation on mobile-devices.
+Since a guest shouldn't be able to autologin localstorage is cleared.
+Starts Animation of the start Screen also.
 </div>
 
 
@@ -11188,7 +11299,9 @@
 
 
 <div class="description">
-    This function is used @summary.html to initalize everything.Adds an eventListener on every summary card, that leads to board.html when clicked.This method is used to prevent regular link-style
+    This function is used @summary.html to initalize everything.
+Adds an eventListener on every summary card, that leads to board.html when clicked.
+This method is used to prevent regular link-style
 </div>
 
 
@@ -11932,7 +12045,7 @@
     
 
     
-    <h4 class="name" id="isNotEmpty"><span class="type-signature"></span>isNotEmpty<span class="signature">(target)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="isNotEmpty"><span class="type-signature"></span>isNotEmpty<span class="signature">(target)</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
     
@@ -11940,7 +12053,8 @@
 
 
 <div class="description">
-    checks the value of an Element without leading and trailing spaces. If it's empty, return the old value, otherwise the new one.
+    checks the value of an Element without leading and trailing spaces. 
+If it's empty, return the old value, otherwise the new one.
 </div>
 
 
@@ -12061,7 +12175,23 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    - date in the format yyyy-mm-dd
+</div>
 
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
 
     
 
@@ -12083,7 +12213,8 @@
 
 
 <div class="description">
-    Checks if any subtask input field is focused.The function searches for elements with specific IDs and checks if one of them is the active element.
+    Checks if any subtask input field is focused.
+The function searches for elements with specific IDs and checks if one of them is the active element.
 </div>
 
 
@@ -12387,7 +12518,8 @@
 
 
 <div class="description">
-    Creates HTML for every subtask Element thats given to a task and iterates trough data.subtasks.length to ensurea unique ID for every checkbox/label-pair.
+    Creates HTML for every subtask Element thats given to a task and iterates trough data.subtasks.length to ensure
+a unique ID for every checkbox/label-pair.
 </div>
 
 
@@ -12547,7 +12679,9 @@
 
 
 <div class="description">
-    Attempts to log in a user with the provided email and password.If the login is successful, the user is redirected to the summary page.If the login fails, a warning is logged to the console.
+    Attempts to log in a user with the provided email and password.
+If the login is successful, the user is redirected to the summary page.
+If the login fails, a warning is logged to the console.
 </div>
 
 
@@ -12833,7 +12967,8 @@
 
 
 <div class="description">
-    allows to update a single item without drag and drop.call this in a button, for example.
+    allows to update a single item without drag and drop.
+call this in a button, for example.
 </div>
 
 
@@ -13192,7 +13327,9 @@
 
 
 <div class="description">
-    Opens the contact details page for the specified user ID by fetching the contact dataand displaying it in the contact details container. Hides the contact list container if the window width is less than or equal to 820 pixels.
+    Opens the contact details page for the specified user ID by fetching the contact data
+and displaying it in the contact details container. Hides the contact list container if 
+the window width is less than or equal to 820 pixels.
 </div>
 
 
@@ -13417,7 +13554,8 @@
 
 
 <div class="description">
-    Searches for a contact that matches the provided name, email, and phone number,and opens the contact details if a match is found.
+    Searches for a contact that matches the provided name, email, and phone number,
+and opens the contact details if a match is found.
 </div>
 
 
@@ -13600,7 +13738,8 @@
 
 
 <div class="description">
-    Opens the 'Edit Contact' page for the contact at the given index by fetching the HTML content and displaying the modal with the contact's information filled in.
+    Opens the 'Edit Contact' page for the contact at the given index by fetching the HTML content 
+and displaying the modal with the contact's information filled in.
 </div>
 
 
@@ -13737,7 +13876,8 @@
 
 
 <div class="description">
-    Swaps the Visibility of Detail-View and Edit-ViewInitiates renderOpenSubtasks to display an up-to-date-list
+    Swaps the Visibility of Detail-View and Edit-View
+Initiates renderOpenSubtasks to display an up-to-date-list
 </div>
 
 
@@ -14187,7 +14327,8 @@
 
 
 <div class="description">
-    set up fetching task-information from server. updates currentDetailLocation, so that this information can be used later when task is saved.activates assigned contacts in contact-list and renders the edit-view also.
+    set up fetching task-information from server. updates currentDetailLocation, so that this information can be used later when task is saved.
+activates assigned contacts in contact-list and renders the edit-view also.
 </div>
 
 
@@ -14412,7 +14553,9 @@
 
 
 <div class="description">
-    evaluates value of both password-inputs. if a value is set, it will call the setPasswordInputDesign-Functionand also add a pointer class + set an onclick attribute to toggle hide/show-password-variables.otherwise it will reset those changes.
+    evaluates value of both password-inputs. if a value is set, it will call the setPasswordInputDesign-Function
+and also add a pointer class + set an onclick attribute to toggle hide/show-password-variables.
+otherwise it will reset those changes.
 </div>
 
 
@@ -14549,7 +14692,8 @@
 
 
 <div class="description">
-    Statement, checking validationPassword for a existing value.if a value is given, and it's the same than the regular-password, return true.
+    Statement, checking validationPassword for a existing value.
+if a value is given, and it's the same than the regular-password, return true.
 </div>
 
 
@@ -15098,13 +15242,18 @@
 
             <td class="type">
             
+                
+<span class="param-type">string</span>
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last">key of current task</td>
         </tr>
 
     
@@ -15535,7 +15684,8 @@
 
             
 
-            <td class="description last">The datastring that's sent in the body of the PUT request. Defaults to an empty object.* @param {string} path - The path to which the data should be sent. Defaults to an empty string.</td>
+            <td class="description last">The datastring that's sent in the body of the PUT request. Defaults to an empty object.
+* @param {string} path - The path to which the data should be sent. Defaults to an empty string.</td>
         </tr>
 
     
@@ -15694,7 +15844,8 @@
 
             
 
-            <td class="description last">The data to be sent in the body of the PUT request. Defaults to an empty object.* @param {string} path - The path to which the data should be sent. Defaults to an empty string.</td>
+            <td class="description last">The data to be sent in the body of the PUT request. Defaults to an empty object.
+* @param {string} path - The path to which the data should be sent. Defaults to an empty string.</td>
         </tr>
 
     
@@ -15907,7 +16058,9 @@
 
 
 <div class="description">
-    responseToJason is containing every user. It's iterated by every userKeyArray-Index to  compare Login-Form-Information with provided server-information.If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
+    responseToJason is containing every user. It's iterated by every userKeyArray-Index to  
+compare Login-Form-Information with provided server-information.
+If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
 </div>
 
 
@@ -16191,7 +16344,12 @@
 
 
 <div class="description">
-    If the deleted contact is the last contact of a letter, the letter and the underline must be deleted. So this function uses the current contacts position on contact-list and checks the previous and next item. If the next one is another letter, and the previous one is an underlineit IS the last item. If there is no next sibling, simulate it has the value of 'letter' to prevent a crash.So the previous to Element Siblings needs to be deleted.The item itself needs to be deleted in each case.
+    If the deleted contact is the last contact of a letter, the letter and the underline must 
+be deleted. So this function uses the current contacts position on contact-list and checks 
+the previous and next item. If the next one is another letter, and the previous one is an underline
+it IS the last item. If there is no next sibling, simulate it has the value of 'letter' to prevent a crash.
+So the previous to Element Siblings needs to be deleted.
+The item itself needs to be deleted in each case.
 </div>
 
 
@@ -16416,7 +16574,8 @@
 
 
 <div class="description">
-    Fetches contact and account data from the backend, processes it, and rendersthe contact list in the drop-box.
+    Fetches contact and account data from the backend, processes it, and renders
+the contact list in the drop-box.
 </div>
 
 
@@ -16504,7 +16663,10 @@
 
 
 <div class="description">
-    Rendering Contact-List in Edit-Details. The Contact-List Contains contacts and accounts, so after fetching boththey recive a prefix that leads to there path on the server.For every of those items HTML is generated.
+    Rendering Contact-List in Edit-Details. 
+The Contact-List Contains contacts and accounts, so after fetching both
+they recive a prefix that leads to there path on the server.
+For every of those items HTML is generated.
 </div>
 
 
@@ -16592,7 +16754,9 @@
 
 
 <div class="description">
-    Renders the Edit-View of a Task by updating the save Button and set title, description, date, priority to the current tasks values.
+    Renders the Edit-View of a Task by updating the save Button and set 
+title, description, date, priority 
+to the current tasks values.
 </div>
 
 
@@ -16752,7 +16916,10 @@
 
 
 <div class="description">
-    Selects every checkbox+ label pair on Task-Details-View,and a second selection of all checked checkbox-label-pairs.Substracts every checked (done) subtask from pool, since they shouldn't become displayed in edit-view.Iterates trough this filtered openSubtasks-Array and let do addNewSubtask() the magic ;-)
+    Selects every checkbox+ label pair on Task-Details-View,
+and a second selection of all checked checkbox-label-pairs.
+Substracts every checked (done) subtask from pool, since they shouldn't become displayed in edit-view.
+Iterates trough this filtered openSubtasks-Array and let do addNewSubtask() the magic ;-)
 </div>
 
 
@@ -16832,7 +16999,7 @@
     
 
     
-    <h4 class="name" id="renderTaskDetails"><span class="type-signature">(async) </span>renderTaskDetails<span class="signature">(taskId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="renderTaskDetails"><span class="type-signature">(async) </span>renderTaskDetails<span class="signature">(taskId)</span><span class="type-signature"> &rarr; {Array}</span></h4>
     
 
     
@@ -16961,7 +17128,23 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    - an Array with all assigned contacts of this task
+</div>
 
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
 
     
 
@@ -16983,7 +17166,9 @@
 
 
 <div class="description">
-    Renders tasks based on their status and displays them in corresponding fields.Retrieves task data asynchronously and iterates through each task to generatetask cards and update task fields accordingly.
+    Renders tasks based on their status and displays them in corresponding fields.
+Retrieves task data asynchronously and iterates through each task to generate
+task cards and update task fields accordingly.
 </div>
 
 
@@ -17071,7 +17256,9 @@
 
 
 <div class="description">
-    Rerenders a task on the board with updated data when a user edits the task directly on board.Updates the task title, description, assigned profiles, subtask progress,priority indicator, and visibility of bottom task card based on provided data.
+    Rerenders a task on the board with updated data when a user edits the task directly on board.
+Updates the task title, description, assigned profiles, subtask progress,
+priority indicator, and visibility of bottom task card based on provided data.
 </div>
 
 
@@ -17231,7 +17418,9 @@
 
 
 <div class="description">
-    Called when a task is deleted or detail-view is closed to - reset Board-Styles - clear Subtasks and Contact-Lists
+    Called when a task is deleted or detail-view is closed to 
+- reset Board-Styles 
+- clear Subtasks and Contact-Lists
 </div>
 
 
@@ -17319,7 +17508,8 @@
 
 
 <div class="description">
-    Resets Details of a Card. I used variables for better readablity, even if this results in more than 14 LOC.
+    Resets Details of a Card. 
+I used variables for better readablity, even if this results in more than 14 LOC.
 </div>
 
 
@@ -17548,7 +17738,8 @@
 
 
 <div class="description">
-    Removes active class from every priority button to prevent that it is forced to add a priority when you edit a card without priority after opening another card, that has a priority.
+    Removes active class from every priority button to prevent that it is forced to add a priority when 
+you edit a card without priority after opening another card, that has a priority.
 </div>
 
 
@@ -17636,7 +17827,9 @@
 
 
 <div class="description">
-    Called when a task is deleted or detail-view is closed to - reset Board-Styles - clear Subtasks and Contact-Lists
+    Called when a task is deleted or detail-view is closed to 
+- reset Board-Styles 
+- clear Subtasks and Contact-Lists
 </div>
 
 
@@ -17900,7 +18093,10 @@
 
 
 <div class="description">
-    saves the updated information of the current task in firebase and rerenders1. edit view2. the single card on board3. task details
+    saves the updated information of the current task in firebase and rerenders
+1. edit view
+2. the single card on board
+3. task details
 </div>
 
 
@@ -17988,7 +18184,8 @@
 
 
 <div class="description">
-    add this, when a new subtask is submitted. This function must be called explicite.param was added later make this function apple to be used from team-members.
+    add this, when a new subtask is submitted. This function must be called explicite.
+param was added later make this function apple to be used from team-members.
 </div>
 
 
@@ -18076,7 +18273,8 @@
 
 
 <div class="description">
-    Searches task cards for the specified search term and shows or hides them accordingly.If no task matches the search, there is a message displayed
+    Searches task cards for the specified search term and shows or hides them accordingly.
+If no task matches the search, there is a message displayed
 </div>
 
 
@@ -18231,7 +18429,9 @@
 
 
 <div class="description">
-    Filters contact elements based on the search term and toggles their visibility.Elements with class 'group-pb-cricle-with-name' are iterated over and displayedbased on whether their text content matches the search term.
+    Filters contact elements based on the search term and toggles their visibility.
+Elements with class 'group-pb-cricle-with-name' are iterated over and displayed
+based on whether their text content matches the search term.
 </div>
 
 
@@ -18420,7 +18620,8 @@
 
             
 
-            <td class="description last">value of a text-inputexample: <input type="text" oninput="searchContact(this.value)">;</td>
+            <td class="description last">value of a text-input
+example: <input type="text" oninput="searchContact(this.value)">;</td>
         </tr>
 
     
@@ -18505,7 +18706,8 @@
 
 
 <div class="description">
-    Sets the selected category for the task and updates the displayed category text.Closes the category drop-down box after selection.
+    Sets the selected category for the task and updates the displayed category text.
+Closes the category drop-down box after selection.
 </div>
 
 
@@ -18684,7 +18886,7 @@
             <td class="type">
             
                 
-<span class="param-type">*</span>
+<span class="param-type">Object</span>
 
 
             
@@ -18707,7 +18909,7 @@
             <td class="type">
             
                 
-<span class="param-type">*</span>
+<span class="param-type">string</span>
 
 
             
@@ -18939,7 +19141,8 @@
 
 
 <div class="description">
-    Get the Initials for the Avatar-Divs and call avatarHtml to write the innerHtml.If no Initials there, use the string 'G' for "Guest".
+    Get the Initials for the Avatar-Divs and call avatarHtml to write the innerHtml.
+If no Initials there, use the string 'G' for "Guest".
 </div>
 
 
@@ -19115,7 +19318,9 @@
 
 
 <div class="description">
-    on password-create field:swaps out the lock-image for the eye-image or vice vera.swaps out the password-type for a text-type or vice versa.
+    on password-create field:
+swaps out the lock-image for the eye-image or vice vera.
+swaps out the password-type for a text-type or vice versa.
 </div>
 
 
@@ -19203,7 +19408,9 @@
 
 
 <div class="description">
-    on password-validation field:swaps out the lock-image for the eye-image or vice vera.swaps out the password-type for a text-type or vice versa.
+    on password-validation field:
+swaps out the lock-image for the eye-image or vice vera.
+swaps out the password-type for a text-type or vice versa.
 </div>
 
 
@@ -19291,7 +19498,9 @@
 
 
 <div class="description">
-    on password-validation field:swaps out the lock-image for the eye-image or vice vera.swaps out the password-type for a text-type or vice versa.
+    on password-validation field:
+swaps out the lock-image for the eye-image or vice vera.
+swaps out the password-type for a text-type or vice versa.
 </div>
 
 
@@ -19561,7 +19770,8 @@
 
 
 <div class="description">
-    Sets the priority of a task and updates its visual styling when clicked.Clears previous selections and applies the selected priority and its corresponding color.
+    Sets the priority of a task and updates its visual styling when clicked.
+Clears previous selections and applies the selected priority and its corresponding color.
 </div>
 
 
@@ -19858,7 +20068,12 @@
 
 
 <div class="description">
-    Installs an eventListener on the whole document, listening for clicks.clickedOnAvatar is true, if the click happens on an element in dropDownMenus[], otherwise false.clickedOnIgnored is true, if the click happens on the dropdown-menus themself. If the user is clicking on the Avatar the overlay is shown.  Since the ignores items are childs of the Avatars.So a click on ignored causes allways a true on a click on avatar. That why it also requires clickedOnIgnores false in first condition.If it's neither a click on Avatar nor the Menu itself, close the overlay-Menu.
+    Installs an eventListener on the whole document, listening for clicks.
+clickedOnAvatar is true, if the click happens on an element in dropDownMenus[], otherwise false.
+clickedOnIgnored is true, if the click happens on the dropdown-menus themself. 
+If the user is clicking on the Avatar the overlay is shown.  Since the ignores items are childs of the Avatars.
+So a click on ignored causes allways a true on a click on avatar. That why it also requires clickedOnIgnores false in first condition.
+If it's neither a click on Avatar nor the Menu itself, close the overlay-Menu.
 </div>
 
 
@@ -20034,7 +20249,8 @@
 
 
 <div class="description">
-    Setup some Listeners, thats needed for Subtasks.It's implemented by Phillip on base of setupListener.
+    Setup some Listeners, thats needed for Subtasks.
+It's implemented by Phillip on base of setupListener.
 </div>
 
 
@@ -20122,7 +20338,8 @@
 
 
 <div class="description">
-    Setup some Listeners, thats needed for Subtasks.It's implemented by Phillip on base of setupListener.
+    Setup some Listeners, thats needed for Subtasks.
+It's implemented by Phillip on base of setupListener.
 </div>
 
 
@@ -20369,7 +20586,8 @@
 
 
 <div class="description">
-    Shows the "Contact Created" modal with animations.The modal appears, stays for 1.5s, then closes and resets.
+    Shows the "Contact Created" modal with animations.
+The modal appears, stays for 1.5s, then closes and resets.
 </div>
 
 
@@ -21445,7 +21663,8 @@
 
 
 <div class="description">
-    Prevents form submission on Enter key press after checking if the requirements are met.Enter is not allowed when neither isSubtaskInputFocused nor textAreaSelected are true.
+    Prevents form submission on Enter key press after checking if the requirements are met.
+Enter is not allowed when neither isSubtaskInputFocused nor textAreaSelected are true.
 </div>
 
 
@@ -21807,7 +22026,10 @@
 
 
 <div class="description">
-    try to submit sign-up-form/use html form-validation.if everything is valid, try to createUser().If createUser() is possible, animate the success-overlay and close popup after the animation is done.Otherwise warn, that user-account is allready existing.
+    try to submit sign-up-form/use html form-validation.
+if everything is valid, try to createUser().
+If createUser() is possible, animate the success-overlay and close popup after the animation is done.
+Otherwise warn, that user-account is allready existing.
 </div>
 
 
@@ -22143,7 +22365,8 @@
 
 
 <div class="description">
-    Checks if the textarea with the ID 'task-description' is the active element.This ensures that the Enter key is not blocked when typing in this textarea.
+    Checks if the textarea with the ID 'task-description' is the active element.
+This ensures that the Enter key is not blocked when typing in this textarea.
 </div>
 
 
@@ -22498,7 +22721,8 @@
 
 
 <div class="description">
-    toggles the currrent show/hide-password variable. calls the required function to set the correct eye-icon on input-field.
+    toggles the currrent show/hide-password variable. 
+calls the required function to set the correct eye-icon on input-field.
 </div>
 
 
@@ -22635,7 +22859,8 @@
 
 
 <div class="description">
-    toggles the value of privacyCheckboxActive and disables or enables the submit-button based on the new value
+    toggles the value of privacyCheckboxActive and 
+disables or enables the submit-button based on the new value
 </div>
 
 
@@ -22723,7 +22948,8 @@
 
 
 <div class="description">
-    Toggles the remember me state.This function inverses the value of the global variable `rememberMe`.
+    Toggles the remember me state.
+This function inverses the value of the global variable `rememberMe`.
 </div>
 
 
@@ -22811,7 +23037,10 @@
 
 
 <div class="description">
-    Controls the design of checkboxes on the assigned-contacts-listCAVE: id contains contacts/ (or theoretically accounts/). This is the optimum, so we can stop use pathes at readData and allow to assign usersFor the moment, since it's not used trough the whole project, i'll filter and remove it.
+    Controls the design of checkboxes on the assigned-contacts-list
+CAVE: id contains contacts/ (or theoretically accounts/). 
+This is the optimum, so we can stop use pathes at readData and allow to assign users
+For the moment, since it's not used trough the whole project, i'll filter and remove it.
 </div>
 
 
@@ -23247,7 +23476,9 @@
 
 
 <div class="description">
-    Updates the global Array assignedPersonsToUpdate. If the id isn't in the Arrayadd the id to the Array. Also add the Icon with assignedPersonsEditHtml. Otherwise delete the Index that is used by the id and remove the Avatar-Icon.
+    Updates the global Array assignedPersonsToUpdate. If the id isn't in the Array
+add the id to the Array. Also add the Icon with assignedPersonsEditHtml. 
+Otherwise delete the Index that is used by the id and remove the Avatar-Icon.
 </div>
 
 
@@ -23384,7 +23615,10 @@
 
 
 <div class="description">
-    saves the choossen draggable item in transfer. removes the item from DOM and inserts it at beforeend at the new locationthan the item recives a new ondragstart functionality with the new location.finally update the task fields to show/hide "no tasks to do"-span.
+    saves the choossen draggable item in transfer. 
+removes the item from DOM and inserts it at beforeend at the new location
+than the item recives a new ondragstart functionality with the new location.
+finally update the task fields to show/hide "no tasks to do"-span.
 </div>
 
 
@@ -23567,7 +23801,8 @@
 
 
 <div class="description">
-    Iterates trough every task in database.Counts up every type is used in summary and updates the numbers.
+    Iterates trough every task in database.
+Counts up every type is used in summary and updates the numbers.
 </div>
 
 
@@ -23926,7 +24161,8 @@
 
 
 <div class="description">
-    Save the input the user made on text and set target.innerText to this input.Hide the Input(Wrapper) and show List-Item instead.
+    Save the input the user made on text and set target.innerText to this input.
+Hide the Input(Wrapper) and show List-Item instead.
 </div>
 
 
@@ -24225,7 +24461,11 @@
     
         <li>
 <div class="param-desc">
-    return[].done Tracks when it is archivedHow to use this: For new Tasks: add .subtaskitem to every task-item you want to create. For existing and finished tasks: add .subtask-checkbox to every checkbox and add a label, that contains the task-text
+    return[].done Tracks when it is archived
+
+How to use this: 
+For new Tasks: add .subtaskitem to every task-item you want to create. 
+For existing and finished tasks: add .subtask-checkbox to every checkbox and add a label, that contains the task-text
 </div>
 
 
@@ -24262,7 +24502,9 @@
 
 
 <div class="description">
-    calls hideWindow for every section. if the innerHTML without leading and trailing spaces isempty the comparsion is false, to the oposite of hideWindow -> showWindow will happen. Otherwise the message must become hidden.
+    calls hideWindow for every section. if the innerHTML without leading and trailing spaces is
+empty the comparsion is false, to the oposite of hideWindow -> showWindow will happen. 
+Otherwise the message must become hidden.
 </div>
 
 
@@ -24407,7 +24649,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Fri Jul 12 2024 20:11:40 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Fri Jul 12 2024 20:31:11 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

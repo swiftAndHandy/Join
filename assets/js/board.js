@@ -79,7 +79,7 @@ async function renderTasks() {
 /**
  * Sets the priority image of the target to a lowercase-variant of priority-param
  * @param {string} priority - Urgent, Medium or Low
- * @param {*string} key - key of current task
+ * @param {string} key - key of current task
  */
 function priorityEqualImg(priority, key) {
   priority = priority.toLowerCase();
@@ -90,8 +90,8 @@ function priorityEqualImg(priority, key) {
 
 /**
  * Display or hide the Bottom-DIV of a task-card at the board
- * @param {*} card 
- * @param {*} taskId 
+ * @param {Object} card 
+ * @param {string} taskId 
  */
 function setBottomTaskCardVisibility(card, taskId) {
   if (emptyBottomOf(card)) {

@@ -68,8 +68,8 @@ function resetDetailCardHtml() {
 
 /**
  * Generates HTML for persons that shown in the assigned list in Task-Details
- * @param {[]} contactIds an array, that contains all assigned contacts
- * @returns 
+ * @param {Array} contactIds an array, that contains all assigned contacts
+ * @returns {string} - HTML Content that was rendered
  */
 async function assignedPersonsDetailsHtml(contactIds) {
     let output = '';

@@ -83,7 +83,7 @@ function applyTaskStyles(taskId) {
 /**
  * Start rendering process for Task details.
  * @param {string} taskId - string is containing the taskId that should become shown
- * @return {[]} - an Array with all assigned contacts of this task
+ * @return {Array} - an Array with all assigned contacts of this task
  */
 async function renderTaskDetails(taskId) {
     const data = await readData(`tasks/${taskId}`);
