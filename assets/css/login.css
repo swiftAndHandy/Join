@@ -41,6 +41,7 @@
 
 .title {
     font-size: clamp(47px, 6vw, 61px);
+    cursor: default;
 }
 
 .content__head {

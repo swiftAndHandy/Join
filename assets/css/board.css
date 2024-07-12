@@ -70,6 +70,7 @@ input[type="search"]::-webkit-search-cancel-button {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 39px;
+  cursor: default;
 }
 
 .board-headline-container h1 {
@@ -125,6 +126,7 @@ input[type="search"]::-webkit-search-cancel-button {
   border-radius: 10px;
   border: none;
   user-select: none;
+  cursor: pointer;
 }
 
 h2 {

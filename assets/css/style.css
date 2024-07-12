@@ -70,6 +70,7 @@ body {
 .subtitle {
     font-weight: 400;
     font-size: 20px;
+    cursor: default;
 }
 
 .main-wrapper {

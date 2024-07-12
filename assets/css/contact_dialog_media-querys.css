@@ -95,6 +95,7 @@
         width: 371px;
         height: 129px;
         padding: 0;
+        cursor: default;
     }
 
     .upper-card-content {

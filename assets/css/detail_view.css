@@ -53,6 +53,7 @@
   .details__title {
     font-weight: 700;
     font-size: clamp(18px, 5vw, 36px);
+    cursor: default;
   }
   
   .edit.this-entry {
@@ -104,6 +105,7 @@
     font-weight: 700;
     font-size: 16px;
     color: #42526e;
+    cursor: default;
   }
   
   .details__header {
@@ -267,6 +269,7 @@
     flex-direction: column;
     gap: 4px;
     margin-left: clamp(0px, 1%, 16px);
+    cursor: default;
   }
   
   .details__inner {
@@ -285,12 +288,14 @@
     font-weight: 400;
     font-size: 16px;
     margin-block: 0;
+    cursor: default;
   }
   
   .details__information {
     font-weight: 400;
     font-size: 16px;
     color: #000;
+    cursor: default;
   }
   
   .details__bottom {

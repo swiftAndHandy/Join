@@ -8,7 +8,7 @@ async function saveTaskUpdate(taskId) {
     const tag = document.getElementById('task-details-tag').textContent;
     const title = isNotEmpty('title');
     const description = isNotEmpty('description');
-    const deadline = isNotEmpty('date');
+    const deadline = document.getElementById('update-date').value;
     const priority = getCurrentPriority();
     const subtasks = updateSubtasksArray();
     const data = createTaskObject(tag, title, description, deadline, priority, subtasks);
@@ -26,14 +26,13 @@ async function saveTaskUpdate(taskId) {
  * checks the value of an Element without leading and trailing spaces. 
  * If it's empty, return the old value, otherwise the new one. 
  * @param {string} target - part of the ElementID in "update-" and "task-details-"
- * @returns {string} - date in the format yyyy-mm-dd
+ * @returns 
  */
 function isNotEmpty(target) { 
     if (document.getElementById(`update-${target}`).value.trim() != '') {
         return document.getElementById(`update-${target}`).value.trim()
     } else {
-        let result = document.getElementById(`task-details-${target}`).innerText;
-        return result.replaceAll('/', '-');
+        return document.getElementById(`task-details-${target}`).innerText;
     }
 }
 
@@ -45,7 +44,7 @@ function isNotEmpty(target) {
  * @param {string} description - new description of the task
  * @param {string} deadline -formated yyyy-mm-dd, new deadline of the task
  * @param {string} priority - empty or Low, Medium or Urgent
- * @param {Array} subtasks - contains every subtask with goal and an information about done or not
+ * @param {[]} subtasks - contains every subtask with goal and an information about done or not
  * @returns {Object[]} - containing all updated data from above.
  */
 function createTaskObject(tag, title, description, deadline, priority, subtasks) {
@@ -61,7 +60,6 @@ function createTaskObject(tag, title, description, deadline, priority, subtasks)
     }
 }
 
-
 /**
  * Renders the Edit-View of a Task by updating the save Button and set 
  * title, description, date, priority 
@@ -72,14 +70,13 @@ function createTaskObject(tag, title, description, deadline, priority, subtasks)
 function renderEditView(task, key) {
     document.getElementById('save-task-update').setAttribute('onclick', `saveTaskUpdate('${key}')`)
     document.getElementById('update-title').value = task.title;
-    document.getElementById('update-description').value = task.description;
+    document.getElementById('update-description').innerText = task.description;
     document.getElementById('update-date').value = task.date;
     try {
        const button = document.getElementById(`edit-priority-btn-${task.priority.toLowerCase()}`);
        !button.classList.contains('active') && document.getElementById(`edit-priority-btn-${task.priority.toLowerCase()}`).click();
     } catch (error) { console.warn('This Task has no priority.'); }
 }
-
 
 /**
  * @param {string} id - used to complete the target-document-id
@@ -90,17 +87,17 @@ function resetInputFields(id = 'edit') {
     hideWindow(`${id}-task-contacts-list`);
 }
 
-
 /**
  * Sets the priority level by updating the `editPriority` variable and toggling the 'active' class on priority buttons.
  * @param {number} level - The priority level to set. Expected values are 0 for 'low', 1 for 'medium', and 2 for 'urgent'.
  */
 function setPriorityTo(level) {
+    editPriority = level;
     const btns = ['low', 'medium', 'urgent']
     for (let i = 0; i < btns.length; i++) {
         const currentButton = document.getElementById(`edit-priority-btn-${btns[i]}`);
         if (currentButton) {
-            i == level ? currentButton.classList.toggle('active') : currentButton.classList.remove('active');
+            i == editPriority ? currentButton.classList.toggle('active') : currentButton.classList.remove('active');
         }
     }
 }
@@ -122,7 +119,6 @@ function getCurrentPriority() {
     }
 }
 
-
 /**
  * Removes active class from every priority button to prevent that it is forced to add a priority when 
  * you edit a card without priority after opening another card, that has a priority.
@@ -134,7 +130,6 @@ function resetPriorityButtons() {
     });
 }
 
-
 /**
  * Reset Input-Field for new Subtask, when discarded.
  */
@@ -143,10 +138,8 @@ function discardNewSubtask() {
     blurListener();
 }
 
-
 /**
- * Opens the Input Field for a subtask the user wants to edit.
- * @param {string} subtaskId -id of the subtask input that should become oppened
+ * @param {string} subtaskId - build an elementId related to subtask-id and change the input-style
  */
 function openSubtaskInput(subtaskId) {
     const input = document.getElementById(`single-subtask-input-${subtaskId}`);
@@ -155,7 +148,6 @@ function openSubtaskInput(subtaskId) {
     input.value = document.getElementById(`subtaskspan-${subtaskId}`).innerText;
     input.focus();
 }
-
 
 /**
  * Save the input the user made on text and set target.innerText to this input.
@@ -172,7 +164,6 @@ function updateSubtaskInput(subtaskId) {
     }
 }
 
-
 /**
  * Resetss the desgin of the Input/Span related to subtaskId
  * @param {string} subtaskId - if of an list-item
@@ -182,7 +173,6 @@ function discardSubtaskInput(subtaskId) {
     document.getElementById(`single-subtask-input-wrapper-${subtaskId}`).classList.add('d-none');
 }
 
-
 /**
  * Deletes an Subtask-Item from Edit-View, not from Firebase!
  * @param {string} subtaskId - id of the item that should be deleted
@@ -190,7 +180,6 @@ function discardSubtaskInput(subtaskId) {
 function deleteSubtask(subtaskId) {
     document.getElementById(`edit-subtask-total-${subtaskId}`).remove();
 }
-
 
 /**
  * updates an global array, based on a querySelector, that will be pushed to firebase
@@ -234,27 +223,9 @@ function renderOpenSubtasks() {
     });
 }
 
-
 /**
  * add this, when a new subtask is submitted. This function must be called explicite.
- * param was added later make this function apple to be used from team-members.
  */
-function scrollToLastSubtask(specialTarget = '') {
-    document.getElementById(`edit-view-scrollbar${specialTarget}`).lastElementChild.scrollIntoView({behavior: 'smooth', block: 'end'});
-}
-
-
-/**
- * Generates HTML for assigned Persons in the task-edit-window.
- * @param {string} contactIds - the ID of a single contact, that avatar needs to be rendered
- * @returns {string} - contains the rendered HTML
- */
-async function assignedPersonsEditHtml(contactIds) {
-    const data = await readData(`${contactIds}`)
-    const output = `
-            <div id="edit_task_assigned-person-${contactIds}" class="details__inner">
-                <div id="edit-task-avatar-${contactIds}" class="avatar at-drop-down" style="background-color: ${data.color};">${initials(data.name)}</div>
-            </div>
-            `
-    return output;
+function scrollToLastSubtask() {
+    document.getElementById('edit-view-scrollbar').lastElementChild.scrollIntoView({behavior: 'smooth', block: 'end'});
 }

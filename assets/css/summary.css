@@ -309,6 +309,7 @@ main {
 
     .join-360 h1 {
         font-size: clamp(47px, 5vw, 61px);
+        cursor: default;
     }
 
     .join-360::after {
@@ -368,6 +369,7 @@ main {
         font-size: clamp(36px, 3vw, 47px);
         font-weight: 500;
         color: #2A3647;
+        cursor: default;
     }
 
     .greeting-msg--desktop span {
