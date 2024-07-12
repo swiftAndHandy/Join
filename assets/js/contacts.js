@@ -201,6 +201,7 @@ async function openContactDetails(userId) {
     hideContactListForMobile();
 }
 
+
 function hideContactListForMobile() {
     if (window.innerWidth <= 820) {
         document.getElementById('contact-list-container').style.display = 'none';
@@ -210,6 +211,7 @@ function hideContactListForMobile() {
         document.getElementById('back-to-contacts-button').style.display = 'flex';
     }
 }
+
 
 function handleResize() {
     if (window.innerWidth > 820) {
@@ -224,7 +226,9 @@ function handleResize() {
     }
 }
 
+
 window.addEventListener('resize', handleResize);
+
 
 /**
  * Changes the color of the selected contact item.
