@@ -282,7 +282,7 @@ function rerenderTaskOnBoard(data, taskId) {
 
 /**
  * Searches task cards for the specified search term and shows or hides them accordingly.
- * 
+ * If no task matches the search, there is a message displayed
  * @param {string} searchTerm - The search term to look for.
  * @returns {void}
  */
@@ -294,8 +294,7 @@ function searchAndShowTasks(searchTerm) {
     if (titleElement) {
       const title = titleElement.textContent.trim().toLowerCase();
       const isVisible = title.includes(searchTerm.toLowerCase());
-
-
+      isVisible ? hideWindow('empty-results') : hideWindow('empty-results', false);
       const articleElement = taskCard.closest('article');
       if (articleElement) {
         hideWindow(articleElement.id, !isVisible);
