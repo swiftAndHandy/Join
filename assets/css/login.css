@@ -103,6 +103,12 @@
     width: min(95%, 422px);
 }
 
+.input-wrapper.login {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .input-item.ignore-width {
     width: unset;
 }

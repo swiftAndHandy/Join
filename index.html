@@ -47,13 +47,15 @@
                     <div class="horizontal-line"></div>
                 </div>
                 <form id="login-form" class="login-form" onsubmit="return false;">
-                    <div class="input-wrapper">
-                        <div class="input-item ignore-width">
-                            <img src="./assets/img/icons/mail.svg" alt="" class="input-icons">
-                            <input type="email" id="email-login" name="email" placeholder="Email"
-                                autocomplete="username" required>
+                    <div class="input-wrapper login">
+                        <div class="relative">
+                            <div class="input-item ignore-width">
+                                <img src="./assets/img/icons/mail.svg" alt="" class="input-icons">
+                                <input type="email" id="email-login" name="email" placeholder="Email"
+                                    autocomplete="username" required>
+                            </div>
+                            <span class="error-msg d-none" id="missmatch-mail">Ups! your email is wrong!</span>
                         </div>
-                        <span class="error-msg d-none" id="missmatch-mail">Ups! your email is wrong!</span>
                         <div class="input-item ignore-width">
                             <img src="./assets/img/icons/lock.svg" alt="" id="password-login-img" class="input-icons">
                             <input type="password" id="password-login" name="password" placeholder="Password"
@@ -62,7 +64,8 @@
                         </div>
                         <span class="error-msg d-none" id="missmatch-pw">Ups! your password is wrong!</span>
                         <div class="remember-checkbox">
-                            <input type="checkbox" class="checkbox" id="remember" name="remember-checkbox" onchange="toggleRemember()">
+                            <input type="checkbox" class="checkbox" id="remember" name="remember-checkbox"
+                                onchange="toggleRemember()">
                             <label for="remember">Remember me</label>
                         </div>
                     </div>
