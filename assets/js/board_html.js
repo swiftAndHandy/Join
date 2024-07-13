@@ -52,8 +52,8 @@ async function generateCircleProfiles(contactEntries, taskId) {
       try {
         const user = await readData(`${contacts}`);
         target.insertAdjacentHTML('beforeend', `<div class="profile-cricle" id=profile-circle-container-${contacts}" style= "background-color:${user.color}">${initials(user.name)}</div>`);
-        if (target.childElementCount >= 11) {
-          target.insertAdjacentHTML('beforeend', `<div class="profile-cricle" id=profile-circle-container-${contacts}" style= "background-color:#29ABE2}">...</div>`);
+        if (target.childElementCount >= 4) {
+          target.insertAdjacentHTML('beforeend', `<div class="profile-cricle" id=profile-circle-container-max" style= "background-color:#29ABE2}">...</div>`);
           break;
         }
       } catch (error) { }
