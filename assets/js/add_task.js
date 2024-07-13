@@ -41,7 +41,7 @@ function handleCheckBox(checkbox, idNumber) {
     }
     unPressedCheckBoxStyle(idNumber);
   }
-  generateCircleProfilesLine()
+  generateCircleProfilesLine(idNumber);
 }
 
 

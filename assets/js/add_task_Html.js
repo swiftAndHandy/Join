@@ -32,17 +32,13 @@ function generateDropBoxContacts(entries) {
  * Fetches user data and creates profile circles with initials for each assigned contact.
  * If there are more than 10 contacts, the function will add a circle with "..." to indicate more contacts.
  */
-async function generateCircleProfilesLine() {
+async function generateCircleProfilesLine(path) {
+  let avatarId = document.getElementById(`profile-cicle-${path}`);
   const target = document.getElementById(`contacts-img-line`);
-  if (target) {
-    target.innerHTML = '';
-    for (let contact of addTaskAssignedContacts) {
-        const user = await readData(`${contact}`);
-        target.insertAdjacentHTML('beforeend', `<div class="profile-initials-circle-line" id="profile-cicle-${contact}" style="background-color:${user.color}">${initials(user.name)}</div>`);
-        if (target.childElementCount >= 11) {
-          target.insertAdjacentHTML('beforeend', `<div class="profile-initials-circle-line" id="profile-circle-container-${contact}" style="background-color:#29ABE2">...</div>`);
-          break;
-        }
-    }
+  if (avatarId == null) {
+    const user = await readData(`${path}`);
+    target.insertAdjacentHTML('beforeend', `<div class="profile-initials-circle-line" id="profile-cicle-${path}" style="background-color:${user.color}">${initials(user.name)}</div>`);
+  } else {
+    avatarId.remove();
   }
 }
