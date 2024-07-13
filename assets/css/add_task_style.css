@@ -102,6 +102,11 @@ select {
   margin-left: 2px;
 }
 
+.mb-10 {
+  margin-bottom: 10px;
+  margin-left: 2px;
+}
+
 .input-standard {
   border-radius: 10px;
   border: 1px solid #d1d1d1;
@@ -518,7 +523,7 @@ select:focus {
 
 .add-task__subtask-scrollbar {
   overflow-y: auto;
-  max-height: 60px;
+  max-height: 40px;
   max-width: 480px;
   scrollbar-width: thin;
   /* Thin scrollbar */

@@ -294,7 +294,6 @@ function rerenderTaskOnBoard(data, taskId) {
  * Searches task cards for the specified search term and shows or hides them accordingly.
  * If no task matches the search, there is a message displayed
  * @param {string} searchTerm - The search term to look for.
- * @returns {void}
  */
 function searchAndShowTasks(searchTerm) {
   const taskCards = document.querySelectorAll('.task-card-container');
@@ -312,8 +311,10 @@ function searchAndShowTasks(searchTerm) {
   showSearchErrors();
 }
 
+
 /**
- * 
+ * Displays error message when search input doesn't match any tasks.
+ * @returns {number} Total number of matching results.
  */
 function showSearchErrors() {
   let totalResults = 0
@@ -328,6 +329,11 @@ function showSearchErrors() {
 }
 
 
+/**
+ * Counts the number of visible items in a specified field and manages visibility of a corresponding target element based on search criteria.
+ * @param {string} field - The field identifier ('todo', 'progress', 'feedback', 'done').
+ * @returns {number} The count of visible items in the specified field.
+ */
 function resultsAmountOf(field) {
   const searchQuery = document.getElementById('search-title').value.trim();
   const target = document.getElementById(`${field}-no-result`);
@@ -356,9 +362,6 @@ function showFieldsWhenSearch() {
 }
 
 
-
-
-
 /**
  * clears the tag field when search input is cleared
  */
@@ -371,7 +374,6 @@ function hideFieldsWhenNoSearch() {
     }
   });
 }
-
 
 
 /**
@@ -424,6 +426,7 @@ function rotateTaskDragStart(id) {
   rotateTask.classList.add('draggable');
   rotateTask.style.transform = "rotate(5deg)";
 }
+
 
 /**
  * Removes a rotation-effect on the currently dragged task-card

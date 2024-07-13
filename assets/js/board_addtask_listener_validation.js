@@ -43,8 +43,9 @@ function removeValidation() {
     requiredFields.forEach(field => {
         if (field.value.trim() === '' && !field.parentNode.querySelector('.error-message')) {
             const errorMessage = document.createElement('span');
-            errorMessage.textContent = 'This field ist required.';
-            errorMessage.classList.add('error-message'); 
+            errorMessage.textContent = 'This field is required.';
+            errorMessage.classList.add('error-message');
+            errorMessage.style.marginBottom = '-30px'; // Hier wird der Abstand hinzugefügt
             field.parentNode.appendChild(errorMessage);
         }
         field.addEventListener('input', function() {
@@ -53,11 +54,9 @@ function removeValidation() {
                 if (errorMessage) {
                     errorMessage.remove();
                 }
-            }
-        });
-    });
-  } 
+            }});});}
 
+            
 /**
  * sets min of the same day
  */
