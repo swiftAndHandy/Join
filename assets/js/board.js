@@ -14,7 +14,7 @@ async function initBoard() {
   setupListenerForAddTasksDialog();
   addEntertoSubTasks();
   setDateMin();
-  onStartSelectMediumPrio()
+  
 
   document.addEventListener('dragend', () => {
     if (currentlyDragged !== null) {
@@ -230,6 +230,7 @@ function openAddTask() {
   let popUpTranstion = document.getElementById("add-task-transition");
   popUpTranstion.classList.add("transition-right");
   applyGreyScreen();
+  onStartSelectMediumPrio();
   document.body.classList.add('overflow-all-hidden');
 }
 
