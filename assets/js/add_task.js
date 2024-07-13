@@ -24,6 +24,7 @@ function init() {
   setDateMin() 
 }
 
+
 /**
  * sets the low pro button to always selected at start.
  */
@@ -31,6 +32,7 @@ function onStartSelectLowPrio() {
   document.getElementById("low-prio").classList.add("pressed-color-green");
 document.getElementById("low-prio-img").classList.add("pressed-prio-img");
 }
+
 
 /**
  * 
@@ -170,7 +172,6 @@ function clearFormPrio() {
 }
 
 
-
 /**
  * Clears the checkbox styles and resets the associated values after removing them.
  */
@@ -251,14 +252,32 @@ function checkIfFormFilled(event) {
     allFilled = false;
   }
   if (allFilled) {
-    addnewTask(event);
-    showPopupTaskAdded();
-    clearForm(event);
+    allFilledTrue(event);
   } else {
-    stopStandardValidationMessage(event);
+    allFilledFalse(event);
+  }
+}
+
+
+/**
+ * When allfilled is true this function will trigger
+ * @param {Event} event 
+ */
+function allFilledTrue(event) {
+  addnewTask(event);
+  showPopupTaskAdded();
+  clearForm(event);
+}
+
+
+/**
+ * When allfilled is false this function will trigger
+ * @param {Event} event 
+ */
+function allFilledFalse(event) {
+  stopStandardValidationMessage(event);
     ownValidation();
     checkCategoryfield ();
-  }
 }
 
 
@@ -371,8 +390,6 @@ function selectCategory (category) {
   document.getElementById('selected-category').textContent = `${category}`;
   toggleCategoryDropBox();
 }
-
-
 
 
 /**

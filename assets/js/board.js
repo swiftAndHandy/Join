@@ -309,7 +309,6 @@ function searchAndShowTasks(searchTerm) {
       }
     }
   });
-  searchTerm.trim() === '' ? hideFieldsWhenNoSearch() : showFieldsWhenSearch();
   showSearchErrors();
 }
 
@@ -330,8 +329,11 @@ function showSearchErrors() {
 
 
 function resultsAmountOf(field) {
+  const searchQuery = document.getElementById('search-title').value.trim();
+  const target = document.getElementById(`${field}-no-result`);
   let value = document.getElementById(`${field}-field`).querySelectorAll(':scope > :not(.d-none)').length;
-  !value ? document.getElementById(`${field}-no-result`).classList.remove('d-none') : document.getElementById(`${field}-no-result`).classList.add('d-none');
+  !value ? target.classList.remove('d-none') : target.classList.add('d-none');
+  searchQuery === '' && target.classList.add('d-none');
   return value;
 }
 
@@ -343,14 +345,16 @@ function showFieldsWhenSearch() {
   const sections = ['todo','progress','feedback','done']
   sections.forEach(function (section) {
   const fieldElement =  document.getElementById(`task-field-${section}`)
-  if(fieldElement.classList.contains('d-none')) {
+  if(fieldElement.classList.contains('d-none') && `${section}-field` !== "")  {
     fieldElement.classList.remove('d-none');
+    
   }
-  })
+
+  })}
 
 
   
-}
+
 
 /**
  * clears the tag field when search input is cleared
@@ -359,7 +363,7 @@ function hideFieldsWhenNoSearch() {
   const sections = ['todo', 'progress', 'feedback', 'done'];
   sections.forEach(function(section) {
     const fieldElement = document.getElementById(`task-field-${section}`);
-    if (!fieldElement.classList.contains('d-none')) {
+    if ( `${section}-field` !== "") {
       fieldElement.classList.add('d-none');
     }
   });

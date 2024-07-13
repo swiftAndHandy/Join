@@ -170,7 +170,7 @@
     left: 0;
     right: 0;
     z-index: 2;
-    background-color: #2A364710;
+    background-color: #F6F7F8;
     transition: all 0.8s ease-in-out;
     overflow: hidden;
 }
@@ -195,6 +195,7 @@
     text-align: center;
     transition: all 0.8s ease-in-out;
     width: min(max(70%, 100px), 500px);
+    z-index: 1000;
 }
 
 .popup-msg--fade-in {
@@ -212,7 +213,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #2A364710;
+    background-color: #F6F7F8;
 }
 
 .close-btn {

@@ -190,6 +190,10 @@
     #contacts-show-input input {
       width: 250px;
     }
+
+    .add-task__subtask-scrollbar {
+      max-height:  90px;
+    }
   }
   
   @media (max-width: 422px) {
