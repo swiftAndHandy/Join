@@ -1,5 +1,5 @@
 let addTaskAssignedContacts = [];
-let addTaskPrio = "Low";
+let addTaskPrio = "Medium";
 let addTaskCategory = "";
 let taskStatus = "todo";
 let alreadyOpen = false;
@@ -19,7 +19,7 @@ function init() {
   stopEnterForm ();
   setupListenerForAddTasks();
   addEntertoSubTasks ();
-  onStartSelectLowPrio()
+  onStartSelectMediumPrio()
   catgeoryClickOutsideclose()
   setDateMin() 
 }
@@ -28,11 +28,10 @@ function init() {
 /**
  * sets the low pro button to always selected at start.
  */
-function onStartSelectLowPrio() {
-  document.getElementById("low-prio").classList.add("pressed-color-green");
-document.getElementById("low-prio-img").classList.add("pressed-prio-img");
+function onStartSelectMediumPrio() {
+  document.getElementById("medium-prio").classList.add("pressed-color-yellow"); // Update class for medium priority
+  document.getElementById("medium-prio-img").classList.add("pressed-prio-img"); // Update class for medium priority
 }
-
 
 /**
  * 
