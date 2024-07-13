@@ -155,6 +155,7 @@
     width: 100%;
     margin-bottom: 32px;
     width: min(90%, 422px);
+    position: absolute;
 }
 
 .error-msg.small {
