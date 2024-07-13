@@ -298,13 +298,11 @@ function rerenderTaskOnBoard(data, taskId) {
  */
 function searchAndShowTasks(searchTerm) {
   const taskCards = document.querySelectorAll('.task-card-container');
-  let counter = 0;
   taskCards.forEach(taskCard => {
     const titleElement = taskCard.querySelector('.task-card-header');
     if (titleElement) {
       const title = titleElement.textContent.trim().toLowerCase();
       const isVisible = title.includes(searchTerm.toLowerCase());
-      isVisible && counter++;
       const articleElement = taskCard.closest('article');
       if (articleElement) {
         hideWindow(articleElement.id, !isVisible);
@@ -312,8 +310,31 @@ function searchAndShowTasks(searchTerm) {
     }
   });
   searchTerm.trim() === '' ? hideFieldsWhenNoSearch() : showFieldsWhenSearch();
-  counter > 0 ? hideWindow('empty-results') : hideWindow('empty-results', false);
+  showSearchErrors();
 }
+
+/**
+ * 
+ */
+function showSearchErrors() {
+  let totalResults = 0
+  totalResults += resultsAmountOf('todo');
+  totalResults += resultsAmountOf('progress');
+  totalResults += resultsAmountOf('feedback');
+  totalResults += resultsAmountOf('done');
+
+  totalResults > 0 ? hideWindow('empty-results') : hideWindow('empty-results', false);
+
+  return totalResults;
+}
+
+
+function resultsAmountOf(field) {
+  let value = document.getElementById(`${field}-field`).querySelectorAll(':scope > :not(.d-none)').length;
+  !value ? document.getElementById(`${field}-no-result`).classList.remove('d-none') : document.getElementById(`${field}-no-result`).classList.add('d-none');
+  return value;
+}
+
 
 /**
  * Shows the tag fields in search when a row have now tasks
