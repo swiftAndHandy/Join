@@ -14,6 +14,7 @@ async function initBoard() {
   setupListenerForAddTasksDialog();
   addEntertoSubTasks();
   setDateMin();
+  onStartSelectMediumPrio()
 
   document.addEventListener('dragend', () => {
     if (currentlyDragged !== null) {
