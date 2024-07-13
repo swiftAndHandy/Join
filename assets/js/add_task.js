@@ -220,7 +220,7 @@ async function addnewTask() {
     'title': document.getElementById('task-title').value,
     'description': document.getElementById('task-description').value,
     'assigned': assignedContactsObject,
-    'date': document.getElementById('task-due-date').value,
+    'date': isNotInPast(document.getElementById('task-due-date').value),
     'priority': addTaskPrio,
     'tag': addTaskCategory,
     'subtasks': createSubtasks(),
