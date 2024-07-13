@@ -3,6 +3,13 @@ let contactToEditId = '';
 let contactToEditColor = '';
 let currentSelectedContactId = '';
 
+
+ function initContacts() {
+    includeHTML();
+    putContactsToList() ;
+    handleResize();
+}
+
 /**
  * Executes the callback function if the window width is less than or equal to the specified maxWidth.
  * Also sets up an event listener to re-check the condition on window resize.
