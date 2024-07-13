@@ -412,3 +412,5 @@ function selectCategory (category) {
   function clearSubtasksContainerDialog() {
     document.getElementById('edit-subtask-item-wrapper-dialog').innerHTML = ""; 
   }
+
+  

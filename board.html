@@ -1,142 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./assets/js/script.js"></script>
-    <script src="./node_modules/drag-drop-touch/DragDropTouch.js"></script>
-    <script src="/assets/js/menu-bar-script.js"></script>
-    <script src="./assets/js/board_html.js"></script>
-    <script src="./assets/js/board.js"></script>
-    <script src="./assets/js/board_addtask_listener_validation.js"></script>
-    <script src="./assets/js/add_task.js"></script>
-    <script src="./assets/js/task_details.js"></script>
-    <script src="./assets/js/task_details_event_listener.js"></script>
-    <script src="./assets/js/task_details_contacts.js"></script>
-    <script src="./assets/js/task_details_edit_overlay.js"></script>
-    <script src="./assets/js/generate_taskDetailsHtml.js"></script>
-    <script src="./assets/js/add_task_Html.js"></script>
-    <script src="./assets/js/form_enter.js"></script>
-    <link rel="stylesheet" href="./assets/css/add_task_style_dialog.css">
-    <link rel="stylesheet" href="./assets/css/add_task_style.css  ">
-    <link rel="stylesheet" href="./assets/css/add_task_media_querys.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/menu-bar.css">
-    <link rel="stylesheet" href="./assets/css/menu-bar_media-querys.css">
-    <link rel="stylesheet" href="./assets/css/fonts.css">
-    <link rel="stylesheet" href="./assets/css/board.css">
-    <link rel="stylesheet" href="./assets/css/board_media_querys.css">
-    <link rel="stylesheet" href="./assets/css/detail_view.css">
-    <link rel="stylesheet" href="./assets/css/detail_view_edit.css">
-    
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="./assets/img/icons/favicon.svg">
-    <!-- <link rel="icon" type="image/x-icon" href="./assets/img/icons/favicon.svg"> -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="48x48"
-      href="./assets/img/icons/favicon-48x48.png">
-    <!-- Apple Touch Icon -->
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="./assets/img/icons/favicon-152x152.png">
-    <link
-      rel="apple-touch-icon"
-      sizes="167x167"
-      href="./assets/img/icons/favicon-167x167.png">
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="./assets/img/icons/favicon-180x180.png">
-    <!-- Safari Pinned Tab -->
-    <link
-      rel="mask-icon"
-      href="./assets/img/icons/favicon.svg"
-      color="#5bbad5">
-    <title>Board</title>
-  </head>
-  <body id="body" onload="initBoard()">
-    <section w3-include-html="./task_details.html" class=""></section>
-    <div class="body-mobile">
-      <div w3-include-html="./assets/templates/menu-bar.html"></div>
-        <div class="board" ondragenter="showDragArea('', false);stopPropagation(event);">
-          <div class="board-headline">
-            <div class="board-headline-container">
-              <h1>Board</h1>
-              <button class="add-cross-btn" onclick="">
-                <img src="./assets/img/icons/add_cross.svg" alt="" />
-              </button>
-            </div>
-            <div class="search-row">
-              <div class="search-wrapper">
-                <input id="search-title" oninput="searchAndShowTasks(this.value)" class="search-container-width" class="input-img" type="search" placeholder="Find Task" required>
-                <span id="empty-results" class="d-none">No task matches your query</span>
-              </div>
-              <button class="add-task-btn">
-                <span>Add task</span>
-                <img src="./assets/img/icons/add_cross.svg" alt="add-cross" />
-              </button>
-            </div>
-          </div>
-          <div id="grey-screen" class="d-none"></div>
-          <main class="board-content" ondragenter="showDragArea('', false)">
-            <section id="todo-section" class="section-container" ondrop="dragTo('todo')" ondragover="allowDrop(event)" ondragenter="showDragArea('todo');stopPropagation(event);">
-              <div class="section-headline">
-                <h2>To do</h2>
-                <button class="add-cross-btn-small">
-                  <img src="./assets/img/icons/add_cross_blue.svg" alt="cross">
-                </button>
-              </div>
-              <div class="task-fields" id="task-field-todo">
-                <span>No tasks To do</span>
-              </div>
-              <div class="tasks-container" id="todo-field"></div>
-            </section>
-            <section id="progress-section" class="section-container" ondrop="dragTo('progress')" ondragover="allowDrop(event)" ondragenter="showDragArea('progress');stopPropagation(event);">
-              <div class="section-headline">
-                <h2>In progress</h2>
-                <button class="add-cross-btn-small">
-                  <img
-                    src="./assets/img/icons/add_cross_blue.svg"
-                    alt="cross"
-                  />
-                </button>
-              </div>
-              <div class="task-fields" id="task-field-progress">
-                <span>No tasks In progress</span>
-              </div>
-              <div class="tasks-container" id="progress-field">
-              </div>
-            </section>
-            <section id="feedback-section" class="section-container" ondrop="dragTo('feedback')" ondragover="allowDrop(event)" ondragenter="showDragArea('feedback');stopPropagation(event);">
-              <div class="section-headline">
-                <h2>Await feedback</h2>
-                <button class="add-cross-btn-small">
-                  <img src="./assets/img/icons/add_cross_blue.svg" alt="cross">
-                </button>
-              </div>
-              <div class="task-fields" id="task-field-feedback">
-                <span>No tasks Await feedback</span>
-              </div>
-              <div class="tasks-container" id="feedback-field">
-              </div>
-            </section>
-            <section id="done-section" class="section-container" ondrop="dragTo('done')" ondragover="allowDrop(event)" ondragenter="showDragArea('done');stopPropagation(event);">
-              <div class="section-headline">
-                <h2>Done</h2>
-              </div>
-              <div class="task-fields" id="task-field-done">
-                <span>No tasks Done</span>
-              </div>
-              <div class="tasks-container" id="done-field">
-                
-              </div>
-            </section>
-          </main>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./assets/js/script.js"></script>
+  <script src="./node_modules/drag-drop-touch/DragDropTouch.js"></script>
+  <script src="/assets/js/menu-bar-script.js"></script>
+  <script src="./assets/js/board_html.js"></script>
+  <script src="./assets/js/board.js"></script>
+  <script src="./assets/js/add_task.js"></script>
+  <script src="./assets/js/task_details.js"></script>
+  <script src="./assets/js/task_details_event_listener.js"></script>
+  <script src="./assets/js/task_details_contacts.js"></script>
+  <script src="./assets/js/task_details_edit_overlay.js"></script>
+  <script src="./assets/js/generate_taskDetailsHtml.js"></script>
+  <script src="./assets/js/add_task_Html.js"></script>
+  <script src="./assets/js/form_enter.js"></script>
+  <link rel="stylesheet" href="./assets/css/add_task_style_dialog.css">
+  <link rel="stylesheet" href="./assets/css/add_task_style.css  ">
+  <link rel="stylesheet" href="./assets/css/add_task_media_querys.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/menu-bar.css">
+  <link rel="stylesheet" href="./assets/css/menu-bar_media-querys.css">
+  <link rel="stylesheet" href="./assets/css/fonts.css">
+  <link rel="stylesheet" href="./assets/css/board.css">
+  <link rel="stylesheet" href="./assets/css/board_media_querys.css">
+  <link rel="stylesheet" href="./assets/css/detail_view.css">
+  <link rel="stylesheet" href="./assets/css/detail_view_edit.css">
+
+  <link rel="icon" type="image/svg+xml" href="./assets/img/icons/favicon.svg">
+  <!-- <link rel="icon" type="image/x-icon" href="./assets/img/icons/favicon.svg"> -->
+  <link rel="icon" type="image/png" sizes="48x48" href="./assets/img/icons/favicon-48x48.png">
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" sizes="152x152" href="./assets/img/icons/favicon-152x152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="./assets/img/icons/favicon-167x167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/icons/favicon-180x180.png">
+  <!-- Safari Pinned Tab -->
+  <link rel="mask-icon" href="./assets/img/icons/favicon.svg" color="#5bbad5">
+  <title>Board</title>
+</head>
+
+<body id="body" onload="initBoard()">
+  <section w3-include-html="./task_details.html" class=""></section>
+  <div class="body-mobile">
+    <div w3-include-html="./assets/templates/menu-bar.html"></div>
+    <div class="board" ondragenter="showDragArea('', false);stopPropagation(event);">
+      <div class="board-headline">
+        <div class="board-headline-container">
+          <h1>Board</h1>
+          <button class="add-cross-btn" onclick="">
+            <img src="./assets/img/icons/add_cross.svg" alt="" />
+          </button>
         </div>
         <div class="search-row">
           <div class="search-wrapper">
