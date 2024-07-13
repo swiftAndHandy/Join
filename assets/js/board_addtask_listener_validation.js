@@ -61,8 +61,9 @@ function removeValidation() {
   } 
 
 
-  function setDateMin() {
+function setDateMin() {
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('task-due-date').setAttribute('min', today);
+  document.getElementById('update-date') && document.getElementById('update-date').setAttribute('min', today);
 }
   
