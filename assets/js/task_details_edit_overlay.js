@@ -8,7 +8,8 @@ async function saveTaskUpdate(taskId) {
     const tag = document.getElementById('task-details-tag').textContent;
     const title = isNotEmpty('title');
     const description = isNotEmpty('description');
-    const deadline = isNotEmpty('date');
+    let deadline = isNotEmpty('date');
+    deadline = isNotInPast(deadline);
     const priority = getCurrentPriority();
     const subtasks = updateSubtasksArray();
     const data = createTaskObject(tag, title, description, deadline, priority, subtasks);

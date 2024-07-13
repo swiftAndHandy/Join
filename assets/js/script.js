@@ -266,3 +266,25 @@ function limitLengthOf(inputString, limit = 80) {
     }
     return inputString;
   }
+
+
+/**
+ * Checks if a given date is not in the past.
+ * If the given date is in the past, it returns today's date.
+ * Otherwise, it returns the given date.
+ * @param {string} deadline - The date to be checked in the format 'yyyy-mm-dd'.
+ * @returns {string} - Returns today's date if the given date is in the past, otherwise returns the given date.
+ */
+  function isNotInPast(deadline) {
+    const today = new Date().toISOString().split('T')[0];
+    let dateOfToday = new Date(today);
+    let choosenDate = new Date(deadline);
+    dateOfToday = dateOfToday.getTime()
+    choosenDate = choosenDate.getTime()
+
+    if (choosenDate < dateOfToday) {
+        return today;
+    } else {
+        return deadline;
+    }
+}
