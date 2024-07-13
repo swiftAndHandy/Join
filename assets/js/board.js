@@ -13,7 +13,7 @@ async function initBoard() {
   stopEnterForm();
   setupListenerForAddTasksDialog();
   addEntertoSubTasks();
-
+  setDateMin();
   
 
   document.addEventListener('dragend', () => {
