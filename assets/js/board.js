@@ -311,7 +311,11 @@ function searchAndShowTasks(searchTerm) {
       }
     }
   });
-  searchTerm.trim() === '' ? hideFieldsWhenNoSearch() : showFieldsWhenSearch();
+  if(searchTerm.trim() === '') {
+    showFieldsWhenSearch()
+    
+ 
+  }
   counter > 0 ? hideWindow('empty-results') : hideWindow('empty-results', false);
 }
 
@@ -322,14 +326,16 @@ function showFieldsWhenSearch() {
   const sections = ['todo','progress','feedback','done']
   sections.forEach(function (section) {
   const fieldElement =  document.getElementById(`task-field-${section}`)
-  if(fieldElement.classList.contains('d-none')) {
+  if(fieldElement.classList.contains('d-none') && `${section}-field` !== "")  {
     fieldElement.classList.remove('d-none');
+    
   }
-  })
+
+  })}
 
 
   
-}
+
 
 /**
  * clears the tag field when search input is cleared
@@ -338,7 +344,7 @@ function hideFieldsWhenNoSearch() {
   const sections = ['todo', 'progress', 'feedback', 'done'];
   sections.forEach(function(section) {
     const fieldElement = document.getElementById(`task-field-${section}`);
-    if (!fieldElement.classList.contains('d-none')) {
+    if ( `${section}-field` !== "") {
       fieldElement.classList.add('d-none');
     }
   });

@@ -41,7 +41,6 @@ function removeValidation() {
     const form = document.querySelector('#form-desktop');
     const requiredFields = form.querySelectorAll('[required]');
     requiredFields.forEach(field => {
-      
         if (field.value.trim() === '' && !field.parentNode.querySelector('.error-message')) {
             const errorMessage = document.createElement('span');
             errorMessage.textContent = 'This field ist required.';
@@ -50,7 +49,6 @@ function removeValidation() {
         }
         field.addEventListener('input', function() {
             if (field.value.trim() !== '') {
-            
                 const errorMessage = field.parentNode.querySelector('.error-message');
                 if (errorMessage) {
                     errorMessage.remove();
@@ -60,7 +58,9 @@ function removeValidation() {
     });
   } 
 
-
+/**
+ * sets min of the same day
+ */
 function setDateMin() {
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('task-due-date').setAttribute('min', today);

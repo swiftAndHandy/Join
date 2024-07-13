@@ -291,7 +291,7 @@ function successAnimation(target, wrapper) {
         closeSignUp();
         target.remove('popup-msg--fade-in');
         wrapper.remove('msg-wrapper--z-push');
-    }, 1000);
+    }, 1500);
 }
 
 
@@ -316,8 +316,6 @@ function failureAnimation(target, wrapper) {
  * does another password compare, to reset missmatch-msg.
  */
 function closeSignUp() {
-    document.getElementById('sign-up-overlay').classList.add('d-none');
-    document.getElementById('login-wrapper').classList.remove('d-none');
     privacyCheckboxActive = false;
     passwordCreateInputHidden = true;
     passwordValidationInputHidden = true;
@@ -328,6 +326,7 @@ function closeSignUp() {
     togglePrivacy();
     document.getElementById('privacy').checked = false;
     compareRegistrationPasswords();
+    window.location.href = '/index.html';   
 }
 
 
@@ -335,8 +334,7 @@ function closeSignUp() {
  * Removes display: none from sign-up-dialog to give access to the sign-up-form
  */
 function openSignUp() {
-    document.getElementById('sign-up-overlay').classList.remove('d-none');
-    document.getElementById('login-wrapper').classList.add('d-none');
+    window.location.href = '/sign_up.html';
 }
 
 
