@@ -162,6 +162,11 @@
     gap: 16px;
     flex: 1;
     padding: 0 1px;
+    --sb-track-color: transparent !important;
+    --sb-thumb-color: transparent !important;
+    --sb-size: 2px !important;
+    scrollbar-width: var(--sb-size) !important;
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color) !important;
   }
   
   .details__info-box.edit {
