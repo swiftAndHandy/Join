@@ -518,7 +518,7 @@ select:focus {
 
 .add-task__subtask-scrollbar {
   overflow-y: auto;
-  max-height: 40px;
+  max-height: 60px;
   max-width: 480px;
   scrollbar-width: thin;
   /* Thin scrollbar */
