@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: assets/js/task_details_contacts.js</title>
+    <title>JSDoc: Source: assets/js/contacts_eventlistener_timing.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: assets/js/task_details_contacts.js</h1>
+    <h1 class="page-title">Source: assets/js/contacts_eventlistener_timing.js</h1>
 
     
 
@@ -26,108 +26,74 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>
-/**
- * Rendering Contact-List in Edit-Details. 
- * The Contact-List Contains contacts and accounts, so after fetching both
- * they recive a prefix that leads to there path on the server.
- * For every of those items HTML is generated.
- */
-async function renderDetailsContactList() {
-    let contacts = await readData('contacts');
-    contacts = setPrefixToKey('contacts', contacts);
-    let accounts = await readData('accounts');
-    accounts = setPrefixToKey('accounts', accounts);
-
-    let data = {};
-    await Object.assign(data, accounts, contacts);
-    let entries = sortByAlphabet(data);
-    for (let i = 0; i &lt; entries.length; i++) {
-        generateContactsHtml(entries[i]);
+            <pre class="prettyprint source linenums"><code>document.addEventListener('DOMContentLoaded', () => {
+    if (window.innerWidth >= 820) {
+        return;
     }
-}
+    window.addEventListener('click', (event) => {
+        if (!event.target.closest('#contact-options') &amp;&amp; !event.target.closest('#more-vert-button')) {
+            closeContactOptions();
+        }
+    });
+});
+
 
 /**
- * Simulates an click on every assigned contact to activate it for contact list and submit array (assignedPersonsToUpdate)
- * CAVE: I try to enable user accounts also. in this case it needs to be set up to assign-contact-${item}, since contacts will be added by algorithm.
+ * Handles window resize events to manage the visibility of the contact list and contact details.
+ * If the window width is greater than 820 pixels, it shows the contact list and contact details.
+ * If the window width is less than or equal to 820 pixels, it toggles the visibility of the contact 
+ * list and contact details based on their current display states.
  */
-async function activateAssignedContacts(assignedContacts) {
-    if (assignedContacts) {
-        for (let item of assignedContacts) {
-            try {
-                document.getElementById(`assign-contact-${item}`).click();
-            } catch (error) {
-                console.warn(`assign-contact-contacts/${item} couldn't be toggled`);
+function handleResize() {
+    if (window.innerWidth > 820) {
+        document.getElementById('contact-list-container').style.display = 'block';
+        document.getElementById('contact-window').style.display = 'flex';
+        document.getElementById('back-to-contacts-button').style.display = 'none';
+    } else {
+        let contactInfoContainer = document.getElementById('contact-info-container').style.display;
+        if (contactInfoContainer === 'none' || contactInfoContainer === '') {
+            document.getElementById('contact-list-container').style.display = 'block';
+            document.getElementById('contact-window').style.display = 'none';
+        } else {
+            if (document.getElementById('contact-window').style.display === 'flex') {
+                document.getElementById('contact-list-container').style.display = 'none';
+                document.getElementById('back-to-contacts-button').style.display = 'flex';
             }
         }
     }
 }
 
+window.addEventListener('resize', handleResize);
+
 
 /**
- * toggles the visibility of contact-list and contact-list input to show/hide the DOM-Content.
- * @param {string} id - used to get the correct id for design changes
+ * Shows the "Contact Created" modal with animations.
+ * The modal appears, stays for 1.5s, then closes and resets.
  */
-function openListSearch(id) {
-    const btn = toggleVisibility(`${id}-task-contact-list-btn`);
-    toggleVisibility(`${id}-task-contact-list-input`);
-    toggleVisibility(`${id}-task-contacts-list`)
-    const inputField = document.getElementById(`${id}-task-list-input-field`);
-    const inputBox = inputField.parentElement.classList.add('focus');
-    inputField.focus();
+function showCreatedContactModal() {
+    let contactCreatedModal = document.getElementById('contact-created-modal');
+    const closeModal = () => {
+        contactCreatedModal.classList.remove('contact-created-modal-close');
+        contactCreatedModal.classList.remove('contact-created-modal-open');
+        contactCreatedModal.style.display = 'none';
+    };
+    const showModal = (delay, openClass, closeClass) => {
+        setTimeout(() => {
+            contactCreatedModal.style.display = 'flex';
+            contactCreatedModal.classList.add(openClass);
+            setTimeout(() => {
+                contactCreatedModal.classList.add(closeClass);
+                closeModal();
+            }, 190);
+        }, delay);
+    };
+    showModal(500, 'contact-created-modal-open', 'contact-created-modal-close');
+    executeOnMaxWidth(820, async () => {
+        showModal(500, 'contact-created-modal-open-mobile', 'contact-created-modal-close-mobile');
+    });
 }
 
-
-/**
- * Searchs for a contact based on a input.value and displays only contacts, who does match the search. 
- * @param {string} search - value of a text-input
- * example: &lt;input type="text" oninput="searchContact(this.value)">;
- */
-function searchContact(search) {
-    const contactNames = Array.from(document.querySelectorAll('div.user-box span'));
-    for (let item in contactNames) {
-        hideWindow(contactNames[item].parentElement.parentElement.id,
-            !contactNames[item].innerHTML.toLowerCase().includes(search.toLowerCase())
-        );
-    }
-}
-
-/**
- * Controls the design of checkboxes on the assigned-contacts-list
- * CAVE: id contains contacts/ (or theoretically accounts/). 
- * This is the optimum, so we can stop use pathes at readData and allow to assign users
- * For the moment, since it's not used trough the whole project, i'll filter and remove it.
- * @param {string} id 
- */
-async function toggleThisContact(id) {
-    const contactId = document.getElementById(`assign-contact-${id}`);
-    const checkboxId = document.getElementById(`assign-contact-checkbox-${id}`);
-    const pseudoCheckboxId = document.getElementById(`assign-contact-pseudo-checkbox-${id}`);
-    await updateAssignedPersons(id);
-    contactId.classList.toggle('list-selected');
-    pseudoCheckboxId.classList.toggle('list-selected');
-    checkboxId.checked = !checkboxId.checked;
-}
-
-/**
- * Renders the Contact-List in Edit-View.
- * @param {Object} data contains required information
- */
-function generateContactsHtml(data) {
-    const target = document.getElementById('edit-task-contacts-list');
-    target.innerHTML += `
-        &lt;div id="assign-contact-${data.path}" class="single-contact" onclick="toggleThisContact('${data.path}')">
-            &lt;div class="user-box">
-                &lt;div id="edit-task-avatar-${data.id}" class="avatar at-drop-down" style="background-color: ${data['color']};">${initials(data.name)}&lt;/div>
-                    &lt;span id="edit-task-username-${data.id}">${data.name}&lt;/span>
-                &lt;/div>
-            &lt;div id="assign-contact-pseudo-checkbox-${data.path}" class="pseudo-checkbox">
-            &lt;/div>
-                &lt;input type="checkbox" class="contact-checkbox" id="assign-contact-checkbox-${data.path}" name="example-checkbox">
-                &lt;label for="assign-contact-checkbox-${data.path}">&lt;/label>
-        &lt;/div>
-        `;
-}</code></pre>
+</code></pre>
         </article>
     </section>
 
