@@ -11,6 +11,10 @@ img {
     /* outline: 1px auto #29ABE2; */
 }
 
+.relative {
+    position: relative;
+}
+
 body {
     display: flex;
     flex-direction: column;

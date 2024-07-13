@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +34,7 @@
 
   <title>Join- Add task</title>
 </head>
+
 <body onload="init()" onclick="toggleContactDropBox(true)">
   <div class="mobile-body">
     <div class="content-wrapper">
@@ -45,21 +47,13 @@
             <div class="desktop-split">
               <div class="flex-column-inputs mb-32">
                 <span>Title<span class="red">*</span></span>
-                <input
-                  required
-                  class="input-standard required"
-                  type="text"
-                  placeholder="Enter a title"
-                  id="task-title"
-                />
+                <input required class="input-standard required" type="text" placeholder="Enter a title"
+                  id="task-title" />
               </div>
               <div class="flex-column-inputs mb-32">
                 <span>Description</span>
-                <textarea
-                  class="description-textarea"
-                  id="task-description"
-                  placeholder="Enter a Description"
-                ></textarea>
+                <textarea class="description-textarea" id="task-description"
+                  placeholder="Enter a Description"></textarea>
               </div>
               <div class="flex-column-inputs mb-32 mb-assigned-to position-relative">
                 <span>Assigned to</span>
@@ -67,34 +61,32 @@
                   <div class="input-standard" id="assigned-to-contact" onclick="toggleContactDropBox()">
                     <span>Select contact to assign</span>
                     <div onclick="stopPropagation(event)">
-                      <img class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" onclick="toggleContactDropBox()" alt="">
+                      <img class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg"
+                        onclick="toggleContactDropBox()" alt="">
                     </div>
                   </div>
                 </div>
-                <div id="contacts-show-input" class="input-standard border-color-clicked d-none" onclick="stopPropagation(event)">
+                <div id="contacts-show-input" class="input-standard border-color-clicked d-none"
+                  onclick="stopPropagation(event)">
                   <input onclick="stopPropagation(event)" type="search" oninput="searchContact(this.value)">
-                  <img class="rotation cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" onclick="toggleContactDropBox()" alt="">
+                  <img class="rotation cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg"
+                    onclick="toggleContactDropBox()" alt="">
                 </div>
                 <div id="contacts-drop-menu" onclick="stopPropagation(event)" class="drop-menu d-none">
                   <div id="contacts-drop-menu-content" class="drop-menu-contacts">
                     <!-- Drop-down content goes here -->
                   </div>
                 </div>
-              </div>
-              <div id="contacts-img-line" class="display-contacts-pictures">
-                <!-- Display contacts pictures here if needed -->
+                <div id="contacts-img-line" class="display-contacts-pictures">
+                  <!-- Display contacts pictures here if needed -->
+                </div>
               </div>
             </div>
             <div class="desktop-seperator-add-contact"></div>
             <div class="second-desktop-split">
               <div class="flex-column-inputs mb-32">
                 <span>Due date<span class="red">*</span></span>
-                <input
-                  required
-                  class="date-standard"
-                  type="date"
-                  id="task-due-date"
-                />
+                <input required class="date-standard" type="date" id="task-due-date" />
               </div>
               <div class="prio-container mb-32">
                 <span>Prio</span>
@@ -118,7 +110,8 @@
                 <div onclick="stopPropagation(event)" id="category-input-wrapper">
                   <div onclick="toggleCategoryDropBox()" class="input-standard" id="select-category">
                     <span id="selected-category">Select category</span>
-                    <img id="arrow" class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" alt="">
+                    <img id="arrow" class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg"
+                      alt="">
                   </div>
                 </div>
                 <div id="category-drop-menu" class="drop-menu-category d-none">
@@ -134,25 +127,26 @@
               </div>
               <div class="flex-column-inputs mb-32">
                 <span class="details__caption">Subtasks</span>
-                <div id="edit-subtask-box" class="details-subtask-box stay-white input-width" onsubmit="addNewSubtask(document.getElementById('edit-add-subtask').value);scrollToLastSubtask();return false;">
-                    <input type="text" id="edit-add-subtask" class="details-subtask-add " placeholder="Add new subtask">
-                    <div id="edit-view-subtask-add" class="cross blue" onclick="setFocus('edit')"></div>
-                    <div id="edit-view-subtask-navigation" class="edit-subtask-navigation d-none"
-                        onclick="stopPropagation(event);">
-                        <div class="link-btn discard-btn" onclick="discardNewSubtask()"></div>
-                        <img class="vertical-line" src="./assets/img/icons/vertical-line.svg" alt="" class="">
-                        <div class="link-btn accept-btn"
-                            onclick="addNewSubtask(document.getElementById('edit-add-subtask').value,'edit-subtask-item-wrapper','div');scrollToLastSubtask();blurListener(); hideWindow('padding-placeholder');">
-                        </div>
+                <div id="edit-subtask-box" class="details-subtask-box stay-white input-width"
+                  onsubmit="addNewSubtask(document.getElementById('edit-add-subtask').value);scrollToLastSubtask();return false;">
+                  <input type="text" id="edit-add-subtask" class="details-subtask-add " placeholder="Add new subtask">
+                  <div id="edit-view-subtask-add" class="cross blue" onclick="setFocus('edit')"></div>
+                  <div id="edit-view-subtask-navigation" class="edit-subtask-navigation d-none"
+                    onclick="stopPropagation(event);">
+                    <div class="link-btn discard-btn" onclick="discardNewSubtask()"></div>
+                    <img class="vertical-line" src="./assets/img/icons/vertical-line.svg" alt="" class="">
+                    <div class="link-btn accept-btn"
+                      onclick="addNewSubtask(document.getElementById('edit-add-subtask').value,'edit-subtask-item-wrapper','div');scrollToLastSubtask();blurListener(); hideWindow('padding-placeholder');">
                     </div>
+                  </div>
                 </div>
                 <div id="edit-view-scrollbar" class="add-task__subtask-scrollbar">
-                <div id="edit-subtask-item-wrapper" style="width: 100%">
+                  <div id="edit-subtask-item-wrapper" style="width: 100%">
 
+                  </div>
                 </div>
+                <div id="padding-placeholder"></div>
               </div>
-              <div id="padding-placeholder"></div>
-            </div>
               <div class="desktop-buttons">
                 <button class="clear-btn" onclick="clearForm(event)"> Clear
                   <img src="./assets/img/icons/close.svg" alt="">
@@ -183,4 +177,5 @@
     </div>
   </div>
 </body>
+
 </html>

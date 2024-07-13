@@ -6,21 +6,24 @@
     </div>
     <form id="sign-up-form" class="registration-form" onsubmit="return false;"">
         <div class="registration-data">
-            <div class="input-item">
-                <img src="./assets/img/icons/person-gray.svg" alt="" class="input-icons">
-                <input type="text" id="name" name="name" placeholder="Name" pattern="^[A-Za-zÀ-ÿ]+(-[A-Za-zÀ-ÿ]+)*(\s+[A-Za-zÀ-ÿ]+(-[A-Za-zÀ-ÿ]+)*)*$" title="Please enter both your first and last name." autocomplete="name" required>
-            </div>
-            <div class="input-item">
-                <img src="./assets/img/icons/mail.svg" alt="" class="input-icons">
-                <input type="email" id="email" name="email" placeholder="Email" autocomplete="username" required>
-            </div>
-            <div class="input-item">
-                <img src="./assets/img/icons/lock.svg" alt="" id="password-create-img" class="input-icons">
-                <input minlength="5" type="password" id="password-create" name="password" placeholder="Password"
-                    autocomplete="new-password" onkeydown="passwordInputIcon('create')"
-                    onkeyup="passwordInputIcon('create');compareRegistrationPasswords()" required>
-            </div>
-            <div id="password-check" class="input-item">
+        <div class="input-item">
+            <img src="./assets/img/icons/person-gray.svg" alt="" class="input-icons">
+            <input type="text" id="name" name="name" placeholder="Name"
+                pattern="^[A-Za-zÀ-ÿ]+(-[A-Za-zÀ-ÿ]+)*(\s+[A-Za-zÀ-ÿ]+(-[A-Za-zÀ-ÿ]+)*)*$"
+                title="Please enter both your first and last name." autocomplete="name" required>
+        </div>
+        <div class="input-item">
+            <img src="./assets/img/icons/mail.svg" alt="" class="input-icons">
+            <input type="email" id="email" name="email" placeholder="Email" autocomplete="username" required>
+        </div>
+        <div class="input-item">
+            <img src="./assets/img/icons/lock.svg" alt="" id="password-create-img" class="input-icons">
+            <input minlength="5" type="password" id="password-create" name="password" placeholder="Password"
+                autocomplete="new-password" onkeydown="passwordInputIcon('create')"
+                onkeyup="passwordInputIcon('create');compareRegistrationPasswords()" required>
+        </div>
+        <div class="relative w-login">
+            <div id="password-check" class="input-item relative">
                 <img src="./assets/img/icons/lock.svg" alt="" id="password-validation-img" class="input-icons">
                 <input minlength="5" type="password" id="password-validation" name="password-validation"
                     placeholder="Confirm Password" autocomplete="new-password"
@@ -30,14 +33,16 @@
             </div>
             <span class="error-msg d-none small" id="error-msg">Ups! your password don't match</span>
         </div>
-        <div class="privacy-checkbox">
-            <input type="checkbox" class="checkbox" id="privacy" name="privacy-checkbox" onclick="togglePrivacy()">
-            <label for="privacy">I accept the <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Privacy policy</a></label>
-        </div>
-        <div class="button-wrapper">
-            <button id="submit-btn" class="form-btn disabled" disabled onclick="submitSignUp()">Sign Up</button>
-        </div>
-    </form>
+</div>
+<div class="privacy-checkbox">
+    <input type="checkbox" class="checkbox" id="privacy" name="privacy-checkbox" onclick="togglePrivacy()">
+    <label for="privacy">I accept the <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Privacy
+            policy</a></label>
+</div>
+<div class="button-wrapper">
+    <button id="submit-btn" class="form-btn disabled" disabled onclick="submitSignUp()">Sign Up</button>
+</div>
+</form>
 </div>
 <div class="dimm"></div>
 <div id="msg-wrapper" class="msg-wrapper" onclick="stopPropagation(event)">

@@ -161,6 +161,7 @@
     }
     .display-contacts-pictures {
       margin-bottom: 17px;
+      position: unset;
     }
   }
   

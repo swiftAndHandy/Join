@@ -18,13 +18,22 @@
     overflow-y: hidden;
 }
 
+.w-login {
+    width: min(90%, 422px);
+    padding: 0 16px;
+}
+
 .input-item {
     position: relative;
     margin-top: 24px;
     width: min(90%, 422px);
 }
 
-.input-item.password-check {
+.input-item.relative {
+    width: 100%;
+}
+
+.input-item.input-item.relative {
     margin-bottom: 8px;
 }
 
@@ -63,6 +72,7 @@
     margin-top: 24px;
     align-items: center;
     width: 100%;
+    position: relative;
 }
 
 .input-icons {
@@ -149,6 +159,7 @@
 
 .error-msg.small {
     margin-bottom: unset;
+    position: absolute;
 }
 
 .msg-wrapper {

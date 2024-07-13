@@ -398,8 +398,7 @@ select {
 }
 
 .profile-initials-circle-line {
-  height: 32px !important;
-  max-width: 32px !important  ;
+  width: 32px !important ;
 }
 
 @media (min-width: 1160px) {

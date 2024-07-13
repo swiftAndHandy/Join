@@ -1,313 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./assets/js/script.js"></script>
-    <script src="./node_modules/drag-drop-touch/DragDropTouch.js"></script>
-    <script src="/assets/js/menu-bar-script.js"></script>
-    <script src="./assets/js/board_html.js"></script>
-    <script src="./assets/js/board.js"></script>
-    <script src="./assets/js/add_task.js"></script>
-    <script src="./assets/js/task_details.js"></script>
-    <script src="./assets/js/task_details_event_listener.js"></script>
-    <script src="./assets/js/task_details_contacts.js"></script>
-    <script src="./assets/js/task_details_edit_overlay.js"></script>
-    <script src="./assets/js/generate_taskDetailsHtml.js"></script>
-    <script src="./assets/js/add_task_Html.js"></script>
-    <script src="./assets/js/form_enter.js"></script>
-    <link rel="stylesheet" href="./assets/css/add_task_style_dialog.css">
-    <link rel="stylesheet" href="./assets/css/add_task_style.css  ">
-    <link rel="stylesheet" href="./assets/css/add_task_media_querys.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/menu-bar.css">
-    <link rel="stylesheet" href="./assets/css/menu-bar_media-querys.css">
-    <link rel="stylesheet" href="./assets/css/fonts.css">
-    <link rel="stylesheet" href="./assets/css/board.css">
-    <link rel="stylesheet" href="./assets/css/board_media_querys.css">
-    <link rel="stylesheet" href="./assets/css/detail_view.css">
-    <link rel="stylesheet" href="./assets/css/detail_view_edit.css">
-    
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="./assets/img/icons/favicon.svg">
-    <!-- <link rel="icon" type="image/x-icon" href="./assets/img/icons/favicon.svg"> -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="48x48"
-      href="./assets/img/icons/favicon-48x48.png">
-    <!-- Apple Touch Icon -->
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="./assets/img/icons/favicon-152x152.png">
-    <link
-      rel="apple-touch-icon"
-      sizes="167x167"
-      href="./assets/img/icons/favicon-167x167.png">
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="./assets/img/icons/favicon-180x180.png">
-    <!-- Safari Pinned Tab -->
-    <link
-      rel="mask-icon"
-      href="./assets/img/icons/favicon.svg"
-      color="#5bbad5">
-    <title>Board</title>
-  </head>
-  <body id="body" onload="initBoard()">
-    <section w3-include-html="./task_details.html" class=""></section>
-    <div class="body-mobile">
-      <div w3-include-html="./assets/templates/menu-bar.html"></div>
-        <div class="board" ondragenter="showDragArea('', false);stopPropagation(event);">
-          <div class="board-headline">
-            <div class="board-headline-container">
-              <h1>Board</h1>
-              <button class="add-cross-btn" onclick="">
-                <img src="./assets/img/icons/add_cross.svg" alt="" />
-              </button>
-            </div>
-            <div class="search-row">
-              <div class="search-wrapper">
-                <input id="search-title" oninput="searchAndShowTasks(this.value)" class="search-container-width" class="input-img" type="search" placeholder="Find Task" required>
-                <span id="empty-results" class="d-none">No task matches your query</span>
-              </div>
-              <button class="add-task-btn">
-                <span>Add task</span>
-                <img src="./assets/img/icons/add_cross.svg" alt="add-cross" />
-              </button>
-            </div>
-          </div>
-          <div id="grey-screen" class="d-none"></div>
-          <main class="board-content" ondragenter="showDragArea('', false)">
-            <section id="todo-section" class="section-container" ondrop="dragTo('todo')" ondragover="allowDrop(event)" ondragenter="showDragArea('todo');stopPropagation(event);">
-              <div class="section-headline">
-                <h2>To do</h2>
-                <button class="add-cross-btn-small">
-                  <img src="./assets/img/icons/add_cross_blue.svg" alt="cross">
-                </button>
-              </div>
-              <div class="task-fields" id="task-field-todo">
-                <span>No tasks To do</span>
-              </div>
-              <div class="tasks-container" id="todo-field"></div>
-            </section>
-            <section id="progress-section" class="section-container" ondrop="dragTo('progress')" ondragover="allowDrop(event)" ondragenter="showDragArea('progress');stopPropagation(event);">
-              <div class="section-headline">
-                <h2>In progress</h2>
-                <button class="add-cross-btn-small">
-                  <img
-                    src="./assets/img/icons/add_cross_blue.svg"
-                    alt="cross"
-                  />
-                </button>
-              </div>
-              <div class="task-fields" id="task-field-progress">
-                <span>No tasks In progress</span>
-              </div>
-              <div class="tasks-container" id="progress-field">
-              </div>
-            </section>
-            <section id="feedback-section" class="section-container" ondrop="dragTo('feedback')" ondragover="allowDrop(event)" ondragenter="showDragArea('feedback');stopPropagation(event);">
-              <div class="section-headline">
-                <h2>Await feedback</h2>
-                <button class="add-cross-btn-small">
-                  <img src="./assets/img/icons/add_cross_blue.svg" alt="cross">
-                </button>
-              </div>
-              <div class="task-fields" id="task-field-feedback">
-                <span>No tasks Await feedback</span>
-              </div>
-              <div class="tasks-container" id="feedback-field">
-              </div>
-            </section>
-            <section id="done-section" class="section-container" ondrop="dragTo('done')" ondragover="allowDrop(event)" ondragenter="showDragArea('done');stopPropagation(event);">
-              <div class="section-headline">
-                <h2>Done</h2>
-              </div>
-              <div class="task-fields" id="task-field-done">
-                <span>No tasks Done</span>
-              </div>
-              <div class="tasks-container" id="done-field">
-                
-              </div>
-            </section>
-          </main>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./assets/js/script.js"></script>
+  <script src="./node_modules/drag-drop-touch/DragDropTouch.js"></script>
+  <script src="/assets/js/menu-bar-script.js"></script>
+  <script src="./assets/js/board_html.js"></script>
+  <script src="./assets/js/board.js"></script>
+  <script src="./assets/js/add_task.js"></script>
+  <script src="./assets/js/task_details.js"></script>
+  <script src="./assets/js/task_details_event_listener.js"></script>
+  <script src="./assets/js/task_details_contacts.js"></script>
+  <script src="./assets/js/task_details_edit_overlay.js"></script>
+  <script src="./assets/js/generate_taskDetailsHtml.js"></script>
+  <script src="./assets/js/add_task_Html.js"></script>
+  <script src="./assets/js/form_enter.js"></script>
+  <link rel="stylesheet" href="./assets/css/add_task_style_dialog.css">
+  <link rel="stylesheet" href="./assets/css/add_task_style.css  ">
+  <link rel="stylesheet" href="./assets/css/add_task_media_querys.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/menu-bar.css">
+  <link rel="stylesheet" href="./assets/css/menu-bar_media-querys.css">
+  <link rel="stylesheet" href="./assets/css/fonts.css">
+  <link rel="stylesheet" href="./assets/css/board.css">
+  <link rel="stylesheet" href="./assets/css/board_media_querys.css">
+  <link rel="stylesheet" href="./assets/css/detail_view.css">
+  <link rel="stylesheet" href="./assets/css/detail_view_edit.css">
+
+  <link rel="icon" type="image/svg+xml" href="./assets/img/icons/favicon.svg">
+  <!-- <link rel="icon" type="image/x-icon" href="./assets/img/icons/favicon.svg"> -->
+  <link rel="icon" type="image/png" sizes="48x48" href="./assets/img/icons/favicon-48x48.png">
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" sizes="152x152" href="./assets/img/icons/favicon-152x152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="./assets/img/icons/favicon-167x167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/icons/favicon-180x180.png">
+  <!-- Safari Pinned Tab -->
+  <link rel="mask-icon" href="./assets/img/icons/favicon.svg" color="#5bbad5">
+  <title>Board</title>
+</head>
+
+<body id="body" onload="initBoard()">
+  <section w3-include-html="./task_details.html" class=""></section>
+  <div class="body-mobile">
+    <div w3-include-html="./assets/templates/menu-bar.html"></div>
+    <div class="board" ondragenter="showDragArea('', false);stopPropagation(event);">
+      <div class="board-headline">
+        <div class="board-headline-container">
+          <h1>Board</h1>
+          <button class="add-cross-btn" onclick="">
+            <img src="./assets/img/icons/add_cross.svg" alt="" />
+          </button>
         </div>
-        <div class="placeholder-footer"></div>
-        <!-- placeholder for footer because to set the right height so the content cant flow under-->
-
-        <div id="add-task-transition" class="dialog-main-container" onclick="closeAddTaskPopUp()">
-          <div id="task_add-popup-dialog" class="dialog-container" onclick="stopPropagation(event)">
-            <div class="dialog-padding">
-            <button id="close-btn" onclick="closeAddTaskPopUp()">
-              <img
-                src="./assets/img/icons/close_black.svg"
-                alt="close-button"
-              />
+        <div class="search-row">
+          <div class="search-wrapper">
+            <input id="search-title" oninput="searchAndShowTasks(this.value)" class="search-container-width"
+              class="input-img" type="search" placeholder="Find Task" required>
+            <span id="empty-results" class="d-none">No task matches your query</span>
+          </div>
+          <button class="add-task-btn">
+            <span>Add task</span>
+            <img src="./assets/img/icons/add_cross.svg" alt="add-cross" />
+          </button>
+        </div>
+      </div>
+      <div id="grey-screen" class="d-none"></div>
+      <main class="board-content" ondragenter="showDragArea('', false)">
+        <section id="todo-section" class="section-container" ondrop="dragTo('todo')" ondragover="allowDrop(event)"
+          ondragenter="showDragArea('todo');stopPropagation(event);">
+          <div class="section-headline">
+            <h2>To do</h2>
+            <button class="add-cross-btn-small">
+              <img src="./assets/img/icons/add_cross_blue.svg" alt="cross">
             </button>
-            <div class="headline-add-task">
-              <h1>Add Task</h1>
-            </div>
-            <main class="add-task-container" >
-              <div id="add-task-form" class="form-add-task" >
-                <form id="form-desktop" class="form-desktop-view" >
+          </div>
+          <div class="task-fields" id="task-field-todo">
+            <span>No tasks To do</span>
+          </div>
+          <div class="tasks-container" id="todo-field"></div>
+        </section>
+        <section id="progress-section" class="section-container" ondrop="dragTo('progress')"
+          ondragover="allowDrop(event)" ondragenter="showDragArea('progress');stopPropagation(event);">
+          <div class="section-headline">
+            <h2>In progress</h2>
+            <button class="add-cross-btn-small">
+              <img src="./assets/img/icons/add_cross_blue.svg" alt="cross" />
+            </button>
+          </div>
+          <div class="task-fields" id="task-field-progress">
+            <span>No tasks In progress</span>
+          </div>
+          <div class="tasks-container" id="progress-field">
+          </div>
+        </section>
+        <section id="feedback-section" class="section-container" ondrop="dragTo('feedback')"
+          ondragover="allowDrop(event)" ondragenter="showDragArea('feedback');stopPropagation(event);">
+          <div class="section-headline">
+            <h2>Await feedback</h2>
+            <button class="add-cross-btn-small">
+              <img src="./assets/img/icons/add_cross_blue.svg" alt="cross">
+            </button>
+          </div>
+          <div class="task-fields" id="task-field-feedback">
+            <span>No tasks Await feedback</span>
+          </div>
+          <div class="tasks-container" id="feedback-field">
+          </div>
+        </section>
+        <section id="done-section" class="section-container" ondrop="dragTo('done')" ondragover="allowDrop(event)"
+          ondragenter="showDragArea('done');stopPropagation(event);">
+          <div class="section-headline">
+            <h2>Done</h2>
+          </div>
+          <div class="task-fields" id="task-field-done">
+            <span>No tasks Done</span>
+          </div>
+          <div class="tasks-container" id="done-field">
+
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="placeholder-footer"></div>
+    <!-- placeholder for footer because to set the right height so the content cant flow under-->
+
+    <div id="add-task-transition" class="dialog-main-container" onclick="closeAddTaskPopUp()">
+      <div id="task_add-popup-dialog" class="dialog-container" onclick="stopPropagation(event)">
+        <div class="dialog-padding">
+          <button id="close-btn" onclick="closeAddTaskPopUp()">
+            <img src="./assets/img/icons/close_black.svg" alt="close-button" />
+          </button>
+          <div class="headline-add-task">
+            <h1>Add Task</h1>
+          </div>
+          <main class="add-task-container">
+            <div id="add-task-form" class="form-add-task">
+              <form id="form-desktop" class="form-desktop-view">
                 <div class="desktop-split">
-                <div class="flex-column-inputs mb-32">
-                  <span>Title<span class="red">*</span></span>
-                  <input
-                    required
-                    class="input-standard"
-                    type="text"
-                    placeholder="Enter a title"
-                    id="task-title">
-                </div>
-                <div class="flex-column-inputs mb-32">
-                  <span>Description</span>
-                  <textarea
-                    class="description-textarea"
-                    id="task-description"
-                    placeholder="Enter a Description"
-                  ></textarea>
-                </div>
-                <div class="flex-column-inputs mb-32 mb-assigned-to position-relative">
-                  <span>Assigned to</span>
-                  <div id="contact-input-wrapper" onclick="stopPropagation(event)">
-                    <div class="input-standard" id="assigned-to-contact" onclick="toggleContactDropBox()">
-                      <span>Select contact to assign</span>
-                      <div onclick="stopPropagation(event)">
-                        <img class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" onclick="toggleContactDropBox()" alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <div id="contacts-show-input" class="input-standard border-color-clicked d-none" onclick="stopPropagation(event)">
-                    <input onclick="stopPropagation(event)" type="search" oninput="searchContact(this.value)">
-                    <img class="rotation cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" onclick="toggleContactDropBox()" alt="">
-                  </div>
-                  <div id="contacts-drop-menu" onclick="stopPropagation(event)" class="drop-menu d-none">
-                    <div id="contacts-drop-menu-content" class="drop-menu-contacts">
-                      <!-- Drop-down content goes here -->
-                    </div>
-                  </div>
-                </div>
-                <div id="contacts-img-line" class="display-contacts-pictures">
-                  <!-- Display contacts pictures here if needed -->
-                </div>
-              </div>
-              <div class="desktop-seperator-add-contact"></div>
-              <div class="second-desktop-split">
-                <div class="flex-column-inputs mb-32">
-                  <span>Due date<span class="red">*</span></span>
-                  <input
-                    required
-                    class="date-standard"
-                    type="date"
-                    id="task-due-date"
-                  />
-                </div>
-                <div class="prio-container mb-32">
-                  <span>Prio</span>
-                  <div class="prio-content">
-                    <div id="urgent-prio" class="prios" onclick="setPrio('Urgent', 1)">
-                      Urgent
-                      <img id="urgent-prio-img" src="./assets/img/icons/urgent.svg" alt="Urgent" />
-                    </div>
-                    <div id="medium-prio" class="prios" onclick="setPrio('Medium', 2)">
-                      Medium
-                      <img
-                        id="medium-prio-img"
-                        class="prio-medium"
-                        src="./assets/img/icons/medium.svg"
-                        alt="Urgent"
-                      />
-                    </div>
-                    <div id="low-prio" class="prios" onclick="setPrio('Low', 3)">
-                      Low
-                      <img id="low-prio-img" src="./assets/img/icons/low.svg" alt="Urgent" />
-                    </div>
-                  </div>
-                </div>
-                <div>
                   <div class="flex-column-inputs mb-32">
-                    <span>Category<span class="red">*</span></span>
-                    <div onclick="stopPropagation(event)" id="category-input-wrapper">
-                      <div onclick="toggleCategoryDropBox()" class="input-standard" id="select-category">
-                        <span id="selected-category">Select category</span>
-                        <img id="arrow" class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg" alt="">
+                    <span>Title<span class="red">*</span></span>
+                    <input required class="input-standard" type="text" placeholder="Enter a title" id="task-title">
+                  </div>
+                  <div class="flex-column-inputs mb-32">
+                    <span>Description</span>
+                    <textarea class="description-textarea" id="task-description"
+                      placeholder="Enter a Description"></textarea>
+                  </div>
+                  <div class="flex-column-inputs mb-32 mb-assigned-to position-relative">
+                    <span>Assigned to</span>
+                    <div id="contact-input-wrapper" onclick="stopPropagation(event)">
+                      <div class="input-standard" id="assigned-to-contact" onclick="toggleContactDropBox()">
+                        <span>Select contact to assign</span>
+                        <div onclick="stopPropagation(event)">
+                          <img class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg"
+                            onclick="toggleContactDropBox()" alt="">
+                        </div>
                       </div>
                     </div>
-                    <div id="category-drop-menu" class="drop-menu-category d-none">
-                      <div id="category-drop-menu-content" class="drop-menu-contacts">
-                        <div onclick="selectCategory('Technical Task')" class="category-drop-box-field">
-                          <span>Technical Task</span>
+                    <div id="contacts-show-input" class="input-standard border-color-clicked d-none"
+                      onclick="stopPropagation(event)">
+                      <input onclick="stopPropagation(event)" type="search" oninput="searchContact(this.value)">
+                      <img class="rotation cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg"
+                        onclick="toggleContactDropBox()" alt="">
+                    </div>
+                    <div id="contacts-drop-menu" onclick="stopPropagation(event)" class="drop-menu d-none">
+                      <div id="contacts-drop-menu-content" class="drop-menu-contacts">
+                        <!-- Drop-down content goes here -->
+                      </div>
+                    </div>
+                    <div id="contacts-img-line" class="display-contacts-pictures">
+                      <!-- Display contacts pictures here if needed -->
+                    </div>
+                  </div>
+                </div>
+                <div class="desktop-seperator-add-contact"></div>
+                <div class="second-desktop-split">
+                  <div class="flex-column-inputs mb-32">
+                    <span>Due date<span class="red">*</span></span>
+                    <input required class="date-standard" type="date" id="task-due-date" />
+                  </div>
+                  <div class="prio-container mb-32">
+                    <span>Prio</span>
+                    <div class="prio-content">
+                      <div id="urgent-prio" class="prios" onclick="setPrio('Urgent', 1)">
+                        Urgent
+                        <img id="urgent-prio-img" src="./assets/img/icons/urgent.svg" alt="Urgent" />
+                      </div>
+                      <div id="medium-prio" class="prios" onclick="setPrio('Medium', 2)">
+                        Medium
+                        <img id="medium-prio-img" class="prio-medium" src="./assets/img/icons/medium.svg"
+                          alt="Urgent" />
+                      </div>
+                      <div id="low-prio" class="prios" onclick="setPrio('Low', 3)">
+                        Low
+                        <img id="low-prio-img" src="./assets/img/icons/low.svg" alt="Urgent" />
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex-column-inputs mb-32">
+                      <span>Category<span class="red">*</span></span>
+                      <div onclick="stopPropagation(event)" id="category-input-wrapper">
+                        <div onclick="toggleCategoryDropBox()" class="input-standard" id="select-category">
+                          <span id="selected-category">Select category</span>
+                          <img id="arrow" class="cursor-pointer"
+                            src="./assets/img/icons/arrow_drop_down_select_field.svg" alt="">
                         </div>
-                        <div onclick="selectCategory('User Story')" class="category-drop-box-field">
-                          <span>User Story</span>
+                      </div>
+                      <div id="category-drop-menu" class="drop-menu-category d-none">
+                        <div id="category-drop-menu-content" class="drop-menu-contacts">
+                          <div onclick="selectCategory('Technical Task')" class="category-drop-box-field">
+                            <span>Technical Task</span>
+                          </div>
+                          <div onclick="selectCategory('User Story')" class="category-drop-box-field">
+                            <span>User Story</span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
 
-                <div class="flex-column-inputs mb-32">
-                  <span class="details__caption">Subtasks</span>
-                  <div id="edit-subtask-box-dialog" class="details-subtask-box stay-white ">
-                      <input type="text" id="edit-add-subtask-dialog" class="details-subtask-add " placeholder="Add new subtask">
+                  <div class="flex-column-inputs mb-32">
+                    <span class="details__caption">Subtasks</span>
+                    <div id="edit-subtask-box-dialog" class="details-subtask-box stay-white ">
+                      <input type="text" id="edit-add-subtask-dialog" class="details-subtask-add "
+                        placeholder="Add new subtask">
                       <div id="edit-view-subtask-add-dialog" class="cross blue" onclick="setFocus('edit')"></div>
                       <div id="edit-view-subtask-navigation-dialog" class="edit-subtask-navigation d-none"
-                          onclick="stopPropagation(event);">
-                          <div class="link-btn discard-btn" onclick="discardNewSubtask()"></div>
-                          <img class="vertical-line" src="./assets/img/icons/vertical-line.svg" alt="" class="">
-                          <div class="link-btn accept-btn"
-                              onclick="addNewSubtask(document.getElementById('edit-add-subtask-dialog').value,'edit-subtask-item-wrapper-dialog','div', '-dialog');scrollToLastSubtask('-dialog');blurListener(); ">
-                          </div>
+                        onclick="stopPropagation(event);">
+                        <div class="link-btn discard-btn" onclick="discardNewSubtask()"></div>
+                        <img class="vertical-line" src="./assets/img/icons/vertical-line.svg" alt="" class="">
+                        <div class="link-btn accept-btn"
+                          onclick="addNewSubtask(document.getElementById('edit-add-subtask-dialog').value,'edit-subtask-item-wrapper-dialog','div', '-dialog');scrollToLastSubtask('-dialog');blurListener(); ">
+                        </div>
                       </div>
+                    </div>
+                    <div id="edit-view-scrollbar-dialog" class="add-task__subtask-scrollbar">
+                      <div id="edit-subtask-item-wrapper-dialog" style="width: 100%">
+                        <div id="padding-placeholder"></div>
+                      </div>
+                    </div>
                   </div>
-                  <div id="edit-view-scrollbar-dialog" class="add-task__subtask-scrollbar">
-                  <div id="edit-subtask-item-wrapper-dialog" style="width: 100%">
-                    <div id="padding-placeholder"></div>
+
+
+                  <div class="desktop-buttons">
+                    <button class="clear-btn" onclick="clearForm(event)"> Clear
+                      <img src="./assets/img/icons/close.svg" alt="">
+                    </button>
+
+                    <button class="create-task-btn" id="button-create-task" onclick="checkIfFormFilled(event)">Create
+                      Task
+                      <img src="./assets/img/icons/check.svg" alt="">
+                    </button>
+
                   </div>
                 </div>
-              </div>
-
-
-                <div class="desktop-buttons">
-                  <button class="clear-btn" onclick="clearForm(event)"> Clear
-                    <img src="./assets/img/icons/close.svg" alt="">
+                <span id="required-text-span" class="required-text"><span class="red">*</span>This field is
+                  required</span>
+                <div class="create-task-panel">
+                  <span><span class="red">*</span>This field is required</span>
+                  <button class="create-task-btn" onclick="checkIfFormFilled(event)">
+                    Create task
+                    <img src="./assets/img/icons/check.svg" alt="check" />
                   </button>
-                  
-                  <button class="create-task-btn" id="button-create-task" onclick="checkIfFormFilled(event)" >Create Task
-                    <img src="./assets/img/icons/check.svg" alt="">
-                  </button>
-                  
                 </div>
-              </div>
-              <span id="required-text-span" class="required-text"><span class="red">*</span>This field is required</span>
-              <div class="create-task-panel">
-                <span><span class="red">*</span>This field is required</span>
-                <button class="create-task-btn" onclick="checkIfFormFilled(event)">
-                  Create task
-                  <img src="./assets/img/icons/check.svg" alt="check" />
-                </button>
-              </div>
-            </form>
-              </div>
-            </main>
-          </div>
+              </form>
+            </div>
+          </main>
         </div>
-          </div>
-        </div>
-      
-        <div id="pop-up-task-added" class="pop-up-task-added">
-          <div id="pop-up-transition" class="task-added-popup">
-            <div class="popup-text">Task added to board</div>
-            <img class="popup-img" src="/assets/img/icons/board.icon.svg">
-          </div>
-        </div>
+      </div>
+    </div>
+  </div>
 
-  </body>
+  <div id="pop-up-task-added" class="pop-up-task-added">
+    <div id="pop-up-transition" class="task-added-popup">
+      <div class="popup-text">Task added to board</div>
+      <img class="popup-img" src="/assets/img/icons/board.icon.svg">
+    </div>
+  </div>
+
+</body>
+
 </html>
