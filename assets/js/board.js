@@ -311,8 +311,39 @@ function searchAndShowTasks(searchTerm) {
       }
     }
   });
+  searchTerm.trim() === '' ? hideFieldsWhenNoSearch() : showFieldsWhenSearch();
   counter > 0 ? hideWindow('empty-results') : hideWindow('empty-results', false);
 }
+
+/**
+ * Shows the tag fields in search when a row have now tasks
+ */
+function showFieldsWhenSearch() {
+  const sections = ['todo','progress','feedback','done']
+  sections.forEach(function (section) {
+  const fieldElement =  document.getElementById(`task-field-${section}`)
+  if(fieldElement.classList.contains('d-none')) {
+    fieldElement.classList.remove('d-none');
+  }
+  })
+
+
+  
+}
+
+/**
+ * clears the tag field when search input is cleared
+ */
+function hideFieldsWhenNoSearch() {
+  const sections = ['todo', 'progress', 'feedback', 'done'];
+  sections.forEach(function(section) {
+    const fieldElement = document.getElementById(`task-field-${section}`);
+    if (!fieldElement.classList.contains('d-none')) {
+      fieldElement.classList.add('d-none');
+    }
+  });
+}
+
 
 
 /**
@@ -324,14 +355,12 @@ function searchAndShowTasks(searchTerm) {
  */
 async function getSubtaskProgress(subtasks, taskId) {
   let doneSubtasks = 0; let totalSubtasks = 0;
-
   if (Array.isArray(subtasks)) {
     subtasks.forEach(element => {
       totalSubtasks++;
       element.done && doneSubtasks++;
     });
   }
-
   calculateSubtaskProgressOf(taskId, doneSubtasks, totalSubtasks);
 }
 
