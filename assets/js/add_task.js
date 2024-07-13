@@ -1,10 +1,10 @@
 let addTaskAssignedContacts = [];
-let addTaskPrio = "";
+let addTaskPrio = "Low";
 let addTaskCategory = "";
 let taskStatus = "todo";
 let alreadyOpen = false;
 pressedButton = 0;
-previousButton = 0;
+previousButton = 3;
 styledCheckbox = [];
 
 /**
@@ -19,8 +19,18 @@ function init() {
   stopEnterForm ();
   setupListenerForAddTasks();
   addEntertoSubTasks ();
+  onStartSelectLowPrio()
+  catgeoryClickOutsideclose()
+  setDateMin() 
 }
 
+/**
+ * sets the low pro button to always selected at start.
+ */
+function onStartSelectLowPrio() {
+  document.getElementById("low-prio").classList.add("pressed-color-green");
+document.getElementById("low-prio-img").classList.add("pressed-prio-img");
+}
 
 /**
  * 
@@ -261,24 +271,15 @@ function checkIfFormFilled(event) {
 function setPrio(prio, number) {
   const priorities = ["urgent", "medium", "low"];
   const colors = ["orange", "yellow", "green"];
-
   priorities.forEach((priority, index) => {
     document.getElementById(`${priority}-prio`).classList.remove(`pressed-color-${colors[index]}`);
     document.getElementById(`${priority}-prio-img`).classList.remove("pressed-prio-img");
   });
-
-  if (number === previousButton) {
-    addTaskPrio = "Low";
-    previousButton = 0;
-  } else {
-    addTaskPrio = prio;
-    previousButton = number;
-  }
-
+  addTaskPrio = prio;
+  previousButton = number;
   if (previousButton > 0 && previousButton <= priorities.length) {
     const currentPriority = priorities[previousButton - 1];
     const currentColor = colors[previousButton - 1];
-
     document.getElementById(`${currentPriority}-prio`).classList.add(`pressed-color-${currentColor}`);
     document.getElementById(`${currentPriority}-prio-img`).classList.add("pressed-prio-img");
   }
@@ -372,31 +373,6 @@ function selectCategory (category) {
 }
 
 
-/**
- * Creates custom validation error messages when form fields are not filled.
- */
-  function ownValidation() {
-    const form = document.querySelector('#form-desktop');
-    const requiredFields = form.querySelectorAll('[required]');
-    requiredFields.forEach(field => {
-      
-        if (field.value.trim() === '' && !field.parentNode.querySelector('.error-message')) {
-            const errorMessage = document.createElement('span');
-            errorMessage.textContent = 'This field ist required.';
-            errorMessage.classList.add('error-message'); 
-            field.parentNode.appendChild(errorMessage);
-        }
-        field.addEventListener('input', function() {
-            if (field.value.trim() !== '') {
-            
-                const errorMessage = field.parentNode.querySelector('.error-message');
-                if (errorMessage) {
-                    errorMessage.remove();
-                }
-            }
-        });
-    });
-  }
 
 
 /**
@@ -419,26 +395,6 @@ function selectCategory (category) {
           }
       }
 
-  }
-
-
-/**
- * Removes validation error messages when fields are filled out
- */
-  function removeValidation() {
-    const form = document.querySelector('#form-desktop');
-    const requiredFields = form.querySelectorAll('[required]');
-    requiredFields.forEach(field => {
-        const errorMessage = field.parentNode.querySelector('.error-message');
-        if (errorMessage) {
-            errorMessage.remove();
-        }
-    });
-    const selectCategoryDiv = document.getElementById('category-input-wrapper');
-    const errorMessageCategory = selectCategoryDiv.parentNode.querySelector('.error-message');
-    if (errorMessageCategory) {
-        errorMessageCategory.remove();
-    }
   }
 
 

@@ -15,7 +15,7 @@
   <script src="./assets/js/script.js"></script>
   <script src="./assets/js/add_task_Html.js"></script>
   <script src="./assets/js/add_task.js"></script>
-  <!-- <script src="assets/js/board.js"></script> -->
+  <script src="./assets/js/board_addtask_listener_validation.js"></script>
   <script src="./assets/js/menu-bar-script.js"></script>
   <script src="./assets/js/task_details.js"></script>
   <script src="./assets/js/task_details_edit_overlay.js"></script>
@@ -86,7 +86,13 @@
             <div class="second-desktop-split">
               <div class="flex-column-inputs mb-32">
                 <span>Due date<span class="red">*</span></span>
-                <input required class="date-standard" type="date" id="task-due-date" />
+                <input
+                  required
+                  class="date-standard"
+                  type="date"
+                  id="task-due-date"
+                  min="2024-01-01"
+                />
               </div>
               <div class="prio-container mb-32">
                 <span>Prio</span>

@@ -1,0 +1,68 @@
+
+  /**
+   * checks if clicked outside of the category containers when true it will close it 
+   */
+  function catgeoryClickOutsideclose() {
+    document.addEventListener('click', function(event) {
+      const dropMenu = document.getElementById('category-drop-menu');
+      const categoryInputWrapper = document.getElementById('category-input-wrapper');
+      
+      if (!categoryInputWrapper.contains(event.target)) {
+        dropMenu.classList.add('d-none');
+      }
+    });
+  }
+
+
+/**
+ * Removes validation error messages when fields are filled out
+ */
+function removeValidation() {
+    const form = document.querySelector('#form-desktop');
+    const requiredFields = form.querySelectorAll('[required]');
+    requiredFields.forEach(field => {
+        const errorMessage = field.parentNode.querySelector('.error-message');
+        if (errorMessage) {
+            errorMessage.remove();
+        }
+    });
+    const selectCategoryDiv = document.getElementById('category-input-wrapper');
+    const errorMessageCategory = selectCategoryDiv.parentNode.querySelector('.error-message');
+    if (errorMessageCategory) {
+        errorMessageCategory.remove();
+    }
+  }
+
+
+  /**
+ * Creates custom validation error messages when form fields are not filled.
+ */
+  function ownValidation() {
+    const form = document.querySelector('#form-desktop');
+    const requiredFields = form.querySelectorAll('[required]');
+    requiredFields.forEach(field => {
+      
+        if (field.value.trim() === '' && !field.parentNode.querySelector('.error-message')) {
+            const errorMessage = document.createElement('span');
+            errorMessage.textContent = 'This field ist required.';
+            errorMessage.classList.add('error-message'); 
+            field.parentNode.appendChild(errorMessage);
+        }
+        field.addEventListener('input', function() {
+            if (field.value.trim() !== '') {
+            
+                const errorMessage = field.parentNode.querySelector('.error-message');
+                if (errorMessage) {
+                    errorMessage.remove();
+                }
+            }
+        });
+    });
+  } 
+
+
+  function setDateMin() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('task-due-date').setAttribute('min', today);
+}
+  
