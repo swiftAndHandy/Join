@@ -20,7 +20,7 @@ async function initBoard() {
       rotateTaskDragEnd(currentlyDragged);
     }
     showDragArea('', false);
-    currentlyDragged = null; 
+    currentlyDragged = null;
     currentlyDraggedCategory = null;
   });
 
@@ -109,7 +109,7 @@ function setBottomTaskCardVisibility(card, taskId) {
  *                    there is no card.priority set or the card.priority is an empty string
  */
 function emptyBottomOf(card) {
-  return (!card.assigned || card.assigned.length === 0) && (!card.priority || card.priority==='');
+  return (!card.assigned || card.assigned.length === 0) && (!card.priority || card.priority === '');
 }
 
 
@@ -332,7 +332,9 @@ function resultsAmountOf(field) {
   const searchQuery = document.getElementById('search-title').value.trim();
   const target = document.getElementById(`${field}-no-result`);
   let value = document.getElementById(`${field}-field`).querySelectorAll(':scope > :not(.d-none)').length;
-  !value ? target.classList.remove('d-none') : target.classList.add('d-none');
+  if (document.getElementById(`task-field-${field}`).classList.contains('d-none')) {
+    !value ? target.classList.remove('d-none') : target.classList.add('d-none');
+  }
   searchQuery === '' && target.classList.add('d-none');
   return value;
 }
@@ -342,18 +344,19 @@ function resultsAmountOf(field) {
  * Shows the tag fields in search when a row have now tasks
  */
 function showFieldsWhenSearch() {
-  const sections = ['todo','progress','feedback','done']
+  const sections = ['todo', 'progress', 'feedback', 'done']
   sections.forEach(function (section) {
-  const fieldElement =  document.getElementById(`task-field-${section}`)
-  if(fieldElement.classList.contains('d-none') && `${section}-field` !== "")  {
-    fieldElement.classList.remove('d-none');
-    
-  }
+    const fieldElement = document.getElementById(`task-field-${section}`)
+    if (fieldElement.classList.contains('d-none') && `${section}-field` !== "") {
+      fieldElement.classList.remove('d-none');
 
-  })}
+    }
+
+  })
+}
 
 
-  
+
 
 
 /**
@@ -361,9 +364,9 @@ function showFieldsWhenSearch() {
  */
 function hideFieldsWhenNoSearch() {
   const sections = ['todo', 'progress', 'feedback', 'done'];
-  sections.forEach(function(section) {
+  sections.forEach(function (section) {
     const fieldElement = document.getElementById(`task-field-${section}`);
-    if ( `${section}-field` !== "") {
+    if (`${section}-field` !== "") {
       fieldElement.classList.add('d-none');
     }
   });
@@ -418,7 +421,7 @@ async function calculateSubtaskProgressOf(taskId, done, total) {
  */
 function rotateTaskDragStart(id) {
   let rotateTask = document.getElementById(`taskId${id}`);
-  rotateTask.classList.add('draggable'); 
+  rotateTask.classList.add('draggable');
   rotateTask.style.transform = "rotate(5deg)";
 }
 
@@ -427,6 +430,6 @@ function rotateTaskDragStart(id) {
  */
 function rotateTaskDragEnd(id) {
   let rotateTask = document.getElementById(`taskId${id}`);
-  rotateTask.classList.remove('draggable'); 
+  rotateTask.classList.remove('draggable');
   rotateTask.style.transform = "rotate(0deg)";
 }
