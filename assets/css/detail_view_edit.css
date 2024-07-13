@@ -257,6 +257,11 @@
     cursor: pointer;
     transition: all 0.1s ease-in-out;
   }
+
+  .li-wrapper.true {
+    background-color: lightgreen;
+    margin: 2px 0;
+  }
   
   .li-wrapper:hover {
     background-color: #D1D1D155;

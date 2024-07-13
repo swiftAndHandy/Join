@@ -96,17 +96,17 @@ async function assignedPersonsDetailsHtml(contactIds) {
  * Applys a random ID to this item. Submits only, if value isn't empty after trim spaces from begin and end
  * @param {string} value 
  */
-function addNewSubtask(value, target = 'edit-subtask-item-wrapper', form = 'form', specialTarget = '') {
+function addNewSubtask(value, target = 'edit-subtask-item-wrapper', form = 'form', specialTarget = '', done = false) {
     target = document.getElementById(`${target}`);
-    const id = randomId();
+    const id = randomId() + done;
     value = value.trim();
     if (value) {
         target.insertAdjacentHTML('beforeend', `
-    <div id="edit-subtask-total-${id}" class="li-wrapper" ondblclick="openSubtaskInput('${id}');stopPropagation(event);">
+    <div id="edit-subtask-total-${id}" class="li-wrapper ${done}" ondblclick="openSubtaskInput('${id}');stopPropagation(event);">
         <ul id="edit-subtasks-unsorted-${id}" class="edit-subtasks-list"">
             <li>
                 <div class=" single-list-item">
-                    <span id="subtaskspan-${id}" class="subtaskitem">${value}</span>
+                    <span id="subtaskspan-${id}" class="subtaskitem ${done}">${value}</span>
                     <div class="hover-overlay" onclick="stopPropagation(event)">
                         <img src="./assets/img/icons/edit.svg" alt="" onclick="openSubtaskInput('${id}')">
                         <div class="vertical-line"></div>

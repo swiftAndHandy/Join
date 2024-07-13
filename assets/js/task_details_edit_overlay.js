@@ -204,13 +204,13 @@ function deleteSubtask(subtaskId) {
  * For existing and finished tasks: add .subtask-checkbox to every checkbox and add a label, that contains the task-text
  */
 function updateSubtasksArray() {
-    let query = document.querySelectorAll('.subtaskitem')
+    let query = document.querySelectorAll('.subtaskitem.false')
     let result = [];
     query.forEach((item) => result.push(
         { 'goal': item.innerText, 'done': false }
     ));
 
-    query = document.querySelectorAll('input[type="checkbox"].subtask-checkbox:checked + label');
+    query = document.querySelectorAll('.subtaskitem.true')
     query.forEach((item) => result.push(
         { 'goal': item.innerText, 'done': true }
     ));
@@ -225,12 +225,16 @@ function updateSubtasksArray() {
  * Iterates trough this filtered openSubtasks-Array and let do addNewSubtask() the magic ;-)
  */
 function renderOpenSubtasks() {
-    const query = Array.from(document.querySelectorAll('input[type="checkbox"].subtask-checkbox + label'));
-    const removeFromQuery = Array.from(document.querySelectorAll('input[type="checkbox"].subtask-checkbox:checked + label'));
-    const openSubtasks = query.filter(subtask => !removeFromQuery.includes(subtask));
+    const allSubtasks = Array.from(document.querySelectorAll('input[type="checkbox"].subtask-checkbox + label'));
+    const doneSubtasks = Array.from(document.querySelectorAll('input[type="checkbox"].subtask-checkbox:checked + label'));
+    const openSubtasks = allSubtasks.filter(subtask => !doneSubtasks.includes(subtask));
 
     openSubtasks.forEach(item => {
-        addNewSubtask(item.innerText);
+        addNewSubtask(item.innerText, 'edit-subtask-item-wrapper', 'form', '', false);
+    });
+
+    doneSubtasks.forEach(item => {
+        addNewSubtask(item.innerText, 'edit-subtask-item-wrapper', 'form', '', true);
     });
 }
 
