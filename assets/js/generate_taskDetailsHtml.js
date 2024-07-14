@@ -7,7 +7,7 @@
 async function generateTaskDetailsHtml(taskId, taskDetails) {
     const tag = document.getElementById('task-details-tag');
     tag.innerHTML = taskDetails['tag'];
-    taskDetails['tag'] === 'User Story' ? tag.setAttribute('class', 'tag user-story') : tag.setAttribute('class', 'tag technical-task')
+    taskDetails['tag'] === 'User Story' ? tag.setAttribute('class', 'tag user-story') : tag.setAttribute('class', 'tag technical-task');
 
     const title = document.getElementById('task-details-title');
     title.innerHTML = taskDetails['title'];
