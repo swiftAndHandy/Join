@@ -263,6 +263,7 @@ async function submitSignUp() {
     } else {
         document.getElementById('sign-up-form').reportValidity();
     }
+    
 }
 
 
@@ -348,3 +349,26 @@ async function autofillLogin() {
     document.getElementById('password-login').value = data.password;
     document.getElementById('login-btn').click();
 }
+
+
+/**
+ * Validates the email input when its true you can pass on. 
+ */
+function checkIfEmailIsValid(formId,inputId) {
+    const emailInput = document.getElementById(`${inputId}`);
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|de)$/;
+    emailInput.addEventListener('keydown', function() {
+        setTimeout(() => {
+            if (!emailPattern.test(emailInput.value)) {
+                emailInput.setCustomValidity('Email must end with .com or .de');
+            } else {
+                emailInput.setCustomValidity('');
+            }
+        }, 0);
+    });
+    document.getElementById(`${formId}`).addEventListener('submit', function(event) {
+        if (!emailPattern.test(emailInput.value)) {
+            alert('Email must end with .com or .de');
+            event.preventDefault(); 
+        }
+    });}

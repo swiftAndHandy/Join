@@ -52,7 +52,7 @@
                             <div class="input-item ignore-width">
                                 <img src="./assets/img/icons/mail.svg" alt="" class="input-icons">
                                 <input type="email" id="email-login" name="email" placeholder="Email"
-                                    autocomplete="username" required>
+                                    autocomplete="username" required  onkeydown="checkIfEmailIsValid('login-form','email-login')">
                             </div>
                             <span class="error-msg d-none" id="missmatch-mail">Ups! your email is wrong!</span>
                         </div>
