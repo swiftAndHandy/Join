@@ -402,6 +402,7 @@ function clearSubtasksContainer() {
   document.getElementById('padding-placeholder').classList.remove('d-none')
 }
 
+
 /**
  * Clears the subtask container in the board add task dialog field.
  */
