@@ -86,7 +86,7 @@ function addNewSubtask(value, target = 'edit-subtask-item-wrapper', form = 'form
  * @param {string} form - could be form or div, it's used to prevent bugs that could be triggered by form-form
  * @param {boolean} done true if the subtask is finished, otherwise false
  * @param {string} id - a randomized id, that is related to this subtask
- * @returns 
+ * @returns {string} - rendered HTML-Code
  */
 function subtaskHTML(value, form, done, id) {
     return `
@@ -140,7 +140,7 @@ async function listAttachedSubtasks(data, taskId) {
  * @param {string} taskId id of the currently task
  * @param {number} i - index of the current subtask
  * @param {*} data - all information that is related to the task
- * @returns 
+ * @returns {string} - rendered HTML-Code
  */
 function attachedSubtasksHTML(taskId, i, data) {
     return `<div class="details__subtask">
