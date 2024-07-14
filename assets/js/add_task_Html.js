@@ -39,7 +39,7 @@ async function generateCircleProfilesLine(path) {
   if (!addTaskAssignedContacts.includes(path)) {
     addUserAvatar(path, target);
   } else {
-    removeUserAvatar(userAvatar, target);
+    removeUserAvatar(userAvatar, target, path);
   }
 }
 
@@ -55,7 +55,7 @@ async function addUserAvatar(pathToUser, target) {
     document.getElementById('profile-cicle-max').innerHTML = `+${addTaskAssignedOverflow.length}`; //- shown Avatars
   } else if (addTaskAssignedContacts.length == 4) {
     addTaskAssignedOverflow.push(pathToUser);
-    target.insertAdjacentHTML('beforeend', `<div class="profile-initials-circle-line" id="profile-cicle-max" style="background-color:#29ABE2">+${addTaskAssignedContacts.length - 3}</div>`);
+    target.insertAdjacentHTML('beforeend', `<div class="profile-initials-circle-line" id="profile-cicle-max" style="background-color:#29ABE2">+${addTaskAssignedOverflow.length}</div>`);
   } else {
     const user = await readData(`${pathToUser}`);
     target.insertAdjacentHTML('afterbegin', `<div class="profile-initials-circle-line" id="profile-cicle-${pathToUser}" style="background-color:${user.color}">${initials(user.name)}</div>`);
@@ -68,11 +68,11 @@ async function addUserAvatar(pathToUser, target) {
  * @param {string} pathToUser - path to user-information on server
  * @param {HTMLElement} target - Element where the Avatar should become placed
  */
-function removeUserAvatar(userAvatar, target) {
+function removeUserAvatar(userAvatar, target, path) {
   if (userAvatar) {
     removeExistingUserAvatar(userAvatar, target);
   } else {
-    removeOverflowUser();
+    removeOverflowUser(path);
   }
 }
 
@@ -100,8 +100,9 @@ async function removeExistingUserAvatar(userAvatar, target) {
 /**
  * Reduces or deletes overflow
  */
-function removeOverflowUser(){
-  addTaskAssignedOverflow.splice(0, 1);
+function removeOverflowUser(user){
+  const position = addTaskAssignedOverflow.indexOf(user);
+  addTaskAssignedOverflow.splice(position, 1);
     if (addTaskAssignedOverflow.length) {
       document.getElementById('profile-cicle-max').innerHTML = `+${addTaskAssignedOverflow.length}`;
     } else {
