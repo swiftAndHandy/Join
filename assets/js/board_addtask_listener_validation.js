@@ -66,3 +66,25 @@ function setDateMin() {
   document.getElementById('update-date') && document.getElementById('update-date').setAttribute('min', today);
 }
   
+
+/**
+ * checks the category field because it can't have the required tag but is required for the form to be filled.
+ */
+function checkCategoryfield() {
+  const selectCategoryDiv = document.getElementById('category-input-wrapper');
+  const selectedCategory = selectCategoryDiv.innerText.trim();
+  if (selectedCategory !== 'Technical Task' && selectedCategory !== 'User Story') {
+    if (!selectCategoryDiv.parentNode.querySelector('.error-message')) {
+      const errorMessage = document.createElement('span');
+      errorMessage.textContent = 'This field ist required.';
+      errorMessage.classList.add('error-message');
+      selectCategoryDiv.parentNode.appendChild(errorMessage);
+    }
+  } else {
+    const errorMessage = selectCategoryDiv.parentNode.querySelector('.error-message');
+    if (errorMessage) {
+      errorMessage.remove();
+    }
+  }
+
+}
