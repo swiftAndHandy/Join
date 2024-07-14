@@ -18,7 +18,7 @@ async function initBoard() {
 
   document.addEventListener('dragend', () => {
     if (currentlyDragged !== null) {
-      rotateTaskDragEnd(currentlyDragged);
+      rotateTask(currentlyDragged, 0);
     }
     showDragArea('', false);
     currentlyDragged = null;
@@ -131,7 +131,7 @@ function allowDrop(ev) {
 function startDrag(id, fromCategory) {
   currentlyDragged = id;
   currentlyDraggedCategory = fromCategory;
-  rotateTaskDragStart(id);
+  rotateTask(id, 5);
 }
 
 /**
@@ -144,7 +144,7 @@ async function dragTo(newLocation) {
   if (item && currentlyDraggedCategory != newLocation) {
     await putData(newLocation, `tasks/${item}/status`);
     updateBoard(item, from, newLocation);
-    rotateTaskDragEnd(item);
+    rotateTask(item, 0);
   }
 }
 
@@ -357,9 +357,7 @@ function showFieldsWhenSearch() {
     const fieldElement = document.getElementById(`task-field-${section}`)
     if (fieldElement.classList.contains('d-none') && `${section}-field` !== "") {
       fieldElement.classList.remove('d-none');
-
     }
-
   })
 }
 
@@ -421,20 +419,10 @@ async function calculateSubtaskProgressOf(taskId, done, total) {
 
 
 /**
- * Applies a rotation-effect on the currently dragged task-card
+ * Applies/removes a rotation-effect on the currently dragged task-card
  */
-function rotateTaskDragStart(id) {
+function rotateTask(id, degree = 0) {
   let rotateTask = document.getElementById(`taskId${id}`);
-  rotateTask.classList.add('draggable');
-  rotateTask.style.transform = "rotate(5deg)";
-}
-
-
-/**
- * Removes a rotation-effect on the currently dragged task-card
- */
-function rotateTaskDragEnd(id) {
-  let rotateTask = document.getElementById(`taskId${id}`);
-  rotateTask.classList.remove('draggable');
-  rotateTask.style.transform = "rotate(0deg)";
+  rotateTask.classList.toggle('draggable');
+  rotateTask.style.transform = `rotate(${degree}deg)`;
 }
