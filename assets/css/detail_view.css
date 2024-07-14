@@ -287,6 +287,7 @@
     gap: 8px;
     margin-bottom: 16px;
     flex-wrap: wrap;
+    width: 100%;
   }
   
   .details__description {

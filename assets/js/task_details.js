@@ -1,5 +1,6 @@
 let editPriority;
 let assignedPersonsToUpdate = [];
+let assignedPersonsOverflow = [];
 let subtasksToUpdate = [];
 let currentDetailLocation = null;
 
@@ -66,6 +67,7 @@ function resetAssignedPersons() {
     document.getElementById('edit-task-contacts-list').innerHTML = '';
     document.getElementById('edit-task-view-assigned-persons').innerHTML = '';
     assignedPersonsToUpdate = [];
+    assignedPersonsOverflow = [];
 }
 
 /**
@@ -101,12 +103,73 @@ async function renderTaskDetails(taskId) {
 async function updateAssignedPersons(id) {
     const index = assignedPersonsToUpdate.indexOf(id);
     const assignedToEdit = document.getElementById('edit-task-view-assigned-persons');
+    const maxAvatar = document.getElementById('details-profile-cicle-max');
     if (index === -1) {
-        assignedPersonsToUpdate.push(id);
-        assignedToEdit.insertAdjacentHTML('beforeend', await assignedPersonsEditHtml(id));
+        addAvatarCircle(id, assignedToEdit, maxAvatar);
     } else {
         assignedPersonsToUpdate.splice(index, 1);
-        document.getElementById(`edit_task_assigned-person-${id}`).remove();
+        const individualAvatar = document.getElementById(`edit_task_assigned-person-${id}`);
+        if (individualAvatar) {
+            deleteExistingAvatar(individualAvatar, maxAvatar, assignedToEdit);
+        } else if (assignedPersonsOverflow.length) {
+            reduceOverflow(maxAvatar, id);
+        }
+    }
+}
+
+
+/**
+ * Adds an individual user Avatar, or if there are to many user-avatars generate/increase overflow-avatar
+ * @param {string} id - string with the location and id of the current contact
+ * @param {HTMLElement} target - location, where the Avatars get rendered
+ * @param {HTMLElement} maxAvatar - Element, that displays overflow of users or null if no overflow is given
+ */
+async function addAvatarCircle(id, target, maxAvatar) {
+    assignedPersonsToUpdate.push(id);
+    if (maxAvatar) {
+        assignedPersonsOverflow.push(id);
+        maxAvatar.innerHTML = `+${assignedPersonsOverflow.length}`;
+    } else if (assignedPersonsToUpdate.length == 5) {
+        assignedPersonsOverflow.push(id);
+        target.insertAdjacentHTML('beforeend', `<div class="profile-initials-circle-line" id="details-profile-cicle-max" style="background-color:#29ABE2">+${assignedPersonsOverflow.length}</div>`);
+    } else {
+        target.insertAdjacentHTML('afterbegin', await assignedPersonsEditHtml(id));
+    }
+}
+
+
+/**
+ * Removes an existing Avatar when deselected, and - if there is an overflow
+ * @param {HTMLElement} individualAvatar - Element that represents an Existing User-Avatar
+ * @param {HTMLElement} maxAvatar - Element that represents assigned-overflow-information
+ * @param {HTMLElement} assignedToEdit - DIV, that contains all assigned Avatars
+ */
+async function deleteExistingAvatar(individualAvatar, maxAvatar, assignedToEdit) {
+    individualAvatar.remove();
+    if (assignedPersonsOverflow.length) {
+        assignedToEdit.insertAdjacentHTML('afterbegin', await assignedPersonsEditHtml(assignedPersonsOverflow[0]));
+        assignedPersonsOverflow.splice(0, 1);
+        if (!assignedPersonsOverflow.length) {
+            maxAvatar.remove();
+        } else {
+            maxAvatar.innerHTML = `+${assignedPersonsOverflow.length}`;
+        }
+    };
+}
+
+
+/**
+ * @param {HTMLElement} maxAvatar - Element that represents assigned-overflow-information
+ * @param {string} id - an ID for the user, that also leeds to the users information on firebase.
+ * Reduces the Amount of overflow that is shown in maxAvatar
+ */
+function reduceOverflow(maxAvatar, id) {
+    const position = assignedPersonsOverflow.indexOf(id);
+    assignedPersonsOverflow.splice(position, 1);
+    if (assignedPersonsOverflow.length) {
+        maxAvatar.innerHTML = `+${assignedPersonsOverflow.length}`;
+    } else {
+        maxAvatar.remove();
     }
 }
 
