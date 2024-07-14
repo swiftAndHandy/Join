@@ -26,19 +26,85 @@ function generateDropBoxContacts(entries) {
     `;
 }
 
-
 /**
- * Generates profile pictures with the right initials for the contact box.
- * Fetches user data and creates profile circles with initials for each assigned contact.
- * If there are more than 10 contacts, the function will add a circle with "..." to indicate more contacts.
+ * generates avatar-circles, when a user is added trough contacts-assignment.
+ * removes avatar-circles, when a user is removed and this user is not in overflow.
+ * if overflow exists, count it.
+ * @param {string} path - a path that leads to the user-information on firebase
  */
 async function generateCircleProfilesLine(path) {
-  let avatarId = document.getElementById(`profile-cicle-${path}`);
+  const userAvatar = document.getElementById(`profile-cicle-${path}`);
   const target = document.getElementById(`contacts-img-line`);
-  if (avatarId == null) {
-    const user = await readData(`${path}`);
-    target.insertAdjacentHTML('beforeend', `<div class="profile-initials-circle-line" id="profile-cicle-${path}" style="background-color:${user.color}">${initials(user.name)}</div>`);
+
+  if (!addTaskAssignedContacts.includes(path)) {
+    addUserAvatar(path, target);
   } else {
-    avatarId.remove();
+    removeUserAvatar(userAvatar, target);
   }
+}
+
+
+/**
+ * Creates new Avatars or counts up the overflow-avatar, after creating it.
+ * @param {string} pathToUser - path to user-information on server
+ * @param {HTMLElement} target - Element where the Avatar should become placed
+ */
+async function addUserAvatar(pathToUser, target) {
+  if (document.getElementById('profile-cicle-max')) {
+    addTaskAssignedOverflow.push(pathToUser);
+    document.getElementById('profile-cicle-max').innerHTML = `+${addTaskAssignedOverflow.length}`; //- shown Avatars
+  } else if (addTaskAssignedContacts.length == 4) {
+    addTaskAssignedOverflow.push(pathToUser);
+    target.insertAdjacentHTML('beforeend', `<div class="profile-initials-circle-line" id="profile-cicle-max" style="background-color:#29ABE2">+${addTaskAssignedContacts.length - 3}</div>`);
+  } else {
+    const user = await readData(`${pathToUser}`);
+    target.insertAdjacentHTML('afterbegin', `<div class="profile-initials-circle-line" id="profile-cicle-${pathToUser}" style="background-color:${user.color}">${initials(user.name)}</div>`);
+  }
+}
+
+
+/**
+ * Triggers the remove existing Avatars or the count down the overflow-avatar, after creating it.
+ * @param {string} pathToUser - path to user-information on server
+ * @param {HTMLElement} target - Element where the Avatar should become placed
+ */
+function removeUserAvatar(userAvatar, target) {
+  if (userAvatar) {
+    removeExistingUserAvatar(userAvatar, target);
+  } else {
+    removeOverflowUser();
+  }
+}
+
+
+/**
+ * Remove existing Avatars
+ * @param {string} pathToUser - path to user-information on server
+ * @param {HTMLElement} target - Element where the Avatar should become placed
+ */
+async function removeExistingUserAvatar(userAvatar, target) {
+  userAvatar.remove();
+    if (addTaskAssignedOverflow.length){
+      const user = await readData(`${addTaskAssignedOverflow[0]}`);
+      target.insertAdjacentHTML('afterbegin', `<div class="profile-initials-circle-line" id="profile-cicle-${addTaskAssignedOverflow[0]}" style="background-color:${user.color}">${initials(user.name)}</div>`);
+      addTaskAssignedOverflow.splice(0, 1);
+    };
+    if (addTaskAssignedOverflow.length){
+      document.getElementById('profile-cicle-max').innerHTML = `+${addTaskAssignedOverflow.length}`;
+    } else if (document.getElementById('profile-cicle-max')) {
+      document.getElementById('profile-cicle-max').remove();
+    }
+}
+
+
+/**
+ * Reduces or deletes overflow
+ */
+function removeOverflowUser(){
+  addTaskAssignedOverflow.splice(0, 1);
+    if (addTaskAssignedOverflow.length) {
+      document.getElementById('profile-cicle-max').innerHTML = `+${addTaskAssignedOverflow.length}`;
+    } else {
+      document.getElementById('profile-cicle-max').remove();
+    }
 }

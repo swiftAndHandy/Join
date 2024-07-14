@@ -1,4 +1,5 @@
 let addTaskAssignedContacts = [];
+let addTaskAssignedOverflow = [];
 let addTaskPrio = "Medium";
 let addTaskCategory = "";
 let taskStatus = "todo";
@@ -16,12 +17,12 @@ styledCheckbox = [];
 function init() {
   includeHTML();
   renderContactList();
-  stopEnterForm ();
+  stopEnterForm();
   setupListenerForAddTasks();
-  addEntertoSubTasks ();
+  addEntertoSubTasks();
   onStartSelectMediumPrio()
   catgeoryClickOutsideclose()
-  setDateMin() 
+  setDateMin()
 }
 
 
@@ -41,18 +42,19 @@ function onStartSelectMediumPrio() {
 function handleCheckBox(checkbox, idNumber) {
   if (checkbox.checked) {
     if (!addTaskAssignedContacts.includes(checkbox.value)) {
+      pressedCheckBoxStyle(idNumber);
+      generateCircleProfilesLine(idNumber, true);
       addTaskAssignedContacts.push(checkbox.value);
       styledCheckbox.push(idNumber);
     }
-    pressedCheckBoxStyle(idNumber);
   } else {
     const valueIndex = addTaskAssignedContacts.indexOf(checkbox.value);
     if (valueIndex > -1) {
+      unPressedCheckBoxStyle(idNumber);
+      generateCircleProfilesLine(idNumber, false);
       addTaskAssignedContacts.splice(valueIndex, 1);
     }
-    unPressedCheckBoxStyle(idNumber);
   }
-  generateCircleProfilesLine(idNumber);
 }
 
 
@@ -117,7 +119,7 @@ function clearInputs(event) {
     form.removeAttribute('novalidate', false);
   }, 100);
   form.reset();
- 
+
 }
 
 /**
@@ -140,15 +142,15 @@ function stopStandardValidationMessage(event) {
  * 
  * @param {Event} event - The event object triggered when the clear button is clicked.
  */
-function clearForm (event) {
+function clearForm(event) {
   clearInputs(event);
   clearFormPrio();
   clearFormContactStyle();
   clearSubtasksContainer();
-  if (window.location.pathname === '/board.html')  {
+  if (window.location.pathname === '/board.html') {
     clearSubtasksContainerDialog()
   }
- 
+
 }
 
 
@@ -157,16 +159,16 @@ function clearForm (event) {
  */
 
 function clearFormPrio() {
- pressedButton = 0;
- previousButton = 0;
- addTaskPrio = 'Low';
- const priorities = ["urgent", "medium", "low"];
- const colors = ["orange", "yellow", "green"];
- 
- priorities.forEach((priority, index) => {
-   document.getElementById(`${priority}-prio`).classList.remove(`pressed-color-${colors[index]}`);
-   document.getElementById(`${priority}-prio-img`).classList.remove("pressed-prio-img");
- });
+  pressedButton = 0;
+  previousButton = 0;
+  addTaskPrio = 'Low';
+  const priorities = ["urgent", "medium", "low"];
+  const colors = ["orange", "yellow", "green"];
+
+  priorities.forEach((priority, index) => {
+    document.getElementById(`${priority}-prio`).classList.remove(`pressed-color-${colors[index]}`);
+    document.getElementById(`${priority}-prio-img`).classList.remove("pressed-prio-img");
+  });
 
 }
 
@@ -189,6 +191,7 @@ function clearFormContactStyle() {
   });
   document.getElementById('contacts-img-line').innerHTML = "";
   addTaskAssignedContacts = [];
+  addTaskAssignedOverflow = [];
   styledCheckboxes = [];
 }
 
@@ -275,8 +278,8 @@ function allFilledTrue(event) {
  */
 function allFilledFalse(event) {
   stopStandardValidationMessage(event);
-    ownValidation();
-    checkCategoryfield ();
+  ownValidation();
+  checkCategoryfield();
 }
 
 
@@ -309,7 +312,7 @@ function setPrio(prio, number) {
  */
 
 function showPopupTaskAdded() {
-  const popup = document.getElementById('pop-up-transition'); 
+  const popup = document.getElementById('pop-up-transition');
 
   popup.style.display = "flex";
   setTimeout(() => {
@@ -361,7 +364,7 @@ function searchContact(search) {
 /**
  * Open or close the category drop-box when clicked
  */
- function toggleCategoryDropBox() {
+function toggleCategoryDropBox() {
   if (!alreadyOpen) {
     document.getElementById('arrow').classList.remove('rotation-back');
     document.getElementById('category-drop-menu').classList.remove('d-none');
@@ -384,7 +387,7 @@ function searchContact(search) {
  * 
  * @param {string} category - The category selected for the task.
  */
-function selectCategory (category) {
+function selectCategory(category) {
   addTaskCategory = category;
   document.getElementById('selected-category').textContent = `${category}`;
   toggleCategoryDropBox();
@@ -394,39 +397,38 @@ function selectCategory (category) {
 /**
  * checks the category field because it can't have the required tag but is required for the form to be filled.
  */
-  function checkCategoryfield () {
-    const selectCategoryDiv = document.getElementById('category-input-wrapper');
-      const selectedCategory = selectCategoryDiv.innerText.trim();
-      if (selectedCategory !== 'Technical Task' && selectedCategory !== 'User Story') {
-          if (!selectCategoryDiv.parentNode.querySelector('.error-message')) {
-              const errorMessage = document.createElement('span');
-              errorMessage.textContent = 'This field ist required.';
-              errorMessage.classList.add('error-message');
-              selectCategoryDiv.parentNode.appendChild(errorMessage);
-          }
-      } else {
-          const errorMessage = selectCategoryDiv.parentNode.querySelector('.error-message');
-          if (errorMessage) {
-              errorMessage.remove();
-          }
-      }
-
+function checkCategoryfield() {
+  const selectCategoryDiv = document.getElementById('category-input-wrapper');
+  const selectedCategory = selectCategoryDiv.innerText.trim();
+  if (selectedCategory !== 'Technical Task' && selectedCategory !== 'User Story') {
+    if (!selectCategoryDiv.parentNode.querySelector('.error-message')) {
+      const errorMessage = document.createElement('span');
+      errorMessage.textContent = 'This field ist required.';
+      errorMessage.classList.add('error-message');
+      selectCategoryDiv.parentNode.appendChild(errorMessage);
+    }
+  } else {
+    const errorMessage = selectCategoryDiv.parentNode.querySelector('.error-message');
+    if (errorMessage) {
+      errorMessage.remove();
+    }
   }
+
+}
 
 
 /**
  * Clears the subtask container when the clear button is clicked.
  */
-  function clearSubtasksContainer() {
-    document.getElementById('edit-subtask-item-wrapper').innerHTML = "";
-    document.getElementById('padding-placeholder').classList.remove('d-none')
-  }
+function clearSubtasksContainer() {
+  document.getElementById('edit-subtask-item-wrapper').innerHTML = "";
+  document.getElementById('padding-placeholder').classList.remove('d-none')
+}
 
 /**
  * Clears the subtask container in the board add task dialog field.
  */
-  function clearSubtasksContainerDialog() {
-    document.getElementById('edit-subtask-item-wrapper-dialog').innerHTML = ""; 
-  }
+function clearSubtasksContainerDialog() {
+  document.getElementById('edit-subtask-item-wrapper-dialog').innerHTML = "";
+}
 
-  
