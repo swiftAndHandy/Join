@@ -6,29 +6,17 @@
  */
 async function generateTaskDetailsHtml(taskId, taskDetails) {
     const tag = document.getElementById('task-details-tag');
+    const assignedTo = taskDetails['assigned'];
     tag.innerHTML = taskDetails['tag'];
     taskDetails['tag'] === 'User Story' ? tag.setAttribute('class', 'tag user-story') : tag.setAttribute('class', 'tag technical-task');
-
-    const title = document.getElementById('task-details-title');
-    title.innerHTML = taskDetails['title'];
-
-    const description = document.getElementById('task-details-description');
-    description.innerHTML = taskDetails['description'];
-
-    const deadline = document.getElementById('task-details-date');
-    deadline.innerHTML = taskDetails['date'].split('-').join('/');
-
-    const priority = document.getElementById('details-priority-text');
-    const priorityImg = document.getElementById('details-priority-img');
-    priority.innerHTML = taskDetails['priority'];
-    priorityImg.src = `../assets/img/icons/priority_${taskDetails['priority'].toLowerCase()}.svg`;
-
-    const assignedTo = taskDetails['assigned'];
+    document.getElementById('task-details-title').innerHTML = taskDetails['title'];
+    document.getElementById('task-details-description').innerHTML = taskDetails['description'];
+    document.getElementById('task-details-date').innerHTML = taskDetails['date'].split('-').join('/');
+    document.getElementById('details-priority-text').innerHTML = taskDetails['priority'];
+    document.getElementById('details-priority-img').src = `../assets/img/icons/priority_${taskDetails['priority'].toLowerCase()}.svg`;
     document.getElementById('details-assigned-list').innerHTML = ''
     assignedPersonsDetailsHtml(assignedTo);
-
-    const deleteBtn = document.getElementById('task-details-delete-btn');
-    deleteBtn.setAttribute('onclick', `deleteTask('${taskId}')`);
+    document.getElementById('task-details-delete-btn').setAttribute('onclick', `deleteTask('${taskId}')`);
     return taskDetails;
 }
 
@@ -41,29 +29,14 @@ function resetDetailCardHtml() {
     const tag = document.getElementById('task-details-tag');
     tag.innerHTML = '';
     tag.setAttribute('class', '');
-
-    const title = document.getElementById('task-details-title');
-    title.innerHTML = '';
-
-    const description = document.getElementById('task-details-description');
-    description.value = '';
-
-    const deadline = document.getElementById('task-details-date');
-    deadline.innerHTML = '';
-
-    const priority = document.getElementById('details-priority-text');
-    const priorityImg = document.getElementById('details-priority-img');
-    priority.innerHTML = '';
-    priorityImg.src = ``;
-
-    const assignedToDetails = document.getElementById('details-assigned-list');
-    assignedToDetails.innerHTML = '';
-
-    const subtaskList = document.getElementById('details-subtasks-list');
-    subtaskList.innerHTML = '';
-
-    const deleteBtn = document.getElementById('task-details-delete-btn');
-    deleteBtn.setAttribute('onclick', `deleteTask('')`);
+    document.getElementById('task-details-title').innerHTML = '';
+    document.getElementById('task-details-description').value = '';
+    document.getElementById('task-details-date').innerHTML = '';
+    document.getElementById('details-priority-text').innerHTML = '';
+    document.getElementById('details-priority-img').src = '';
+    document.getElementById('details-assigned-list').innerHTML = '';
+    document.getElementById('details-subtasks-list').innerHTML = '';
+    document.getElementById('task-details-delete-btn').setAttribute('onclick', `deleteTask('')`);
 }
 
 /**
@@ -101,7 +74,22 @@ function addNewSubtask(value, target = 'edit-subtask-item-wrapper', form = 'form
     const id = randomId() + done;
     value = value.trim();
     if (value) {
-        target.insertAdjacentHTML('beforeend', `
+        target.insertAdjacentHTML('beforeend', `${subtaskHTML(value, form, done, id)}`);
+        document.getElementById(`edit-add-subtask${specialTarget}`).value = '';
+    }
+}
+
+
+/**
+ * Generates HTML for Subtasks at Edit-View
+ * @param {string} value - goal of the subtask
+ * @param {string} form - could be form or div, it's used to prevent bugs that could be triggered by form-form
+ * @param {boolean} done true if the subtask is finished, otherwise false
+ * @param {string} id - a randomized id, that is related to this subtask
+ * @returns 
+ */
+function subtaskHTML(value, form, done, id) {
+    return `
     <div id="edit-subtask-total-${id}" class="li-wrapper ${done}" ondblclick="openSubtaskInput('${id}');stopPropagation(event);">
         <ul id="edit-subtasks-unsorted-${id}" class="edit-subtasks-list"">
             <li>
@@ -122,9 +110,7 @@ function addNewSubtask(value, target = 'edit-subtask-item-wrapper', form = 'form
         <div class="vertical-line"></div>
         <img class="link-btn accept-btn" src="./assets/img/icons/check_blue.svg" alt="" onclick="updateSubtaskInput('${id}')">
     </${form}}>
-    `);
-    document.getElementById(`edit-add-subtask${specialTarget}`).value = '';
-    }
+    `;
 }
 
 
@@ -140,21 +126,7 @@ async function listAttachedSubtasks(data, taskId) {
     if (Array.isArray(data.subtasks)) {
         targetLocation.innerHTML = '';
         for (let i = 0; i < data.subtasks.length; i++) {
-            targetLocation.insertAdjacentHTML('beforeend', `
-            <div class="details__subtask">
-                <input type="checkbox" 
-                onchange="updateSingleSubtask(
-                    'tasks/${taskId}/subtasks/${i}/done', 
-                    'details-task${taskId}-subtask-${i}', 
-                    '${taskId}'
-                )"
-                class="edit checkbox subtask-checkbox" 
-                id="details-task${taskId}-subtask-${i}" 
-                name="details-task${taskId}-subtask-${i}" 
-                ${data.subtasks[i].done ? 'checked' : ''}>
-                <label id="label-for-details-task${taskId}-subtask-${i}" for="details-task${taskId}-subtask-${i}">${data.subtasks[i].goal}</label>
-            </div>
-            `);
+            targetLocation.insertAdjacentHTML('beforeend', `${attachedSubtasksHTML(taskId, i, data)}`);
         }
     } else {
         noSubtasksAttached();
@@ -162,7 +134,33 @@ async function listAttachedSubtasks(data, taskId) {
     }
 }
 
+
+/**
+ * generates HTML for every subtask in detail-view to allow check/uncheck done state
+ * @param {string} taskId id of the currently task
+ * @param {number} i - index of the current subtask
+ * @param {*} data - all information that is related to the task
+ * @returns 
+ */
+function attachedSubtasksHTML(taskId, i, data) {
+    return `<div class="details__subtask">
+        <input type="checkbox" 
+        onchange="updateSingleSubtask(
+            'tasks/${taskId}/subtasks/${i}/done', 
+            'details-task${taskId}-subtask-${i}', 
+            '${taskId}'
+        )"
+        class="edit checkbox subtask-checkbox" 
+        id="details-task${taskId}-subtask-${i}" 
+        name="details-task${taskId}-subtask-${i}" 
+        ${data.subtasks[i].done ? 'checked' : ''}>
+        <label id="label-for-details-task${taskId}-subtask-${i}" for="details-task${taskId}-subtask-${i}">${data.subtasks[i].goal}</label>
+    </div>`;
+}
+
+/**
+ * When no Subtask is attached, add this msg to subtask-list.
+ */
 function noSubtasksAttached() {
-    const targetLocation = document.getElementById('details-subtasks-list');
-    targetLocation.innerHTML = "This Task has no Subtasks.";
+    document.getElementById('details-subtasks-list').innerHTML = "This Task has no Subtasks.";
 }
