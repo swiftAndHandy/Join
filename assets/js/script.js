@@ -176,7 +176,7 @@ async function postData(data = {}, path = "") {
  * If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
  * @param {string} path 
  */
-async function readData(path) {
+async function readData(path = "") {
     try {
         const response = await fetch(BASE_URL + path + '.json');
         return await response.json();   

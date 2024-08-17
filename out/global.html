@@ -411,6 +411,189 @@ CAVE: I try to enable user accounts also. in this case it needs to be set up to 
     
 
     
+    <h4 class="name" id="addAvatarCircle"><span class="type-signature">(async) </span>addAvatarCircle<span class="signature">(id, target, maxAvatar)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Adds an individual user Avatar, or if there are to many user-avatars generate/increase overflow-avatar
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">string with the location and id of the current contact</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>target</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">location, where the Avatars get rendered</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>maxAvatar</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Element, that displays overflow of users or null if no overflow is given</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line127">line 127</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="addEntertoSubTasks"><span class="type-signature"></span>addEntertoSubTasks<span class="signature">(id)</span><span class="type-signature"></span></h4>
     
 
@@ -651,7 +834,7 @@ Applys a random ID to this item. Submits only, if value isn't empty after trim s
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line99">line 99</a>
+        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line72">line 72</a>
     </li></ul></dd>
     
 
@@ -776,6 +959,166 @@ When clicked, invokes the handleButtonClickOnWidth function.
     
 
     
+    <h4 class="name" id="addUserAvatar"><span class="type-signature">(async) </span>addUserAvatar<span class="signature">(pathToUser, target)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates new Avatars or counts up the overflow-avatar, after creating it.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pathToUser</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">path to user-information on server</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>target</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Element where the Avatar should become placed</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_add_task_Html.js.html">assets/js/add_task_Html.js</a>, <a href="assets_js_add_task_Html.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="addnewTask"><span class="type-signature">(async) </span>addnewTask<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
     
 
@@ -829,7 +1172,7 @@ Collects task data from form inputs and sends it via POST request to the backend
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line215">line 215</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line218">line 218</a>
     </li></ul></dd>
     
 
@@ -988,7 +1331,7 @@ Collects task data from form inputs and sends it via POST request to the backend
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line276">line 276</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line279">line 279</a>
     </li></ul></dd>
     
 
@@ -1125,7 +1468,7 @@ Collects task data from form inputs and sends it via POST request to the backend
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line265">line 265</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line268">line 268</a>
     </li></ul></dd>
     
 
@@ -1719,7 +2062,7 @@ e. g.: use this when you add a new contact, that hasn't a own user-account
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line75">line 75</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line77">line 77</a>
     </li></ul></dd>
     
 
@@ -1856,7 +2199,7 @@ e. g.: use this when you add a new contact, that hasn't a own user-account
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line74">line 74</a>
+        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line47">line 47</a>
     </li></ul></dd>
     
 
@@ -2073,6 +2416,211 @@ e. g.: use this when you add a new contact, that hasn't a own user-account
     
 
     
+    <h4 class="name" id="attachedSubtasksHTML"><span class="type-signature"></span>attachedSubtasksHTML<span class="signature">(taskId, i, data)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    generates HTML for every subtask in detail-view to allow check/uncheck done state
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">id of the currently task</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>i</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">index of the current subtask</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">all information that is related to the task</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line145">line 145</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - rendered HTML-Code
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="autofillLogin"><span class="type-signature">(async) </span>autofillLogin<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
@@ -2126,7 +2674,7 @@ the login form is filled with the correct user-data and auto submitted.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line345">line 345</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line346">line 346</a>
     </li></ul></dd>
     
 
@@ -2630,7 +3178,7 @@ the object could be d-noned by rendering and need to be displayed after adding a
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line410">line 410</a>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line408">line 408</a>
     </li></ul></dd>
     
 
@@ -3107,7 +3655,95 @@ adds it to the newly selected contact, and updates the global
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line397">line 397</a>
+        <a href="assets_js_board_addtask_listener_validation.js.html">assets/js/board_addtask_listener_validation.js</a>, <a href="assets_js_board_addtask_listener_validation.js.html#line73">line 73</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="checkIfEmailIsValid"><span class="type-signature"></span>checkIfEmailIsValid<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Validates the email input when its true you can pass on.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line357">line 357</a>
     </li></ul></dd>
     
 
@@ -3248,7 +3884,7 @@ custom validation is performed, and category field is checked.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line240">line 240</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line243">line 243</a>
     </li></ul></dd>
     
 
@@ -3385,7 +4021,7 @@ custom validation is performed, and category field is checked.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line143">line 143</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line145">line 145</a>
     </li></ul></dd>
     
 
@@ -3473,7 +4109,7 @@ custom validation is performed, and category field is checked.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line178">line 178</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line180">line 180</a>
     </li></ul></dd>
     
 
@@ -3561,7 +4197,7 @@ custom validation is performed, and category field is checked.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line159">line 159</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line161">line 161</a>
     </li></ul></dd>
     
 
@@ -3699,7 +4335,7 @@ with a timeout to ensure the site is not reloaded.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line111">line 111</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line113">line 113</a>
     </li></ul></dd>
     
 
@@ -3875,7 +4511,7 @@ with a timeout to ensure the site is not reloaded.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line420">line 420</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line400">line 400</a>
     </li></ul></dd>
     
 
@@ -3963,7 +4599,7 @@ with a timeout to ensure the site is not reloaded.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line428">line 428</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line408">line 408</a>
     </li></ul></dd>
     
 
@@ -4491,7 +5127,7 @@ with a timeout to ensure the site is not reloaded.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line37">line 37</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line38">line 38</a>
     </li></ul></dd>
     
 
@@ -4581,7 +5217,7 @@ does another password compare, to reset missmatch-msg.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line318">line 318</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line319">line 319</a>
     </li></ul></dd>
     
 
@@ -5036,7 +5672,7 @@ comparsion starts, when the validation field gets a value
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line201">line 201</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line204">line 204</a>
     </li></ul></dd>
     
 
@@ -6415,6 +7051,189 @@ If the email already exists, the function returns false.
     
 
     
+    <h4 class="name" id="deleteExistingAvatar"><span class="type-signature">(async) </span>deleteExistingAvatar<span class="signature">(individualAvatar, maxAvatar, assignedToEdit)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Removes an existing Avatar when deselected, and - if there is an overflow
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>individualAvatar</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Element that represents an Existing User-Avatar</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>maxAvatar</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Element that represents assigned-overflow-information</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>assignedToEdit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">DIV, that contains all assigned Avatars</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line147">line 147</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="deleteSubtask"><span class="type-signature"></span>deleteSubtask<span class="signature">(subtaskId)</span><span class="type-signature"></span></h4>
     
 
@@ -6654,7 +7473,7 @@ Resets the style changes that are applyed when opening a taskDetail-View
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line151">line 151</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line214">line 214</a>
     </li></ul></dd>
     
 
@@ -7814,7 +8633,7 @@ Also sets up an event listener to re-check the condition on window resize.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line303">line 303</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line304">line 304</a>
     </li></ul></dd>
     
 
@@ -8326,7 +9145,7 @@ avatar should be created for the user that's found. When 11 Accounts are have an
     
 
     
-    <h4 class="name" id="generateCircleProfilesLine"><span class="type-signature">(async) </span>generateCircleProfilesLine<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="generateCircleProfilesLine"><span class="type-signature">(async) </span>generateCircleProfilesLine<span class="signature">(path)</span><span class="type-signature"></span></h4>
     
 
     
@@ -8334,9 +9153,9 @@ avatar should be created for the user that's found. When 11 Accounts are have an
 
 
 <div class="description">
-    Generates profile pictures with the right initials for the contact box.
-Fetches user data and creates profile circles with initials for each assigned contact.
-If there are more than 10 contacts, the function will add a circle with "..." to indicate more contacts.
+    generates avatar-circles, when a user is added trough contacts-assignment.
+removes avatar-circles, when a user is removed and this user is not in overflow.
+if overflow exists, count it.
 </div>
 
 
@@ -8345,6 +9164,55 @@ If there are more than 10 contacts, the function will add a circle with "..." to
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">a path that leads to the user-information on firebase</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -10230,7 +11098,7 @@ if element.done is true, also doneSubtasks increase.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line388">line 388</a>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line386">line 386</a>
     </li></ul></dd>
     
 
@@ -10653,7 +11521,7 @@ Otherwise, performs another action to open the add task interface.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line41">line 41</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line42">line 42</a>
     </li></ul></dd>
     
 
@@ -11084,7 +11952,7 @@ contact details if necessary.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line370">line 370</a>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line368">line 368</a>
     </li></ul></dd>
     
 
@@ -11527,7 +12395,7 @@ setting up listeners for adding tasks, and enabling Enter key functionality for 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line16">line 16</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -11883,7 +12751,7 @@ This method is used to prevent regular link-style
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line9">line 9</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -13246,7 +14114,7 @@ a unique ID for every checkbox/label-pair.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line137">line 137</a>
+        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line123">line 123</a>
     </li></ul></dd>
     
 
@@ -13754,6 +14622,94 @@ call this in a button, for example.
     
 
     
+    <h4 class="name" id="noSubtasksAttached"><span class="type-signature"></span>noSubtasksAttached<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    When no Subtask is attached, add this msg to subtask-list.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line164">line 164</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="onStartSelectMediumPrio"><span class="type-signature"></span>onStartSelectMediumPrio<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
@@ -13806,7 +14762,7 @@ call this in a button, for example.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line31">line 31</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line32">line 32</a>
     </li></ul></dd>
     
 
@@ -14620,7 +15576,7 @@ Initiates renderOpenSubtasks to display an up-to-date-list
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line129">line 129</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line192">line 192</a>
     </li></ul></dd>
     
 
@@ -14845,7 +15801,7 @@ Initiates renderOpenSubtasks to display an up-to-date-list
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line336">line 336</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line337">line 337</a>
     </li></ul></dd>
     
 
@@ -15120,7 +16076,7 @@ activates assigned contacts in contact-list and renders the edit-view also.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line19">line 19</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -15833,7 +16789,7 @@ if a value is given, and it's the same than the regular-password, return true.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line63">line 63</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line65">line 65</a>
     </li></ul></dd>
     
 
@@ -16888,6 +17844,163 @@ If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognit
     
 
     
+    <h4 class="name" id="reduceOverflow"><span class="type-signature"></span>reduceOverflow<span class="signature">(maxAvatar, id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>maxAvatar</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Element that represents assigned-overflow-information</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">an ID for the user, that also leeds to the users information on firebase.
+Reduces the Amount of overflow that is shown in maxAvatar</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line166">line 166</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="regularMenuPoint"><span class="type-signature"></span>regularMenuPoint<span class="signature">(currentPoint)</span><span class="type-signature"></span></h4>
     
 
@@ -17177,6 +18290,414 @@ The item itself needs to be deleted in each case.
     
 
     
+    <h4 class="name" id="removeExistingUserAvatar"><span class="type-signature">(async) </span>removeExistingUserAvatar<span class="signature">(pathToUser, target)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Remove existing Avatars
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pathToUser</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">path to user-information on server</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>target</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Element where the Avatar should become placed</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_add_task_Html.js.html">assets/js/add_task_Html.js</a>, <a href="assets_js_add_task_Html.js.html#line85">line 85</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="removeOverflowUser"><span class="type-signature"></span>removeOverflowUser<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Reduces or deletes overflow
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_add_task_Html.js.html">assets/js/add_task_Html.js</a>, <a href="assets_js_add_task_Html.js.html#line103">line 103</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="removeUserAvatar"><span class="type-signature"></span>removeUserAvatar<span class="signature">(pathToUser, target)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Triggers the remove existing Avatars or the count down the overflow-avatar, after creating it.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pathToUser</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">path to user-information on server</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>target</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Element where the Avatar should become placed</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_add_task_Html.js.html">assets/js/add_task_Html.js</a>, <a href="assets_js_add_task_Html.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="removeValidation"><span class="type-signature"></span>removeValidation<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
@@ -17318,7 +18839,7 @@ the contact list in the drop-box.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line331">line 331</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line334">line 334</a>
     </li></ul></dd>
     
 
@@ -17799,7 +19320,7 @@ Iterates trough this filtered openSubtasks-Array and let do addNewSubtask() the 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line88">line 88</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line90">line 90</a>
     </li></ul></dd>
     
 
@@ -18163,7 +19684,7 @@ priority indicator, and visibility of bottom task card based on provided data.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line65">line 65</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line66">line 66</a>
     </li></ul></dd>
     
 
@@ -18252,7 +19773,7 @@ I used variables for better readablity, even if this results in more than 14 LOC
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line40">line 40</a>
+        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -18731,7 +20252,7 @@ you edit a card without priority after opening another card, that has a priority
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line53">line 53</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line54">line 54</a>
     </li></ul></dd>
     
 
@@ -18767,7 +20288,7 @@ you edit a card without priority after opening another card, that has a priority
     
 
     
-    <h4 class="name" id="rotateTaskDragEnd"><span class="type-signature"></span>rotateTaskDragEnd<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="rotateTask"><span class="type-signature"></span>rotateTask<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -18775,7 +20296,7 @@ you edit a card without priority after opening another card, that has a priority
 
 
 <div class="description">
-    Removes a rotation-effect on the currently dragged task-card
+    Applies/removes a rotation-effect on the currently dragged task-card
 </div>
 
 
@@ -18819,95 +20340,7 @@ you edit a card without priority after opening another card, that has a priority
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line436">line 436</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="rotateTaskDragStart"><span class="type-signature"></span>rotateTaskDragStart<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Applies a rotation-effect on the currently dragged task-card
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line426">line 426</a>
+        <a href="assets_js_board.js.html">assets/js/board.js</a>, <a href="assets_js_board.js.html#line424">line 424</a>
     </li></ul></dd>
     
 
@@ -19364,7 +20797,7 @@ based on whether their text content matches the search term.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line352">line 352</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line355">line 355</a>
     </li></ul></dd>
     
 
@@ -19640,7 +21073,7 @@ Closes the category drop-down box after selection.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line387">line 387</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line390">line 390</a>
     </li></ul></dd>
     
 
@@ -20025,7 +21458,7 @@ Closes the category drop-down box after selection.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line140">line 140</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line203">line 203</a>
     </li></ul></dd>
     
 
@@ -20815,7 +22248,7 @@ Clears previous selections and applies the selected priority and its correspondi
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line289">line 289</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line292">line 292</a>
     </li></ul></dd>
     
 
@@ -22068,7 +23501,7 @@ The modal appears, stays for 1.5s, then closes and resets.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line311">line 311</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line314">line 314</a>
     </li></ul></dd>
     
 
@@ -22338,7 +23771,7 @@ The modal appears, stays for 1.5s, then closes and resets.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line274">line 274</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line275">line 275</a>
     </li></ul></dd>
     
 
@@ -23108,7 +24541,7 @@ Enter is not allowed when neither isSubtaskInputFocused nor textAreaSelected are
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line128">line 128</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line130">line 130</a>
     </li></ul></dd>
     
 
@@ -23224,6 +24657,234 @@ Otherwise warn, that user-account is allready existing.
 
 
 
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="subtaskHTML"><span class="type-signature"></span>subtaskHTML<span class="signature">(value, form, done, id)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Generates HTML for Subtasks at Edit-View
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">goal of the subtask</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>form</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">could be form or div, it's used to prevent bugs that could be triggered by form-form</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>done</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">true if the subtask is finished, otherwise false</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">a randomized id, that is related to this subtask</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="assets_js_generate_taskDetailsHtml.js.html">assets/js/generate_taskDetailsHtml.js</a>, <a href="assets_js_generate_taskDetailsHtml.js.html#line91">line 91</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - rendered HTML-Code
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -23359,7 +25020,7 @@ Otherwise warn, that user-account is allready existing.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line289">line 289</a>
+        <a href="assets_js_account.js.html">assets/js/account.js</a>, <a href="assets_js_account.js.html#line290">line 290</a>
     </li></ul></dd>
     
 
@@ -23646,7 +25307,7 @@ This ensures that the Enter key is not blocked when typing in this textarea.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line364">line 364</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line367">line 367</a>
     </li></ul></dd>
     
 
@@ -23803,7 +25464,7 @@ This ensures that the Enter key is not blocked when typing in this textarea.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line88">line 88</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line90">line 90</a>
     </li></ul></dd>
     
 
@@ -24396,7 +26057,7 @@ For the moment, since it's not used trough the whole project, i'll filter and re
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line119">line 119</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line182">line 182</a>
     </li></ul></dd>
     
 
@@ -24558,7 +26219,7 @@ For the moment, since it's not used trough the whole project, i'll filter and re
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line75">line 75</a>
+        <a href="assets_js_add_task.js.html">assets/js/add_task.js</a>, <a href="assets_js_add_task.js.html#line77">line 77</a>
     </li></ul></dd>
     
 
@@ -24697,7 +26358,7 @@ Otherwise delete the Index that is used by the id and remove the Avatar-Icon.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line101">line 101</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line103">line 103</a>
     </li></ul></dd>
     
 
@@ -25243,7 +26904,7 @@ Counts up every type is used in summary and updates the numbers.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line167">line 167</a>
+        <a href="assets_js_task_details.js.html">assets/js/task_details.js</a>, <a href="assets_js_task_details.js.html#line230">line 230</a>
     </li></ul></dd>
     
 
@@ -25769,13 +27430,13 @@ Otherwise the message must become hidden.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#activateAssignedContacts">activateAssignedContacts</a></li><li><a href="global.html#addEntertoSubTasks">addEntertoSubTasks</a></li><li><a href="global.html#addNewSubtask">addNewSubtask</a></li><li><a href="global.html#addOpenAddTaskToButtons">addOpenAddTaskToButtons</a></li><li><a href="global.html#addnewTask">addnewTask</a></li><li><a href="global.html#allFilledFalse">allFilledFalse</a></li><li><a href="global.html#allFilledTrue">allFilledTrue</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#applyGreyScreen">applyGreyScreen</a></li><li><a href="global.html#applyRandomColor">applyRandomColor</a></li><li><a href="global.html#applyTaskStyles">applyTaskStyles</a></li><li><a href="global.html#assignedPersonsDetailsHtml">assignedPersonsDetailsHtml</a></li><li><a href="global.html#assignedPersonsEditHtml">assignedPersonsEditHtml</a></li><li><a href="global.html#autofillLogin">autofillLogin</a></li><li><a href="global.html#avatarHtml">avatarHtml</a></li><li><a href="global.html#blurListener">blurListener</a></li><li><a href="global.html#blurListenerDialog">blurListenerDialog</a></li><li><a href="global.html#calculateSubtaskProgressOf">calculateSubtaskProgressOf</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#catgeoryClickOutsideclose">catgeoryClickOutsideclose</a></li><li><a href="global.html#changeContactItemColor">changeContactItemColor</a></li><li><a href="global.html#checkCategoryfield">checkCategoryfield</a></li><li><a href="global.html#checkIfFormFilled">checkIfFormFilled</a></li><li><a href="global.html#clearForm">clearForm</a></li><li><a href="global.html#clearFormContactStyle">clearFormContactStyle</a></li><li><a href="global.html#clearFormPrio">clearFormPrio</a></li><li><a href="global.html#clearInputs">clearInputs</a></li><li><a href="global.html#clearLocalstorage">clearLocalstorage</a></li><li><a href="global.html#clearSubtasksContainer">clearSubtasksContainer</a></li><li><a href="global.html#clearSubtasksContainerDialog">clearSubtasksContainerDialog</a></li><li><a href="global.html#closeAddContactPage">closeAddContactPage</a></li><li><a href="global.html#closeAddTaskPopUp">closeAddTaskPopUp</a></li><li><a href="global.html#closeContactModal">closeContactModal</a></li><li><a href="global.html#closeContactOptions">closeContactOptions</a></li><li><a href="global.html#closeContactWindow">closeContactWindow</a></li><li><a href="global.html#closeDetails">closeDetails</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#contactDetailsHTML">contactDetailsHTML</a></li><li><a href="global.html#convertArrayToObject">convertArrayToObject</a></li><li><a href="global.html#createContact">createContact</a></li><li><a href="global.html#createContactLetterHTML">createContactLetterHTML</a></li><li><a href="global.html#createContactListHTML">createContactListHTML</a></li><li><a href="global.html#createSubtasks">createSubtasks</a></li><li><a href="global.html#createTaskObject">createTaskObject</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#deleteData">deleteData</a></li><li><a href="global.html#deleteSubtask">deleteSubtask</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#discardNewSubtask">discardNewSubtask</a></li><li><a href="global.html#discardSubtaskInput">discardSubtaskInput</a></li><li><a href="global.html#dragTo">dragTo</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#emptyBottomOf">emptyBottomOf</a></li><li><a href="global.html#executeOnMaxWidth">executeOnMaxWidth</a></li><li><a href="global.html#executeOnMinWidth">executeOnMinWidth</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#focusListener">focusListener</a></li><li><a href="global.html#focusListenerDialog">focusListenerDialog</a></li><li><a href="global.html#forceLogout">forceLogout</a></li><li><a href="global.html#generateCircleProfiles">generateCircleProfiles</a></li><li><a href="global.html#generateCircleProfilesLine">generateCircleProfilesLine</a></li><li><a href="global.html#generateContactsHtml">generateContactsHtml</a></li><li><a href="global.html#generateDropBoxContacts">generateDropBoxContacts</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#generateTaskCard">generateTaskCard</a></li><li><a href="global.html#generateTaskDetailsHtml">generateTaskDetailsHtml</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getCurrentPriority">getCurrentPriority</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#getDeadline">getDeadline</a></li><li><a href="global.html#getSubtaskProgress">getSubtaskProgress</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#guestLogin">guestLogin</a></li><li><a href="global.html#handleButtonClickOnWidth">handleButtonClickOnWidth</a></li><li><a href="global.html#handleCheckBox">handleCheckBox</a></li><li><a href="global.html#handleEnter">handleEnter</a></li><li><a href="global.html#handleResize">handleResize</a></li><li><a href="global.html#hideContactListForMobile">hideContactListForMobile</a></li><li><a href="global.html#hideFieldsWhenNoSearch">hideFieldsWhenNoSearch</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initBoard">initBoard</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#initTaskDetails">initTaskDetails</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#isNotEmpty">isNotEmpty</a></li><li><a href="global.html#isNotInPast">isNotInPast</a></li><li><a href="global.html#isSubtaskInputFocused">isSubtaskInputFocused</a></li><li><a href="global.html#limitLengthOf">limitLengthOf</a></li><li><a href="global.html#listAttachedSubtasks">listAttachedSubtasks</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#mobileDeleteRules">mobileDeleteRules</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#onStartSelectMediumPrio">onStartSelectMediumPrio</a></li><li><a href="global.html#openAddContactPage">openAddContactPage</a></li><li><a href="global.html#openAddTask">openAddTask</a></li><li><a href="global.html#openContactDetails">openContactDetails</a></li><li><a href="global.html#openContactOptions">openContactOptions</a></li><li><a href="global.html#openCreatedContact">openCreatedContact</a></li><li><a href="global.html#openEditContactPage">openEditContactPage</a></li><li><a href="global.html#openEditDialog">openEditDialog</a></li><li><a href="global.html#openListSearch">openListSearch</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#openSubtaskInput">openSubtaskInput</a></li><li><a href="global.html#openTaskDetails">openTaskDetails</a></li><li><a href="global.html#ownValidation">ownValidation</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#pressedCheckBoxStyle">pressedCheckBoxStyle</a></li><li><a href="global.html#priorityEqualImg">priorityEqualImg</a></li><li><a href="global.html#putContactInfoToEditDialog">putContactInfoToEditDialog</a></li><li><a href="global.html#putContactsToList">putContactsToList</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#putDataset">putDataset</a></li><li><a href="global.html#randomId">randomId</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#removeContactFromInterface">removeContactFromInterface</a></li><li><a href="global.html#removeValidation">removeValidation</a></li><li><a href="global.html#renderContactList">renderContactList</a></li><li><a href="global.html#renderDetailsContactList">renderDetailsContactList</a></li><li><a href="global.html#renderEditView">renderEditView</a></li><li><a href="global.html#renderOpenSubtasks">renderOpenSubtasks</a></li><li><a href="global.html#renderTaskDetails">renderTaskDetails</a></li><li><a href="global.html#renderTasks">renderTasks</a></li><li><a href="global.html#rerenderTaskOnBoard">rerenderTaskOnBoard</a></li><li><a href="global.html#resetAssignedPersons">resetAssignedPersons</a></li><li><a href="global.html#resetDetailCardHtml">resetDetailCardHtml</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPriorityButtons">resetPriorityButtons</a></li><li><a href="global.html#resultsAmountOf">resultsAmountOf</a></li><li><a href="global.html#returnToBoard">returnToBoard</a></li><li><a href="global.html#rotateTaskDragEnd">rotateTaskDragEnd</a></li><li><a href="global.html#rotateTaskDragStart">rotateTaskDragStart</a></li><li><a href="global.html#saveTaskUpdate">saveTaskUpdate</a></li><li><a href="global.html#scrollToLastSubtask">scrollToLastSubtask</a></li><li><a href="global.html#searchAndShowTasks">searchAndShowTasks</a></li><li><a href="global.html#searchContact">searchContact</a></li><li><a href="global.html#selectCategory">selectCategory</a></li><li><a href="global.html#setBottomTaskCardVisibility">setBottomTaskCardVisibility</a></li><li><a href="global.html#setDateMin">setDateMin</a></li><li><a href="global.html#setFocus">setFocus</a></li><li><a href="global.html#setMyAvatar">setMyAvatar</a></li><li><a href="global.html#setOpenUrgents">setOpenUrgents</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPrefixToKey">setPrefixToKey</a></li><li><a href="global.html#setPrio">setPrio</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#setupAvatarMenu">setupAvatarMenu</a></li><li><a href="global.html#setupListener">setupListener</a></li><li><a href="global.html#setupListenerForAddTasks">setupListenerForAddTasks</a></li><li><a href="global.html#setupListenerForAddTasksDialog">setupListenerForAddTasksDialog</a></li><li><a href="global.html#showCapitaliseFirstLetters">showCapitaliseFirstLetters</a></li><li><a href="global.html#showCreatedContactModal">showCreatedContactModal</a></li><li><a href="global.html#showDragArea">showDragArea</a></li><li><a href="global.html#showFieldsWhenSearch">showFieldsWhenSearch</a></li><li><a href="global.html#showOverlayMenu">showOverlayMenu</a></li><li><a href="global.html#showPopupTaskAdded">showPopupTaskAdded</a></li><li><a href="global.html#showSearchErrors">showSearchErrors</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#sortByAlphabet">sortByAlphabet</a></li><li><a href="global.html#startDrag">startDrag</a></li><li><a href="global.html#startScreenAnimation">startScreenAnimation</a></li><li><a href="global.html#stopEnterForm">stopEnterForm</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#stopStandardValidationMessage">stopStandardValidationMessage</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#switchToAddTask">switchToAddTask</a></li><li><a href="global.html#textAreaSelected">textAreaSelected</a></li><li><a href="global.html#toggleCategoryDropBox">toggleCategoryDropBox</a></li><li><a href="global.html#toggleContactDropBox">toggleContactDropBox</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#toggleThisContact">toggleThisContact</a></li><li><a href="global.html#toggleVisibility">toggleVisibility</a></li><li><a href="global.html#unPressedCheckBoxStyle">unPressedCheckBoxStyle</a></li><li><a href="global.html#updateAssignedPersons">updateAssignedPersons</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateBoardCounters">updateBoardCounters</a></li><li><a href="global.html#updateMenu">updateMenu</a></li><li><a href="global.html#updateSingleSubtask">updateSingleSubtask</a></li><li><a href="global.html#updateSubtaskInput">updateSubtaskInput</a></li><li><a href="global.html#updateSubtasksArray">updateSubtasksArray</a></li><li><a href="global.html#updateTaskFields">updateTaskFields</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#accountExists">accountExists</a></li><li><a href="global.html#activateAssignedContacts">activateAssignedContacts</a></li><li><a href="global.html#addAvatarCircle">addAvatarCircle</a></li><li><a href="global.html#addEntertoSubTasks">addEntertoSubTasks</a></li><li><a href="global.html#addNewSubtask">addNewSubtask</a></li><li><a href="global.html#addOpenAddTaskToButtons">addOpenAddTaskToButtons</a></li><li><a href="global.html#addUserAvatar">addUserAvatar</a></li><li><a href="global.html#addnewTask">addnewTask</a></li><li><a href="global.html#allFilledFalse">allFilledFalse</a></li><li><a href="global.html#allFilledTrue">allFilledTrue</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#animateGreeting">animateGreeting</a></li><li><a href="global.html#applyGreyScreen">applyGreyScreen</a></li><li><a href="global.html#applyRandomColor">applyRandomColor</a></li><li><a href="global.html#applyTaskStyles">applyTaskStyles</a></li><li><a href="global.html#assignedPersonsDetailsHtml">assignedPersonsDetailsHtml</a></li><li><a href="global.html#assignedPersonsEditHtml">assignedPersonsEditHtml</a></li><li><a href="global.html#attachedSubtasksHTML">attachedSubtasksHTML</a></li><li><a href="global.html#autofillLogin">autofillLogin</a></li><li><a href="global.html#avatarHtml">avatarHtml</a></li><li><a href="global.html#blurListener">blurListener</a></li><li><a href="global.html#blurListenerDialog">blurListenerDialog</a></li><li><a href="global.html#calculateSubtaskProgressOf">calculateSubtaskProgressOf</a></li><li><a href="global.html#capitaliseFirstLetters">capitaliseFirstLetters</a></li><li><a href="global.html#catgeoryClickOutsideclose">catgeoryClickOutsideclose</a></li><li><a href="global.html#changeContactItemColor">changeContactItemColor</a></li><li><a href="global.html#checkCategoryfield">checkCategoryfield</a></li><li><a href="global.html#checkIfEmailIsValid">checkIfEmailIsValid</a></li><li><a href="global.html#checkIfFormFilled">checkIfFormFilled</a></li><li><a href="global.html#clearForm">clearForm</a></li><li><a href="global.html#clearFormContactStyle">clearFormContactStyle</a></li><li><a href="global.html#clearFormPrio">clearFormPrio</a></li><li><a href="global.html#clearInputs">clearInputs</a></li><li><a href="global.html#clearLocalstorage">clearLocalstorage</a></li><li><a href="global.html#clearSubtasksContainer">clearSubtasksContainer</a></li><li><a href="global.html#clearSubtasksContainerDialog">clearSubtasksContainerDialog</a></li><li><a href="global.html#closeAddContactPage">closeAddContactPage</a></li><li><a href="global.html#closeAddTaskPopUp">closeAddTaskPopUp</a></li><li><a href="global.html#closeContactModal">closeContactModal</a></li><li><a href="global.html#closeContactOptions">closeContactOptions</a></li><li><a href="global.html#closeContactWindow">closeContactWindow</a></li><li><a href="global.html#closeDetails">closeDetails</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#compareRegistrationPasswords">compareRegistrationPasswords</a></li><li><a href="global.html#contactDetailsHTML">contactDetailsHTML</a></li><li><a href="global.html#convertArrayToObject">convertArrayToObject</a></li><li><a href="global.html#createContact">createContact</a></li><li><a href="global.html#createContactLetterHTML">createContactLetterHTML</a></li><li><a href="global.html#createContactListHTML">createContactListHTML</a></li><li><a href="global.html#createSubtasks">createSubtasks</a></li><li><a href="global.html#createTaskObject">createTaskObject</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#deleteData">deleteData</a></li><li><a href="global.html#deleteExistingAvatar">deleteExistingAvatar</a></li><li><a href="global.html#deleteSubtask">deleteSubtask</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#discardNewSubtask">discardNewSubtask</a></li><li><a href="global.html#discardSubtaskInput">discardSubtaskInput</a></li><li><a href="global.html#dragTo">dragTo</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#emptyBottomOf">emptyBottomOf</a></li><li><a href="global.html#executeOnMaxWidth">executeOnMaxWidth</a></li><li><a href="global.html#executeOnMinWidth">executeOnMinWidth</a></li><li><a href="global.html#failureAnimation">failureAnimation</a></li><li><a href="global.html#focusListener">focusListener</a></li><li><a href="global.html#focusListenerDialog">focusListenerDialog</a></li><li><a href="global.html#forceLogout">forceLogout</a></li><li><a href="global.html#generateCircleProfiles">generateCircleProfiles</a></li><li><a href="global.html#generateCircleProfilesLine">generateCircleProfilesLine</a></li><li><a href="global.html#generateContactsHtml">generateContactsHtml</a></li><li><a href="global.html#generateDropBoxContacts">generateDropBoxContacts</a></li><li><a href="global.html#generateGreetingHtml">generateGreetingHtml</a></li><li><a href="global.html#generateTaskCard">generateTaskCard</a></li><li><a href="global.html#generateTaskDetailsHtml">generateTaskDetailsHtml</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getCurrentFileName">getCurrentFileName</a></li><li><a href="global.html#getCurrentPriority">getCurrentPriority</a></li><li><a href="global.html#getDaytime">getDaytime</a></li><li><a href="global.html#getDeadline">getDeadline</a></li><li><a href="global.html#getSubtaskProgress">getSubtaskProgress</a></li><li><a href="global.html#greetAtLogin">greetAtLogin</a></li><li><a href="global.html#guestLogin">guestLogin</a></li><li><a href="global.html#handleButtonClickOnWidth">handleButtonClickOnWidth</a></li><li><a href="global.html#handleCheckBox">handleCheckBox</a></li><li><a href="global.html#handleEnter">handleEnter</a></li><li><a href="global.html#handleResize">handleResize</a></li><li><a href="global.html#hideContactListForMobile">hideContactListForMobile</a></li><li><a href="global.html#hideFieldsWhenNoSearch">hideFieldsWhenNoSearch</a></li><li><a href="global.html#hideMenu">hideMenu</a></li><li><a href="global.html#hideWindow">hideWindow</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initBoard">initBoard</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#initTaskDetails">initTaskDetails</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#isAfternoon">isAfternoon</a></li><li><a href="global.html#isEvening">isEvening</a></li><li><a href="global.html#isMorning">isMorning</a></li><li><a href="global.html#isNotEmpty">isNotEmpty</a></li><li><a href="global.html#isNotInPast">isNotInPast</a></li><li><a href="global.html#isSubtaskInputFocused">isSubtaskInputFocused</a></li><li><a href="global.html#limitLengthOf">limitLengthOf</a></li><li><a href="global.html#listAttachedSubtasks">listAttachedSubtasks</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#mobileDeleteRules">mobileDeleteRules</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#noSubtasksAttached">noSubtasksAttached</a></li><li><a href="global.html#onStartSelectMediumPrio">onStartSelectMediumPrio</a></li><li><a href="global.html#openAddContactPage">openAddContactPage</a></li><li><a href="global.html#openAddTask">openAddTask</a></li><li><a href="global.html#openContactDetails">openContactDetails</a></li><li><a href="global.html#openContactOptions">openContactOptions</a></li><li><a href="global.html#openCreatedContact">openCreatedContact</a></li><li><a href="global.html#openEditContactPage">openEditContactPage</a></li><li><a href="global.html#openEditDialog">openEditDialog</a></li><li><a href="global.html#openListSearch">openListSearch</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#openSubtaskInput">openSubtaskInput</a></li><li><a href="global.html#openTaskDetails">openTaskDetails</a></li><li><a href="global.html#ownValidation">ownValidation</a></li><li><a href="global.html#passwordInputIcon">passwordInputIcon</a></li><li><a href="global.html#passwordInputMissmatch">passwordInputMissmatch</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#pressedCheckBoxStyle">pressedCheckBoxStyle</a></li><li><a href="global.html#priorityEqualImg">priorityEqualImg</a></li><li><a href="global.html#putContactInfoToEditDialog">putContactInfoToEditDialog</a></li><li><a href="global.html#putContactsToList">putContactsToList</a></li><li><a href="global.html#putData">putData</a></li><li><a href="global.html#putDataset">putDataset</a></li><li><a href="global.html#randomId">randomId</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#reduceOverflow">reduceOverflow</a></li><li><a href="global.html#regularMenuPoint">regularMenuPoint</a></li><li><a href="global.html#removeContactFromInterface">removeContactFromInterface</a></li><li><a href="global.html#removeExistingUserAvatar">removeExistingUserAvatar</a></li><li><a href="global.html#removeOverflowUser">removeOverflowUser</a></li><li><a href="global.html#removeUserAvatar">removeUserAvatar</a></li><li><a href="global.html#removeValidation">removeValidation</a></li><li><a href="global.html#renderContactList">renderContactList</a></li><li><a href="global.html#renderDetailsContactList">renderDetailsContactList</a></li><li><a href="global.html#renderEditView">renderEditView</a></li><li><a href="global.html#renderOpenSubtasks">renderOpenSubtasks</a></li><li><a href="global.html#renderTaskDetails">renderTaskDetails</a></li><li><a href="global.html#renderTasks">renderTasks</a></li><li><a href="global.html#rerenderTaskOnBoard">rerenderTaskOnBoard</a></li><li><a href="global.html#resetAssignedPersons">resetAssignedPersons</a></li><li><a href="global.html#resetDetailCardHtml">resetDetailCardHtml</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPriorityButtons">resetPriorityButtons</a></li><li><a href="global.html#resultsAmountOf">resultsAmountOf</a></li><li><a href="global.html#returnToBoard">returnToBoard</a></li><li><a href="global.html#rotateTask">rotateTask</a></li><li><a href="global.html#saveTaskUpdate">saveTaskUpdate</a></li><li><a href="global.html#scrollToLastSubtask">scrollToLastSubtask</a></li><li><a href="global.html#searchAndShowTasks">searchAndShowTasks</a></li><li><a href="global.html#searchContact">searchContact</a></li><li><a href="global.html#selectCategory">selectCategory</a></li><li><a href="global.html#setBottomTaskCardVisibility">setBottomTaskCardVisibility</a></li><li><a href="global.html#setDateMin">setDateMin</a></li><li><a href="global.html#setFocus">setFocus</a></li><li><a href="global.html#setMyAvatar">setMyAvatar</a></li><li><a href="global.html#setOpenUrgents">setOpenUrgents</a></li><li><a href="global.html#setPasswordCreateDesign">setPasswordCreateDesign</a></li><li><a href="global.html#setPasswordDesign">setPasswordDesign</a></li><li><a href="global.html#setPasswordValidationDesign">setPasswordValidationDesign</a></li><li><a href="global.html#setPrefixToKey">setPrefixToKey</a></li><li><a href="global.html#setPrio">setPrio</a></li><li><a href="global.html#setPriorityTo">setPriorityTo</a></li><li><a href="global.html#setupAvatarMenu">setupAvatarMenu</a></li><li><a href="global.html#setupListener">setupListener</a></li><li><a href="global.html#setupListenerForAddTasks">setupListenerForAddTasks</a></li><li><a href="global.html#setupListenerForAddTasksDialog">setupListenerForAddTasksDialog</a></li><li><a href="global.html#showCapitaliseFirstLetters">showCapitaliseFirstLetters</a></li><li><a href="global.html#showCreatedContactModal">showCreatedContactModal</a></li><li><a href="global.html#showDragArea">showDragArea</a></li><li><a href="global.html#showFieldsWhenSearch">showFieldsWhenSearch</a></li><li><a href="global.html#showOverlayMenu">showOverlayMenu</a></li><li><a href="global.html#showPopupTaskAdded">showPopupTaskAdded</a></li><li><a href="global.html#showSearchErrors">showSearchErrors</a></li><li><a href="global.html#signUpAnimation">signUpAnimation</a></li><li><a href="global.html#sortByAlphabet">sortByAlphabet</a></li><li><a href="global.html#startDrag">startDrag</a></li><li><a href="global.html#startScreenAnimation">startScreenAnimation</a></li><li><a href="global.html#stopEnterForm">stopEnterForm</a></li><li><a href="global.html#stopPropagation">stopPropagation</a></li><li><a href="global.html#stopStandardValidationMessage">stopStandardValidationMessage</a></li><li><a href="global.html#submitSignUp">submitSignUp</a></li><li><a href="global.html#subtaskHTML">subtaskHTML</a></li><li><a href="global.html#successAnimation">successAnimation</a></li><li><a href="global.html#switchToAddTask">switchToAddTask</a></li><li><a href="global.html#textAreaSelected">textAreaSelected</a></li><li><a href="global.html#toggleCategoryDropBox">toggleCategoryDropBox</a></li><li><a href="global.html#toggleContactDropBox">toggleContactDropBox</a></li><li><a href="global.html#togglePasswordDesign">togglePasswordDesign</a></li><li><a href="global.html#togglePrivacy">togglePrivacy</a></li><li><a href="global.html#toggleRemember">toggleRemember</a></li><li><a href="global.html#toggleThisContact">toggleThisContact</a></li><li><a href="global.html#toggleVisibility">toggleVisibility</a></li><li><a href="global.html#unPressedCheckBoxStyle">unPressedCheckBoxStyle</a></li><li><a href="global.html#updateAssignedPersons">updateAssignedPersons</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateBoardCounters">updateBoardCounters</a></li><li><a href="global.html#updateMenu">updateMenu</a></li><li><a href="global.html#updateSingleSubtask">updateSingleSubtask</a></li><li><a href="global.html#updateSubtaskInput">updateSubtaskInput</a></li><li><a href="global.html#updateSubtasksArray">updateSubtasksArray</a></li><li><a href="global.html#updateTaskFields">updateTaskFields</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Sun Jul 14 2024 01:46:10 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Sun Jul 14 2024 14:23:12 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>
