@@ -1,4 +1,4 @@
-const BASE_URL = 'https://join-256-default-rtdb.europe-west1.firebasedatabase.app/';
+const BASE_URL = ''; // ADD YOUR BASE URL when Cloning from GIT
 const userId = localStorage.getItem('id');
 
 /**

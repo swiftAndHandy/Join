@@ -356,7 +356,7 @@ async function autofillLogin() {
  */
 function checkIfEmailIsValid(formId,inputId) {
     const emailInput = document.getElementById(`${inputId}`);
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|de)$/;
+    const emailPattern = "[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}";
     emailInput.addEventListener('keydown', function() {
         setTimeout(() => {
             if (!emailPattern.test(emailInput.value)) {
