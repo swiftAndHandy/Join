@@ -1,4 +1,4 @@
-header {
+.header-desktop {
     width: 100%;
     height: 96px;
     position: fixed;
@@ -7,7 +7,7 @@ header {
     left: 0;
     display: flex;
     box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.1);
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     z-index: 1;
 }
 
@@ -49,13 +49,13 @@ header {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background-image: url('../img/icons/help.svg');
+    background-image: url("../img/icons/help.svg");
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .help-logo:hover {
-    background-image: url('../img/icons/help_hovered.svg');
+    background-image: url("../img/icons/help_hovered.svg");
 }
 
 .headline-profile-name {
@@ -64,9 +64,9 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 3px solid #2A3647;
+    border: 3px solid #2a3647;
     border-radius: 50%;
-    color: #29ABE2;
+    color: #29abe2;
     font-weight: 700;
     cursor: pointer;
     user-select: none;
@@ -74,7 +74,7 @@ header {
 }
 
 .headline-profile-name:hover {
-    background-color: #0C2E621F;
+    background-color: #0c2e621f;
 }
 
 .headline-profile-name:has(.overlay-menu-avatar:hover) {
@@ -118,13 +118,13 @@ header {
 
 .avatar-menu:hover {
     cursor: pointer;
-    background-color: #2A3D59;
+    background-color: #2a3d59;
     background-size: contain;
     transform: scale(1.02, 1.02);
 }
 
 .avatar-link {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-weight: 400;
     font-size: 16px;
     color: rgba(205, 205, 205, 1);
@@ -145,13 +145,13 @@ header {
     height: min(100%, calc(1080px - 250px));
     justify-content: space-between;
     overflow-y: auto;
-    --sb-track-color: #2A3647;
-    --sb-thumb-color: #29ABE2;
+    --sb-track-color: #2a3647;
+    --sb-thumb-color: #29abe2;
     --sb-size: 6px;
 }
 
 .main-menu::-webkit-scrollbar {
-    width: var(--sb-size)
+    width: var(--sb-size);
 }
 
 .main-menu::-webkit-scrollbar-track {
@@ -162,7 +162,6 @@ header {
 .main-menu::-webkit-scrollbar-thumb {
     background: var(--sb-thumb-color);
     border-radius: 3px;
-
 }
 
 @supports not selector(::-webkit-scrollbar) {
@@ -177,7 +176,7 @@ header {
     left: 0;
     width: 232px;
     height: 100vh;
-    background-color: #2A3647;
+    background-color: #2a3647;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -236,7 +235,7 @@ header {
 
 .menu-bar-icons:hover {
     cursor: pointer;
-    background-color: #2A3D59;
+    background-color: #2a3d59;
 }
 
 .menu-bar-icons.active {
@@ -256,17 +255,17 @@ header {
 
 .document-link {
     padding-left: 60px;
-    color: #A8A8A8;
+    color: #a8a8a8;
 }
 
 .document-link:hover {
-    color: #29ABE2;
+    color: #29abe2;
     font-weight: 700;
 }
 
 .document-wrapper.active .document-link:hover {
     cursor: default;
-    color: #A8A8A8;
+    color: #a8a8a8;
     font-weight: 400;
 }
 
@@ -301,7 +300,7 @@ header {
     border-radius: 8px;
     padding-left: 60px;
     padding-right: 60px;
-    background-color: #2A3D59;
+    background-color: #2a3d59;
 }
 
 .menu-bar-legal-notice:hover {
@@ -309,7 +308,7 @@ header {
     border-radius: 8px;
     padding-left: 60px;
     padding-right: 60px;
-    background-color: #2A3D59;
+    background-color: #2a3d59;
 }
 
 .document-link.active {
@@ -317,7 +316,7 @@ header {
 }
 
 .document-link.active:hover {
-    color: #A8A8A8;
+    color: #a8a8a8;
     cursor: default;
 }
 
