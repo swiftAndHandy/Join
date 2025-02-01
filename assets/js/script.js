@@ -1,19 +1,25 @@
-const BASE_URL = ''; // ADD YOUR BASE URL when Cloning from GIT
-const userId = localStorage.getItem('id');
+const BASE_URL = ""; // ADD YOUR BASE URL when Cloning from GIT
+const userId = localStorage.getItem("id");
 
 /**
- * @returns colors - a random element of global const colors. 
+ * @returns colors - a random element of global const colors.
  * e. g.: use this when you add a new contact, that hasn't a own user-account
  */
 function applyRandomColor() {
-    const colors = [
-        '#FF7A00', '#9327FF', '#6E52FF',
-        '#FC71FF', '#FFBB2B', '#1FD7C1',
-        '#462F8A', '#FF4646', '#00BEE8',
-        '#FF7A00'
-    ];
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
+  const colors = [
+    "#FF7A00",
+    "#9327FF",
+    "#6E52FF",
+    "#FC71FF",
+    "#FFBB2B",
+    "#1FD7C1",
+    "#462F8A",
+    "#FF4646",
+    "#00BEE8",
+    "#FF7A00",
+  ];
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
 }
 
 /**
@@ -21,28 +27,29 @@ function applyRandomColor() {
  * @returns {string}
  */
 function randomId() {
-    return Math.random().toString(36).slice(2, 9) + '-' + Date.now();
+  return Math.random().toString(36).slice(2, 9) + "-" + Date.now();
 }
 
 //needs some changes to make this usable in every situation -> date from firebase as param
 function taskDueDate(date) {
-    date = new Date(date);
-    let dateOption = { month: "long", day: "numeric", year: "numeric" };
-    let formattedDate = date.toLocaleDateString("en-US", dateOption);
-    return formattedDate;
-  }
+  date = new Date(date);
+  let dateOption = { month: "long", day: "numeric", year: "numeric" };
+  let formattedDate = date.toLocaleDateString("en-US", dateOption);
+  return formattedDate;
+}
 
 /**
  * Sorts contacts by name alphabetically.
- * 
+ *
  * @param {Object[]} data - The array of contact objects.
  * @returns {Object[]} The sorted array of contacts with an additional key.
  */
 function sortByAlphabet(data) {
-    let entries = Object.entries(data).map(([id, contact]) => ({ 
-        id, ...contact
-    }));
-    return entries.sort((a, b) => a.name.localeCompare(b.name));
+  let entries = Object.entries(data).map(([id, contact]) => ({
+    id,
+    ...contact,
+  }));
+  return entries.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 /**
@@ -53,39 +60,41 @@ function sortByAlphabet(data) {
  * @returns {string} - The formatted string with the first letter capitalized and the rest in lowercase.
  */
 function capitaliseFirstLetters(input) {
-    input = input.split(' ').map(word =>
-        word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
-    return input.split('-').map(word =>
-        word.charAt(0).toUpperCase() + word.slice(1)).join('-');
+  input = input
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+  return input
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join("-");
 }
 
-
 /**
- * Applys d-none or removes d-none from 
+ * Applys d-none or removes d-none from
  * @param {Element} id - the document.elementId that is planed to change
  * @param {boolean} method - hideWindow is true -> hideWindow. hideWindow is false? Show it.
  */
 function hideWindow(id, method = true) {
-    let target = document.getElementById(id);
-    method ? target.classList.add('d-none') : target.classList.remove('d-none');
-    return target;
+  let target = document.getElementById(id);
+  method ? target.classList.add("d-none") : target.classList.remove("d-none");
+  return target;
 }
 
 /**
  * Triggers a localStorage clear and replaces the url to index to logout the user.
  */
 function logout() {
-    clearLocalstorage();
-    window.location.replace('../index.html');
+  clearLocalstorage();
+  window.location.replace("../index.html");
 }
-
 
 /**
  * clear localStorage()
  */
 function clearLocalstorage() {
-    localStorage.removeItem('id');
-    localStorage.removeItem('login');
+  localStorage.removeItem("id");
+  localStorage.removeItem("login");
 }
 
 /**
@@ -94,22 +103,24 @@ function clearLocalstorage() {
  * @returns - every first character of every word in input
  */
 function initials(input) {
-    try {
-    return input.toUpperCase().split(' ').map(word => word.charAt(0)).join('');
-    }
-    catch (error) {
-        return error;
-    }
+  try {
+    return input
+      .toUpperCase()
+      .split(" ")
+      .map((word) => word.charAt(0))
+      .join("");
+  } catch (error) {
+    return error;
+  }
 }
 
 /**
  * Prevent event-bubbeling
- * @param {*} event 
+ * @param {*} event
  */
 function stopPropagation(event) {
-    event.stopPropagation();
-};
-
+  event.stopPropagation();
+}
 
 /**
  * Sends a PUT request to the specified path with the provided data.
@@ -119,16 +130,15 @@ function stopPropagation(event) {
  * @returns {Promise<Object>} - A promise that resolves to the JSON response from the server.
  */
 async function putDataset(data = {}, path = "") {
-    let response = await fetch(BASE_URL + path + '.json', {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
-    });
-    return await response.json();
+  let response = await fetch(BASE_URL + path + ".json", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  return await response.json();
 }
-
 
 /**
  * Sends a PUT request to the specified path with the provided data.
@@ -138,64 +148,62 @@ async function putDataset(data = {}, path = "") {
  * @returns {Promise<Object>} - A promise that resolves to the JSON response from the server.
  */
 async function putData(value, path = "") {
-    const response = await fetch(BASE_URL + path + '.json', {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(value)
-    });
-    return await response.json();
+  const response = await fetch(BASE_URL + path + ".json", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(value),
+  });
+  return await response.json();
 }
-
 
 /**
  * Submits a POST-Query to Firebase
  * @param {string} path - Subpath at Firebase-Server
- * @param {Object} data - Data-Object transmitted 
+ * @param {Object} data - Data-Object transmitted
  * @returns {Promise<Object>}
  */
 async function postData(data = {}, path = "") {
-    try {
-        const response = await fetch(BASE_URL + path + '.json', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data)
-        });
-        return await response.json();
-    } catch (error) {
-        console.error(`Submit data to Server failed.`)   
-    }
+  try {
+    const response = await fetch(BASE_URL + path + ".json", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error(`Submit data to Server failed. ${error}`);
+  }
 }
 
 /**
- * responseToJason is containing every user. It's iterated by every userKeyArray-Index to  
+ * responseToJason is containing every user. It's iterated by every userKeyArray-Index to
  * compare Login-Form-Information with provided server-information.
  * If a match is found, forward to summary.html. ToDo: Add LocalStorage??? Incognito-Mode?!
- * @param {string} path 
+ * @param {string} path
  */
 async function readData(path = "") {
-    try {
-        const response = await fetch(BASE_URL + path + '.json');
-        return await response.json();   
-    }
-    catch (error) {}
+  try {
+    const response = await fetch(BASE_URL + path + ".json");
+    return await response.json();
+  } catch (error) {}
 }
 
 /**
  * Deletes data from firebase-storage
- * @param {string} path 
+ * @param {string} path
  * @returns -need to be added
  */
 async function deleteData(path = "") {
-    try {
-        let response = await fetch(BASE_URL + path + '.json',{
-            method: "DELETE",
-        });
-        return await response.json();   
-    } catch (error) {}
+  try {
+    let response = await fetch(BASE_URL + path + ".json", {
+      method: "DELETE",
+    });
+    return await response.json();
+  } catch (error) {}
 }
 
 /**
@@ -206,53 +214,56 @@ async function deleteData(path = "") {
  *                               or false if no account is found or an error occurs.
  */
 async function accountExists(email, password = false) {
-    try {
-        const output = await readData('accounts');
-        const outputArray = Object.entries(output);
-        if (!password && password !== "") {
-            return outputArray.find(entry => entry[1]['email'] === email.toLowerCase());
-        } else {
-            return outputArray.find(entry => entry[1]['email'] === email.toLowerCase() && entry[1]['password'] === password);
-        }
-    } catch (error) {
-        return false;
+  try {
+    const output = await readData("accounts");
+    const outputArray = Object.entries(output);
+    if (!password && password !== "") {
+      return outputArray.find(
+        (entry) => entry[1]["email"] === email.toLowerCase()
+      );
+    } else {
+      return outputArray.find(
+        (entry) =>
+          entry[1]["email"] === email.toLowerCase() &&
+          entry[1]["password"] === password
+      );
     }
+  } catch (error) {
+    return false;
+  }
 }
 
 /**
- * 
+ *
  * @param {string[]} subtaskArray - an Array with all subtask titles
  * @param {boolean} done - future state of subtask. normaly it's false when creating a new.
  * @returns - an Array with subtakObjects, containing name: string and done: boolean
  */
 function createSubtasks() {
-    let query = document.querySelectorAll('.subtaskitem')
-    let result = [];
-    
-    query.forEach((item) => result.push(
-        { 'goal': item.innerText, 'done': false }
-    ));
+  let query = document.querySelectorAll(".subtaskitem");
+  let result = [];
 
-    return result;
+  query.forEach((item) => result.push({ goal: item.innerText, done: false }));
+
+  return result;
 }
 
 /**
  * This function adds an additional key: value to an existing ObjectObject
- * @param {string} prefix - prefix that should be added 
+ * @param {string} prefix - prefix that should be added
  * @param {Object} data - the data that has been fetched from firebase
  * @returns {Object} - the original data + a new key:value -> path: prefix + id
  */
 function setPrefixToKey(prefix, data) {
-    const prefixedData = {};
-  
-    for (const key in data) {
-      const value = data[key];
-      prefixedData[key] = { ...value, 'path': `${prefix}/${key}` };
-    }
-  
-    return prefixedData;
+  const prefixedData = {};
+
+  for (const key in data) {
+    const value = data[key];
+    prefixedData[key] = { ...value, path: `${prefix}/${key}` };
   }
 
+  return prefixedData;
+}
 
 /**
  * Limits the length of a string to a chosen limit
@@ -261,12 +272,11 @@ function setPrefixToKey(prefix, data) {
  * @returns {string} - shortened string
  */
 function limitLengthOf(inputString, limit = 80) {
-    if (inputString.length > limit) {
-      return inputString.substring(0, limit) + '...';
-    }
-    return inputString;
+  if (inputString.length > limit) {
+    return inputString.substring(0, limit) + "...";
   }
-
+  return inputString;
+}
 
 /**
  * Checks if a given date is not in the past.
@@ -275,16 +285,16 @@ function limitLengthOf(inputString, limit = 80) {
  * @param {string} deadline - The date to be checked in the format 'yyyy-mm-dd'.
  * @returns {string} - Returns today's date if the given date is in the past, otherwise returns the given date.
  */
-  function isNotInPast(deadline) {
-    const today = new Date().toISOString().split('T')[0];
-    let dateOfToday = new Date(today);
-    let choosenDate = new Date(deadline);
-    dateOfToday = dateOfToday.getTime()
-    choosenDate = choosenDate.getTime()
+function isNotInPast(deadline) {
+  const today = new Date().toISOString().split("T")[0];
+  let dateOfToday = new Date(today);
+  let choosenDate = new Date(deadline);
+  dateOfToday = dateOfToday.getTime();
+  choosenDate = choosenDate.getTime();
 
-    if (choosenDate < dateOfToday) {
-        return today;
-    } else {
-        return deadline;
-    }
+  if (choosenDate < dateOfToday) {
+    return today;
+  } else {
+    return deadline;
+  }
 }

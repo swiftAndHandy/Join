@@ -1,187 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/add_task_style.css" />
+    <link rel="stylesheet" href="./assets/css/add_task_media_querys.css" />
+    <link rel="stylesheet" href="./assets/css/fonts.css" />
+    <link rel="stylesheet" href="./assets/css/menu-bar.css" />
+    <link rel="stylesheet" href="./assets/css/menu-bar_media-querys.css" />
+    <link rel="stylesheet" href="./assets/css/detail_view.css" />
+    <link rel="stylesheet" href="./assets/css/detail_view_edit.css" />
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/add_task_Html.js"></script>
+    <script src="./assets/js/add_task.js"></script>
+    <script src="./assets/js/board_addtask_listener_validation.js"></script>
+    <script src="./assets/js/menu-bar-script.js"></script>
+    <script src="./assets/js/task_details.js"></script>
+    <script src="./assets/js/task_details_edit_overlay.js"></script>
+    <script src="./assets/js/task_details_event_listener.js"></script>
+    <script src="./assets/js/generate_taskDetailsHtml.js"></script>
+    <script src="./assets/js/form_enter.js"></script>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="./assets/img/icons/favicon.svg"
+    />
+    <!-- <link rel="icon" type="image/x-icon" href="./assets/img/icons/favicon.svg"> -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="./assets/img/icons/favicon-48x48.png"
+    />
+    <!-- Apple Touch Icon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="./assets/img/icons/favicon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="167x167"
+      href="./assets/img/icons/favicon-167x167.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/img/icons/favicon-180x180.png"
+    />
+    <!-- Safari Pinned Tab -->
+    <link
+      rel="mask-icon"
+      href="./assets/img/icons/favicon.svg"
+      color="#5bbad5"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="stylesheet" href="./assets/css/add_task_style.css">
-  <link rel="stylesheet" href="./assets/css/add_task_media_querys.css">
-  <link rel="stylesheet" href="./assets/css/fonts.css">
-  <link rel="stylesheet" href="./assets/css/menu-bar.css">
-  <link rel="stylesheet" href="./assets/css/menu-bar_media-querys.css">
-  <link rel="stylesheet" href="./assets/css/detail_view.css">
-  <link rel="stylesheet" href="./assets/css/detail_view_edit.css">
-  <script src="./assets/js/script.js"></script>
-  <script src="./assets/js/add_task_Html.js"></script>
-  <script src="./assets/js/add_task.js"></script>
-  <script src="./assets/js/board_addtask_listener_validation.js"></script>
-  <script src="./assets/js/menu-bar-script.js"></script>
-  <script src="./assets/js/task_details.js"></script>
-  <script src="./assets/js/task_details_edit_overlay.js"></script>
-  <script src="./assets/js/task_details_event_listener.js"></script>
-  <script src="./assets/js/generate_taskDetailsHtml.js"></script>
-  <script src="./assets/js/form_enter.js"></script>
-  <link rel="icon" type="image/svg+xml" href="./assets/img/icons/favicon.svg">
-  <!-- <link rel="icon" type="image/x-icon" href="./assets/img/icons/favicon.svg"> -->
-  <link rel="icon" type="image/png" sizes="48x48" href="./assets/img/icons/favicon-48x48.png">
-  <!-- Apple Touch Icon -->
-  <link rel="apple-touch-icon" sizes="152x152" href="./assets/img/icons/favicon-152x152.png">
-  <link rel="apple-touch-icon" sizes="167x167" href="./assets/img/icons/favicon-167x167.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/icons/favicon-180x180.png">
-  <!-- Safari Pinned Tab -->
-  <link rel="mask-icon" href="./assets/img/icons/favicon.svg" color="#5bbad5">
+    <title>Join- Add task</title>
+  </head>
 
-  <title>Join- Add task</title>
-</head>
-
-<body onload="init()" onclick="toggleContactDropBox(true)">
-  <div class="mobile-body">
-    <div class="content-wrapper">
-      <div class="headline-add-task">
-        <h1>Add Task</h1>
-      </div>
-      <main class="add-task-container">
-        <div id="add-task-form" class="form-add-task">
-          <form id="form-desktop" class="form-desktop-view" onsubmit="return false;">
-            <div class="desktop-split">
-              <div class="flex-column-inputs mb-32">
-                <span>Title<span class="red">*</span></span>
-                <input required class="input-standard required" type="text" placeholder="Enter a title"
-                  id="task-title" />
-              </div>
-              <div class="flex-column-inputs mb-32">
-                <span>Description</span>
-                <textarea class="description-textarea" id="task-description"
-                  placeholder="Enter a Description"></textarea>
-              </div>
-              <div class="flex-column-inputs mb-32 mb-assigned-to position-relative">
-                <span>Assigned to</span>
-                <div id="contact-input-wrapper" onclick="stopPropagation(event)">
-                  <div class="input-standard" id="assigned-to-contact" onclick="toggleContactDropBox()">
-                    <span>Select contact to assign</span>
-                    <div onclick="stopPropagation(event)">
-                      <img class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg"
-                        onclick="toggleContactDropBox()" alt="">
-                    </div>
-                  </div>
-                </div>
-                <div id="contacts-show-input" class="input-standard border-color-clicked d-none"
-                  onclick="stopPropagation(event)">
-                  <input id="contacts-searchbar-add-task" onclick="stopPropagation(event)" type="search" oninput="searchContact(this.value)">
-                  <img class="rotation cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg"
-                    onclick="toggleContactDropBox()" alt="">
-                </div>
-                <div id="contacts-drop-menu" onclick="stopPropagation(event)" class="drop-menu d-none">
-                  <div id="contacts-drop-menu-content" class="drop-menu-contacts">
-                    <!-- Drop-down content goes here -->
-                  </div>
-                </div>
-                <div id="contacts-img-line" class="display-contacts-pictures">
-                  <!-- Display contacts pictures here if needed -->
-                </div>
-              </div>
-            </div>
-            <div class="desktop-seperator-add-contact"></div>
-            <div class="second-desktop-split">
-              <div class="flex-column-inputs mb-32">
-                <span>Due date<span class="red">*</span></span>
-                <input
-                  required
-                  class="date-standard"
-                  type="date"
-                  id="task-due-date"
-                  min="2024-01-01"
-                />
-              </div>
-              <div class="prio-container mb-32">
-                <span>Prio</span>
-                <div class="prio-content">
-                  <div id="urgent-prio" class="prios" onclick="setPrio('Urgent', 1)">
-                    Urgent
-                    <img id="urgent-prio-img" src="./assets/img/icons/urgent.svg" alt="Urgent">
-                  </div>
-                  <div id="medium-prio" class="prios" onclick="setPrio('Medium', 2)">
-                    Medium
-                    <img id="medium-prio-img" class="prio-medium" src="./assets/img/icons/medium.svg" alt="Medium">
-                  </div>
-                  <div id="low-prio" class="prios" onclick="setPrio('Low', 3)">
-                    Low
-                    <img id="low-prio-img" src="./assets/img/icons/low.svg" alt="Low">
-                  </div>
-                </div>
-              </div>
-              <div class="flex-column-inputs mb-32">
-                <span>Category<span class="red">*</span></span>
-                <div onclick="stopPropagation(event)" id="category-input-wrapper">
-                  <div onclick="toggleCategoryDropBox()" class="input-standard" id="select-category">
-                    <span id="selected-category">Select category</span>
-                    <img id="arrow" class="cursor-pointer" src="./assets/img/icons/arrow_drop_down_select_field.svg"
-                      alt="">
-                  </div>
-                </div>
-                <div id="category-drop-menu" class="drop-menu-category d-none">
-                  <div id="category-drop-menu-content" class="drop-menu-contacts">
-                    <div onclick="selectCategory('Technical Task')" class="category-drop-box-field">
-                      <span>Technical Task</span>
-                    </div>
-                    <div onclick="selectCategory('User Story')" class="category-drop-box-field">
-                      <span>User Story</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="flex-column-inputs mb-10">
-                <span class="details__caption">Subtasks</span>
-                <div id="edit-subtask-box" class="details-subtask-box stay-white input-width"
-                  onsubmit="addNewSubtask(document.getElementById('edit-add-subtask').value);scrollToLastSubtask();return false;">
-                  <input type="text" id="edit-add-subtask" class="details-subtask-add " placeholder="Add new subtask">
-                  <div id="edit-view-subtask-add" class="cross blue" onclick="setFocus('edit')"></div>
-                  <div id="edit-view-subtask-navigation" class="edit-subtask-navigation d-none"
-                    onclick="stopPropagation(event);">
-                    <div class="link-btn discard-btn" onclick="discardNewSubtask()"></div>
-                    <img class="vertical-line" src="./assets/img/icons/vertical-line.svg" alt="" class="">
-                    <div class="link-btn accept-btn"
-                      onclick="addNewSubtask(document.getElementById('edit-add-subtask').value,'edit-subtask-item-wrapper','div');scrollToLastSubtask();blurListener(); hideWindow('padding-placeholder');">
-                    </div>
-                  </div>
-                </div>
-                <div id="edit-view-scrollbar" class="add-task__subtask-scrollbar">
-                  <div id="edit-subtask-item-wrapper" style="width: 100%">
-
-                  </div>
-                </div>
-                <div id="padding-placeholder"></div>
-              </div>
-              <div class="desktop-buttons">
-                <button class="clear-btn" onclick="clearForm(event)"> Clear
-                  <img src="./assets/img/icons/close.svg" alt="">
-                </button>
-                <button class="create-task-btn" id="button-create-task" onclick="checkIfFormFilled(event)">Create Task
-                  <img src="./assets/img/icons/check.svg" alt="">
-                </button>
-              </div>
-            </div>
-          </form>
-          <span id="required-text-span" class="required-text"><span class="red">*</span>This field is required</span>
-          <div class="create-task-panel">
-            <span><span class="red">*</span>This field is required</span>
-            <button class="create-task-btn" onclick="checkIfFormFilled(event)">
-              Create task
-              <img src="./assets/img/icons/check.svg" alt="check" />
-            </button>
-          </div>
-        </div>
-      </main>
-    </div>
+  <body onload="init()" onclick="toggleContactDropBox(true)">
     <div w3-include-html="./assets/templates/menu-bar.html"></div>
-  </div>
-  <div id="pop-up-task-added" class="pop-up-task-added">
-    <div id="pop-up-transition" class="task-added-popup">
-      <div class="popup-text">Task added to board</div>
-      <img class="popup-img" src="/assets/img/icons/board.icon.svg" alt="Task added">
+    <div class="mobile-body">
+      <div class="content-wrapper">
+        <div class="headline-add-task">
+          <h1>Add Task</h1>
+        </div>
+        <main class="add-task-container">
+          <div id="add-task-form" class="form-add-task">
+            <form
+              id="form-desktop"
+              class="form-desktop-view"
+              onsubmit="return false;"
+            >
+              <div class="desktop-split">
+                <div class="flex-column-inputs mb-32">
+                  <span>Title<span class="red">*</span></span>
+                  <input
+                    required
+                    class="input-standard required"
+                    type="text"
+                    placeholder="Enter a title"
+                    id="task-title"
+                  />
+                </div>
+                <div class="flex-column-inputs mb-32">
+                  <span>Description</span>
+                  <textarea
+                    class="description-textarea"
+                    id="task-description"
+                    placeholder="Enter a Description"
+                  ></textarea>
+                </div>
+                <div
+                  class="flex-column-inputs mb-32 mb-assigned-to position-relative"
+                >
+                  <span>Assigned to</span>
+                  <div
+                    id="contact-input-wrapper"
+                    onclick="stopPropagation(event)"
+                  >
+                    <div
+                      class="input-standard"
+                      id="assigned-to-contact"
+                      onclick="toggleContactDropBox()"
+                    >
+                      <span>Select contact to assign</span>
+                      <div onclick="stopPropagation(event)">
+                        <img
+                          class="cursor-pointer"
+                          src="./assets/img/icons/arrow_drop_down_select_field.svg"
+                          onclick="toggleContactDropBox()"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    id="contacts-show-input"
+                    class="input-standard border-color-clicked d-none"
+                    onclick="stopPropagation(event)"
+                  >
+                    <input
+                      id="contacts-searchbar-add-task"
+                      onclick="stopPropagation(event)"
+                      type="search"
+                      oninput="searchContact(this.value)"
+                    />
+                    <img
+                      class="rotation cursor-pointer"
+                      src="./assets/img/icons/arrow_drop_down_select_field.svg"
+                      onclick="toggleContactDropBox()"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    id="contacts-drop-menu"
+                    onclick="stopPropagation(event)"
+                    class="drop-menu d-none"
+                  >
+                    <div
+                      id="contacts-drop-menu-content"
+                      class="drop-menu-contacts"
+                    >
+                      <!-- Drop-down content goes here -->
+                    </div>
+                  </div>
+                  <div id="contacts-img-line" class="display-contacts-pictures">
+                    <!-- Display contacts pictures here if needed -->
+                  </div>
+                </div>
+              </div>
+              <div class="desktop-seperator-add-contact"></div>
+              <div class="second-desktop-split">
+                <div class="flex-column-inputs mb-32">
+                  <span>Due date<span class="red">*</span></span>
+                  <input
+                    required
+                    class="date-standard"
+                    type="date"
+                    id="task-due-date"
+                    min="2024-01-01"
+                  />
+                </div>
+                <div class="prio-container mb-32">
+                  <span>Prio</span>
+                  <div class="prio-content">
+                    <div
+                      id="urgent-prio"
+                      class="prios"
+                      onclick="setPrio('Urgent', 1)"
+                    >
+                      Urgent
+                      <img
+                        id="urgent-prio-img"
+                        src="./assets/img/icons/urgent.svg"
+                        alt="Urgent"
+                      />
+                    </div>
+                    <div
+                      id="medium-prio"
+                      class="prios"
+                      onclick="setPrio('Medium', 2)"
+                    >
+                      Medium
+                      <img
+                        id="medium-prio-img"
+                        class="prio-medium"
+                        src="./assets/img/icons/medium.svg"
+                        alt="Medium"
+                      />
+                    </div>
+                    <div
+                      id="low-prio"
+                      class="prios"
+                      onclick="setPrio('Low', 3)"
+                    >
+                      Low
+                      <img
+                        id="low-prio-img"
+                        src="./assets/img/icons/low.svg"
+                        alt="Low"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="flex-column-inputs mb-32">
+                  <span>Category<span class="red">*</span></span>
+                  <div
+                    onclick="stopPropagation(event)"
+                    id="category-input-wrapper"
+                  >
+                    <div
+                      onclick="toggleCategoryDropBox()"
+                      class="input-standard"
+                      id="select-category"
+                    >
+                      <span id="selected-category">Select category</span>
+                      <img
+                        id="arrow"
+                        class="cursor-pointer"
+                        src="./assets/img/icons/arrow_drop_down_select_field.svg"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div
+                    id="category-drop-menu"
+                    class="drop-menu-category d-none"
+                  >
+                    <div
+                      id="category-drop-menu-content"
+                      class="drop-menu-contacts"
+                    >
+                      <div
+                        onclick="selectCategory('Technical Task')"
+                        class="category-drop-box-field"
+                      >
+                        <span>Technical Task</span>
+                      </div>
+                      <div
+                        onclick="selectCategory('User Story')"
+                        class="category-drop-box-field"
+                      >
+                        <span>User Story</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex-column-inputs mb-10">
+                  <span class="details__caption">Subtasks</span>
+                  <div
+                    id="edit-subtask-box"
+                    class="details-subtask-box stay-white input-width"
+                    onsubmit="addNewSubtask(document.getElementById('edit-add-subtask').value);scrollToLastSubtask();return false;"
+                  >
+                    <input
+                      type="text"
+                      id="edit-add-subtask"
+                      class="details-subtask-add"
+                      placeholder="Add new subtask"
+                    />
+                    <div
+                      id="edit-view-subtask-add"
+                      class="cross blue"
+                      onclick="setFocus('edit')"
+                    ></div>
+                    <div
+                      id="edit-view-subtask-navigation"
+                      class="edit-subtask-navigation d-none"
+                      onclick="stopPropagation(event);"
+                    >
+                      <div
+                        class="link-btn discard-btn"
+                        onclick="discardNewSubtask()"
+                      ></div>
+                      <img
+                        class="vertical-line"
+                        src="./assets/img/icons/vertical-line.svg"
+                        alt=""
+                        class=""
+                      />
+                      <div
+                        class="link-btn accept-btn"
+                        onclick="addNewSubtask(document.getElementById('edit-add-subtask').value,'edit-subtask-item-wrapper','div');scrollToLastSubtask();blurListener(); hideWindow('padding-placeholder');"
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    id="edit-view-scrollbar"
+                    class="add-task__subtask-scrollbar"
+                  >
+                    <div
+                      id="edit-subtask-item-wrapper"
+                      style="width: 100%"
+                    ></div>
+                  </div>
+                  <div id="padding-placeholder"></div>
+                </div>
+                <div class="desktop-buttons">
+                  <button class="clear-btn" onclick="clearForm(event)">
+                    Clear
+                    <img src="./assets/img/icons/close.svg" alt="" />
+                  </button>
+                  <button
+                    class="create-task-btn"
+                    id="button-create-task"
+                    onclick="checkIfFormFilled(event)"
+                  >
+                    Create Task
+                    <img src="./assets/img/icons/check.svg" alt="" />
+                  </button>
+                </div>
+              </div>
+            </form>
+            <span id="required-text-span" class="required-text"
+              ><span class="red">*</span>This field is required</span
+            >
+            <div class="create-task-panel">
+              <span><span class="red">*</span>This field is required</span>
+              <button
+                class="create-task-btn"
+                onclick="checkIfFormFilled(event)"
+              >
+                Create task
+                <img src="./assets/img/icons/check.svg" alt="check" />
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
-  </div>
-</body>
-
+    <div id="pop-up-task-added" class="pop-up-task-added">
+      <div id="pop-up-transition" class="task-added-popup">
+        <div class="popup-text">Task added to board</div>
+        <img
+          class="popup-img"
+          src="/assets/img/icons/board.icon.svg"
+          alt="Task added"
+        />
+      </div>
+    </div>
+  </body>
 </html>

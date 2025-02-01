@@ -5,38 +5,52 @@
  * @returns - an array, that contains all assigned contacts
  */
 async function generateTaskDetailsHtml(taskId, taskDetails) {
-    const tag = document.getElementById('task-details-tag');
-    const assignedTo = taskDetails['assigned'];
-    tag.innerHTML = taskDetails['tag'];
-    taskDetails['tag'] === 'User Story' ? tag.setAttribute('class', 'tag user-story') : tag.setAttribute('class', 'tag technical-task');
-    document.getElementById('task-details-title').innerHTML = taskDetails['title'];
-    document.getElementById('task-details-description').innerHTML = taskDetails['description'];
-    document.getElementById('task-details-date').innerHTML = taskDetails['date'].split('-').join('/');
-    document.getElementById('details-priority-text').innerHTML = taskDetails['priority'];
-    document.getElementById('details-priority-img').src = `../assets/img/icons/priority_${taskDetails['priority'].toLowerCase()}.svg`;
-    document.getElementById('details-assigned-list').innerHTML = ''
-    assignedPersonsDetailsHtml(assignedTo);
-    document.getElementById('task-details-delete-btn').setAttribute('onclick', `deleteTask('${taskId}')`);
-    return taskDetails;
+  const tag = document.getElementById("task-details-tag");
+  const assignedTo = taskDetails["assigned"];
+  tag.innerHTML = taskDetails["tag"];
+  taskDetails["tag"] === "User Story"
+    ? tag.setAttribute("class", "tag user-story")
+    : tag.setAttribute("class", "tag technical-task");
+  document.getElementById("task-details-title").innerHTML =
+    taskDetails["title"];
+  document.getElementById("task-details-description").innerHTML =
+    taskDetails["description"];
+  document.getElementById("task-details-date").innerHTML = taskDetails["date"]
+    .split("-")
+    .join("/");
+  document.getElementById("details-priority-text").innerHTML =
+    taskDetails["priority"];
+  document.getElementById(
+    "details-priority-img"
+  ).src = `../assets/img/icons/priority_${taskDetails[
+    "priority"
+  ].toLowerCase()}.svg`;
+  document.getElementById("details-assigned-list").innerHTML = "";
+  assignedPersonsDetailsHtml(assignedTo);
+  document
+    .getElementById("task-details-delete-btn")
+    .setAttribute("onclick", `deleteTask('${taskId}')`);
+  return taskDetails;
 }
 
-
 /**
- * Resets Details of a Card. 
+ * Resets Details of a Card.
  * I used variables for better readablity, even if this results in more than 14 LOC.
  */
 function resetDetailCardHtml() {
-    const tag = document.getElementById('task-details-tag');
-    tag.innerHTML = '';
-    tag.setAttribute('class', '');
-    document.getElementById('task-details-title').innerHTML = '';
-    document.getElementById('task-details-description').value = '';
-    document.getElementById('task-details-date').innerHTML = '';
-    document.getElementById('details-priority-text').innerHTML = '';
-    document.getElementById('details-priority-img').src = '';
-    document.getElementById('details-assigned-list').innerHTML = '';
-    document.getElementById('details-subtasks-list').innerHTML = '';
-    document.getElementById('task-details-delete-btn').setAttribute('onclick', `deleteTask('')`);
+  const tag = document.getElementById("task-details-tag");
+  tag.innerHTML = "";
+  tag.setAttribute("class", "");
+  document.getElementById("task-details-title").innerHTML = "";
+  document.getElementById("task-details-description").value = "";
+  document.getElementById("task-details-date").innerHTML = "";
+  document.getElementById("details-priority-text").innerHTML = "";
+  document.getElementById("details-priority-img").src = "";
+  document.getElementById("details-assigned-list").innerHTML = "";
+  document.getElementById("details-subtasks-list").innerHTML = "";
+  document
+    .getElementById("task-details-delete-btn")
+    .setAttribute("onclick", `deleteTask('')`);
 }
 
 /**
@@ -45,40 +59,68 @@ function resetDetailCardHtml() {
  * @returns {string} - HTML Content that was rendered
  */
 async function assignedPersonsDetailsHtml(contactIds) {
-    let output = '';
-    if (contactIds) {
-        for (let item of contactIds) {
-            try {
-                const data = await readData(`${item}`)
-                document.getElementById('details-assigned-list').insertAdjacentHTML('beforeend', `
-                <div class="details__inner">
-                <div id="task-details-avatar-${item}" class="avatar at-drop-down" style="background-color: ${data.color};">${initials(data.name)}</div>
-                    <span id="edit-task-username-ID">${data.name}</span>
-                </div>
-                `);
-            } catch (error) { }
-        }
-    }
-    return output;
-}
+  if (!contactIds?.length) return "";
 
+  const target = document.getElementById("details-assigned-list");
+  if (!target) return "";
+
+  try {
+    const results = await Promise.allSettled(
+      contactIds.map((id) => readData(id))
+    );
+
+    results.forEach((result, index) => {
+      if (result.status === "fulfilled" && result.value) {
+        const data = result.value;
+        target.insertAdjacentHTML(
+          "beforeend",
+          `
+                    <div class="details__inner">
+                        <div id="task-details-avatar-${
+                          contactIds[index]
+                        }" class="avatar at-drop-down" 
+                             style="background-color: ${data.color};">
+                            ${initials(data.name)}
+                        </div>
+                        <span id="edit-task-username-${contactIds[index]}">${
+            data.name
+          }</span>
+                    </div>
+                `
+        );
+      }
+    });
+  } catch (error) {
+    console.error("Fehler beim Laden der zugewiesenen Personen:", error);
+  }
+
+  return "";
+}
 
 /**
- * Creates HTML for Creating new Subtasks. This is originaly written for task-details, but changed in 
+ * Creates HTML for Creating new Subtasks. This is originaly written for task-details, but changed in
  * a way you can select a individual target-location and reuse this code on other pages.
  * Applys a random ID to this item. Submits only, if value isn't empty after trim spaces from begin and end
- * @param {string} value 
+ * @param {string} value
  */
-function addNewSubtask(value, target = 'edit-subtask-item-wrapper', form = 'form', specialTarget = '', done = false) {
-    target = document.getElementById(`${target}`);
-    const id = randomId() + done;
-    value = value.trim();
-    if (value) {
-        target.insertAdjacentHTML('beforeend', `${subtaskHTML(value, form, done, id)}`);
-        document.getElementById(`edit-add-subtask${specialTarget}`).value = '';
-    }
+function addNewSubtask(
+  value,
+  target = "edit-subtask-item-wrapper",
+  form = "form",
+  specialTarget = "",
+  done = false
+) {
+  target = document.getElementById(`${target}`);
+  const id = randomId() + done;
+  value = value.trim();
+  if (value) {
+    target.insertAdjacentHTML(
+      "beforeend",
+      `${subtaskHTML(value, form, done, id)}`
+    );
+    document.getElementById(`edit-add-subtask${specialTarget}`).value = "";
+  }
 }
-
 
 /**
  * Generates HTML for Subtasks at Edit-View
@@ -89,7 +131,7 @@ function addNewSubtask(value, target = 'edit-subtask-item-wrapper', form = 'form
  * @returns {string} - rendered HTML-Code
  */
 function subtaskHTML(value, form, done, id) {
-    return `
+  return `
     <div id="edit-subtask-total-${id}" class="li-wrapper ${done}" ondblclick="openSubtaskInput('${id}');stopPropagation(event);">
         <ul id="edit-subtasks-unsorted-${id}" class="edit-subtasks-list"">
             <li>
@@ -113,7 +155,6 @@ function subtaskHTML(value, form, done, id) {
     `;
 }
 
-
 /**
  * Creates HTML for every subtask Element thats given to a task and iterates trough data.subtasks.length to ensure
  * a unique ID for every checkbox/label-pair.
@@ -121,19 +162,24 @@ function subtaskHTML(value, form, done, id) {
  * @param {string} taskId - the Key of the current read Task
  */
 async function listAttachedSubtasks(data, taskId) {
-    const targetLocation = document.getElementById('details-subtasks-list');
+  const targetLocation = document.getElementById("details-subtasks-list");
 
-    if (Array.isArray(data.subtasks)) {
-        targetLocation.innerHTML = '';
-        for (let i = 0; i < data.subtasks.length; i++) {
-            targetLocation.insertAdjacentHTML('beforeend', `${attachedSubtasksHTML(taskId, i, data)}`);
-        }
-    } else {
-        noSubtasksAttached();
-        data.subtasks && console.warn('Firebase issue. Pls ensure to save JSON-Arrays or nothing in subtasks. Strings will not be displayed!');
+  if (Array.isArray(data.subtasks)) {
+    targetLocation.innerHTML = "";
+    for (let i = 0; i < data.subtasks.length; i++) {
+      targetLocation.insertAdjacentHTML(
+        "beforeend",
+        `${attachedSubtasksHTML(taskId, i, data)}`
+      );
     }
+  } else {
+    noSubtasksAttached();
+    data.subtasks &&
+      console.warn(
+        "Firebase issue. Pls ensure to save JSON-Arrays or nothing in subtasks. Strings will not be displayed!"
+      );
+  }
 }
-
 
 /**
  * generates HTML for every subtask in detail-view to allow check/uncheck done state
@@ -143,7 +189,7 @@ async function listAttachedSubtasks(data, taskId) {
  * @returns {string} - rendered HTML-Code
  */
 function attachedSubtasksHTML(taskId, i, data) {
-    return `<div class="details__subtask">
+  return `<div class="details__subtask">
         <input type="checkbox" 
         onchange="updateSingleSubtask(
             'tasks/${taskId}/subtasks/${i}/done', 
@@ -153,8 +199,10 @@ function attachedSubtasksHTML(taskId, i, data) {
         class="edit checkbox subtask-checkbox" 
         id="details-task${taskId}-subtask-${i}" 
         name="details-task${taskId}-subtask-${i}" 
-        ${data.subtasks[i].done ? 'checked' : ''}>
-        <label id="label-for-details-task${taskId}-subtask-${i}" for="details-task${taskId}-subtask-${i}">${data.subtasks[i].goal}</label>
+        ${data.subtasks[i].done ? "checked" : ""}>
+        <label id="label-for-details-task${taskId}-subtask-${i}" for="details-task${taskId}-subtask-${i}">${
+    data.subtasks[i].goal
+  }</label>
     </div>`;
 }
 
@@ -162,5 +210,6 @@ function attachedSubtasksHTML(taskId, i, data) {
  * When no Subtask is attached, add this msg to subtask-list.
  */
 function noSubtasksAttached() {
-    document.getElementById('details-subtasks-list').innerHTML = "This Task has no Subtasks.";
+  document.getElementById("details-subtasks-list").innerHTML =
+    "This Task has no Subtasks.";
 }

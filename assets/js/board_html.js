@@ -1,7 +1,7 @@
 /**
  * Genereates HTML for the board..
  * The hidden description is used for search engine, since this one is not shortended by limitLengthOf().
- * Calls the async functions for the progressBar and the avatarCircles without await, so the result can be added later, 
+ * Calls the async functions for the progressBar and the avatarCircles without await, so the result can be added later,
  * while the next card is allready rendering.
  * @param {*} taskId - ID of the current task
  * @param {*} item - the Object that is fetched from taskId.
@@ -9,17 +9,26 @@
  * @param {*} [position='beforeend'] - position of insertAdjacentHTML. Only set for the rare case you might need and afterbegin or whatever.
  */
 
-function generateTaskCard(taskId, item, target, position = 'beforeend') {
-  target.insertAdjacentHTML(`${position}`, `
-  <article class="task-card-container" onclick="openTaskDetails('${taskId}')" draggable="true" ondragstart="startDrag('${taskId}', '${item.status}')" id="taskId${taskId}">
+function generateTaskCard(taskId, item, target, position = "beforeend") {
+  target.insertAdjacentHTML(
+    `${position}`,
+    `
+  <article class="task-card-container" onclick="openTaskDetails('${taskId}')" draggable="true" ondragstart="startDrag('${taskId}', '${
+      item.status
+    }')" id="taskId${taskId}">
     <div class="task-card-content">
       <div class="task-group-bubble ${item.tag.replace(/\s+/g, "-")}">
         <span>${item.tag}</span>
       </div>
       <div class="task-card-header mtb-24">
         <h2>${item.title}</h2>
-        <span id="description-content${taskId}" class="task-sub-headline">${limitLengthOf(item.description, 80)}</span>
-        <span id="hidden-description-content${taskId}" class="d-none">${item.description}</span>
+        <span id="description-content${taskId}" class="task-sub-headline">${limitLengthOf(
+      item.description,
+      80
+    )}</span>
+        <span id="hidden-description-content${taskId}" class="d-none">${
+      item.description
+    }</span>
       </div>
       <div class="sub-task-container">
         <div class="sub-task-progress-bar">
@@ -34,7 +43,8 @@ function generateTaskCard(taskId, item, target, position = 'beforeend') {
         <img id="prio-img${taskId}" alt="${item.priority}">
       </div>
     </div>
-  </article>`);
+  </article>`
+  );
   getSubtaskProgress(item.subtasks, taskId);
   generateCircleProfiles(item.assigned, taskId);
 }
@@ -47,16 +57,31 @@ function generateTaskCard(taskId, item, target, position = 'beforeend') {
  */
 async function generateCircleProfiles(contactEntries, taskId) {
   const target = document.getElementById(`profile-circle-container-${taskId}`);
-  if (contactEntries) {
-    for (let contacts of contactEntries) {
-      try {
-        const user = await readData(`${contacts}`);
-        target.insertAdjacentHTML('beforeend', `<div class="profile-cricle" id=profile-circle-container-${contacts}" style= "background-color:${user.color}">${initials(user.name)}</div>`);
-        if (target.childElementCount >= 4) {
-          target.insertAdjacentHTML('beforeend', `<div class="profile-cricle" id=profile-circle-container-max" style= "background-color:#29ABE2}">...</div>`);
-          break;
-        }
-      } catch (error) { }
-    }
+  if (!contactEntries?.length) return;
+
+  const results = await Promise.allSettled(contactEntries.map(readData));
+  const users = results
+    .filter((r) => r.status === "fulfilled" && r.value)
+    .map((r, i) => ({ ...r.value, id: contactEntries[i] }))
+    .slice(0, 4);
+
+  users.forEach((user) => {
+    target.insertAdjacentHTML(
+      "beforeend",
+      `<div class="profile-cricle" id="profile-circle-container-${user.id}" 
+           style="background-color:${user.color}">
+        ${initials(user.name)}
+      </div>`
+    );
+  });
+
+  if (results.filter((r) => r.status === "fulfilled").length > 4) {
+    target.insertAdjacentHTML(
+      "beforeend",
+      `<div class="profile-cricle" id="profile-circle-container-max" 
+           style="background-color:#29ABE2">
+        ...
+      </div>`
+    );
   }
 }
